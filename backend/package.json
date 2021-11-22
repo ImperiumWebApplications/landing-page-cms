@@ -7,6 +7,8 @@
     "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi",
+    "config:dump": "strapi configuration:dump -f config_dump.json",
+    "config:restore": "strapi configuration:restore -f config_dump.json",
     "format": "prettier --write \"**/*.+(js|jsx|json|yml|yaml|css|less|scss|ts|tsx|graphql|md|mdx)\"",
     "lint": "eslint ."
   },
