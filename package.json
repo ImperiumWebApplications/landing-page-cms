@@ -12,11 +12,6 @@
     "lazy": "yarn && yarn prepare && yarn lerna bootstrap",
     "prepare": "husky install"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
     "*.js": [
       "eslint"
