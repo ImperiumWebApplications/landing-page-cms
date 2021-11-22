@@ -17,11 +17,7 @@
     },
     "color": {
       "type": "enumeration",
-      "enum": [
-        "primary",
-        "secondary",
-        "tertiary"
-      ]
+      "enum": ["primary", "secondary", "tertiary"]
     }
   }
 }

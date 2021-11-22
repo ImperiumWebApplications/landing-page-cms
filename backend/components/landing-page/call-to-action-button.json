@@ -15,10 +15,7 @@
     },
     "color": {
       "type": "enumeration",
-      "enum": [
-        "primary",
-        "secondary"
-      ]
+      "enum": ["primary", "secondary"]
     }
   }
 }
