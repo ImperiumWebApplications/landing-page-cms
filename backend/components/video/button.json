@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_video_buttons",
+  "info": {
+    "name": "button",
+    "icon": "arrow-right"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "href": {
+      "type": "string"
+    },
+    "color": {
+      "type": "enumeration",
+      "enum": [
+        "primary",
+        "secondary",
+        "tertiary"
+      ]
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_questionnaire_kontaktformulars",
+  "info": {
+    "name": "Kontaktformular",
+    "icon": "at"
+  },
+  "options": {},
+  "attributes": {
+    "Name": {
+      "type": "string"
+    },
+    "Email": {
+      "type": "email"
+    },
+    "Consent": {
+      "type": "boolean"
+    }
+  }
+}

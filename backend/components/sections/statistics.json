@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_sections_statistics",
+  "info": {
+    "name": "Kennzahlen",
+    "icon": "hashtag",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "statistic": {
+      "type": "component",
+      "repeatable": true,
+      "component": "statistics.statistic"
+    },
+    "backgroundImage": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    }
+  }
+}

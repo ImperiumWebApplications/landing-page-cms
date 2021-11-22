@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_landing_page_header_buttons",
+  "info": {
+    "name": "HeaderButton",
+    "icon": "square"
+  },
+  "options": {},
+  "attributes": {
+    "Label": {
+      "type": "string"
+    },
+    "Farbe": {
+      "type": "enumeration",
+      "enum": [
+        "primary",
+        "secondary",
+        "tertiary"
+      ]
+    }
+  }
+}

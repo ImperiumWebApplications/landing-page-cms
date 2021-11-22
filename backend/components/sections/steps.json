@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_sections_steps",
+  "info": {
+    "name": "Ablauf",
+    "icon": "border-none",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "step": {
+      "type": "component",
+      "repeatable": true,
+      "component": "ablauf.step"
+    }
+  }
+}

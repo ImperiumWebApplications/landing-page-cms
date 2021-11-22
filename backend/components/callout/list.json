@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_callout_lists",
+  "info": {
+    "name": "list",
+    "icon": "align-right"
+  },
+  "options": {},
+  "attributes": {
+    "icon": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "item": {
+      "type": "string"
+    }
+  }
+}

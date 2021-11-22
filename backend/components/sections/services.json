@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_sections_services",
+  "info": {
+    "name": "services",
+    "icon": "clipboard-check"
+  },
+  "options": {},
+  "attributes": {
+    "tab": {
+      "type": "component",
+      "repeatable": true,
+      "component": "services.tab"
+    }
+  }
+}

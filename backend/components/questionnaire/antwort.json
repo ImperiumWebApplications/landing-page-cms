@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_questionnaire_antworts",
+  "info": {
+    "name": "Antwort",
+    "icon": "align-justify"
+  },
+  "options": {},
+  "attributes": {
+    "Wert": {
+      "type": "string"
+    },
+    "Icon": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_questionnaire_ranges",
+  "info": {
+    "name": "Range",
+    "icon": "angle-left"
+  },
+  "options": {},
+  "attributes": {
+    "Frage": {
+      "type": "string"
+    },
+    "Minimum": {
+      "type": "biginteger"
+    },
+    "Maximum": {
+      "type": "integer"
+    },
+    "Icon": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "Wert": {
+      "type": "string"
+    }
+  }
+}

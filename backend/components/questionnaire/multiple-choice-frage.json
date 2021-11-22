@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_questionnaire_multiple_choice_frages",
+  "info": {
+    "name": "Multiple Choice Frage",
+    "icon": "angle-right",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Frage": {
+      "type": "string"
+    },
+    "Antwort": {
+      "type": "component",
+      "repeatable": true,
+      "component": "questionnaire.antwort"
+    },
+    "multipleChoiceAllowed": {
+      "type": "boolean"
+    }
+  }
+}

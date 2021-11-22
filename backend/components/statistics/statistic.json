@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_statistics_statistics",
+  "info": {
+    "name": "statistic",
+    "icon": "lightbulb"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "number": {
+      "type": "integer"
+    }
+  }
+}

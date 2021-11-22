@@ -1,0 +1,36 @@
+{
+  "collectionName": "components_sections_image_callouts",
+  "info": {
+    "name": "Call To Action mit Bildern",
+    "icon": "drum",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "images": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "heading": {
+      "type": "string"
+    },
+    "buttonLeft": {
+      "type": "component",
+      "repeatable": false,
+      "component": "image-callout.button-left"
+    },
+    "buttonRight": {
+      "type": "component",
+      "repeatable": false,
+      "component": "image-callout.button-right"
+    }
+  }
+}

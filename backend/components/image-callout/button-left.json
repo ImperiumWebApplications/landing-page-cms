@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_images_button_lefts",
+  "info": {
+    "name": "buttonLeft",
+    "icon": "arrow-circle-left"
+  },
+  "options": {},
+  "attributes": {
+    "description": {
+      "type": "string"
+    },
+    "label": {
+      "type": "string"
+    },
+    "href": {
+      "type": "string"
+    },
+    "color": {
+      "type": "enumeration",
+      "enum": [
+        "primary",
+        "secondary",
+        "tertiary"
+      ]
+    }
+  }
+}

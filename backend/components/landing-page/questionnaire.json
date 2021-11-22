@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_landing_page_questionnaires",
+  "info": {
+    "name": "questionnaire",
+    "icon": "assistive-listening-systems",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "question": {
+      "type": "string"
+    },
+    "usps": {
+      "type": "component",
+      "repeatable": true,
+      "component": "landing-page.usp"
+    },
+    "questionnaires": {
+      "collection": "questionnaire"
+    }
+  }
+}
