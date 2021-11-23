@@ -12,26 +12,21 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Fragen": {
+    "questions": {
       "type": "component",
       "repeatable": true,
       "component": "questionnaire.multiple-choice-frage"
     },
-    "Kontaktformular": {
-      "type": "component",
-      "repeatable": false,
-      "component": "questionnaire.kontaktformular"
-    },
-    "Name": {
+    "questionnaireName": {
       "type": "string"
     },
     "landing_pages": {
       "collection": "landing-page"
     },
-    "icon": {
+    "questionnaireIcon": {
       "model": "file",
       "via": "related",
-      "allowedTypes": ["images", "files", "videos"],
+      "allowedTypes": ["images"],
       "plugin": "upload",
       "required": false,
       "pluginOptions": {}

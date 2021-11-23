@@ -1,8 +1,9 @@
 {
   "collectionName": "components_sections_services",
   "info": {
-    "name": "services",
-    "icon": "clipboard-check"
+    "name": "Services",
+    "icon": "clipboard-check",
+    "description": ""
   },
   "options": {},
   "attributes": {

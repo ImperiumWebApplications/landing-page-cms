@@ -1,8 +1,9 @@
 {
   "collectionName": "components_sections_videos",
   "info": {
-    "name": "video",
-    "icon": "indent"
+    "name": "Video",
+    "icon": "indent",
+    "description": ""
   },
   "options": {},
   "attributes": {

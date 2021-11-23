@@ -1,15 +1,16 @@
 {
   "collectionName": "components_questionnaire_antworts",
   "info": {
-    "name": "Antwort",
-    "icon": "align-justify"
+    "name": "answer",
+    "icon": "align-justify",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "Wert": {
+    "value": {
       "type": "string"
     },
-    "Icon": {
+    "icon": {
       "model": "file",
       "via": "related",
       "allowedTypes": ["images", "files", "videos"],
