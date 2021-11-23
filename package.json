@@ -2,22 +2,17 @@
   "name": "root",
   "private": true,
   "devDependencies": {
-    "eslint": "^7.32.0",
     "husky": "^7.0.4",
-    "lerna": "^4.0.0",
-    "lint-staged": "^12.1.2",
-    "prettier": "^2.4.1"
+    "lerna": "^4.0.0"
   },
   "scripts": {
     "lazy": "yarn && yarn prepare && yarn lerna bootstrap",
+    "bootstrap": "yarn lerna bootstrap",
+    "lint": "lerna run lint --parallel",
     "prepare": "husky install"
   },
-  "lint-staged": {
-    "*.js": [
-      "eslint"
-    ],
-    "*.+(js|jsx|json|yml|yaml|css|less|scss|ts|tsx|md|graphql|mdx)": [
-      "prettier --write"
-    ]
-  }
+  "workspaces": [
+    "backend",
+    "eslint-config"
+  ]
 }
