@@ -1,0 +1,26 @@
+{
+  "name": "strapi-plugin-color-picker",
+  "version": "0.1.0",
+  "description": "A custom color picker for selecting colors in Strapi",
+  "strapi": {
+    "name": "Leadquelle Color Picker",
+    "icon": "plug",
+    "description": "A custom color picker for selecting theme colors."
+  },
+  "author": {
+    "name": "Konstantin Münster",
+    "email": "info@kmuenster.com"
+  },
+  "engines": {
+    "node": "^12",
+    "npm": ">=6.0.0"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "react-color": "^2.19.3",
+    "styled-components": "^5.3.3"
+  },
+  "devDependencies": {
+    "@shared/eslint-config": "file:../../../eslint-config"
+  }
+}

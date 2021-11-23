@@ -38,16 +38,20 @@
       "pluginOptions": {}
     },
     "color_primary": {
-      "type": "string"
+      "type": "color-picker",
+      "columnType": "longtext"
     },
     "color_secondary": {
-      "type": "string"
+      "type": "color-picker",
+      "columnType": "longtext"
     },
     "color_tertiary": {
-      "type": "string"
+      "type": "color-picker",
+      "columnType": "longtext"
     },
     "color_text": {
-      "type": "string"
+      "type": "color-picker",
+      "columnType": "longtext"
     },
     "phone": {
       "type": "string"
