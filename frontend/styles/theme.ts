@@ -1,10 +1,11 @@
-export const theme = {
-  borderRadius: '5px',
+export const defaultTheme = {
   font: '"Overpass", sans-serif',
   colors: {
     main: 'cyan',
     secondary: 'magenta',
+    tertiary: '',
+    text: '',
   },
 };
 
-export type LeadquelleTheme = typeof theme;
+export type LeadquelleTheme = typeof defaultTheme;

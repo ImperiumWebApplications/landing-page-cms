@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
-import { LeadquelleTheme, theme } from './theme';
+import { LeadquelleTheme } from './theme';
 
 export const GlobalStyle = createGlobalStyle<{ theme: LeadquelleTheme }>`
   /** Reset CSS */
@@ -8,6 +8,6 @@ export const GlobalStyle = createGlobalStyle<{ theme: LeadquelleTheme }>`
   /** Typography */
   body {
     font-family: ${({ theme }) => theme.font};
-    color: ${({ theme }) => theme.colors.main};
+    color: ${({ theme }) => theme.colors.text};
   }
 `;
