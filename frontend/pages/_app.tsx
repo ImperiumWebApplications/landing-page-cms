@@ -4,7 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import { Layout } from '../components/Layout';
 import { defaultTheme } from '../styles/theme';
 
-function MyApp({ Component, pageProps }: AppProps) {
+const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <ThemeProvider theme={defaultTheme}>
       <Layout>
@@ -12,5 +12,6 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Layout>
     </ThemeProvider>
   );
-}
+};
+
 export default MyApp;
