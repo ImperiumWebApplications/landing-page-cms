@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_sections_service_tabs",
+  "info": {
+    "displayName": "Service Tab",
+    "icon": "stream"
+  },
+  "options": {},
+  "attributes": {
+    "tab_name": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "text"
+    },
+    "description": {
+      "type": "text"
+    },
+    "service_images": {
+      "allowedTypes": ["images"],
+      "type": "media",
+      "multiple": true
+    },
+    "service_examples": {
+      "type": "text"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_sections_services",
+  "info": {
+    "displayName": "Services",
+    "icon": "border-all"
+  },
+  "options": {},
+  "attributes": {
+    "service_tab": {
+      "displayName": "Service Tab",
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.service-tab"
+    }
+  }
+}

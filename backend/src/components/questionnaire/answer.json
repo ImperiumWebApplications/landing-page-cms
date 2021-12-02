@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_questionnaire_answers",
+  "info": {
+    "displayName": "Answer",
+    "icon": "angle-right"
+  },
+  "options": {},
+  "attributes": {
+    "answer_value": {
+      "type": "string"
+    },
+    "answer_icon": {
+      "allowedTypes": ["images"],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

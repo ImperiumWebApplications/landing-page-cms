@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_questionnaire_advantages",
+  "info": {
+    "displayName": "advantage",
+    "icon": "bullhorn",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "first_line": {
+      "type": "string"
+    },
+    "second_line": {
+      "type": "string"
+    }
+  }
+}

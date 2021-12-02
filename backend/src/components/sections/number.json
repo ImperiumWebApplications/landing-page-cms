@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_sections_numbers",
+  "info": {
+    "displayName": "Number",
+    "icon": "asterisk"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "number": {
+      "type": "integer"
+    }
+  }
+}

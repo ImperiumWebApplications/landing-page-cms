@@ -1,0 +1,87 @@
+{
+  "kind": "collectionType",
+  "collectionName": "landing_pages",
+  "info": {
+    "singularName": "landing-page",
+    "pluralName": "landing-pages",
+    "displayName": "Landing Page",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "seo_title": {
+      "type": "string"
+    },
+    "seo_description": {
+      "type": "string"
+    },
+    "domain": {
+      "type": "string"
+    },
+    "brand_name": {
+      "type": "string"
+    },
+    "favicon": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "color_primary": {
+      "type": "string"
+    },
+    "color_secondary": {
+      "type": "string"
+    },
+    "color_tertiary": {
+      "type": "string"
+    },
+    "color_text": {
+      "type": "string"
+    },
+    "contact_email": {
+      "type": "email"
+    },
+    "contact_phone": {
+      "type": "string"
+    },
+    "questionnaire": {
+      "type": "component",
+      "repeatable": false,
+      "component": "questionnaire.questionnaire"
+    },
+    "client_name": {
+      "type": "string"
+    },
+    "client_address": {
+      "type": "text"
+    },
+    "client_vat": {
+      "type": "string"
+    },
+    "sections": {
+      "type": "dynamiczone",
+      "components": [
+        "sections.hero",
+        "sections.statistics",
+        "sections.call-to-action",
+        "sections.services",
+        "sections.reviews",
+        "sections.images",
+        "sections.faq"
+      ]
+    },
+    "service_type": {
+      "type": "string"
+    }
+  }
+}
