@@ -1,5 +1,5 @@
 {
-  "packages": ["backend", "eslint-config"],
+  "packages": ["backend", "eslint-config", "frontend"],
   "version": "independent",
   "npmClient": "yarn",
   "useWorkspaces": true
