@@ -39,19 +39,19 @@
     },
     "color_primary": {
       "type": "color-picker",
-      "columnType": "longtext"
+      "columnType": "text"
     },
     "color_secondary": {
       "type": "color-picker",
-      "columnType": "longtext"
+      "columnType": "text"
     },
     "color_tertiary": {
       "type": "color-picker",
-      "columnType": "longtext"
+      "columnType": "text"
     },
     "color_text": {
       "type": "color-picker",
-      "columnType": "longtext"
+      "columnType": "text"
     },
     "phone": {
       "type": "string"
