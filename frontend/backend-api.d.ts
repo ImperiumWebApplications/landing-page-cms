@@ -122,7 +122,11 @@ interface ImagesSection {
   images?: ImageObjectList;
 }
 
-type Sections = HeroSection | StatisticsSection | ReviewsSection | ImageSection;
+type Sections =
+  | HeroSection
+  | StatisticsSection
+  | ReviewsSection
+  | ImagesSection;
 
 interface LandingPage {
   seo_title?: SEOTitle;
@@ -163,21 +167,11 @@ interface APIResponse<T> {
   };
 }
 
-enum RelationalFields {
-  LogoFooter = 'logo_footer',
-  LogoHeader = 'logo_header',
-  Favicon = 'favicon',
-  Questionnaire = 'questionnaire',
-  ConnectedQuestionnaires = `${RelationalFields.Questionnaire}.questionnaires`,
-  QuestionnaireIcon = `${RelationalFields.Questionnaire}.icon`,
-  QuestionnaireAdvantage = `${RelationalFields.Questionnaire}.advantage`,
-}
-
 export interface BackendAPI {
   '/landing-pages': {
     GET: {
       query: {
-        populate?: RelationalFields;
+        populate?: string;
         'filters[domain][$eq]'?: string;
         'filters[brand_name][$eq]'?: string;
         'filters[service_type][$eq]'?: string;

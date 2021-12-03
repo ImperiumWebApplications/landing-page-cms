@@ -1,5 +1,5 @@
 import axios from 'restyped-axios';
-import type { BackendAPI } from '../backend-api';
+import { BackendAPI } from '../backend-api';
 
 export const BACKEND_API = axios.create<BackendAPI>({
   baseURL: process.env.BACKEND_API,
@@ -11,9 +11,12 @@ export const BACKEND_API = axios.create<BackendAPI>({
 export const getLandingPageContentByDomain = async (domain: string) => {
   const res = await BACKEND_API.request({
     url: '/landing-pages',
-    params: { 'filters[domain][$eq]': domain },
+    params: {
+      populate: '*',
+      'filters[domain][$eq]': domain,
+    },
   });
-  return isResponseOK(res) ? res.data.data[0] : undefined;
+  return isResponseOK(res) ? res.data.data[0].attributes : undefined;
 };
 
 const isResponseOK = (res: { status: number; data: { data: any[] } }) =>
