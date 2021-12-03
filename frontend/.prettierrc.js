@@ -4,6 +4,6 @@ module.exports = {
   semi: true,
   singleQuote: true,
   quoteProps: 'as-needed',
-  printWidth: 120,
+  printWidth: 80,
   endOfLine: 'auto',
 };

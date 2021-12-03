@@ -76,7 +76,9 @@ interface Questionnaire {
   questionnaires: ConnectedQuestionnaireObjectList;
   advantage: { id: number; first_line: string; second_line: string }[];
 }
-type ConnectedQuestionnaireObjectList = { data: DataObject<ConnectedQuestionnaire>[] };
+type ConnectedQuestionnaireObjectList = {
+  data: DataObject<ConnectedQuestionnaire>[];
+};
 
 interface HeroSection {
   id: number;
