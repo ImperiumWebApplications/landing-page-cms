@@ -1,7 +1,7 @@
 import { NextSeoProps } from 'next-seo';
 import { LandingPage } from '../backend-api';
 
-export const defaultSEOProps = (content: LandingPage) => {
+export const extractSeoProps = (content: LandingPage) => {
   return {
     title: content.seo_title,
     description: content.seo_description,

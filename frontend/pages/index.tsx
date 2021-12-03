@@ -1,18 +1,15 @@
 import type { NextPage } from 'next';
-import { NextSeo } from 'next-seo';
-import { defaultSEOProps } from '../config/seo.config';
+import { Layout } from '../components/Layout';
 import {
   DomainSpecificContent,
   requestDomainSpecificContent,
 } from '../interface/request';
 
 const Home: NextPage<DomainSpecificContent> = ({ domainContent }) => {
-  const seoProps = defaultSEOProps(domainContent);
   return (
-    <>
-      <NextSeo {...seoProps} />
+    <Layout content={domainContent}>
       <h1>Hello</h1>
-    </>
+    </Layout>
   );
 };
 

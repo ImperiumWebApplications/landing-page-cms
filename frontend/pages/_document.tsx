@@ -7,7 +7,7 @@ import Document, {
   Html,
 } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
-import { GoogleFonts } from '../styles/googleFonts';
+import { FontConfig } from '../config/font.config';
 
 export default class MyDocument extends Document {
   static async getInitialProps(
@@ -42,7 +42,22 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <GoogleFonts />
+          {FontConfig.useGoogleCDN ? (
+            <>
+              <link rel="preconnect" href="https://fonts.googleapis.com" />
+              <link
+                rel="preconnect"
+                href="https://fonts.gstatic.com"
+                crossOrigin="anonymous"
+              />
+              <link
+                href={`https://fonts.googleapis.com/css2?family=${
+                  FontConfig.fontName
+                }:wght@${FontConfig.fontWeight.join(';')}&display=swap`}
+                rel="stylesheet"
+              />
+            </>
+          ) : undefined}
         </Head>
         <body>
           <Main />
