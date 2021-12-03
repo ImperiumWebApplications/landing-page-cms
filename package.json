@@ -13,7 +13,6 @@
   },
   "workspaces": [
     "backend",
-    "eslint-config",
     "frontend"
   ]
 }
