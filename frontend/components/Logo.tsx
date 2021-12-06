@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { ImageObject } from '../backend-api';
 
 const StyledLogo = styled.div`
-  max-width: 75%;
+  max-width: 300px;
   margin-right: 2rem;
   cursor: pointer;
 `;

@@ -4,7 +4,7 @@ interface NavigationItem {
   openNewTab?: boolean;
 }
 
-export const mobileNavigationItems: NavigationItem[] = [
+export const navigationItems: NavigationItem[] = [
   {
     href: '/',
     label: 'Homepage',

@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 import { fadeIn, fadeOut } from '../config/animations.config';
-import { mobileNavigationItems } from '../config/navigation.config';
+import { navigationItems } from '../config/navigation.config';
 import { devices } from '../config/breakpoints.config';
 
 const StyledMobileMenu = styled.div<{ open: boolean }>`
@@ -126,7 +126,7 @@ export const MobileNavigation: React.FunctionComponent = () => {
       >
         <div className="sidebar">
           <nav>
-            {mobileNavigationItems.map((navItem, i) => {
+            {navigationItems.map((navItem, i) => {
               const isActive = router.pathname === navItem.href;
               return (
                 <Link key={i} href={navItem.href} passHref>

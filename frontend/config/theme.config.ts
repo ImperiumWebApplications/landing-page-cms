@@ -27,6 +27,7 @@ export const GlobalStyle = createGlobalStyle<{ theme: LeadquelleTheme }>`
   html, body {
     height: 100%;
     width: 100%;
+    scroll-behavior: smooth;
   }
   #__next {
     min-height: 100%;
@@ -36,6 +37,7 @@ export const GlobalStyle = createGlobalStyle<{ theme: LeadquelleTheme }>`
   }
   .content-wrapper {
     width: 100%;
+    margin: 0 auto;
     max-width: ${({ theme }) => theme.maxPageWidth};
   }
 
