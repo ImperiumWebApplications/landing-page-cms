@@ -94,7 +94,7 @@ const StyledVideoSection = styled(Section)`
       height: 100%;
       opacity: 0.5;
       filter: brightness(20%);
-      background-color: ${({ theme }) => theme.colors.primary};
+      background-color: black;
     }
 
     .play-button {
