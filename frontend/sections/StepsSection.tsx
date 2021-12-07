@@ -69,7 +69,7 @@ export const StepsSection: React.FunctionComponent<{
     staticContent.user_step_one,
     staticContent.user_step_two,
     staticContent.user_step_three,
-  ].filter((s) => s !== undefined);
+  ].filter((s) => !!s);
 
   return (
     <StyledStepsSection id={id} bgColor={theme.colors.tertiary}>
