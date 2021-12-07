@@ -11,12 +11,14 @@ import {
 import { Layout } from '../components/Layout';
 import { HeroSection } from '../sections/HeroSection';
 import { StepsSection } from '../sections/StepsSection';
+import { VideoSection } from '../sections/VideoSection';
 
 const Home: NextPage<DomainSpecificContent> = ({
   domainContent,
   staticContent,
 }) => {
   const sections = mapSectionsDataToSectionComponents(domainContent.sections);
+
   return (
     <Layout content={domainContent}>
       {/* Hero Section */}
@@ -29,17 +31,16 @@ const Home: NextPage<DomainSpecificContent> = ({
       )}
       {/* Steps Section */}
       {staticContent && (
-        <StepsSection
-          id="steps"
-          steps={[
-            staticContent.user_step_one,
-            staticContent.user_step_two,
-            staticContent.user_step_three,
-          ]}
-        />
+        <StepsSection id="steps" staticContent={staticContent} />
       )}
       {/* Video Section */}
-      Hello
+      {staticContent && (
+        <VideoSection
+          id="video"
+          staticContent={staticContent}
+          serviceType={domainContent.service_type}
+        />
+      )}
     </Layout>
   );
 };

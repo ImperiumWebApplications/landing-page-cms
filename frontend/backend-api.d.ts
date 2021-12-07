@@ -40,6 +40,25 @@ interface Image {
 type ImageObject = { data: DataObject<Image> };
 type ImageObjectList = { data: DataObject<Image>[] };
 
+interface Video {
+  name: string;
+  alternativeText: string;
+  caption: string;
+  width: number;
+  height: number;
+  hash: string;
+  ext: string;
+  mime: string;
+  size: number;
+  url: string;
+  previewUrl: string | null;
+  provider: string;
+  provider_metadata: any;
+  createdAt: CreatedAt;
+  updatedAt: UpdatedAt;
+}
+type VideoObject = { data: DataObject<Video> };
+
 /** Specifics */
 
 type SEOTitle = string;
@@ -155,9 +174,13 @@ interface LandingPage {
 type LandingPageObjectList = DataObject<LandingPage>[];
 
 interface StaticContent {
-  user_step_one: string;
-  user_step_two: string;
-  user_step_three: string;
+  user_step_one?: string;
+  user_step_two?: string;
+  user_step_three?: string;
+  video_title?: string;
+  video_description?: string;
+  video_file?: VideoObject;
+  video_thumbnail?: ImageObject;
 }
 
 type StaticContentObject = DataObject<StaticContent>;

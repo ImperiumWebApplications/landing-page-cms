@@ -21,6 +21,9 @@ export const getStaticLandingPageContent = async () => {
   const res = await BACKEND_API.request({
     method: 'GET',
     url: '/static-content',
+    params: { populate: '*' },
+    paramsSerializer: (params) =>
+      qs.stringify(params, { encodeValuesOnly: true }),
   });
   return isStaticContentOK(res) ? res.data.data.attributes : undefined;
 };

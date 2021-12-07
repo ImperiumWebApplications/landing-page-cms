@@ -3,8 +3,12 @@ import Link from 'next/link';
 
 import { devices } from '../config/breakpoints.config';
 
-const StyledButton = styled.a<{ color: string | undefined }>`
+const StyledButton = styled.a<{
+  color: string | undefined;
+  fullWidth: boolean | undefined;
+}>`
   display: none;
+  max-width: ${({ fullWidth }) => (!fullWidth ? '15rem' : 'unset')};
   border-radius: ${({ theme }) => theme.borderRadius};
   background-color: ${({ color, theme }) => color ?? theme.colors.primary};
   color: white;
@@ -27,10 +31,15 @@ export const Button: React.FunctionComponent<{
   href: string;
   label: string;
   color?: string;
-}> = ({ href, label, color }) => {
+  fullWidth?: boolean;
+}> = ({ href, label, color, fullWidth }) => {
   return (
     <Link href={href} passHref>
-      <StyledButton color={color} className="call-to-action shining-button">
+      <StyledButton
+        color={color}
+        fullWidth={fullWidth}
+        className="call-to-action shining-button"
+      >
         {label}
       </StyledButton>
     </Link>

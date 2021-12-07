@@ -28,6 +28,7 @@ export const GlobalStyle = createGlobalStyle<{ theme: LeadquelleTheme }>`
   html, body {
     height: 100%;
     width: 100%;
+    white-space: pre-wrap;
     scroll-behavior: smooth;
     @media screen and (prefers-reduced-motion: reduce) {
       scroll-behavior: auto;

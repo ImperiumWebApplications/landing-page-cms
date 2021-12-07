@@ -1,5 +1,6 @@
 import styled, { useTheme } from 'styled-components';
 
+import { StaticContent } from '../backend-api';
 import { Section } from '../components/Section';
 import { devices } from '../config/breakpoints.config';
 
@@ -60,19 +61,27 @@ const StyledStepsSection = styled(Section)`
 
 export const StepsSection: React.FunctionComponent<{
   id: string;
-  steps: string[];
-}> = ({ id, steps }) => {
+  staticContent: StaticContent;
+}> = ({ id, staticContent }) => {
   const theme = useTheme();
+
+  const steps = [
+    staticContent.user_step_one,
+    staticContent.user_step_two,
+    staticContent.user_step_three,
+  ].filter((s) => s !== undefined);
+
   return (
     <StyledStepsSection id={id} bgColor={theme.colors.tertiary}>
-      {steps.map((step, i) => {
-        return (
-          <div key={i} className="step">
-            <div className="step-number">{i + 1}</div>
-            {step}
-          </div>
-        );
-      })}
+      {steps.length &&
+        steps.map((step, i) => {
+          return (
+            <div key={i} className="step">
+              <div className="step-number">{i + 1}</div>
+              {step}
+            </div>
+          );
+        })}
     </StyledStepsSection>
   );
 };
