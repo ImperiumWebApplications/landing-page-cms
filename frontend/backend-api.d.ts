@@ -154,6 +154,14 @@ interface LandingPage {
 
 type LandingPageObjectList = DataObject<LandingPage>[];
 
+interface StaticContent {
+  user_step_one: string;
+  user_step_two: string;
+  user_step_three: string;
+}
+
+type StaticContentObject = DataObject<StaticContent>;
+
 interface Pagination {
   page: number;
   pageSize: number;
@@ -171,6 +179,11 @@ export interface BackendAPI {
   '/landing-pages': {
     GET: {
       response: APIResponse<LandingPageObjectList>;
+    };
+  };
+  '/static-content': {
+    GET: {
+      response: APIResponse<StaticContentObject>;
     };
   };
 }

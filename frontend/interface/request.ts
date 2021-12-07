@@ -1,9 +1,13 @@
 import type { GetServerSidePropsResult, NextPageContext } from 'next';
-import type { LandingPage } from '../backend-api';
-import { getLandingPageContentByDomain } from './backend';
+import type { LandingPage, StaticContent } from '../backend-api';
+import {
+  getLandingPageContentByDomain,
+  getStaticLandingPageContent,
+} from './backend';
 
 export interface DomainSpecificContent {
   domainContent: LandingPage;
+  staticContent: StaticContent;
 }
 
 export const requestDomainSpecificContent = async (ctx: NextPageContext) => {
@@ -13,8 +17,11 @@ export const requestDomainSpecificContent = async (ctx: NextPageContext) => {
 
   try {
     const domainContent = await getLandingPageContentByDomain(host);
-    if (!domainContent) return redirectToNotFoundPage();
-    return { props: { domainContent } };
+    const staticContent = await getStaticLandingPageContent();
+
+    if (!domainContent || !staticContent) return redirectToNotFoundPage();
+
+    return { props: { domainContent, staticContent } };
   } catch (err) {
     return redirectToNotFoundPage();
   }

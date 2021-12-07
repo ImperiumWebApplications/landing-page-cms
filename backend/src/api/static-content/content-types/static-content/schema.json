@@ -1,0 +1,25 @@
+{
+  "kind": "singleType",
+  "collectionName": "static_contents",
+  "info": {
+    "singularName": "static-content",
+    "pluralName": "static-contents",
+    "displayName": "Static Content",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "user_step_one": {
+      "type": "string"
+    },
+    "user_step_two": {
+      "type": "string"
+    },
+    "user_step_three": {
+      "type": "string"
+    }
+  }
+}
