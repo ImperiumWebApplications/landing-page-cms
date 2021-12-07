@@ -2,6 +2,7 @@ import reset from 'styled-reset';
 import { createGlobalStyle } from 'styled-components';
 import { LandingPage } from '../backend-api';
 import { FontConfig } from './font.config';
+import { devices } from './breakpoints.config';
 
 export const extractTheme = (content: LandingPage) => {
   return {
@@ -28,6 +29,9 @@ export const GlobalStyle = createGlobalStyle<{ theme: LeadquelleTheme }>`
     height: 100%;
     width: 100%;
     scroll-behavior: smooth;
+    @media screen and (prefers-reduced-motion: reduce) {
+      scroll-behavior: auto;
+    }
   }
   #__next {
     min-height: 100%;
@@ -39,6 +43,10 @@ export const GlobalStyle = createGlobalStyle<{ theme: LeadquelleTheme }>`
     width: 100%;
     margin: 0 auto;
     max-width: ${({ theme }) => theme.maxPageWidth};
+    padding: 1rem 2rem;
+    @media screen and (${devices.md}) {
+      padding: 2rem;
+    }
   }
 
   /** Typography */
@@ -49,6 +57,26 @@ export const GlobalStyle = createGlobalStyle<{ theme: LeadquelleTheme }>`
   a {
     font-weight: 700;
     text-decoration: none;
+  }
+  p {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5rem;
+    color: ${({ theme }) => theme.colors.text};
+  }
+  h1 {
+    font-weight: 700;
+    font-size: 2.5rem;
+    line-height: 3rem;
+    color: ${({ theme }) => theme.colors.primary};
+    margin: 0;
+  }
+  h2 {
+    font-weight: 700;
+    font-size: 2rem;
+    line-height: 2.5rem;
+    color: ${({ theme }) => theme.colors.primary};
+    margin: 0;
   }
 
   /** Global Elements */

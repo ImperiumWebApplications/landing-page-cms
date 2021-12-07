@@ -18,6 +18,8 @@ const StyledButton = styled.a<{ color: string | undefined }>`
 
   @media screen and (${devices.md}) {
     display: block;
+    position: relative;
+    z-index: 15;
   }
 `;
 

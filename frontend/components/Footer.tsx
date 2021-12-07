@@ -10,13 +10,8 @@ const StyledFooter = styled.footer`
   display: flex;
   height: auto;
   min-height: 4rem;
-  padding: 1rem 2rem;
   background-color: ${({ theme }) => theme.colors.primary};
   color: ${({ theme }) => theme.colors.tertiary};
-
-  @media screen and (${devices.md}) {
-    padding: 2rem;
-  }
 
   .content-wrapper {
     display: grid;

@@ -4,6 +4,8 @@ interface NavigationItem {
   openNewTab?: boolean;
 }
 
+export const questionnaireRoute = 'fragebogen';
+
 export const navigationItems: NavigationItem[] = [
   {
     href: '/',
@@ -20,6 +22,6 @@ export const navigationItems: NavigationItem[] = [
 ];
 
 export const headerButton: NavigationItem = {
-  href: '/fragenbogen',
+  href: `/${questionnaireRoute}`,
   label: 'Lassen Sie sich beraten',
 };
