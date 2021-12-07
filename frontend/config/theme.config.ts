@@ -40,10 +40,9 @@ export const GlobalStyle = createGlobalStyle<{ theme: LeadquelleTheme }>`
     grid-template-rows: auto 1fr auto;
   }
   .content-wrapper {
-    width: 100%;
     margin: 0 auto;
     max-width: ${({ theme }) => theme.maxPageWidth};
-    padding: 1rem 2rem;
+    padding: 1rem;
     @media screen and (${devices.md}) {
       padding: 2rem;
     }
@@ -66,17 +65,25 @@ export const GlobalStyle = createGlobalStyle<{ theme: LeadquelleTheme }>`
   }
   h1 {
     font-weight: 700;
-    font-size: 2.5rem;
-    line-height: 3rem;
-    color: ${({ theme }) => theme.colors.primary};
-    margin: 0;
-  }
-  h2 {
-    font-weight: 700;
     font-size: 2rem;
     line-height: 2.5rem;
     color: ${({ theme }) => theme.colors.primary};
     margin: 0;
+    @media screen and (${devices.md}) {
+      font-size: 2.5rem;
+      line-height: 3rem;
+    }
+  }
+  h2 {
+    font-weight: 700;
+    font-size: 1.75rem;
+    line-height: 2.25rem;
+    color: ${({ theme }) => theme.colors.primary};
+    margin: 0;
+    @media screen and (${devices.md}) {
+      font-size: 2rem;
+      line-height: 2.5rem;
+    }
   }
 
   /** Global Elements */

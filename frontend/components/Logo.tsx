@@ -4,11 +4,15 @@ import Image from 'next/image';
 import styled from 'styled-components';
 
 import { ImageObject } from '../backend-api';
+import { devices } from '../config/breakpoints.config';
 
 const StyledLogo = styled.div`
-  max-width: 300px;
+  max-width: 240px;
   margin-right: 2rem;
   cursor: pointer;
+  @media screen and (${devices.md}) {
+    max-width: 300px;
+  }
 `;
 
 export const Logo: React.FunctionComponent<{

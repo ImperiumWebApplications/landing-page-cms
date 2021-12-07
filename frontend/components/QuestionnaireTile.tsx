@@ -6,18 +6,31 @@ import { ReactSVG } from 'react-svg';
 
 import { ConnectedQuestionnaire } from '../backend-api';
 import { questionnaireRoute } from '../config/navigation.config';
+import { devices } from '../config/breakpoints.config';
 
 const StyledQuestionnaireTile = styled.div`
   display: grid;
   grid-template-columns: 100%;
   grid-template-rows: auto 1fr auto;
   padding: 2rem 1rem;
-  width: 13.5rem;
+  width: 8rem;
   height: 80%;
   background-color: ${({ theme }) => theme.colors.tertiary};
   border-radius: ${({ theme }) => theme.borderRadius};
   box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px;
   transition: all 0.3s ease-in-out;
+
+  @media screen and (${devices.md}) {
+    width: 10rem;
+  }
+
+  @media screen and (${devices.lg}) {
+    width: 12rem;
+  }
+
+  @media screen and (${devices.xl}) {
+    width: 13.5rem;
+  }
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.secondary};
@@ -53,9 +66,22 @@ const StyledQuestionnaireTile = styled.div`
     opacity: 0.25;
   }
 
-  .description h2 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+  .description {
+    h2 {
+      font-size: 1.25rem;
+      line-height: 1.5rem;
+      margin-bottom: 1rem;
+      @media screen and (${devices.md}) {
+        font-size: 1.5rem;
+        line-height: 1.75rem;
+      }
+    }
+    p {
+      display: none;
+      @media screen and (${devices.lg}) {
+        display: block;
+      }
+    }
   }
 
   span.show-more {

@@ -8,15 +8,17 @@ import { Logo } from './Logo';
 
 const StyledFooter = styled.footer`
   display: flex;
+  width: 100%;
   height: auto;
   min-height: 4rem;
   background-color: ${({ theme }) => theme.colors.primary};
   color: ${({ theme }) => theme.colors.tertiary};
 
   .content-wrapper {
+    width: 100%;
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: repeat(1fr, 3);
+    grid-template-rows: repeat(3, 1fr);
     row-gap: 1rem;
 
     @media screen and (${devices.md}) {

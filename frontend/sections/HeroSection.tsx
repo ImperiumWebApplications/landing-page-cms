@@ -4,20 +4,31 @@ import Image from 'next/image';
 import { HeroSection as IHeroSection, Questionnaire } from '../backend-api';
 import { Section } from '../components/Section';
 import { QuestionnaireTile } from '../components/QuestionnaireTile';
+import { devices } from '../config/breakpoints.config';
 
 const StyledHeroSection = styled(Section)`
   .intro {
     display: grid;
     grid-template-rows: 100%;
-    grid-template-columns: 30rem auto;
-    column-gap: 5rem;
+    grid-template-columns: 100%;
+    margin-top: 1rem;
+
+    @media screen and (${devices.md}) {
+      grid-template-columns: 30rem auto;
+      column-gap: 5rem;
+    }
 
     .background {
+      display: none;
       position: relative;
       top: -170px;
       right: 0;
       width: 60vw;
       height: 50rem;
+
+      @media screen and (${devices.md}) {
+        display: block;
+      }
 
       img {
         border-radius: ${({ theme }) => theme.borderRadius};
@@ -43,15 +54,20 @@ const StyledHeroSection = styled(Section)`
   }
 
   .questionnaires {
+    margin-top: 2rem;
     position: relative;
-    margin-top: -25rem;
     display: flex;
     flex-direction: row;
     justify-content: stretch;
     align-items: stretch;
     flex-wrap: wrap;
-    column-gap: 2rem;
+    column-gap: 1rem;
     row-gap: 2rem;
+
+    @media screen and (${devices.md}) {
+      margin-top: -25rem;
+      column-gap: 2rem;
+    }
   }
 `;
 

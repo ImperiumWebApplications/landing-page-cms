@@ -9,6 +9,7 @@ import { Button } from './Button';
 
 const StyledHeader = styled.header`
   display: flex;
+  width: 100%;
   height: auto;
   min-height: 4rem;
 
@@ -16,6 +17,7 @@ const StyledHeader = styled.header`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
   }
 `;
 
