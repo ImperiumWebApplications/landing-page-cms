@@ -68,7 +68,7 @@ interface ConnectedQuestionnaire {
   updatedAt: UpdatedAt;
   publishedAt: PublishedAt;
   description?: string;
-  icon: ImageObject;
+  icon?: ImageObject;
 }
 interface Questionnaire {
   id: number;
@@ -170,13 +170,6 @@ interface APIResponse<T> {
 export interface BackendAPI {
   '/landing-pages': {
     GET: {
-      query: {
-        populate?: string;
-        'filters[domain][$eq]'?: string;
-        'filters[brand_name][$eq]'?: string;
-        'filters[service_type][$eq]'?: string;
-        'populate[sections][populate]'?: '*';
-      };
       response: APIResponse<LandingPageObjectList>;
     };
   };

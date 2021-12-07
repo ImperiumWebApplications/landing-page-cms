@@ -1,5 +1,7 @@
 import axios from 'restyped-axios';
+
 import { APIResponse, BackendAPI, LandingPageObjectList } from '../backend-api';
+import { buildLandingPageQueryForDomain } from './query';
 
 export const BACKEND_API = axios.create<BackendAPI>({
   baseURL: process.env.BACKEND_API,
@@ -9,13 +11,8 @@ export const BACKEND_API = axios.create<BackendAPI>({
 });
 
 export const getLandingPageContentByDomain = async (domain: string) => {
-  const res = await BACKEND_API.request({
-    url: '/landing-pages',
-    params: {
-      populate: '*',
-      'filters[domain][$eq]': domain,
-    },
-  });
+  const queryString = buildLandingPageQueryForDomain(domain);
+  const res = await BACKEND_API.get(`/landing-pages?${queryString}`);
   return isResponseOK(res) ? res.data.data[0].attributes : undefined;
 };
 
