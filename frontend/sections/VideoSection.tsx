@@ -1,6 +1,7 @@
 import styled, { useTheme } from 'styled-components';
-import { Play } from '@styled-icons/foundation';
 import ReactPlayer from 'react-player/lazy';
+import { ArrowRightCircleFill } from '@styled-icons/bootstrap/ArrowRightCircleFill';
+import { Play } from '@styled-icons/foundation';
 
 import { StaticContent } from '../backend-api';
 import { Button } from '../components/Button';
@@ -139,6 +140,12 @@ export const VideoSection: React.FunctionComponent<{
           href={videoButton.href}
           label={videoButton.label}
           color={theme.colors.secondary}
+          icon={
+            <ArrowRightCircleFill
+              size={20}
+              style={{ paddingLeft: '0.25rem' }}
+            />
+          }
         />
       </div>
       <div className="video">

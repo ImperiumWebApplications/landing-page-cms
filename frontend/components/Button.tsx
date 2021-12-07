@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import Link from 'next/link';
 
 import { devices } from '../config/breakpoints.config';
+import React from 'react';
 
 const StyledButton = styled.a<{
   color: string | undefined;
@@ -32,7 +33,8 @@ export const Button: React.FunctionComponent<{
   label: string;
   color?: string;
   fullWidth?: boolean;
-}> = ({ href, label, color, fullWidth }) => {
+  icon?: React.ReactElement;
+}> = ({ href, label, color, fullWidth, icon: Icon }) => {
   return (
     <Link href={href} passHref>
       <StyledButton
@@ -40,7 +42,7 @@ export const Button: React.FunctionComponent<{
         fullWidth={fullWidth}
         className="call-to-action shining-button"
       >
-        {label}
+        {label} {Icon ? Icon : undefined}
       </StyledButton>
     </Link>
   );
