@@ -14,10 +14,14 @@ const StyledHeroSection = styled(Section)`
 
     .background {
       position: relative;
-      top: -160px;
+      top: -170px;
       right: 0;
       width: 60vw;
       height: 50rem;
+
+      img {
+        border-radius: ${({ theme }) => theme.borderRadius};
+      }
     }
 
     .description {
@@ -65,8 +69,8 @@ export const HeroSection: React.FunctionComponent<{
           </h1>
           <p>{content.description}</p>
         </div>
-        {content.background_image?.data && (
-          <div className="background">
+        <div className="background">
+          {content.background_image?.data && (
             <Image
               src={content.background_image.data.attributes.url}
               width={content.background_image.data.attributes.width}
@@ -75,8 +79,8 @@ export const HeroSection: React.FunctionComponent<{
               layout="fill"
               objectFit="cover"
             />
-          </div>
-        )}
+          )}
+        </div>
       </div>
       <div className="questionnaires">
         {questionnaire?.questionnaires &&
