@@ -1,4 +1,5 @@
 import type { NextPage } from 'next';
+import Link from 'next/link';
 import styled from 'styled-components';
 
 const Styled404 = styled.div`
@@ -34,7 +35,7 @@ const NotFound: NextPage = () => {
       <main>
         <h1>404 – Diese Seite existiert leider nicht.</h1>
         <p>
-          <a href="/">Hier</a> kehrst du zur Startseite zurück.
+          <Link href="/">Hier</Link> kehrst du zur Startseite zurück.
         </p>
       </main>
     </Styled404>
