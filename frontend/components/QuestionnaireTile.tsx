@@ -14,7 +14,7 @@ const StyledQuestionnaireTile = styled.div`
   grid-template-rows: auto 1fr auto;
   padding: 2rem 1rem;
   width: 8rem;
-  height: 80%;
+  height: 70%;
   background-color: ${({ theme }) => theme.colors.tertiary};
   border-radius: ${({ theme }) => theme.borderRadius};
   box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px;
@@ -22,6 +22,7 @@ const StyledQuestionnaireTile = styled.div`
 
   @media screen and (${devices.md}) {
     width: 10rem;
+    height: 80%;
   }
 
   @media screen and (${devices.lg}) {

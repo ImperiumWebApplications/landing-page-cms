@@ -7,6 +7,8 @@ import { QuestionnaireTile } from '../components/QuestionnaireTile';
 import { devices } from '../config/breakpoints.config';
 
 const StyledHeroSection = styled(Section)`
+  overflow-x: clip;
+
   .intro {
     display: grid;
     grid-template-rows: 100%;
@@ -55,6 +57,7 @@ const StyledHeroSection = styled(Section)`
 
   .questionnaires {
     margin-top: 2rem;
+    margin-bottom: 2rem;
     position: relative;
     display: flex;
     flex-direction: row;
@@ -62,11 +65,13 @@ const StyledHeroSection = styled(Section)`
     align-items: stretch;
     flex-wrap: wrap;
     column-gap: 1rem;
-    row-gap: 2rem;
+    row-gap: 1rem;
 
     @media screen and (${devices.md}) {
       margin-top: -25rem;
+      margin-bottom: 5rem;
       column-gap: 2rem;
+      row-gap: 2rem;
     }
   }
 `;
@@ -89,8 +94,6 @@ export const HeroSection: React.FunctionComponent<{
           {content.background_image?.data && (
             <Image
               src={content.background_image.data.attributes.url}
-              width={content.background_image.data.attributes.width}
-              height={content.background_image.data.attributes.height}
               alt={content.background_image?.data.attributes.alternativeText}
               layout="fill"
               objectFit="cover"
