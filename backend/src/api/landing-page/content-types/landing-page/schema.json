@@ -42,9 +42,6 @@
     "contact_phone": {
       "type": "string"
     },
-    "service_type": {
-      "type": "string"
-    },
     "favicon": {
       "type": "media",
       "multiple": false,
@@ -83,7 +80,8 @@
         "sections.services",
         "sections.reviews",
         "sections.images",
-        "sections.faq"
+        "sections.faq",
+        "sections.video"
       ]
     }
   }

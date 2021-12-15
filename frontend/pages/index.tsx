@@ -37,8 +37,8 @@ const Home: NextPage<DomainSpecificContent> = ({
       {staticContent && (
         <VideoSection
           id="video"
+          content={sections[SectionMapping.Video]}
           staticContent={staticContent}
-          serviceType={domainContent.service_type}
         />
       )}
     </Layout>

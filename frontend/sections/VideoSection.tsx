@@ -3,7 +3,10 @@ import ReactPlayer from 'react-player/lazy';
 import { ArrowRightCircleFill } from '@styled-icons/bootstrap/ArrowRightCircleFill';
 import { Play } from '@styled-icons/foundation';
 
-import { StaticContent } from '../backend-api';
+import type {
+  StaticContent,
+  VideoSection as IVideoSection,
+} from '../backend-api';
 import { Button } from '../components/Button';
 import { videoButton } from '../config/navigation.config';
 import { Section } from '../components/Section';
@@ -120,22 +123,16 @@ const StyledVideoSection = styled(Section)`
 
 export const VideoSection: React.FunctionComponent<{
   id: string;
-  staticContent: StaticContent;
-  serviceType?: string;
-}> = ({ id, staticContent, serviceType }) => {
+  content?: IVideoSection;
+  staticContent?: StaticContent;
+}> = ({ id, staticContent, content }) => {
   const theme = useTheme();
-
-  const partnerType = serviceType ?? 'Partner';
-  const description = staticContent.video_description?.replace(
-    '${service_type}',
-    partnerType,
-  );
 
   return (
     <StyledVideoSection id={id}>
       <div className="description">
-        <h2>{staticContent.video_title}</h2>
-        <p>{description}</p>
+        <h2>{content?.video_title}</h2>
+        <p>{content?.video_description}</p>
         <Button
           href={videoButton.href}
           label={videoButton.label}
@@ -149,7 +146,7 @@ export const VideoSection: React.FunctionComponent<{
         />
       </div>
       <div className="video">
-        {staticContent.video_file?.data && (
+        {staticContent?.video_file?.data && (
           <ReactPlayer
             url={staticContent.video_file?.data.attributes.url}
             light={staticContent.video_thumbnail?.data?.attributes.url}

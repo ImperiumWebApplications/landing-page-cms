@@ -76,7 +76,8 @@ type UpdatedAt = string;
 type PublishedAt = string;
 type ClientAddress = string;
 type ClientVAT = string;
-type ServiceType = string;
+type VideoTitle = string;
+type VideoDescription = string;
 type LogoFooter = ImageObject;
 type LogoHeader = ImageObject;
 type Favicon = ImageObject;
@@ -141,11 +142,19 @@ interface ImagesSection {
   images?: ImageObjectList;
 }
 
+interface VideoSection {
+  id: number;
+  __component: string;
+  video_title?: VideoTitle;
+  video_description?: VideoDescription;
+}
+
 type Sections =
   | HeroSection
   | StatisticsSection
   | ReviewsSection
-  | ImagesSection;
+  | ImagesSection
+  | VideoSection;
 
 interface LandingPage {
   seo_title?: SEOTitle;
@@ -163,7 +172,6 @@ interface LandingPage {
   publishedAt: PublishedAt;
   client_address?: ClientAddress;
   client_vat?: ClientVAT;
-  service_type?: ServiceType;
   logo_footer?: LogoFooter;
   logo_header?: LogoHeader;
   favicon?: Favicon;
@@ -177,8 +185,6 @@ interface StaticContent {
   user_step_one?: string;
   user_step_two?: string;
   user_step_three?: string;
-  video_title?: string;
-  video_description?: string;
   video_file?: VideoObject;
   video_thumbnail?: ImageObject;
 }

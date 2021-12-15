@@ -11,6 +11,8 @@ export enum SectionMapping {
   Reviews = 'sections.reviews',
   // eslint-disable-next-line
   Images = 'sections.images',
+  // eslint-disable-next-line
+  Video = 'sections.video',
 }
 
 export const mapSectionsDataToSectionComponents = (

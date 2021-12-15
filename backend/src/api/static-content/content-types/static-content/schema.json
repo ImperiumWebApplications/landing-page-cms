@@ -21,12 +21,6 @@
     "user_step_three": {
       "type": "string"
     },
-    "video_title": {
-      "type": "string"
-    },
-    "video_description": {
-      "type": "text"
-    },
     "video_file": {
       "type": "media",
       "multiple": false,
