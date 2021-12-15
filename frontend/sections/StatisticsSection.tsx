@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { StatisticsSection as IStatisticsSection } from '../backend-api';
+import type { StatisticsSection as IStatisticsSection } from '../backend-api';
 import { Section } from '../components/Section';
 import { devices } from '../config/breakpoints.config';
 
