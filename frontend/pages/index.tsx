@@ -12,6 +12,7 @@ import { Layout } from '../components/Layout';
 import { HeroSection } from '../sections/HeroSection';
 import { StepsSection } from '../sections/StepsSection';
 import { VideoSection } from '../sections/VideoSection';
+import { StatisticsSection } from '../sections/StatisticsSection';
 
 const Home: NextPage<DomainSpecificContent> = ({
   domainContent,
@@ -34,11 +35,18 @@ const Home: NextPage<DomainSpecificContent> = ({
         <StepsSection id="steps" staticContent={staticContent} />
       )}
       {/* Video Section */}
-      {staticContent && (
+      {sections[SectionMapping.Video] && staticContent && (
         <VideoSection
           id="video"
           content={sections[SectionMapping.Video]}
           staticContent={staticContent}
+        />
+      )}
+      {/* Statistics Sections */}
+      {sections[SectionMapping.Statistics] && (
+        <StatisticsSection
+          id="statistics"
+          content={sections[SectionMapping.Statistics]}
         />
       )}
     </Layout>
