@@ -78,6 +78,7 @@ type ClientAddress = string;
 type ClientVAT = string;
 type VideoTitle = string;
 type VideoDescription = string;
+type ServiceType = string;
 type LogoFooter = ImageObject;
 type LogoHeader = ImageObject;
 type Favicon = ImageObject;
@@ -122,7 +123,23 @@ interface StatisticsSection {
   number?: StatisticNumber[];
 }
 
+interface ServiceTab {
+  id: number;
+  tab_name?: string;
+  title?: string;
+  subtitle?: string;
+  description?: string;
+  service_examples?: string;
+  service_images?: ImageObject[];
+}
+
 interface CallToActionSection {
+  id: number;
+  __component: string;
+  service_tab?: ServiceTab[];
+}
+
+interface ServicesSection {
   id: number;
   __component: string;
   title?: string;
@@ -161,6 +178,7 @@ type Sections =
   | HeroSection
   | StatisticsSection
   | CallToActionSection
+  | ServicesSection
   | ReviewsSection
   | ImagesSection
   | VideoSection;
@@ -183,6 +201,7 @@ interface LandingPage {
   client_vat?: ClientVAT;
   logo_footer?: LogoFooter;
   logo_header?: LogoHeader;
+  service_type?: ServiceType;
   favicon?: Favicon;
   questionnaire?: Questionnaire;
   sections?: Sections[];

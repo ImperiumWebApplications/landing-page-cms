@@ -83,6 +83,9 @@
         "sections.faq",
         "sections.video"
       ]
+    },
+    "service_type": {
+      "type": "string"
     }
   }
 }
