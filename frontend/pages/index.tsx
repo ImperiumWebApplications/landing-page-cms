@@ -13,6 +13,7 @@ import { HeroSection } from '../sections/HeroSection';
 import { StepsSection } from '../sections/StepsSection';
 import { VideoSection } from '../sections/VideoSection';
 import { StatisticsSection } from '../sections/StatisticsSection';
+import { CallToActionSection } from '../sections/CallToActionSection';
 
 const Home: NextPage<DomainSpecificContent> = ({
   domainContent,
@@ -42,11 +43,19 @@ const Home: NextPage<DomainSpecificContent> = ({
           staticContent={staticContent}
         />
       )}
-      {/* Statistics Sections */}
+      {/* Statistics Section */}
       {sections[SectionMapping.Statistics] && (
         <StatisticsSection
           id="statistics"
           content={sections[SectionMapping.Statistics]}
+        />
+      )}
+      {/* CallToAction Section */}
+      {sections[SectionMapping.CallToAction] && (
+        <CallToActionSection
+          id="call-to-action"
+          phoneNumber={domainContent.contact_phone}
+          content={sections[SectionMapping.CallToAction]}
         />
       )}
     </Layout>

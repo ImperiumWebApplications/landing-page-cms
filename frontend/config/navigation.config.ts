@@ -26,7 +26,7 @@ export const headerButton: NavigationItem = {
   label: 'Lassen Sie sich beraten',
 };
 
-export const videoButton: NavigationItem = {
+export const startQuestionnaire: NavigationItem = {
   href: `/${questionnaireRoute}`,
   label: 'Beratung starten',
 };

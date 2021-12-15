@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 import Link from 'next/link';
 
-import { devices } from '../config/breakpoints.config';
 import React from 'react';
 
 const StyledButton = styled.a<{
   color: string | undefined;
   fullWidth: boolean | undefined;
+  fixedWidth: string | undefined;
 }>`
-  display: none;
+  width: ${({ fixedWidth }) => fixedWidth ?? 'auto'};
   max-width: ${({ fullWidth }) => (!fullWidth ? '15rem' : 'unset')};
   border-radius: ${({ theme }) => theme.borderRadius};
   background-color: ${({ color, theme }) => color ?? theme.colors.primary};
@@ -20,12 +20,6 @@ const StyledButton = styled.a<{
   font-weight: 700;
   letter-spacing: +0.25px;
   text-decoration: none;
-
-  @media screen and (${devices.md}) {
-    display: block;
-    position: relative;
-    z-index: 15;
-  }
 `;
 
 export const Button: React.FunctionComponent<{
@@ -33,13 +27,15 @@ export const Button: React.FunctionComponent<{
   label: string;
   color?: string;
   fullWidth?: boolean;
+  fixedWidth?: string;
   icon?: React.ReactElement;
-}> = ({ href, label, color, fullWidth, icon: Icon }) => {
+}> = ({ href, label, color, fixedWidth, fullWidth, icon: Icon }) => {
   return (
     <Link href={href} passHref>
       <StyledButton
         color={color}
         fullWidth={fullWidth}
+        fixedWidth={fixedWidth}
         className="call-to-action shining-button"
       >
         {label} {Icon ? Icon : undefined}

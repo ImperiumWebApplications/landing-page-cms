@@ -122,6 +122,14 @@ interface StatisticsSection {
   number?: StatisticNumber[];
 }
 
+interface CallToActionSection {
+  id: number;
+  __component: string;
+  title?: string;
+  subtitle?: string;
+  service_description?: string;
+}
+
 interface Rating {
   id: number;
   name?: string;
@@ -152,6 +160,7 @@ interface VideoSection {
 type Sections =
   | HeroSection
   | StatisticsSection
+  | CallToActionSection
   | ReviewsSection
   | ImagesSection
   | VideoSection;

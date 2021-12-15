@@ -8,7 +8,7 @@ import type {
   VideoSection as IVideoSection,
 } from '../backend-api';
 import { Button } from '../components/Button';
-import { videoButton } from '../config/navigation.config';
+import { startQuestionnaire } from '../config/navigation.config';
 import { Section } from '../components/Section';
 import { devices } from '../config/breakpoints.config';
 
@@ -19,8 +19,8 @@ const StyledVideoSection = styled(Section)`
     justify-content: flex-start;
     align-items: center;
     column-gap: 3rem;
-    padding-top: 3rem;
-    padding-bottom: 3rem;
+    padding-top: 6rem;
+    padding-bottom: 6rem;
 
     @media screen and (${devices.md}) {
       flex-direction: row;
@@ -134,8 +134,8 @@ export const VideoSection: React.FunctionComponent<{
         <h2>{content?.video_title}</h2>
         <p>{content?.video_description}</p>
         <Button
-          href={videoButton.href}
-          label={videoButton.label}
+          href={startQuestionnaire.href}
+          label={startQuestionnaire.label}
           color={theme.colors.secondary}
           icon={
             <ArrowRightCircleFill
