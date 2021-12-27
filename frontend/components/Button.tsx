@@ -26,17 +26,18 @@ export const Button: React.FunctionComponent<{
   href: string;
   label: string;
   color?: string;
+  className?: string;
   fullWidth?: boolean;
   fixedWidth?: string;
   icon?: React.ReactElement;
-}> = ({ href, label, color, fixedWidth, fullWidth, icon: Icon }) => {
+}> = ({ href, label, color, className, fixedWidth, fullWidth, icon: Icon }) => {
   return (
     <Link href={href} passHref>
       <StyledButton
         color={color}
         fullWidth={fullWidth}
         fixedWidth={fixedWidth}
-        className="call-to-action shining-button"
+        className={['call-to-action shining-button', className].join(' ')}
       >
         {label} {Icon ? Icon : undefined}
       </StyledButton>

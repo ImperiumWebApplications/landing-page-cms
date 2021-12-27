@@ -26,6 +26,7 @@ const StyledHeader = styled.header`
 
     @media screen and (${devices.md}) {
       display: block;
+      height: auto;
       position: relative;
       z-index: 15;
     }
@@ -39,9 +40,11 @@ export const Header: React.FunctionComponent<{ content: LandingPage }> = ({
     <StyledHeader id="header">
       <div className="content-wrapper">
         <Logo image={content.logo_header} />
-        <div className="button">
-          <Button href={headerButton.href} label={headerButton.label} />
-        </div>
+        <Button
+          href={headerButton.href}
+          label={headerButton.label}
+          className="button"
+        />
         <MobileNavigation />
       </div>
     </StyledHeader>
