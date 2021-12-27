@@ -8,6 +8,8 @@ export enum SectionMapping {
   // eslint-disable-next-line
   CallToAction = 'sections.call-to-action',
   // eslint-disable-next-line
+  Services = 'sections.services',
+  // eslint-disable-next-line
   Reviews = 'sections.reviews',
   // eslint-disable-next-line
   Images = 'sections.images',

@@ -27,7 +27,8 @@
     "slugify": "^1.6.3",
     "styled-components": "^5.3.3",
     "styled-icons": "^10.45.0",
-    "styled-reset": "^4.3.4"
+    "styled-reset": "^4.3.4",
+    "swiper": "^7.4.1"
   },
   "devDependencies": {
     "@types/node": "16.11.11",

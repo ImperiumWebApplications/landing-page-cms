@@ -123,6 +123,14 @@ interface StatisticsSection {
   number?: StatisticNumber[];
 }
 
+interface CallToActionSection {
+  id: number;
+  __component: string;
+  title?: string;
+  subtitle?: string;
+  service_description?: string;
+}
+
 interface ServiceTab {
   id: number;
   tab_name?: string;
@@ -130,21 +138,13 @@ interface ServiceTab {
   subtitle?: string;
   description?: string;
   service_examples?: string;
-  service_images?: ImageObject[];
-}
-
-interface CallToActionSection {
-  id: number;
-  __component: string;
-  service_tab?: ServiceTab[];
+  service_images?: ImageObjectList;
 }
 
 interface ServicesSection {
   id: number;
   __component: string;
-  title?: string;
-  subtitle?: string;
-  service_description?: string;
+  service_tab?: ServiceTab[];
 }
 
 interface Rating {

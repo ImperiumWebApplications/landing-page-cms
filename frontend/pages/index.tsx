@@ -14,6 +14,7 @@ import { StepsSection } from '../sections/StepsSection';
 import { VideoSection } from '../sections/VideoSection';
 import { StatisticsSection } from '../sections/StatisticsSection';
 import { CallToActionSection } from '../sections/CallToActionSection';
+import { ServicesSection } from '../sections/ServicesSection';
 
 const Home: NextPage<DomainSpecificContent> = ({
   domainContent,
@@ -56,6 +57,14 @@ const Home: NextPage<DomainSpecificContent> = ({
           id="call-to-action"
           phoneNumber={domainContent.contact_phone}
           content={sections[SectionMapping.CallToAction]}
+        />
+      )}
+      {/* Services Section */}
+      {sections[SectionMapping.Services] && (
+        <ServicesSection
+          id="services"
+          serviceType={domainContent.service_type}
+          content={sections[SectionMapping.Services]}
         />
       )}
     </Layout>

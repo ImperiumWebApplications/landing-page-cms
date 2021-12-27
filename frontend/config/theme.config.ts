@@ -86,6 +86,17 @@ export const GlobalStyle = createGlobalStyle<{ theme: LeadquelleTheme }>`
       line-height: 2.5rem;
     }
   }
+  h3 {
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    color: ${({ theme }) => theme.colors.primary};
+    margin: 0;
+    @media screen and (${devices.md}) {
+      font-size: 1.75rem;
+      line-height: 2.25rem;
+    }
+  }
 
   /** Global Elements */
   .shining-button {
