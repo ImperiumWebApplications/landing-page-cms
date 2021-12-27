@@ -91,7 +91,7 @@ const StyledServicesSection = styled(Section)`
 
   .services-content {
     display: grid;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: auto;
     grid-template-columns: 100%;
 
     @media screen and (${devices.md}) {
