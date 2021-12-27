@@ -3,15 +3,19 @@ import styled from 'styled-components';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, A11y } from 'swiper';
-import 'swiper/css';
 
 import { ServicesSection as IServicesSection } from '../backend-api';
 import { Section } from '../components/Section';
 import ReactMarkdown from 'react-markdown';
 import { ProgressBar } from '../components/ProgressBar';
 import { devices } from '../config/breakpoints.config';
+import { swiperNavigationCss } from '../config/swiper.config';
 
 const StyledServicesSection = styled(Section)`
+  .content-wrapper {
+    padding-bottom: 4rem;
+  }
+
   .services-header {
     display: flex;
     white-space: nowrap;
@@ -128,51 +132,10 @@ const StyledServicesSection = styled(Section)`
     }
 
     .images {
-      .swiper {
-        img {
-          border-radius: ${({ theme }) => theme.borderRadius};
-        }
+      ${swiperNavigationCss()};
 
-        [role='button'] {
-          position: absolute;
-          top: 32%;
-          backdrop-filter: blur(0.5rem);
-          border-radius: ${({ theme }) => theme.borderRadius};
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          width: 48px;
-          height: 64px;
-          z-index: 15;
-          cursor: pointer;
-
-          @media screen and (${devices.md}) {
-            top: 40%;
-          }
-
-          &:after {
-            content: '';
-            background-color: ${({ theme }) => theme.colors.tertiary};
-            height: 48px;
-            width: 48px;
-          }
-        }
-
-        .swiper-button-prev {
-          left: 0;
-
-          &:after {
-            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='48px' viewBox='0 0 24 24' width='48px' fill='%23000000'%3E%3Cpath d='M0 0h24v24H0V0z' fill='none'/%3E%3Cpath d='M14.91 6.71c-.39-.39-1.02-.39-1.41 0L8.91 11.3c-.39.39-.39 1.02 0 1.41l4.59 4.59c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L11.03 12l3.88-3.88c.38-.39.38-1.03 0-1.41z'/%3E%3C/svg%3E");
-          }
-        }
-
-        .swiper-button-next {
-          right: 0;
-
-          &:after {
-            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='48px' viewBox='0 0 24 24' width='48px' fill='%23000000'%3E%3Cpath d='M0 0h24v24H0V0z' fill='none'/%3E%3Cpath d='M9.31 6.71c-.39.39-.39 1.02 0 1.41L13.19 12l-3.88 3.88c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41L10.72 6.7c-.38-.38-1.02-.38-1.41.01z'/%3E%3C/svg%3E");
-          }
-        }
+      img {
+        border-radius: ${({ theme }) => theme.borderRadius};
       }
 
       .examples {
