@@ -42,7 +42,16 @@ export const getLandingPageContentByDomain = async (domain: string) => {
     params: {
       filters: { domain: { $eq: domain } },
       populate: {
-        sections: { populate: '*' },
+        sections: {
+          populate: {
+            background_image: { populate: '*' },
+            number: { populate: '*' },
+            images: { populate: '*' },
+            faq_item: { populate: '*' },
+            rating: { populate: { avatar: { populate: '*' } } },
+            service_tab: { populate: { service_images: { populate: '*' } } },
+          },
+        },
         logo_footer: { fields: '*' },
         logo_header: { fields: '*' },
         favicon: { fields: '*' },
