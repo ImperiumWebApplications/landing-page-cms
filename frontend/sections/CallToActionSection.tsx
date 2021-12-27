@@ -9,6 +9,8 @@ import { Button } from '../components/Button';
 import { devices } from '../config/breakpoints.config';
 
 const StyledCallToActionSection = styled(Section)`
+  overflow-x: hidden;
+
   .content-wrapper {
     padding-top: 4rem;
     padding-bottom: 4rem;
