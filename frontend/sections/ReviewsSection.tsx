@@ -1,13 +1,18 @@
 import styled from 'styled-components';
+import dynamic from 'next/dynamic';
 import hexRgb from 'hex-rgb';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, A11y } from 'swiper';
 
-import { ReviewsSection as IReviewsSection } from '../backend-api';
+import { Rating, ReviewsSection as IReviewsSection } from '../backend-api';
 import { Section } from '../components/Section';
-import { Review } from '../components/Review';
 import { swiperNavigationCss } from '../config/swiper.config';
 import { devices } from '../config/breakpoints.config';
+
+const ClientSideOnlyReview = dynamic<{ content: Rating }>(
+  () => import('../components/Review').then((mod) => mod.Review),
+  { ssr: false },
+);
 
 const StyledReviewsSection = styled(Section)`
   text-align: center;
@@ -70,7 +75,7 @@ export const ReviewsSection: React.FunctionComponent<{
             {content.rating?.map((rating, i) => {
               return (
                 <SwiperSlide key={i}>
-                  <Review content={rating} />
+                  <ClientSideOnlyReview content={rating} />
                 </SwiperSlide>
               );
             })}
