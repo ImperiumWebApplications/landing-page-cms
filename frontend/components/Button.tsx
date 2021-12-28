@@ -1,7 +1,6 @@
+import React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
-
-import React from 'react';
 
 const StyledButton = styled.a<{
   color: string | undefined;

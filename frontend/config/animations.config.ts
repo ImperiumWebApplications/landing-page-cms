@@ -1,5 +1,14 @@
 import { keyframes } from 'styled-components';
 
+export enum Animations {
+  'fadeIn' = 'fadeIn',
+  'fadeOut' = 'fadeOut',
+  'fadeUp' = 'fadeUp',
+  'fadeDown' = 'fadeDown',
+  'fadeLeft' = 'fadeLeft',
+  'fadeRight' = 'fadeRight',
+}
+
 export const fadeIn = keyframes`
   from { opacity: 0; }
   to { opacity: 1; }
@@ -29,3 +38,22 @@ export const fadeRight = keyframes`
   from { opacity: 0; transform: translateX(-20px); }
   to { opacity: 1; transform: translateX(0); }
 `;
+
+export const getAnimation = (type?: string) => {
+  switch (type) {
+    case Animations.fadeIn:
+      return fadeIn;
+    case Animations.fadeOut:
+      return fadeOut;
+    case Animations.fadeUp:
+      return fadeUp;
+    case Animations.fadeDown:
+      return fadeDown;
+    case Animations.fadeLeft:
+      return fadeLeft;
+    case Animations.fadeRight:
+      return fadeRight;
+    default:
+      return undefined;
+  }
+};
