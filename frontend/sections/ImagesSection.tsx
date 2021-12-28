@@ -1,13 +1,19 @@
 import styled, { useTheme } from 'styled-components';
 import { ArrowRightCircleFill } from '@styled-icons/bootstrap';
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
 
 import { ImagesSection as IImagesSection } from '../backend-api';
 import { Section } from '../components/Section';
-import { Button } from '../components/Button';
+import { ButtonProps } from '../components/Button';
 import { startQuestionnaire } from '../config/navigation.config';
 import { devices } from '../config/breakpoints.config';
 import { useMediaQuery } from '../hooks/useMediaQuery';
+
+const ClientSideOnlyButton = dynamic<ButtonProps>(
+  () => import('../components/Button').then((mod) => mod.Button),
+  { ssr: false },
+);
 
 const StyledImagesSection = styled(Section)`
   .images {
@@ -119,7 +125,7 @@ export const ImagesSection: React.FunctionComponent<{
         <div className="buttons">
           <div className="consultancy">
             <span>Lassen sie sich beraten</span>
-            <Button
+            <ClientSideOnlyButton
               href={startQuestionnaire.href}
               label={startQuestionnaire.label}
               color={theme.colors.secondary}
@@ -135,7 +141,7 @@ export const ImagesSection: React.FunctionComponent<{
           {phoneNumber && (
             <div className="call">
               <span>Oder rufen Sie einfach an</span>
-              <Button
+              <ClientSideOnlyButton
                 href={`tel:${phoneNumber}`}
                 label={phoneNumber}
                 color={theme.colors.primary}

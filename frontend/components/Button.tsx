@@ -24,7 +24,7 @@ const StyledButton = styled.a<{
   text-decoration: none;
 `;
 
-export const Button: React.FunctionComponent<{
+export interface ButtonProps {
   href: string;
   label: string;
   color?: string;
@@ -32,7 +32,17 @@ export const Button: React.FunctionComponent<{
   fullWidth?: boolean;
   fixedWidth?: string;
   icon?: React.ReactElement;
-}> = ({ href, label, color, className, fixedWidth, fullWidth, icon: Icon }) => {
+}
+
+export const Button: React.FunctionComponent<ButtonProps> = ({
+  href,
+  label,
+  color,
+  className,
+  fixedWidth,
+  fullWidth,
+  icon: Icon,
+}) => {
   return (
     <Link href={href} passHref>
       <StyledButton
