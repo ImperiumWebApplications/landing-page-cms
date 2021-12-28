@@ -75,7 +75,7 @@ const StyledCallToActionSection = styled(Section)`
     min-height: 8rem;
     max-width: 70rem;
     margin-top: 3rem;
-    padding: 3rem 2rem;
+    padding: 3rem 1.5rem;
     background-color: ${({ theme }) => theme.colors.tertiary};
     border-radius: ${({ theme }) => theme.borderRadius};
 
@@ -84,6 +84,7 @@ const StyledCallToActionSection = styled(Section)`
       align-items: flex-start;
       justify-content: space-between;
       column-gap: 2rem;
+      padding: 3rem 2rem;
     }
 
     @media screen and (${devices.lg}) {
@@ -189,7 +190,7 @@ export const CallToActionSection: React.FunctionComponent<{
             href={startQuestionnaire.href}
             label={startQuestionnaire.label}
             color={theme.colors.secondary}
-            fixedWidth="18rem"
+            fixedWidth="15rem"
             icon={
               <ArrowRightCircleFill
                 size={20}
@@ -204,7 +205,7 @@ export const CallToActionSection: React.FunctionComponent<{
                 href={`tel:${phoneNumber}`}
                 label={phoneNumber}
                 color={theme.colors.primary}
-                fixedWidth="18rem"
+                fixedWidth="15rem"
               />
             </>
           )}
