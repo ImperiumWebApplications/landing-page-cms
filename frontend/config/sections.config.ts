@@ -14,6 +14,8 @@ export enum SectionMapping {
   // eslint-disable-next-line
   Images = 'sections.images',
   // eslint-disable-next-line
+  Questions = 'sections.faq',
+  // eslint-disable-next-line
   Video = 'sections.video',
 }
 

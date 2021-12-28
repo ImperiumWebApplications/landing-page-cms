@@ -174,6 +174,18 @@ interface VideoSection {
   video_description?: VideoDescription;
 }
 
+interface FaqItem {
+  id: number;
+  question?: string;
+  answer?: string;
+}
+
+interface QuestionsSection {
+  id: number;
+  __component: string;
+  faq_item?: FaqItem[];
+}
+
 type Sections =
   | HeroSection
   | StatisticsSection
@@ -181,6 +193,7 @@ type Sections =
   | ServicesSection
   | ReviewsSection
   | ImagesSection
+  | QuestionsSection
   | VideoSection;
 
 interface LandingPage {

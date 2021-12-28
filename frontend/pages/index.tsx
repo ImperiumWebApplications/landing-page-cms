@@ -17,6 +17,7 @@ import { CallToActionSection } from '../sections/CallToActionSection';
 import { ServicesSection } from '../sections/ServicesSection';
 import { ReviewsSection } from '../sections/ReviewsSection';
 import { ImagesSection } from '../sections/ImagesSection';
+import { QuestionsSection } from '../sections/QuestionsSection';
 
 const Home: NextPage<DomainSpecificContent> = ({
   domainContent,
@@ -82,6 +83,13 @@ const Home: NextPage<DomainSpecificContent> = ({
           id="images"
           phoneNumber={domainContent.contact_phone}
           content={sections[SectionMapping.Images]}
+        />
+      )}
+      {/* Questions Section */}
+      {sections[SectionMapping.Questions] && (
+        <QuestionsSection
+          id="questions"
+          content={sections[SectionMapping.Questions]}
         />
       )}
     </Layout>
