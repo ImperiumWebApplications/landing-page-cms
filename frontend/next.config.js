@@ -2,6 +2,6 @@
 module.exports = {
   reactStrictMode: true,
   images: {
-    domains: ['landing-pages-images.s3.eu-central-1.amazonaws.com'],
+    domains: [`${process.env.IMAGE_PROVIDER_URL}`],
   },
 };
