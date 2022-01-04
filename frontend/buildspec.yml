@@ -7,8 +7,9 @@ phases:
 
   pre_build:
     commands:
-      - cd backend
+      - cd frontend
       - npm install
+      - npm install next -g
 
   build:
     commands:
