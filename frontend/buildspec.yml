@@ -1,5 +1,10 @@
 version: 0.2
 
+cache:
+  paths:
+    - 'node_modules/**/*' # Cache `node_modules` for faster `yarn` or `npm i`
+    - '.next/cache/**/*' # Cache Next.js for faster application rebuilds
+
 phases:
   install:
     runtime-versions:
@@ -9,15 +14,10 @@ phases:
     commands:
       - cd frontend
       - npm install
-      - npm install next -g
 
   build:
     commands:
-      - NODE_ENV=production npm run build
-
-  post_build:
-    commands:
-      - rm -rf node_modules
+      - npm run build
 
 artifacts:
   base-directory: frontend
