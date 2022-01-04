@@ -9,6 +9,7 @@ module.exports = ({ env }) => [
           'img-src': [
             "'self'",
             'data:',
+            'blob:',
             'cdn.jsdelivr.net',
             'strapi.io',
             `${env('AWS_BUCKET')}.s3.${env('AWS_REGION')}.amazonaws.com`,
