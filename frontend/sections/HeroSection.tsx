@@ -5,6 +5,7 @@ import { HeroSection as IHeroSection, Questionnaire } from '../backend-api';
 import { Section } from '../components/Section';
 import { QuestionnaireTile } from '../components/QuestionnaireTile';
 import { devices } from '../config/breakpoints.config';
+import { Animation } from '../components/Animation';
 
 const StyledHeroSection = styled(Section)`
   overflow-x: clip;
@@ -84,34 +85,43 @@ export const HeroSection: React.FunctionComponent<{
   return (
     <StyledHeroSection id={id}>
       <div className="intro">
-        <div className="description">
-          <h1>
-            {content.title} <span>{content.subtitle}</span>
-          </h1>
-          <p>{content.description}</p>
-        </div>
-        <div className="background">
-          {content.background_image?.data && (
-            <Image
-              src={content.background_image.data.attributes.url}
-              alt={content.background_image?.data.attributes.alternativeText}
-              layout="fill"
-              objectFit="cover"
-            />
-          )}
-        </div>
-      </div>
-      <div className="questionnaires">
-        {questionnaire?.questionnaires &&
-          questionnaire.questionnaires.data.map((connectedQuestionnaire, i) => {
-            return (
-              <QuestionnaireTile
-                key={i}
-                questionnaire={connectedQuestionnaire.attributes}
+        <Animation type="fadeRight" delay={400}>
+          <div className="description">
+            <h1>
+              {content.title} <span>{content.subtitle}</span>
+            </h1>
+            <p>{content.description}</p>
+          </div>
+        </Animation>
+        <Animation type="fadeLeft" delay={400}>
+          <div className="background">
+            {content.background_image?.data && (
+              <Image
+                src={content.background_image.data.attributes.url}
+                alt={content.background_image?.data.attributes.alternativeText}
+                layout="fill"
+                objectFit="cover"
+                priority
               />
-            );
-          })}
+            )}
+          </div>
+        </Animation>
       </div>
+      <Animation type="fadeUp" delay={600}>
+        <div className="questionnaires">
+          {questionnaire?.questionnaires &&
+            questionnaire.questionnaires.data.map(
+              (connectedQuestionnaire, i) => {
+                return (
+                  <QuestionnaireTile
+                    key={i}
+                    questionnaire={connectedQuestionnaire.attributes}
+                  />
+                );
+              },
+            )}
+        </div>
+      </Animation>
     </StyledHeroSection>
   );
 };

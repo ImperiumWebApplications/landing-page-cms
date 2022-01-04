@@ -6,6 +6,7 @@ import { headerButton } from '../config/navigation.config';
 import { MobileNavigation } from './MobileNavigation';
 import { Logo } from './Logo';
 import { Button } from './Button';
+import { Animation } from './Animation';
 import { devices } from '../config/breakpoints.config';
 
 const StyledHeader = styled.header`
@@ -37,16 +38,18 @@ export const Header: React.FunctionComponent<{ content: LandingPage }> = ({
   content,
 }) => {
   return (
-    <StyledHeader id="header">
-      <div className="content-wrapper">
-        <Logo image={content.logo_header} />
-        <Button
-          href={headerButton.href}
-          label={headerButton.label}
-          className="button"
-        />
-        <MobileNavigation />
-      </div>
-    </StyledHeader>
+    <Animation type="fadeDown" duration={200}>
+      <StyledHeader id="header">
+        <div className="content-wrapper">
+          <Logo image={content.logo_header} />
+          <Button
+            href={headerButton.href}
+            label={headerButton.label}
+            className="button"
+          />
+          <MobileNavigation />
+        </div>
+      </StyledHeader>
+    </Animation>
   );
 };
