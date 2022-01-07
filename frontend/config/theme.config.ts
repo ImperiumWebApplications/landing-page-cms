@@ -64,6 +64,9 @@ export const GlobalStyle = createGlobalStyle<{ theme: LeadquelleTheme }>`
     line-height: 1.5rem;
     color: ${({ theme }) => theme.colors.text};
   }
+  strong {
+    font-weight: 700;
+  }
   h1 {
     font-weight: 700;
     font-size: 2rem;

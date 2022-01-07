@@ -32,6 +32,12 @@
       "multiple": false,
       "required": false,
       "allowedTypes": ["images"]
+    },
+    "imprint": {
+      "type": "richtext"
+    },
+    "privacy": {
+      "type": "richtext"
     }
   }
 }

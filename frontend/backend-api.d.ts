@@ -228,6 +228,8 @@ interface StaticContent {
   user_step_three?: string;
   video_file?: VideoObject;
   video_thumbnail?: ImageObject;
+  imprint?: string;
+  privacy?: string;
 }
 
 type StaticContentObject = DataObject<StaticContent>;

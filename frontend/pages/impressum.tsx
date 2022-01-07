@@ -10,16 +10,16 @@ import {
   requestDomainSpecificContent,
 } from '../interface/request';
 
-const Privacy: NextPage<DomainSpecificContent> = ({
+const Imprint: NextPage<DomainSpecificContent> = ({
   domainContent,
-  staticContent: { privacy: privacyTemplate },
+  staticContent: { imprint: imprintTemplate },
 }) => {
   return (
     <Layout content={domainContent}>
-      <Section id="privacy">
+      <Section id="imprint">
         <Article>
           <ReactMarkdown>
-            {populateMarkdownTemplate(privacyTemplate, domainContent) ?? ''}
+            {populateMarkdownTemplate(imprintTemplate, domainContent) ?? ''}
           </ReactMarkdown>
         </Article>
       </Section>
@@ -29,4 +29,4 @@ const Privacy: NextPage<DomainSpecificContent> = ({
 
 export const getServerSideProps = requestDomainSpecificContent;
 
-export default Privacy;
+export default Imprint;
