@@ -10,6 +10,7 @@ import type {
 import { Button } from '../components/Button';
 import { startQuestionnaire } from '../config/navigation.config';
 import { Section } from '../components/Section';
+import { Animation } from '../components/Animation';
 import { devices } from '../config/breakpoints.config';
 
 const StyledVideoSection = styled(Section)`
@@ -44,7 +45,7 @@ const StyledVideoSection = styled(Section)`
     }
 
     /** Video Player */
-    > div {
+    > div > div {
       position: relative;
       z-index: 12;
       width: 90vw !important;
@@ -61,7 +62,7 @@ const StyledVideoSection = styled(Section)`
       }
     }
 
-    &::before {
+    & > div::before {
       position: absolute;
       z-index: 11;
       content: '';
@@ -73,7 +74,7 @@ const StyledVideoSection = styled(Section)`
       background-color: ${({ theme }) => theme.colors.secondary};
     }
 
-    &::after {
+    & > div::after {
       position: absolute;
       z-index: 11;
       content: '';
@@ -131,34 +132,38 @@ export const VideoSection: React.FunctionComponent<{
   return (
     <StyledVideoSection id={id}>
       <div className="description">
-        <h2>{content?.video_title}</h2>
-        <p>{content?.video_description}</p>
-        <Button
-          href={startQuestionnaire.href}
-          label={startQuestionnaire.label}
-          color={theme.colors.secondary}
-          icon={
-            <ArrowRightCircleFill
-              size={20}
-              style={{ paddingLeft: '0.25rem' }}
-            />
-          }
-        />
-      </div>
-      <div className="video">
-        {staticContent?.video_file?.data && (
-          <ReactPlayer
-            url={staticContent.video_file?.data.attributes.url}
-            light={staticContent.video_thumbnail?.data?.attributes.url}
-            playing={true}
-            controls={true}
-            playIcon={
-              <button className="play-button" type="button">
-                <Play color="white" />
-              </button>
+        <Animation type="fadeRight">
+          <h2>{content?.video_title}</h2>
+          <p>{content?.video_description}</p>
+          <Button
+            href={startQuestionnaire.href}
+            label={startQuestionnaire.label}
+            color={theme.colors.secondary}
+            icon={
+              <ArrowRightCircleFill
+                size={20}
+                style={{ paddingLeft: '0.25rem' }}
+              />
             }
           />
-        )}
+        </Animation>
+      </div>
+      <div className="video">
+        <Animation type="fadeLeft">
+          {staticContent?.video_file?.data && (
+            <ReactPlayer
+              url={staticContent.video_file?.data.attributes.url}
+              light={staticContent.video_thumbnail?.data?.attributes.url}
+              playing={true}
+              controls={true}
+              playIcon={
+                <button className="play-button" type="button">
+                  <Play color="white" />
+                </button>
+              }
+            />
+          )}
+        </Animation>
       </div>
     </StyledVideoSection>
   );

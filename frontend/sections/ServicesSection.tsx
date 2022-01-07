@@ -1,12 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
+import ReactMarkdown from 'react-markdown';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, A11y } from 'swiper';
 
 import { ServicesSection as IServicesSection } from '../backend-api';
 import { Section } from '../components/Section';
-import ReactMarkdown from 'react-markdown';
+import { Animation } from '../components/Animation';
 import { ProgressBar } from '../components/ProgressBar';
 import { devices } from '../config/breakpoints.config';
 import { swiperNavigationCss } from '../config/swiper.config';
@@ -175,70 +176,75 @@ export const ServicesSection: React.FunctionComponent<{
   const activeTabContent = content.service_tab[activeTab];
 
   return (
-    <StyledServicesSection id={id}>
-      <div className="services-header">
-        {content.service_tab.map(({ tab_name }, i) => {
-          return (
-            tab_name && (
-              <button
-                type="button"
-                key={i}
-                onClick={() => setActiveTab(i)}
-                className={i === activeTab ? 'active' : ''}
-              >
-                {tab_name}
-              </button>
-            )
-          );
-        })}
-      </div>
-      <div className="services-content">
-        <div className="description">
-          <h2 className="title">{activeTabContent.title}</h2>
-          <p className="subtitle">{activeTabContent.subtitle}</p>
-          <p>{activeTabContent.description}</p>
-          <div className="ratings">
-            <ProgressBar label="Kundenzufriedenheit" value={98} />
-            {serviceType && (
-              <ProgressBar label={`Kompetenz der ${serviceType}`} value={100} />
+    <Animation type="fadeIn" duration={300}>
+      <StyledServicesSection id={id}>
+        <div className="services-header">
+          {content.service_tab.map(({ tab_name }, i) => {
+            return (
+              tab_name && (
+                <button
+                  type="button"
+                  key={i}
+                  onClick={() => setActiveTab(i)}
+                  className={i === activeTab ? 'active' : ''}
+                >
+                  {tab_name}
+                </button>
+              )
+            );
+          })}
+        </div>
+        <div className="services-content">
+          <div className="description">
+            <h2 className="title">{activeTabContent.title}</h2>
+            <p className="subtitle">{activeTabContent.subtitle}</p>
+            <p>{activeTabContent.description}</p>
+            <div className="ratings">
+              <ProgressBar label="Kundenzufriedenheit" value={98} />
+              {serviceType && (
+                <ProgressBar
+                  label={`Kompetenz der ${serviceType}`}
+                  value={100}
+                />
+              )}
+              <ProgressBar label="Erfolgreiche Vermittlungen" value={92} />
+            </div>
+          </div>
+          <div className="images">
+            {activeTabContent.service_images?.data?.length && (
+              <Swiper modules={[Navigation, A11y]} navigation loop>
+                {activeTabContent.service_images.data.map((image, i) => {
+                  return (
+                    <SwiperSlide key={i}>
+                      <Image
+                        src={image.attributes.url}
+                        alt={image.attributes.alternativeText}
+                        width={740}
+                        height={380}
+                      />
+                    </SwiperSlide>
+                  );
+                })}
+              </Swiper>
             )}
-            <ProgressBar label="Erfolgreiche Vermittlungen" value={92} />
+            <div className="examples">
+              {activeTabContent.service_examples && (
+                <>
+                  <h3>Beispielarbeiten:</h3>
+                  {
+                    <ReactMarkdown>
+                      {activeTabContent.service_examples.replace(
+                        /\n/g,
+                        ' **•** ',
+                      )}
+                    </ReactMarkdown>
+                  }
+                </>
+              )}
+            </div>
           </div>
         </div>
-        <div className="images">
-          {activeTabContent.service_images?.data?.length && (
-            <Swiper modules={[Navigation, A11y]} navigation loop>
-              {activeTabContent.service_images.data.map((image, i) => {
-                return (
-                  <SwiperSlide key={i}>
-                    <Image
-                      src={image.attributes.url}
-                      alt={image.attributes.alternativeText}
-                      width={740}
-                      height={380}
-                    />
-                  </SwiperSlide>
-                );
-              })}
-            </Swiper>
-          )}
-          <div className="examples">
-            {activeTabContent.service_examples && (
-              <>
-                <h3>Beispielarbeiten:</h3>
-                {
-                  <ReactMarkdown>
-                    {activeTabContent.service_examples.replace(
-                      /\n/g,
-                      ' **•** ',
-                    )}
-                  </ReactMarkdown>
-                }
-              </>
-            )}
-          </div>
-        </div>
-      </div>
-    </StyledServicesSection>
+      </StyledServicesSection>
+    </Animation>
   );
 };

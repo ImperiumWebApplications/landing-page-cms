@@ -2,6 +2,7 @@ import styled, { useTheme } from 'styled-components';
 
 import { StaticContent } from '../backend-api';
 import { Section } from '../components/Section';
+import { Animation } from '../components/Animation';
 import { devices } from '../config/breakpoints.config';
 
 const StyledStepsSection = styled(Section)`
@@ -72,16 +73,18 @@ export const StepsSection: React.FunctionComponent<{
   ].filter((s) => !!s);
 
   return (
-    <StyledStepsSection id={id} bgColor={theme.colors.tertiary}>
-      {steps.length &&
-        steps.map((step, i) => {
-          return (
-            <div key={i} className="step">
-              <div className="step-number">{i + 1}</div>
-              {step}
-            </div>
-          );
-        })}
-    </StyledStepsSection>
+    <Animation type="fadeUp">
+      <StyledStepsSection id={id} bgColor={theme.colors.tertiary}>
+        {steps.length &&
+          steps.map((step, i) => {
+            return (
+              <div key={i} className="step">
+                <div className="step-number">{i + 1}</div>
+                {step}
+              </div>
+            );
+          })}
+      </StyledStepsSection>
+    </Animation>
   );
 };

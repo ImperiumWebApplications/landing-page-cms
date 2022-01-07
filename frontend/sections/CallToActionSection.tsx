@@ -5,6 +5,7 @@ import ReactMarkdown from 'react-markdown';
 import type { CallToActionSection as ICallToActionSection } from '../backend-api';
 import { startQuestionnaire } from '../config/navigation.config';
 import { Section } from '../components/Section';
+import { Animation } from '../components/Animation';
 import { Button } from '../components/Button';
 import { devices } from '../config/breakpoints.config';
 
@@ -172,45 +173,49 @@ export const CallToActionSection: React.FunctionComponent<{
 
   return (
     <StyledCallToActionSection id={id}>
-      <div className="service-description">
-        <div className="intro">
-          <h2>{content.title}</h2>
-          <p>{content.subtitle}</p>
+      <Animation type="fadeIn">
+        <div className="service-description">
+          <div className="intro">
+            <h2>{content.title}</h2>
+            <p>{content.subtitle}</p>
+          </div>
+          <div className="description">
+            {content.service_description && (
+              <ReactMarkdown>{content.service_description}</ReactMarkdown>
+            )}
+          </div>
         </div>
-        <div className="description">
-          {content.service_description && (
-            <ReactMarkdown>{content.service_description}</ReactMarkdown>
-          )}
+      </Animation>
+      <Animation type="fadeRight" delay={200}>
+        <div className="call-to-action-box">
+          <div className="headline">Überzeugt ?</div>
+          <div className="buttons">
+            <Button
+              href={startQuestionnaire.href}
+              label={startQuestionnaire.label}
+              color={theme.colors.secondary}
+              fixedWidth="15rem"
+              icon={
+                <ArrowRightCircleFill
+                  size={20}
+                  style={{ paddingLeft: '0.25rem' }}
+                />
+              }
+            />
+            {phoneNumber && (
+              <>
+                <span>Oder</span>
+                <Button
+                  href={`tel:${phoneNumber}`}
+                  label={phoneNumber}
+                  color={theme.colors.primary}
+                  fixedWidth="15rem"
+                />
+              </>
+            )}
+          </div>
         </div>
-      </div>
-      <div className="call-to-action-box">
-        <div className="headline">Überzeugt ?</div>
-        <div className="buttons">
-          <Button
-            href={startQuestionnaire.href}
-            label={startQuestionnaire.label}
-            color={theme.colors.secondary}
-            fixedWidth="15rem"
-            icon={
-              <ArrowRightCircleFill
-                size={20}
-                style={{ paddingLeft: '0.25rem' }}
-              />
-            }
-          />
-          {phoneNumber && (
-            <>
-              <span>Oder</span>
-              <Button
-                href={`tel:${phoneNumber}`}
-                label={phoneNumber}
-                color={theme.colors.primary}
-                fixedWidth="15rem"
-              />
-            </>
-          )}
-        </div>
-      </div>
+      </Animation>
     </StyledCallToActionSection>
   );
 };

@@ -39,7 +39,7 @@ export const fadeRight = keyframes`
   to { opacity: 1; transform: translateX(0); }
 `;
 
-export const getAnimation = (type?: string) => {
+export const getAnimation = (type?: keyof typeof Animations) => {
   switch (type) {
     case Animations.fadeIn:
       return fadeIn;

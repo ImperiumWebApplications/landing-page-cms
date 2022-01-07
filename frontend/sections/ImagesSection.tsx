@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic';
 
 import { ImagesSection as IImagesSection } from '../backend-api';
 import { Section } from '../components/Section';
+import { Animation } from '../components/Animation';
 import { ButtonProps } from '../components/Button';
 import { startQuestionnaire } from '../config/navigation.config';
 import { devices } from '../config/breakpoints.config';
@@ -120,37 +121,39 @@ export const ImagesSection: React.FunctionComponent<{
             );
           })}
       </div>
-      <div className="callout">
-        <div className="headline">Konnten wir Sie überzeugen?</div>
-        <div className="buttons">
-          <div className="consultancy">
-            <span>Lassen sie sich beraten</span>
-            <ClientSideOnlyButton
-              href={startQuestionnaire.href}
-              label={startQuestionnaire.label}
-              color={theme.colors.secondary}
-              fixedWidth={isDesktopBreakpoint ? '18rem' : '15rem'}
-              icon={
-                <ArrowRightCircleFill
-                  size={20}
-                  style={{ paddingLeft: '0.25rem' }}
-                />
-              }
-            />
-          </div>
-          {phoneNumber && (
-            <div className="call">
-              <span>Oder rufen Sie einfach an</span>
+      <Animation type="fadeUp" duration={300} delay={300}>
+        <div className="callout">
+          <div className="headline">Konnten wir Sie überzeugen?</div>
+          <div className="buttons">
+            <div className="consultancy">
+              <span>Lassen sie sich beraten</span>
               <ClientSideOnlyButton
-                href={`tel:${phoneNumber}`}
-                label={phoneNumber}
-                color={theme.colors.primary}
+                href={startQuestionnaire.href}
+                label={startQuestionnaire.label}
+                color={theme.colors.secondary}
                 fixedWidth={isDesktopBreakpoint ? '18rem' : '15rem'}
+                icon={
+                  <ArrowRightCircleFill
+                    size={20}
+                    style={{ paddingLeft: '0.25rem' }}
+                  />
+                }
               />
             </div>
-          )}
+            {phoneNumber && (
+              <div className="call">
+                <span>Oder rufen Sie einfach an</span>
+                <ClientSideOnlyButton
+                  href={`tel:${phoneNumber}`}
+                  label={phoneNumber}
+                  color={theme.colors.primary}
+                  fixedWidth={isDesktopBreakpoint ? '18rem' : '15rem'}
+                />
+              </div>
+            )}
+          </div>
         </div>
-      </div>
+      </Animation>
     </StyledImagesSection>
   );
 };
