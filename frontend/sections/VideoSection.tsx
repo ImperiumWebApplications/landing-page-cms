@@ -157,7 +157,11 @@ export const VideoSection: React.FunctionComponent<{
               playing={true}
               controls={true}
               playIcon={
-                <button className="play-button" type="button">
+                <button
+                  className="play-button"
+                  type="button"
+                  aria-label="Play Video"
+                >
                   <Play color="white" />
                 </button>
               }

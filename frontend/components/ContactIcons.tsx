@@ -88,14 +88,14 @@ export const ContactIcons: React.FunctionComponent<{
     <StyledContactIcons>
       {phone && (
         <Link href={`tel:${phone}`} passHref>
-          <a className="icon">
+          <a className="icon" aria-label="Telephone">
             <Telephone />
           </a>
         </Link>
       )}
       {email && (
         <Link href={`mailto:${email}`} passHref>
-          <a className="icon">
+          <a className="icon" aria-label="Email">
             <Mail />
           </a>
         </Link>
