@@ -13,7 +13,7 @@ const StyledQuestionnaireTile = styled.div`
   grid-template-columns: 100%;
   grid-template-rows: auto 1fr auto;
   padding: 2rem 1rem;
-  width: 8rem;
+  width: 7.5rem;
   height: 70%;
   background-color: ${({ theme }) => theme.colors.tertiary};
   border-radius: ${({ theme }) => theme.borderRadius};
