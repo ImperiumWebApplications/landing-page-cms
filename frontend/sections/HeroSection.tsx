@@ -101,7 +101,6 @@ export const HeroSection: React.FunctionComponent<{
                 alt={content.background_image?.data.attributes.alternativeText}
                 layout="fill"
                 objectFit="cover"
-                priority
               />
             )}
           </div>
