@@ -107,7 +107,7 @@ export const ImagesSection: React.FunctionComponent<{
   return (
     <StyledImagesSection id={id}>
       <div className="images">
-        {content.images?.data.length &&
+        {content.images?.data?.length &&
           content.images.data.map((image, i) => {
             return (
               <Image
