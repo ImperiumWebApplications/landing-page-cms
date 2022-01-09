@@ -1,14 +1,20 @@
 import type { NextPage } from 'next';
 import ReactMarkdown from 'react-markdown';
+import { NextSeo } from 'next-seo';
+import dynamic from 'next/dynamic';
 
 import { Layout } from '../components/Layout';
 import { Section } from '../components/Section';
-import { Article } from '../components/Article';
 import { populateMarkdownTemplate } from '../utils/populateMarkdownTemplate';
 import {
   DomainSpecificContent,
   requestDomainSpecificContent,
 } from '../interface/request';
+
+const ClientSideOnlyArticle = dynamic<{}>(
+  () => import('../components/Article').then((mod) => mod.Article),
+  { ssr: false },
+);
 
 const Imprint: NextPage<DomainSpecificContent> = ({
   domainContent,
@@ -16,12 +22,13 @@ const Imprint: NextPage<DomainSpecificContent> = ({
 }) => {
   return (
     <Layout content={domainContent}>
+      <NextSeo noindex={true} />
       <Section id="imprint">
-        <Article>
+        <ClientSideOnlyArticle>
           <ReactMarkdown>
             {populateMarkdownTemplate(imprintTemplate, domainContent) ?? ''}
           </ReactMarkdown>
-        </Article>
+        </ClientSideOnlyArticle>
       </Section>
     </Layout>
   );

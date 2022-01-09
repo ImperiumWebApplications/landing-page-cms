@@ -3,11 +3,10 @@ import Document, {
   DocumentInitialProps,
   Main,
   NextScript,
-  Head,
   Html,
+  Head,
 } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
-import { FontConfig } from '../config/font.config';
 
 export default class MyDocument extends Document {
   static async getInitialProps(
@@ -40,25 +39,8 @@ export default class MyDocument extends Document {
 
   render() {
     return (
-      <Html lang="de">
-        <Head>
-          {FontConfig.useGoogleCDN ? (
-            <>
-              <link rel="preconnect" href="https://fonts.googleapis.com" />
-              <link
-                rel="preconnect"
-                href="https://fonts.gstatic.com"
-                crossOrigin="anonymous"
-              />
-              <link
-                href={`https://fonts.googleapis.com/css2?family=${
-                  FontConfig.fontName
-                }:wght@${FontConfig.fontWeight.join(';')}&display=swap`}
-                rel="stylesheet"
-              />
-            </>
-          ) : undefined}
-        </Head>
+      <Html>
+        <Head />
         <body>
           <Main />
           <NextScript />

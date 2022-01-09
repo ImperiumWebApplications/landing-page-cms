@@ -5,6 +5,7 @@ import { extractSeoProps } from '../config/seo.config';
 import { extractTheme, GlobalStyle } from '../config/theme.config';
 import { Footer } from './Footer';
 import { Header } from './Header';
+import { HeadMeta } from './HeadMeta';
 
 export const Layout: React.FunctionComponent<{ content: LandingPage }> = ({
   children,
@@ -14,6 +15,7 @@ export const Layout: React.FunctionComponent<{ content: LandingPage }> = ({
     <ThemeProvider theme={extractTheme(content)}>
       <GlobalStyle />
       <NextSeo {...extractSeoProps(content)} />
+      <HeadMeta theme={extractTheme(content)} brand={content.brand_name} />
       <Header content={content} />
       <main>{children}</main>
       <Footer content={content} />

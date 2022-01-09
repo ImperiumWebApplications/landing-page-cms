@@ -1,14 +1,20 @@
 import styled, { useTheme } from 'styled-components';
 import { ArrowRightCircleFill } from 'styled-icons/bootstrap';
 import ReactMarkdown from 'react-markdown';
+import dynamic from 'next/dynamic';
 
 import type { CallToActionSection as ICallToActionSection } from '../backend-api';
+import type { ButtonProps } from '../components/Button';
 import { startQuestionnaire } from '../config/navigation.config';
 import { Section } from '../components/Section';
 import { Animation } from '../components/Animation';
-import { Button } from '../components/Button';
 import { devices } from '../config/breakpoints.config';
 import { useMediaQuery } from '../hooks/useMediaQuery';
+
+const ClientSideOnlyButton = dynamic<ButtonProps>(
+  () => import('../components/Button').then((mod) => mod.Button),
+  { ssr: false },
+);
 
 const StyledCallToActionSection = styled(Section)`
   overflow-x: hidden;
@@ -192,7 +198,7 @@ export const CallToActionSection: React.FunctionComponent<{
         <div className="call-to-action-box">
           <div className="headline">Überzeugt ?</div>
           <div className="buttons">
-            <Button
+            <ClientSideOnlyButton
               href={startQuestionnaire.href}
               label={startQuestionnaire.label}
               color={theme.colors.secondary}
@@ -207,7 +213,7 @@ export const CallToActionSection: React.FunctionComponent<{
             {phoneNumber && (
               <>
                 <span>Oder</span>
-                <Button
+                <ClientSideOnlyButton
                   href={`tel:${phoneNumber}`}
                   label={phoneNumber}
                   color={theme.colors.primary}

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const StyledArticle = styled.footer`
+const StyledArticle = styled.div`
   padding-top: 3rem;
   padding-bottom: 5rem;
 

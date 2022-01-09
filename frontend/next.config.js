@@ -4,4 +4,8 @@ module.exports = {
   images: {
     domains: [`${process.env.IMAGE_PROVIDER_URL}`],
   },
+  i18n: {
+    locales: ['de'],
+    defaultLocale: 'de',
+  },
 };
