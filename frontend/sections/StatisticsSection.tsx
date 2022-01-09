@@ -15,6 +15,10 @@ const StyledStatisticsSection = styled(Section)<{
   background-repeat: no-repeat;
   background-size: cover;
 
+  @supports (-webkit-overflow-scrolling: touch) {
+    background-attachment: scroll;
+  }
+
   .backdrop {
     position: absolute;
     width: 100%;
@@ -28,7 +32,7 @@ const StyledStatisticsSection = styled(Section)<{
     column-gap: 2rem;
     row-gap: 2rem;
 
-    @media screen and (${devices.xs}) {
+    @media screen and (${devices.sm}) {
       grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
     }
   }
@@ -40,7 +44,7 @@ const StyledStatisticsSection = styled(Section)<{
     font-weight: 700;
     font-size: 4rem;
 
-    @media screen and (${devices.xs}) {
+    @media screen and (${devices.sm}) {
       font-size: 3rem;
     }
 

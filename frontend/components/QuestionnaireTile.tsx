@@ -13,12 +13,16 @@ const StyledQuestionnaireTile = styled.div`
   grid-template-columns: 100%;
   grid-template-rows: auto 1fr auto;
   padding: 2rem 1rem;
-  width: 7.5rem;
+  width: 6.5rem;
   height: 70%;
   background-color: ${({ theme }) => theme.colors.tertiary};
   border-radius: ${({ theme }) => theme.borderRadius};
   box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px;
   transition: all 0.3s ease-in-out;
+
+  @media screen and (${devices.sm}) {
+    width: 7.5rem;
+  }
 
   @media screen and (${devices.md}) {
     width: 10rem;
@@ -69,9 +73,15 @@ const StyledQuestionnaireTile = styled.div`
 
   .description {
     h2 {
-      font-size: 1.25rem;
-      line-height: 1.5rem;
+      font-size: 1rem;
+      line-height: 1.25rem;
       margin-bottom: 1rem;
+
+      @media screen and (${devices.sm}) {
+        font-size: 1.25rem;
+        line-height: 1.5rem;
+      }
+
       @media screen and (${devices.md}) {
         font-size: 1.5rem;
         line-height: 1.75rem;

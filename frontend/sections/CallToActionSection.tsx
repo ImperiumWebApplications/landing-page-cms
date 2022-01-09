@@ -8,6 +8,7 @@ import { Section } from '../components/Section';
 import { Animation } from '../components/Animation';
 import { Button } from '../components/Button';
 import { devices } from '../config/breakpoints.config';
+import { useMediaQuery } from '../hooks/useMediaQuery';
 
 const StyledCallToActionSection = styled(Section)`
   overflow-x: hidden;
@@ -170,6 +171,7 @@ export const CallToActionSection: React.FunctionComponent<{
   content: ICallToActionSection;
 }> = ({ id, phoneNumber, content }) => {
   const theme = useTheme();
+  const isLargeMobile = useMediaQuery(`(${devices.xs})`);
 
   return (
     <StyledCallToActionSection id={id}>
@@ -194,7 +196,7 @@ export const CallToActionSection: React.FunctionComponent<{
               href={startQuestionnaire.href}
               label={startQuestionnaire.label}
               color={theme.colors.secondary}
-              fixedWidth="15rem"
+              fixedWidth={isLargeMobile ? '15rem' : '12rem'}
               icon={
                 <ArrowRightCircleFill
                   size={20}
@@ -209,7 +211,7 @@ export const CallToActionSection: React.FunctionComponent<{
                   href={`tel:${phoneNumber}`}
                   label={phoneNumber}
                   color={theme.colors.primary}
-                  fixedWidth="15rem"
+                  fixedWidth={isLargeMobile ? '15rem' : '12rem'}
                 />
               </>
             )}

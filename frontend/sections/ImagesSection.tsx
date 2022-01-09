@@ -20,7 +20,7 @@ const StyledImagesSection = styled(Section)`
   .images {
     display: none;
 
-    @media screen and (${devices.xs}) {
+    @media screen and (${devices.sm}) {
       position: relative;
       display: grid;
       grid-template-rows: auto;
@@ -51,7 +51,7 @@ const StyledImagesSection = styled(Section)`
     max-width: 80rem;
     margin-top: 2rem;
 
-    @media screen and (${devices.xs}) {
+    @media screen and (${devices.sm}) {
       margin-top: 2rem;
     }
 

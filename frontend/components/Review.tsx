@@ -14,7 +14,7 @@ const StyledReview = styled.div`
   padding: 5rem 3rem 2rem 3rem;
   margin: 3.5rem 0.5rem 2rem 0.5rem;
 
-  @media screen and (${devices.xs}) {
+  @media screen and (${devices.sm}) {
     padding: 5rem 2rem 2rem 2rem;
     margin: 3.5rem 2rem 2rem 2rem;
   }
@@ -69,7 +69,7 @@ const StyledReview = styled.div`
 export const Review: React.FunctionComponent<{
   content: Rating;
 }> = ({ content }) => {
-  const isTabletBreakpoint = useMediaQuery(`(${devices.xs})`);
+  const isTabletBreakpoint = useMediaQuery(`(${devices.sm})`);
   const [isExpanded, setIsExpanded] = React.useState(false);
 
   return (
