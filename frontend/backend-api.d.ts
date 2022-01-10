@@ -82,6 +82,7 @@ type ServiceType = string;
 type LogoFooter = ImageObject;
 type LogoHeader = ImageObject;
 type Favicon = ImageObject;
+type Advantage = { id: number; first_line: string; second_line: string };
 
 interface ConnectedQuestionnaire {
   name: string;
@@ -95,7 +96,7 @@ interface Questionnaire {
   id: number;
   entry_question: string;
   questionnaires: ConnectedQuestionnaireObjectList;
-  advantage: { id: number; first_line: string; second_line: string }[];
+  advantage: Advantage[];
 }
 type ConnectedQuestionnaireObjectList = {
   data: DataObject<ConnectedQuestionnaire>[];

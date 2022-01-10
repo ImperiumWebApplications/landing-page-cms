@@ -14,6 +14,7 @@ export const extractTheme = (content: LandingPage) => {
       secondary: content.color_secondary ?? 'red',
       tertiary: content.color_tertiary ?? 'grey',
       text: content.color_text ?? 'black',
+      success: '#4BB543',
     },
   };
 };
