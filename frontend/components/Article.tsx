@@ -1,3 +1,4 @@
+import type { ReactElement } from 'react';
 import styled from 'styled-components';
 
 const StyledArticle = styled.div`
@@ -18,6 +19,8 @@ const StyledArticle = styled.div`
   }
 `;
 
-export const Article: React.FunctionComponent<{}> = ({ children }) => {
+export const Article: React.FunctionComponent<{
+  children: ReactElement;
+}> = ({ children }) => {
   return <StyledArticle>{children}</StyledArticle>;
 };

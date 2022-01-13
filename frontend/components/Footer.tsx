@@ -52,9 +52,11 @@ export const Footer: React.FunctionComponent<{ content: LandingPage }> = ({
       <div className="content-wrapper">
         <div className="logo-wrapper">
           <Logo image={content.logo_footer} />
-          <span className="copyright">
-            &copy; {`${new Date().getFullYear()} ${content.brand_name}`}
-          </span>
+          {content.brand_name && (
+            <span className="copyright">
+              &copy; {`${new Date().getFullYear()} ${content.brand_name}`}
+            </span>
+          )}
         </div>
         <FooterNavigation />
         <ContactIcons
