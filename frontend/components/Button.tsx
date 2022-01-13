@@ -21,16 +21,18 @@ const StyledButton = styled.a<{
   font-weight: 700;
   letter-spacing: +0.25px;
   text-decoration: none;
+  cursor: pointer;
 `;
 
 export interface ButtonProps {
-  href: string;
   label: string;
+  href?: string;
   color?: string;
   className?: string;
   fullWidth?: boolean;
   fixedWidth?: string;
   icon?: React.ReactElement;
+  onClickHandler?: React.MouseEventHandler;
 }
 
 export const Button: React.FunctionComponent<ButtonProps> = ({
@@ -40,11 +42,26 @@ export const Button: React.FunctionComponent<ButtonProps> = ({
   className,
   fixedWidth,
   fullWidth,
+  onClickHandler,
   icon: Icon,
 }) => {
-  return (
-    <Link href={href} passHref>
+  if (href)
+    return (
+      <Link href={href} passHref>
+        <StyledButton
+          color={color}
+          fullWidth={fullWidth}
+          fixedWidth={fixedWidth}
+          className={['call-to-action shining-button', className].join(' ')}
+        >
+          {label} {Icon ? Icon : undefined}
+        </StyledButton>
+      </Link>
+    );
+  if (onClickHandler)
+    return (
       <StyledButton
+        onClick={onClickHandler}
         color={color}
         fullWidth={fullWidth}
         fixedWidth={fixedWidth}
@@ -52,6 +69,7 @@ export const Button: React.FunctionComponent<ButtonProps> = ({
       >
         {label} {Icon ? Icon : undefined}
       </StyledButton>
-    </Link>
-  );
+    );
+
+  return <></>;
 };

@@ -33,7 +33,7 @@ interface Image {
   url: string;
   previewUrl: string | null;
   provider: string;
-  provider_metadata: any;
+  provider_metadata: unknown;
   createdAt: CreatedAt;
   updatedAt: UpdatedAt;
 }
@@ -53,7 +53,7 @@ interface Video {
   url: string;
   previewUrl: string | null;
   provider: string;
-  provider_metadata: any;
+  provider_metadata: unknown;
   createdAt: CreatedAt;
   updatedAt: UpdatedAt;
 }
@@ -92,7 +92,7 @@ interface ConnectedQuestionnaire {
   description?: string;
   icon?: ImageObject;
 }
-interface Questionnaire {
+interface EntryQuestionnaire {
   id: number;
   entry_question: string;
   questionnaires: ConnectedQuestionnaireObjectList;
@@ -101,6 +101,18 @@ interface Questionnaire {
 type ConnectedQuestionnaireObjectList = {
   data: DataObject<ConnectedQuestionnaire>[];
 };
+
+interface QuestionnaireAnswer {
+  id: number;
+  answer_value?: string;
+  answer_icon?: ImageObject;
+}
+
+interface QuestionnaireQuestion {
+  id: number;
+  question?: string;
+  answers?: QuestionnaireAnswer[];
+}
 
 interface HeroSection {
   id: number;
@@ -217,7 +229,7 @@ interface LandingPage {
   logo_header?: LogoHeader;
   service_type?: ServiceType;
   favicon?: Favicon;
-  questionnaire?: Questionnaire;
+  questionnaire?: EntryQuestionnaire;
   sections?: Sections[];
 }
 
@@ -234,6 +246,18 @@ interface StaticContent {
 }
 
 type StaticContentObject = DataObject<StaticContent>;
+
+interface Questionnaire {
+  name?: string;
+  description?: string;
+  icon?: ImageObject;
+  createdAt: CreatedAt;
+  updatedAt: UpdatedAt;
+  publishedAt: PublishedAt;
+  questions?: QuestionnaireQuestion[];
+}
+
+type QuestionnaireObjectList = DataObject<Questionnaire>[];
 
 interface Pagination {
   page: number;
@@ -257,6 +281,11 @@ export interface BackendAPI {
   '/static-content': {
     GET: {
       response: APIResponse<StaticContentObject>;
+    };
+  };
+  '/questionnaires': {
+    GET: {
+      response: APIResponse<QuestionnaireObjectList>;
     };
   };
 }

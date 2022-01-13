@@ -2,14 +2,15 @@
   "collectionName": "components_questionnaire_questions",
   "info": {
     "displayName": "Question",
-    "icon": "question"
+    "icon": "question",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "question": {
       "type": "string"
     },
-    "answer": {
+    "answers": {
       "displayName": "Answer",
       "type": "component",
       "repeatable": true,

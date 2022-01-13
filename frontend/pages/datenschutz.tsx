@@ -1,22 +1,21 @@
+import type { ReactElement } from 'react';
 import type { NextPage } from 'next';
 import { NextSeo } from 'next-seo';
-import ReactMarkdown from 'react-markdown';
 import dynamic from 'next/dynamic';
+import ReactMarkdown from 'react-markdown';
 
+import type { ContentPageContent } from '../interface/request';
+import { collectContentPageContent } from '../interface/request';
 import { Layout } from '../components/Layout';
 import { Section } from '../components/Section';
 import { populateMarkdownTemplate } from '../utils/populateMarkdownTemplate';
-import {
-  DomainSpecificContent,
-  requestDomainSpecificContent,
-} from '../interface/request';
 
-const ClientSideOnlyArticle = dynamic<{}>(
+const ClientSideOnlyArticle = dynamic<{ children: ReactElement }>(
   () => import('../components/Article').then((mod) => mod.Article),
   { ssr: false },
 );
 
-const Privacy: NextPage<DomainSpecificContent> = ({
+const PrivacyPage: NextPage<ContentPageContent> = ({
   domainContent,
   staticContent: { privacy: privacyTemplate },
 }) => {
@@ -34,6 +33,6 @@ const Privacy: NextPage<DomainSpecificContent> = ({
   );
 };
 
-export const getServerSideProps = requestDomainSpecificContent;
+export const getServerSideProps = collectContentPageContent;
 
-export default Privacy;
+export default PrivacyPage;

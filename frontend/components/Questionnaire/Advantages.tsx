@@ -2,9 +2,9 @@ import styled, { useTheme } from 'styled-components';
 import hexRgb from 'hex-rgb';
 import { CheckmarkCircle } from '@styled-icons/ionicons-outline';
 
-import { Advantage } from '../backend-api';
-import { Section } from './Section';
-import { devices } from '../config/breakpoints.config';
+import type { Advantage } from '../../backend-api';
+import { Section } from '../Section';
+import { devices } from '../../config/breakpoints.config';
 
 const StyledAdvantages = styled(Section)`
   background-color: ${({ theme }) =>

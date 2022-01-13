@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useRouter } from 'next/router';
 
 import { LandingPage } from '../backend-api';
 import { headerButton } from '../config/navigation.config';
@@ -8,8 +9,11 @@ import { Logo } from './Logo';
 import { Button } from './Button';
 import { Animation } from './Animation';
 import { devices } from '../config/breakpoints.config';
+import { isFunnelRoute } from '../utils/isFunnelRoute';
 
-const StyledHeader = styled.header`
+const StyledHeader = styled.header<{ centerLogo: boolean }>`
+  position: relative;
+  z-index: 2;
   display: flex;
   width: 100%;
   height: auto;
@@ -18,7 +22,8 @@ const StyledHeader = styled.header`
   .content-wrapper {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: ${({ centerLogo }) =>
+      centerLogo ? 'center' : 'space-between'};
     width: 100%;
   }
 
@@ -37,17 +42,23 @@ const StyledHeader = styled.header`
 export const Header: React.FunctionComponent<{ content: LandingPage }> = ({
   content,
 }) => {
+  const _isFunnelRoute = isFunnelRoute(useRouter());
+
   return (
     <Animation type="fadeDown" duration={200}>
-      <StyledHeader id="header">
+      <StyledHeader id="header" centerLogo={_isFunnelRoute}>
         <div className="content-wrapper">
           <Logo image={content.logo_header} />
-          <Button
-            href={headerButton.href}
-            label={headerButton.label}
-            className="button"
-          />
-          <MobileNavigation />
+          {!_isFunnelRoute && (
+            <>
+              <Button
+                href={headerButton.href}
+                label={headerButton.label}
+                className="button"
+              />
+              <MobileNavigation />
+            </>
+          )}
         </div>
       </StyledHeader>
     </Animation>

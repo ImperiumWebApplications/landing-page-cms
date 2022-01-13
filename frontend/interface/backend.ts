@@ -1,17 +1,19 @@
 import qs from 'qs';
 import axios from 'restyped-axios';
 
+import type { BackendAPI } from '../backend-api';
 import {
-  APIResponse,
-  BackendAPI,
-  LandingPageObjectList,
-  StaticContentObject,
-} from '../backend-api';
+  isContentObjectListOK,
+  isContentObjectOK,
+} from '../utils/isResponseOK';
 
 export const BACKEND_API = axios.create<BackendAPI>({
   baseURL: process.env.BACKEND_API,
   headers: {
-    Authorization: `Bearer ${process.env.BACKEND_API_TOKEN}`,
+    Authorization:
+      process.env.BACKEND_API_TOKEN !== undefined
+        ? `Bearer ${process.env.BACKEND_API_TOKEN}`
+        : '',
   },
 });
 
@@ -25,13 +27,8 @@ export const getStaticLandingPageContent = async () => {
     paramsSerializer: (params) =>
       qs.stringify(params, { encodeValuesOnly: true }),
   });
-  return isStaticContentOK(res) ? res.data.data.attributes : undefined;
+  return isContentObjectOK(res) ? res.data.data.attributes : undefined;
 };
-
-const isStaticContentOK = (res: {
-  status: number;
-  data: APIResponse<StaticContentObject>;
-}) => res.status >= 200 && res.status < 300 && res.data.data;
 
 /** Dynamic Content Fetching */
 
@@ -67,10 +64,29 @@ export const getLandingPageContentByDomain = async (domain: string) => {
     paramsSerializer: (params) =>
       qs.stringify(params, { encodeValuesOnly: true }),
   });
-  return isDynamicContentOK(res) ? res.data.data[0].attributes : undefined;
+  return isContentObjectListOK(res) ? res.data.data[0].attributes : undefined;
 };
 
-const isDynamicContentOK = (res: {
-  status: number;
-  data: APIResponse<LandingPageObjectList>;
-}) => res.status >= 200 && res.status < 300 && res.data.data.length;
+/** Questionnaire Fetching */
+
+export const getQuestionnaireContentById = async (id: string) => {
+  const res = await BACKEND_API.request({
+    method: 'GET',
+    url: '/questionnaires',
+    params: {
+      filters: { id: { $eq: id } },
+      populate: {
+        icon: { populate: '*' },
+        questions: {
+          fields: '*',
+          populate: {
+            answers: { populate: '*' },
+          },
+        },
+      },
+    },
+    paramsSerializer: (params) =>
+      qs.stringify(params, { encodeValuesOnly: true }),
+  });
+  return isContentObjectListOK(res) ? res.data.data[0].attributes : undefined;
+};

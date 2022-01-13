@@ -29,7 +29,7 @@ const Styled404 = styled.div`
   }
 `;
 
-const NotFound: NextPage = () => {
+const NotFoundPage: NextPage = () => {
   return (
     <Styled404>
       <main>
@@ -42,4 +42,4 @@ const NotFound: NextPage = () => {
   );
 };
 
-export default NotFound;
+export default NotFoundPage;

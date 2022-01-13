@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 import Image from 'next/image';
 import Link from 'next/link';
-import slugify from 'slugify';
 import { ReactSVG } from 'react-svg';
 
-import { ConnectedQuestionnaire } from '../backend-api';
+import type { ConnectedQuestionnaire } from '../backend-api';
 import { questionnaireRoute } from '../config/navigation.config';
 import { devices } from '../config/breakpoints.config';
+import { slugifyRoute } from '../utils/slugifyRoute';
 
 const StyledQuestionnaireTile = styled.div`
   display: grid;
@@ -108,36 +108,37 @@ const StyledQuestionnaireTile = styled.div`
 `;
 
 export const QuestionnaireTile: React.FunctionComponent<{
-  questionnaire: ConnectedQuestionnaire;
+  questionnaire: { id: number; attributes: ConnectedQuestionnaire };
 }> = ({ questionnaire }) => {
-  const slug = slugify(questionnaire.name).toLowerCase();
-  const route = `/${questionnaireRoute}/${slug}`;
+  const { id, attributes } = questionnaire;
+  const slug = slugifyRoute(attributes.name);
+  const route = `/${questionnaireRoute}/${slug}-${id}`;
 
-  const isSvgIcon = questionnaire.icon?.data?.attributes.ext.includes('svg');
+  const isSvgIcon = attributes.icon?.data?.attributes.ext.includes('svg');
 
   return (
     <Link href={route} passHref>
       <a>
         <StyledQuestionnaireTile>
           <div className="icon">
-            {questionnaire.icon?.data && !isSvgIcon && (
+            {attributes.icon?.data && !isSvgIcon && (
               <Image
-                src={questionnaire.icon.data.attributes.url}
-                alt={questionnaire.icon.data.attributes.alternativeText}
-                width={questionnaire.icon.data.attributes.width}
-                height={questionnaire.icon.data.attributes.height}
+                src={attributes.icon.data.attributes.url}
+                alt={attributes.icon.data.attributes.alternativeText}
+                width={attributes.icon.data.attributes.width}
+                height={attributes.icon.data.attributes.height}
               />
             )}
-            {questionnaire.icon && isSvgIcon && (
+            {attributes.icon && isSvgIcon && (
               <ReactSVG
                 loading={() => <div className="loading" />}
-                src={questionnaire.icon.data.attributes.url}
+                src={attributes.icon.data.attributes.url}
               />
             )}
           </div>
           <div className="description">
-            <h2>{questionnaire.name}</h2>
-            <p>{questionnaire.description}</p>
+            <h2>{attributes.name}</h2>
+            <p>{attributes.description}</p>
           </div>
           <span className="show-more">Siehe Mehr</span>
         </StyledQuestionnaireTile>

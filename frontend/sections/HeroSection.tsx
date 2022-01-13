@@ -1,7 +1,10 @@
 import styled from 'styled-components';
 import Image from 'next/image';
 
-import { HeroSection as IHeroSection, Questionnaire } from '../backend-api';
+import type {
+  EntryQuestionnaire,
+  HeroSection as IHeroSection,
+} from '../backend-api';
 import { Section } from '../components/Section';
 import { QuestionnaireTile } from '../components/QuestionnaireTile';
 import { devices } from '../config/breakpoints.config';
@@ -80,7 +83,7 @@ const StyledHeroSection = styled(Section)`
 export const HeroSection: React.FunctionComponent<{
   id: string;
   content: IHeroSection;
-  questionnaire: Questionnaire | undefined;
+  questionnaire: EntryQuestionnaire | undefined;
 }> = ({ id, content, questionnaire }) => {
   return (
     <StyledHeroSection id={id}>
@@ -114,7 +117,7 @@ export const HeroSection: React.FunctionComponent<{
                 return (
                   <QuestionnaireTile
                     key={i}
-                    questionnaire={connectedQuestionnaire.attributes}
+                    questionnaire={connectedQuestionnaire}
                   />
                 );
               },

@@ -1,9 +1,7 @@
 import type { NextPage } from 'next';
 
-import {
-  DomainSpecificContent,
-  requestDomainSpecificContent,
-} from '../interface/request';
+import type { ContentPageContent } from '../interface/request';
+import { collectContentPageContent } from '../interface/request';
 import {
   mapSectionsDataToSectionComponents,
   SectionMapping,
@@ -19,7 +17,7 @@ import { ReviewsSection } from '../sections/ReviewsSection';
 import { ImagesSection } from '../sections/ImagesSection';
 import { QuestionsSection } from '../sections/QuestionsSection';
 
-const Home: NextPage<DomainSpecificContent> = ({
+const IndexPage: NextPage<ContentPageContent> = ({
   domainContent,
   staticContent,
 }) => {
@@ -96,6 +94,6 @@ const Home: NextPage<DomainSpecificContent> = ({
   );
 };
 
-export const getServerSideProps = requestDomainSpecificContent;
+export const getServerSideProps = collectContentPageContent;
 
-export default Home;
+export default IndexPage;

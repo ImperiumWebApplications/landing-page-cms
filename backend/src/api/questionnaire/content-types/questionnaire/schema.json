@@ -21,7 +21,7 @@
       "required": false,
       "allowedTypes": ["images"]
     },
-    "question": {
+    "questions": {
       "displayName": "Question",
       "type": "component",
       "repeatable": true,
