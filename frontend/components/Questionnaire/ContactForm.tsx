@@ -9,6 +9,7 @@ import { RadioInput } from './RadioInput';
 import { CheckboxInput } from './CheckboxInput';
 import { QualityBadges } from './QualityBadges';
 import { devices } from '../../config/breakpoints.config';
+import { goToStep } from '../../utils/goToStep';
 
 const StyledContactForm = styled.div`
   max-width: 55rem;
@@ -69,10 +70,7 @@ export const ContactForm: React.FunctionComponent = () => {
     event.preventDefault();
     console.log(event, state);
 
-    dispatch({
-      type: 'SET_CURRENT_INDEX',
-      payload: { newIndex: state.currentIndex + 1 },
-    });
+    goToStep(dispatch, state.currentIndex + 1);
   };
 
   return (

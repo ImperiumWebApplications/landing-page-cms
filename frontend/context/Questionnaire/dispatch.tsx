@@ -46,7 +46,6 @@ export const QuestionnaireContextReducer = (
       updatedQuestionnaire[action.payload.currentIndex] = action.payload.item;
       return {
         ...state,
-        currentIndex: action.payload.currentIndex + 1,
         questionnaire: updatedQuestionnaire,
       };
     }

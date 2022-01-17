@@ -15,6 +15,7 @@ import { Confirmation } from './Confirmation';
 import { StepNavigation } from './StepNavigation';
 import { devices } from '../../config/breakpoints.config';
 import { isFunnelRoute } from '../../utils/isFunnelRoute';
+import { setBrowserHistory } from '../../utils/setBrowserHistory';
 
 const GlobalQuestionnaireStyle = createGlobalStyle`
   body {
@@ -82,6 +83,10 @@ const StyledQuestionnaire = styled(Section)`
   }
 `;
 
+export type QuestionnaireHistoryState = {
+  step?: number;
+};
+
 type QuestionnaireProps = {
   advantages: Advantage[];
   questions: QuestionnaireQuestion[];
@@ -95,8 +100,27 @@ export const Questionnaire: React.FunctionComponent<QuestionnaireProps> = ({
   phone,
   customSelectHandler,
 }) => {
-  const _isFunnelRoute = isFunnelRoute(useRouter());
-  const { state } = useQuestionnaireContext();
+  const router = useRouter();
+  const _isFunnelRoute = isFunnelRoute(router);
+  const { state, dispatch } = useQuestionnaireContext();
+
+  React.useEffect(() => {
+    // Initialize state on mount
+    setBrowserHistory<QuestionnaireHistoryState>({ step: 0 });
+
+    const goBackHandler = (event: PopStateEvent) => {
+      const state = event.state as QuestionnaireHistoryState;
+      if (state.step !== undefined) {
+        dispatch({
+          type: 'SET_CURRENT_INDEX',
+          payload: { newIndex: state.step },
+        });
+      }
+    };
+
+    window.addEventListener('popstate', goBackHandler);
+    return () => window.removeEventListener('popstate', goBackHandler);
+  }, [dispatch]);
 
   const zeroBasedQuestionsCount = questions.length - 1;
   const isQuestionStep = state.currentIndex <= zeroBasedQuestionsCount;

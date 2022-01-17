@@ -9,6 +9,7 @@ import {
 import type { QuestionnaireContextState } from '../../context/Questionnaire/state';
 import { useQuestionnaireContext } from '../../context/Questionnaire';
 import { devices } from '../../config/breakpoints.config';
+import { goToStep } from '../../utils/goToStep';
 
 const StyledStepNavigation = styled.div`
   display: flex;
@@ -94,10 +95,7 @@ export const StepNavigation: React.FunctionComponent<{ stepCount: number }> = ({
     const status = getStatusForGivenKey(key, state);
     if (status !== 'done') return;
 
-    dispatch({
-      type: 'SET_CURRENT_INDEX',
-      payload: { newIndex: key },
-    });
+    goToStep(dispatch, key);
   };
 
   const onPrevHandler = (event: MouseEvent) => {
@@ -105,10 +103,7 @@ export const StepNavigation: React.FunctionComponent<{ stepCount: number }> = ({
 
     if (!isPrevButtonActive(state)) return;
 
-    dispatch({
-      type: 'SET_CURRENT_INDEX',
-      payload: { newIndex: state.currentIndex - 1 },
-    });
+    goToStep(dispatch, state.currentIndex - 1);
   };
 
   const onNextHandler = (event: MouseEvent) => {
@@ -116,10 +111,7 @@ export const StepNavigation: React.FunctionComponent<{ stepCount: number }> = ({
 
     if (!isNextButtonActive(state)) return;
 
-    dispatch({
-      type: 'SET_CURRENT_INDEX',
-      payload: { newIndex: state.currentIndex + 1 },
-    });
+    goToStep(dispatch, state.currentIndex + 1);
   };
 
   return (

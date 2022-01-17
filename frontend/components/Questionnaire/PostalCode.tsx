@@ -8,6 +8,7 @@ import { StyledStepTitle } from './StepTitle';
 import { TextInput } from './TextInput';
 import { Button } from '../Button';
 import { devices } from '../../config/breakpoints.config';
+import { goToStep } from '../../utils/goToStep';
 
 const StyledPostalCode = styled.div`
   max-width: 45rem;
@@ -45,15 +46,6 @@ export const PostalCode: React.FunctionComponent = () => {
   const { label, value: initialValue } = state.contact.postalCode;
   const theme = useTheme();
 
-  const onClickHandler: React.MouseEventHandler = () => {
-    dispatch({
-      type: 'SET_CURRENT_INDEX',
-      payload: {
-        newIndex: state.currentIndex + 1,
-      },
-    });
-  };
-
   return (
     <StyledPostalCode>
       <StyledStepTitle className="title">
@@ -78,7 +70,7 @@ export const PostalCode: React.FunctionComponent = () => {
         </div>
         <Button
           label="Weiter"
-          onClickHandler={onClickHandler}
+          onClickHandler={() => goToStep(dispatch, state.currentIndex + 1)}
           icon={
             <NavigateNext
               width={24}

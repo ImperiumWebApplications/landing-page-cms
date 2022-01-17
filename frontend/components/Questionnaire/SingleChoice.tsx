@@ -6,6 +6,7 @@ import type { QuestionnaireItem } from '../../context/Questionnaire/state';
 import { useQuestionnaireContext } from '../../context/Questionnaire';
 import { SelectableOption } from './SelectableOption';
 import { devices } from '../../config/breakpoints.config';
+import { goToStep } from '../../utils/goToStep';
 
 const StyledSingleChoice = styled.div`
   display: flex;
@@ -54,6 +55,7 @@ export const SingleChoice: React.FunctionComponent<{
         item: { question: input.question, answer: input.answer },
       },
     });
+    goToStep(dispatch, state.currentIndex + 1);
   };
 
   const onClickHandler = customSelectHandler ?? defaultClickHandler;
