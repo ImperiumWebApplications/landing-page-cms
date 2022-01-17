@@ -1,6 +1,8 @@
 import reset from 'styled-reset';
-import { createGlobalStyle } from 'styled-components';
-import { LandingPage } from '../backend-api';
+import hexRgb from 'hex-rgb';
+import { createGlobalStyle, css } from 'styled-components';
+
+import type { LandingPage } from '../backend-api';
 import { FontConfig } from './font.config';
 import { devices } from './breakpoints.config';
 
@@ -21,7 +23,10 @@ export const extractTheme = (content: LandingPage) => {
 
 export type LeadquelleTheme = ReturnType<typeof extractTheme>;
 
-export const GlobalStyle = createGlobalStyle<{ theme: LeadquelleTheme }>`
+export const GlobalStyle = createGlobalStyle<{
+  theme: LeadquelleTheme;
+  isFunnelRoute: boolean;
+}>`
   /** Reset CSS */
   ${reset}
 
@@ -125,4 +130,29 @@ export const GlobalStyle = createGlobalStyle<{ theme: LeadquelleTheme }>`
       transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
     }
   }
+
+  /** Funnel Route Specifics */
+  ${({ isFunnelRoute }) =>
+    isFunnelRoute &&
+    css`
+      body {
+        background: linear-gradient(
+          to bottom,
+          ${({ theme }) =>
+              hexRgb(theme.colors.secondary, { format: 'css', alpha: 0.1 })}
+            50%,
+          ${({ theme }) =>
+              hexRgb(theme.colors.secondary, { format: 'css', alpha: 0.03 })}
+            100%
+        );
+      }
+
+      main {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+    `}
 `;

@@ -1,7 +1,5 @@
 import React from 'react';
-import styled, { createGlobalStyle } from 'styled-components';
-import hexRgb from 'hex-rgb';
-import { useRouter } from 'next/router';
+import styled from 'styled-components';
 
 import type { Advantage, QuestionnaireQuestion } from '../../backend-api';
 import type { SingleChoiceEventHandler } from './SingleChoice';
@@ -14,51 +12,16 @@ import { ContactForm } from './ContactForm';
 import { Confirmation } from './Confirmation';
 import { StepNavigation } from './StepNavigation';
 import { devices } from '../../config/breakpoints.config';
-import { isFunnelRoute } from '../../utils/isFunnelRoute';
 import { setBrowserHistory } from '../../utils/setBrowserHistory';
 
-const GlobalQuestionnaireStyle = createGlobalStyle`
-  body {
-    position: relative;
-    background-color: ${({ theme }) =>
-      hexRgb(theme.colors.secondary, { format: 'css', alpha: 0.05 })};
-
-    &::after {
-      content: "";
-      position: absolute;
-      z-index: 1;
-      top: -50%;
-      left: -50%;
-      width: 200vw;
-      height: 100vh;
-      border-radius: 45% 55% 48% 52% / 50% 46% 54% 50%;
-      background: linear-gradient(
-        to bottom,
-        ${({ theme }) =>
-          hexRgb(theme.colors.secondary, { format: 'css', alpha: 0.1 })}
-        50%,
-        ${({ theme }) =>
-          hexRgb(theme.colors.secondary, { format: 'css', alpha: 0.03 })}
-        100%);
-
-      @media screen and (${devices.lg}) {
-        width: 100vw;
-        height: 100vh;
-        left: 0;
-      }
-    }
-  }
-
-  main {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-`;
-
 const StyledQuestionnaire = styled(Section)`
+  .content-wrapper {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto 1fr;
+  }
+
   .header {
     position: relative;
     margin-bottom: 3rem;
@@ -81,6 +44,10 @@ const StyledQuestionnaire = styled(Section)`
       background-color: ${({ theme }) => theme.colors.secondary};
     }
   }
+
+  .content {
+    place-self: center;
+  }
 `;
 
 export type QuestionnaireHistoryState = {
@@ -100,8 +67,6 @@ export const Questionnaire: React.FunctionComponent<QuestionnaireProps> = ({
   phone,
   customSelectHandler,
 }) => {
-  const router = useRouter();
-  const _isFunnelRoute = isFunnelRoute(router);
   const { state, dispatch } = useQuestionnaireContext();
 
   React.useEffect(() => {
@@ -132,21 +97,22 @@ export const Questionnaire: React.FunctionComponent<QuestionnaireProps> = ({
 
   return (
     <>
-      {_isFunnelRoute && <GlobalQuestionnaireStyle />}
       <StyledQuestionnaire id="questionnaire">
         <div className="header">100% Kostenlos</div>
-        {isQuestionStep && (
-          <Question
-            data={currentQuestionData}
-            customSelectHandler={customSelectHandler}
-          />
-        )}
-        {isPostalCodeStep && <PostalCode />}
-        {isContactFormStep && <ContactForm />}
-        {isFormSuccessStep && <Confirmation phone={phone} />}
-        {(isQuestionStep || isPostalCodeStep) && (
-          <StepNavigation stepCount={zeroBasedQuestionsCount + 3} />
-        )}
+        <div className="content">
+          {isQuestionStep && (
+            <Question
+              data={currentQuestionData}
+              customSelectHandler={customSelectHandler}
+            />
+          )}
+          {isPostalCodeStep && <PostalCode />}
+          {isContactFormStep && <ContactForm />}
+          {isFormSuccessStep && <Confirmation phone={phone} />}
+          {(isQuestionStep || isPostalCodeStep) && (
+            <StepNavigation stepCount={zeroBasedQuestionsCount + 3} />
+          )}
+        </div>
       </StyledQuestionnaire>
       <Advantages content={advantages} />
     </>

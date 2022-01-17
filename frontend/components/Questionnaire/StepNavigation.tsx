@@ -8,7 +8,6 @@ import {
 
 import type { QuestionnaireContextState } from '../../context/Questionnaire/state';
 import { useQuestionnaireContext } from '../../context/Questionnaire';
-import { devices } from '../../config/breakpoints.config';
 import { goToStep } from '../../utils/goToStep';
 
 const StyledStepNavigation = styled.div`
@@ -18,10 +17,6 @@ const StyledStepNavigation = styled.div`
   align-items: center;
   column-gap: 1rem;
   margin: 4rem 0;
-
-  @media screen and (${devices.sm}) {
-    margin: 8rem 0;
-  }
 
   .prev[role='button'],
   .next[role='button'] {
