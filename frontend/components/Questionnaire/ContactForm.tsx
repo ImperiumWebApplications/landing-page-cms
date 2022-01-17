@@ -57,7 +57,7 @@ const StyledContactForm = styled.div`
 `;
 
 export const ContactForm: React.FunctionComponent = () => {
-  const { state } = useQuestionnaireContext();
+  const { state, dispatch } = useQuestionnaireContext();
 
   const inputs = React.useMemo(() => {
     return Object.entries(state.contact).map(([field, value]) => {
@@ -68,6 +68,11 @@ export const ContactForm: React.FunctionComponent = () => {
   const onSubmitHandler: React.FormEventHandler = (event) => {
     event.preventDefault();
     console.log(event, state);
+
+    dispatch({
+      type: 'SET_CURRENT_INDEX',
+      payload: { newIndex: state.currentIndex + 1 },
+    });
   };
 
   return (

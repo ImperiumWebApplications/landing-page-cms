@@ -11,6 +11,7 @@ import { Advantages } from './Advantages';
 import { Question } from './Question';
 import { PostalCode } from './PostalCode';
 import { ContactForm } from './ContactForm';
+import { Confirmation } from './Confirmation';
 import { StepNavigation } from './StepNavigation';
 import { devices } from '../../config/breakpoints.config';
 import { isFunnelRoute } from '../../utils/isFunnelRoute';
@@ -84,12 +85,14 @@ const StyledQuestionnaire = styled(Section)`
 type QuestionnaireProps = {
   advantages: Advantage[];
   questions: QuestionnaireQuestion[];
+  phone?: string;
   customSelectHandler?: SingleChoiceEventHandler;
 };
 
 export const Questionnaire: React.FunctionComponent<QuestionnaireProps> = ({
   advantages,
   questions,
+  phone,
   customSelectHandler,
 }) => {
   const _isFunnelRoute = isFunnelRoute(useRouter());
@@ -99,7 +102,7 @@ export const Questionnaire: React.FunctionComponent<QuestionnaireProps> = ({
   const isQuestionStep = state.currentIndex <= zeroBasedQuestionsCount;
   const isPostalCodeStep = state.currentIndex === zeroBasedQuestionsCount + 1;
   const isContactFormStep = state.currentIndex === zeroBasedQuestionsCount + 2;
-  // const isFormSuccessStep = state.currentIndex === zeroBasedQuestionsCount + 3;
+  const isFormSuccessStep = state.currentIndex === zeroBasedQuestionsCount + 3;
 
   const currentQuestionData = questions[state.currentIndex];
 
@@ -116,6 +119,7 @@ export const Questionnaire: React.FunctionComponent<QuestionnaireProps> = ({
         )}
         {isPostalCodeStep && <PostalCode />}
         {isContactFormStep && <ContactForm />}
+        {isFormSuccessStep && <Confirmation phone={phone} />}
         {(isQuestionStep || isPostalCodeStep) && (
           <StepNavigation stepCount={zeroBasedQuestionsCount + 3} />
         )}

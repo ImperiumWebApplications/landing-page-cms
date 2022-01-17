@@ -22,6 +22,7 @@ const QuestionnairePage: NextPage<QuestionnairePageContent> = ({
         <Questionnaire
           advantages={questionnaire.advantage}
           questions={questionnaireContent.questions}
+          phone={domainContent.contact_phone}
         />
       </QuestionnaireContextProvider>
     </Layout>
