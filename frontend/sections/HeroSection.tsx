@@ -54,8 +54,8 @@ const StyledHeroSection = styled(Section)`
         line-height: 2rem;
 
         @media screen and (${devices.sm}) {
-          font-size: 2rem;
-          line-height: 2.5rem;
+          font-size: 2.5rem;
+          line-height: 3rem;
           margin-bottom: 2rem;
         }
 

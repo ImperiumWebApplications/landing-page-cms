@@ -31,17 +31,10 @@ interface AnimationProps {
   delay?: number;
   duration?: number;
   iterationCount?: number;
+  [key: string]: unknown;
 }
 
-export const Animation: React.FunctionComponent<AnimationProps> = ({
-  children,
-  type,
-  timing,
-  duration,
-  delay,
-  iterationCount,
-  fillMode,
-}) => {
+export const Animation: React.FunctionComponent<AnimationProps> = (props) => {
   const ref = useCastedRef<HTMLDivElement>();
   const onScreen = useOnScreen<HTMLDivElement>(ref);
 
@@ -49,14 +42,15 @@ export const Animation: React.FunctionComponent<AnimationProps> = ({
     <StyledAnimation
       ref={ref}
       isOnScreen={onScreen}
-      type={type}
-      timing={timing}
-      duration={duration}
-      delay={delay}
-      iterationCount={iterationCount}
-      fillMode={fillMode}
+      type={props.type}
+      timing={props.timing}
+      duration={props.duration}
+      delay={props.delay}
+      iterationCount={props.iterationCount}
+      fillMode={props.fillMode}
+      {...props}
     >
-      {children}
+      {props.children}
     </StyledAnimation>
   );
 };

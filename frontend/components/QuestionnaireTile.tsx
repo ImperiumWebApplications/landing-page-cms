@@ -24,14 +24,6 @@ const StyledQuestionnaireTile = styled.a`
   border: 2px dashed
     ${({ theme }) => hexRgb(theme.colors.text, { format: 'css', alpha: 0.1 })};
 
-  @media screen and (${devices.sm}) {
-    /* width: 7.5rem; */
-  }
-
-  @media screen and (${devices.md}) {
-    /* width: 10rem; */
-  }
-
   @media screen and (${devices.lg}) {
     display: grid;
     grid-template-columns: 100%;

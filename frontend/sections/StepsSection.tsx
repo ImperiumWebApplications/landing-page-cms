@@ -12,12 +12,12 @@ const StyledStepsSection = styled(Section)`
     justify-content: space-between;
     align-items: center;
     row-gap: 2rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
 
     @media screen and (${devices.md}) {
       flex-direction: row;
       column-gap: 2rem;
-      padding-top: 3rem;
-      padding-bottom: 3rem;
     }
   }
 
@@ -26,13 +26,18 @@ const StyledStepsSection = styled(Section)`
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    font-size: 1.25rem;
-    line-height: 1.75rem;
+    font-size: 1.125rem;
+    line-height: 1.5rem;
     letter-spacing: -0.5px;
 
+    @media screen and (${devices.lg}) {
+      font-size: 1.25rem;
+      line-height: 1.75rem;
+    }
+
     .step-number {
-      width: 4.5rem;
-      height: 4.5rem;
+      width: 3rem;
+      height: 3rem;
       border-radius: 50%;
       background-color: ${({ theme }) => theme.colors.primary};
       border-radius: 40% 60% 70% 30% / 40% 40% 60% 50%;
@@ -41,9 +46,16 @@ const StyledStepsSection = styled(Section)`
       color: white;
       text-align: center;
       font-weight: 700;
-      font-size: 2.5rem;
-      line-height: 4.75rem;
+      font-size: 2rem;
+      line-height: 3.25rem;
       flex-shrink: 0;
+
+      @media screen and (${devices.lg}) {
+        width: 4.5rem;
+        height: 4.5rem;
+        font-size: 2.5rem;
+        line-height: 4.75rem;
+      }
     }
 
     &:nth-child(2) {
@@ -73,18 +85,19 @@ export const StepsSection: React.FunctionComponent<{
   ].filter((s) => !!s);
 
   return (
-    <Animation type="fadeUp">
-      <StyledStepsSection id={id} bgColor={theme.colors.tertiary}>
-        {steps.length &&
-          steps.map((step, i) => {
-            return (
-              <div key={i} className="step">
+    <StyledStepsSection id={id} bgColor={theme.colors.tertiary}>
+      {steps.length &&
+        steps.map((step, i) => {
+          const delay = 600 + 200 * i;
+          return (
+            <Animation key={i} className="step" type="fadeUp" delay={delay}>
+              <div className="step">
                 <div className="step-number">{i + 1}</div>
                 {step}
               </div>
-            );
-          })}
-      </StyledStepsSection>
-    </Animation>
+            </Animation>
+          );
+        })}
+    </StyledStepsSection>
   );
 };

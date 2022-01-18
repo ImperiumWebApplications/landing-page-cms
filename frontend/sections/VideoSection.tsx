@@ -20,11 +20,13 @@ const StyledVideoSection = styled(Section)`
     justify-content: flex-start;
     align-items: center;
     column-gap: 3rem;
-    padding-top: 6rem;
-    padding-bottom: 6rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
 
     @media screen and (${devices.md}) {
       flex-direction: row;
+      padding-top: 6rem;
+      padding-bottom: 6rem;
     }
   }
 
