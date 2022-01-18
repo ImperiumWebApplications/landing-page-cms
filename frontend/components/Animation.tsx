@@ -5,6 +5,10 @@ import { useCastedRef } from '../hooks/useCastedRef';
 import { useOnScreen } from '../hooks/useOnScreen';
 
 const StyledAnimation = styled.div<AnimationProps & { isOnScreen: boolean }>`
+  @media screen and (prefers-reduced-motion: reduce) {
+    opacity: 1 !important;
+  }
+
   ${({ isOnScreen, type, timing, duration, delay, iterationCount, fillMode }) =>
     isOnScreen
       ? css`
