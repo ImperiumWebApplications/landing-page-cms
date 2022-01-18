@@ -52,11 +52,14 @@ const StyledQuestionsSection = styled(Section)`
 
     .questions {
       display: flex;
-      overflow-x: auto;
       width: 100%;
       margin: 0 -1rem;
       padding-right: 1rem;
       padding-left: 1rem;
+      margin: 0 -1rem;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      white-space: nowrap;
 
       @media screen and (${devices.md}) {
         display: block;
@@ -83,12 +86,14 @@ const StyledQuestionsSection = styled(Section)`
         justify-content: center;
         align-items: center;
         flex-shrink: 0;
+        white-space: pre-wrap;
         max-width: 18rem;
         margin-right: 1rem;
-        padding: 0.5rem;
+        padding: 0.5rem 0.75rem;
         line-height: 1.5rem;
         border-radius: ${({ theme }) => theme.borderRadius};
-        background-color: rgba(0, 0, 0, 0.025);
+        background-color: ${({ theme }) =>
+          hexRgb(theme.colors.text, { format: 'css', alpha: 0.1 })};
 
         @media screen and (${devices.md}) {
           max-width: unset;
@@ -111,7 +116,15 @@ const StyledQuestionsSection = styled(Section)`
         }
 
         &.active {
-          font-weight: 700;
+          background-color: ${({ theme }) =>
+            hexRgb(theme.colors.text, { format: 'css', alpha: 1 })};
+          color: white;
+
+          @media screen and (${devices.md}) {
+            background-color: unset;
+            color: inherit;
+            font-weight: 700;
+          }
         }
       }
     }

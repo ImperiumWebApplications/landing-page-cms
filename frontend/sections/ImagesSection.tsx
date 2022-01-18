@@ -50,10 +50,7 @@ const StyledImagesSection = styled(Section)`
     justify-content: flex-start;
     max-width: 80rem;
     margin-top: 2rem;
-
-    @media screen and (${devices.sm}) {
-      margin-top: 2rem;
-    }
+    margin-bottom: 3rem;
 
     @media screen and (${devices.lg}) {
       flex-direction: row;
@@ -78,6 +75,11 @@ const StyledImagesSection = styled(Section)`
       align-items: center;
       justify-content: center;
       row-gap: 2rem;
+      width: 100%;
+
+      > div {
+        width: 100%;
+      }
 
       @media screen and (${devices.md}) {
         flex-direction: row;
@@ -131,7 +133,8 @@ export const ImagesSection: React.FunctionComponent<{
                 href={startQuestionnaire.href}
                 label={startQuestionnaire.label}
                 color={theme.colors.secondary}
-                fixedWidth={isDesktopBreakpoint ? '18rem' : '15rem'}
+                fullWidth={isDesktopBreakpoint ? false : true}
+                fixedWidth={isDesktopBreakpoint ? '20rem' : undefined}
                 icon={
                   <ArrowRightCircleFill
                     size={20}
@@ -147,7 +150,8 @@ export const ImagesSection: React.FunctionComponent<{
                   href={`tel:${phoneNumber}`}
                   label={phoneNumber}
                   color={theme.colors.primary}
-                  fixedWidth={isDesktopBreakpoint ? '18rem' : '15rem'}
+                  fullWidth={isDesktopBreakpoint ? false : true}
+                  fixedWidth={isDesktopBreakpoint ? '20rem' : undefined}
                 />
               </div>
             )}

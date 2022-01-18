@@ -13,7 +13,7 @@ import { devices } from '../config/breakpoints.config';
 import { swiperNavigationCss } from '../config/swiper.config';
 
 const StyledServicesSection = styled(Section)`
-  .content-wrapper {
+  .content-wrapper > .animated-services {
     padding-bottom: 4rem;
   }
 
@@ -176,8 +176,8 @@ export const ServicesSection: React.FunctionComponent<{
   const activeTabContent = content.service_tab[activeTab];
 
   return (
-    <Animation type="fadeIn" duration={300}>
-      <StyledServicesSection id={id}>
+    <StyledServicesSection id={id}>
+      <Animation className="animated-services" type="fadeIn" duration={300}>
         <div className="services-header">
           {content.service_tab.map(({ tab_name }, i) => {
             return (
@@ -244,7 +244,7 @@ export const ServicesSection: React.FunctionComponent<{
             </div>
           </div>
         </div>
-      </StyledServicesSection>
-    </Animation>
+      </Animation>
+    </StyledServicesSection>
   );
 };

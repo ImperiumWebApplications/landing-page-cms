@@ -16,8 +16,8 @@ const StyledContactIcons = styled.div`
   }
 
   .icon {
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 2.75rem;
+    height: 2.75rem;
     border-radius: ${({ theme }) => theme.borderRadius};
     border: 2px solid ${({ theme }) => theme.colors.tertiary};
     padding: 0.5rem;
@@ -25,18 +25,18 @@ const StyledContactIcons = styled.div`
     cursor: pointer;
     transition: border 0.3s ease-in-out;
 
+    @media screen and (${devices.lg}) {
+      margin-right: 2rem;
+      width: 3rem;
+      height: 3rem;
+    }
+
     svg {
       fill: ${({ theme }) => theme.colors.tertiary};
     }
 
     &:hover {
       border-color: ${({ theme }) => theme.colors.secondary};
-    }
-
-    @media screen and (${devices.lg}) {
-      margin-right: 2rem;
-      width: 2rem;
-      height: 2rem;
     }
   }
 
