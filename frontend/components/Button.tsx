@@ -10,7 +10,7 @@ const StyledButton = styled.a<{
   display: block;
   width: ${({ fixedWidth }) => fixedWidth ?? 'auto'};
   max-width: ${({ fullWidth, fixedWidth }) =>
-    !fullWidth && !fixedWidth ? '15rem' : 'unset'};
+    !fullWidth && !fixedWidth ? '18rem' : 'unset'};
   border-radius: ${({ theme }) => theme.borderRadius};
   background-color: ${({ color, theme }) => color ?? theme.colors.primary};
   color: white;

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Image from 'next/image';
+import { ArrowForward } from '@styled-icons/fluentui-system-filled';
 
 import type {
   EntryQuestionnaire,
@@ -17,7 +18,10 @@ const StyledHeroSection = styled(Section)`
     display: grid;
     grid-template-rows: 100%;
     grid-template-columns: 100%;
-    margin-top: 1rem;
+
+    @media screen and (${devices.sm}) {
+      margin-top: 1rem;
+    }
 
     @media screen and (${devices.md}) {
       grid-template-columns: 30rem auto;
@@ -27,10 +31,10 @@ const StyledHeroSection = styled(Section)`
     .background {
       display: none;
       position: relative;
-      top: -170px;
+      top: -200px;
       right: 0;
       width: 60vw;
-      height: 50rem;
+      height: 52rem;
 
       @media screen and (${devices.md}) {
         display: block;
@@ -45,7 +49,15 @@ const StyledHeroSection = styled(Section)`
       h1 {
         padding: 0.5rem 1rem;
         border-left: 2px dashed ${({ theme }) => theme.colors.secondary};
-        margin-bottom: 2rem;
+        margin-bottom: 1rem;
+        font-size: 1.75rem;
+        line-height: 2rem;
+
+        @media screen and (${devices.sm}) {
+          font-size: 2rem;
+          line-height: 2.5rem;
+          margin-bottom: 2rem;
+        }
 
         span {
           color: ${({ theme }) => theme.colors.secondary};
@@ -53,8 +65,13 @@ const StyledHeroSection = styled(Section)`
       }
 
       p {
-        font-size: 1.125rem;
-        line-height: 2rem;
+        font-size: 1rem;
+        line-height: 1.75rem;
+
+        @media screen and (${devices.sm}) {
+          font-size: 1.125rem;
+          line-height: 2rem;
+        }
       }
     }
   }
@@ -63,19 +80,35 @@ const StyledHeroSection = styled(Section)`
     margin-top: 2rem;
     margin-bottom: 2rem;
     position: relative;
-    display: flex;
-    flex-direction: row;
-    justify-content: stretch;
-    align-items: stretch;
-    flex-wrap: wrap;
-    column-gap: 1rem;
-    row-gap: 1rem;
 
     @media screen and (${devices.md}) {
-      margin-top: -25rem;
+      margin-top: -30rem;
       margin-bottom: 5rem;
-      column-gap: 2rem;
-      row-gap: 2rem;
+    }
+
+    .entry-question {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+
+      @media screen and (${devices.lg}) {
+        margin-bottom: 2rem;
+      }
+    }
+
+    .tiles {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      row-gap: 1rem;
+
+      @media screen and (${devices.lg}) {
+        flex-direction: row;
+        justify-content: stretch;
+        align-items: stretch;
+        flex-wrap: wrap;
+        column-gap: 1rem;
+        row-gap: 1rem;
+      }
     }
   }
 `;
@@ -111,17 +144,29 @@ export const HeroSection: React.FunctionComponent<{
       </div>
       <Animation type="fadeUp" delay={600}>
         <div className="questionnaires">
-          {questionnaire?.questionnaires &&
-            questionnaire.questionnaires.data.map(
-              (connectedQuestionnaire, i) => {
-                return (
-                  <QuestionnaireTile
-                    key={i}
-                    questionnaire={connectedQuestionnaire}
-                  />
-                );
-              },
-            )}
+          <h3 className="entry-question">
+            {questionnaire?.entry_question}{' '}
+            <ArrowForward
+              width={30}
+              style={{
+                transform: 'rotate(90deg)',
+                margin: '0.25rem 0 0 0.25rem',
+              }}
+            />
+          </h3>
+          <div className="tiles">
+            {questionnaire?.questionnaires &&
+              questionnaire.questionnaires.data.map(
+                (connectedQuestionnaire, i) => {
+                  return (
+                    <QuestionnaireTile
+                      key={i}
+                      questionnaire={connectedQuestionnaire}
+                    />
+                  );
+                },
+              )}
+          </div>
         </div>
       </Animation>
     </StyledHeroSection>

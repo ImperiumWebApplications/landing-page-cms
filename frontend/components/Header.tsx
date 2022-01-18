@@ -12,12 +12,14 @@ import { devices } from '../config/breakpoints.config';
 import { isFunnelRoute } from '../utils/isFunnelRoute';
 
 const StyledHeader = styled.header<{ centerLogo: boolean }>`
-  position: relative;
-  z-index: 2;
-  display: flex;
-  width: 100%;
-  height: auto;
-  min-height: 4rem;
+  & > div {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    width: 100%;
+    height: auto;
+    min-height: 4rem;
+  }
 
   .content-wrapper {
     display: flex;
@@ -45,8 +47,8 @@ export const Header: React.FunctionComponent<{ content: LandingPage }> = ({
   const _isFunnelRoute = isFunnelRoute(useRouter());
 
   return (
-    <Animation type="fadeDown" duration={200}>
-      <StyledHeader id="header" centerLogo={_isFunnelRoute}>
+    <StyledHeader id="header" centerLogo={_isFunnelRoute}>
+      <Animation type="fadeDown" duration={200}>
         <div className="content-wrapper">
           <Logo image={content.logo_header} />
           {!_isFunnelRoute && (
@@ -60,7 +62,7 @@ export const Header: React.FunctionComponent<{ content: LandingPage }> = ({
             </>
           )}
         </div>
-      </StyledHeader>
-    </Animation>
+      </Animation>
+    </StyledHeader>
   );
 };

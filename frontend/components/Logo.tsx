@@ -7,10 +7,10 @@ import { ImageObject } from '../backend-api';
 import { devices } from '../config/breakpoints.config';
 
 const StyledLogo = styled.div`
-  max-width: 240px;
+  max-width: 200px;
   margin-right: 2rem;
   cursor: pointer;
-  @media screen and (${devices.md}) {
+  @media screen and (${devices.sm}) {
     max-width: 300px;
   }
 `;
