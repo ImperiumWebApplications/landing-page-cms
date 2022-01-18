@@ -114,10 +114,10 @@ export const CookieConsent: React.FunctionComponent<CookieConsentProps> = ({
         buttonClasses="acceptButton"
         onAccept={() => setConsent(true)}
         ariaAcceptLabel="Cookies erlauben"
-        onDecline={() => setConsent(false)}
-        ariaDeclineLabel="Cookies ablehnen"
         declineButtonText="Ablehnen"
         declineButtonClasses="declineButton"
+        onDecline={() => setConsent(false)}
+        ariaDeclineLabel="Cookies ablehnen"
         cookieName={COOKIE_CONSENT_NAME}
       >
         <span className="title">Hinweis</span>

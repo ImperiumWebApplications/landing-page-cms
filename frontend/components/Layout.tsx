@@ -6,7 +6,10 @@ import { getCookieConsentValue } from 'react-cookie-consent';
 import { ThemeProvider } from 'styled-components';
 
 import type { LandingPage } from '../backend-api';
-import type { CookieConsentProps } from '../components/CookieConsent';
+import {
+  CookieConsentProps,
+  COOKIE_CONSENT_NAME,
+} from '../components/CookieConsent';
 import { Footer } from './Footer';
 import { Header } from './Header';
 import { HeadMeta } from './HeadMeta';
@@ -25,9 +28,9 @@ export const Layout: React.FunctionComponent<{ content: LandingPage }> = ({
   content,
 }) => {
   const router = useRouter();
-  const cookieConsent = getCookieConsentValue();
+  const cookieConsent = getCookieConsentValue(COOKIE_CONSENT_NAME as string);
   const [allowCookies, setAllowCookies] = React.useState(
-    cookieConsent === 'true' ? true : false,
+    cookieConsent && cookieConsent === 'true' ? true : false,
   );
 
   return (
