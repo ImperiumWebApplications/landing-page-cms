@@ -37,13 +37,16 @@ const StyledQuestionnaireTile = styled.a`
     max-width: 22rem;
   }
 
-  &:hover {
-    transform: translate3d(0px, -1px, 0px);
-    box-shadow: 0 0 0 1px ${({ theme }) => theme.colors.tertiary},
-      0 0 0 3px ${({ theme }) => theme.colors.primary};
+  // https://css-tricks.com/annoying-mobile-double-tap-link-issue/
+  @media (hover) {
+    &:hover {
+      transform: translate3d(0px, -1px, 0px);
+      box-shadow: 0 0 0 1px ${({ theme }) => theme.colors.tertiary},
+        0 0 0 3px ${({ theme }) => theme.colors.primary};
 
-    &:before {
-      transform: scale(21);
+      &:before {
+        transform: scale(21);
+      }
     }
   }
 
