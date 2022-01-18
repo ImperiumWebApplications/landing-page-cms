@@ -111,6 +111,8 @@ export const QuestionnaireTile: React.FunctionComponent<{
   questionnaire: { id: number; attributes: ConnectedQuestionnaire };
 }> = ({ questionnaire }) => {
   const { id, attributes } = questionnaire;
+  if (!attributes.name) return <></>;
+
   const slug = slugifyRoute(attributes.name);
   const route = `/${questionnaireRoute}/${slug}-${id}`;
 
