@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
 import styled from 'styled-components';
 
@@ -21,16 +20,14 @@ export const Logo: React.FunctionComponent<{
   return (
     <StyledLogo>
       {image?.data && (
-        <Link href="/" aria-label="Homepage" passHref>
-          <a>
-            <Image
-              src={image.data.attributes.url}
-              alt={image.data.attributes.alternativeText}
-              width={image.data.attributes.width}
-              height={image.data.attributes.height}
-            />
-          </a>
-        </Link>
+        <a href="/" aria-label="Homepage">
+          <Image
+            src={image.data.attributes.url}
+            alt={image.data.attributes.alternativeText}
+            width={image.data.attributes.width}
+            height={image.data.attributes.height}
+          />
+        </a>
       )}
     </StyledLogo>
   );
