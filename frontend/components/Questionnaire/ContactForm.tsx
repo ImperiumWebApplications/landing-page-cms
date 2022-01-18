@@ -9,7 +9,9 @@ import { RadioInput } from './RadioInput';
 import { CheckboxInput } from './CheckboxInput';
 import { QualityBadges } from './QualityBadges';
 import { devices } from '../../config/breakpoints.config';
+import { formFieldValidations } from '../../config/form.config';
 import { goToStep } from '../../utils/goToStep';
+import { isFormDataComplete } from '../../utils/isFormDataComplete';
 
 const StyledContactForm = styled.div`
   max-width: 55rem;
@@ -55,9 +57,19 @@ const StyledContactForm = styled.div`
       font-size: 1rem;
     }
   }
+
+  span.error {
+    display: block;
+    margin: -1rem 0 3rem 0;
+    text-align: center;
+    font-size: 0.9rem;
+    color: red;
+    opacity: 0.75;
+  }
 `;
 
 export const ContactForm: React.FunctionComponent = () => {
+  const [error, setError] = React.useState<string | undefined>(undefined);
   const { state, dispatch } = useQuestionnaireContext();
 
   const inputs = React.useMemo(() => {
@@ -68,7 +80,11 @@ export const ContactForm: React.FunctionComponent = () => {
 
   const onSubmitHandler: React.FormEventHandler = (event) => {
     event.preventDefault();
-    console.log(event, state);
+
+    if (!isFormDataComplete(state)) {
+      setError('Bitte füllen Sie das komplette Formular aus.');
+      return;
+    }
 
     goToStep(dispatch, state.currentIndex + 1);
   };
@@ -99,6 +115,9 @@ export const ContactForm: React.FunctionComponent = () => {
                       field={input.field as keyof ContactData}
                       label={input.label}
                       initialValue={input.value}
+                      validations={
+                        formFieldValidations[input.field as keyof ContactData]
+                      }
                     />
                   );
                 case 'checkbox':
@@ -115,6 +134,7 @@ export const ContactForm: React.FunctionComponent = () => {
         <button type="submit" className="call-to-action shining-button">
           <span>Jetzt Angebot erhalten</span>Kostenlos & Unverbindlich
         </button>
+        {error && <span className="error">{error}</span>}
       </form>
       <QualityBadges />
     </StyledContactForm>

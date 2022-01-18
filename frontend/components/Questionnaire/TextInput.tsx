@@ -6,12 +6,24 @@ import styled from 'styled-components';
 import type { ContactData } from '../../context/Questionnaire/state';
 import { useQuestionnaireContext } from '../../context/Questionnaire';
 import { devices } from '../../config/breakpoints.config';
+import type { Validator } from '../../config/form.config';
 
-const StyledTextInput = styled.div`
+const StyledTextInput = styled.div<{ hasError: undefined | string }>`
+  position: relative;
   grid-column: 1 / 3;
 
   @media screen and (${devices.md}) {
     grid-column: unset;
+  }
+
+  &::after {
+    content: '${({ hasError }) => (hasError ? hasError : '')}';
+    position: absolute;
+    bottom: 0.5rem;
+    left: 1rem;
+    font-size: 0.8rem;
+    opacity: 0.75;
+    color: red;
   }
 
   label {
@@ -29,7 +41,8 @@ const StyledTextInput = styled.div`
     line-height: 1.75rem;
     letter-spacing: +1px;
     border-radius: 0.5rem;
-    border: 2px solid ${({ theme }) => theme.colors.tertiary};
+    border: 2px solid
+      ${({ theme, hasError }) => (hasError ? 'red' : theme.colors.tertiary)};
     width: calc(100% - 1.25rem * 2);
     transition: box-shadow 0.1s ease-in-out;
 
@@ -48,19 +61,40 @@ const StyledTextInput = styled.div`
   }
 `;
 
+const defaultValidations: Validator[] = [
+  { regex: /(.|\s)*\S(.|\s)*/, message: 'Bitte geben Sie einen Wert ein.' },
+];
+
 export const TextInput: React.FunctionComponent<{
   label: string;
   type: string;
   field: keyof ContactData;
   initialValue: string;
   pattern?: string;
-}> = ({ label, type, field, initialValue, pattern }) => {
+  validations?: Validator[];
+}> = ({ label, type, field, initialValue, pattern, validations }) => {
   const { dispatch } = useQuestionnaireContext();
   const [value, setValue] = React.useState(initialValue);
+  const [error, setError] = React.useState<undefined | string>(undefined);
   const inputId = slugify(field);
 
-  const onBlurHandler: React.FocusEventHandler = (event) => {
-    event.preventDefault();
+  const validators = validations
+    ? [...validations, ...defaultValidations]
+    : defaultValidations;
+
+  const onFocusHandler: React.FocusEventHandler = () => {
+    setError(undefined);
+  };
+
+  const onBlurHandler: React.FocusEventHandler = () => {
+    validators.some((validator) => {
+      const isValid = validator.regex.test(value);
+      if (!isValid) {
+        setError(validator.message);
+        return true;
+      }
+    });
+
     dispatch({
       type: 'SET_CONTACT_DETAILS',
       payload: { field, value },
@@ -68,7 +102,7 @@ export const TextInput: React.FunctionComponent<{
   };
 
   return (
-    <StyledTextInput>
+    <StyledTextInput hasError={error}>
       <label htmlFor={inputId}>{label}</label>
       <input
         type={type}
@@ -78,6 +112,7 @@ export const TextInput: React.FunctionComponent<{
         value={value}
         pattern={pattern}
         onBlur={onBlurHandler}
+        onFocus={onFocusHandler}
         onChange={(e) => setValue(e.target.value)}
       />
     </StyledTextInput>

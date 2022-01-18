@@ -9,6 +9,7 @@ import { TextInput } from './TextInput';
 import { Button } from '../Button';
 import { devices } from '../../config/breakpoints.config';
 import { goToStep } from '../../utils/goToStep';
+import { formFieldValidations } from '../../config/form.config';
 
 const StyledPostalCode = styled.div`
   max-width: 45rem;
@@ -58,6 +59,7 @@ export const PostalCode: React.FunctionComponent = () => {
           pattern="[0-9]*"
           label={label}
           initialValue={initialValue}
+          validations={formFieldValidations.postalCode}
         />
         <div className="hint">
           <InfoCircle
