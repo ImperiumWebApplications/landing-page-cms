@@ -42,14 +42,14 @@ const StyledAdvantages = styled(Section)`
   }
 `;
 
-export const Advantages: React.FunctionComponent<{ content: Advantage[] }> = ({
+export const Advantages: React.FunctionComponent<{ content?: Advantage[] }> = ({
   content,
 }) => {
   const theme = useTheme();
 
   return (
     <StyledAdvantages id="advantages">
-      {content.length &&
+      {content?.length &&
         content.map((advantage, i) => {
           return (
             <div key={i} className="advantage">

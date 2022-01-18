@@ -27,7 +27,7 @@ const EntryQuestionnairePage: NextPage<ContentPageContent> = ({
 
   const entryQuestion: QuestionnaireQuestion = {
     id: -1,
-    question: questionnaire.entry_question,
+    question: questionnaire.entry_question ?? 'Was suchen Sie?',
     answers: mapConnectedQuestionnairesToAnswersSchema(
       questionnaire.questionnaires,
     ),

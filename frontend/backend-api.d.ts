@@ -85,7 +85,7 @@ type Favicon = ImageObject;
 type Advantage = { id: number; first_line: string; second_line: string };
 
 interface ConnectedQuestionnaire {
-  name: string;
+  name?: string;
   createdAt: CreatedAt;
   updatedAt: UpdatedAt;
   publishedAt: PublishedAt;
@@ -94,9 +94,9 @@ interface ConnectedQuestionnaire {
 }
 interface EntryQuestionnaire {
   id: number;
-  entry_question: string;
-  questionnaires: ConnectedQuestionnaireObjectList;
-  advantage: Advantage[];
+  entry_question?: string;
+  questionnaires?: ConnectedQuestionnaireObjectList;
+  advantage?: Advantage[];
 }
 type ConnectedQuestionnaireObjectList = {
   data: DataObject<ConnectedQuestionnaire>[];

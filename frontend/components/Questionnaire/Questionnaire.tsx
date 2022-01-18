@@ -55,8 +55,8 @@ export type QuestionnaireHistoryState = {
 };
 
 type QuestionnaireProps = {
-  advantages: Advantage[];
   questions: QuestionnaireQuestion[];
+  advantages?: Advantage[];
   phone?: string;
   customSelectHandler?: SingleChoiceEventHandler;
 };
@@ -75,12 +75,12 @@ export const Questionnaire: React.FunctionComponent<QuestionnaireProps> = ({
 
     const goBackHandler = (event: PopStateEvent) => {
       const state = event.state as QuestionnaireHistoryState;
-      if (state.step !== undefined) {
-        dispatch({
+      if (state.step === undefined) return window.history.back();
+      if (state.step >= 0)
+        return dispatch({
           type: 'SET_CURRENT_INDEX',
           payload: { newIndex: state.step },
         });
-      }
     };
 
     window.addEventListener('popstate', goBackHandler);
