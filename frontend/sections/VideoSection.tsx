@@ -16,7 +16,7 @@ import { devices } from '../config/breakpoints.config';
 const StyledVideoSection = styled(Section)`
   .content-wrapper {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     justify-content: flex-start;
     align-items: center;
     column-gap: 3rem;
@@ -40,7 +40,7 @@ const StyledVideoSection = styled(Section)`
 
   .video {
     position: relative;
-    margin: 2rem auto 0 auto;
+    margin: 2rem auto 4rem auto;
 
     @media screen and (${devices.md}) {
       margin: 0 auto;

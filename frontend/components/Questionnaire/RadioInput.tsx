@@ -47,7 +47,6 @@ const StyledRadioInput = styled.div`
       &::before {
         content: '';
         display: inline-block;
-        box-sizing: border-box;
         background-color: white;
         border-radius: 45% 55% 48% 52% / 50% 46% 54% 50%;
         width: 2rem;

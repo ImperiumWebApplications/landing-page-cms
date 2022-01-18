@@ -48,7 +48,6 @@ const StyledCookieConsent = styled.div`
     }
 
     button {
-      box-sizing: border-box;
       margin-top: 1rem;
       padding: 0.75rem 1.5rem;
       border: none;

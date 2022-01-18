@@ -70,7 +70,6 @@ const StyledStepNavigation = styled.div`
         width: 1rem;
         height: 1rem;
         background-color: white;
-        box-sizing: border-box;
         border: 2px solid
           ${({ theme }) =>
             hexRgb(theme.colors.secondary, { format: 'css', alpha: 0.75 })};

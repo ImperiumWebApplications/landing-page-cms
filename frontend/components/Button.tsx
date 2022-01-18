@@ -8,7 +8,8 @@ const StyledButton = styled.a<{
   fixedWidth: string | undefined;
 }>`
   display: block;
-  width: ${({ fixedWidth }) => fixedWidth ?? 'auto'};
+  width: ${({ fixedWidth, fullWidth }) =>
+    fixedWidth ? fixedWidth : fullWidth ? '100%' : 'auto'};
   max-width: ${({ fullWidth, fixedWidth }) =>
     !fullWidth && !fixedWidth ? '18rem' : 'unset'};
   border-radius: ${({ theme }) => theme.borderRadius};

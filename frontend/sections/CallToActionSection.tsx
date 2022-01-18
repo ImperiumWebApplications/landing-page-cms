@@ -82,32 +82,22 @@ const StyledCallToActionSection = styled(Section)`
     column-gap: 2rem;
     min-height: 8rem;
     max-width: 70rem;
-    margin-top: 3rem;
+    margin-top: 2rem;
     padding: 3rem 1.5rem;
-    background-color: ${({ theme }) => theme.colors.tertiary};
+    background-color: #f8f8f8;
     border-radius: ${({ theme }) => theme.borderRadius};
+    border: 4px dashed ${({ theme }) => theme.colors.tertiary};
 
     @media screen and (${devices.md}) {
       flex-direction: row;
-      align-items: flex-start;
+      align-items: center;
       justify-content: space-between;
       column-gap: 2rem;
       padding: 3rem 2rem;
-    }
-
-    @media screen and (${devices.lg}) {
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: space-between;
-      column-gap: 5rem;
+      margin-top: 3rem;
     }
 
     @media screen and (${devices.xl}) {
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 2rem;
-
       &::before {
         content: '';
         position: absolute;
@@ -139,6 +129,9 @@ const StyledCallToActionSection = styled(Section)`
       letter-spacing: -2px;
       opacity: 0.75;
       margin-bottom: 2rem;
+      margin-right: 1rem;
+      white-space: nowrap;
+      flex: 1;
 
       @media screen and (${devices.md}) {
         margin-bottom: 0;
@@ -156,11 +149,16 @@ const StyledCallToActionSection = styled(Section)`
       align-items: center;
       column-gap: 3rem;
       row-gap: 1rem;
+      width: 100%;
 
       @media screen and (${devices.lg}) {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+      }
+
+      @media screen and (${devices.xl}) {
+        width: auto;
       }
 
       span {
@@ -177,7 +175,7 @@ export const CallToActionSection: React.FunctionComponent<{
   content: ICallToActionSection;
 }> = ({ id, phoneNumber, content }) => {
   const theme = useTheme();
-  const isLargeMobile = useMediaQuery(`(${devices.xs})`);
+  const isDesktopBreakpoint = useMediaQuery(`(${devices.xl})`);
 
   return (
     <StyledCallToActionSection id={id}>
@@ -202,7 +200,8 @@ export const CallToActionSection: React.FunctionComponent<{
               href={startQuestionnaire.href}
               label={startQuestionnaire.label}
               color={theme.colors.secondary}
-              fixedWidth={isLargeMobile ? '15rem' : '12rem'}
+              fixedWidth={isDesktopBreakpoint ? '18rem' : undefined}
+              fullWidth={isDesktopBreakpoint ? false : true}
               icon={
                 <ArrowRightCircleFill
                   size={20}
@@ -217,7 +216,8 @@ export const CallToActionSection: React.FunctionComponent<{
                   href={`tel:${phoneNumber}`}
                   label={phoneNumber}
                   color={theme.colors.primary}
-                  fixedWidth={isLargeMobile ? '15rem' : '12rem'}
+                  fixedWidth={isDesktopBreakpoint ? '18rem' : undefined}
+                  fullWidth={isDesktopBreakpoint ? false : true}
                 />
               </>
             )}

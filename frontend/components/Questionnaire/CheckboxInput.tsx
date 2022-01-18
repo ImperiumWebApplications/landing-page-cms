@@ -44,7 +44,6 @@ const StyledCheckboxInput = styled.div`
       content: '';
       display: inline-block;
       flex-shrink: 0;
-      box-sizing: border-box;
       background-color: white;
       border-radius: ${({ theme }) => theme.borderRadius};
       width: 2rem;

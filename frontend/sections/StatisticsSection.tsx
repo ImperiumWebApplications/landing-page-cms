@@ -30,10 +30,11 @@ const StyledStatisticsSection = styled(Section)<{
     display: grid;
     grid-template-columns: repeat(auto-fit, 1fr);
     column-gap: 2rem;
-    row-gap: 2rem;
+    row-gap: 1rem;
 
     @media screen and (${devices.sm}) {
       grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+      row-gap: 2rem;
     }
   }
 
@@ -42,11 +43,7 @@ const StyledStatisticsSection = styled(Section)<{
     padding: 1rem;
     color: white;
     font-weight: 700;
-    font-size: 4rem;
-
-    @media screen and (${devices.sm}) {
-      font-size: 3rem;
-    }
+    font-size: 3rem;
 
     @media screen and (${devices.lg}) {
       font-size: 4rem;
@@ -98,6 +95,6 @@ export const StatisticsSection: React.FunctionComponent<{
   );
 };
 
-const toLocaleString = (n: number, sep: string = '.') => {
+const toLocaleString = (n: number, sep = '.') => {
   return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, sep);
 };

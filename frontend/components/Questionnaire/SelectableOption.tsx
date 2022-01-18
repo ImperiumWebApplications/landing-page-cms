@@ -8,7 +8,6 @@ import type { ImageObject } from '../../backend-api';
 import { devices } from '../../config/breakpoints.config';
 
 const StyledSelectableOption = styled.div`
-  box-sizing: border-box;
   position: relative;
   display: flex;
   flex-direction: column;
