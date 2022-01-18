@@ -30,6 +30,10 @@ export const GlobalStyle = createGlobalStyle<{
   /** Reset CSS */
   ${reset}
 
+  * {
+    box-sizing: border-box;
+  }
+
   /** Layout */
   html, body {
     height: 100%;
