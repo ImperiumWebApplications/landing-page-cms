@@ -23,7 +23,7 @@ const StyledCookieConsent = styled.div`
     padding: 2rem;
     bottom: 2rem !important;
     right: 1rem;
-    width: 17rem;
+    width: calc(100% - 2rem);
     height: auto;
     border-radius: ${({ theme }) => theme.borderRadius};
     font-size: 0.9rem;
