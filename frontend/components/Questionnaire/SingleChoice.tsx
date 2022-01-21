@@ -63,10 +63,10 @@ export const SingleChoice: React.FunctionComponent<{
 
   return (
     <StyledSingleChoice>
-      {answers.map(({ id: answer_id, answer_icon, answer_value }, key) => {
+      {answers.map(({ id: answer_id, answer_icon, answer_value }) => {
         return !!answer_value ? (
           <SelectableOption
-            key={key}
+            key={answer_id}
             label={answer_value}
             selected={currentAnswer === answer_value}
             icon={answer_icon}
