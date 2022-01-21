@@ -69,6 +69,11 @@ export const Questionnaire: React.FunctionComponent<QuestionnaireProps> = ({
 }) => {
   const { state, dispatch } = useQuestionnaireContext();
 
+  // Force pop-up "Do you really want to leave page?" during questionnaire
+  React.useEffect(() => {
+    window.onbeforeunload = () => true;
+  }, []);
+
   React.useEffect(() => {
     // Initialize state on mount
     setBrowserHistory<QuestionnaireHistoryState>({ step: 0 });
