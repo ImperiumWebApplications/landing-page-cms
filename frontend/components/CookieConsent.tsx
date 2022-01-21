@@ -109,7 +109,7 @@ export const CookieConsent: React.FunctionComponent<CookieConsentProps> = ({
         disableStyles={true}
         enableDeclineButton={true}
         expires={30}
-        buttonText="Marketing Cookies erlauben"
+        buttonText="Cookies erlauben"
         buttonClasses="acceptButton"
         onAccept={() => setConsent(true)}
         ariaAcceptLabel="Cookies erlauben"
@@ -120,14 +120,15 @@ export const CookieConsent: React.FunctionComponent<CookieConsentProps> = ({
         cookieName={COOKIE_CONSENT_NAME}
       >
         <span className="title">Hinweis</span>
-        Für ein optimales Website-Erlebnis nutzen wir Cookies und ähnliche
-        Technologien, Funktionen anzubieten und Statistiken zu erheben. Mit
-        einem Klick auf <em>Marketing-Cookies erlauben</em> genehmigen Sie uns
-        die Datenverarbeitung und Weitergabe an Drittanbieter gemäß unserer{' '}
+        Diese Webseite nutzt Cookies und Tracking-Technologien. Ein Teil ist zur
+        Nutzung erforderlich. Andere Technologien dienen dem Ausspielen
+        personalisierter Werbung oder der Auswertung des Nutzerverhaltens. Mit
+        einem Klick auf <strong>Cookies erlauben</strong> genehmigen Sie uns die
+        Datenverarbeitung und Weitergabe an Dritte gemäß der{' '}
         <a href="/datenschutz" target="_blank">
           Datenschutzerklärung
         </a>
-        . Sie können die Einwilligung für Cookies jederzeit zurückziehen.
+        .
       </CookieConsentModal>
     </StyledCookieConsent>
   );
