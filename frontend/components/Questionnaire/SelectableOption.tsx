@@ -10,21 +10,25 @@ import { devices } from '../../config/breakpoints.config';
 const StyledSelectableOption = styled.div`
   position: relative;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: flex-start;
   align-items: center;
-  width: calc(50% - 1rem);
+  width: 100%;
   height: auto;
-  padding: 2rem;
+  padding: 0.5rem 1rem;
   background: linear-gradient(white 0, white 100%);
-  border-radius: 1rem;
-  box-shadow: 0 10px 10px 0 rgb(0 0 0 / 5%);
+  border-radius: 0.5rem;
+  box-shadow: 0 5px 5px 0 rgb(0 0 0 / 5%);
   transition: all 0.3s ease-in-out;
 
-  @media screen and (${devices.sm}) {
+  @media screen and (${devices.md}) {
+    flex-direction: column;
+    justify-content: center;
     width: 12rem;
     height: 12rem;
+    padding: 2rem;
     border-radius: 2rem;
+    box-shadow: 0 10px 10px 0 rgb(0 0 0 / 5%);
   }
 
   @media screen and (${devices.xl}) {
@@ -41,7 +45,7 @@ const StyledSelectableOption = styled.div`
     left: 0;
     z-index: 1;
     opacity: 0;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     background: linear-gradient(
       180deg,
       ${({ theme }) =>
@@ -51,7 +55,7 @@ const StyledSelectableOption = styled.div`
     );
     transition: opacity 0.3s ease-in-out;
 
-    @media screen and (${devices.sm}) {
+    @media screen and (${devices.md}) {
       border-radius: 2rem;
     }
   }
@@ -81,10 +85,10 @@ const StyledSelectableOption = styled.div`
     z-index: 2;
 
     svg {
-      width: 3rem;
-      height: 3rem;
+      width: 2.5rem;
+      height: 2.5rem;
 
-      @media screen and (${devices.sm}) {
+      @media screen and (${devices.md}) {
         width: 4rem;
         height: 4rem;
       }
@@ -101,35 +105,16 @@ const StyledSelectableOption = styled.div`
     }
   }
 
-  .label {
-    position: relative;
-    z-index: 2;
-    font-size: 1rem;
-    font-weight: 700;
-    margin-top: 1rem;
-    text-align: center;
-    color: ${({ theme }) => theme.colors.primary};
-
-    @media screen and (${devices.sm}) {
-      font-size: 1.25rem;
-      margin-top: 2rem;
-    }
-
-    @media screen and (${devices.xl}) {
-      font-size: 1.5rem;
-    }
-  }
-
   .icon-placeholder {
-    width: 3rem;
-    height: 3rem;
+    width: 2.5rem;
+    height: 2.5rem;
     background-color: ${({ theme }) => theme.colors.secondary};
     border-radius: 50%;
     border-radius: 40% 60% 70% 30% / 40% 40% 60% 50%;
     opacity: 0.125;
     flex-shrink: 0;
 
-    @media screen and (${devices.sm}) {
+    @media screen and (${devices.md}) {
       width: 4rem;
       height: 4rem;
     }
@@ -137,6 +122,25 @@ const StyledSelectableOption = styled.div`
     @media screen and (${devices.xl}) {
       width: 5rem;
       height: 5rem;
+    }
+  }
+
+  .label {
+    position: relative;
+    z-index: 2;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-left: 1rem;
+    text-align: center;
+    color: ${({ theme }) => theme.colors.primary};
+
+    @media screen and (${devices.md}) {
+      margin-left: 0;
+      margin-top: 2rem;
+    }
+
+    @media screen and (${devices.xl}) {
+      font-size: 1.5rem;
     }
   }
 `;
