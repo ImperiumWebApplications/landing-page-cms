@@ -30,6 +30,10 @@ const StyledContactForm = styled.div`
     color: white;
     font-size: 0.8rem;
     padding: 0.125rem 0.5rem;
+
+    @media screen and (${devices.md}) {
+      margin: -1rem auto 2rem auto;
+    }
   }
 
   form .input-group {
