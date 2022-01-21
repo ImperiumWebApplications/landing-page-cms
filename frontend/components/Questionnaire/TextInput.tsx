@@ -19,31 +19,38 @@ const StyledTextInput = styled.div<{ hasError: undefined | string }>`
   &::after {
     content: '${({ hasError }) => (hasError ? hasError : '')}';
     position: absolute;
-    bottom: 0.5rem;
-    left: 1rem;
+    bottom: 0.25rem;
+    left: 0.6rem;
     font-size: 0.8rem;
     opacity: 0.75;
     color: red;
+
+    @media screen and (${devices.md}) {
+      bottom: 0.5rem;
+      left: 1rem;
+    }
   }
 
   label {
     display: block;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
     letter-spacing: +0.25px;
+    font-size: 0.9rem;
 
     @media screen and (${devices.md}) {
       margin-bottom: 0.75rem;
+      font-size: 1rem;
     }
   }
   input {
-    padding: 1rem 0.75rem;
+    padding: 0.75rem;
     font-size: 1.125rem;
     line-height: 1.75rem;
     letter-spacing: +1px;
     border-radius: 0.5rem;
     border: 2px solid
       ${({ theme, hasError }) => (hasError ? 'red' : theme.colors.tertiary)};
-    width: calc(100% - 1.25rem * 2);
+    width: 100%;
     transition: box-shadow 0.1s ease-in-out;
 
     @media screen and (${devices.md}) {
