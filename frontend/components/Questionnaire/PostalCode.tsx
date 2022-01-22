@@ -40,12 +40,31 @@ const StyledPostalCode = styled.div`
       }
     }
   }
+
+  span.error {
+    display: block;
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: red;
+    opacity: 0.75;
+  }
 `;
 
 export const PostalCode: React.FunctionComponent = () => {
+  const [error, setError] = React.useState<string | undefined>(undefined);
   const { state, dispatch } = useQuestionnaireContext();
   const { label, value: initialValue } = state.contact.postalCode;
   const theme = useTheme();
+
+  const onClickHandler: React.MouseEventHandler = () => {
+    if (state.contact.postalCode.value.trim() === '') {
+      setError('Bitte geben Sie Ihre Postleitzahl an.');
+      return;
+    }
+
+    goToStep(dispatch, state.currentIndex + 1);
+  };
 
   return (
     <StyledPostalCode>
@@ -72,7 +91,7 @@ export const PostalCode: React.FunctionComponent = () => {
         </div>
         <Button
           label="Weiter"
-          onClickHandler={() => goToStep(dispatch, state.currentIndex + 1)}
+          onClickHandler={onClickHandler}
           icon={
             <NavigateNext
               width={24}
@@ -82,6 +101,7 @@ export const PostalCode: React.FunctionComponent = () => {
           }
           fullWidth
         />
+        {error && <span className="error">{error}</span>}
       </div>
     </StyledPostalCode>
   );
