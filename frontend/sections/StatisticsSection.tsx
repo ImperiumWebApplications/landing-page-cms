@@ -26,7 +26,7 @@ const StyledStatisticsSection = styled(Section)<{
     backdrop-filter: blur(0.5rem);
   }
 
-  .content-wrapper {
+  & > .content-wrapper {
     display: grid;
     grid-template-columns: repeat(auto-fit, 1fr);
     column-gap: 2rem;

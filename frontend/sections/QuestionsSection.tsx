@@ -7,7 +7,7 @@ import { Section } from '../components/Section';
 import { devices } from '../config/breakpoints.config';
 
 const StyledQuestionsSection = styled(Section)`
-  .content-wrapper {
+  & > .content-wrapper {
     position: relative;
     min-height: 40vh;
     padding-top: 4rem;

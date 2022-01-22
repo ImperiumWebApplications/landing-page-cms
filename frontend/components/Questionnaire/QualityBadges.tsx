@@ -3,6 +3,7 @@ import Image from 'next/image';
 import hexRgb from 'hex-rgb';
 
 import { badges } from '../../config/badges.config';
+import { devices } from '../../config/breakpoints.config';
 
 const StyledQualityBadges = styled.div`
   display: flex;
@@ -11,6 +12,11 @@ const StyledQualityBadges = styled.div`
   justify-content: center;
   column-gap: 3rem;
   padding: 0.5rem;
+  margin-bottom: -2rem;
+
+  @media screen and (${devices.md}) {
+    margin-bottom: -6rem;
+  }
 
   background-image: linear-gradient(
     to right,

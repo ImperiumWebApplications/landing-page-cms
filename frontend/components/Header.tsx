@@ -19,14 +19,18 @@ const StyledHeader = styled.header<{ centerLogo: boolean }>`
     width: 100%;
     height: auto;
     min-height: 4rem;
-  }
 
-  .content-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: ${({ centerLogo }) =>
-      centerLogo ? 'center' : 'space-between'};
-    width: 100%;
+    .content-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: ${({ centerLogo }) =>
+        centerLogo ? 'center' : 'space-between'};
+      width: 100%;
+
+      & > div:first-of-type {
+        margin-right: ${({ centerLogo }) => (centerLogo ? '0' : '2rem')};
+      }
+    }
   }
 
   .button {

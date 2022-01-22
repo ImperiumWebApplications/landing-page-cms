@@ -24,7 +24,7 @@ const StyledReviewsSection = styled(Section)`
     white 60%
   );
 
-  .content-wrapper {
+  & > .content-wrapper {
     max-width: 60rem;
   }
 

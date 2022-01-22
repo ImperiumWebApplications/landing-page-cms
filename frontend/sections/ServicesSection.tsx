@@ -13,7 +13,7 @@ import { devices } from '../config/breakpoints.config';
 import { swiperNavigationCss } from '../config/swiper.config';
 
 const StyledServicesSection = styled(Section)`
-  .content-wrapper > .animated-services {
+  & > .content-wrapper > .animated-services {
     padding-bottom: 4rem;
   }
 

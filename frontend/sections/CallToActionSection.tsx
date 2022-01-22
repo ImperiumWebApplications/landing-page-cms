@@ -19,7 +19,7 @@ const ClientSideOnlyButton = dynamic<ButtonProps>(
 const StyledCallToActionSection = styled(Section)`
   overflow-x: hidden;
 
-  .content-wrapper {
+  & > .content-wrapper {
     padding-top: 4rem;
     padding-bottom: 4rem;
   }

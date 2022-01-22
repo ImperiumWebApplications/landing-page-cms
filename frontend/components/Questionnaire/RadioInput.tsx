@@ -59,11 +59,6 @@ const StyledRadioInput = styled.div`
         height: 1.5rem;
         margin-right: 0.75rem;
         border: 2px solid ${({ theme }) => theme.colors.tertiary};
-
-        @media screen and (${devices.md}) {
-          width: 2rem;
-          height: 2rem;
-        }
       }
     }
   }

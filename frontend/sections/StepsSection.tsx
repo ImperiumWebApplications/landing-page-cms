@@ -6,7 +6,7 @@ import { Animation } from '../components/Animation';
 import { devices } from '../config/breakpoints.config';
 
 const StyledStepsSection = styled(Section)`
-  .content-wrapper {
+  & > .content-wrapper {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -88,7 +88,7 @@ export const StepsSection: React.FunctionComponent<{
     <StyledStepsSection id={id} bgColor={theme.colors.tertiary}>
       {steps.length &&
         steps.map((step, i) => {
-          const delay = 600 + 200 * i;
+          const delay = 300 + 200 * i;
           return (
             <Animation key={i} className="step" type="fadeUp" delay={delay}>
               <div className="step">

@@ -10,12 +10,19 @@ const StyledAdvantages = styled(Section)`
   background-color: ${({ theme }) =>
     hexRgb(theme.colors.primary, { format: 'css', alpha: 0.1 })};
 
-  .content-wrapper {
+  & > .content-wrapper {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
     row-gap: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    @media screen and (${devices.md}) {
+      padding-left: 4rem;
+      padding-right: 4rem;
+    }
 
     @media screen and (${devices.md}) {
       flex-direction: row;
@@ -31,7 +38,7 @@ const StyledAdvantages = styled(Section)`
       align-items: center;
       column-gap: 1rem;
 
-      .content {
+      .advantage-content {
         line-height: 1.5rem;
         span {
           display: block;
@@ -58,7 +65,7 @@ export const Advantages: React.FunctionComponent<{ content?: Advantage[] }> = ({
                 width={50}
                 height={50}
               />
-              <div className="content">
+              <div className="advantage-content">
                 <span>{advantage.first_line}</span>
                 {advantage.second_line}
               </div>

@@ -14,7 +14,7 @@ const StyledFooter = styled.footer`
   background-color: ${({ theme }) => theme.colors.primary};
   color: ${({ theme }) => theme.colors.tertiary};
 
-  .content-wrapper {
+  & > .content-wrapper {
     width: 100%;
     display: grid;
     grid-template-columns: 100%;

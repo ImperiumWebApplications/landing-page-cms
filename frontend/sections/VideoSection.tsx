@@ -14,7 +14,7 @@ import { Animation } from '../components/Animation';
 import { devices } from '../config/breakpoints.config';
 
 const StyledVideoSection = styled(Section)`
-  .content-wrapper {
+  & > .content-wrapper {
     display: flex;
     flex-direction: column-reverse;
     justify-content: flex-start;

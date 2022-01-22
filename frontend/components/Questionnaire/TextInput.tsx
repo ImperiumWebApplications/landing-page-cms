@@ -20,13 +20,13 @@ const StyledTextInput = styled.div<{ hasError: undefined | string }>`
     content: '${({ hasError }) => (hasError ? hasError : '')}';
     position: absolute;
     bottom: 0.25rem;
-    left: 0.6rem;
+    left: 1rem;
     font-size: 0.8rem;
     opacity: 0.75;
     color: red;
 
     @media screen and (${devices.md}) {
-      bottom: 0.5rem;
+      bottom: 0.25rem;
       left: 1rem;
     }
   }
@@ -42,8 +42,9 @@ const StyledTextInput = styled.div<{ hasError: undefined | string }>`
       font-size: 1rem;
     }
   }
+
   input {
-    padding: 0.75rem;
+    padding: 0.75rem 1rem;
     font-size: 1.125rem;
     line-height: 1.75rem;
     letter-spacing: +1px;
@@ -52,10 +53,6 @@ const StyledTextInput = styled.div<{ hasError: undefined | string }>`
       ${({ theme, hasError }) => (hasError ? 'red' : theme.colors.tertiary)};
     width: 100%;
     transition: box-shadow 0.1s ease-in-out;
-
-    @media screen and (${devices.md}) {
-      padding: 1.5rem 1.25rem;
-    }
 
     &:hover,
     &:active,

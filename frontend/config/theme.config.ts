@@ -1,6 +1,5 @@
 import reset from 'styled-reset';
-import hexRgb from 'hex-rgb';
-import { createGlobalStyle, css } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 
 import type { LandingPage } from '../backend-api';
 import { FontConfig } from './font.config';
@@ -134,29 +133,4 @@ export const GlobalStyle = createGlobalStyle<{
       transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
     }
   }
-
-  /** Funnel Route Specifics */
-  ${({ isFunnelRoute }) =>
-    isFunnelRoute &&
-    css`
-      body {
-        background: linear-gradient(
-          to bottom,
-          ${({ theme }) =>
-              hexRgb(theme.colors.secondary, { format: 'css', alpha: 0.1 })}
-            50%,
-          ${({ theme }) =>
-              hexRgb(theme.colors.secondary, { format: 'css', alpha: 0.03 })}
-            100%
-        );
-      }
-
-      main {
-        position: relative;
-        z-index: 2;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-      }
-    `}
 `;
