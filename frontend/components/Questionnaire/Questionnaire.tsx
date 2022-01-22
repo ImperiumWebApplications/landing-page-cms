@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import hexRgb from 'hex-rgb';
 
 import type { Advantage, QuestionnaireQuestion } from '../../backend-api';
 import type { SingleChoiceEventHandler } from './SingleChoice';
@@ -10,28 +11,43 @@ import { Question } from './Question';
 import { PostalCode } from './PostalCode';
 import { ContactForm } from './ContactForm';
 import { Confirmation } from './Confirmation';
-import { StepNavigation } from './StepNavigation';
-import { devices } from '../../config/breakpoints.config';
+import { Progress } from './Progress';
+import { BackButton } from './BackButton';
 import { setBrowserHistory } from '../../utils/setBrowserHistory';
+import { devices } from '../../config/breakpoints.config';
 
 const StyledQuestionnaire = styled(Section)`
-  .content-wrapper {
+  padding: 1rem;
+  border-bottom: 0.25rem solid white;
+  background-color: ${({ theme }) =>
+    hexRgb(theme.colors.primary, { format: 'css', alpha: 1 })};
+
+  @media screen and (${devices.md}) {
+    padding: 3rem;
+  }
+
+  & > .content-wrapper {
+    position: relative;
     height: 100%;
+    max-width: 67.5rem;
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: auto 1fr;
+    background-color: white;
+    border-radius: ${({ theme }) => theme.borderRadius};
+    padding: 0;
   }
 
   .header {
     position: relative;
-    margin-bottom: 3rem;
     text-align: center;
     text-transform: uppercase;
     font-size: 0.9rem;
     letter-spacing: +0.5px;
+    padding-top: 2rem;
 
-    @media screen and (${devices.sm}) {
-      margin-bottom: 4rem;
+    @media screen and (${devices.md}) {
+      padding-top: 4rem;
     }
 
     &::after {
@@ -47,6 +63,11 @@ const StyledQuestionnaire = styled(Section)`
 
   .content {
     place-self: center;
+    padding: 3rem 1rem 4rem 1rem;
+
+    @media screen and (${devices.md}) {
+      padding: 4rem 2rem 8rem 2rem;
+    }
   }
 `;
 
@@ -99,27 +120,27 @@ export const Questionnaire: React.FunctionComponent<QuestionnaireProps> = ({
   const isFormSuccessStep = state.currentIndex === zeroBasedQuestionsCount + 3;
 
   const currentQuestionData = questions[state.currentIndex];
+  const progress = state.currentIndex / (zeroBasedQuestionsCount + 3);
 
   return (
-    <>
-      <StyledQuestionnaire id="questionnaire">
-        <div className="header">100% Kostenlos</div>
-        <div className="content">
-          {isQuestionStep && (
-            <Question
-              data={currentQuestionData}
-              customSelectHandler={customSelectHandler}
-            />
-          )}
-          {isPostalCodeStep && <PostalCode />}
-          {isContactFormStep && <ContactForm />}
-          {isFormSuccessStep && <Confirmation phone={phone} />}
-          {(isQuestionStep || isPostalCodeStep) && (
-            <StepNavigation stepCount={zeroBasedQuestionsCount + 3} />
-          )}
-        </div>
-      </StyledQuestionnaire>
+    <StyledQuestionnaire id="questionnaire">
+      <Progress percentage={progress} />
+      <div className="header">
+        <BackButton />
+        <span className="free-tier">100% Kostenlos</span>
+      </div>
+      <div className="content">
+        {isQuestionStep && (
+          <Question
+            data={currentQuestionData}
+            customSelectHandler={customSelectHandler}
+          />
+        )}
+        {isPostalCodeStep && <PostalCode />}
+        {isContactFormStep && <ContactForm />}
+        {isFormSuccessStep && <Confirmation phone={phone} />}
+      </div>
       <Advantages content={advantages} />
-    </>
+    </StyledQuestionnaire>
   );
 };

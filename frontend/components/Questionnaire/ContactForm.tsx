@@ -11,6 +11,7 @@ import { CheckboxInput } from './CheckboxInput';
 import { QualityBadges } from './QualityBadges';
 import { devices } from '../../config/breakpoints.config';
 import { formFieldValidations } from '../../config/form.config';
+import { getAnimation } from '../../config/animations.config';
 import { goToStep } from '../../utils/goToStep';
 import { isFormDataComplete } from '../../utils/isFormDataComplete';
 
@@ -19,20 +20,28 @@ const StyledContactForm = styled.div`
   margin: 0 auto;
 
   .toast {
+    position: absolute;
+    left: calc(50% - 4rem);
+    top: -0.25rem;
+    width: 8rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 7.5rem;
-    vertical-align: middle;
-    margin: -1rem auto 1rem auto;
+    padding: 0.125rem 0.5rem;
     background-color: ${({ theme }) => theme.colors.primary};
     border-radius: ${({ theme }) => theme.borderRadius};
     color: white;
     font-size: 0.8rem;
-    padding: 0.125rem 0.5rem;
+
+    animation-name: ${getAnimation('fadeDown')};
+    animation-delay: 500ms;
+    animation-duration: 100ms;
+    animation-fill-mode: backwards;
 
     @media screen and (${devices.md}) {
-      margin: -1rem auto 2rem auto;
+      left: calc(50% - 4.5rem);
+      width: 9rem;
+      font-size: 0.9rem;
     }
   }
 
@@ -112,7 +121,7 @@ export const ContactForm: React.FunctionComponent = () => {
   return (
     <StyledContactForm>
       <div className="toast">
-        <BadgeCheck width={18} /> Fast geschafft
+        <BadgeCheck width={18} /> Letzter Schritt
       </div>
       <StyledStepTitle>Für wen sind die Angebote bestimmt?</StyledStepTitle>
       <form onSubmit={onSubmitHandler}>

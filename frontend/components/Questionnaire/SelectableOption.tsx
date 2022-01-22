@@ -1,7 +1,6 @@
 import type { MouseEvent } from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
-import hexRgb from 'hex-rgb';
 import { ReactSVG } from 'react-svg';
 
 import type { ImageObject } from '../../backend-api';
@@ -16,67 +15,44 @@ const StyledSelectableOption = styled.div`
   width: 100%;
   height: auto;
   padding: 0.5rem 1rem;
-  background: linear-gradient(white 0, white 100%);
   border-radius: 0.5rem;
-  box-shadow: 0 5px 5px 0 rgb(0 0 0 / 5%);
   transition: all 0.3s ease-in-out;
+  background-color: #f8f8f8;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 
   @media screen and (${devices.md}) {
     flex-direction: column;
     justify-content: center;
+    width: 10rem;
+    height: 10rem;
+    padding: 1rem;
+    border-radius: 1.5rem;
+  }
+
+  @media screen and (${devices.lg}) {
     width: 12rem;
     height: 12rem;
     padding: 2rem;
-    border-radius: 2rem;
-    box-shadow: 0 10px 10px 0 rgb(0 0 0 / 5%);
   }
 
-  @media screen and (${devices.xl}) {
-    width: 16rem;
-    height: 16rem;
-  }
+  @media (hover) {
+    &:hover,
+    &[data-selected='true'] {
+      background-color: ${({ theme }) => theme.colors.secondary};
 
-  &::before {
-    position: absolute;
-    content: '';
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 1;
-    opacity: 0;
-    border-radius: 0.5rem;
-    background: linear-gradient(
-      180deg,
-      ${({ theme }) =>
-          hexRgb(theme.colors.secondary, { format: 'css', alpha: 0.5 })}
-        0,
-      ${({ theme }) => theme.colors.secondary} 100%
-    );
-    transition: opacity 0.3s ease-in-out;
+      .icon svg,
+      .icon svg path {
+        fill: white !important;
+      }
 
-    @media screen and (${devices.md}) {
-      border-radius: 2rem;
-    }
-  }
+      .label {
+        color: white;
+      }
 
-  &:hover,
-  &[data-selected='true'] {
-    &::before {
-      opacity: 1;
-    }
-
-    .icon svg,
-    .icon svg path {
-      fill: white !important;
-    }
-
-    .label {
-      color: white;
-    }
-
-    .icon-placeholder {
-      background-color: white;
+      .icon-placeholder {
+        background-color: white;
+      }
     }
   }
 
@@ -89,13 +65,13 @@ const StyledSelectableOption = styled.div`
       height: 2.5rem;
 
       @media screen and (${devices.md}) {
-        width: 4rem;
-        height: 4rem;
+        width: 3rem;
+        height: 3rem;
       }
 
-      @media screen and (${devices.xl}) {
-        width: 5rem;
-        height: 5rem;
+      @media screen and (${devices.lg}) {
+        width: 4rem;
+        height: 4rem;
       }
     }
 
@@ -115,13 +91,13 @@ const StyledSelectableOption = styled.div`
     flex-shrink: 0;
 
     @media screen and (${devices.md}) {
-      width: 4rem;
-      height: 4rem;
+      width: 3rem;
+      height: 3rem;
     }
 
-    @media screen and (${devices.xl}) {
-      width: 5rem;
-      height: 5rem;
+    @media screen and (${devices.lg}) {
+      width: 4rem;
+      height: 4rem;
     }
   }
 
@@ -136,11 +112,15 @@ const StyledSelectableOption = styled.div`
 
     @media screen and (${devices.md}) {
       margin-left: 0;
+      margin-top: 1rem;
+    }
+
+    @media screen and (${devices.lg}) {
       margin-top: 2rem;
     }
 
     @media screen and (${devices.xl}) {
-      font-size: 1.5rem;
+      font-size: 1.25rem;
     }
   }
 `;

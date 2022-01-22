@@ -16,14 +16,9 @@ const StyledSingleChoice = styled.div`
   row-gap: 1rem;
   flex-wrap: wrap;
 
-  @media screen and (${devices.sm}) {
+  @media screen and (${devices.md}) {
     column-gap: 2rem;
     row-gap: 2rem;
-  }
-
-  @media screen and (${devices.xl}) {
-    column-gap: 4rem;
-    row-gap: 4rem;
   }
 
   [role='button'] {
