@@ -1,7 +1,7 @@
 import slugify from 'slugify';
 import styled from 'styled-components';
 
-import type { ContactData } from '../../context/Questionnaire/state';
+import type { RadioFieldKey } from '../../context/Questionnaire/state';
 import { useQuestionnaireContext } from '../../context/Questionnaire';
 import { devices } from '../../config/breakpoints.config';
 
@@ -65,7 +65,7 @@ const StyledRadioInput = styled.div`
 `;
 
 export const RadioInput: React.FunctionComponent<{
-  field: keyof ContactData;
+  field: RadioFieldKey;
   options: string[];
 }> = ({ field, options }) => {
   const { state, dispatch } = useQuestionnaireContext();

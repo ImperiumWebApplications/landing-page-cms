@@ -1,12 +1,19 @@
 import { formFieldLabelConfiguration } from '../../config/form.config';
 
-type SalutationField = { type: 'radio'; value: ''; options: string[] };
+type RadioField = { type: 'radio'; value: ''; options: string[] };
 type TextField = { type: 'text'; label: string; value: string };
 type EmailField = { type: 'email'; label: string; value: string };
 type CheckboxField = { type: 'checkbox'; label: string; value: boolean };
 
+export type CheckboxFieldKey = Extract<keyof ContactData, 'acceptedTerms'>;
+export type RadioFieldKey = Extract<keyof ContactData, 'salutation'>;
+export type TextFieldKey = Exclude<
+  keyof ContactData,
+  'salutation' | 'acceptedTerms'
+>;
+
 export type ContactData = {
-  salutation: SalutationField;
+  salutation: RadioField;
   firstName: TextField;
   lastName: TextField;
   email: EmailField;

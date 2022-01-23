@@ -23,9 +23,11 @@ const StyledBackButton = styled.div`
   }
 `;
 
-export const BackButton: React.FunctionComponent = () => {
+export const BackButton: React.FunctionComponent<{ hide?: boolean }> = ({
+  hide,
+}) => {
   const { state, dispatch } = useQuestionnaireContext();
-  if (state.currentIndex === 0) return <></>;
+  if (hide) return <></>;
 
   const onClickHandler: React.MouseEventHandler = () => {
     dispatch({

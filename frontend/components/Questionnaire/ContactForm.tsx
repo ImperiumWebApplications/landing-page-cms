@@ -2,7 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import { BadgeCheck } from '@styled-icons/heroicons-outline';
 
-import type { ContactData } from '../../context/Questionnaire/state';
+import type {
+  CheckboxFieldKey,
+  ContactData,
+  RadioFieldKey,
+  TextFieldKey,
+} from '../../context/Questionnaire/state';
 import { useQuestionnaireContext } from '../../context/Questionnaire';
 import { StyledStepTitle } from './StepTitle';
 import { TextInput } from './TextInput';
@@ -115,6 +120,7 @@ export const ContactForm: React.FunctionComponent = () => {
       return;
     }
 
+    console.log(state);
     goToStep(dispatch, state.currentIndex + 1);
   };
 
@@ -134,7 +140,7 @@ export const ContactForm: React.FunctionComponent = () => {
                   return (
                     <RadioInput
                       key={key}
-                      field={input.field as keyof ContactData}
+                      field={input.field as RadioFieldKey}
                       options={input.options}
                     />
                   );
@@ -144,9 +150,8 @@ export const ContactForm: React.FunctionComponent = () => {
                     <TextInput
                       key={key}
                       type={input.type}
-                      field={input.field as keyof ContactData}
+                      field={input.field as TextFieldKey}
                       label={input.label}
-                      initialValue={input.value}
                       validations={
                         formFieldValidations[input.field as keyof ContactData]
                       }
@@ -156,7 +161,7 @@ export const ContactForm: React.FunctionComponent = () => {
                   return (
                     <CheckboxInput
                       key={key}
-                      field={input.field as keyof ContactData}
+                      field={input.field as CheckboxFieldKey}
                       label={input.label}
                     />
                   );

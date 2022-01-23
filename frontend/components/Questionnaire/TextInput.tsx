@@ -3,10 +3,10 @@ import React from 'react';
 import slugify from 'slugify';
 import styled from 'styled-components';
 
-import type { ContactData } from '../../context/Questionnaire/state';
+import type { TextFieldKey } from '../../context/Questionnaire/state';
+import type { Validator } from '../../config/form.config';
 import { useQuestionnaireContext } from '../../context/Questionnaire';
 import { devices } from '../../config/breakpoints.config';
-import type { Validator } from '../../config/form.config';
 
 const StyledTextInput = styled.div<{ hasError: undefined | string }>`
   position: relative;
@@ -72,19 +72,27 @@ const defaultValidations: Validator[] = [
 export const TextInput: React.FunctionComponent<{
   label: string;
   type: string;
-  field: keyof ContactData;
-  initialValue: string;
+  field: TextFieldKey;
   pattern?: string;
   validations?: Validator[];
-}> = ({ label, type, field, initialValue, pattern, validations }) => {
-  const { dispatch } = useQuestionnaireContext();
-  const [value, setValue] = React.useState(initialValue);
+}> = ({ label, type, field, pattern, validations }) => {
+  const { state, dispatch } = useQuestionnaireContext();
   const [error, setError] = React.useState<undefined | string>(undefined);
   const inputId = slugify(field);
+  const value = state.contact[field].value;
 
   const validators = validations
     ? [...validations, ...defaultValidations]
     : defaultValidations;
+
+  const onChangeHandler: React.ChangeEventHandler<HTMLInputElement> = (
+    event,
+  ) => {
+    dispatch({
+      type: 'SET_CONTACT_DETAILS',
+      payload: { field, value: event.target.value },
+    });
+  };
 
   const onFocusHandler: React.FocusEventHandler = () => {
     setError(undefined);
@@ -117,7 +125,7 @@ export const TextInput: React.FunctionComponent<{
         pattern={pattern}
         onBlur={onBlurHandler}
         onFocus={onFocusHandler}
-        onChange={(e) => setValue(e.target.value)}
+        onChange={onChangeHandler}
       />
     </StyledTextInput>
   );

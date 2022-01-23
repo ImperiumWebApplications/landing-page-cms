@@ -126,7 +126,7 @@ export const Questionnaire: React.FunctionComponent<QuestionnaireProps> = ({
     <StyledQuestionnaire id="questionnaire">
       <Progress percentage={progress} />
       <div className="header">
-        <BackButton />
+        <BackButton hide={state.currentIndex === 0 || isFormSuccessStep} />
         <span className="free-tier">100% Kostenlos</span>
       </div>
       <div className="content">
