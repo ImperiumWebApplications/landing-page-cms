@@ -33,6 +33,12 @@ export const Layout: React.FunctionComponent<{ content: LandingPage }> = ({
     cookieConsent && cookieConsent === 'true' ? true : false,
   );
 
+  // https://github.com/styled-components/styled-components/issues/730#issuecomment-347077307
+  React.useEffect(() => {
+    if (allowCookies) document.body.style.overflowY = 'auto';
+    else document.body.style.overflowY = 'hidden';
+  });
+
   return (
     <ThemeProvider theme={extractTheme(content)}>
       <GlobalStyle isFunnelRoute={isFunnelRoute(router)} />
