@@ -45,7 +45,7 @@ const StyledTextInput = styled.div<{ hasError: undefined | string }>`
 
   input {
     padding: 0.75rem 1rem;
-    font-size: 1.125rem;
+    font-size: 1rem;
     line-height: 1.75rem;
     letter-spacing: +1px;
     border-radius: 0.5rem;
@@ -53,6 +53,10 @@ const StyledTextInput = styled.div<{ hasError: undefined | string }>`
       ${({ theme, hasError }) => (hasError ? 'red' : theme.colors.tertiary)};
     width: 100%;
     transition: box-shadow 0.1s ease-in-out;
+
+    @media screen and (${devices.md}) {
+      font-size: 1.125rem;
+    }
 
     &:hover,
     &:active,

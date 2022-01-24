@@ -37,8 +37,7 @@ const StyledSelectableOption = styled.div`
   }
 
   @media (hover) {
-    &:hover,
-    &[data-selected='true'] {
+    &:hover {
       background-color: ${({ theme }) => theme.colors.secondary};
 
       .icon svg,
@@ -53,6 +52,23 @@ const StyledSelectableOption = styled.div`
       .icon-placeholder {
         background-color: white;
       }
+    }
+  }
+
+  &[data-selected='true'] {
+    background-color: ${({ theme }) => theme.colors.secondary};
+
+    .icon svg,
+    .icon svg path {
+      fill: white !important;
+    }
+
+    .label {
+      color: white;
+    }
+
+    .icon-placeholder {
+      background-color: white;
     }
   }
 

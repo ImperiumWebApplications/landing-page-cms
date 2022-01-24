@@ -54,7 +54,7 @@ const StyledPostalCode = styled.div`
 export const PostalCode: React.FunctionComponent = () => {
   const [error, setError] = React.useState<string | undefined>(undefined);
   const { state, dispatch } = useQuestionnaireContext();
-  const { label, value: initialValue } = state.contact.postalCode;
+  const { label } = state.contact.postalCode;
   const theme = useTheme();
 
   const onClickHandler: React.MouseEventHandler = () => {
@@ -77,7 +77,6 @@ export const PostalCode: React.FunctionComponent = () => {
           field="postalCode"
           pattern="[0-9]*"
           label={label}
-          initialValue={initialValue}
           validations={formFieldValidations.postalCode}
         />
         <div className="hint">

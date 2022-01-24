@@ -17,6 +17,7 @@ import { setBrowserHistory } from '../../utils/setBrowserHistory';
 import { devices } from '../../config/breakpoints.config';
 
 const StyledQuestionnaire = styled(Section)`
+  height: 100%;
   padding: 1rem;
   border-bottom: 0.25rem solid white;
   background-color: ${({ theme }) =>
@@ -28,7 +29,7 @@ const StyledQuestionnaire = styled(Section)`
 
   & > .content-wrapper {
     position: relative;
-    height: 100%;
+    height: auto;
     max-width: 67.5rem;
     display: grid;
     grid-template-columns: 100%;
