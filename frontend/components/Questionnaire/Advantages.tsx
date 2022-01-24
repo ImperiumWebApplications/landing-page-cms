@@ -7,6 +7,8 @@ import { Section } from '../Section';
 import { devices } from '../../config/breakpoints.config';
 
 const StyledAdvantages = styled(Section)`
+  border-bottom-left-radius: ${({ theme }) => theme.borderRadius};
+  border-bottom-right-radius: ${({ theme }) => theme.borderRadius};
   background-color: ${({ theme }) =>
     hexRgb(theme.colors.primary, { format: 'css', alpha: 0.1 })};
 

@@ -21,7 +21,7 @@ const StyledQuestionnaire = styled(Section)`
   padding: 1rem;
   border-bottom: 0.25rem solid white;
   background-color: ${({ theme }) =>
-    hexRgb(theme.colors.primary, { format: 'css', alpha: 1 })};
+    hexRgb(theme.colors.secondary, { format: 'css', alpha: 0.075 })};
 
   @media screen and (${devices.md}) {
     padding: 3rem;
