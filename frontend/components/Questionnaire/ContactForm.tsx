@@ -13,6 +13,7 @@ import { StyledStepTitle } from './StepTitle';
 import { TextInput } from './TextInput';
 import { RadioInput } from './RadioInput';
 import { CheckboxInput } from './CheckboxInput';
+import { LoadingSpinner } from './LoadingSpinner';
 import { QualityBadges } from './QualityBadges';
 import { devices } from '../../config/breakpoints.config';
 import { formFieldValidations } from '../../config/form.config';
@@ -66,6 +67,8 @@ const StyledContactForm = styled.div`
   button {
     display: block;
     width: 100%;
+    height: auto;
+    min-height: 4.75rem;
     margin: 2rem auto;
     border-radius: ${({ theme }) => theme.borderRadius};
     background-color: ${({ color, theme }) => color ?? theme.colors.primary};
@@ -83,6 +86,11 @@ const StyledContactForm = styled.div`
     @media screen and (${devices.sm}) {
       margin: 4rem auto;
       width: 25rem;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      filter: brightness(90%);
     }
 
     span {
@@ -103,6 +111,7 @@ const StyledContactForm = styled.div`
 `;
 
 export const ContactForm: React.FunctionComponent = () => {
+  const [loading, setLoading] = React.useState<boolean>(false);
   const [error, setError] = React.useState<string | undefined>(undefined);
   const { state, dispatch } = useQuestionnaireContext();
 
@@ -112,16 +121,44 @@ export const ContactForm: React.FunctionComponent = () => {
     });
   }, [state.contact]);
 
-  const onSubmitHandler: React.FormEventHandler = (event) => {
+  const onSubmitHandler: React.FormEventHandler = async (event) => {
     event.preventDefault();
+    setError(undefined);
 
     if (!isFormDataComplete(state)) {
       setError('Bitte füllen Sie das komplette Formular aus.');
       return;
     }
 
-    console.log(state);
-    goToStep(dispatch, state.currentIndex + 1);
+    try {
+      setLoading(true);
+
+      if (!process.env.NEXT_PUBLIC_API_ROUTE_QUERY)
+        throw new Error('Missing credentials for API route');
+
+      const res = await fetch(
+        `/api/create-lead?API_ROUTE_QUERY=${process.env.NEXT_PUBLIC_API_ROUTE_QUERY}`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            questionnaire: state.questionnaire,
+            contact: state.contact,
+          }),
+        },
+      );
+
+      if (!res.ok) throw new Error(res.statusText);
+
+      setLoading(false);
+      goToStep(dispatch, state.currentIndex + 1);
+      window.onbeforeunload = () => null;
+    } catch (err) {
+      setLoading(false);
+      setError('Fehler beim Abschicken. Bitte versuchen Sie es erneut.');
+    }
   };
 
   return (
@@ -168,8 +205,18 @@ export const ContactForm: React.FunctionComponent = () => {
               }
             })}
         </div>
-        <button type="submit" className="call-to-action shining-button">
-          <span>Jetzt Angebot erhalten</span>Kostenlos & Unverbindlich
+        <button
+          type="submit"
+          className={`call-to-action ${!loading ? 'shining-button' : ''}`}
+          disabled={loading}
+        >
+          {loading ? (
+            <LoadingSpinner />
+          ) : (
+            <>
+              <span>Jetzt Angebot erhalten</span>Kostenlos & Unverbindlich
+            </>
+          )}
         </button>
         {error && <span className="error">{error}</span>}
       </form>
