@@ -167,7 +167,6 @@ export const createNote = async (
   data: { lead_id: string; content: string },
 ) => {
   try {
-    console.log(data.content);
     const res = await PIPEDRIVE_API.post(
       '/notes',
       {
@@ -178,7 +177,6 @@ export const createNote = async (
         params: { api_token: token },
       },
     );
-    console.log(res.data.data);
     return isPipedriveDataOK(res) ? res.data.data : Promise.reject();
   } catch (error) {
     console.error(error);

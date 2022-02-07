@@ -90,3 +90,21 @@ export const getQuestionnaireContentById = async (id: string) => {
   });
   return isContentObjectListOK(res) ? res.data.data[0].attributes : undefined;
 };
+
+/** Pipedrive API Token Fetching */
+
+export const getPipedriveAPITokenByDomain = async (domain: string) => {
+  const res = await BACKEND_API.request({
+    method: 'GET',
+    url: '/pipedrive-apis',
+    params: {
+      filters: { landing_page: { domain: { $eq: domain } } },
+      populate: '*',
+    },
+    paramsSerializer: (params) =>
+      qs.stringify(params, { encodeValuesOnly: true }),
+  });
+  return isContentObjectListOK(res)
+    ? res.data.data[0].attributes.api_token
+    : undefined;
+};

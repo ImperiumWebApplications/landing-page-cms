@@ -259,6 +259,15 @@ interface Questionnaire {
 
 type QuestionnaireObjectList = DataObject<Questionnaire>[];
 
+interface PipedriveAPIToken {
+  api_token: string;
+  createdAt: string;
+  updatedAt: string;
+  landing_page: DataObject<LandingPage>;
+}
+
+type PipedriveAPITokenObjectList = DataObject<PipedriveAPIToken>[];
+
 interface Pagination {
   page: number;
   pageSize: number;
@@ -286,6 +295,11 @@ export interface BackendAPI {
   '/questionnaires': {
     GET: {
       response: APIResponse<QuestionnaireObjectList>;
+    };
+  };
+  '/pipedrive-apis': {
+    GET: {
+      response: APIResponse<PipedriveAPITokenObjectList>;
     };
   };
 }

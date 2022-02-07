@@ -5,7 +5,6 @@ import type {
   QuestionnaireItem,
 } from '../../context/Questionnaire/state';
 import type { DefaultApiRouteResponse } from '../../lib/api/response';
-import { pipedriveKeys } from '../../config/pipedrive.config';
 import {
   createLead,
   createNote,
@@ -14,6 +13,7 @@ import {
 } from '../../interface/pipedrive';
 import { ErrorType, newServerError } from '../../lib/api/error';
 import { createHTMLForPipedriveLeadNote } from '../../config/templates.config';
+import { getPipedriveAPITokenByDomain } from '../../interface/backend';
 
 interface CreateLeadApiRequest extends NextApiRequest {
   body: {
@@ -39,7 +39,7 @@ export const handler = async (
     if (!host || !contactData || !questionnaire?.length)
       return newServerError(res, ErrorType.UNPROCESSABLE_ENTITY);
 
-    const token = pipedriveKeys[host];
+    const token = await getPipedriveAPITokenByDomain(host);
     if (!token) return newServerError(res, ErrorType.NOT_AUTHORIZED);
 
     const person =
