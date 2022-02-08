@@ -15,6 +15,7 @@ import { RadioInput } from './RadioInput';
 import { CheckboxInput } from './CheckboxInput';
 import { LoadingSpinner } from './LoadingSpinner';
 import { QualityBadges } from './QualityBadges';
+import { NextAPI } from '../../lib/api/request';
 import { devices } from '../../config/breakpoints.config';
 import { formFieldValidations } from '../../config/form.config';
 import { getAnimation } from '../../config/animations.config';
@@ -133,22 +134,14 @@ export const ContactForm: React.FunctionComponent = () => {
     try {
       setLoading(true);
 
-      if (!process.env.NEXT_PUBLIC_API_ROUTE_QUERY)
+      if (!process.env.NEXT_PUBLIC_API_ROUTE)
         throw new Error('Missing credentials for API route');
 
-      const res = await fetch(
-        `/api/create-lead?API_ROUTE_QUERY=${process.env.NEXT_PUBLIC_API_ROUTE_QUERY}`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            questionnaire: state.questionnaire,
-            contact: state.contact,
-          }),
-        },
-      );
+      const res = await NextAPI.createLead({
+        domain: location.host,
+        questionnaire: state.questionnaire,
+        contact: state.contact,
+      });
 
       if (!res.ok) throw new Error(res.statusText);
 

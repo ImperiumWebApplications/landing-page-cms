@@ -7,7 +7,7 @@ import {
   isContentObjectOK,
 } from '../utils/isResponseOK';
 
-export const BACKEND_API = axios.create<BackendAPI>({
+const BACKEND_API = axios.create<BackendAPI>({
   baseURL: process.env.BACKEND_API,
   headers: {
     Authorization:
@@ -19,7 +19,7 @@ export const BACKEND_API = axios.create<BackendAPI>({
 
 /** Static Content Fetching */
 
-export const getStaticLandingPageContent = async () => {
+const getStaticLandingPageContent = async () => {
   const res = await BACKEND_API.request({
     method: 'GET',
     url: '/static-content',
@@ -32,7 +32,7 @@ export const getStaticLandingPageContent = async () => {
 
 /** Dynamic Content Fetching */
 
-export const getLandingPageContentByDomain = async (domain: string) => {
+const getLandingPageContentByDomain = async (domain: string) => {
   const res = await BACKEND_API.request({
     method: 'GET',
     url: '/landing-pages',
@@ -67,9 +67,25 @@ export const getLandingPageContentByDomain = async (domain: string) => {
   return isContentObjectListOK(res) ? res.data.data[0].attributes : undefined;
 };
 
+const getLandingPageStyleByDomain = async (domain: string) => {
+  const res = await BACKEND_API.request({
+    method: 'GET',
+    url: '/landing-pages',
+    params: {
+      filters: { domain: { $eq: domain } },
+      populate: {
+        logo_header: { fields: '*' },
+      },
+    },
+    paramsSerializer: (params) =>
+      qs.stringify(params, { encodeValuesOnly: true }),
+  });
+  return isContentObjectListOK(res) ? res.data.data[0].attributes : undefined;
+};
+
 /** Questionnaire Fetching */
 
-export const getQuestionnaireContentById = async (id: string) => {
+const getQuestionnaireContentById = async (id: string) => {
   const res = await BACKEND_API.request({
     method: 'GET',
     url: '/questionnaires',
@@ -93,7 +109,7 @@ export const getQuestionnaireContentById = async (id: string) => {
 
 /** Pipedrive API Token Fetching */
 
-export const getPipedriveAPITokenByDomain = async (domain: string) => {
+const getPipedriveAPITokenByDomain = async (domain: string) => {
   const res = await BACKEND_API.request({
     method: 'GET',
     url: '/pipedrive-apis',
@@ -107,4 +123,12 @@ export const getPipedriveAPITokenByDomain = async (domain: string) => {
   return isContentObjectListOK(res)
     ? res.data.data[0].attributes.api_token
     : undefined;
+};
+
+export const StrapiAPI = {
+  getLandingPageContentByDomain,
+  getLandingPageStyleByDomain,
+  getStaticLandingPageContent,
+  getQuestionnaireContentById,
+  getPipedriveAPITokenByDomain,
 };

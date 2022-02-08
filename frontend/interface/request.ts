@@ -1,11 +1,7 @@
 import type { GetServerSidePropsResult, NextPageContext } from 'next';
 
 import type { LandingPage, Questionnaire, StaticContent } from '../backend-api';
-import {
-  getLandingPageContentByDomain,
-  getQuestionnaireContentById,
-  getStaticLandingPageContent,
-} from './backend';
+import { StrapiAPI } from './backend';
 
 /** Helper function to return a redirect object */
 
@@ -25,7 +21,7 @@ const requestDomainSpecificContent = async (ctx: NextPageContext) => {
   if (!host) return redirectToNotFoundPage();
 
   try {
-    const domainContent = await getLandingPageContentByDomain(host);
+    const domainContent = await StrapiAPI.getLandingPageContentByDomain(host);
     return domainContent ?? redirectToNotFoundPage();
   } catch (err) {
     return redirectToNotFoundPage();
@@ -39,7 +35,9 @@ const requestQuestionnaireContent = async (ctx: NextPageContext) => {
   if (!id) return null;
 
   try {
-    const questionnaireContent = await getQuestionnaireContentById(id);
+    const questionnaireContent = await StrapiAPI.getQuestionnaireContentById(
+      id,
+    );
     return questionnaireContent ?? null;
   } catch (err) {
     return null;
@@ -50,7 +48,7 @@ const requestQuestionnaireContent = async (ctx: NextPageContext) => {
 
 const requestStaticContent = async () => {
   try {
-    const staticContent = await getStaticLandingPageContent();
+    const staticContent = await StrapiAPI.getStaticLandingPageContent();
     return staticContent ?? null;
   } catch (err) {
     return null;

@@ -1,14 +1,17 @@
 import axios from 'restyped-axios';
 
 import type { ContactData } from '../context/Questionnaire/state';
-import type { FieldType, PipedriveAPI } from '../pipedrive-api';
+import type {
+  FieldType,
+  PipedriveAPI as PipedriveAPISchema,
+} from '../pipedrive-api';
 import { isPipedriveDataOK } from '../utils/isResponseOK';
 
-export const PIPEDRIVE_API = axios.create<PipedriveAPI>({
+const PIPEDRIVE_API = axios.create<PipedriveAPISchema>({
   baseURL: 'https://api.pipedrive.com/v1',
 });
 
-export const getCurrentUser = async (token: string) => {
+const getCurrentUser = async (token: string) => {
   try {
     const res = await PIPEDRIVE_API.get('/users/me', {
       params: { api_token: token },
@@ -19,7 +22,7 @@ export const getCurrentUser = async (token: string) => {
   }
 };
 
-export const getPersonFields = async (token: string) => {
+const getPersonFields = async (token: string) => {
   try {
     const res = await PIPEDRIVE_API.get('/personFields', {
       params: { api_token: token },
@@ -30,7 +33,7 @@ export const getPersonFields = async (token: string) => {
   }
 };
 
-export const getCustomPostalCodeField = async (
+const getCustomPostalCodeField = async (
   token: string,
   formField: { fieldLabel: string },
 ) => {
@@ -49,7 +52,7 @@ export const getCustomPostalCodeField = async (
   );
 };
 
-export const getPersonByEmail = async (token: string, email: string) => {
+const getPersonByEmail = async (token: string, email: string) => {
   try {
     const res = await PIPEDRIVE_API.get('/persons/search', {
       params: {
@@ -70,7 +73,7 @@ export const getPersonByEmail = async (token: string, email: string) => {
   }
 };
 
-export const createPersonField = async (
+const createPersonField = async (
   token: string,
   data: { name: string; type: FieldType },
 ) => {
@@ -92,7 +95,7 @@ export const createPersonField = async (
   }
 };
 
-export const createPerson = async (
+const createPerson = async (
   token: string,
   data: ContactData & { customFields: { [key: string]: string } },
 ) => {
@@ -120,7 +123,7 @@ export const createPerson = async (
   }
 };
 
-export const createPersonWithCustomPostalCodeField = async (
+const createPersonWithCustomPostalCodeField = async (
   token: string,
   data: { contactData: ContactData },
 ) => {
@@ -140,7 +143,7 @@ export const createPersonWithCustomPostalCodeField = async (
   }
 };
 
-export const createLead = async (
+const createLead = async (
   token: string,
   data: { title: string; person_id: number },
 ) => {
@@ -158,11 +161,11 @@ export const createLead = async (
     return isPipedriveDataOK(res) ? res.data.data : Promise.reject();
   } catch (error) {
     console.error(error);
-    return Promise.reject(error);
+    return Promise.reject();
   }
 };
 
-export const createNote = async (
+const createNote = async (
   token: string,
   data: { lead_id: string; content: string },
 ) => {
@@ -182,4 +185,16 @@ export const createNote = async (
     console.error(error);
     return Promise.reject(error);
   }
+};
+
+export const PipedriveAPI = {
+  createLead,
+  createNote,
+  createPerson,
+  createPersonField,
+  createPersonWithCustomPostalCodeField,
+  getCurrentUser,
+  getCustomPostalCodeField,
+  getPersonByEmail,
+  getPersonFields,
 };

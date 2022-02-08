@@ -1,6 +1,6 @@
 import { QuestionnaireItem } from '../context/Questionnaire/state';
 
-export const createHTMLForPipedriveLeadNote = (data: QuestionnaireItem[]) => {
+export const createHTMLTable = (data: QuestionnaireItem[]) => {
   const header = `<p style="margin-bottom:10px;">Antworten aus dem Fragebogen:</p><table>`;
   const footer = `</table>`;
   const content = data?.map?.((item) => {
