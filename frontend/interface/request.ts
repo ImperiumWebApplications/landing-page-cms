@@ -5,11 +5,11 @@ import { StrapiAPI } from './backend';
 
 /** Helper function to return a redirect object */
 
-const redirectToNotFoundPage = (): GetServerSidePropsResult<
-  Record<string, never>
-> => ({
+const redirectTo = (
+  path: string,
+): GetServerSidePropsResult<Record<string, never>> => ({
   redirect: {
-    destination: '/404',
+    destination: path,
     permanent: false,
   },
 });
@@ -18,13 +18,14 @@ const redirectToNotFoundPage = (): GetServerSidePropsResult<
 
 const requestDomainSpecificContent = async (ctx: NextPageContext) => {
   const host = ctx.req?.headers.host;
-  if (!host) return redirectToNotFoundPage();
+  if (!host) return Promise.reject();
 
   try {
     const domainContent = await StrapiAPI.getLandingPageContentByDomain(host);
-    return domainContent ?? redirectToNotFoundPage();
+    return domainContent ?? Promise.reject();
   } catch (err) {
-    return redirectToNotFoundPage();
+    console.error(err);
+    return Promise.reject(err);
   }
 };
 
@@ -32,15 +33,16 @@ const requestDomainSpecificContent = async (ctx: NextPageContext) => {
 
 const requestQuestionnaireContent = async (ctx: NextPageContext) => {
   const id = (ctx.query.topic as string)?.split('-').pop();
-  if (!id) return null;
+  if (!id) return Promise.reject();
 
   try {
     const questionnaireContent = await StrapiAPI.getQuestionnaireContentById(
       id,
     );
-    return questionnaireContent ?? null;
+    return questionnaireContent ?? Promise.reject();
   } catch (err) {
-    return null;
+    console.error(err);
+    return Promise.reject(err);
   }
 };
 
@@ -49,9 +51,10 @@ const requestQuestionnaireContent = async (ctx: NextPageContext) => {
 const requestStaticContent = async () => {
   try {
     const staticContent = await StrapiAPI.getStaticLandingPageContent();
-    return staticContent ?? null;
+    return staticContent ?? Promise.reject();
   } catch (err) {
-    return null;
+    console.error(err);
+    return Promise.reject(err);
   }
 };
 
@@ -63,9 +66,14 @@ export type ContentPageContent = {
 };
 
 export const collectContentPageContent = async (ctx: NextPageContext) => {
-  const domainContent = await requestDomainSpecificContent(ctx);
-  const staticContent = await requestStaticContent();
-  return { props: { domainContent, staticContent } };
+  try {
+    const domainContent = await requestDomainSpecificContent(ctx);
+    const staticContent = await requestStaticContent();
+    return { props: { domainContent, staticContent } };
+  } catch (err) {
+    console.error(err);
+    return redirectTo('/404');
+  }
 };
 
 /** Request for questionnaire pages. */
@@ -76,7 +84,12 @@ export type QuestionnairePageContent = {
 };
 
 export const collectQuestionnairePageContent = async (ctx: NextPageContext) => {
-  const domainContent = await requestDomainSpecificContent(ctx);
-  const questionnaireContent = await requestQuestionnaireContent(ctx);
-  return { props: { domainContent, questionnaireContent } };
+  try {
+    const domainContent = await requestDomainSpecificContent(ctx);
+    const questionnaireContent = await requestQuestionnaireContent(ctx);
+    return { props: { domainContent, questionnaireContent } };
+  } catch (err) {
+    console.error(err);
+    return redirectTo('/404');
+  }
 };
