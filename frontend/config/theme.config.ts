@@ -11,10 +11,10 @@ export const extractTheme = (content: LandingPage) => {
     maxPageWidth: '1400px',
     font: `"${FontConfig.fontName}", sans-serif`,
     colors: {
-      primary: content.color_primary ?? 'black',
-      secondary: content.color_secondary ?? 'red',
-      tertiary: content.color_tertiary ?? 'grey',
-      text: content.color_text ?? 'black',
+      primary: content.color_primary ?? '#000000',
+      secondary: content.color_secondary ?? '#000000',
+      tertiary: content.color_tertiary ?? '#232323',
+      text: content.color_text ?? '#000000',
       success: '#4BB543',
     },
   };
