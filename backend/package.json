@@ -32,6 +32,9 @@
     "pg": "8.7.3",
     "sharp": "^0.30.1"
   },
+  "resolutions": {
+    "sharp": "^0.30.1"
+  },
   "strapi": {
     "uuid": "051793ca-1c32-4adf-ad67-39de2fef64f7"
   },
