@@ -30,8 +30,8 @@ export const handler = async (
     if (req.method !== 'POST')
       return newServerError(res, ErrorType.UNSUPPORTED_METHOD);
 
-    if (req.query.API_ROUTE !== process.env.NEXT_PUBLIC_API_ROUTE)
-      return newServerError(res, ErrorType.NOT_AUTHORIZED);
+    // if (req.query.API_ROUTE !== process.env.NEXT_PUBLIC_API_ROUTE)
+    //   return newServerError(res, ErrorType.NOT_AUTHORIZED);
 
     const host = req.headers.host;
     const contactData = req.body.contact;
