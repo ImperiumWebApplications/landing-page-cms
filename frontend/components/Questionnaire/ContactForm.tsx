@@ -134,8 +134,8 @@ export const ContactForm: React.FunctionComponent = () => {
     try {
       setLoading(true);
 
-      // if (!process.env.NEXT_PUBLIC_API_ROUTE)
-      //   throw new Error('Missing credentials for API route');
+      if (!process.env.NEXT_PUBLIC_API_ROUTE)
+        throw new Error('Missing credentials for API route');
 
       const res = await NextAPI.createLead({
         domain: location.host,
