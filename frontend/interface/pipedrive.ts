@@ -1,5 +1,5 @@
 import axios from 'restyped-axios';
-import Sentry from '@sentry/nextjs';
+import * as Sentry from '@sentry/nextjs';
 
 import type { ContactData } from '../context/Questionnaire/state';
 import type {
@@ -17,8 +17,15 @@ const getCurrentUser = async (token: string) => {
     const res = await PIPEDRIVE_API.get('/users/me', {
       params: { api_token: token },
     });
-    return isPipedriveDataOK(res) ? res.data.data : Promise.reject();
+
+    if (!isPipedriveDataOK(res))
+      throw new Error('Current user data is missing or malformed.');
+
+    return res.data.data;
   } catch (error) {
+    Sentry.captureException(error, {
+      tags: { interface: 'PipedriveAPI' },
+    });
     return Promise.reject(error);
   }
 };
@@ -28,9 +35,15 @@ const getPersonFields = async (token: string) => {
     const res = await PIPEDRIVE_API.get('/personFields', {
       params: { api_token: token },
     });
-    return isPipedriveDataOK(res) ? res.data.data : Promise.reject();
+
+    if (!isPipedriveDataOK(res))
+      throw new Error('Error while fetching for existing person fields.');
+
+    return res.data.data;
   } catch (error) {
-    Sentry.captureException(error);
+    Sentry.captureException(error, {
+      tags: { interface: 'PipedriveAPI' },
+    });
     return Promise.reject(error);
   }
 };
@@ -64,13 +77,15 @@ const getPersonByEmail = async (token: string, email: string) => {
         exact_match: true,
       },
     });
-    return isPipedriveDataOK(res)
-      ? res.data.data.items.length
-        ? res.data.data.items[0].item
-        : undefined
-      : Promise.reject();
+
+    if (!isPipedriveDataOK(res))
+      throw new Error('Error while fetching for existing email addresses.');
+
+    return res.data.data.items.length ? res.data.data.items[0].item : undefined;
   } catch (error) {
-    console.error(error);
+    Sentry.captureException(error, {
+      tags: { interface: 'PipedriveAPI' },
+    });
     return Promise.reject(error);
   }
 };
@@ -90,9 +105,15 @@ const createPersonField = async (
         params: { api_token: token },
       },
     );
-    return isPipedriveDataOK(res) ? res.data.data : Promise.reject();
+
+    if (!isPipedriveDataOK(res))
+      throw new Error('Error while creating new person field.');
+
+    return res.data.data;
   } catch (error) {
-    console.error(error);
+    Sentry.captureException(error, {
+      tags: { interface: 'PipedriveAPI' },
+    });
     return Promise.reject(error);
   }
 };
@@ -118,9 +139,15 @@ const createPerson = async (
         params: { api_token: token },
       },
     );
-    return isPipedriveDataOK(res) ? res.data.data : Promise.reject();
+
+    if (!isPipedriveDataOK(res))
+      throw new Error('Error while creating new person.');
+
+    return res.data.data;
   } catch (error) {
-    console.error(error);
+    Sentry.captureException(error, {
+      tags: { interface: 'PipedriveAPI' },
+    });
     return Promise.reject(error);
   }
 };
@@ -140,7 +167,9 @@ const createPersonWithCustomPostalCodeField = async (
       },
     });
   } catch (error) {
-    console.error(error);
+    Sentry.captureException(error, {
+      tags: { interface: 'PipedriveAPI' },
+    });
     return Promise.reject();
   }
 };
@@ -160,9 +189,15 @@ const createLead = async (
         params: { api_token: token },
       },
     );
-    return isPipedriveDataOK(res) ? res.data.data : Promise.reject();
+
+    if (!isPipedriveDataOK(res))
+      throw new Error('Error while creating new lead.');
+
+    return res.data.data;
   } catch (error) {
-    console.error(error);
+    Sentry.captureException(error, {
+      tags: { interface: 'PipedriveAPI' },
+    });
     return Promise.reject();
   }
 };
@@ -182,9 +217,15 @@ const createNote = async (
         params: { api_token: token },
       },
     );
-    return isPipedriveDataOK(res) ? res.data.data : Promise.reject();
+
+    if (!isPipedriveDataOK(res))
+      throw new Error('Error while creating new note.');
+
+    return res.data.data;
   } catch (error) {
-    console.error(error);
+    Sentry.captureException(error, {
+      tags: { interface: 'PipedriveAPI' },
+    });
     return Promise.reject(error);
   }
 };

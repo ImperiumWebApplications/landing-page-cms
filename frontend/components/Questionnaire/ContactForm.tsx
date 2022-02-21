@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { BadgeCheck } from '@styled-icons/heroicons-outline';
-import Sentry from '@sentry/nextjs';
+import * as Sentry from '@sentry/nextjs';
 
 import type {
   CheckboxFieldKey,

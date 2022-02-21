@@ -1,4 +1,5 @@
 import type { GetServerSidePropsResult, NextPageContext } from 'next';
+import * as Sentry from '@sentry/nextjs';
 
 import type { LandingPage, Questionnaire, StaticContent } from '../backend-api';
 import { StrapiAPI } from './backend';
@@ -18,13 +19,15 @@ const redirectTo = (
 
 const requestDomainSpecificContent = async (ctx: NextPageContext) => {
   const host = ctx.req?.headers.host;
-  if (!host) return Promise.reject();
+  if (!host) throw new Error('No host given in headers.');
 
   try {
     const domainContent = await StrapiAPI.getLandingPageContentByDomain(host);
     return domainContent ?? Promise.reject();
   } catch (err) {
-    console.error(err);
+    Sentry.captureException(err, {
+      tags: { interface: 'GetServerSidePropsRequest' },
+    });
     return Promise.reject(err);
   }
 };
@@ -33,7 +36,7 @@ const requestDomainSpecificContent = async (ctx: NextPageContext) => {
 
 const requestQuestionnaireContent = async (ctx: NextPageContext) => {
   const id = (ctx.query.topic as string)?.split('-').pop();
-  if (!id) return Promise.reject();
+  if (!id) throw new Error('No ID given for fetching questionnaire.');
 
   try {
     const questionnaireContent = await StrapiAPI.getQuestionnaireContentById(
@@ -41,7 +44,9 @@ const requestQuestionnaireContent = async (ctx: NextPageContext) => {
     );
     return questionnaireContent ?? Promise.reject();
   } catch (err) {
-    console.error(err);
+    Sentry.captureException(err, {
+      tags: { interface: 'GetServerSidePropsRequest' },
+    });
     return Promise.reject(err);
   }
 };
@@ -53,7 +58,9 @@ const requestStaticContent = async () => {
     const staticContent = await StrapiAPI.getStaticLandingPageContent();
     return staticContent ?? Promise.reject();
   } catch (err) {
-    console.error(err);
+    Sentry.captureException(err, {
+      tags: { interface: 'GetServerSidePropsRequest' },
+    });
     return Promise.reject(err);
   }
 };
@@ -71,7 +78,10 @@ export const collectContentPageContent = async (ctx: NextPageContext) => {
     const staticContent = await requestStaticContent();
     return { props: { domainContent, staticContent } };
   } catch (err) {
-    console.error(err);
+    Sentry.captureException(err, {
+      tags: { interface: 'GetServerSidePropsRequest', redirect: true },
+      level: Sentry.Severity.Info,
+    });
     return redirectTo('/404');
   }
 };
@@ -89,7 +99,10 @@ export const collectQuestionnairePageContent = async (ctx: NextPageContext) => {
     const questionnaireContent = await requestQuestionnaireContent(ctx);
     return { props: { domainContent, questionnaireContent } };
   } catch (err) {
-    console.error(err);
+    Sentry.captureException(err, {
+      tags: { interface: 'GetServerSidePropsRequest', redirect: true },
+      level: Sentry.Severity.Info,
+    });
     return redirectTo('/404');
   }
 };

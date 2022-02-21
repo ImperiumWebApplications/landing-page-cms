@@ -1,5 +1,6 @@
 import type { NextApiRequest } from 'next';
 import { withSentry } from '@sentry/nextjs';
+import * as Sentry from '@sentry/nextjs';
 
 import type {
   ContactData,
@@ -31,14 +32,28 @@ export const handler = async (
     if (req.method !== 'POST')
       return newServerError(res, ErrorType.UNSUPPORTED_METHOD);
 
-    if (req.query.API_ROUTE !== process.env.NEXT_PUBLIC_API_ROUTE)
+    if (req.query.API_ROUTE !== process.env.NEXT_PUBLIC_API_ROUTE) {
+      Sentry.captureMessage(
+        'Missing or invalid public API route query param.',
+        {
+          level: Sentry.Severity.Error,
+          tags: { interface: 'APIRoute' },
+        },
+      );
       return newServerError(res, ErrorType.NOT_AUTHORIZED);
+    }
 
     const host = req.headers.host;
     const contactData = req.body.contact;
     const questionnaire = req.body.questionnaire;
-    if (!host || !contactData || !questionnaire?.length)
+
+    if (!host || !contactData || !questionnaire?.length) {
+      Sentry.captureMessage('Missing or invalid form data.', {
+        level: Sentry.Severity.Warning,
+        tags: { interface: 'APIRoute' },
+      });
       return newServerError(res, ErrorType.UNPROCESSABLE_ENTITY);
+    }
 
     const token = await StrapiAPI.getPipedriveAPITokenByDomain(host);
     if (!token) return newServerError(res, ErrorType.NOT_AUTHORIZED);
@@ -73,7 +88,9 @@ export const handler = async (
 
     return res.status(200).json({ success: true });
   } catch (error) {
-    console.error(error);
+    Sentry.captureException(error, {
+      tags: { interface: 'APIRoute' },
+    });
     return res.status(500).json({ success: false });
   }
 };

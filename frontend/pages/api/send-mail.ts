@@ -5,6 +5,7 @@ import { createTransport } from 'nodemailer';
 import mjml2html from 'mjml';
 import type { NextApiRequest } from 'next';
 import { withSentry } from '@sentry/nextjs';
+import * as Sentry from '@sentry/nextjs';
 
 import type { DefaultApiRouteResponse } from '../../lib/api/response';
 import { ErrorType, newServerError } from '../../lib/api/error';
@@ -39,31 +40,64 @@ export const handler = async (
     if (req.method !== 'POST')
       return newServerError(res, ErrorType.UNSUPPORTED_METHOD);
 
-    if (req.query.PRIVATE_API_ROUTE !== process.env.PRIVATE_API_ROUTE)
+    if (req.query.PRIVATE_API_ROUTE !== process.env.PRIVATE_API_ROUTE) {
+      Sentry.captureMessage(
+        'Missing or invalid private API route query param.',
+        {
+          level: Sentry.Severity.Error,
+          tags: { interface: 'APIRoute' },
+        },
+      );
       return newServerError(res, ErrorType.NOT_AUTHORIZED);
+    }
 
-    if (!process.env.MAIL_USER || !process.env.MAIL_PASSWORD)
+    if (!process.env.MAIL_USER || !process.env.MAIL_PASSWORD) {
+      Sentry.captureMessage('Missing login data for email transport.', {
+        level: Sentry.Severity.Error,
+        tags: { interface: 'APIRoute' },
+      });
       return newServerError(res, ErrorType.UNPROCESSABLE_ENTITY);
+    }
 
     const { domain, template, recipient, payload } = req.body;
 
-    if (!domain || !template || !recipient?.email)
+    if (!domain || !template || !recipient?.email) {
+      Sentry.captureMessage('Missing data to send valid email.', {
+        level: Sentry.Severity.Error,
+        tags: { interface: 'APIRoute' },
+      });
       return newServerError(res, ErrorType.UNPROCESSABLE_ENTITY);
+    }
 
-    if (template === EmailTemplate.Confirmation && !payload?.questionnaire)
+    if (template === EmailTemplate.Confirmation && !payload?.questionnaire) {
+      Sentry.captureMessage('Missing data to send valid email.', {
+        level: Sentry.Severity.Error,
+        tags: { interface: 'APIRoute' },
+      });
       return newServerError(res, ErrorType.UNPROCESSABLE_ENTITY);
+    }
 
     const landingPage = await StrapiAPI.getLandingPageStyleByDomain(domain);
 
-    if (!landingPage?.brand_name || !landingPage.logo_header?.data.attributes)
+    if (!landingPage?.brand_name || !landingPage.logo_header?.data.attributes) {
+      Sentry.captureMessage('Missing data to send valid email.', {
+        level: Sentry.Severity.Error,
+        tags: { interface: 'APIRoute' },
+      });
       return newServerError(res, ErrorType.UNPROCESSABLE_ENTITY);
+    }
 
     const templateDirectory = resolve(process.cwd(), 'email');
     const templateFileName = `${template.toLowerCase()}.mjml`;
     const templateFilePath = join(templateDirectory, templateFileName);
 
-    if (!existsSync(templateFilePath))
+    if (!existsSync(templateFilePath)) {
+      Sentry.captureMessage('Missing template for sending mail.', {
+        level: Sentry.Severity.Error,
+        tags: { interface: 'APIRoute' },
+      });
       return newServerError(res, ErrorType.UNPROCESSABLE_ENTITY);
+    }
 
     const templateString = readFileSync(templateFilePath, 'utf8');
     const hbsTemplate = compile(templateString);
@@ -79,8 +113,13 @@ export const handler = async (
 
     const { html, errors } = mjml2html(hbsTemplate(context));
 
-    if (errors.length)
+    if (errors.length) {
+      Sentry.captureMessage('Error while generating mail template.', {
+        level: Sentry.Severity.Warning,
+        tags: { interface: 'APIRoute' },
+      });
       return newServerError(res, ErrorType.UNPROCESSABLE_ENTITY);
+    }
 
     const transporter = createTransport({
       host: 'smtp.office365.com',
@@ -101,7 +140,9 @@ export const handler = async (
 
     return res.status(200).json({ success: true });
   } catch (error) {
-    console.error(error);
+    Sentry.captureException(error, {
+      tags: { interface: 'APIRoute' },
+    });
     return res.status(500).json({ success: false });
   }
 };
