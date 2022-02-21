@@ -8,5 +8,5 @@ export const initSentryLogger = () =>
   Sentry.init({
     dsn: process.env.SENTRY_DSN || process.env.NEXT_PUBLIC_SENTRY_DSN,
     environment: process.env.NODE_ENV || 'development',
-    tracesSampleRate: 1.0, // determining the percentage chance a given trx will be sent to Sentry
+    tracesSampleRate: 0.25, // determining the percentage chance a given trx will be sent to Sentry
   });
