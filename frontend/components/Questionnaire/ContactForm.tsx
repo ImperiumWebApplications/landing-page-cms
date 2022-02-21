@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { BadgeCheck } from '@styled-icons/heroicons-outline';
+import Sentry from '@sentry/nextjs';
 
 import type {
   CheckboxFieldKey,
@@ -151,6 +152,7 @@ export const ContactForm: React.FunctionComponent = () => {
     } catch (err) {
       setLoading(false);
       setError('Fehler beim Abschicken. Bitte versuchen Sie es erneut.');
+      Sentry.captureException(err);
     }
   };
 

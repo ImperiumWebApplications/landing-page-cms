@@ -1,4 +1,5 @@
 import axios from 'restyped-axios';
+import Sentry from '@sentry/nextjs';
 
 import type { ContactData } from '../context/Questionnaire/state';
 import type {
@@ -29,6 +30,7 @@ const getPersonFields = async (token: string) => {
     });
     return isPipedriveDataOK(res) ? res.data.data : Promise.reject();
   } catch (error) {
+    Sentry.captureException(error);
     return Promise.reject(error);
   }
 };
