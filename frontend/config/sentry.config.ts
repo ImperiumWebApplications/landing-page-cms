@@ -4,12 +4,9 @@
 
 import * as Sentry from '@sentry/nextjs';
 
-const SENTRY_DSN = process.env.SENTRY_DSN || process.env.NEXT_PUBLIC_SENTRY_DSN;
-
-module.exports = function () {
-  return Sentry.init({
-    dsn: SENTRY_DSN,
+export const initSentryLogger = () =>
+  Sentry.init({
+    dsn: process.env.SENTRY_DSN || process.env.NEXT_PUBLIC_SENTRY_DSN,
     environment: process.env.NODE_ENV || 'development',
     tracesSampleRate: 1.0, // determining the percentage chance a given trx will be sent to Sentry
   });
-};
