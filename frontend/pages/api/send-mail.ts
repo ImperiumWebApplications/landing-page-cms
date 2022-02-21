@@ -4,6 +4,7 @@ import { compile } from 'handlebars';
 import { createTransport } from 'nodemailer';
 import mjml2html from 'mjml';
 import type { NextApiRequest } from 'next';
+import { withSentry } from '@sentry/nextjs';
 
 import type { DefaultApiRouteResponse } from '../../lib/api/response';
 import { ErrorType, newServerError } from '../../lib/api/error';
@@ -105,4 +106,4 @@ export const handler = async (
   }
 };
 
-export default handler;
+export default withSentry(handler);

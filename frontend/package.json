@@ -15,6 +15,7 @@
     "precommit": "lint-staged"
   },
   "dependencies": {
+    "@sentry/nextjs": "^6.17.9",
     "handlebars": "^4.7.7",
     "hex-rgb": "^5.0.0",
     "mjml": "^4.12.0",

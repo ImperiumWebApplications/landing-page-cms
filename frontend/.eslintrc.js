@@ -1,5 +1,9 @@
 module.exports = {
-  rules: {},
+  rules: {
+    parserOptions: {
+      ecmaVersion: 2017,
+    },
+  },
   overrides: [
     {
       files: ['**/*.ts?(x)'],
@@ -8,7 +12,7 @@ module.exports = {
         ecmaFeatures: {
           jsx: true,
         },
-        ecmaVersion: 12,
+        ecmaVersion: 2017,
         sourceType: 'module',
         project: './tsconfig.json',
         tsconfigRootDir: __dirname,

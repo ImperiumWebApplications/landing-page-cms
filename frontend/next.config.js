@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 
-module.exports = {
+import { withSentryConfig } from '@sentry/nextjs';
+
+// Next.js configuration
+const moduleExports = {
   reactStrictMode: true,
   outputFileTracing: true,
   images: {
@@ -13,3 +16,12 @@ module.exports = {
     defaultLocale: 'de',
   },
 };
+
+// Sentry.io configuration
+const sentryWebpackPluginOptions = {
+  silent: true, // Suppresses all logs
+};
+
+// Make sure adding Sentry options is the last code to run before exporting, to
+// ensure that your source maps include changes from all other Webpack plugins
+module.exports = withSentryConfig(moduleExports, sentryWebpackPluginOptions);

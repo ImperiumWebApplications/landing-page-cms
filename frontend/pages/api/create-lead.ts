@@ -1,4 +1,5 @@
 import type { NextApiRequest } from 'next';
+import { withSentry } from '@sentry/nextjs';
 
 import type {
   ContactData,
@@ -77,4 +78,4 @@ export const handler = async (
   }
 };
 
-export default handler;
+export default withSentry(handler);
