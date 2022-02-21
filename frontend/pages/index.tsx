@@ -25,14 +25,6 @@ const IndexPage: NextPage<ContentPageContent> = ({
 
   return (
     <Layout content={domainContent}>
-      <button
-        type="button"
-        onClick={() => {
-          throw new Error('Sentry Frontend Error');
-        }}
-      >
-        Throw error
-      </button>
       {/* Hero Section */}
       {sections[SectionMapping.Hero] && (
         <HeroSection
