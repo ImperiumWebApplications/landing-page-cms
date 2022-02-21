@@ -3,9 +3,9 @@ version: 0.2
 env:
   variables:
     PUBLIC_API_ROUTE_QUERY: 'RCooqUQMNl77xg89tP848X6rETMeCapGNIUyzuz6oZzhOd7SHfPcUi6kYeIcZ52f'
-    SENTRY_DNS: 'https://fd2e2a45608b46ea93a3b6c20492d075@o1149165.ingest.sentry.io/6221031'
   secrets-manager:
-    SENTRY_AUTH_TOKEN: SentryAuthToken:SENTRY_AUTH_TOKEN
+    SENTRY_AUTH_TOKEN: SentryAuthToken:TOKEN
+    SENTRY_DSN: SentryDsnEndpoint:DSN
 
 cache:
   paths:
@@ -25,7 +25,7 @@ phases:
 
   build:
     commands:
-      - NEXT_PUBLIC_API_ROUTE=$PUBLIC_API_ROUTE_QUERY NEXT_PUBLIC_SENTRY_DNS=$SENTRY_DNS SENTRY_AUTH_TOKEN=$SENTRY_AUTH_TOKEN npm run build
+      - NEXT_PUBLIC_API_ROUTE=$PUBLIC_API_ROUTE_QUERY NEXT_PUBLIC_SENTRY_DSN=$SENTRY_DSN SENTRY_AUTH_TOKEN=$SENTRY_AUTH_TOKEN npm run build
 
   post_build:
     commands:
