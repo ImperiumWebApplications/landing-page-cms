@@ -78,10 +78,6 @@ export const collectContentPageContent = async (ctx: NextPageContext) => {
     const staticContent = await requestStaticContent();
     return { props: { domainContent, staticContent } };
   } catch (err) {
-    Sentry.captureException(err, {
-      tags: { interface: 'GetServerSidePropsRequest', redirect: true },
-      level: Sentry.Severity.Info,
-    });
     return redirectTo('/404');
   }
 };
@@ -99,10 +95,6 @@ export const collectQuestionnairePageContent = async (ctx: NextPageContext) => {
     const questionnaireContent = await requestQuestionnaireContent(ctx);
     return { props: { domainContent, questionnaireContent } };
   } catch (err) {
-    Sentry.captureException(err, {
-      tags: { interface: 'GetServerSidePropsRequest', redirect: true },
-      level: Sentry.Severity.Info,
-    });
     return redirectTo('/404');
   }
 };
