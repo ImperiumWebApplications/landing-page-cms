@@ -6,7 +6,7 @@ module.exports = {
     },
     ecmaVersion: 2017,
     sourceType: 'module',
-    project: './tsconfig.json',
+    project: ['./tsconfig.json', './cypress/tsconfig.json'],
     tsconfigRootDir: __dirname,
   },
   extends: [

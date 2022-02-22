@@ -2,6 +2,7 @@ import { render, RenderOptions } from '@testing-library/react';
 import { ReactElement } from 'react';
 import { ThemeProvider } from 'styled-components';
 import '@testing-library/jest-dom';
+import 'jest-dom/extend-expect';
 
 import { extractTheme, GlobalStyle } from './config/theme.config';
 

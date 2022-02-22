@@ -8,7 +8,7 @@ module.exports = {
   transformIgnorePatterns: [`/node_modules/(?!${esModules})`],
   globals: {
     'ts-jest': {
-      tsconfig: 'tsconfig.test.json',
+      tsconfig: 'tsconfig.jest.json',
     },
   },
 };

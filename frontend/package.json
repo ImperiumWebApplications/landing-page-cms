@@ -8,12 +8,18 @@
   },
   "scripts": {
     "dev": "next dev",
+    "test-dev": "NODE_ENV=test APP_ENV=test next dev",
     "build": "next build",
     "start": "next start -p $PORT",
+    "test-start": "NODE_ENV=test APP_ENV=test next start",
     "lint": "next lint",
     "format": "prettier --write \"**/*.+(js|jsx|json|yml|yaml|css|less|scss|ts|tsx|graphql|md|mdx)\"",
     "precommit": "lint-staged",
-    "test": "jest"
+    "test": "jest",
+    "cypress": "cypress open",
+    "cypress:headless": "cypress run",
+    "e2e": "start-server-and-test test-start http://localhost:3000 cypress",
+    "e2e:headless": "start-server-and-test test-start http://localhost:3000 cypress:headless"
   },
   "dependencies": {
     "@sentry/nextjs": "^6.17.9",
@@ -39,6 +45,7 @@
     "swiper": "^7.4.1"
   },
   "devDependencies": {
+    "@testing-library/cypress": "^8.0.2",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.3",
     "@types/jest": "^27.4.0",
@@ -52,13 +59,16 @@
     "@typescript-eslint/parser": "^5.9.0",
     "babel-jest": "^27.5.1",
     "babel-plugin-styled-components": "^2.0.2",
+    "cypress": "^9.5.0",
     "eslint": "7",
     "eslint-config-next": "12.0.4",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-unused-imports": "^2.0.0",
     "jest": "^27.5.1",
     "lint-staged": "^12.3.4",
+    "msw": "^0.38.1",
     "prettier": "^2.5.1",
+    "start-server-and-test": "^1.14.0",
     "ts-jest": "^27.1.3",
     "typescript": "4.5.2"
   },
@@ -66,5 +76,8 @@
     "node": ">=12",
     "npm": ">=6.0.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "msw": {
+    "workerDirectory": "public"
+  }
 }
