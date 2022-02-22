@@ -28,6 +28,7 @@ phases:
     commands:
       - NEXT_PUBLIC_API_ROUTE=$PUBLIC_API_ROUTE_QUERY NEXT_PUBLIC_SENTRY_DSN=$SENTRY_DSN SENTRY_AUTH_TOKEN=$SENTRY_AUTH_TOKEN USE_SENTRY=$USE_SENTRY npm run build
       - npm run test
+      - npm run e2e:headless
 
   post_build:
     commands:
