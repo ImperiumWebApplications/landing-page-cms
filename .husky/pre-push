@@ -1,4 +1,16 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-lerna run lint
+declare HAS_BACKEND_FOLDER_CHANGED=$(git show --name-only -r --stat --oneline HEAD^^..HEAD | grep 'backend/')
+declare HAS_FRONTEND_FOLDER_CHANGED=$(git show --name-only -r --stat --oneline HEAD^^..HEAD | grep 'frontend/')
+
+echo "HAS_BACKEND_FOLDER_CHANGED                 --> + $HAS_BACKEND_FOLDER_CHANGED"
+echo "HAS_FRONTEND_FOLDER_CHANGED                --> + $HAS_FRONTEND_FOLDER_CHANGED"
+
+# Eslint & Prettier
+if [[ $HAS_BACKEND_FOLDER_CHANGED ]]; then cd backend && yarn lint && cd ..; fi
+if [[ $HAS_FRONTEND_FOLDER_CHANGED ]]; then cd frontend && yarn lint && cd ..; fi
+
+# Test
+if [[ $HAS_BACKEND_FOLDER_CHANGED ]]; then cd backend && yarn test && cd ..; fi
+if [[ $HAS_FRONTEND_FOLDER_CHANGED ]]; then cd frontend && yarn test && cd ..; fi
