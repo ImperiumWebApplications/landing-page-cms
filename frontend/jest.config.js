@@ -5,6 +5,7 @@ const esModules = ['hex-rgb'].join('|');
 module.exports = {
   preset: 'ts-jest/presets/js-with-babel',
   testEnvironment: 'jsdom',
+  testPathIgnorePatterns: ['<rootDir>/cypress/'],
   transformIgnorePatterns: [`/node_modules/(?!${esModules})`],
   globals: {
     'ts-jest': {
