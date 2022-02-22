@@ -6,4 +6,9 @@ module.exports = {
   preset: 'ts-jest/presets/js-with-babel',
   testEnvironment: 'jsdom',
   transformIgnorePatterns: [`/node_modules/(?!${esModules})`],
+  globals: {
+    'ts-jest': {
+      tsconfig: 'tsconfig.test.json',
+    },
+  },
 };
