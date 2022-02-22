@@ -15,6 +15,10 @@ const moduleExports = {
     locales: ['de'],
     defaultLocale: 'de',
   },
+  webpack: (config) => {
+    config.experiments = { topLevelAwait: true };
+    return config;
+  },
 };
 
 // Sentry.io configuration
