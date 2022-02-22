@@ -25,14 +25,14 @@ interface Image {
     small?: ImageFormat;
     medium?: ImageFormat;
     thumbnail?: ImageFormat;
-  };
+  } | null;
   hash: string;
   ext: string;
   mime: string;
   size: number;
   url: string;
   previewUrl: string | null;
-  provider: string;
+  provider: string | null;
   provider_metadata: unknown;
   createdAt: CreatedAt;
   updatedAt: UpdatedAt;
@@ -89,7 +89,7 @@ interface ConnectedQuestionnaire {
   createdAt: CreatedAt;
   updatedAt: UpdatedAt;
   publishedAt: PublishedAt;
-  description?: string;
+  description?: string | null;
   icon?: ImageObject;
 }
 interface EntryQuestionnaire {
