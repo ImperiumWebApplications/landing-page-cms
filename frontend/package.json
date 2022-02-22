@@ -45,6 +45,7 @@
     "swiper": "^7.4.1"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.16.11",
     "@testing-library/cypress": "^8.0.2",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.3",
