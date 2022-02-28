@@ -8,18 +8,19 @@
   },
   "scripts": {
     "dev": "next dev",
-    "test-dev": "NODE_ENV=test APP_ENV=test next dev",
+    "dev:test": "NODE_ENV=test APP_ENV=test next dev",
     "build": "next build",
     "start": "next start -p $PORT",
-    "test-start": "NODE_ENV=test APP_ENV=test next start",
+    "start:test": "NODE_ENV=test APP_ENV=test next start",
     "lint": "next lint",
     "format": "prettier --write \"**/*.+(js|jsx|json|yml|yaml|css|less|scss|ts|tsx|graphql|md|mdx)\"",
     "precommit": "lint-staged",
     "test": "jest",
-    "cypress": "cypress open",
-    "cypress:headless": "npx cypress run",
-    "e2e": "start-server-and-test test-start http://localhost:3000 cypress",
-    "e2e:headless": "start-server-and-test test-start http://localhost:3000 cypress:headless"
+    "cy:run": "cypress run",
+    "cy:open": "cypress open",
+    "pretest:e2e:run": "npm run build",
+    "test:e2e:run": "start-server-and-test start:test http://localhost:3000 cy:run",
+    "test:e2e:dev": "start-server-and-test dev:test http://localhost:3000 cy:open"
   },
   "dependencies": {
     "@sentry/nextjs": "^6.17.9",
