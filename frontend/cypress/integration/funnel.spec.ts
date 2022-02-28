@@ -1,4 +1,3 @@
-const baseUrl = Cypress.config().baseUrl as string;
 const tileSelector = '[aria-label=question] > div';
 
 describe('Questionnaire Funnel', () => {
@@ -7,15 +6,13 @@ describe('Questionnaire Funnel', () => {
       statusCode: 200,
     })
       .as('createLead')
-      .setCookie('lq-pages-cc', 'true')
-      .visit('/');
+      .visitWithConsentCookie('/');
   });
 
   it('should successfully submit questionnaire', () => {
     cy.get('header a.button').click();
 
-    cy.url()
-      .should('eq', `${baseUrl}/fragebogen`)
+    cy.assertUrl('/fragebogen')
       .get('header a.button')
       .should('not.exist')
       .get('[aria-label=question] > h1')
@@ -27,8 +24,7 @@ describe('Questionnaire Funnel', () => {
       .first()
       .click();
 
-    cy.url()
-      .should('eq', `${baseUrl}/fragebogen/fliesen-1`)
+    cy.assertUrl('/fragebogen/fliesen-1')
       .get('[aria-label=question] > h1')
       .should('have.text', 'Was möchten Sie fliesen?')
       .get('[aria-label=question] div.icon svg')
