@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "@sentry/nextjs": "^6.17.9",
+    "core-js": "^3.21.1",
     "handlebars": "^4.7.7",
     "hex-rgb": "^5.0.0",
     "mjml": "^4.12.0",
@@ -36,6 +37,7 @@
     "react-markdown": "^7.1.1",
     "react-player": "^2.9.0",
     "react-svg": "^14.1.11",
+    "regenerator-runtime": "^0.13.9",
     "restyped-axios": "^2.0.0",
     "sharp": "^0.30.1",
     "slugify": "^1.6.5",
