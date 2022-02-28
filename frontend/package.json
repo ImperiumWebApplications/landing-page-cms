@@ -17,7 +17,7 @@
     "precommit": "lint-staged",
     "test": "jest",
     "cypress": "cypress open",
-    "cypress:headless": "cypress run",
+    "cypress:headless": "npx cypress run",
     "e2e": "start-server-and-test test-start http://localhost:3000 cypress",
     "e2e:headless": "start-server-and-test test-start http://localhost:3000 cypress:headless"
   },
