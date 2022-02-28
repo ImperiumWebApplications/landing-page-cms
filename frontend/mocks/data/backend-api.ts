@@ -1846,3 +1846,266 @@ export const staticContent = {
     },
   },
 };
+
+export const questionnairesContent = {
+  data: [
+    {
+      id: 1,
+      attributes: {
+        name: 'Fliesen',
+        createdAt: '2021-12-03T10:07:12.859Z',
+        updatedAt: '2022-01-10T11:56:06.694Z',
+        publishedAt: '2021-12-03T10:07:14.376Z',
+        description: null,
+        icon: {
+          data: {
+            id: 122,
+            attributes: {
+              name: 'fliesen.svg',
+              alternativeText: 'fliesen.svg',
+              caption: 'fliesen.svg',
+              width: 51,
+              height: 51,
+              formats: null,
+              hash: 'fliesen_ad21600c27',
+              ext: '.svg',
+              mime: 'image/svg+xml',
+              size: 5.38,
+              url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/fliesen_ad21600c27.svg',
+              previewUrl: null,
+              provider: 'aws-s3',
+              provider_metadata: null,
+              createdAt: '2022-01-04T16:32:51.449Z',
+              updatedAt: '2022-01-04T16:32:51.449Z',
+              related: {
+                data: [
+                  {
+                    id: 1,
+                    attributes: {
+                      __type: 'questionnaire.answer',
+                      answer_value: 'Badezimmer',
+                    },
+                  },
+                  {
+                    id: 1,
+                    attributes: {
+                      __type: 'api::questionnaire.questionnaire',
+                      name: 'Fliesen',
+                      createdAt: '2021-12-03T10:07:12.859Z',
+                      updatedAt: '2022-01-10T11:56:06.694Z',
+                      publishedAt: '2021-12-03T10:07:14.376Z',
+                      description: null,
+                    },
+                  },
+                ],
+              },
+              createdBy: {
+                data: {
+                  id: 1,
+                  attributes: {
+                    firstname: 'Konstantin',
+                    lastname: 'Münster',
+                    username: null,
+                    email: 'info@kmuenster.com',
+                    password:
+                      '$2a$10$/kYDE40sAvVPmgF8NHOVk.BCa3k.G2XD1BeNeekquPtvJihAohEwm',
+                    resetPasswordToken: null,
+                    registrationToken: null,
+                    isActive: true,
+                    blocked: false,
+                    preferedLanguage: null,
+                    createdAt: '2021-12-02T14:46:14.043Z',
+                    updatedAt: '2021-12-02T14:46:14.043Z',
+                  },
+                },
+              },
+              updatedBy: {
+                data: {
+                  id: 1,
+                  attributes: {
+                    firstname: 'Konstantin',
+                    lastname: 'Münster',
+                    username: null,
+                    email: 'info@kmuenster.com',
+                    password:
+                      '$2a$10$/kYDE40sAvVPmgF8NHOVk.BCa3k.G2XD1BeNeekquPtvJihAohEwm',
+                    resetPasswordToken: null,
+                    registrationToken: null,
+                    isActive: true,
+                    blocked: false,
+                    preferedLanguage: null,
+                    createdAt: '2021-12-02T14:46:14.043Z',
+                    updatedAt: '2021-12-02T14:46:14.043Z',
+                  },
+                },
+              },
+            },
+          },
+        },
+        questions: [
+          {
+            id: 10,
+            question: 'Was möchten Sie fliesen?',
+            answers: [
+              {
+                id: 43,
+                answer_value: 'Badezimmer',
+                answer_icon: {
+                  data: {
+                    id: 144,
+                    attributes: {
+                      name: 'badezimmer.svg',
+                      alternativeText: 'badezimmer.svg',
+                      caption: 'badezimmer.svg',
+                      width: 480,
+                      height: 432,
+                      formats: null,
+                      hash: 'badezimmer_a83f18c101',
+                      ext: '.svg',
+                      mime: 'image/svg+xml',
+                      size: 2.79,
+                      url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/badezimmer_a83f18c101.svg',
+                      previewUrl: null,
+                      provider: 'aws-s3',
+                      provider_metadata: null,
+                      createdAt: '2022-01-10T11:51:26.110Z',
+                      updatedAt: '2022-01-10T11:51:26.110Z',
+                    },
+                  },
+                },
+              },
+              {
+                id: 44,
+                answer_value: 'Küche',
+                answer_icon: {
+                  data: {
+                    id: 141,
+                    attributes: {
+                      name: 'kueche.svg',
+                      alternativeText: 'kueche.svg',
+                      caption: 'kueche.svg',
+                      width: 484,
+                      height: 541,
+                      formats: null,
+                      hash: 'kueche_5fd22552e1',
+                      ext: '.svg',
+                      mime: 'image/svg+xml',
+                      size: 4.33,
+                      url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/kueche_5fd22552e1.svg',
+                      previewUrl: null,
+                      provider: 'aws-s3',
+                      provider_metadata: null,
+                      createdAt: '2022-01-10T11:51:26.108Z',
+                      updatedAt: '2022-01-10T11:51:26.108Z',
+                    },
+                  },
+                },
+              },
+              {
+                id: 45,
+                answer_value: 'Aussenbereich',
+                answer_icon: {
+                  data: {
+                    id: 142,
+                    attributes: {
+                      name: 'aussenbereich.svg',
+                      alternativeText: 'aussenbereich.svg',
+                      caption: 'aussenbereich.svg',
+                      width: 496,
+                      height: 448,
+                      formats: null,
+                      hash: 'aussenbereich_2431b62d96',
+                      ext: '.svg',
+                      mime: 'image/svg+xml',
+                      size: 2.39,
+                      url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/aussenbereich_2431b62d96.svg',
+                      previewUrl: null,
+                      provider: 'aws-s3',
+                      provider_metadata: null,
+                      createdAt: '2022-01-10T11:51:26.109Z',
+                      updatedAt: '2022-01-10T11:51:26.109Z',
+                    },
+                  },
+                },
+              },
+              {
+                id: 46,
+                answer_value: 'Sonstiges',
+                answer_icon: {
+                  data: {
+                    id: 143,
+                    attributes: {
+                      name: 'sonstiges.svg',
+                      alternativeText: 'sonstiges.svg',
+                      caption: 'sonstiges.svg',
+                      width: 410,
+                      height: 420,
+                      formats: null,
+                      hash: 'sonstiges_157d258325',
+                      ext: '.svg',
+                      mime: 'image/svg+xml',
+                      size: 2.46,
+                      url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/sonstiges_157d258325.svg',
+                      previewUrl: null,
+                      provider: 'aws-s3',
+                      provider_metadata: null,
+                      createdAt: '2022-01-10T11:51:26.109Z',
+                      updatedAt: '2022-01-10T11:51:26.109Z',
+                    },
+                  },
+                },
+              },
+            ],
+          },
+          {
+            id: 11,
+            question: 'Ist das Objekt im Neubauzustand?',
+            answers: [
+              {
+                id: 47,
+                answer_value: 'Ja',
+                answer_icon: {
+                  data: null,
+                },
+              },
+              {
+                id: 48,
+                answer_value: 'Nein',
+                answer_icon: {
+                  data: null,
+                },
+              },
+              {
+                id: 49,
+                answer_value: 'Sonstiges',
+                answer_icon: {
+                  data: {
+                    id: 143,
+                    attributes: {
+                      name: 'sonstiges.svg',
+                      alternativeText: 'sonstiges.svg',
+                      caption: 'sonstiges.svg',
+                      width: 410,
+                      height: 420,
+                      formats: null,
+                      hash: 'sonstiges_157d258325',
+                      ext: '.svg',
+                      mime: 'image/svg+xml',
+                      size: 2.46,
+                      url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/sonstiges_157d258325.svg',
+                      previewUrl: null,
+                      provider: 'aws-s3',
+                      provider_metadata: null,
+                      createdAt: '2022-01-10T11:51:26.109Z',
+                      updatedAt: '2022-01-10T11:51:26.109Z',
+                    },
+                  },
+                },
+              },
+            ],
+          },
+        ],
+      },
+    },
+  ],
+};

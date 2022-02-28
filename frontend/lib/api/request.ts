@@ -15,8 +15,8 @@ const sendMail = ({
 
   const API =
     process.env.NODE_ENV === 'development'
-      ? `http://${domain}/${API_ROUTE}`
-      : `https://${domain}/${API_ROUTE}`;
+      ? `http://${domain}${API_ROUTE}`
+      : `https://${domain}${API_ROUTE}`;
 
   return fetch(API, {
     method: 'POST',
@@ -38,8 +38,8 @@ const createLead = ({
 
   const API =
     process.env.NODE_ENV === 'development'
-      ? `http://${domain}/${API_ROUTE}`
-      : `https://${domain}/${API_ROUTE}`;
+      ? `http://${domain}${API_ROUTE}`
+      : `https://${domain}${API_ROUTE}`;
 
   return fetch(API, {
     method: 'POST',
