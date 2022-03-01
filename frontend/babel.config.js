@@ -6,9 +6,12 @@ module.exports = {
       {
         useBuiltIns: 'usage',
         corejs: 3,
-        targets: '> 0.25%, not dead',
+        targets: {
+          node: '10',
+        },
       },
     ],
+    '@babel/preset-typescript',
   ],
   plugins: [['styled-components', { ssr: true }]],
 };

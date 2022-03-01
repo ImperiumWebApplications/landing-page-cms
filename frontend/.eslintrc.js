@@ -1,27 +1,25 @@
 module.exports = {
-  parser: '@typescript-eslint/parser',
   parserOptions: {
+    ecmaVersion: 2019,
+    sourceType: 'module',
     ecmaFeatures: {
       jsx: true,
     },
-    ecmaVersion: 2017,
-    sourceType: 'module',
-    project: ['./tsconfig.json', './cypress/tsconfig.json'],
-    tsconfigRootDir: __dirname,
   },
-  extends: [
-    'next',
-    'prettier',
-    'plugin:cypress/recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:@typescript-eslint/recommended-requiring-type-checking',
+  extends: ['next', 'next/core-web-vitals', 'prettier'],
+  overrides: [
+    {
+      files: '**/*.+(ts|tsx)',
+      parser: '@typescript-eslint/parser',
+      parserOptions: {
+        project: ['./tsconfig.json', './cypress/tsconfig.json'],
+        tsconfigRootDir: __dirname,
+      },
+      plugins: ['@typescript-eslint/eslint-plugin'],
+      extends: [
+        'plugin:@typescript-eslint/eslint-recommended',
+        'plugin:@typescript-eslint/recommended',
+      ],
+    },
   ],
-  plugins: ['@typescript-eslint', 'react'],
-  rules: {
-    'react/react-in-jsx-scope': 'off',
-  },
-  globals: {
-    React: 'writable',
-  },
-  ignorePatterns: ['**/*.config.js', '.eslintrc.js'],
 };
