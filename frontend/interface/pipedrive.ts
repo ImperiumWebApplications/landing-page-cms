@@ -12,6 +12,12 @@ const PIPEDRIVE_API = axios.create<PipedriveAPISchema>({
   baseURL: 'https://api.pipedrive.com/v1',
 });
 
+const capturePipedriveException = (error: unknown) => {
+  Sentry.captureException(error, {
+    tags: { interface: 'PipedriveAPI' },
+  });
+};
+
 const getCurrentUser = async (token: string) => {
   try {
     const res = await PIPEDRIVE_API.get('/users/me', {
@@ -23,10 +29,8 @@ const getCurrentUser = async (token: string) => {
 
     return res.data.data;
   } catch (error) {
-    Sentry.captureException(error, {
-      tags: { interface: 'PipedriveAPI' },
-    });
-    return Promise.reject(error);
+    capturePipedriveException(error);
+    throw error;
   }
 };
 
@@ -41,10 +45,8 @@ const getPersonFields = async (token: string) => {
 
     return res.data.data;
   } catch (error) {
-    Sentry.captureException(error, {
-      tags: { interface: 'PipedriveAPI' },
-    });
-    return Promise.reject(error);
+    capturePipedriveException(error);
+    throw error;
   }
 };
 
@@ -83,10 +85,8 @@ const getPersonByEmail = async (token: string, email: string) => {
 
     return res.data.data.items.length ? res.data.data.items[0].item : undefined;
   } catch (error) {
-    Sentry.captureException(error, {
-      tags: { interface: 'PipedriveAPI' },
-    });
-    return Promise.reject(error);
+    capturePipedriveException(error);
+    throw error;
   }
 };
 
@@ -111,10 +111,8 @@ const createPersonField = async (
 
     return res.data.data;
   } catch (error) {
-    Sentry.captureException(error, {
-      tags: { interface: 'PipedriveAPI' },
-    });
-    return Promise.reject(error);
+    capturePipedriveException(error);
+    throw error;
   }
 };
 
@@ -145,10 +143,8 @@ const createPerson = async (
 
     return res.data.data;
   } catch (error) {
-    Sentry.captureException(error, {
-      tags: { interface: 'PipedriveAPI' },
-    });
-    return Promise.reject(error);
+    capturePipedriveException(error);
+    throw error;
   }
 };
 
@@ -167,9 +163,7 @@ const createPersonWithCustomPostalCodeField = async (
       },
     });
   } catch (error) {
-    Sentry.captureException(error, {
-      tags: { interface: 'PipedriveAPI' },
-    });
+    capturePipedriveException(error);
     return Promise.reject();
   }
 };
@@ -195,9 +189,7 @@ const createLead = async (
 
     return res.data.data;
   } catch (error) {
-    Sentry.captureException(error, {
-      tags: { interface: 'PipedriveAPI' },
-    });
+    capturePipedriveException(error);
     return Promise.reject();
   }
 };
@@ -223,10 +215,8 @@ const createNote = async (
 
     return res.data.data;
   } catch (error) {
-    Sentry.captureException(error, {
-      tags: { interface: 'PipedriveAPI' },
-    });
-    return Promise.reject(error);
+    capturePipedriveException(error);
+    throw error;
   }
 };
 

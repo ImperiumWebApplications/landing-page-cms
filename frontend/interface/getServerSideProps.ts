@@ -4,6 +4,12 @@ import * as Sentry from '@sentry/nextjs';
 import type { LandingPage, Questionnaire, StaticContent } from '../backend-api';
 import { StrapiAPI } from './backend';
 
+const captureSSPException = (error: unknown) => {
+  Sentry.captureException(error, {
+    tags: { interface: 'GetServerSidePropsRequest' },
+  });
+};
+
 /** Helper function to return a redirect object */
 
 export const redirectTo = (
@@ -23,9 +29,7 @@ export const requestDomainSpecificContent = async (ctx: NextPageContext) => {
     if (!host) throw new Error('No host given in headers.');
     return await StrapiAPI.getLandingPageContentByDomain(host);
   } catch (err) {
-    Sentry.captureException(err, {
-      tags: { interface: 'GetServerSidePropsRequest' },
-    });
+    captureSSPException(err);
   }
 };
 
@@ -38,9 +42,7 @@ export const requestQuestionnaireContent = async (ctx: NextPageContext) => {
 
     return await StrapiAPI.getQuestionnaireContentById(id);
   } catch (err) {
-    Sentry.captureException(err, {
-      tags: { interface: 'GetServerSidePropsRequest' },
-    });
+    captureSSPException(err);
   }
 };
 
@@ -50,9 +52,7 @@ export const requestStaticContent = async () => {
   try {
     return await StrapiAPI.getStaticLandingPageContent();
   } catch (err) {
-    Sentry.captureException(err, {
-      tags: { interface: 'GetServerSidePropsRequest' },
-    });
+    captureSSPException(err);
   }
 };
 

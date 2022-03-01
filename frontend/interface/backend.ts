@@ -21,6 +21,12 @@ const BACKEND_API = axios.create<BackendAPI>({
   },
 });
 
+const captureStrapiException = (error: unknown) => {
+  Sentry.captureException(error, {
+    tags: { interface: 'StrapiAPI' },
+  });
+};
+
 const paramsSerializer = (params: Record<string, unknown>) =>
   qs.stringify(params, { encodeValuesOnly: true });
 
@@ -40,9 +46,7 @@ const getStaticLandingPageContent = async () => {
 
     return res.data.data.attributes;
   } catch (error) {
-    Sentry.captureException(error, {
-      tags: { interface: 'StrapiAPI' },
-    });
+    captureStrapiException(error);
   }
 };
 
@@ -88,9 +92,7 @@ const getLandingPageContentByDomain = async (domain: string) => {
 
     return res.data.data[0].attributes;
   } catch (error) {
-    Sentry.captureException(error, {
-      tags: { interface: 'StrapiAPI' },
-    });
+    captureStrapiException(error);
   }
 };
 
@@ -113,9 +115,7 @@ const getLandingPageStyleByDomain = async (domain: string) => {
 
     return res.data.data[0].attributes;
   } catch (error) {
-    Sentry.captureException(error, {
-      tags: { interface: 'StrapiAPI' },
-    });
+    captureStrapiException(error);
   }
 };
 
@@ -146,9 +146,7 @@ const getQuestionnaireContentById = async (id: string) => {
 
     return res.data.data[0].attributes;
   } catch (error) {
-    Sentry.captureException(error, {
-      tags: { interface: 'StrapiAPI' },
-    });
+    captureStrapiException(error);
   }
 };
 
@@ -171,9 +169,7 @@ const getPipedriveAPITokenByDomain = async (domain: string) => {
 
     return res.data.data[0].attributes.api_token;
   } catch (error) {
-    Sentry.captureException(error, {
-      tags: { interface: 'StrapiAPI' },
-    });
+    captureStrapiException(error);
   }
 };
 
