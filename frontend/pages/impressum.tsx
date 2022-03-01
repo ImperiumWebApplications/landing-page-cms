@@ -4,8 +4,8 @@ import { NextSeo } from 'next-seo';
 import dynamic from 'next/dynamic';
 import ReactMarkdown from 'react-markdown';
 
-import type { ContentPageContent } from '../interface/request';
-import { collectContentPageContent } from '../interface/request';
+import type { ContentPageContent } from '../interface/getServerSideProps';
+import { collectContentPageContent } from '../interface/getServerSideProps';
 import { Layout } from '../components/Layout';
 import { Section } from '../components/Section';
 import { populateMarkdownTemplate } from '../utils/populateMarkdownTemplate';

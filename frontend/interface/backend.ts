@@ -8,8 +8,11 @@ import {
   isContentObjectOK,
 } from '../utils/isResponseOK';
 
+export const BACKEND_API_URL =
+  process.env.BACKEND_API ?? 'http://localhost:1337';
+
 const BACKEND_API = axios.create<BackendAPI>({
-  baseURL: process.env.BACKEND_API,
+  baseURL: BACKEND_API_URL,
   headers: {
     Authorization:
       process.env.BACKEND_API_TOKEN !== undefined
@@ -17,6 +20,9 @@ const BACKEND_API = axios.create<BackendAPI>({
         : '',
   },
 });
+
+const paramsSerializer = (params: Record<string, unknown>) =>
+  qs.stringify(params, { encodeValuesOnly: true });
 
 /** Static Content Fetching */
 
@@ -26,8 +32,7 @@ const getStaticLandingPageContent = async () => {
       method: 'GET',
       url: '/static-content',
       params: { populate: '*' },
-      paramsSerializer: (params) =>
-        qs.stringify(params, { encodeValuesOnly: true }),
+      paramsSerializer,
     });
 
     if (!isContentObjectOK(res))
@@ -38,7 +43,6 @@ const getStaticLandingPageContent = async () => {
     Sentry.captureException(error, {
       tags: { interface: 'StrapiAPI' },
     });
-    return undefined;
   }
 };
 
@@ -59,7 +63,9 @@ const getLandingPageContentByDomain = async (domain: string) => {
               images: { populate: '*' },
               faq_item: { populate: '*' },
               rating: { populate: { avatar: { populate: '*' } } },
-              service_tab: { populate: { service_images: { populate: '*' } } },
+              service_tab: {
+                populate: { service_images: { populate: '*' } },
+              },
             },
           },
           logo_footer: { fields: '*' },
@@ -74,8 +80,7 @@ const getLandingPageContentByDomain = async (domain: string) => {
           },
         },
       },
-      paramsSerializer: (params) =>
-        qs.stringify(params, { encodeValuesOnly: true }),
+      paramsSerializer,
     });
 
     if (!isContentObjectListOK(res))
@@ -86,7 +91,6 @@ const getLandingPageContentByDomain = async (domain: string) => {
     Sentry.captureException(error, {
       tags: { interface: 'StrapiAPI' },
     });
-    return undefined;
   }
 };
 
@@ -101,8 +105,7 @@ const getLandingPageStyleByDomain = async (domain: string) => {
           logo_header: { fields: '*' },
         },
       },
-      paramsSerializer: (params) =>
-        qs.stringify(params, { encodeValuesOnly: true }),
+      paramsSerializer,
     });
 
     if (!isContentObjectListOK(res))
@@ -113,7 +116,6 @@ const getLandingPageStyleByDomain = async (domain: string) => {
     Sentry.captureException(error, {
       tags: { interface: 'StrapiAPI' },
     });
-    return undefined;
   }
 };
 
@@ -136,8 +138,7 @@ const getQuestionnaireContentById = async (id: string) => {
           },
         },
       },
-      paramsSerializer: (params) =>
-        qs.stringify(params, { encodeValuesOnly: true }),
+      paramsSerializer,
     });
 
     if (!isContentObjectListOK(res))
@@ -148,7 +149,6 @@ const getQuestionnaireContentById = async (id: string) => {
     Sentry.captureException(error, {
       tags: { interface: 'StrapiAPI' },
     });
-    return undefined;
   }
 };
 
@@ -163,8 +163,7 @@ const getPipedriveAPITokenByDomain = async (domain: string) => {
         filters: { landing_page: { domain: { $eq: domain } } },
         populate: '*',
       },
-      paramsSerializer: (params) =>
-        qs.stringify(params, { encodeValuesOnly: true }),
+      paramsSerializer,
     });
 
     if (!isContentObjectListOK(res))
@@ -175,7 +174,6 @@ const getPipedriveAPITokenByDomain = async (domain: string) => {
     Sentry.captureException(error, {
       tags: { interface: 'StrapiAPI' },
     });
-    return undefined;
   }
 };
 

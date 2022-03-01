@@ -1,5 +1,6 @@
-import { rest, setupWorker } from 'msw';
-import { setupServer } from 'msw/node';
+import { rest, setupWorker, SetupWorkerApi } from 'msw';
+import { setupServer, SetupServerApi } from 'msw/node';
+import { BACKEND_API_URL } from '../interface/backend';
 
 import {
   domainContent,
@@ -7,24 +8,37 @@ import {
   staticContent,
 } from './data/backend-api';
 
-const BACKEND_API = process.env.BACKEND_API ?? 'http://localhost:1337';
-
 const backendAPIMockHandlers = [
-  rest.get(BACKEND_API + '/landing-pages', (_, res, ctx) =>
+  rest.get(BACKEND_API_URL + '/landing-pages', (_, res, ctx) =>
     res(ctx.status(200), ctx.json(domainContent)),
   ),
-  rest.get(BACKEND_API + '/static-content', (_, res, ctx) =>
+  rest.get(BACKEND_API_URL + '/static-content', (_, res, ctx) =>
     res(ctx.status(200), ctx.json(staticContent)),
   ),
-  rest.get(BACKEND_API + '/questionnaires', (_, res, ctx) =>
+  rest.get(BACKEND_API_URL + '/questionnaires', (_, res, ctx) =>
     res(ctx.status(200), ctx.json(questionnairesContent)),
   ),
 ];
 
+export const createErrorResponse = (path: string) => {
+  return rest.get(BACKEND_API_URL + path, (_, res, ctx) => {
+    return res(ctx.status(500), ctx.body('Error'));
+  });
+};
+
+export const setupBackendAPIMockServer = ({
+  forceServer,
+}: {
+  forceServer?: boolean;
+} = {}) => {
+  return forceServer || typeof window === 'undefined'
+    ? setupServer(...backendAPIMockHandlers)
+    : setupWorker(...backendAPIMockHandlers);
+};
+
 export const startBackendAPIMockServer = async () => {
-  if (typeof window === 'undefined') {
-    setupServer(...backendAPIMockHandlers).listen();
-  } else {
-    await setupWorker(...backendAPIMockHandlers).start();
-  }
+  const server = setupBackendAPIMockServer();
+  return (server as SetupServerApi).listen
+    ? (server as SetupServerApi).listen()
+    : (server as SetupWorkerApi).start();
 };

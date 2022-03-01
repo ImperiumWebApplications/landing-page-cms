@@ -6,7 +6,7 @@ import { StrapiAPI } from './backend';
 
 /** Helper function to return a redirect object */
 
-const redirectTo = (
+export const redirectTo = (
   path: string,
 ): GetServerSidePropsResult<Record<string, never>> => ({
   redirect: {
@@ -17,51 +17,42 @@ const redirectTo = (
 
 /** Dynamic Content Fetching */
 
-const requestDomainSpecificContent = async (ctx: NextPageContext) => {
-  const host = ctx.req?.headers.host;
-  if (!host) throw new Error('No host given in headers.');
-
+export const requestDomainSpecificContent = async (ctx: NextPageContext) => {
   try {
-    const domainContent = await StrapiAPI.getLandingPageContentByDomain(host);
-    return domainContent ?? Promise.reject();
+    const host = ctx.req?.headers.host;
+    if (!host) throw new Error('No host given in headers.');
+    return await StrapiAPI.getLandingPageContentByDomain(host);
   } catch (err) {
     Sentry.captureException(err, {
       tags: { interface: 'GetServerSidePropsRequest' },
     });
-    return Promise.reject(err);
   }
 };
 
 /** Questionnaire Content Fetching */
 
-const requestQuestionnaireContent = async (ctx: NextPageContext) => {
-  const id = (ctx.query.topic as string)?.split('-').pop();
-  if (!id) throw new Error('No ID given for fetching questionnaire.');
-
+export const requestQuestionnaireContent = async (ctx: NextPageContext) => {
   try {
-    const questionnaireContent = await StrapiAPI.getQuestionnaireContentById(
-      id,
-    );
-    return questionnaireContent ?? Promise.reject();
+    const id = (ctx.query.topic as string)?.split('-').slice(1).pop();
+    if (!id) throw new Error('No ID given for fetching questionnaire.');
+
+    return await StrapiAPI.getQuestionnaireContentById(id);
   } catch (err) {
     Sentry.captureException(err, {
       tags: { interface: 'GetServerSidePropsRequest' },
     });
-    return Promise.reject(err);
   }
 };
 
 /** Static Content Fetching */
 
-const requestStaticContent = async () => {
+export const requestStaticContent = async () => {
   try {
-    const staticContent = await StrapiAPI.getStaticLandingPageContent();
-    return staticContent ?? Promise.reject();
+    return await StrapiAPI.getStaticLandingPageContent();
   } catch (err) {
     Sentry.captureException(err, {
       tags: { interface: 'GetServerSidePropsRequest' },
     });
-    return Promise.reject(err);
   }
 };
 
@@ -76,6 +67,7 @@ export const collectContentPageContent = async (ctx: NextPageContext) => {
   try {
     const domainContent = await requestDomainSpecificContent(ctx);
     const staticContent = await requestStaticContent();
+    if (!domainContent || !staticContent) throw new Error();
     return { props: { domainContent, staticContent } };
   } catch (err) {
     return redirectTo('/404');
@@ -93,6 +85,7 @@ export const collectQuestionnairePageContent = async (ctx: NextPageContext) => {
   try {
     const domainContent = await requestDomainSpecificContent(ctx);
     const questionnaireContent = await requestQuestionnaireContent(ctx);
+    if (!domainContent || !questionnaireContent) throw new Error();
     return { props: { domainContent, questionnaireContent } };
   } catch (err) {
     return redirectTo('/404');

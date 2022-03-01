@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 
-import type { ContentPageContent } from '../interface/request';
-import { collectContentPageContent } from '../interface/request';
+import type { ContentPageContent } from '../interface/getServerSideProps';
+import { collectContentPageContent } from '../interface/getServerSideProps';
 import {
   mapSectionsDataToSectionComponents,
   SectionMapping,

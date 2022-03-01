@@ -8,8 +8,8 @@ import type {
   QuestionnaireQuestion,
 } from '../backend-api';
 import type { SingleChoiceEventHandler } from '../components/Questionnaire/SingleChoice';
-import { collectContentPageContent } from '../interface/request';
-import { ContentPageContent } from '../interface/request';
+import { collectContentPageContent } from '../interface/getServerSideProps';
+import { ContentPageContent } from '../interface/getServerSideProps';
 import { QuestionnaireContextProvider } from '../context/Questionnaire';
 import { Layout } from '../components/Layout';
 import { Questionnaire } from '../components/Questionnaire/Questionnaire';

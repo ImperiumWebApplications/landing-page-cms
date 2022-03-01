@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 
-import type { QuestionnairePageContent } from '../../interface/request';
-import { collectQuestionnairePageContent } from '../../interface/request';
+import type { QuestionnairePageContent } from '../../interface/getServerSideProps';
+import { collectQuestionnairePageContent } from '../../interface/getServerSideProps';
 import { Layout } from '../../components/Layout';
 import { QuestionnaireContextProvider } from '../../context/Questionnaire';
 import { Questionnaire } from '../../components/Questionnaire/Questionnaire';
