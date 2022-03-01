@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import styled from 'styled-components';
+import Link from 'next/link';
 
 import { ImageObject } from '../backend-api';
 import { devices } from '../config/breakpoints.config';
@@ -20,14 +21,14 @@ export const Logo: React.FunctionComponent<{
   return (
     <StyledLogo>
       {image?.data && (
-        <a href="/" aria-label="Homepage">
+        <Link href="/" aria-label="Homepage" passHref>
           <Image
             src={image.data.attributes.url}
             alt={image.data.attributes.alternativeText}
             width={image.data.attributes.width}
             height={image.data.attributes.height}
           />
-        </a>
+        </Link>
       )}
     </StyledLogo>
   );
