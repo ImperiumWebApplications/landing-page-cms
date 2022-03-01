@@ -1,4 +1,7 @@
-export const populateMarkdownTemplate = (template?: string, data?: any) => {
+export const populateMarkdownTemplate = (
+  template?: string,
+  data?: Record<string, unknown>,
+) => {
   if (!template || !data) return;
 
   const regex = /\${([^{}]+)}/g; // ${client_address}
