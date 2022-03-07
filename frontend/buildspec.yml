@@ -15,8 +15,8 @@ cache:
 
 phases:
   install:
-    runtime-versions:
-      nodejs: 14
+    commands:
+      - n 14.18.3
 
   pre_build:
     commands:
