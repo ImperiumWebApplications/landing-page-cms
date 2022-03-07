@@ -9,7 +9,7 @@ const sendMail = ({
 }: SendMailRequestBody) => {
   if (!domain) return Promise.reject();
 
-  const API_ROUTE = `api/send-mail?PRIVATE_API_ROUTE=${
+  const API_ROUTE = `/api/send-mail?PRIVATE_API_ROUTE=${
     process.env.PRIVATE_API_ROUTE ?? ''
   }`;
 

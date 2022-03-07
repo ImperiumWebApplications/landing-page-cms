@@ -164,7 +164,7 @@ const createPersonWithCustomPostalCodeField = async (
     });
   } catch (error) {
     capturePipedriveException(error);
-    return Promise.reject();
+    throw error;
   }
 };
 
@@ -190,7 +190,7 @@ const createLead = async (
     return res.data.data;
   } catch (error) {
     capturePipedriveException(error);
-    return Promise.reject();
+    throw error;
   }
 };
 

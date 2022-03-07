@@ -7,7 +7,7 @@
     "email": "info@kmuenster.com"
   },
   "scripts": {
-    "dev": "next dev",
+    "dev": "DISABLE_SENTRY=true next dev",
     "dev:test": "NODE_ENV=test APP_ENV=test next dev",
     "build": "next build",
     "start": "next start -p $PORT",
