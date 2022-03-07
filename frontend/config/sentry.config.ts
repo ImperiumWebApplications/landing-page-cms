@@ -5,7 +5,7 @@
 import * as Sentry from '@sentry/nextjs';
 
 export const initSentryLogger = () => {
-  const useSentry = process.env.USE_SENTRY === 'true';
+  const useSentry = process.env.DISABLE_SENTRY !== 'true';
   if (!useSentry) return;
 
   return Sentry.init({
