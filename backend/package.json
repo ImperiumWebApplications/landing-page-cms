@@ -16,8 +16,8 @@
     "precommit": "lint-staged"
   },
   "devDependencies": {
-    "@babel/core": "^7.16.0",
-    "@babel/eslint-parser": "^7.16.3",
+    "@babel/core": "^7.17.5",
+    "@babel/eslint-parser": "^7.17.0",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.3.1",
@@ -25,10 +25,10 @@
     "prettier": "^2.5.1"
   },
   "dependencies": {
-    "@strapi/plugin-i18n": "^4.1.0",
-    "@strapi/plugin-users-permissions": "^4.1.0",
-    "@strapi/provider-upload-aws-s3": "^4.1.0",
-    "@strapi/strapi": "^4.1.0",
+    "@strapi/plugin-i18n": "^4.1.2",
+    "@strapi/plugin-users-permissions": "^4.1.2",
+    "@strapi/provider-upload-aws-s3": "^4.1.2",
+    "@strapi/strapi": "^4.1.2",
     "pg": "8.7.3",
     "strapi-plugin-sentry": "^3.6.8"
   },
@@ -36,7 +36,7 @@
     "uuid": "051793ca-1c32-4adf-ad67-39de2fef64f7"
   },
   "engines": {
-    "node": ">=12",
+    "node": ">=14",
     "npm": ">=6.0.0"
   },
   "license": "MIT"
