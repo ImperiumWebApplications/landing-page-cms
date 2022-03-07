@@ -1,5 +1,6 @@
 import { LeadquelleTheme } from './config/theme.config';
 
 declare module 'styled-components' {
-  export type DefaultTheme = LeadquelleTheme;
+  // eslint-disable-next-line @typescript-eslint/no-empty-interface
+  export interface DefaultTheme extends LeadquelleTheme {}
 }

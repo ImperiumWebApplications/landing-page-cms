@@ -231,6 +231,7 @@ interface LandingPage {
   favicon?: Favicon;
   questionnaire?: EntryQuestionnaire;
   sections?: Sections[];
+  [key: ?string]: unknown;
 }
 
 type LandingPageObjectList = DataObject<LandingPage>[];
