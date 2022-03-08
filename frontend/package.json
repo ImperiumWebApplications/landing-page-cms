@@ -8,10 +8,10 @@
   },
   "scripts": {
     "dev": "DISABLE_SENTRY=true next dev",
-    "dev:test": "NODE_ENV=test APP_ENV=test next dev",
+    "dev:test": "DISABLE_SENTRY=true NODE_ENV=test APP_ENV=test next dev",
     "build": "next build",
     "start": "next start -p $PORT",
-    "start:test": "NODE_ENV=test APP_ENV=test next start -p 3000",
+    "start:test": "DISABLE_SENTRY=true NODE_ENV=test APP_ENV=test next start -p 3000",
     "lint": "eslint --ext .js,.ts,.tsx .",
     "check-types": "tsc",
     "format": "prettier --write \"**/*.+(js|jsx|json|yml|yaml|css|less|scss|ts|tsx|graphql|md|mdx)\"",
