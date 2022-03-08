@@ -72,6 +72,7 @@ const StyledQuestionnaireTile = styled.a`
 
     svg {
       height: 2.5rem;
+      width: 2.5rem;
     }
 
     svg,
@@ -87,6 +88,7 @@ const StyledQuestionnaireTile = styled.a`
 
       svg {
         height: 3rem;
+        width: auto;
       }
     }
   }
