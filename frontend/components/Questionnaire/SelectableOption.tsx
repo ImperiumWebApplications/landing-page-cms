@@ -167,6 +167,7 @@ export const SelectableOption: React.FunctionComponent<{
         {icon?.data && isSvgIcon && (
           <ReactSVG
             loading={() => <div className="icon-placeholder" />}
+            fallback={() => <div className="icon-placeholder" />}
             src={icon.data.attributes.url}
           />
         )}
