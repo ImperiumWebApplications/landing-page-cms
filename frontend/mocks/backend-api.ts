@@ -1,5 +1,4 @@
-import { rest, setupWorker, SetupWorkerApi } from 'msw';
-import { setupServer, SetupServerApi } from 'msw/node';
+import { rest } from 'msw';
 import { BACKEND_API_URL } from '../interface/backend';
 
 import {
@@ -8,7 +7,7 @@ import {
   staticContent,
 } from './data/backend-api';
 
-const backendAPIMockHandlers = [
+export const backendAPIMockHandlers = [
   rest.get(BACKEND_API_URL + '/landing-pages', (_, res, ctx) =>
     res(ctx.status(200), ctx.json(domainContent)),
   ),
@@ -19,26 +18,3 @@ const backendAPIMockHandlers = [
     res(ctx.status(200), ctx.json(questionnairesContent)),
   ),
 ];
-
-export const createErrorResponse = (path: string) => {
-  return rest.get(BACKEND_API_URL + path, (_, res, ctx) => {
-    return res(ctx.status(500), ctx.body('Error'));
-  });
-};
-
-export const setupBackendAPIMockServer = ({
-  forceServer,
-}: {
-  forceServer?: boolean;
-} = {}) => {
-  return forceServer || typeof window === 'undefined'
-    ? setupServer(...backendAPIMockHandlers)
-    : setupWorker(...backendAPIMockHandlers);
-};
-
-export const startBackendAPIMockServer = async () => {
-  const server = setupBackendAPIMockServer();
-  return (server as SetupServerApi).listen
-    ? (server as SetupServerApi).listen()
-    : (server as SetupWorkerApi).start();
-};

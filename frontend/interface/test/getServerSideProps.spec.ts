@@ -7,16 +7,18 @@ import {
   requestQuestionnaireContent,
   requestStaticContent,
 } from '../getServerSideProps';
-import {
-  createErrorResponse,
-  setupBackendAPIMockServer,
-} from '../../mocks/backend-api';
 import { SetupServerApi } from 'msw/lib/types/node';
 import {
   domainContent,
   questionnairesContent,
   staticContent,
 } from '../../mocks/data/backend-api';
+import {
+  createErrorResponse,
+  setupAPIMockServer,
+} from '../../mocks/utils/mock-rest-api';
+import { backendAPIMockHandlers } from '../../mocks/backend-api';
+import { BACKEND_API_URL } from '../backend';
 
 jest.mock('@sentry/nextjs');
 
@@ -30,7 +32,7 @@ const configureCtx = ({
   } as unknown as NextPageContext;
 };
 
-const server = setupBackendAPIMockServer({
+const server = setupAPIMockServer(backendAPIMockHandlers, {
   forceServer: true,
 }) as SetupServerApi;
 
@@ -53,7 +55,7 @@ describe('requestDomainSpecificContent handler', () => {
   });
 
   it('should return undefined if content is undefined', async () => {
-    server.use(createErrorResponse('/landing-pages'));
+    server.use(createErrorResponse(BACKEND_API_URL + '/landing-pages'));
     const ctx = configureCtx({ host: 'test' });
     const result = await requestDomainSpecificContent(ctx);
     expect(result).toEqual(undefined);
@@ -72,7 +74,7 @@ describe('requestQuestionnaireContent handler', () => {
     expect(result).toEqual(undefined);
   });
   it('should return undefined if content is undefined', async () => {
-    server.use(createErrorResponse('/questionnaires'));
+    server.use(createErrorResponse(BACKEND_API_URL + '/questionnaires'));
     const ctx = configureCtx({ topic: 'fliesen-1' });
     const result = await requestQuestionnaireContent(ctx);
     expect(result).toEqual(undefined);
@@ -85,7 +87,7 @@ describe('requestStaticContent handler', () => {
     expect(result).toEqual(staticContent.data.attributes);
   });
   it('should return undefined if content is undefined', async () => {
-    server.use(createErrorResponse('/static-content'));
+    server.use(createErrorResponse(BACKEND_API_URL + '/static-content'));
     const result = await requestStaticContent();
     expect(result).toEqual(undefined);
   });
@@ -103,7 +105,7 @@ describe('collectContentPageContent handler', () => {
     });
   });
   it('should redirect on error', async () => {
-    server.use(createErrorResponse('/static-content'));
+    server.use(createErrorResponse(BACKEND_API_URL + '/static-content'));
     const ctx = configureCtx({ host: 'localhost' });
     const result = await collectContentPageContent(ctx);
     expect(result).toEqual(redirectTo('/404'));
@@ -122,7 +124,7 @@ describe('collectQuestionnairePageContent handler', () => {
     });
   });
   it('should redirect on error', async () => {
-    server.use(createErrorResponse('/questionnaires'));
+    server.use(createErrorResponse(BACKEND_API_URL + '/questionnaires'));
     const ctx = configureCtx({ host: 'localhost', topic: 'fliesen-1' });
     const result = await collectQuestionnairePageContent(ctx);
     expect(result).toEqual(redirectTo('/404'));

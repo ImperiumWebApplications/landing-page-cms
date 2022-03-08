@@ -8,8 +8,10 @@ import type {
 } from '../pipedrive-api';
 import { isPipedriveDataOK } from '../utils/isResponseOK';
 
+export const PIPEDRIVE_API_URL = 'https://api.pipedrive.com/v1';
+
 const PIPEDRIVE_API = axios.create<PipedriveAPISchema>({
-  baseURL: 'https://api.pipedrive.com/v1',
+  baseURL: PIPEDRIVE_API_URL,
 });
 
 const capturePipedriveException = (error: unknown) => {

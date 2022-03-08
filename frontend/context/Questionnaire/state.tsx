@@ -1,6 +1,6 @@
 import { formFieldLabelConfiguration } from '../../config/form.config';
 
-type RadioField = { type: 'radio'; value: ''; options: string[] };
+type RadioField = { type: 'radio'; value: string; options: string[] };
 type TextField = { type: 'text'; label: string; value: string };
 type EmailField = { type: 'email'; label: string; value: string };
 type CheckboxField = { type: 'checkbox'; label: string; value: boolean };
