@@ -27,8 +27,10 @@ const ErrorResponse: { [key: string]: { status: number; message: string } } = {
 
 export const newServerError = (
   res: DefaultApiRouteResponse,
-  type: ErrorType,
+  type: ErrorType | undefined,
 ) => {
-  const { status, message } = ErrorResponse[type];
+  const { status, message } = type
+    ? ErrorResponse[type]
+    : { status: 500, message: 'Unknown error' };
   return res.status(status).json({ success: false, message });
 };

@@ -20,7 +20,7 @@ export interface CreateLeadRequestBody {
   questionnaire?: QuestionnaireItem[];
 }
 
-interface CreateLeadApiRequest extends NextApiRequest {
+export interface CreateLeadApiRequest extends NextApiRequest {
   body: CreateLeadRequestBody;
 }
 
@@ -29,59 +29,39 @@ export const handler = async (
   res: DefaultApiRouteResponse,
 ) => {
   try {
-    if (req.method !== 'POST')
-      return newServerError(res, ErrorType.UNSUPPORTED_METHOD);
+    const { data, error } = retrieveDataFromRequestBody(req);
+    if (!data) return newServerError(res, error);
 
-    if (req.query.API_ROUTE !== process.env.NEXT_PUBLIC_API_ROUTE) {
-      Sentry.captureMessage(
-        'Missing or invalid public API route query param.',
-        {
-          level: Sentry.Severity.Error,
-          tags: { interface: 'APIRoute' },
-        },
-      );
-      return newServerError(res, ErrorType.NOT_AUTHORIZED);
-    }
-
-    const host = req.headers.host;
-    const contactData = req.body.contact;
-    const questionnaire = req.body.questionnaire;
-
-    if (!host || !contactData || !questionnaire?.length) {
-      Sentry.captureMessage('Missing or invalid form data.', {
-        level: Sentry.Severity.Warning,
-        tags: { interface: 'APIRoute' },
-      });
-      return newServerError(res, ErrorType.UNPROCESSABLE_ENTITY);
-    }
-
-    const token = await StrapiAPI.getPipedriveAPITokenByDomain(host);
+    const token = await StrapiAPI.getPipedriveAPITokenByDomain(data.host);
     if (!token) return newServerError(res, ErrorType.NOT_AUTHORIZED);
 
     const person =
-      (await PipedriveAPI.getPersonByEmail(token, contactData.email.value)) ??
+      (await PipedriveAPI.getPersonByEmail(
+        token,
+        data.contactData.email.value,
+      )) ??
       (await PipedriveAPI.createPersonWithCustomPostalCodeField(token, {
-        contactData,
+        contactData: data.contactData,
       }));
 
     const lead = await PipedriveAPI.createLead(token, {
       person_id: person.id,
-      title: `${person.name} (${host})`,
+      title: `${person.name} (${data.host})`,
     });
 
     await Promise.all([
       await PipedriveAPI.createNote(token, {
         lead_id: lead.id,
-        content: createHTMLTable(questionnaire),
+        content: createHTMLTable(data.questionnaire),
       }),
       await NextAPI.sendMail({
-        domain: host,
+        domain: data.host,
         template: EmailTemplate.Confirmation,
-        payload: { questionnaire },
+        payload: { questionnaire: data.questionnaire },
         recipient: {
-          firstName: contactData.firstName.value,
-          lastName: contactData.lastName.value,
-          email: contactData.email.value,
+          firstName: data.contactData.firstName.value,
+          lastName: data.contactData.lastName.value,
+          email: data.contactData.email.value,
         },
       }),
     ]);
@@ -96,3 +76,30 @@ export const handler = async (
 };
 
 export default withSentry(handler);
+
+export const retrieveDataFromRequestBody = (req: CreateLeadApiRequest) => {
+  if (req.method !== 'POST')
+    return { data: undefined, error: ErrorType.UNSUPPORTED_METHOD };
+
+  if (req.query.API_ROUTE !== process.env.NEXT_PUBLIC_API_ROUTE) {
+    Sentry.captureMessage('Missing or invalid public API route query param.', {
+      level: Sentry.Severity.Error,
+      tags: { interface: 'APIRoute' },
+    });
+    return { data: undefined, error: ErrorType.NOT_AUTHORIZED };
+  }
+
+  const host = req.headers.host;
+  const contactData = req.body.contact;
+  const questionnaire = req.body.questionnaire;
+
+  if (!host || !contactData || !questionnaire?.length) {
+    Sentry.captureMessage('Missing or invalid form data.', {
+      level: Sentry.Severity.Warning,
+      tags: { interface: 'APIRoute' },
+    });
+    return { data: undefined, error: ErrorType.UNPROCESSABLE_ENTITY };
+  }
+
+  return { data: { host, contactData, questionnaire }, error: undefined };
+};
