@@ -87,59 +87,59 @@ describe('NextAPI - /create-lead', () => {
     });
   });
 
-  // it('should throw error for non allowed methods', () => {
-  //   const req = {
-  //     method: 'GET',
-  //     query: { API_ROUTE: 'test_public_api_route' },
-  //     headers: { host: domain },
-  //     body: { contact, questionnaire },
-  //   } as unknown as CreateLeadApiRequest;
-  //   const result = retrieveDataFromRequestBody(req);
-  //   expect(result).toEqual({
-  //     data: undefined,
-  //     error: ErrorType.UNSUPPORTED_METHOD,
-  //   });
-  // });
+  it('should throw error for non allowed methods', () => {
+    const req = {
+      method: 'GET',
+      query: { API_ROUTE: 'test_public_api_route' },
+      headers: { host: domain },
+      body: { contact, questionnaire },
+    } as unknown as CreateLeadApiRequest;
+    const result = retrieveDataFromRequestBody(req);
+    expect(result).toEqual({
+      data: undefined,
+      error: ErrorType.UNSUPPORTED_METHOD,
+    });
+  });
 
-  // it('should throw error for missing API Route query token', () => {
-  //   const req = {
-  //     method: 'POST',
-  //     query: { API_ROUTE: '' },
-  //     headers: { host: domain },
-  //     body: { contact, questionnaire },
-  //   } as unknown as CreateLeadApiRequest;
-  //   const result = retrieveDataFromRequestBody(req);
-  //   expect(result).toEqual({
-  //     data: undefined,
-  //     error: ErrorType.NOT_AUTHORIZED,
-  //   });
-  // });
+  it('should throw error for missing API Route query token', () => {
+    const req = {
+      method: 'POST',
+      query: { API_ROUTE: '' },
+      headers: { host: domain },
+      body: { contact, questionnaire },
+    } as unknown as CreateLeadApiRequest;
+    const result = retrieveDataFromRequestBody(req);
+    expect(result).toEqual({
+      data: undefined,
+      error: ErrorType.NOT_AUTHORIZED,
+    });
+  });
 
-  // it('should throw error for missing data', () => {
-  //   const req = {
-  //     method: 'POST',
-  //     query: { API_ROUTE: 'test_public_api_route' },
-  //     headers: { host: domain },
-  //     body: { contact },
-  //   } as unknown as CreateLeadApiRequest;
-  //   const result = retrieveDataFromRequestBody(req);
-  //   expect(result).toEqual({
-  //     data: undefined,
-  //     error: ErrorType.UNPROCESSABLE_ENTITY,
-  //   });
-  // });
+  it('should throw error for missing data', () => {
+    const req = {
+      method: 'POST',
+      query: { API_ROUTE: 'test_public_api_route' },
+      headers: { host: domain },
+      body: { contact },
+    } as unknown as CreateLeadApiRequest;
+    const result = retrieveDataFromRequestBody(req);
+    expect(result).toEqual({
+      data: undefined,
+      error: ErrorType.UNPROCESSABLE_ENTITY,
+    });
+  });
 
-  // it('should throw error for missing domain', () => {
-  //   const req = {
-  //     method: 'POST',
-  //     query: { API_ROUTE: 'test_public_api_route' },
-  //     headers: { host: '' },
-  //     body: { contact, questionnaire },
-  //   } as unknown as CreateLeadApiRequest;
-  //   const result = retrieveDataFromRequestBody(req);
-  //   expect(result).toEqual({
-  //     data: undefined,
-  //     error: ErrorType.UNPROCESSABLE_ENTITY,
-  //   });
-  // });
+  it('should throw error for missing domain', () => {
+    const req = {
+      method: 'POST',
+      query: { API_ROUTE: 'test_public_api_route' },
+      headers: { host: '' },
+      body: { contact, questionnaire },
+    } as unknown as CreateLeadApiRequest;
+    const result = retrieveDataFromRequestBody(req);
+    expect(result).toEqual({
+      data: undefined,
+      error: ErrorType.UNPROCESSABLE_ENTITY,
+    });
+  });
 });

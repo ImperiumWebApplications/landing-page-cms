@@ -1,16 +1,31 @@
 /** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
 
-const esModules = ['hex-rgb'].join('|');
+const createJestConfig = require('next/jest')?.({
+  dir: './',
+});
 
-module.exports = {
+const customJestConfig = {
   preset: 'ts-jest/presets/js-with-babel',
   testEnvironment: 'jsdom',
-  testPathIgnorePatterns: ['<rootDir>/cypress/'],
-  transformIgnorePatterns: [`/node_modules/(?!${esModules})`],
-  globalSetup: '<rootDir>/jest.env.ts',
+  transformIgnorePatterns: ['/node_modules/'],
+  testPathIgnorePatterns: [
+    '<rootDir>/cypress/',
+    '<rootDir>/.next/',
+    '<rootDir>/node_modules/',
+  ],
+  collectCoverageFrom: [
+    '**/*.{js,jsx,ts,tsx}',
+    '!**/*.d.ts',
+    '!**/node_modules/**',
+  ],
   globals: {
     'ts-jest': {
       tsconfig: 'tsconfig.jest.json',
     },
   },
+  moduleNameMapper: {
+    'hex-rgb': '<rootDir>/mocks/hex-rgb/index.ts',
+  },
 };
+
+module.exports = createJestConfig(customJestConfig);
