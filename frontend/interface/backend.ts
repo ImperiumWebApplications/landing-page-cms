@@ -75,6 +75,7 @@ const getLandingPageContentByDomain = async (domain: string) => {
           logo_footer: { fields: '*' },
           logo_header: { fields: '*' },
           favicon: { fields: '*' },
+          tracking: { fields: '*' },
           questionnaire: {
             fields: '*',
             populate: {

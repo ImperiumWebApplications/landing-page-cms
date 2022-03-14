@@ -23,6 +23,7 @@ const QuestionnairePage: NextPage<QuestionnairePageContent> = ({
           advantages={questionnaire.advantage}
           questions={questionnaireContent.questions}
           phone={domainContent.contact_phone}
+          tracking={domainContent.tracking}
         />
       </QuestionnaireContextProvider>
     </Layout>

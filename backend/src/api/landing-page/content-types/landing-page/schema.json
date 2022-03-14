@@ -86,6 +86,12 @@
     },
     "service_type": {
       "type": "string"
+    },
+    "tracking": {
+      "displayName": "Tracking",
+      "type": "component",
+      "repeatable": false,
+      "component": "meta.tracking"
     }
   }
 }

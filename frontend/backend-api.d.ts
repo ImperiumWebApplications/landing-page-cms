@@ -114,6 +114,12 @@ interface QuestionnaireQuestion {
   answers?: QuestionnaireAnswer[];
 }
 
+interface TrackingIds {
+  id: number;
+  google_ads_conversion_id: string;
+  google_ads_id: string;
+}
+
 interface HeroSection {
   id: number;
   __component: string;
@@ -231,6 +237,7 @@ interface LandingPage {
   favicon?: Favicon;
   questionnaire?: EntryQuestionnaire;
   sections?: Sections[];
+  tracking?: TrackingIds;
   [key: ?string]: unknown;
 }
 

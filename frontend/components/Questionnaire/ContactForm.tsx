@@ -9,6 +9,7 @@ import type {
   RadioFieldKey,
   TextFieldKey,
 } from '../../context/Questionnaire/state';
+import type { TrackingIds } from '../../backend-api';
 import { useQuestionnaireContext } from '../../context/Questionnaire';
 import { StyledStepTitle } from './StepTitle';
 import { TextInput } from './TextInput';
@@ -16,6 +17,7 @@ import { RadioInput } from './RadioInput';
 import { CheckboxInput } from './CheckboxInput';
 import { LoadingSpinner } from './LoadingSpinner';
 import { QualityBadges } from './QualityBadges';
+import { sendConversionToGoogle } from '../TrackingScripts';
 import { NextAPI } from '../../lib/api/request';
 import { devices } from '../../config/breakpoints.config';
 import { formFieldValidations } from '../../config/form.config';
@@ -112,7 +114,9 @@ const StyledContactForm = styled.div`
   }
 `;
 
-export const ContactForm: React.FunctionComponent = () => {
+export const ContactForm: React.FunctionComponent<{
+  tracking?: TrackingIds;
+}> = ({ tracking }) => {
   const [loading, setLoading] = React.useState<boolean>(false);
   const [error, setError] = React.useState<string | undefined>(undefined);
   const { state, dispatch } = useQuestionnaireContext();
@@ -145,6 +149,12 @@ export const ContactForm: React.FunctionComponent = () => {
       });
 
       if (!res.ok) throw new Error(res.statusText);
+
+      if (tracking)
+        sendConversionToGoogle(
+          tracking.google_ads_id,
+          tracking.google_ads_conversion_id,
+        );
 
       setLoading(false);
       goToStep(dispatch, state.currentIndex + 1);

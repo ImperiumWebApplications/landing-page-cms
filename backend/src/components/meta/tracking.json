@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_meta_trackings",
+  "info": {
+    "displayName": "Tracking",
+    "icon": "database",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "google_ads_conversion_id": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "regex": "^[a-zA-Z0-9]{20}$"
+    },
+    "google_ads_id": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "regex": "^(AW-\\d{9})$"
+    }
+  }
+}
