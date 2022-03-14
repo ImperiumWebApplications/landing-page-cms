@@ -8,8 +8,10 @@ import { devices } from '../config/breakpoints.config';
 
 const StyledLogo = styled.div`
   width: 100%;
+  min-width: 180px;
   max-width: 200px;
   height: 100%;
+  min-height: 60px;
   max-height: 80px;
   margin-right: 2rem;
   cursor: pointer;
