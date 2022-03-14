@@ -22,9 +22,4 @@ module.exports = {
       ],
     },
   ],
-  settings: {
-    next: {
-      rootDir: './frontend',
-    },
-  },
 };
