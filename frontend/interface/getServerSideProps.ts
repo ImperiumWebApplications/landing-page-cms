@@ -3,6 +3,7 @@ import * as Sentry from '@sentry/nextjs';
 
 import type { LandingPage, Questionnaire, StaticContent } from '../backend-api';
 import { StrapiAPI } from './backend';
+import { normalizeHostname } from '../utils/normalizeHostname';
 
 const captureSSPException = (error: unknown) => {
   Sentry.captureException(error, {
@@ -25,7 +26,7 @@ export const redirectTo = (
 
 export const requestDomainSpecificContent = async (ctx: NextPageContext) => {
   try {
-    const host = ctx.req?.headers.host;
+    const host = normalizeHostname(ctx.req?.headers.host);
     if (!host) throw new Error('No host given in headers.');
     return await StrapiAPI.getLandingPageContentByDomain(host);
   } catch (err) {

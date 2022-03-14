@@ -13,6 +13,7 @@ import { PipedriveAPI } from '../../interface/pipedrive';
 import { StrapiAPI } from '../../interface/backend';
 import { EmailTemplate } from '../../config/emails.config';
 import { createHTMLTable } from '../../utils/createHTMLTable';
+import { normalizeHostname } from '../../utils/normalizeHostname';
 
 export interface CreateLeadRequestBody {
   domain?: string;
@@ -95,7 +96,7 @@ export const retrieveDataFromRequestBody = (req: CreateLeadApiRequest) => {
     return { data: undefined, error: ErrorType.NOT_AUTHORIZED };
   }
 
-  const host = req.headers.host;
+  const host = normalizeHostname(req.headers.host);
   const contactData = req.body.contact;
   const questionnaire = req.body.questionnaire;
 
