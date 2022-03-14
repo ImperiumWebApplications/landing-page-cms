@@ -4,7 +4,7 @@
     "noEmit": true,
     "isolatedModules": false,
     "jsx": "react-jsx",
-    "types": ["jest"]
+    "types": ["jest", "node"]
   },
   "files": ["jest.setup.tsx"],
   "include": ["**/*.{test,spec}.{js,jsx,ts,tsx}"],

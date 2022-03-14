@@ -7,6 +7,7 @@ module.exports = {
   testEnvironment: 'jsdom',
   testPathIgnorePatterns: ['<rootDir>/cypress/'],
   transformIgnorePatterns: [`/node_modules/(?!${esModules})`],
+  globalSetup: '<rootDir>/jest.env.ts',
   globals: {
     'ts-jest': {
       tsconfig: 'tsconfig.jest.json',
