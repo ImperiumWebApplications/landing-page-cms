@@ -71,7 +71,10 @@ jest.mock('@sentry/nextjs');
 describe('NextAPI - /create-lead', () => {
   beforeEach(() => {
     jest.resetModules();
-    process.env.NEXT_PUBLIC_API_ROUTE = 'fakeToken';
+    process.env = {
+      ...process.env,
+      NEXT_PUBLIC_API_ROUTE: 'fakeToken',
+    };
   });
 
   it('should retrieve data from request correctly', () => {
