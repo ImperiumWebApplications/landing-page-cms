@@ -23,7 +23,7 @@ const StyledFooter = styled.footer`
 
     @media screen and (${devices.md}) {
       grid-template-rows: 100%;
-      grid-template-columns: auto 1fr auto;
+      grid-template-columns: 320px 1fr auto;
       row-gap: 0;
     }
   }
