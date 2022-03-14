@@ -15,6 +15,6 @@ export const devices = {
   xl: `min-width: ${sizes.xl}`,
   xxl: `min-width: ${sizes.xxl}`,
   specifics: {
-    flatDesktop: `min-width: ${sizes.lg}) and (max-height: 840px`,
+    flatDesktop: `min-width: ${sizes.lg}) and (max-height: 860px`,
   },
 };
