@@ -14,6 +14,12 @@ import { Animation } from '../components/Animation';
 const StyledHeroSection = styled(Section)`
   overflow-x: clip;
 
+  .content-wrapper {
+    @media screen and (${devices.xl}) and (max-height: 960px) {
+      padding-top: 0;
+    }
+  }
+
   .intro {
     display: grid;
     grid-template-rows: 100%;
@@ -86,11 +92,15 @@ const StyledHeroSection = styled(Section)`
       margin-bottom: 5rem;
     }
 
+    @media screen and (${devices.xl}) and (max-height: 960px) {
+      margin-top: -31rem;
+    }
+
     .entry-question {
       font-size: 1.25rem;
       margin-bottom: 1rem;
 
-      @media screen and (${devices.lg}) {
+      @media screen and (${devices.lg}) and (min-height: 960px) {
         margin-bottom: 2rem;
       }
     }
