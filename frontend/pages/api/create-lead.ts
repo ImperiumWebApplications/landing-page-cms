@@ -77,6 +77,12 @@ export const handler = async (
 
 export default withSentry(handler);
 
+/**
+ *
+ * HELPER FUNCTIONS
+ *
+ */
+
 export const retrieveDataFromRequestBody = (req: CreateLeadApiRequest) => {
   if (req.method !== 'POST')
     return { data: undefined, error: ErrorType.UNSUPPORTED_METHOD };
