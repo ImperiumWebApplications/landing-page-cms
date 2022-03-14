@@ -71,41 +71,35 @@ jest.mock('@sentry/nextjs');
 describe('NextAPI - /create-lead', () => {
   beforeEach(() => {
     jest.resetModules();
-    console.log(process.env);
-    process.env = {
-      ...process.env,
-      NEXT_PUBLIC_API_ROUTE: 'fakeToken',
-    };
-    console.log(process.env);
   });
 
-  // it('should retrieve data from request correctly', () => {
-  //   const req = {
-  //     method: 'POST',
-  //     query: { API_ROUTE: 'fakeToken' },
-  //     headers: { host: domain },
-  //     body: { contact, questionnaire },
-  //   } as unknown as CreateLeadApiRequest;
-  //   const result = retrieveDataFromRequestBody(req);
-  //   expect(result).toEqual({
-  //     data: { host: domain, contactData: contact, questionnaire },
-  //     error: undefined,
-  //   });
-  // });
+  it('should retrieve data from request correctly', () => {
+    const req = {
+      method: 'POST',
+      query: { API_ROUTE: 'test_public_api_route' },
+      headers: { host: domain },
+      body: { contact, questionnaire },
+    } as unknown as CreateLeadApiRequest;
+    const result = retrieveDataFromRequestBody(req);
+    expect(result).toEqual({
+      data: { host: domain, contactData: contact, questionnaire },
+      error: undefined,
+    });
+  });
 
-  // it('should throw error for non allowed methods', () => {
-  //   const req = {
-  //     method: 'GET',
-  //     query: { API_ROUTE: 'fakeToken' },
-  //     headers: { host: domain },
-  //     body: { contact, questionnaire },
-  //   } as unknown as CreateLeadApiRequest;
-  //   const result = retrieveDataFromRequestBody(req);
-  //   expect(result).toEqual({
-  //     data: undefined,
-  //     error: ErrorType.UNSUPPORTED_METHOD,
-  //   });
-  // });
+  it('should throw error for non allowed methods', () => {
+    const req = {
+      method: 'GET',
+      query: { API_ROUTE: 'test_public_api_route' },
+      headers: { host: domain },
+      body: { contact, questionnaire },
+    } as unknown as CreateLeadApiRequest;
+    const result = retrieveDataFromRequestBody(req);
+    expect(result).toEqual({
+      data: undefined,
+      error: ErrorType.UNSUPPORTED_METHOD,
+    });
+  });
 
   it('should throw error for missing API Route query token', () => {
     const req = {
@@ -121,31 +115,31 @@ describe('NextAPI - /create-lead', () => {
     });
   });
 
-  // it('should throw error for missing data', () => {
-  //   const req = {
-  //     method: 'POST',
-  //     query: { API_ROUTE: 'fakeToken' },
-  //     headers: { host: domain },
-  //     body: { contact },
-  //   } as unknown as CreateLeadApiRequest;
-  //   const result = retrieveDataFromRequestBody(req);
-  //   expect(result).toEqual({
-  //     data: undefined,
-  //     error: ErrorType.UNPROCESSABLE_ENTITY,
-  //   });
-  // });
+  it('should throw error for missing data', () => {
+    const req = {
+      method: 'POST',
+      query: { API_ROUTE: 'test_public_api_route' },
+      headers: { host: domain },
+      body: { contact },
+    } as unknown as CreateLeadApiRequest;
+    const result = retrieveDataFromRequestBody(req);
+    expect(result).toEqual({
+      data: undefined,
+      error: ErrorType.UNPROCESSABLE_ENTITY,
+    });
+  });
 
-  // it('should throw error for missing domain', () => {
-  //   const req = {
-  //     method: 'POST',
-  //     query: { API_ROUTE: 'fakeToken' },
-  //     headers: { host: '' },
-  //     body: { contact, questionnaire },
-  //   } as unknown as CreateLeadApiRequest;
-  //   const result = retrieveDataFromRequestBody(req);
-  //   expect(result).toEqual({
-  //     data: undefined,
-  //     error: ErrorType.UNPROCESSABLE_ENTITY,
-  //   });
-  // });
+  it('should throw error for missing domain', () => {
+    const req = {
+      method: 'POST',
+      query: { API_ROUTE: 'test_public_api_route' },
+      headers: { host: '' },
+      body: { contact, questionnaire },
+    } as unknown as CreateLeadApiRequest;
+    const result = retrieveDataFromRequestBody(req);
+    expect(result).toEqual({
+      data: undefined,
+      error: ErrorType.UNPROCESSABLE_ENTITY,
+    });
+  });
 });
