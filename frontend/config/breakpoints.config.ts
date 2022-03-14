@@ -4,6 +4,7 @@ const sizes = {
   md: '768px',
   lg: '1024px',
   xl: '1200px',
+  xxl: '1920px',
 };
 
 export const devices = {
@@ -12,4 +13,8 @@ export const devices = {
   md: `min-width: ${sizes.md}`,
   lg: `min-width: ${sizes.lg}`,
   xl: `min-width: ${sizes.xl}`,
+  xxl: `min-width: ${sizes.xxl}`,
+  specifics: {
+    flatDesktop: `min-width: ${sizes.lg}) and (max-height: 840px`,
+  },
 };

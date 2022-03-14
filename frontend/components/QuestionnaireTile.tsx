@@ -66,13 +66,22 @@ const StyledQuestionnaireTile = styled.a`
   }
 
   .icon {
-    height: 2.5rem;
+    height: 2rem;
     width: auto;
     margin-right: 1rem;
 
-    svg {
+    @media screen and (${devices.sm}) {
       height: 2.5rem;
-      width: 2.5rem;
+    }
+
+    svg {
+      height: 2rem;
+      width: 2rem;
+
+      @media screen and (${devices.sm}) {
+        height: 2.5rem;
+        width: 2.5rem;
+      }
     }
 
     svg,
@@ -105,8 +114,13 @@ const StyledQuestionnaireTile = styled.a`
 
   .description {
     h2 {
-      font-size: 1.25rem;
-      line-height: 1.5rem;
+      font-size: 1.125rem;
+      line-height: 1.25rem;
+
+      @media screen and (${devices.sm}) {
+        font-size: 1.25rem;
+        line-height: 1.5rem;
+      }
 
       @media screen and (${devices.lg}) {
         font-size: 1.5rem;

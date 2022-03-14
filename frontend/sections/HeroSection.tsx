@@ -15,7 +15,7 @@ const StyledHeroSection = styled(Section)`
   overflow-x: clip;
 
   .content-wrapper {
-    @media screen and (${devices.xl}) and (max-height: 960px) {
+    @media screen and (${devices.specifics.flatDesktop}) {
       padding-top: 0;
     }
   }
@@ -65,6 +65,17 @@ const StyledHeroSection = styled(Section)`
           margin-bottom: 2rem;
         }
 
+        @media screen and (${devices.specifics.flatDesktop}) {
+          font-size: 2rem;
+          line-height: 2.5rem;
+          margin-bottom: 1rem;
+        }
+
+        @media screen and (${devices.xxl}) {
+          margin-top: 3rem;
+          margin-bottom: 3rem;
+        }
+
         span {
           color: ${({ theme }) => theme.colors.secondary};
         }
@@ -77,6 +88,14 @@ const StyledHeroSection = styled(Section)`
         @media screen and (${devices.sm}) {
           font-size: 1.125rem;
           line-height: 2rem;
+        }
+
+        .extended-description {
+          display: none;
+
+          @media screen and (${devices.sm}) {
+            display: inline;
+          }
         }
       }
     }
@@ -92,16 +111,21 @@ const StyledHeroSection = styled(Section)`
       margin-bottom: 5rem;
     }
 
-    @media screen and (${devices.xl}) and (max-height: 960px) {
-      margin-top: -31rem;
+    @media screen and (${devices.specifics.flatDesktop}) {
+      margin-top: -36rem;
+    }
+
+    @media screen and (${devices.xxl}) {
+      margin-top: -23rem;
     }
 
     .entry-question {
-      font-size: 1.25rem;
-      margin-bottom: 1rem;
+      font-size: 1.125rem;
+      margin-bottom: 0.5rem;
 
-      @media screen and (${devices.lg}) and (min-height: 960px) {
-        margin-bottom: 2rem;
+      @media screen and (${devices.sm}) {
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
       }
     }
 
@@ -123,11 +147,15 @@ const StyledHeroSection = styled(Section)`
   }
 `;
 
+const FIRST_SENTENCE_REGEX = /^.*?[.!?](?:\s|$)(?!.*\))/;
+
 export const HeroSection: React.FunctionComponent<{
   id: string;
   content: IHeroSection;
   questionnaire: EntryQuestionnaire | undefined;
 }> = ({ id, content, questionnaire }) => {
+  const firstSentence = content.description?.match(FIRST_SENTENCE_REGEX)?.[0];
+
   return (
     <StyledHeroSection id={id}>
       <div className="intro">
@@ -136,7 +164,14 @@ export const HeroSection: React.FunctionComponent<{
             <h1>
               {content.title} <span>{content.subtitle}</span>
             </h1>
-            <p>{content.description}</p>
+            {firstSentence && content.description ? (
+              <p>
+                {firstSentence}
+                <span className="extended-description">
+                  {content.description.substring(firstSentence.length)}
+                </span>
+              </p>
+            ) : undefined}
           </div>
         </Animation>
         <Animation type="fadeLeft" delay={400}>
