@@ -32,5 +32,7 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', '${id}');`;
 
-export const sendConversionToGoogle = (adsId: string, conversionId: string) =>
+export const sendConversionToGoogle = (adsId: string, conversionId: string) => {
+  if (process.env.NODE_ENV !== 'production') return;
   gtag('event', 'conversion', { send_to: `${adsId}/${conversionId}` });
+};
