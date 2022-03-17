@@ -29,12 +29,14 @@ export const Logo: React.FunctionComponent<{
     <StyledLogo>
       {image?.data && (
         <Link href="/" aria-label="Homepage" passHref>
-          <Image
-            src={image.data.attributes.url}
-            alt={image.data.attributes.alternativeText}
-            layout="fill"
-            objectFit="contain"
-          />
+          <a>
+            <Image
+              src={image.data.attributes.url}
+              alt={image.data.attributes.alternativeText}
+              layout="fill"
+              objectFit="contain"
+            />
+          </a>
         </Link>
       )}
     </StyledLogo>
