@@ -93,15 +93,15 @@ const StyledCookieConsent = styled.div`
 `;
 
 export type CookieConsentProps = {
-  consent: boolean;
-  setConsent: React.Dispatch<React.SetStateAction<boolean>>;
+  consent: boolean | undefined;
+  setConsent: React.Dispatch<React.SetStateAction<boolean | undefined>>;
 };
 
 export const CookieConsent: React.FunctionComponent<CookieConsentProps> = ({
   consent,
   setConsent,
 }) => {
-  if (consent) return <></>;
+  if (consent !== undefined) return <></>;
 
   return (
     <StyledCookieConsent>

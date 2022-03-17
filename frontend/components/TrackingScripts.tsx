@@ -1,11 +1,17 @@
 import Script from 'next/script';
-import { TrackingIds } from '../backend-api';
+import { getCookieConsentValue } from 'react-cookie-consent';
+
+import type { TrackingIds } from '../backend-api';
+import { COOKIE_CONSENT_NAME } from './CookieConsent';
 
 export const TrackingScripts: React.FunctionComponent<{
   ids?: TrackingIds;
-  consent?: boolean;
-}> = ({ consent, ids }) => {
-  if (!consent || !ids || process.env.NODE_ENV !== 'production') return <></>;
+}> = ({ ids }) => {
+  if (!ids) return <></>;
+
+  const cookieConsent = getCookieConsentValue(COOKIE_CONSENT_NAME as string);
+  if (cookieConsent !== 'true' || process.env.NODE_ENV !== 'production')
+    return <></>;
 
   return (
     <>
@@ -33,6 +39,7 @@ gtag('js', new Date());
 gtag('config', '${id}');`;
 
 export const sendConversionToGoogle = (adsId: string, conversionId: string) => {
-  if (process.env.NODE_ENV !== 'production') return;
+  const cookieConsent = getCookieConsentValue(COOKIE_CONSENT_NAME as string);
+  if (cookieConsent !== 'true' || process.env.NODE_ENV !== 'production') return;
   gtag('event', 'conversion', { send_to: `${adsId}/${conversionId}` });
 };

@@ -30,13 +30,17 @@ export const Layout: React.FunctionComponent<{ content: LandingPage }> = ({
   const router = useRouter();
   const cookieConsent = getCookieConsentValue(COOKIE_CONSENT_NAME as string);
   const [allowCookies, setAllowCookies] = React.useState(
-    cookieConsent && cookieConsent === 'true' ? true : false,
+    cookieConsent === 'true'
+      ? true
+      : cookieConsent === 'false'
+      ? false
+      : undefined,
   );
 
   // https://github.com/styled-components/styled-components/issues/730#issuecomment-347077307
   React.useEffect(() => {
-    if (allowCookies) document.body.style.overflowY = 'auto';
-    else document.body.style.overflowY = 'hidden';
+    if (allowCookies === undefined) document.body.style.overflowY = 'hidden';
+    else document.body.style.overflowY = 'auto';
   });
 
   return (
@@ -44,7 +48,7 @@ export const Layout: React.FunctionComponent<{ content: LandingPage }> = ({
       <GlobalStyle isFunnelRoute={isFunnelRoute(router)} />
       <NextSeo {...extractSeoProps(content)} />
       <HeadMeta theme={extractTheme(content)} brand={content.brand_name} />
-      <TrackingScripts consent={allowCookies} ids={content.tracking} />
+      <TrackingScripts ids={content.tracking} />
       <Header content={content} />
       <main>{children}</main>
       <Footer content={content} />
