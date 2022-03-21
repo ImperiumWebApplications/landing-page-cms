@@ -25,6 +25,30 @@ const sendMail = ({
   });
 };
 
+const getPostalCodeDetails = ({
+  domain,
+  code,
+}: {
+  domain?: string;
+  code?: string | number;
+}) => {
+  if (!domain || !code) return Promise.reject();
+
+  const API_ROUTE = `/api/postal-codes/${code}?PRIVATE_API_ROUTE=${
+    process.env.PRIVATE_API_ROUTE ?? ''
+  }`;
+
+  const API =
+    process.env.NODE_ENV === 'development'
+      ? `http://${domain}${API_ROUTE}`
+      : `https://${domain}${API_ROUTE}`;
+
+  return fetch(API, {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' },
+  });
+};
+
 const createLead = ({
   domain,
   contact,
@@ -50,5 +74,6 @@ const createLead = ({
 
 export const NextAPI = {
   sendMail,
+  getPostalCodeDetails,
   createLead,
 };

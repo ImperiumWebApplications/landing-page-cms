@@ -156,8 +156,7 @@ export const generateHtmlEmailContent = ({
 
     return { html, error: undefined };
   } catch (error) {
-    Sentry.captureMessage('Error while sending mail.', {
-      level: Sentry.Severity.Error,
+    Sentry.captureException(error, {
       tags: { interface: 'APIRoute' },
     });
     return { html: undefined };

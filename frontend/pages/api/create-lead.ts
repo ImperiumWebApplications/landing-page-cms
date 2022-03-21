@@ -6,6 +6,7 @@ import type {
   ContactData,
   QuestionnaireItem,
 } from '../../context/Questionnaire/state';
+import type { PostalCodeDetails } from './postal-codes/[id]';
 import type { DefaultApiRouteResponse } from '../../lib/api/response';
 import { ErrorType, newServerError } from '../../lib/api/error';
 import { NextAPI } from '../../lib/api/request';
@@ -35,6 +36,8 @@ export const handler = async (
 
     const token = await StrapiAPI.getPipedriveAPITokenByDomain(data.host);
     if (!token) return newServerError(res, ErrorType.NOT_AUTHORIZED);
+
+    data.contactData.postalCode.value = await enrichPostalCodeValue(data);
 
     const person =
       (await PipedriveAPI.getPersonByEmail(
@@ -111,4 +114,23 @@ export const retrieveDataFromRequestBody = (req: CreateLeadApiRequest) => {
   }
 
   return { data: { host, contactData, questionnaire }, error: undefined };
+};
+
+export const enrichPostalCodeValue = async (data: {
+  host: string;
+  contactData: ContactData;
+  questionnaire: QuestionnaireItem[];
+}) => {
+  const postalCodeData = (
+    await (
+      await NextAPI.getPostalCodeDetails({
+        domain: data.host,
+        code: data.contactData.postalCode.value,
+      })
+    ).json()
+  ).data as PostalCodeDetails | undefined;
+
+  if (!postalCodeData) return data.contactData.postalCode.value;
+
+  return `${postalCodeData.code} (${postalCodeData.community})`;
 };

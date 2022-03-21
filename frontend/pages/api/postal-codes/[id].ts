@@ -9,8 +9,16 @@ import { isPostalCodeFormat } from '../../../utils/isPostalCodeFormat';
 export interface GetPostalCodeRequest extends NextApiRequest {
   query: {
     id?: string;
+    PRIVATE_API_ROUTE?: string;
   };
 }
+
+export type PostalCodeDetails = {
+  code: string;
+  city: string;
+  community: string;
+  state: string;
+};
 
 export type GetPostalCodeResponse = NextApiResponse<{
   success: boolean;
@@ -23,20 +31,15 @@ export const handler = async (
   res: GetPostalCodeResponse,
 ) => {
   try {
-    if (req.method !== 'GET')
-      return newServerError(res, ErrorType.UNSUPPORTED_METHOD);
-
-    const postalCode = req.query.id;
-    if (!postalCode || !isPostalCodeFormat(postalCode))
-      return newServerError(res, ErrorType.UNPROCESSABLE_ENTITY);
+    const { data, error } = retrieveDataFromRequest(req);
+    if (!data) return newServerError(res, error);
 
     const postalCodeData =
-      PostalCodeJson[postalCode as keyof typeof PostalCodeJson];
+      PostalCodeJson[data.postalCode as keyof typeof PostalCodeJson];
 
-    if (!postalCodeData)
-      return res.status(200).json({ success: true, data: undefined });
-
-    return res.status(200).json({ success: true, data: postalCodeData });
+    return res
+      .status(200)
+      .json({ success: true, data: postalCodeData ?? undefined });
   } catch (error) {
     Sentry.captureException(error, {
       tags: { interface: 'APIRoute' },
@@ -47,9 +50,27 @@ export const handler = async (
 
 export default withSentry(handler);
 
-type PostalCodeDetails = {
-  code: string;
-  city: string;
-  community: string;
-  state: string;
+/**
+ *
+ * HELPER FUNCTIONS
+ *
+ */
+
+export const retrieveDataFromRequest = (req: GetPostalCodeRequest) => {
+  if (req.method !== 'GET')
+    return { data: undefined, error: ErrorType.UNSUPPORTED_METHOD };
+
+  if (req.query.PRIVATE_API_ROUTE !== process.env.PRIVATE_API_ROUTE) {
+    Sentry.captureMessage('Missing or invalid public API route query param.', {
+      level: Sentry.Severity.Error,
+      tags: { interface: 'APIRoute' },
+    });
+    return { data: undefined, error: ErrorType.NOT_AUTHORIZED };
+  }
+
+  const postalCode = req.query.id;
+  if (!postalCode || !isPostalCodeFormat(postalCode))
+    return { data: undefined, error: ErrorType.UNPROCESSABLE_ENTITY };
+
+  return { data: { postalCode }, error: undefined };
 };
