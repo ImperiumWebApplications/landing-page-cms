@@ -14,7 +14,9 @@ export interface EmailTemplatePayload {
 
 export interface EmailTemplateContext {
   [EmailTemplate.Confirmation]: {
-    logoUrl: string;
+    logoUrl?: string;
+    phone?: string;
+    postalCode?: string;
     firstName: string;
     lastName: string;
     colorPrimary: string;

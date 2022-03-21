@@ -10,9 +10,11 @@
     </mj-attributes>
   </mj-head>
   <mj-body background-color="#FAFAFA">
+    {{#if logoUrl}}
     <mj-hero padding="40px 10px" background-color="#FAFAFA">
       <mj-image align="left" width="220px" src="{{logoUrl}}" />
     </mj-hero>
+    {{/if}}
     <mj-section padding="10px">
       <mj-column>
         <mj-text
@@ -43,6 +45,26 @@
           wir haben Ihre Anfrage erhalten und werden uns zeitnah bei Ihnen
           telefonisch melden.
         </mj-text>
+
+        {{#if phone}}
+        <mj-text
+          font-size="16px"
+          font-weight="400"
+          line-height="16px"
+          padding-bottom="0"
+        >
+          Ihre Rufnummer: <b>{{phone}}</b>
+        </mj-text>
+        {{/if}} {{#if postalCode}}
+        <mj-text
+          font-size="16px"
+          font-weight="400"
+          line-height="24px"
+          padding-bottom="10px"
+        >
+          Ihr Wohnort: <b>{{postalCode}}</b>
+        </mj-text>
+        {{/if}}
 
         <mj-text
           font-size="16px"

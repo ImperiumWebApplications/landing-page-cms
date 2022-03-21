@@ -26,6 +26,8 @@ export interface SendMailRequestBody {
     firstName?: string;
     lastName?: string;
     email?: string;
+    phone?: string;
+    postalCode?: string;
   };
 }
 
@@ -103,50 +105,63 @@ export const generateHtmlEmailContent = ({
   content,
 }: {
   recipient: {
-    firstName?: string | undefined;
-    lastName?: string | undefined;
-    email?: string | undefined;
+    firstName?: string;
+    lastName?: string;
+    email?: string;
+    phone?: string;
+    postalCode?: string;
   };
   landingPage: LandingPage;
   template: keyof typeof EmailTemplate;
   content: EmailTemplatePayload[keyof typeof EmailTemplate];
 }) => {
-  const templateDirectory = resolve(process.cwd(), 'email');
-  const templateFileName = `${template.toLowerCase()}.mjml`;
-  const templateFilePath = join(templateDirectory, templateFileName);
+  try {
+    const templateDirectory = resolve(process.cwd(), 'email');
+    const templateFileName = `${template.toLowerCase()}.mjml`;
+    const templateFilePath = join(templateDirectory, templateFileName);
 
-  if (!existsSync(templateFilePath)) {
-    Sentry.captureMessage('Missing template for sending mail.', {
+    if (!existsSync(templateFilePath)) {
+      Sentry.captureMessage('Missing template for sending mail.', {
+        level: Sentry.Severity.Error,
+        tags: { interface: 'APIRoute' },
+      });
+      return { html: undefined, error: ErrorType.UNPROCESSABLE_ENTITY };
+    }
+
+    const templateString = readFileSync(templateFilePath, 'utf8');
+    const hbsTemplate = compile(templateString);
+
+    const context: EmailTemplateContext[EmailTemplate] = {
+      logoUrl: landingPage?.logo_header?.data.attributes.url,
+      firstName: recipient?.firstName ?? '',
+      lastName: recipient?.lastName ?? '',
+      colorPrimary: landingPage?.color_primary ?? '#000000',
+      colorText: landingPage?.color_text ?? '#737373',
+      questionnaire: content?.questionnaire,
+      phone: recipient.phone,
+      postalCode: recipient.postalCode,
+    };
+
+    const compiledTemplate = hbsTemplate(context);
+    const { html, errors } = mjml2html(compiledTemplate);
+
+    if (errors.length || !compiledTemplate) {
+      Sentry.captureMessage('Error while generating mail template.', {
+        level: Sentry.Severity.Warning,
+        extra: { mjmlError: errors },
+        tags: { interface: 'APIRoute' },
+      });
+      return { html: undefined, error: ErrorType.UNPROCESSABLE_ENTITY };
+    }
+
+    return { html, error: undefined };
+  } catch (error) {
+    Sentry.captureMessage('Error while sending mail.', {
       level: Sentry.Severity.Error,
       tags: { interface: 'APIRoute' },
     });
-    return { html: undefined, error: ErrorType.UNPROCESSABLE_ENTITY };
+    return { html: undefined };
   }
-
-  const templateString = readFileSync(templateFilePath, 'utf8');
-  const hbsTemplate = compile(templateString);
-
-  const context = {
-    firstName: recipient?.firstName ?? '',
-    lastName: recipient?.lastName ?? '',
-    logoUrl: landingPage?.logo_header?.data.attributes.url,
-    colorPrimary: landingPage?.color_primary ?? '#000000',
-    colorText: landingPage?.color_text ?? '#737373',
-    questionnaire: content?.questionnaire,
-  } as EmailTemplateContext[EmailTemplate];
-
-  const { html, errors } = mjml2html(hbsTemplate(context));
-
-  if (errors.length) {
-    Sentry.captureMessage('Error while generating mail template.', {
-      level: Sentry.Severity.Warning,
-      extra: { mjmlError: errors },
-      tags: { interface: 'APIRoute' },
-    });
-    return { html: undefined, error: ErrorType.UNPROCESSABLE_ENTITY };
-  }
-
-  return { html, error: undefined };
 };
 
 export const retrieveDataFromRequestBody = (req: SendMailApiRequest) => {

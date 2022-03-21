@@ -63,6 +63,8 @@ export const handler = async (
           firstName: data.contactData.firstName.value,
           lastName: data.contactData.lastName.value,
           email: data.contactData.email.value,
+          phone: data.contactData.phone.value,
+          postalCode: data.contactData.postalCode.value,
         },
       }),
     ]);
