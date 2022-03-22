@@ -69,7 +69,8 @@ export const PostalCode: React.FunctionComponent = () => {
   return (
     <StyledPostalCode>
       <StyledStepTitle className="title">
-        Wunderbar! Nennen Sie uns jetzt bitte Ihre Postleitzahl:
+        Wunderbar!
+        <br /> Nennen Sie uns jetzt bitte Ihre Postleitzahl:
       </StyledStepTitle>
       <div className="input">
         <TextInput
