@@ -6,6 +6,8 @@ export const extractSeoProps = (content: LandingPage) => {
     title: content.seo_title,
     description: content.seo_description,
     defaultTitle: content.seo_title,
+    noindex: content.domain.includes('lq-pages.ch') ? true : false,
+    nofollow: content.domain.includes('lq-pages.ch') ? true : false,
     openGraph: {
       type: 'website',
       url: `https://${content.domain}`,
