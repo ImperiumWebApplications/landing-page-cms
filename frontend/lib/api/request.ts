@@ -1,13 +1,8 @@
-import { CreateLeadRequestBody } from '../../pages/api/create-lead';
-import { SendMailRequestBody } from '../../pages/api/send-mail';
+import { CreateLeadInPipedriveProps } from './create-lead';
+import type { SendMailProps } from './send-mail';
 
-const sendMail = ({
-  domain,
-  template,
-  recipient,
-  payload,
-}: SendMailRequestBody) => {
-  if (!domain) return Promise.reject();
+const sendMail = ({ host, template, recipient, payload }: SendMailProps) => {
+  if (!host) return Promise.reject();
 
   const API_ROUTE = `/api/send-mail?PRIVATE_API_ROUTE=${
     process.env.PRIVATE_API_ROUTE ?? ''
@@ -15,24 +10,24 @@ const sendMail = ({
 
   const API =
     process.env.NODE_ENV === 'development'
-      ? `http://${domain}${API_ROUTE}`
-      : `https://${domain}${API_ROUTE}`;
+      ? `http://${host}${API_ROUTE}`
+      : `https://${host}${API_ROUTE}`;
 
   return fetch(API, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ domain, template, payload, recipient }),
+    body: JSON.stringify({ host, template, payload, recipient }),
   });
 };
 
 const getPostalCodeDetails = ({
-  domain,
+  host,
   code,
 }: {
-  domain?: string;
+  host?: string;
   code?: string | number;
 }) => {
-  if (!domain || !code) return Promise.reject();
+  if (!host || !code) return Promise.reject();
 
   const API_ROUTE = `/api/postal-codes/${code}?PRIVATE_API_ROUTE=${
     process.env.PRIVATE_API_ROUTE ?? ''
@@ -40,8 +35,8 @@ const getPostalCodeDetails = ({
 
   const API =
     process.env.NODE_ENV === 'development'
-      ? `http://${domain}${API_ROUTE}`
-      : `https://${domain}${API_ROUTE}`;
+      ? `http://${host}${API_ROUTE}`
+      : `https://${host}${API_ROUTE}`;
 
   return fetch(API, {
     method: 'GET',
@@ -49,12 +44,12 @@ const getPostalCodeDetails = ({
   });
 };
 
-const createLead = ({
-  domain,
+const createLeadInPipedrive = ({
+  host,
   contact,
   questionnaire,
-}: CreateLeadRequestBody) => {
-  if (!domain) return Promise.reject();
+}: CreateLeadInPipedriveProps) => {
+  if (!host) return Promise.reject();
 
   const API_ROUTE = `/api/create-lead?API_ROUTE=${
     process.env.NEXT_PUBLIC_API_ROUTE ?? ''
@@ -62,8 +57,8 @@ const createLead = ({
 
   const API =
     process.env.NODE_ENV === 'development'
-      ? `http://${domain}${API_ROUTE}`
-      : `https://${domain}${API_ROUTE}`;
+      ? `http://${host}${API_ROUTE}`
+      : `https://${host}${API_ROUTE}`;
 
   return fetch(API, {
     method: 'POST',
@@ -75,5 +70,5 @@ const createLead = ({
 export const NextAPI = {
   sendMail,
   getPostalCodeDetails,
-  createLead,
+  createLeadInPipedrive,
 };

@@ -142,8 +142,8 @@ export const ContactForm: React.FunctionComponent<{
       if (!process.env.NEXT_PUBLIC_API_ROUTE)
         throw new Error('Missing credentials for API route');
 
-      const res = await NextAPI.createLead({
-        domain: location.host,
+      const res = await NextAPI.createLeadInPipedrive({
+        host: location.host,
         questionnaire: state.questionnaire,
         contact: state.contact,
       });

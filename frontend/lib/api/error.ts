@@ -1,36 +1,14 @@
-/**
- * Server Error Configuration
- */
+import * as Sentry from '@sentry/nextjs';
 
-import { DefaultApiRouteResponse } from './response';
-
-export enum ErrorType {
-  'NOT_AUTHORIZED' = 'NOT_AUTHORIZED',
-  'UNSUPPORTED_METHOD' = 'UNSUPPORTED_METHOD',
-  'UNPROCESSABLE_ENTITY' = 'UNPROCESSABLE_ENTITY',
-}
-
-const ErrorResponse: { [key: string]: { status: number; message: string } } = {
-  [ErrorType.NOT_AUTHORIZED]: {
-    status: 401,
-    message: 'Not authorized to access requested resource.',
-  },
-  [ErrorType.UNSUPPORTED_METHOD]: {
-    status: 405,
-    message: 'HTTP Method is not supported.',
-  },
-  [ErrorType.UNPROCESSABLE_ENTITY]: {
-    status: 422,
-    message: 'Insufficient or incompatible data provided.',
-  },
+const getErrorMessage = (error: unknown) => {
+  if (error instanceof Error) return error.message;
+  return String('Unknown error' + error);
 };
 
-export const newServerError = (
-  res: DefaultApiRouteResponse,
-  type: ErrorType | undefined,
-) => {
-  const { status, message } = type
-    ? ErrorResponse[type]
-    : { status: 500, message: 'Unknown error' };
-  return res.status(status).json({ success: false, message });
+export const captureNextAPIError = (error: unknown) => {
+  const message = getErrorMessage(error);
+  Sentry.captureException(error, {
+    extra: { message },
+    tags: { interface: 'NextAPI' },
+  });
 };
