@@ -1,21 +1,20 @@
-import * as PostalCodeJson from './data/DE-postal-codes.json';
+import {
+  CountryDetails,
+  isKnownCountry,
+} from '../../../config/countries.config';
 
-export type PostalCodeDetails = {
-  code: string;
-  city: string;
-  community: string;
-  state: string;
-};
-
-export const getPostalCodeDetails = (code: string) => {
+export const getPostalCodeDetails = (code: string, country: string) => {
   try {
-    const postalCodeData = (
-      PostalCodeJson as Record<string, PostalCodeDetails | undefined>
-    )[code];
+    if (!isKnownCountry(country)) throw new Error('Unknown country provided.');
 
-    if (!postalCodeData) throw new Error('Unknown postal code provided');
+    const postalCodeDetails = CountryDetails[country].postalCodes.filter(
+      (details) => details.zipcode === code,
+    );
 
-    return postalCodeData;
+    if (!postalCodeDetails.length)
+      throw new Error('Unknown postal code provided');
+
+    return postalCodeDetails;
   } catch (error) {
     throw error;
   }

@@ -5,7 +5,7 @@ import type { DefaultApiRouteResponse } from '../../lib/api/response';
 import { EmailTemplate } from '../../config/emails.config';
 import { normalizeHostname } from '../../utils/normalizeHostname';
 import { InternalAPI } from '../../lib/api/internal';
-import { captureNextAPIError } from '../../lib/api/error';
+import { captureNextAPIError, getErrorMessage } from '../../lib/api/error';
 import { CreateLeadInPipedriveProps } from '../../lib/api/create-lead';
 
 export interface CreateLeadApiRequest extends NextApiRequest {
@@ -38,7 +38,8 @@ export const handler = async (
     return res.status(200).json({ success: true });
   } catch (error) {
     captureNextAPIError(error);
-    return res.status(500).json({ success: false });
+    const message = getErrorMessage(error);
+    return res.status(500).json({ success: false, message });
   }
 };
 

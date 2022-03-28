@@ -1,19 +1,15 @@
-export enum Country {
-  Switzerland = 'CH',
-  Germany = 'DE',
-}
+import { Country, CountryDetails } from '../config/countries.config';
 
 export const getCountryByDomain = (domain: string) => {
-  if (process.env.NODE_ENV !== 'production') return Country.Germany;
+  if (process.env.NODE_ENV !== 'production') return Country.Switzerland;
 
   const topLevelDomain = domain.split('.').pop();
 
-  switch (topLevelDomain) {
-    case 'de':
-      return Country.Germany;
-    case 'ch':
-      return Country.Switzerland;
-    default:
-      return undefined;
-  }
+  const foundCountryIndex = Object.values(CountryDetails).findIndex(
+    (country) => country.topLevelDomain === topLevelDomain,
+  );
+
+  return foundCountryIndex !== -1
+    ? Object.keys(CountryDetails)[foundCountryIndex]
+    : undefined;
 };

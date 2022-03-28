@@ -1,6 +1,6 @@
 import * as Sentry from '@sentry/nextjs';
 
-const getErrorMessage = (error: unknown) => {
+export const getErrorMessage = (error: unknown) => {
   if (error instanceof Error) return error.message;
   return String('Unknown error' + error);
 };

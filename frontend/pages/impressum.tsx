@@ -7,20 +7,18 @@ import ReactMarkdown from 'react-markdown';
 import type { LandingPage } from '../backend-api';
 import type { ContentPageContent } from '../interface/getServerSideProps';
 import { collectContentPageContent } from '../interface/getServerSideProps';
+import { Country } from '../config/countries.config';
 import { Layout } from '../components/Layout';
 import { Section } from '../components/Section';
 import { populateMarkdownTemplate } from '../utils/populateMarkdownTemplate';
-import { Country, getCountryByDomain } from '../utils/getCountryByDomain';
+import { getCountryByDomain } from '../utils/getCountryByDomain';
 
 const ClientSideOnlyArticle = dynamic<{ children: ReactElement }>(
   () => import('../components/Article').then((mod) => mod.Article),
   { ssr: false },
 );
 
-const getVatSpecification = (
-  country: Country | undefined,
-  vat: string | undefined,
-) => {
+const getVatSpecification = (country?: string, vat?: string) => {
   if (!vat) return undefined;
 
   switch (country) {

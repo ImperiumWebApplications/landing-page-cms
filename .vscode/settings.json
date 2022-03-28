@@ -13,6 +13,7 @@
       "strapi",
       "Swiper",
       "Telefonnummer",
-      "Vorname"
+      "Vorname",
+      "zipcode"
     ]
 }

@@ -3,7 +3,7 @@ import { withSentry } from '@sentry/nextjs';
 
 import type { DefaultApiRouteResponse } from '../../lib/api/response';
 import { EmailTemplate } from '../../config/emails.config';
-import { captureNextAPIError } from '../../lib/api/error';
+import { captureNextAPIError, getErrorMessage } from '../../lib/api/error';
 import { sendMail, SendMailProps } from '../../lib/api/send-mail';
 
 interface SendMailApiRequest extends NextApiRequest {
@@ -22,7 +22,8 @@ export const handler = async (
     return res.status(200).json({ success: true });
   } catch (error) {
     captureNextAPIError(error);
-    return res.status(500).json({ success: false });
+    const message = getErrorMessage(error);
+    return res.status(500).json({ success: false, message });
   }
 };
 
