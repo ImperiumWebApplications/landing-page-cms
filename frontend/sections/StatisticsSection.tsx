@@ -1,23 +1,13 @@
+import Image from 'next/image';
 import styled from 'styled-components';
 
 import type { StatisticsSection as IStatisticsSection } from '../backend-api';
 import { Section } from '../components/Section';
 import { devices } from '../config/breakpoints.config';
 
-const StyledStatisticsSection = styled(Section)<{
-  bgImage: string | undefined;
-}>`
+const StyledStatisticsSection = styled(Section)`
   position: relative;
   background-color: ${({ theme }) => theme.colors.secondary};
-  background-image: url(${({ bgImage }) => bgImage});
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-
-  @supports (-webkit-overflow-scrolling: touch) {
-    background-attachment: scroll;
-  }
 
   .backdrop {
     position: absolute;
@@ -72,11 +62,15 @@ export const StatisticsSection: React.FunctionComponent<{
   content: IStatisticsSection;
 }> = ({ id, content }) => {
   return (
-    <StyledStatisticsSection
-      id={id}
-      bgImage={content.background_image?.data?.attributes.url}
-      fullWidth
-    >
+    <StyledStatisticsSection id={id} fullWidth>
+      {content.background_image?.data.attributes ? (
+        <Image
+          src={content.background_image.data.attributes.url}
+          alt={content.background_image.data.attributes.alternativeText}
+          layout="fill"
+          objectFit="cover"
+        />
+      ) : undefined}
       <div className="backdrop" />
       <div className="content-wrapper">
         {content.number &&
