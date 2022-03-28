@@ -41,6 +41,12 @@ const StyledImagesSection = styled(Section)`
     & > span:last-of-type > img {
       border-bottom-right-radius: ${({ theme }) => theme.borderRadius};
     }
+
+    .image-wrapper {
+      position: relative;
+      height: 150px;
+      width: 450px;
+    }
   }
 
   .callout {
@@ -112,14 +118,15 @@ export const ImagesSection: React.FunctionComponent<{
         {content.images?.data?.length &&
           content.images.data.map((image, i) => {
             return (
-              <Image
-                key={i}
-                src={image.attributes.url}
-                alt={image.attributes.alternativeText}
-                height={150}
-                width={450}
-                layout="responsive"
-              />
+              <div key={i} className="image-wrapper">
+                <Image
+                  src={image.attributes.url}
+                  alt={image.attributes.alternativeText}
+                  width={image.attributes.width}
+                  layout="fill"
+                  objectFit="cover"
+                />
+              </div>
             );
           })}
       </div>

@@ -139,6 +139,12 @@ const StyledServicesSection = styled(Section)`
         border-radius: ${({ theme }) => theme.borderRadius};
       }
 
+      .image-wrapper {
+        position: relative;
+        width: 740px;
+        height: 380px;
+      }
+
       .examples {
         margin-top: 2rem;
 
@@ -216,12 +222,14 @@ export const ServicesSection: React.FunctionComponent<{
                 {activeTabContent.service_images.data.map((image, i) => {
                   return (
                     <SwiperSlide key={i}>
-                      <Image
-                        src={image.attributes.url}
-                        alt={image.attributes.alternativeText}
-                        width={740}
-                        height={380}
-                      />
+                      <div className="image-wrapper">
+                        <Image
+                          src={image.attributes.url}
+                          alt={image.attributes.alternativeText}
+                          layout="fill"
+                          objectFit="cover"
+                        />
+                      </div>
                     </SwiperSlide>
                   );
                 })}

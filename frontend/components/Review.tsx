@@ -38,6 +38,8 @@ const StyledReview = styled.div`
     z-index: 2;
     top: -50px;
     left: calc(50% - 50px);
+    height: 100px;
+    width: 100px;
 
     &::before {
       content: '';
@@ -79,8 +81,8 @@ export const Review: React.FunctionComponent<{
           <Image
             src={content.avatar.data.attributes.url}
             alt={content.avatar.data.attributes.alternativeText}
-            width={100}
-            height={100}
+            layout="fill"
+            objectFit="cover"
           />
         )}
       </div>
