@@ -7,18 +7,15 @@ import { ImageObject } from '../backend-api';
 import { devices } from '../config/breakpoints.config';
 
 const StyledLogo = styled.div`
-  width: 100%;
-  min-width: 180px;
-  max-width: 200px;
-  height: 100%;
-  min-height: 60px;
-  max-height: 80px;
-  margin-right: 2rem;
-  cursor: pointer;
   position: relative;
+  cursor: pointer;
+  width: 200px;
+  height: 50px;
+  margin-right: 2rem;
 
   @media screen and (${devices.sm}) {
-    max-width: 300px;
+    width: 300px;
+    height: 60px;
   }
 `;
 
@@ -35,6 +32,7 @@ export const Logo: React.FunctionComponent<{
               alt={image.data.attributes.alternativeText}
               layout="fill"
               objectFit="contain"
+              objectPosition="left center"
             />
           </a>
         </Link>
