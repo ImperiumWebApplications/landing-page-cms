@@ -193,7 +193,7 @@ export const PostalCode: React.FunctionComponent<{
         </div>
         <Button
           label="Weiter"
-          disabled={!isCodeCompleted || !!error}
+          disabled={(!!countries && !isCodeCompleted) || !!error}
           onClickHandler={() => goToStep(dispatch, state.currentIndex + 1)}
           icon={
             <NavigateNext
