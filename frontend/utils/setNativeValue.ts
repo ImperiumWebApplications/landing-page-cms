@@ -5,7 +5,11 @@
  * @param value: string
  */
 
-export const setNativeValue = (el: HTMLInputElement, value: string) => {
+export const setNativeValue = (
+  el: HTMLInputElement,
+  value: string | undefined,
+) => {
+  if (!value) return;
   el.value = value;
   el.dispatchEvent(new Event('change', { bubbles: true }));
 };
