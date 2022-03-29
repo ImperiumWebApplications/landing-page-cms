@@ -3,10 +3,14 @@ import React from 'react';
 import slugify from 'slugify';
 import styled from 'styled-components';
 
-import type { TextFieldKey } from '../../context/Questionnaire/state';
+import type {
+  EmailFields,
+  TextFields,
+} from '../../context/Questionnaire/state';
 import type { Validator } from '../../config/form.config';
 import { useQuestionnaireContext } from '../../context/Questionnaire';
 import { devices } from '../../config/breakpoints.config';
+import { Label } from './Label';
 
 const StyledTextInput = styled.div<{ hasError: undefined | string }>`
   position: relative;
@@ -31,18 +35,6 @@ const StyledTextInput = styled.div<{ hasError: undefined | string }>`
     }
   }
 
-  label {
-    display: block;
-    margin-bottom: 0.25rem;
-    letter-spacing: +0.25px;
-    font-size: 0.9rem;
-
-    @media screen and (${devices.md}) {
-      margin-bottom: 0.75rem;
-      font-size: 1rem;
-    }
-  }
-
   input {
     padding: 0.75rem 1rem;
     font-size: 1rem;
@@ -50,7 +42,8 @@ const StyledTextInput = styled.div<{ hasError: undefined | string }>`
     letter-spacing: +1px;
     border-radius: 0.5rem;
     border: 2px solid
-      ${({ theme, hasError }) => (hasError ? 'red' : theme.colors.tertiary)};
+      ${({ theme, hasError }) =>
+        hasError ? theme.colors.error : theme.colors.tertiary};
     width: 100%;
     transition: box-shadow 0.1s ease-in-out;
 
@@ -74,9 +67,9 @@ const defaultValidations: Validator[] = [
 ];
 
 export const TextInput: React.FunctionComponent<{
+  field: keyof TextFields | keyof EmailFields;
   label: string;
   type: string;
-  field: TextFieldKey;
   pattern?: string;
   validations?: Validator[];
 }> = ({ label, type, field, pattern, validations }) => {
@@ -119,7 +112,7 @@ export const TextInput: React.FunctionComponent<{
 
   return (
     <StyledTextInput hasError={error}>
-      <label htmlFor={inputId}>{label}</label>
+      <Label htmlFor={inputId}>{label}</Label>
       <input
         type={type}
         name={inputId}

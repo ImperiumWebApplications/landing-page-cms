@@ -23,6 +23,13 @@ const StyledButton = styled.a<{
   letter-spacing: +0.25px;
   text-decoration: none;
   cursor: pointer;
+  border: none;
+  text-align: left;
+
+  &:disabled {
+    opacity: 0.8;
+    cursor: no-drop;
+  }
 `;
 
 export interface ButtonProps {
@@ -31,6 +38,7 @@ export interface ButtonProps {
   color?: string;
   className?: string;
   fullWidth?: boolean;
+  disabled?: boolean;
   fixedWidth?: string;
   icon?: React.ReactElement;
   onClickHandler?: React.MouseEventHandler;
@@ -41,20 +49,23 @@ export const Button: React.FunctionComponent<ButtonProps> = ({
   label,
   color,
   className,
+  disabled,
   fixedWidth,
   fullWidth,
   onClickHandler,
   icon: Icon,
 }) => {
+  const defaultClasses = disabled
+    ? 'call-to-action'
+    : 'call-to-action shining-button';
+
+  const classes = [defaultClasses, className].join(' ');
+  const defaultProps = { fixedWidth, fullWidth, color, className: classes };
+
   if (href)
     return (
       <Link href={href} passHref>
-        <StyledButton
-          color={color}
-          fullWidth={fullWidth}
-          fixedWidth={fixedWidth}
-          className={['call-to-action shining-button', className].join(' ')}
-        >
+        <StyledButton as="a" {...defaultProps}>
           {label} {Icon ? Icon : undefined}
         </StyledButton>
       </Link>
@@ -62,11 +73,10 @@ export const Button: React.FunctionComponent<ButtonProps> = ({
   if (onClickHandler)
     return (
       <StyledButton
+        as="button"
+        disabled={disabled}
         onClick={onClickHandler}
-        color={color}
-        fullWidth={fullWidth}
-        fixedWidth={fixedWidth}
-        className={['call-to-action shining-button', className].join(' ')}
+        {...defaultProps}
       >
         {label} {Icon ? Icon : undefined}
       </StyledButton>

@@ -1,7 +1,7 @@
 import slugify from 'slugify';
 import styled from 'styled-components';
 
-import type { CheckboxFieldKey } from '../../context/Questionnaire/state';
+import type { CheckboxFields } from '../../context/Questionnaire/state';
 import { useQuestionnaireContext } from '../../context/Questionnaire';
 import { devices } from '../../config/breakpoints.config';
 
@@ -62,7 +62,7 @@ const StyledCheckboxInput = styled.div`
 `;
 
 export const CheckboxInput: React.FunctionComponent<{
-  field: CheckboxFieldKey;
+  field: keyof CheckboxFields;
   label: string;
 }> = ({ field, label }) => {
   const { state, dispatch } = useQuestionnaireContext();

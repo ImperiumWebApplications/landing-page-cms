@@ -6,12 +6,14 @@ import { Layout } from '../../components/Layout';
 import { QuestionnaireContextProvider } from '../../context/Questionnaire';
 import { Questionnaire } from '../../components/Questionnaire/Questionnaire';
 import { PagePlaceholder } from '../../components/Questionnaire/Placeholder';
+import { getCountryByDomain } from '../../utils/getCountryByDomain';
 
 const QuestionnairePage: NextPage<QuestionnairePageContent> = ({
   domainContent,
   questionnaireContent,
 }) => {
-  const { questionnaire } = domainContent;
+  const { questionnaire, domain } = domainContent;
+  const country = getCountryByDomain(domain);
 
   if (!questionnaire || !questionnaireContent.questions)
     return <PagePlaceholder domainContent={domainContent} />;
@@ -20,8 +22,9 @@ const QuestionnairePage: NextPage<QuestionnairePageContent> = ({
     <Layout content={domainContent}>
       <QuestionnaireContextProvider>
         <Questionnaire
-          advantages={questionnaire.advantage}
           questions={questionnaireContent.questions}
+          countries={country ? [country] : undefined}
+          advantages={questionnaire.advantage}
           phone={domainContent.contact_phone}
           tracking={domainContent.tracking}
         />

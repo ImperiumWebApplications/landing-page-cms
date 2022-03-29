@@ -1,26 +1,39 @@
-import { formFieldLabelConfiguration } from '../../config/form.config';
+import {
+  ContactFields,
+  formFieldLabelConfiguration,
+} from '../../config/form.config';
 
 type RadioField = { type: 'radio'; value: string; options: string[] };
 type TextField = { type: 'text'; label: string; value: string };
 type EmailField = { type: 'email'; label: string; value: string };
 type CheckboxField = { type: 'checkbox'; label: string; value: boolean };
 
-export type CheckboxFieldKey = Extract<keyof ContactData, 'acceptedTerms'>;
-export type RadioFieldKey = Extract<keyof ContactData, 'salutation'>;
-export type TextFieldKey = Exclude<
-  keyof ContactData,
-  'salutation' | 'acceptedTerms'
->;
+export type FormField = RadioField | TextField | EmailField | CheckboxField;
 
-export type ContactData = {
-  salutation: RadioField;
-  firstName: TextField;
-  lastName: TextField;
-  email: EmailField;
-  phone: TextField;
-  postalCode: TextField;
-  acceptedTerms: CheckboxField;
+export type CheckboxFields = {
+  [ContactFields.TermsAccepted]: CheckboxField;
 };
+
+export type RadioFields = {
+  [ContactFields.Salutation]: RadioField;
+};
+
+export type EmailFields = {
+  [ContactFields.Email]: EmailField;
+};
+
+export type TextFields = {
+  [ContactFields.FirstName]: TextField;
+  [ContactFields.LastName]: TextField;
+  [ContactFields.Phone]: TextField;
+  [ContactFields.PostalCode]: TextField;
+  [ContactFields.City]: TextField;
+};
+
+export type ContactData = CheckboxFields &
+  RadioFields &
+  EmailFields &
+  TextFields;
 
 export type QuestionnaireItem = {
   question: { id: number; value: string };
@@ -37,39 +50,44 @@ export const initialState: QuestionnaireContextState = {
   currentIndex: 0,
   questionnaire: [],
   contact: {
-    salutation: {
+    [ContactFields.Salutation]: {
       type: 'radio',
       value: '',
-      options: formFieldLabelConfiguration.salutation,
+      options: formFieldLabelConfiguration[ContactFields.Salutation],
     },
-    firstName: {
+    [ContactFields.FirstName]: {
       type: 'text',
-      label: formFieldLabelConfiguration.firstName,
+      label: formFieldLabelConfiguration[ContactFields.FirstName],
       value: '',
     },
-    lastName: {
+    [ContactFields.LastName]: {
       type: 'text',
-      label: formFieldLabelConfiguration.lastName,
+      label: formFieldLabelConfiguration[ContactFields.LastName],
       value: '',
     },
-    email: {
+    [ContactFields.Email]: {
       type: 'email',
-      label: formFieldLabelConfiguration.email,
+      label: formFieldLabelConfiguration[ContactFields.Email],
       value: '',
     },
-    phone: {
+    [ContactFields.Phone]: {
       type: 'text',
-      label: formFieldLabelConfiguration.phone,
+      label: formFieldLabelConfiguration[ContactFields.Phone],
       value: '',
     },
-    postalCode: {
+    [ContactFields.PostalCode]: {
       type: 'text',
-      label: formFieldLabelConfiguration.postalCode,
+      label: formFieldLabelConfiguration[ContactFields.PostalCode],
       value: '',
     },
-    acceptedTerms: {
+    [ContactFields.City]: {
+      type: 'text',
+      label: formFieldLabelConfiguration[ContactFields.City],
+      value: '',
+    },
+    [ContactFields.TermsAccepted]: {
       type: 'checkbox',
-      label: formFieldLabelConfiguration.acceptedTerms,
+      label: formFieldLabelConfiguration[ContactFields.TermsAccepted],
       value: false,
     },
   },

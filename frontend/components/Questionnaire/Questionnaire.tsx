@@ -7,6 +7,7 @@ import type {
   QuestionnaireQuestion,
   TrackingIds,
 } from '../../backend-api';
+import type { Country } from '../../config/countries.config';
 import type { SingleChoiceEventHandler } from './SingleChoice';
 import { useQuestionnaireContext } from '../../context/Questionnaire';
 import { Section } from '../Section';
@@ -82,6 +83,7 @@ export type QuestionnaireHistoryState = {
 
 type QuestionnaireProps = {
   questions: QuestionnaireQuestion[];
+  countries?: Country[];
   advantages?: Advantage[];
   phone?: string;
   customSelectHandler?: SingleChoiceEventHandler;
@@ -89,6 +91,7 @@ type QuestionnaireProps = {
 };
 
 export const Questionnaire: React.FunctionComponent<QuestionnaireProps> = ({
+  countries,
   tracking,
   advantages,
   questions,
@@ -143,7 +146,7 @@ export const Questionnaire: React.FunctionComponent<QuestionnaireProps> = ({
             customSelectHandler={customSelectHandler}
           />
         )}
-        {isPostalCodeStep && <PostalCode />}
+        {isPostalCodeStep && <PostalCode countries={countries} />}
         {isContactFormStep && <ContactForm tracking={tracking} />}
         {isFormSuccessStep && <Confirmation phone={phone} />}
       </div>

@@ -16,6 +16,7 @@ export const extractTheme = (content?: LandingPage) => {
       tertiary: content?.color_tertiary ?? '#232323',
       text: content?.color_text ?? '#000000',
       success: '#4BB543',
+      error: '#ff9999'
     },
   };
 };

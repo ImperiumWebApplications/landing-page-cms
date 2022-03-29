@@ -4,10 +4,12 @@ import { BadgeCheck } from '@styled-icons/heroicons-outline';
 import * as Sentry from '@sentry/nextjs';
 
 import type {
-  CheckboxFieldKey,
+  CheckboxFields,
   ContactData,
-  RadioFieldKey,
-  TextFieldKey,
+  EmailFields,
+  FormField,
+  RadioFields,
+  TextFields,
 } from '../../context/Questionnaire/state';
 import type { TrackingIds } from '../../backend-api';
 import { useQuestionnaireContext } from '../../context/Questionnaire';
@@ -20,7 +22,10 @@ import { QualityBadges } from './QualityBadges';
 import { sendConversionToGoogle } from '../TrackingScripts';
 import { NextAPI } from '../../lib/api/request';
 import { devices } from '../../config/breakpoints.config';
-import { formFieldValidations } from '../../config/form.config';
+import {
+  formFieldValidations,
+  hiddenFieldsOnContactForm,
+} from '../../config/form.config';
 import { getAnimation } from '../../config/animations.config';
 import { goToStep } from '../../utils/goToStep';
 import { isFormDataComplete } from '../../utils/isFormDataComplete';
@@ -123,7 +128,7 @@ export const ContactForm: React.FunctionComponent<{
 
   const inputs = React.useMemo(() => {
     return Object.entries(state.contact).map(([field, value]) => {
-      return { ...value, field };
+      return { ...value, field } as FormField & { field: keyof ContactData };
     });
   }, [state.contact]);
 
@@ -175,14 +180,14 @@ export const ContactForm: React.FunctionComponent<{
       <form onSubmit={onSubmitHandler}>
         <div className="input-group">
           {inputs
-            .filter(({ field }) => field !== 'postalCode')
+            .filter(({ field }) => !hiddenFieldsOnContactForm.includes(field))
             .map((input, key) => {
               switch (input.type) {
                 case 'radio':
                   return (
                     <RadioInput
                       key={key}
-                      field={input.field as RadioFieldKey}
+                      field={input.field as keyof RadioFields}
                       options={input.options}
                     />
                   );
@@ -192,7 +197,9 @@ export const ContactForm: React.FunctionComponent<{
                     <TextInput
                       key={key}
                       type={input.type}
-                      field={input.field as TextFieldKey}
+                      field={
+                        input.field as keyof TextFields | keyof EmailFields
+                      }
                       label={input.label}
                       validations={
                         formFieldValidations[input.field as keyof ContactData]
@@ -203,7 +210,7 @@ export const ContactForm: React.FunctionComponent<{
                   return (
                     <CheckboxInput
                       key={key}
-                      field={input.field as CheckboxFieldKey}
+                      field={input.field as keyof CheckboxFields}
                       label={input.label}
                     />
                   );

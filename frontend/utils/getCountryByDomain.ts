@@ -1,7 +1,7 @@
 import { Country, CountryDetails } from '../config/countries.config';
 
 export const getCountryByDomain = (domain: string) => {
-  if (process.env.NODE_ENV !== 'production') return Country.Switzerland;
+  if (process.env.NODE_ENV !== 'production') return Country.Germany;
 
   const topLevelDomain = domain.split('.').pop();
 
@@ -10,6 +10,6 @@ export const getCountryByDomain = (domain: string) => {
   );
 
   return foundCountryIndex !== -1
-    ? Object.keys(CountryDetails)[foundCountryIndex]
+    ? (Object.keys(CountryDetails)[foundCountryIndex] as Country)
     : undefined;
 };

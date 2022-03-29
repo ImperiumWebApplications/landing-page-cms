@@ -1,19 +1,14 @@
-import type {
-  ContactData,
-  QuestionnaireItem,
-} from '../../../../context/Questionnaire/state';
-import { InternalAPI } from '../../internal';
+import type { ContactData } from '../../../../context/Questionnaire/state';
 
-export const enrichPostalCodeValue = (data: {
-  host: string;
-  contact: ContactData;
-  questionnaire: QuestionnaireItem[];
-}) => {
-  try {
-    const postalCode = data.contact.postalCode.value;
-    const postalCodeDetails = InternalAPI.getPostalCodeDetails(postalCode);
-    return `${postalCode} (${postalCodeDetails.community})`;
-  } catch {
-    return data.contact.postalCode.value;
-  }
+/**
+ * Returns a formatted string that contains the postal code and the city.
+ * If no city value is available, it returns the postal code alone.
+ * @param contactData: ContactData
+ * @returns string
+ */
+
+export const enrichPostalCodeValue = (contactData: ContactData) => {
+  return contactData.city.value
+    ? `${contactData.postalCode.value} (${contactData.city.value})`
+    : contactData.postalCode.value;
 };

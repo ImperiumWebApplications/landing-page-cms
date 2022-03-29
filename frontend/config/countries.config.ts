@@ -23,14 +23,19 @@ export enum Country {
 export const CountryDetails = {
   [Country.Germany]: {
     topLevelDomain: 'de',
-    postalCodes: PostalCodeDataDE as PostalCodeDetails[],
+    postalCodeLength: 5,
     isValidPostalCode: /(^\d{5}$)/,
   },
   [Country.Switzerland]: {
     topLevelDomain: 'ch',
-    postalCodes: PostalCodeDataCH as PostalCodeDetails[],
+    postalCodeLength: 4,
     isValidPostalCode: /(^\d{4}$)/,
   },
+} as const;
+
+export const CountryPostalCodes = {
+  [Country.Germany]: PostalCodeDataDE as PostalCodeDetails[],
+  [Country.Switzerland]: PostalCodeDataCH as PostalCodeDetails[],
 } as const;
 
 export const isKnownCountry = (

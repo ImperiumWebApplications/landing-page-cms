@@ -23,8 +23,7 @@
     "cy:run": "npx cypress run",
     "cy:open": "cypress open",
     "test:e2e:run": "start-server-and-test start:test http://localhost:3000 cy:run",
-    "test:e2e:dev": "start-server-and-test dev:test http://localhost:3000 cy:open",
-    "postinstall": "npx husky install"
+    "test:e2e:dev": "start-server-and-test dev:test http://localhost:3000 cy:open"
   },
   "dependencies": {
     "@fontsource/overpass": "^4.5.4",
@@ -38,6 +37,7 @@
     "nodemailer": "^6.7.2",
     "qs": "^6.10.3",
     "react": "17.0.2",
+    "react-auth-code-input": "^3.1.0",
     "react-cookie-consent": "^7.3.1",
     "react-dom": "17.0.2",
     "react-markdown": "^7.1.1",

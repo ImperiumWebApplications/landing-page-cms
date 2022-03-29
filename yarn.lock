@@ -14397,6 +14397,11 @@ rc@^1.2.7, rc@^1.2.8:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+react-auth-code-input@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/react-auth-code-input/-/react-auth-code-input-3.1.0.tgz#5a94f8a2d3afb71f76d2bc38fbf66c86219e1017"
+  integrity sha512-lrgsCV0HHJVliC3yNZNzXAVQcjurve1O5igrniaPhtzCOJb7p3ZEMqPx50XxIpUa3Skd8cx4Gm+WJYMkTjr4iA==
+
 react-cookie-consent@^7.3.1:
   version "7.3.1"
   resolved "https://registry.yarnpkg.com/react-cookie-consent/-/react-cookie-consent-7.3.1.tgz#f256ce890abaa60cb0ad25287eaac1cdbbb4cae1"

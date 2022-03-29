@@ -16,6 +16,7 @@ import { Questionnaire } from '../components/Questionnaire/Questionnaire';
 import { PagePlaceholder } from '../components/Questionnaire/Placeholder';
 import { questionnaireRoute } from '../config/navigation.config';
 import { slugifyRoute } from '../utils/slugifyRoute';
+import { getCountryByDomain } from '../utils/getCountryByDomain';
 
 const EntryQuestionnairePage: NextPage<ContentPageContent> = ({
   domainContent,
@@ -40,12 +41,15 @@ const EntryQuestionnairePage: NextPage<ContentPageContent> = ({
     await router.push(selectedRoute);
   };
 
+  const country = getCountryByDomain(domainContent.domain);
+
   return (
     <Layout content={domainContent}>
       <QuestionnaireContextProvider>
         <Questionnaire
-          advantages={questionnaire.advantage}
           questions={[entryQuestion]}
+          countries={country ? [country] : undefined}
+          advantages={questionnaire.advantage}
           customSelectHandler={selectHandler}
         />
       </QuestionnaireContextProvider>
