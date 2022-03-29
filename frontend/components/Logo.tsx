@@ -7,15 +7,18 @@ import { ImageObject } from '../backend-api';
 import { devices } from '../config/breakpoints.config';
 
 const StyledLogo = styled.div`
-  position: relative;
-  cursor: pointer;
-  width: 200px;
-  height: 50px;
-  margin-right: 2rem;
+  a {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    width: 200px;
+    height: 50px;
+    margin-right: 2rem;
 
-  @media screen and (${devices.sm}) {
-    width: 300px;
-    height: 60px;
+    @media screen and (${devices.sm}) {
+      width: 300px;
+      height: 60px;
+    }
   }
 `;
 
@@ -33,6 +36,7 @@ export const Logo: React.FunctionComponent<{
               layout="fill"
               objectFit="contain"
               objectPosition="left center"
+              priority
             />
           </a>
         </Link>

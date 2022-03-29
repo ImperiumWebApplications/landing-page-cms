@@ -122,7 +122,6 @@ export const ImagesSection: React.FunctionComponent<{
                 <Image
                   src={image.attributes.url}
                   alt={image.attributes.alternativeText}
-                  width={image.attributes.width}
                   layout="fill"
                   objectFit="cover"
                 />
