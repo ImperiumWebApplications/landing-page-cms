@@ -54,9 +54,15 @@ describe('Questionnaire Funnel', () => {
       .first()
       .click();
 
-    cy.get('input#postalCode')
-      .type('22222')
-      .get('.input > a')
+    cy.get('[autocomplete="one-time-code"]')
+      .type('22302')
+      .get('span.error')
+      .should('be.visible')
+      .get('[aria-label="Postleitzahl. Character 5."]')
+      .click()
+      .type('{backspace}')
+      .type('3')
+      .get('.button > button')
       .click()
       .get('form label[for=salutation-Frau]')
       .click()
@@ -130,7 +136,12 @@ describe('Questionnaire Funnel', () => {
           postalCode: {
             type: 'text',
             label: 'Postleitzahl',
-            value: '22222',
+            value: '22303',
+          },
+          city: {
+            type: 'text',
+            label: 'Stadt',
+            value: 'Hamburg Winterhude',
           },
           acceptedTerms: {
             type: 'checkbox',
