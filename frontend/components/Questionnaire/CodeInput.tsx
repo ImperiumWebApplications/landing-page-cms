@@ -20,7 +20,6 @@ const StyledCodeInput = styled.div<{ hasError: boolean }>`
     text-transform: uppercase;
     background: #ffffff;
     background-clip: padding-box;
-    color: ${({ theme }) => theme.colors.text};
     border: 2px solid
       ${({ theme, hasError }) =>
         hasError ? theme.colors.error : theme.colors.tertiary};

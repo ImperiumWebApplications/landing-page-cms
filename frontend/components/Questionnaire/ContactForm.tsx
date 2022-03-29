@@ -99,7 +99,7 @@ const StyledContactForm = styled.div`
 
     &:disabled {
       cursor: not-allowed;
-      filter: brightness(90%);
+      opacity: 0.8;
     }
 
     span {
@@ -219,8 +219,10 @@ export const ContactForm: React.FunctionComponent<{
         </div>
         <button
           type="submit"
-          className={`call-to-action ${!loading ? 'shining-button' : ''}`}
-          disabled={loading}
+          className={`call-to-action ${
+            !loading && isFormDataComplete(state) ? 'shining-button' : ''
+          }`}
+          disabled={loading || !isFormDataComplete(state)}
         >
           {loading ? (
             <LoadingSpinner />

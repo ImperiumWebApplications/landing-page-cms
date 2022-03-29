@@ -36,8 +36,8 @@ const StyledSelectInput = styled.div`
     }
 
     &:disabled {
-      opacity: 0.8;
-      cursor: no-drop;
+      cursor: not-allowed;
+      filter: brightness(95%);
 
       &:hover {
         border-color: ${({ theme }) => theme.colors.tertiary};

@@ -27,8 +27,8 @@ const StyledButton = styled.a<{
   text-align: left;
 
   &:disabled {
+    cursor: not-allowed;
     opacity: 0.8;
-    cursor: no-drop;
   }
 `;
 
