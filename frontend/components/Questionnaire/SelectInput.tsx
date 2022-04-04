@@ -46,6 +46,42 @@ const StyledSelectInput = styled.div`
         }
       }
     }
+
+    &[data-loading='true'] {
+      cursor: not-allowed;
+      filter: brightness(98%);
+      color: grey;
+
+      position: relative;
+      animation-name: shimmer;
+      animation-duration: 1.5s;
+      animation-fill-mode: forwards;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+      background-size: 1000px 640px;
+      background: ${({ theme }) => `linear-gradient(
+      to right,
+      ${theme.colors.tertiary} 8%,
+      #F8F8F8 38%,
+      ${theme.colors.tertiary} 54%
+    )`};
+
+      @keyframes shimmer {
+        0% {
+          background-position: -468px 0;
+        }
+        100% {
+          background-position: 468px 0;
+        }
+      }
+
+      &:hover {
+        border-color: ${({ theme }) => theme.colors.tertiary};
+        & + svg {
+          fill: ${({ theme }) => theme.colors.text};
+        }
+      }
+    }
   }
 
   svg {
@@ -66,8 +102,9 @@ export const SelectInput: React.FunctionComponent<{
   field: keyof TextFields;
   label: string;
   options: string[];
+  isLoading?: boolean;
   disabled?: boolean;
-}> = ({ field, label, options, disabled }) => {
+}> = ({ field, label, options, isLoading, disabled }) => {
   const { state, dispatch } = useQuestionnaireContext();
   const inputId = slugify(field);
 
@@ -83,13 +120,6 @@ export const SelectInput: React.FunctionComponent<{
     [dispatch, field],
   );
 
-  // If the select box enables itself with new options, check if
-  // the value has changed. If so, update the context state.
-  React.useEffect(() => {
-    if (!disabled && options.length && options[0] !== currentValue)
-      setFieldValue(options[0]);
-  }, [disabled, options, setFieldValue, currentValue]);
-
   return (
     <StyledSelectInput>
       <Label htmlFor={inputId}>{label}</Label>
@@ -97,15 +127,20 @@ export const SelectInput: React.FunctionComponent<{
         id={inputId}
         disabled={disabled}
         value={currentValue}
+        data-loading={isLoading}
         onChange={(e) => setFieldValue(e.target.value)}
       >
-        {options.map((option, i) => {
-          return (
-            <option key={i} value={option}>
-              {option}
-            </option>
-          );
-        })}
+        {isLoading ? (
+          <option>Wird geladen...</option>
+        ) : (
+          options.map((option, i) => {
+            return (
+              <option key={i} value={option}>
+                {option}
+              </option>
+            );
+          })
+        )}
       </select>
       <ChevronDown />
     </StyledSelectInput>

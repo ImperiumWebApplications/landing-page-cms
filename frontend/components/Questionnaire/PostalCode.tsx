@@ -6,16 +6,18 @@ import { NavigateNext } from '@styled-icons/material-rounded';
 import type { Country, PostalCodeDetails } from '../../config/countries.config';
 import { devices } from '../../config/breakpoints.config';
 import { ContactFields, formFieldValidations } from '../../config/form.config';
-import { getPostalCodeDetailsFromAllCountries } from '../../lib/api/postal-codes';
 import { useQuestionnaireContext } from '../../context/Questionnaire';
+import { goToStep } from '../../utils/goToStep';
+import { getCountryDetails } from '../../utils/getCountryDetails';
+import { getPostalCodeLength } from '../../utils/getPostalCodeLength';
+import { normalizeHostname } from '../../utils/normalizeHostname';
+import { NextAPI } from '../../lib/api/request';
+
 import { StyledStepTitle } from './StepTitle';
 import { TextInput } from './TextInput';
 import { Button } from '../Button';
 import { SelectInput } from './SelectInput';
 import { CodeInput } from './CodeInput';
-import { goToStep } from '../../utils/goToStep';
-import { getCountryDetails } from '../../utils/getCountryDetails';
-import { getPostalCodeLength } from '../../utils/getPostalCodeLength';
 
 const StyledPostalCode = styled.div`
   max-width: 45rem;
@@ -107,6 +109,7 @@ export const PostalCode: React.FunctionComponent<{
 
   // Create local state to store information about list of matched cities
   const [error, setError] = React.useState<string | undefined>(undefined);
+  const [isLoading, setIsLoading] = React.useState<boolean>(false);
   const [cities, setCities] = React.useState<PostalCodeDetails[]>([]);
 
   // Get country information to decide which layout should be rendered
@@ -118,26 +121,51 @@ export const PostalCode: React.FunctionComponent<{
   const isMultiCountryContext = !!countries && countries.length > 1;
 
   const isTypingCode = !isCodeCompleted && !cities.length;
-  const didCodeReturnToIncompleteState = !isCodeCompleted && cities.length;
+  const isRemovingCode = !isCodeCompleted && cities.length;
+  const isSameCode = cities?.[0] && cities[0].zipcode === code;
   const showCitySelect = isSingleCountryContext || isMultiCountryContext;
 
   React.useEffect(() => {
-    if (!showCitySelect || isTypingCode) return;
-    if (didCodeReturnToIncompleteState) return setCities([]);
+    if (!showCitySelect || isTypingCode || isSameCode) return;
+    if (isRemovingCode) return setCities([]);
 
-    const cityDetails = getPostalCodeDetailsFromAllCountries(countries, code);
+    const host = normalizeHostname(window.location.host);
+    if (!host) return;
 
-    if (cityDetails.length) {
-      setError(undefined);
-      setCities(cityDetails);
-    } else {
-      setError(formFieldValidations[ContactFields.PostalCode][0].message);
-      setCities([]);
-    }
+    const fetchAndUpdateCities = async () => {
+      try {
+        setIsLoading(true);
+        const res = await (
+          await NextAPI.getPostalCodeDetails({
+            host,
+            code,
+            countries,
+          })
+        ).json();
+
+        if (!res.success)
+          throw new Error('Error while fetching postal code details.');
+
+        const cities = res.data as PostalCodeDetails[];
+        if (!cities.length)
+          throw new Error('No cities found for postal code' + code);
+
+        setCities(cities);
+        setError(undefined);
+        setIsLoading(false);
+      } catch (err) {
+        setCities([]);
+        setIsLoading(false);
+        setError(formFieldValidations[ContactFields.PostalCode][0].message);
+      }
+    };
+
+    fetchAndUpdateCities();
   }, [
-    didCodeReturnToIncompleteState,
+    isRemovingCode,
     isTypingCode,
     isCodeCompleted,
+    isSameCode,
     showCitySelect,
     code,
     countries,
@@ -174,6 +202,7 @@ export const PostalCode: React.FunctionComponent<{
             <SelectInput
               field={ContactFields.City}
               label={cityLabel}
+              isLoading={isLoading}
               disabled={!isCodeCompleted || !!error}
               options={cities.map((city) => city.place)}
             />
