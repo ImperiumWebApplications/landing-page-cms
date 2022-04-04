@@ -1,8 +1,7 @@
 import { Country, CountryDetails } from '../config/countries.config';
 
 export const getCountryByDomain = (domain: string) => {
-  if (process.env.NODE_ENV !== 'production' || process.env.APP_ENV === 'test')
-    return Country.Germany;
+  if (isLocalEnvironment(domain)) return Country.Germany;
 
   const topLevelDomain = domain.split('.').pop();
 
@@ -14,3 +13,8 @@ export const getCountryByDomain = (domain: string) => {
     ? (Object.keys(CountryDetails)[foundCountryIndex] as Country)
     : undefined;
 };
+
+const isLocalEnvironment = (domain: string) =>
+  domain === 'localhost:3000' ||
+  process.env.NODE_ENV !== 'production' ||
+  process.env.APP_ENV === 'test';
