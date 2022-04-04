@@ -54,7 +54,7 @@ describe('Questionnaire Funnel', () => {
       .first()
       .click();
 
-    cy.get('[autocomplete="one-time-code"]')
+    cy.get('.location-input > div > div > input:first-of-type')
       .type('22302')
       .get('span.error')
       .should('be.visible')
