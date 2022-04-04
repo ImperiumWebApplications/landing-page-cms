@@ -6,6 +6,27 @@ describe('Questionnaire Funnel', () => {
       statusCode: 200,
     })
       .as('createLead')
+      .intercept('POST', '/api/postal-codes*', {
+        statusCode: 200,
+        body: {
+          success: true,
+          data: [
+            {
+              country_code: 'DE',
+              zipcode: '22303',
+              place: 'Hamburg Winterhude',
+              state: 'Hamburg',
+              state_code: 'HH',
+              province: '',
+              province_code: '00',
+              community: 'Hamburg, Freie und Hansestadt',
+              community_code: '02000',
+              latitude: '53.5953',
+              longitude: '10.0122',
+            },
+          ],
+        },
+      })
       .visitWithConsentCookie('/');
   });
 
@@ -55,13 +76,7 @@ describe('Questionnaire Funnel', () => {
       .click();
 
     cy.get('.location-input > div > div > input:first-of-type')
-      .type('22302')
-      .get('span.error')
-      .should('be.visible')
-      .get('[aria-label="Postleitzahl. Character 5."]')
-      .click()
-      .type('{backspace}')
-      .type('3')
+      .type('22303')
       .get('.button > button')
       .click()
       .get('form label[for=salutation-Frau]')
