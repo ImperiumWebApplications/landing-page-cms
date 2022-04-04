@@ -11,7 +11,7 @@ import { goToStep } from '../../utils/goToStep';
 const StyledSingleChoice = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
   column-gap: 1rem;
   row-gap: 1rem;
   flex-wrap: wrap;
