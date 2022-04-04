@@ -23,14 +23,16 @@ const sendMail = ({ host, template, recipient, payload }: SendMailProps) => {
 const getPostalCodeDetails = ({
   host,
   code,
+  countries,
 }: {
   host?: string;
   code?: string | number;
+  countries?: string[];
 }) => {
   if (!host || !code) return Promise.reject();
 
-  const API_ROUTE = `/api/postal-codes/${code}?PRIVATE_API_ROUTE=${
-    process.env.PRIVATE_API_ROUTE ?? ''
+  const API_ROUTE = `/api/postal-codes?API_ROUTE=${
+    process.env.NEXT_PUBLIC_API_ROUTE ?? ''
   }`;
 
   const API =
@@ -39,8 +41,9 @@ const getPostalCodeDetails = ({
       : `https://${host}${API_ROUTE}`;
 
   return fetch(API, {
-    method: 'GET',
+    method: 'POST',
     headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ code, countries }),
   });
 };
 

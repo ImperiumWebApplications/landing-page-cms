@@ -1,25 +1,8 @@
 import {
   Country,
   CountryPostalCodes,
-  isKnownCountry,
   PostalCodeDetails,
 } from '../../../config/countries.config';
-
-export const getPostalCodeDetails = (code: string, country: string) => {
-  try {
-    if (!isKnownCountry(country)) throw new Error('Unknown country provided.');
-
-    const details = CountryPostalCodes[country].filter(
-      (details) => details.zipcode === code,
-    );
-
-    if (!details.length) throw new Error('Unknown postal code provided');
-
-    return details;
-  } catch (error) {
-    throw error;
-  }
-};
 
 /**
  * Search for a given postal code in all given countries.
@@ -29,16 +12,19 @@ export const getPostalCodeDetails = (code: string, country: string) => {
  * @returns PostalCodeDetails[]
  */
 
-export const getPostalCodeDetailsFromAllCountries = (
-  countries: Country[],
-  code: string,
-) => {
-  return countries.reduce((prev, countryCode) => {
-    try {
-      const details = getPostalCodeDetails(code, countryCode);
-      return [...prev, ...details];
-    } catch (error) {
-      return prev;
-    }
-  }, [] as PostalCodeDetails[]);
+export const getPostalCodeDetails = (code: string, countries: Country[]) => {
+  try {
+    return countries.reduce((prev, countryCode) => {
+      try {
+        const details = CountryPostalCodes[countryCode].filter(
+          (details) => details.zipcode === code,
+        );
+        return [...prev, ...details];
+      } catch (error) {
+        return prev;
+      }
+    }, [] as PostalCodeDetails[]);
+  } catch (error) {
+    throw error;
+  }
 };

@@ -4,7 +4,8 @@ import { withSentry } from '@sentry/nextjs';
 import { getPostalCodeDetails } from '../../lib/api/postal-codes';
 import { captureNextAPIError, getErrorMessage } from '../../lib/api/error';
 import { isPostalCodeFormat } from '../../utils/isPostalCodeFormat';
-import { Country, PostalCodeDetails } from '../../config/countries.config';
+import { isCountriesFormat } from '../../utils/isCountriesFormat';
+import { PostalCodeDetails } from '../../config/countries.config';
 
 export type GetPostalCodeResponse = NextApiResponse<{
   success: boolean;
@@ -17,8 +18,8 @@ export const handler = async (
   res: GetPostalCodeResponse,
 ) => {
   try {
-    const { postalCode, country } = retrieveDataFromRequestBody(req);
-    const postalCodeData = getPostalCodeDetails(postalCode, country);
+    const { postalCode, countries } = retrieveDataFromRequestBody(req);
+    const postalCodeData = getPostalCodeDetails(postalCode, countries);
 
     return res.status(200).json({ success: true, data: postalCodeData });
   } catch (error) {
@@ -36,22 +37,23 @@ export default withSentry(handler);
  *
  */
 
-const retrieveDataFromRequestBody = (req: NextApiRequest) => {
+export const retrieveDataFromRequestBody = (req: NextApiRequest) => {
   try {
     if (req.method !== 'POST') throw new Error('Unsupported HTTP method.');
 
-    if (req.query.PRIVATE_API_ROUTE !== process.env.PRIVATE_API_ROUTE)
+    if (req.query.API_ROUTE !== process.env.NEXT_PUBLIC_API_ROUTE)
       throw new Error('Missing or invalid public API route query param.');
 
     const postalCode = req.body.code;
-    const country = req.body.country
-      ? (req.body.country as string).toUpperCase()
-      : Country.Switzerland;
+    const countries = req.body.countries;
 
-    if (!postalCode || !isPostalCodeFormat(postalCode, country))
+    if (!isCountriesFormat(countries))
+      throw new Error('Missing or invalid list of countries provided.');
+
+    if (!postalCode || !isPostalCodeFormat(postalCode, countries))
       throw new Error('Missing or invalid postal code query param.');
 
-    return { postalCode, country };
+    return { postalCode: postalCode.toString(), countries };
   } catch (error) {
     throw error;
   }
