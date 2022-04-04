@@ -1,7 +1,8 @@
 import { Country, CountryDetails } from '../config/countries.config';
 
 export const getCountryByDomain = (domain: string) => {
-  if (process.env.NODE_ENV !== 'production') return Country.Germany;
+  if (process.env.NODE_ENV !== 'production' || process.env.APP_ENV === 'test')
+    return Country.Germany;
 
   const topLevelDomain = domain.split('.').pop();
 
