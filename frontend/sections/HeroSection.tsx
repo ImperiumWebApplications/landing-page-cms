@@ -164,12 +164,14 @@ export const HeroSection: React.FunctionComponent<{
             <h1>
               {content.title} <span>{content.subtitle}</span>
             </h1>
-            {firstSentence && content.description ? (
+            {content.description ? (
               <p>
-                {firstSentence}
-                <span className="extended-description">
-                  {content.description.substring(firstSentence.length)}
-                </span>
+                {firstSentence ?? content.description}
+                {firstSentence ? (
+                  <span className="extended-description">
+                    {content.description.substring(firstSentence.length)}
+                  </span>
+                ) : undefined}
               </p>
             ) : undefined}
           </div>
