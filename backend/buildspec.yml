@@ -17,6 +17,7 @@ phases:
   post_build:
     commands:
       - rm -rf node_modules
+      - if [ "$CODEBUILD_INITIATOR" = "codepipeline/landing-page-cms-backend-dev" ]; then rm -rf .ebextensions ; fi
 
 artifacts:
   base-directory: backend
