@@ -132,17 +132,12 @@ const StyledHeroSection = styled(Section)`
     .tiles {
       width: 100%;
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
+      justify-content: stretch;
+      align-items: stretch;
+      flex-wrap: wrap;
+      column-gap: 1rem;
       row-gap: 1rem;
-
-      @media screen and (${devices.lg}) {
-        flex-direction: row;
-        justify-content: stretch;
-        align-items: stretch;
-        flex-wrap: wrap;
-        column-gap: 1rem;
-        row-gap: 1rem;
-      }
     }
   }
 `;

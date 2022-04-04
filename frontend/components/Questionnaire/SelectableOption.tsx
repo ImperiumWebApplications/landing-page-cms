@@ -1,20 +1,37 @@
 import type { MouseEvent } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import Image from 'next/image';
 import { ReactSVG } from 'react-svg';
 
 import type { ImageObject } from '../../backend-api';
 import { devices } from '../../config/breakpoints.config';
 
+const activeStateCss = css`
+  background-color: ${({ theme }) => theme.colors.secondary};
+
+  .icon svg,
+  .icon svg path {
+    fill: white !important;
+  }
+
+  .label {
+    color: white;
+  }
+
+  .icon-placeholder {
+    background-color: white;
+  }
+`;
+
 const StyledSelectableOption = styled.div`
   position: relative;
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 8.5rem;
   height: auto;
-  padding: 0.5rem 1rem;
+  padding: 1rem;
   border-radius: 0.5rem;
   transition: all 0.3s ease-in-out;
   background-color: #f8f8f8;
@@ -22,11 +39,8 @@ const StyledSelectableOption = styled.div`
     rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 
   @media screen and (${devices.md}) {
-    flex-direction: column;
-    justify-content: center;
     width: 10rem;
     height: 10rem;
-    padding: 1rem;
     border-radius: 1.5rem;
   }
 
@@ -38,38 +52,13 @@ const StyledSelectableOption = styled.div`
 
   @media (hover) {
     &:hover {
-      background-color: ${({ theme }) => theme.colors.secondary};
-
-      .icon svg,
-      .icon svg path {
-        fill: white !important;
-      }
-
-      .label {
-        color: white;
-      }
-
-      .icon-placeholder {
-        background-color: white;
-      }
+      ${activeStateCss};
     }
   }
 
-  &[data-selected='true'] {
-    background-color: ${({ theme }) => theme.colors.secondary};
-
-    .icon svg,
-    .icon svg path {
-      fill: white !important;
-    }
-
-    .label {
-      color: white;
-    }
-
-    .icon-placeholder {
-      background-color: white;
-    }
+  &[data-selected='true'],
+  &:active {
+    ${activeStateCss};
   }
 
   .icon {
@@ -122,14 +111,9 @@ const StyledSelectableOption = styled.div`
     z-index: 2;
     font-size: 1rem;
     font-weight: 700;
-    margin-left: 1rem;
+    margin-top: 1rem;
     text-align: center;
     color: ${({ theme }) => theme.colors.primary};
-
-    @media screen and (${devices.md}) {
-      margin-left: 0;
-      margin-top: 1rem;
-    }
 
     @media screen and (${devices.lg}) {
       margin-top: 2rem;
