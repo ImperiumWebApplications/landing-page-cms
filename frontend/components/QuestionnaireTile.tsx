@@ -13,23 +13,27 @@ import { slugifyRoute } from '../utils/slugifyRoute';
 const StyledQuestionnaireTile = styled.a`
   position: relative;
   overflow: hidden;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+
+  width: 8.5rem;
   max-width: 33rem;
-  padding: 0.5rem 3rem 0.5rem 1rem;
+  padding: 1rem 1rem 2.5rem 1rem;
+
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: auto 1fr auto;
+
   background-color: #f8f8f8;
   border-radius: ${({ theme }) => theme.borderRadius};
   transition: all 0.3s ease-in-out;
   border: 2px dashed
     ${({ theme }) => hexRgb(theme.colors.text, { format: 'css', alpha: 0.1 })};
 
-  @media screen and (${devices.lg}) {
-    display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: auto 1fr auto;
+  @media screen and (${devices.sm}) {
     padding: 2rem 1rem;
     width: 12rem;
+  }
+
+  @media screen and (${devices.lg}) {
     flex: 1;
   }
 
@@ -68,7 +72,7 @@ const StyledQuestionnaireTile = styled.a`
   .icon {
     height: 2rem;
     width: auto;
-    margin-right: 1rem;
+    margin-bottom: 1rem;
 
     @media screen and (${devices.sm}) {
       height: 2.5rem;
@@ -92,8 +96,6 @@ const StyledQuestionnaireTile = styled.a`
     @media screen and (${devices.lg}) {
       height: 3rem;
       width: auto;
-      margin-bottom: 1rem;
-      margin-right: unset;
 
       svg {
         height: 3rem;
@@ -114,7 +116,7 @@ const StyledQuestionnaireTile = styled.a`
 
   .description {
     h2 {
-      font-size: 1.125rem;
+      font-size: 1rem;
       line-height: 1.25rem;
 
       @media screen and (${devices.sm}) {
@@ -156,13 +158,18 @@ const StyledQuestionnaireTile = styled.a`
     align-items: center;
     justify-content: center;
     position: absolute;
-    width: 3rem;
-    height: 3rem;
+    width: 2rem;
+    height: 2rem;
     overflow: hidden;
     bottom: 0;
     right: 0;
     background-color: ${({ theme }) => theme.colors.tertiary};
     border-radius: 3rem 4px 0 0;
+
+    @media screen and (${devices.lg}) {
+      width: 3rem;
+      height: 3rem;
+    }
 
     > div {
       margin-left: 8px;
@@ -171,6 +178,11 @@ const StyledQuestionnaireTile = styled.a`
 
     svg {
       fill: ${({ theme }) => theme.colors.text};
+      width: 1.5rem;
+
+      @media screen and (${devices.lg}) {
+        width: 1.875rem;
+      }
     }
   }
 `;
