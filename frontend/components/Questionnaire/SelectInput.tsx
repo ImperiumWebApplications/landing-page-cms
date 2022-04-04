@@ -120,6 +120,10 @@ export const SelectInput: React.FunctionComponent<{
     [dispatch, field],
   );
 
+  React.useEffect(() => {
+    if (options.length && !currentValue) setFieldValue(options?.[0]);
+  }, [options, currentValue, setFieldValue]);
+
   return (
     <StyledSelectInput>
       <Label htmlFor={inputId}>{label}</Label>
