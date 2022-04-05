@@ -159,7 +159,7 @@ export const HeroSection: React.FunctionComponent<{
             {content.title || content.subtitle ? (
               <h1
                 dangerouslySetInnerHTML={{
-                  __html: `${content.title}<span>${content.subtitle}</span>`,
+                  __html: `${content.title} <span>${content.subtitle}</span>`,
                 }}
               />
             ) : undefined}
