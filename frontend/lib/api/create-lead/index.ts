@@ -20,7 +20,10 @@ export const createLeadInPipedrive = async (
     const token = await StrapiAPI.getPipedriveAPITokenByDomain(data.host);
     if (!token) throw new Error('Missing Pipedrive token for domain.');
 
-    data.contact.postalCode.value = enrichPostalCodeValue(data.contact);
+    data.contact.postalCode.value = enrichPostalCodeValue({
+      host: data.host,
+      contactData: data.contact,
+    });
 
     const person =
       (await PipedriveAPI.getPersonByEmail(token, data.contact.email.value)) ??
