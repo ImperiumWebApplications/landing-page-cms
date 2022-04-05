@@ -29,6 +29,11 @@ const StyledHeader = styled.header<{ centerLogo: boolean }>`
 
       & > div:first-of-type {
         margin-right: ${({ centerLogo }) => (centerLogo ? '0' : '2rem')};
+
+        a img {
+          object-position: ${({ centerLogo }) =>
+            centerLogo ? 'center !important' : 'inherit'};
+        }
       }
     }
   }
