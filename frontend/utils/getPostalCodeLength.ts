@@ -11,7 +11,13 @@ export const getPostalCodeLength = (
 ) => {
   if (!countryDetails || !countryDetails.length) return undefined;
 
-  return countryDetails.reduce((prev, curr) =>
-    prev.postalCodeLength < curr.postalCodeLength ? prev : curr,
-  ).postalCodeLength;
+  const relevantDetails = countryDetails.filter(
+    ({ postalCodeLength }) => postalCodeLength > 0,
+  );
+  console.log(relevantDetails);
+  if (!relevantDetails.length) return undefined;
+
+  return relevantDetails.reduce((prev, { postalCodeLength }) => {
+    return prev < postalCodeLength ? prev : postalCodeLength;
+  }, 1000);
 };
