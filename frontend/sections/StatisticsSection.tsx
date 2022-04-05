@@ -63,7 +63,7 @@ export const StatisticsSection: React.FunctionComponent<{
 }> = ({ id, content }) => {
   return (
     <StyledStatisticsSection id={id} fullWidth>
-      {content.background_image?.data.attributes ? (
+      {content.background_image?.data?.attributes ? (
         <Image
           src={content.background_image.data.attributes.url}
           alt={content.background_image.data.attributes.alternativeText}
