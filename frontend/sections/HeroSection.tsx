@@ -156,9 +156,13 @@ export const HeroSection: React.FunctionComponent<{
       <div className="intro">
         <Animation type="fadeRight" delay={400}>
           <div className="description">
-            <h1>
-              {content.title} <span>{content.subtitle}</span>
-            </h1>
+            {content.title || content.subtitle ? (
+              <h1
+                dangerouslySetInnerHTML={{
+                  __html: `${content.title}<span>${content.subtitle}</span>`,
+                }}
+              />
+            ) : undefined}
             {content.description ? (
               <p>
                 {firstSentence ?? content.description}
