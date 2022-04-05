@@ -74,13 +74,13 @@
     "sections": {
       "type": "dynamiczone",
       "components": [
-        "sections.hero",
-        "sections.statistics",
         "sections.call-to-action",
-        "sections.services",
-        "sections.reviews",
-        "sections.images",
         "sections.faq",
+        "sections.hero",
+        "sections.images",
+        "sections.reviews",
+        "sections.services",
+        "sections.statistics",
         "sections.video"
       ]
     },
@@ -92,6 +92,10 @@
       "type": "component",
       "repeatable": false,
       "component": "meta.tracking"
+    },
+    "google_allow_indexation": {
+      "type": "boolean",
+      "default": true
     }
   }
 }

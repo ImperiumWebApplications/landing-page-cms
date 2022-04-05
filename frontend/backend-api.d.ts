@@ -63,6 +63,7 @@ type VideoObject = { data: DataObject<Video> };
 
 type SEOTitle = string;
 type SEODescription = string;
+type GoogleIndexation = boolean;
 type Domain = string;
 type BrandName = string;
 type ColorPrimary = string;
@@ -218,6 +219,7 @@ type Sections =
 interface LandingPage {
   seo_title?: SEOTitle;
   seo_description?: SEODescription;
+  google_allow_indexation?: GoogleIndexation;
   domain: Domain;
   brand_name?: BrandName;
   color_primary?: ColorPrimary;

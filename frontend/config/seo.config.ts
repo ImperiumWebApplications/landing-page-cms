@@ -2,12 +2,15 @@ import { NextSeoProps } from 'next-seo';
 import { LandingPage } from '../backend-api';
 
 export const extractSeoProps = (content: LandingPage) => {
+  const isSubdomainSite = content.domain.includes('lq-pages.ch');
+  const disallowGoogleIndex = content.google_allow_indexation === false;
+
   return {
     title: content.seo_title,
     description: content.seo_description,
     defaultTitle: content.seo_title,
-    noindex: content.domain.includes('lq-pages.ch') ? true : false,
-    nofollow: content.domain.includes('lq-pages.ch') ? true : false,
+    noindex: disallowGoogleIndex || isSubdomainSite ? true : false,
+    nofollow: disallowGoogleIndex || isSubdomainSite ? true : false,
     openGraph: {
       type: 'website',
       url: `https://${content.domain}`,

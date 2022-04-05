@@ -8,6 +8,7 @@ export const domainContent = {
           'Professionelle Arbeit von qualifizierten Fachkräften: Schnell und präzise nach Ihren Wünschen ausgeführt. Jetzt Handwerker finden!',
         domain: 'localhost:3000',
         brand_name: 'Craftsman24',
+        google_allow_indexation: true,
         color_primary: '#359b88',
         color_secondary: '#e6b432',
         color_tertiary: '#efefef',
