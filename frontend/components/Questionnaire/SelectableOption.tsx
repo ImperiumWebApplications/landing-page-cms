@@ -5,6 +5,7 @@ import { ReactSVG } from 'react-svg';
 
 import type { ImageObject } from '../../backend-api';
 import { devices } from '../../config/breakpoints.config';
+import { isSvg } from '../../utils/isSvg';
 
 const activeStateCss = css`
   background-color: ${({ theme }) => theme.colors.secondary};
@@ -131,7 +132,7 @@ export const SelectableOption: React.FunctionComponent<{
   icon?: ImageObject;
   onSelectHandler: (event: MouseEvent) => void;
 }> = ({ label, selected, icon, onSelectHandler }) => {
-  const isSvgIcon = icon?.data?.attributes.ext.includes('svg');
+  const isSvgIcon = isSvg(icon?.data?.attributes.ext);
 
   return (
     <StyledSelectableOption

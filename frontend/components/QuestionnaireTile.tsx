@@ -9,6 +9,7 @@ import type { ConnectedQuestionnaire } from '../backend-api';
 import { questionnaireRoute } from '../config/navigation.config';
 import { devices } from '../config/breakpoints.config';
 import { slugifyRoute } from '../utils/slugifyRoute';
+import { isSvg } from '../utils/isSvg';
 
 const StyledQuestionnaireTile = styled.a`
   position: relative;
@@ -196,7 +197,7 @@ export const QuestionnaireTile: React.FunctionComponent<{
   const slug = slugifyRoute(attributes.name);
   const route = `/${questionnaireRoute}/${slug}-${id}`;
 
-  const isSvgIcon = attributes.icon?.data?.attributes.ext.includes('svg');
+  const isSvgIcon = isSvg(attributes.icon?.data?.attributes.ext);
 
   return (
     <Link href={route} passHref>
