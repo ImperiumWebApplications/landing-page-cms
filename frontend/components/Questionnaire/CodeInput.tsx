@@ -39,6 +39,12 @@ const StyledCodeInput = styled.div<{ hasError: boolean }>`
       border-bottom-right-radius: 0.5rem;
     }
 
+    &:focus-visible {
+      outline-offset: -1px;
+      outline-color: ${({ theme }) => theme.colors.secondary};
+      outline-width: 1px;
+    }
+
     // Disable default browser styling for number inputs
     &::-webkit-outer-spin-button,
     &::-webkit-inner-spin-button {
