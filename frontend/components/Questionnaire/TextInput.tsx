@@ -14,6 +14,9 @@ import { Label } from './Label';
 
 const StyledTextInput = styled.div<{ hasError: undefined | string }>`
   position: relative;
+  width: 100%;
+  max-width: 25rem;
+
   grid-column: 1 / 3;
 
   @media screen and (${devices.md}) {

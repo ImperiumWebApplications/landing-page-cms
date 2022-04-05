@@ -222,7 +222,12 @@ export const PostalCode: React.FunctionComponent<{
         </div>
         <Button
           label="Weiter"
-          disabled={(!!countries && !isCodeCompleted) || isLoading || !!error}
+          disabled={
+            (!!countries && !isCodeCompleted) ||
+            (!!!countries && code.trim().length < 4) ||
+            isLoading ||
+            !!error
+          }
           onClickHandler={() => goToStep(dispatch, state.currentIndex + 1)}
           icon={
             <NavigateNext
