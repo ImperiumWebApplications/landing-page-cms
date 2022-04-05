@@ -21,7 +21,6 @@ export const handler = async (
     const { postalCode, countries } = retrieveDataFromRequestBody(req);
     const postalCodeData = getPostalCodeDetails(postalCode, countries);
 
-    res.setHeader('Cache-Control', 'public, max-age=360');
     return res.status(200).json({ success: true, data: postalCodeData });
   } catch (error) {
     captureNextAPIError(error);
