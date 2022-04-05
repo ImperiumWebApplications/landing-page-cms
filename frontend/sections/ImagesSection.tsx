@@ -34,18 +34,19 @@ const StyledImagesSection = styled(Section)`
       grid-template-columns: repeat(3, 1fr);
     }
 
-    & > span:first-of-type > img {
+    & .image-wrapper:first-of-type > span > img {
       border-top-left-radius: ${({ theme }) => theme.borderRadius};
     }
 
-    & > span:last-of-type > img {
+    & .image-wrapper:last-of-type > span > img {
       border-bottom-right-radius: ${({ theme }) => theme.borderRadius};
     }
 
     .image-wrapper {
       position: relative;
+      width: 100%;
       height: 150px;
-      width: 450px;
+      max-width: 450px;
     }
   }
 
