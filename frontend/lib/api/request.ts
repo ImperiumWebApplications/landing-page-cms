@@ -1,3 +1,4 @@
+import { isDevEnvironment } from '../../utils/isDevEnvironment';
 import { CreateLeadInPipedriveProps } from './create-lead';
 import type { SendMailProps } from './send-mail';
 
@@ -8,10 +9,9 @@ const sendMail = ({ host, template, recipient, payload }: SendMailProps) => {
     process.env.PRIVATE_API_ROUTE ?? ''
   }`;
 
-  const API =
-    process.env.NODE_ENV === 'development'
-      ? `http://${host}${API_ROUTE}`
-      : `https://${host}${API_ROUTE}`;
+  const API = isDevEnvironment(host)
+    ? `http://${host}${API_ROUTE}`
+    : `https://${host}${API_ROUTE}`;
 
   return fetch(API, {
     method: 'POST',
@@ -35,10 +35,9 @@ const getPostalCodeDetails = ({
     process.env.NEXT_PUBLIC_API_ROUTE ?? ''
   }`;
 
-  const API =
-    process.env.NODE_ENV === 'development'
-      ? `http://${host}${API_ROUTE}`
-      : `https://${host}${API_ROUTE}`;
+  const API = isDevEnvironment(host)
+    ? `http://${host}${API_ROUTE}`
+    : `https://${host}${API_ROUTE}`;
 
   return fetch(API, {
     method: 'POST',
@@ -58,10 +57,9 @@ const createLeadInPipedrive = ({
     process.env.NEXT_PUBLIC_API_ROUTE ?? ''
   }`;
 
-  const API =
-    process.env.NODE_ENV === 'development'
-      ? `http://${host}${API_ROUTE}`
-      : `https://${host}${API_ROUTE}`;
+  const API = isDevEnvironment(host)
+    ? `http://${host}${API_ROUTE}`
+    : `https://${host}${API_ROUTE}`;
 
   return fetch(API, {
     method: 'POST',
