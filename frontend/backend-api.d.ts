@@ -80,8 +80,7 @@ type ClientVAT = string;
 type VideoTitle = string;
 type VideoDescription = string;
 type ServiceType = string;
-type LogoFooter = ImageObject;
-type LogoHeader = ImageObject;
+type Logo = ImageObject;
 type Favicon = ImageObject;
 type Advantage = { id: number; first_line: string; second_line: string };
 
@@ -233,8 +232,7 @@ interface LandingPage {
   publishedAt: PublishedAt;
   client_address?: ClientAddress;
   client_vat?: ClientVAT;
-  logo_footer?: LogoFooter;
-  logo_header?: LogoHeader;
+  logo?: Logo;
   service_type?: ServiceType;
   favicon?: Favicon;
   questionnaire?: EntryQuestionnaire;

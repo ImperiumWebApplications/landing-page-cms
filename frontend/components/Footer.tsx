@@ -29,16 +29,22 @@ const StyledFooter = styled.footer`
   }
 
   .logo-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
     width: 100%;
-    margin-right: 1rem;
+    padding-right: 2rem;
 
     @media screen and (${devices.lg}) {
-      margin-right: 4rem;
+      justify-content: space-between;
+      padding-right: 4rem;
     }
 
     .copyright {
       display: block;
-      margin-top: 0.5rem;
+      margin-top: 1rem;
       font-size: 0.8rem;
       text-transform: lowercase;
     }
@@ -52,7 +58,7 @@ export const Footer: React.FunctionComponent<{ content: LandingPage }> = ({
     <StyledFooter>
       <div className="content-wrapper">
         <div className="logo-wrapper">
-          <Logo image={content.logo_footer} />
+          <Logo image={content.logo} size="logo-medium" colorless />
           {content.brand_name && (
             <span className="copyright">
               &copy; {`${new Date().getFullYear()} ${content.brand_name}`}

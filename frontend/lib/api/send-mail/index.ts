@@ -27,7 +27,7 @@ export const sendMail = async (data: SendMailProps) => {
 
     const landingPage = await StrapiAPI.getLandingPageStyleByDomain(host);
 
-    if (!landingPage?.brand_name || !landingPage.logo_header?.data.attributes) {
+    if (!landingPage?.brand_name || !landingPage.logo?.data.attributes) {
       throw new Error('Missing data to send valid email.');
     }
 

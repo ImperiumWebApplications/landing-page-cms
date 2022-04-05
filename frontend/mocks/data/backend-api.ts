@@ -1519,42 +1519,7 @@ export const domainContent = {
               'Sie sagen uns, was Sie brauchen, wir lassen Ihnen kostenlos und unverbindlich die besten Angebote zukommen und Sie müssen sich nur noch entscheiden. Nach Ihrer Anfrage erhalten Sie von uns kostenlos und unverbindlich Angebote von Handwerkern. So können Sie sich einfach den Partner heraussuchen, der das beste Preis-Leistungs-Verhältnis bietet oder der Ihnen am ehesten zusagt.\n\nEinfacher geht’s nicht.',
           },
         ],
-        logo_footer: {
-          data: {
-            id: 120,
-            attributes: {
-              name: 'logo-footer.png',
-              alternativeText: 'logo-footer.png',
-              caption: 'logo-footer.png',
-              width: 333,
-              height: 46,
-              formats: {
-                thumbnail: {
-                  ext: '.png',
-                  url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/thumbnail_logo_footer_ec411c0462.png',
-                  hash: 'thumbnail_logo_footer_ec411c0462',
-                  mime: 'image/png',
-                  name: 'thumbnail_logo-footer.png',
-                  path: null,
-                  size: 7.79,
-                  width: 245,
-                  height: 34,
-                },
-              },
-              hash: 'logo_footer_ec411c0462',
-              ext: '.png',
-              mime: 'image/png',
-              size: 4.5,
-              url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/logo_footer_ec411c0462.png',
-              previewUrl: null,
-              provider: 'aws-s3',
-              provider_metadata: null,
-              createdAt: '2022-01-04T16:32:51.246Z',
-              updatedAt: '2022-01-04T16:32:51.246Z',
-            },
-          },
-        },
-        logo_header: {
+        logo: {
           data: {
             id: 127,
             attributes: {

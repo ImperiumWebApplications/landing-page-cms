@@ -59,7 +59,7 @@ export const Header: React.FunctionComponent<{ content: LandingPage }> = ({
     <StyledHeader id="header" centerLogo={_isFunnelRoute}>
       <Animation className="animated-header" type="fadeDown" duration={200}>
         <div className="content-wrapper">
-          <Logo image={content.logo_header} />
+          <Logo image={content.logo} />
           {!_isFunnelRoute && (
             <>
               <Button

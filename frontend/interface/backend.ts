@@ -72,8 +72,7 @@ const getLandingPageContentByDomain = async (domain: string) => {
               },
             },
           },
-          logo_footer: { fields: '*' },
-          logo_header: { fields: '*' },
+          logo: { fields: '*' },
           favicon: { fields: '*' },
           tracking: { fields: '*' },
           questionnaire: {
@@ -105,7 +104,7 @@ const getLandingPageStyleByDomain = async (domain: string) => {
       params: {
         filters: { domain: { $eq: domain } },
         populate: {
-          logo_header: { fields: '*' },
+          logo: { fields: '*' },
         },
       },
       paramsSerializer,

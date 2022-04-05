@@ -48,13 +48,7 @@
       "required": false,
       "allowedTypes": ["images"]
     },
-    "logo_header": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": ["images"]
-    },
-    "logo_footer": {
+    "logo": {
       "type": "media",
       "multiple": false,
       "required": false,

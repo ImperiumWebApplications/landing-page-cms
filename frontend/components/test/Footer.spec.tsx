@@ -7,7 +7,7 @@ import { Footer } from '../Footer';
 
 const content = domainContent.data[0].attributes;
 const footerData = {
-  logo: content.logo_footer,
+  logo: content.logo,
   brand: content.brand_name,
 };
 
