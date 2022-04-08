@@ -2,16 +2,15 @@ import Script from 'next/script';
 import { getCookieConsentValue } from 'react-cookie-consent';
 
 import type { TrackingIds } from '../backend-api';
+import { isDevEnvironment } from '../utils/isDevEnvironment';
+import { isTestEnvironment } from '../utils/isTestEnvironment';
 import { COOKIE_CONSENT_NAME } from './CookieConsent';
 
 export const TrackingScripts: React.FunctionComponent<{
   ids?: TrackingIds;
-}> = ({ ids }) => {
-  if (!ids) return <></>;
-
-  const cookieConsent = getCookieConsentValue(COOKIE_CONSENT_NAME as string);
-  if (cookieConsent !== 'true' || process.env.NODE_ENV !== 'production')
-    return <></>;
+  host: string;
+}> = ({ ids, host }) => {
+  if (!ids || !isTrackingAllowed(host)) return <></>;
 
   return (
     <>
@@ -38,8 +37,17 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', '${id}');`;
 
-export const sendConversionToGoogle = (adsId: string, conversionId: string) => {
-  const cookieConsent = getCookieConsentValue(COOKIE_CONSENT_NAME as string);
-  if (cookieConsent !== 'true' || process.env.NODE_ENV !== 'production') return;
+export const sendConversionToGoogle = (
+  host: string,
+  adsId: string,
+  conversionId: string,
+) => {
+  if (!isTrackingAllowed(host)) return;
+
   gtag('event', 'conversion', { send_to: `${adsId}/${conversionId}` });
 };
+
+const isTrackingAllowed = (host: string) =>
+  getCookieConsentValue(COOKIE_CONSENT_NAME as string) === 'true' &&
+  !isDevEnvironment(host) &&
+  !isTestEnvironment();

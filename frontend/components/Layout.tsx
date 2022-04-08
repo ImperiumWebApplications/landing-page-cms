@@ -48,7 +48,7 @@ export const Layout: React.FunctionComponent<{ content: LandingPage }> = ({
       <GlobalStyle isFunnelRoute={isFunnelRoute(router)} />
       <NextSeo {...extractSeoProps(content)} />
       <HeadMeta theme={extractTheme(content)} brand={content.brand_name} />
-      <TrackingScripts ids={content.tracking} />
+      <TrackingScripts ids={content.tracking} host={content.domain} />
       <Header content={content} />
       <main>{children}</main>
       <Footer content={content} />

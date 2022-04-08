@@ -157,6 +157,7 @@ export const ContactForm: React.FunctionComponent<{
 
       if (tracking)
         sendConversionToGoogle(
+          location.host,
           tracking.google_ads_id,
           tracking.google_ads_conversion_id,
         );
