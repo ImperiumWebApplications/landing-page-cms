@@ -105,6 +105,11 @@ export const MobileNavigation: React.FunctionComponent = () => {
   const router = useRouter();
   const [open, setOpen] = React.useState<boolean>(false);
 
+  React.useEffect(() => {
+    if (open) document.body.style.overflowY = 'hidden';
+    else document.body.style.overflowY = 'visible';
+  }, [open]);
+
   return (
     <StyledMobileMenu open={open}>
       <div
