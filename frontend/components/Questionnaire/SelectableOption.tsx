@@ -30,13 +30,13 @@ const StyledSelectableOption = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 8.5rem;
+  width: calc(50% - 0.5rem);
   height: auto;
   padding: 1rem;
   border-radius: 0.5rem;
   transition: all 0.3s ease-in-out;
   background-color: #f8f8f8;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 6px -1px,
     rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 
   @media screen and (${devices.md}) {

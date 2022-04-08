@@ -15,7 +15,7 @@ const StyledQuestionnaireTile = styled.a`
   position: relative;
   overflow: hidden;
 
-  width: 8.5rem;
+  width: calc(50% - 0.5rem);
   max-width: 33rem;
   padding: 1rem 1rem 2.5rem 1rem;
 
@@ -26,6 +26,8 @@ const StyledQuestionnaireTile = styled.a`
   background-color: #f8f8f8;
   border-radius: ${({ theme }) => theme.borderRadius};
   transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 10px 2px
+    ${({ theme }) => hexRgb(theme.colors.text, { format: 'css', alpha: 0.1 })};
   border: 2px dashed
     ${({ theme }) => hexRgb(theme.colors.text, { format: 'css', alpha: 0.1 })};
 
@@ -71,22 +73,13 @@ const StyledQuestionnaireTile = styled.a`
   }
 
   .icon {
-    height: 2rem;
+    height: 2.5rem;
     width: auto;
     margin-bottom: 1rem;
 
-    @media screen and (${devices.sm}) {
-      height: 2.5rem;
-    }
-
     svg {
-      height: 2rem;
-      width: 2rem;
-
-      @media screen and (${devices.sm}) {
-        height: 2.5rem;
-        width: 2.5rem;
-      }
+      height: 2.5rem;
+      width: 2.5rem;
     }
 
     svg,
@@ -117,13 +110,8 @@ const StyledQuestionnaireTile = styled.a`
 
   .description {
     h2 {
-      font-size: 1rem;
-      line-height: 1.25rem;
-
-      @media screen and (${devices.sm}) {
-        font-size: 1.25rem;
-        line-height: 1.5rem;
-      }
+      font-size: 1.25rem;
+      line-height: 1.5rem;
 
       @media screen and (${devices.lg}) {
         font-size: 1.5rem;
