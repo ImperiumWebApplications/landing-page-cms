@@ -51,14 +51,14 @@ export default withSentry(handler);
  *
  */
 
-const retrieveDataFromRequestBody = (req: CreateLeadApiRequest) => {
+export const retrieveDataFromRequestBody = (req: CreateLeadApiRequest) => {
   try {
     if (req.method !== 'POST') throw new Error('Unsupported HTTP method.');
 
     if (req.query.API_ROUTE !== process.env.NEXT_PUBLIC_API_ROUTE)
       throw new Error('Missing or invalid public API route query param.');
 
-    const host = normalizeHostname(req.headers.host);
+    const host = normalizeHostname(req.body.host ?? req.headers?.host);
     const contact = req.body.contact;
     const questionnaire = req.body.questionnaire;
 
