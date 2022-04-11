@@ -1,4 +1,5 @@
 import type { AppProps } from 'next/app';
+import 'intersection-observer';
 
 import 'swiper/css';
 import 'swiper/css/a11y';
