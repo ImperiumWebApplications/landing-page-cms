@@ -1,10 +1,8 @@
 import Script from 'next/script';
-import { getCookieConsentValue } from 'react-cookie-consent';
 
 import type { TrackingIds } from '../backend-api';
-import { isDevEnvironment } from '../utils/isDevEnvironment';
-import { isTestEnvironment } from '../utils/isTestEnvironment';
-import { COOKIE_CONSENT_NAME } from './CookieConsent';
+import { generateGoogleTagManagerScript } from '../lib/analytics/generateGoogleTagManagerScript';
+import { isTrackingAllowed } from '../lib/analytics/isTrackingAllowed';
 
 export const TrackingScripts: React.FunctionComponent<{
   ids?: TrackingIds;
@@ -12,42 +10,23 @@ export const TrackingScripts: React.FunctionComponent<{
 }> = ({ ids, host }) => {
   if (!ids || !isTrackingAllowed(host)) return <></>;
 
+  const tagId = ids.google_analytics_id ?? ids.google_ads_id;
+  if (!tagId) return <></>;
+
   return (
     <>
       <Script
         id="googleTagManagerSource"
         strategy="afterInteractive"
-        src={`https://www.googletagmanager.com/gtag/js?id=${ids.google_ads_id}`}
+        src={`https://www.googletagmanager.com/gtag/js?id=${tagId}`}
       />
       <Script
         id="googleTagManagerScript"
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{
-          __html: generateGoogleTagManagerScript(ids.google_ads_id),
+          __html: generateGoogleTagManagerScript(ids),
         }}
       />
     </>
   );
 };
-
-const generateGoogleTagManagerScript = (
-  id: string,
-) => `window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', '${id}');`;
-
-export const sendConversionToGoogle = (
-  host: string,
-  adsId: string,
-  conversionId: string,
-) => {
-  if (!isTrackingAllowed(host)) return;
-
-  gtag('event', 'conversion', { send_to: `${adsId}/${conversionId}` });
-};
-
-const isTrackingAllowed = (host: string) =>
-  getCookieConsentValue(COOKIE_CONSENT_NAME as string) === 'true' &&
-  !isDevEnvironment(host) &&
-  !isTestEnvironment();

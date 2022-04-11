@@ -19,7 +19,6 @@ import { RadioInput } from './RadioInput';
 import { CheckboxInput } from './CheckboxInput';
 import { LoadingSpinner } from './LoadingSpinner';
 import { QualityBadges } from './QualityBadges';
-import { sendConversionToGoogle } from '../TrackingScripts';
 import { NextAPI } from '../../lib/api/request';
 import { devices } from '../../config/breakpoints.config';
 import {
@@ -29,6 +28,7 @@ import {
 import { getAnimation } from '../../config/animations.config';
 import { goToStep } from '../../utils/goToStep';
 import { isFormDataComplete } from '../../utils/isFormDataComplete';
+import { sendConversionToAnalytics } from '../../lib/analytics/sendConversionToAnalytics';
 
 const StyledContactForm = styled.div`
   max-width: 45rem;
@@ -155,12 +155,7 @@ export const ContactForm: React.FunctionComponent<{
 
       if (!res.ok) throw new Error(res.statusText);
 
-      if (tracking)
-        sendConversionToGoogle(
-          location.host,
-          tracking.google_ads_id,
-          tracking.google_ads_conversion_id,
-        );
+      if (tracking) sendConversionToAnalytics(location.host, tracking);
 
       setLoading(false);
       goToStep(dispatch, state.currentIndex + 1);

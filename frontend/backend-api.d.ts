@@ -116,8 +116,9 @@ interface QuestionnaireQuestion {
 
 interface TrackingIds {
   id: number;
-  google_ads_conversion_id: string;
-  google_ads_id: string;
+  google_ads_conversion_id?: string;
+  google_ads_id?: string;
+  google_analytics_id?: string;
 }
 
 interface HeroSection {
