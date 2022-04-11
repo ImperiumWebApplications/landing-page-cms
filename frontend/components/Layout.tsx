@@ -17,6 +17,7 @@ import { TrackingScripts } from './TrackingScripts';
 import { extractSeoProps } from '../config/seo.config';
 import { extractTheme, GlobalStyle } from '../config/theme.config';
 import { isFunnelRoute } from '../utils/isFunnelRoute';
+import { sendPageViewToAnalytics } from '../lib/analytics/sendPageViewToAnalytics';
 
 const ClientSideOnlyCookieConsent = dynamic<CookieConsentProps>(
   () => import('../components/CookieConsent').then((mod) => mod.CookieConsent),
@@ -42,6 +43,19 @@ export const Layout: React.FunctionComponent<{ content: LandingPage }> = ({
     if (allowCookies === undefined) document.body.style.overflowY = 'hidden';
     else document.body.style.overflowY = 'auto';
   });
+
+  React.useEffect(() => {
+    const handleRouteChange = (url: string) => {
+      const { domain, tracking } = content;
+      sendPageViewToAnalytics(domain, tracking?.google_analytics_id, url);
+    };
+
+    router.events.on('routeChangeComplete', handleRouteChange);
+
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange);
+    };
+  }, [router.events, content]);
 
   return (
     <ThemeProvider theme={extractTheme(content)}>
