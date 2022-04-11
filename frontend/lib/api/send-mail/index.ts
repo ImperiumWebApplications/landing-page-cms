@@ -51,11 +51,15 @@ export const sendMail = async (data: SendMailProps) => {
       subject: EmailSubject[template],
       from: `"${landingPage.brand_name}" <${process.env.MAIL_USER}>`,
       replyTo: landingPage.contact_email,
-      bcc: landingPage.contact_email,
       to: recipient.email,
+      bcc: isCraftsman24(host)
+        ? 'leads@craftsman24.ch'
+        : landingPage.contact_email,
       html,
     });
   } catch (error) {
     throw error;
   }
 };
+
+const isCraftsman24 = (host: string) => host.includes('craftsman24');
