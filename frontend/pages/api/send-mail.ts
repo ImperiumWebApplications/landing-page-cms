@@ -35,7 +35,7 @@ export default withSentry(handler);
  *
  */
 
-const retrieveDataFromRequestBody = (req: SendMailApiRequest) => {
+export const retrieveDataFromRequestBody = (req: SendMailApiRequest) => {
   try {
     if (req.method !== 'POST') throw new Error('Unsupported HTTP method.');
 
