@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import Image from 'next/image';
 import Link from 'next/link';
-import hexRgb from 'hex-rgb';
 import { ReactSVG } from 'react-svg';
 import { ArrowRightShort } from '@styled-icons/bootstrap';
 
@@ -26,10 +25,9 @@ const StyledQuestionnaireTile = styled.a`
   background-color: #f8f8f8;
   border-radius: ${({ theme }) => theme.borderRadius};
   transition: all 0.3s ease-in-out;
-  box-shadow: 0 0 10px 2px
-    ${({ theme }) => hexRgb(theme.colors.text, { format: 'css', alpha: 0.1 })};
-  border: 2px dashed
-    ${({ theme }) => hexRgb(theme.colors.text, { format: 'css', alpha: 0.1 })};
+  background-color: #f8f8f8;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 
   @media screen and (${devices.sm}) {
     padding: 2rem 1rem;
