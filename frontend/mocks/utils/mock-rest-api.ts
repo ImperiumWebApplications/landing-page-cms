@@ -1,8 +1,11 @@
 import { RequestHandler, rest, setupWorker, SetupWorkerApi } from 'msw';
 import { setupServer, SetupServerApi } from 'msw/node';
 
-export const createErrorResponse = (url: string) => {
-  return rest.get(url, (_, res, ctx) => {
+export const createErrorResponse = (
+  url: string,
+  method: 'get' | 'post' = 'get',
+) => {
+  return rest[method](url, (_, res, ctx) => {
     return res(ctx.status(500), ctx.body('Error'));
   });
 };

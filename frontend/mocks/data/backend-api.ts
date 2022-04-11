@@ -2075,3 +2075,43 @@ export const questionnairesContent = {
     },
   ],
 };
+
+export const pipedriveApisContent = {
+  data: [
+    {
+      id: 1,
+      attributes: {
+        api_token: '8a1c319e7a2dc740792a19c70e8a0da609005a16',
+        createdAt: '2022-02-07T15:21:41.997Z',
+        updatedAt: '2022-03-07T16:51:41.240Z',
+        landing_page: {
+          data: {
+            id: 1,
+            attributes: {
+              seo_title:
+                'Craftsman24 – Wir haben die Handwerker für Ihre Projekte.',
+              seo_description:
+                'Professionelle Arbeit von qualifizierten Fachkräften: Schnell und präzise nach Ihren Wünschen ausgeführt. Jetzt Handwerker finden!',
+              domain: 'localhost:3000',
+              brand_name: 'Craftsman24',
+              color_primary: '#359b88',
+              color_secondary: '#e6b432',
+              color_tertiary: '#efefef',
+              color_text: '#737373',
+              contact_email: 'konstantin.muenster@mail.com',
+              contact_phone: '+41 41 510 42 00',
+              createdAt: '2021-12-03T09:14:29.181Z',
+              updatedAt: '2022-04-05T11:11:52.802Z',
+              publishedAt: '2021-12-03T09:14:31.002Z',
+              client_address:
+                'Leadquelle GmbH\nGrafenauweg 8\n6300 Zug\nSchweiz',
+              client_vat: 'CHE-138.210.925',
+              service_type: 'Handwerker',
+              google_allow_indexation: false,
+            },
+          },
+        },
+      },
+    },
+  ],
+};

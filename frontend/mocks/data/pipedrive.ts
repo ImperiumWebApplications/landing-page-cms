@@ -711,3 +711,58 @@ export const personsSearch = {
     },
   },
 };
+
+export const createdLead = {
+  data: {
+    add_time: '2022-04-11T10:27:30.898Z',
+    cc_email:
+      'craftsman24gmbh+10365643+leadxoT2ofyS4K85eDh28QHAfu@pipedrivemail.com',
+    creator_id: 12886774,
+    expected_close_date: null,
+    id: 'fe3d1b20-b981-11ec-a2f9-1b4d3386ba18',
+    is_archived: false,
+    label_ids: [],
+    next_activity_id: null,
+    organization_id: null,
+    owner_id: 12886774,
+    person_id: 1,
+    source_name: 'API',
+    title: 'test test (test.com)',
+    update_time: '2022-04-11T10:27:30.898Z',
+    value: null,
+    visible_to: '3',
+    was_seen: false,
+  },
+};
+
+export const createdNote = {
+  data: {
+    active_flag: true,
+    add_time: '2022-04-11 10:27:31',
+    content:
+      '<p style="margin-bottom:10px;">Antworten aus dem Fragebogen:</p><table cellpadding="0" cellspacing="0" border="0" class="page_table"><tr style="border:none"><td style="font-weight:bold;padding:10px">Question 1</td><td style="padding:10px">Answer 1</td></tr></table>',
+    deal: null,
+    deal_id: null,
+    id: 166,
+    last_update_user_id: null,
+    lead_id: 'fe3d1b20-b981-11ec-a2f9-1b4d3386ba18',
+    org_id: null,
+    organization: null,
+    person: {
+      name: 'test test',
+    },
+    person_id: 1,
+    pinned_to_deal_flag: false,
+    pinned_to_lead_flag: false,
+    pinned_to_organization_flag: false,
+    pinned_to_person_flag: false,
+    update_time: '2022-04-11 10:27:31',
+    user: {
+      email: 'info@craftsman24.ch',
+      icon_url: null,
+      is_you: true,
+      name: 'Dominik Eisenhardt',
+    },
+    user_id: 12886774,
+  },
+};

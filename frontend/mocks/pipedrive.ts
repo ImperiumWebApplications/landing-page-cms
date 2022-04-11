@@ -1,6 +1,12 @@
 import { rest } from 'msw';
 import { PIPEDRIVE_API_URL } from '../interface/pipedrive';
-import { currentUser, personFields, personsSearch } from './data/pipedrive';
+import {
+  createdLead,
+  createdNote,
+  currentUser,
+  personFields,
+  personsSearch,
+} from './data/pipedrive';
 
 export const pipedriveAPIMockHandlers = [
   rest.get(PIPEDRIVE_API_URL + '/users/me', (_, res, ctx) =>
@@ -17,5 +23,11 @@ export const pipedriveAPIMockHandlers = [
   ),
   rest.post(PIPEDRIVE_API_URL + '/persons', (req, res, ctx) =>
     res(ctx.status(200), ctx.json({ success: true, data: req.body })),
+  ),
+  rest.post(PIPEDRIVE_API_URL + '/leads', (req, res, ctx) =>
+    res(ctx.status(200), ctx.json({ success: true, data: createdLead })),
+  ),
+  rest.post(PIPEDRIVE_API_URL + '/notes', (req, res, ctx) =>
+    res(ctx.status(200), ctx.json({ success: true, data: createdNote })),
   ),
 ];

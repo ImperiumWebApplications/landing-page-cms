@@ -3,6 +3,7 @@ import { BACKEND_API_URL } from '../interface/backend';
 
 import {
   domainContent,
+  pipedriveApisContent,
   questionnairesContent,
   staticContent,
 } from './data/backend-api';
@@ -16,5 +17,8 @@ export const backendAPIMockHandlers = [
   ),
   rest.get(BACKEND_API_URL + '/questionnaires', (_, res, ctx) =>
     res(ctx.status(200), ctx.json(questionnairesContent)),
+  ),
+  rest.get(BACKEND_API_URL + '/pipedrive-apis', (_, res, ctx) =>
+    res(ctx.status(200), ctx.json(pipedriveApisContent)),
   ),
 ];
