@@ -14,9 +14,9 @@ const StyledQuestionnaireTile = styled.a`
   position: relative;
   overflow: hidden;
 
-  width: calc(50% - 0.5rem);
+  width: 100%;
   max-width: 33rem;
-  padding: 1rem 1rem 2.5rem 1rem;
+  padding: 1rem 1rem 1.5rem 1rem;
 
   display: grid;
   grid-template-columns: 100%;
@@ -29,13 +29,10 @@ const StyledQuestionnaireTile = styled.a`
   box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 6px -1px,
     rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 
-  @media screen and (${devices.sm}) {
+  @media screen and (${devices.md}) {
+    flex: 1;
     padding: 2rem 1rem;
     width: 12rem;
-  }
-
-  @media screen and (${devices.lg}) {
-    flex: 1;
   }
 
   @media screen and (${devices.xl}) {
@@ -71,13 +68,13 @@ const StyledQuestionnaireTile = styled.a`
   }
 
   .icon {
-    height: 2.5rem;
+    height: 3.25rem;
     width: auto;
     margin-bottom: 1rem;
 
     svg {
-      height: 2.5rem;
-      width: 2.5rem;
+      height: 3.25rem;
+      width: 3.25rem;
     }
 
     svg,
@@ -86,11 +83,11 @@ const StyledQuestionnaireTile = styled.a`
     }
 
     @media screen and (${devices.lg}) {
-      height: 3rem;
+      height: 4rem;
       width: auto;
 
       svg {
-        height: 3rem;
+        height: 4rem;
         width: auto;
       }
     }
@@ -98,8 +95,8 @@ const StyledQuestionnaireTile = styled.a`
 
   /** Loading blob, displayed while SVGs are fetched */
   .loading {
-    height: 2.5rem;
-    width: 2.5rem;
+    height: 3.25rem;
+    width: 3.25rem;
     filter: brightness(90%);
     border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
     background-color: ${({ theme }) => theme.colors.tertiary};
@@ -148,19 +145,27 @@ const StyledQuestionnaireTile = styled.a`
     width: 2rem;
     height: 2rem;
     overflow: hidden;
-    bottom: 0;
+    top: 0;
     right: 0;
     background-color: ${({ theme }) => theme.colors.tertiary};
-    border-radius: 3rem 4px 0 0;
+    border-radius: 0 0 4px 3rem;
 
     @media screen and (${devices.lg}) {
       width: 3rem;
       height: 3rem;
+      top: unset;
+      bottom: 0;
+      border-radius: 3rem 4px 0 0;
+
+      > div {
+        margin-left: 8px;
+        margin-top: 8px;
+      }
     }
 
     > div {
       margin-left: 8px;
-      margin-top: 8px;
+      margin-bottom: 4px;
     }
 
     svg {

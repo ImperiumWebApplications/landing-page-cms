@@ -25,10 +25,6 @@ const StyledHeroSection = styled(Section)`
     grid-template-rows: 100%;
     grid-template-columns: 100%;
 
-    @media screen and (${devices.sm}) {
-      margin-top: 1rem;
-    }
-
     @media screen and (${devices.md}) {
       grid-template-columns: 30rem auto;
       column-gap: 5rem;
@@ -131,13 +127,19 @@ const StyledHeroSection = styled(Section)`
 
     .tiles {
       width: 100%;
-      display: flex;
-      flex-direction: row;
-      justify-content: stretch;
-      align-items: stretch;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-auto-rows: 1fr;
       column-gap: 1rem;
       row-gap: 1rem;
+
+      @media screen and (${devices.md}) {
+        display: flex;
+        flex-direction: row;
+        justify-content: stretch;
+        align-items: stretch;
+        flex-wrap: wrap;
+      }
     }
   }
 `;
