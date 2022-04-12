@@ -65,7 +65,7 @@ export const Button: React.FunctionComponent<ButtonProps> = ({
   if (href)
     return (
       <Link href={href} passHref>
-        <StyledButton as="a" {...defaultProps}>
+        <StyledButton as="a" role="button" {...defaultProps}>
           {label} {Icon ? Icon : undefined}
         </StyledButton>
       </Link>
