@@ -8,10 +8,12 @@
   "options": {},
   "attributes": {
     "title": {
-      "type": "string"
+      "type": "string",
+      "default": "Ihr Projekt in guten Händen."
     },
     "subtitle": {
-      "type": "string"
+      "type": "string",
+      "default": "<br />Einfach. Machen. Lassen."
     },
     "background_image": {
       "type": "media",
