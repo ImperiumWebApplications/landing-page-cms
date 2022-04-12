@@ -15,7 +15,7 @@ export const enrichPostalCodeValue = ({
   contactData: ContactData;
 }) => {
   if (contactData.city.value)
-    return `${contactData.postalCode.value} (${contactData.city.value})`;
+    return `${contactData.postalCode.value} ${contactData.city.value}`;
 
   const country = getCountryByDomain(host);
   if (!country) return `${contactData.postalCode.value}`;
@@ -23,5 +23,5 @@ export const enrichPostalCodeValue = ({
   const details = getPostalCodeDetails(contactData.postalCode.value, [country]);
   if (!details.length) return `${contactData.postalCode.value}`;
 
-  return `${contactData.postalCode.value} (${details?.[0].place})`;
+  return `${contactData.postalCode.value} ${details?.[0].place}`;
 };

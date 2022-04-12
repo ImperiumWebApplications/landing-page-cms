@@ -8,7 +8,7 @@ describe('enrichPostalCodeValue', () => {
         host: 'craftsman24.de',
         contactData: contactDataMock,
       }),
-    ).toEqual('22303 (Hamburg Winterhude)');
+    ).toEqual('22303 Hamburg Winterhude');
   });
 
   it('should return code and city if city is given and host is unknown', () => {
@@ -17,7 +17,7 @@ describe('enrichPostalCodeValue', () => {
         host: 'craftsman24.cc',
         contactData: contactDataMock,
       }),
-    ).toEqual('22303 (Hamburg Winterhude)');
+    ).toEqual('22303 Hamburg Winterhude');
   });
 
   it('should return code and city if city is not given and host is known', () => {
@@ -32,6 +32,6 @@ describe('enrichPostalCodeValue', () => {
           },
         },
       }),
-    ).toEqual('22303 (Hamburg Winterhude)');
+    ).toEqual('22303 Hamburg Winterhude');
   });
 });
