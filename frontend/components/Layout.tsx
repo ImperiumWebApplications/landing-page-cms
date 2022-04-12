@@ -8,6 +8,7 @@ import { ThemeProvider } from 'styled-components';
 import type { LandingPage } from '../backend-api';
 import {
   CookieConsentProps,
+  CookiesAllowed,
   COOKIE_CONSENT_NAME,
 } from '../components/CookieConsent';
 import { Footer } from './Footer';
@@ -30,17 +31,18 @@ export const Layout: React.FunctionComponent<{ content: LandingPage }> = ({
 }) => {
   const router = useRouter();
   const cookieConsent = getCookieConsentValue(COOKIE_CONSENT_NAME as string);
-  const [allowCookies, setAllowCookies] = React.useState(
+  const [allowCookies, setAllowCookies] = React.useState<CookiesAllowed>(
     cookieConsent === 'true'
-      ? true
+      ? 'Yes'
       : cookieConsent === 'false'
-      ? false
-      : undefined,
+      ? 'No'
+      : 'NotAnswered',
   );
 
   // https://github.com/styled-components/styled-components/issues/730#issuecomment-347077307
   React.useEffect(() => {
-    if (allowCookies === undefined) document.body.style.overflowY = 'hidden';
+    const isCookieModalOpen = allowCookies === 'NotAnswered';
+    if (isCookieModalOpen) document.body.style.overflowY = 'hidden';
     else document.body.style.overflowY = 'auto';
   });
 

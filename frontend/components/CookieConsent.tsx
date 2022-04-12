@@ -92,16 +92,17 @@ const StyledCookieConsent = styled.div`
   }
 `;
 
+export type CookiesAllowed = 'Yes' | 'No' | 'NotAnswered';
 export type CookieConsentProps = {
-  consent: boolean | undefined;
-  setConsent: React.Dispatch<React.SetStateAction<boolean | undefined>>;
+  consent: CookiesAllowed;
+  setConsent: React.Dispatch<React.SetStateAction<CookiesAllowed>>;
 };
 
 export const CookieConsent: React.FunctionComponent<CookieConsentProps> = ({
   consent,
   setConsent,
 }) => {
-  if (consent !== undefined) return <></>;
+  if (consent !== 'NotAnswered') return <></>;
 
   return (
     <StyledCookieConsent>
@@ -111,11 +112,11 @@ export const CookieConsent: React.FunctionComponent<CookieConsentProps> = ({
         expires={30}
         buttonText="Cookies erlauben"
         buttonClasses="acceptButton"
-        onAccept={() => setConsent(true)}
+        onAccept={() => setConsent('Yes')}
         ariaAcceptLabel="Cookies erlauben"
         declineButtonText="Ablehnen"
         declineButtonClasses="declineButton"
-        onDecline={() => setConsent(false)}
+        onDecline={() => setConsent('No')}
         ariaDeclineLabel="Cookies ablehnen"
         cookieName={COOKIE_CONSENT_NAME}
       >
