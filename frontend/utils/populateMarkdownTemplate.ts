@@ -12,9 +12,14 @@ export const populateMarkdownTemplate = (
   fields?.forEach((field) => {
     const fieldName = field.slice(2, -1); // client_address
     const value = data[fieldName];
-    if (typeof value === 'string')
-      populatedTemplate = populatedTemplate?.replaceAll?.(field, value);
+    if (typeof value === 'string') {
+      const regex = new RegExp(escapeString(field), 'g');
+      populatedTemplate = populatedTemplate.replace(regex, value);
+    }
   });
 
   return populatedTemplate;
 };
+
+const escapeString = (str: string) =>
+  (str + '').replace(/[\\"${}']/g, '\\$&').replace(/\u0000/g, '\\0');
