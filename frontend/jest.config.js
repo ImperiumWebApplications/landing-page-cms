@@ -14,8 +14,12 @@ const customJestConfig = {
     '<rootDir>/node_modules/',
   ],
   collectCoverageFrom: [
-    '**/*.{js,jsx,ts,tsx}',
+    '**/*.{ts,tsx}',
+    '!**/*.spec.ts',
+    '!**/*.config.ts',
     '!**/*.d.ts',
+    '!**/mocks/**',
+    '!**/cypress/**',
     '!**/node_modules/**',
   ],
   globals: {
