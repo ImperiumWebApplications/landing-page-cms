@@ -56,12 +56,12 @@ const StyledHeroSection = styled(Section)`
         padding: 0.5rem 1rem;
         border-left: 2px dashed ${({ theme }) => theme.colors.secondary};
         margin-bottom: 1rem;
-        font-size: 1.75rem;
+        font-size: 1.4rem;
         line-height: 2rem;
 
         @media screen and (${devices.sm}) {
-          font-size: 2.5rem;
-          line-height: 3rem;
+          font-size: 2.1rem;
+          line-height: 2.75rem;
           margin-bottom: 2rem;
         }
 
@@ -107,7 +107,7 @@ const StyledHeroSection = styled(Section)`
     position: relative;
 
     @media screen and (${devices.md}) {
-      margin-top: -30rem;
+      margin-top: -32.5rem;
       margin-bottom: 5rem;
     }
 
