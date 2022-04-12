@@ -87,8 +87,7 @@ describe('lib/api/create-lead', () => {
       lead: createdLead,
       note: createdNote,
       person: {
-        '3fe99f5caa3feebc1ceca9ec0c6ec7ad2a779bd4':
-          '22303 (Hamburg Winterhude)',
+        '3fe99f5caa3feebc1ceca9ec0c6ec7ad2a779bd4': '22303 Hamburg Winterhude',
         name: 'first name last name',
         phone: [{ value: '1234567890', primary: true, label: 'Telefonnummer' }],
         email: [
