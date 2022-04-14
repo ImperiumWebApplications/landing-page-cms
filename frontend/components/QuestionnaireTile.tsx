@@ -68,13 +68,13 @@ const StyledQuestionnaireTile = styled.a`
   }
 
   .icon {
-    height: 3.25rem;
+    height: 3.5rem;
     width: auto;
     margin-bottom: 1rem;
 
     svg {
-      height: 3.25rem;
-      width: 3.25rem;
+      height: 3.5rem;
+      width: 3.5rem;
     }
 
     svg,
@@ -95,8 +95,8 @@ const StyledQuestionnaireTile = styled.a`
 
   /** Loading blob, displayed while SVGs are fetched */
   .loading {
-    height: 3.25rem;
-    width: 3.25rem;
+    height: 3.5rem;
+    width: 3.5rem;
     filter: brightness(90%);
     border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
     background-color: ${({ theme }) => theme.colors.tertiary};
