@@ -179,9 +179,13 @@ const StyledQuestionnaireTile = styled.a`
   }
 `;
 
-export const QuestionnaireTile: React.FunctionComponent<{
+export type QuestionnaireTileProps = {
   questionnaire: { id: number; attributes: ConnectedQuestionnaire };
-}> = ({ questionnaire }) => {
+};
+
+export const QuestionnaireTile: React.FunctionComponent<
+  QuestionnaireTileProps
+> = ({ questionnaire }) => {
   const { id, attributes } = questionnaire;
   if (!attributes.name) return <></>;
 
@@ -192,18 +196,20 @@ export const QuestionnaireTile: React.FunctionComponent<{
 
   return (
     <Link href={route} passHref>
-      <StyledQuestionnaireTile>
+      <StyledQuestionnaireTile aria-label={attributes.name} role="button">
         <div className="icon">
           {attributes.icon?.data && !isSvgIcon && (
             <Image
+              data-testid="tile-image"
               src={attributes.icon.data.attributes.url}
               alt={attributes.icon.data.attributes.alternativeText}
               width={attributes.icon.data.attributes.width}
               height={attributes.icon.data.attributes.height}
             />
           )}
-          {attributes.icon && isSvgIcon && (
+          {attributes.icon?.data && isSvgIcon && (
             <ReactSVG
+              data-testid="tile-icon"
               loading={() => <div className="loading" />}
               src={attributes.icon.data.attributes.url}
             />
