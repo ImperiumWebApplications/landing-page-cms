@@ -113,6 +113,7 @@ export const MobileNavigation: React.FunctionComponent = () => {
   return (
     <StyledMobileMenu open={open}>
       <div
+        aria-label="Mobile Navigation Toggle"
         className="burger"
         tabIndex={0}
         onClick={() => setOpen(!open)}
@@ -125,6 +126,7 @@ export const MobileNavigation: React.FunctionComponent = () => {
         <div />
       </div>
       <div
+        aria-label="sidebar"
         className="sidebar-backdrop"
         aria-hidden={!open}
         tabIndex={open ? 1 : -1}

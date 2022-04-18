@@ -48,8 +48,8 @@ export const Logo: React.FunctionComponent<{
   return (
     <StyledLogo>
       {image?.data && (
-        <Link href="/" aria-label="Homepage" passHref>
-          <a className={size ?? 'logo-large'}>
+        <Link href="/" passHref>
+          <a aria-label="Homepage" className={size ?? 'logo-large'}>
             <Image
               src={image.data.attributes.url}
               alt={image.data.attributes.alternativeText}
