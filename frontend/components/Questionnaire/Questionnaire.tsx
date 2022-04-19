@@ -103,6 +103,9 @@ export const Questionnaire: React.FunctionComponent<QuestionnaireProps> = ({
   // Force pop-up "Do you really want to leave page?" during questionnaire
   React.useEffect(() => {
     window.onbeforeunload = () => true;
+    return () => {
+      window.onbeforeunload = () => null;
+    };
   }, []);
 
   React.useEffect(() => {
