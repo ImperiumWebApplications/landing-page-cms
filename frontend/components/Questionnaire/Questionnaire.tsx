@@ -81,7 +81,7 @@ export type QuestionnaireHistoryState = {
   step?: number;
 };
 
-type QuestionnaireProps = {
+export type QuestionnaireProps = {
   questions: QuestionnaireQuestion[];
   countries?: Country[];
   advantages?: Advantage[];

@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { ChevronLeft } from '@styled-icons/material-rounded';
 
 import { useQuestionnaireContext } from '../../context/Questionnaire';
+import { goToStep } from '../../utils/goToStep';
 
 const StyledBackButton = styled.div`
   cursor: pointer;
@@ -30,14 +31,14 @@ export const BackButton: React.FunctionComponent<{ hide?: boolean }> = ({
   if (hide) return <></>;
 
   const onClickHandler: React.MouseEventHandler = () => {
-    dispatch({
-      type: 'SET_CURRENT_INDEX',
-      payload: { newIndex: state.currentIndex - 1 },
-    });
+    goToStep(dispatch, state.currentIndex - 1);
   };
 
   return (
-    <StyledBackButton onClick={onClickHandler}>
+    <StyledBackButton
+      aria-label="Einen Schritt zurück"
+      onClick={onClickHandler}
+    >
       <ChevronLeft width={32} style={{ marginLeft: '-0.1rem' }} />
     </StyledBackButton>
   );
