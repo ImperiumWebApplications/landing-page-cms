@@ -136,11 +136,6 @@ export const ContactForm: React.FunctionComponent<{
     event.preventDefault();
     setError(undefined);
 
-    if (!isFormDataComplete(state)) {
-      setError('Bitte füllen Sie das komplette Formular aus.');
-      return;
-    }
-
     try {
       setLoading(true);
 
