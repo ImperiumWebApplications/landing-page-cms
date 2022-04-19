@@ -44,7 +44,7 @@ const QuestionnaireWithContext = (
  * Behavioral tests for the questionnaire are covered by Cypress.
  */
 
-describe('Questionnaire History State', () => {
+describe('Questionnaire', () => {
   beforeEach(() => {
     jest.resetAllMocks();
   });
