@@ -129,6 +129,7 @@ export const SelectInput: React.FunctionComponent<{
       <Label htmlFor={inputId}>{label}</Label>
       <select
         id={inputId}
+        name={inputId}
         disabled={disabled}
         value={currentValue}
         data-loading={isLoading}
