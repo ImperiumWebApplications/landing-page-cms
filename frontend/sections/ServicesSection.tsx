@@ -141,7 +141,7 @@ const StyledServicesSection = styled(Section)`
 
       .image-wrapper {
         position: relative;
-        width: 740px;
+        width: 100%;
         height: 380px;
       }
 
