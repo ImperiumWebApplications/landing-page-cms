@@ -3,6 +3,7 @@ import TagManager from 'react-gtm-module';
 
 import { GoogleTagManagerId } from '../../backend-api';
 import { isTrackingAllowed } from './isTrackingAllowed';
+import { ConsentConfig, setConsentConfig } from './setConsentConfig';
 
 export const TrackingEvents = {
   QuestionnaireSubmitted: {
@@ -14,6 +15,7 @@ export const TrackingEvents = {
 export const useAnalytics = (host: string, tagId?: GoogleTagManagerId) => {
   const tagManagerArgs = (tagId: string) => ({
     gtmId: tagId,
+    dataLayer: setConsentConfig('consent', 'default', ConsentConfig.Default),
     events: Object.values(TrackingEvents).reduce(
       (prev, event) => ({ ...prev, [event.key]: event.label }),
       {},

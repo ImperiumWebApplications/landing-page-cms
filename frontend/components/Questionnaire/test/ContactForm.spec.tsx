@@ -8,11 +8,11 @@ import {
 import { ContactForm } from '../ContactForm';
 import { NextAPI } from '../../../lib/api/request';
 import { goToStep } from '../../../utils/goToStep';
-import { sendConversionToAnalytics } from '../../../lib/analytics/sendConversionToAnalytics';
+import { sendEventToAnalytics } from '../../../lib/analytics/sendEventToAnalytics';
 import { waitFor } from '@testing-library/react';
 
-jest.mock('../../../lib/analytics/sendConversionToAnalytics', () => ({
-  sendConversionToAnalytics: jest.fn(),
+jest.mock('../../../lib/analytics/sendEventToAnalytics', () => ({
+  sendEventToAnalytics: jest.fn(),
 }));
 
 jest.mock('../../../utils/goToStep', () => ({
@@ -51,16 +51,9 @@ const fillContactForm = (
   );
 };
 
-const trackingProps = {
-  id: 1,
-  google_ads_conversion_id: 'ConversionId',
-  google_ads_id: 'AdsId',
-  google_analytics_id: 'AnalyticsId',
-};
-
 const ContactFormWithContext = () => (
   <QuestionnaireContextProvider>
-    <ContactForm tracking={trackingProps} />
+    <ContactForm />
   </QuestionnaireContextProvider>
 );
 
@@ -140,12 +133,12 @@ describe('ContactForm', () => {
       <ContactFormWithContext />,
     );
 
-    expect(sendConversionToAnalytics).toHaveBeenCalledTimes(0);
+    expect(sendEventToAnalytics).toHaveBeenCalledTimes(0);
     fillContactForm(getByLabelText);
 
     await waitFor(() => {
       fireEvent.click(getByRole('button'));
-      expect(sendConversionToAnalytics).toHaveBeenCalledTimes(1);
+      expect(sendEventToAnalytics).toHaveBeenCalledTimes(1);
     });
   });
 

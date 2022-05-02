@@ -2,11 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import hexRgb from 'hex-rgb';
 
-import type {
-  Advantage,
-  QuestionnaireQuestion,
-  TrackingIds,
-} from '../../backend-api';
+import type { Advantage, QuestionnaireQuestion } from '../../backend-api';
 import type { Country } from '../../config/countries.config';
 import type { SingleChoiceEventHandler } from './SingleChoice';
 import { useQuestionnaireContext } from '../../context/Questionnaire';
@@ -87,12 +83,10 @@ export type QuestionnaireProps = {
   advantages?: Advantage[];
   phone?: string;
   customSelectHandler?: SingleChoiceEventHandler;
-  tracking?: TrackingIds;
 };
 
 export const Questionnaire: React.FunctionComponent<QuestionnaireProps> = ({
   countries,
-  tracking,
   advantages,
   questions,
   phone,
@@ -150,7 +144,7 @@ export const Questionnaire: React.FunctionComponent<QuestionnaireProps> = ({
           />
         )}
         {isPostalCodeStep && <PostalCode countries={countries} />}
-        {isContactFormStep && <ContactForm tracking={tracking} />}
+        {isContactFormStep && <ContactForm />}
         {isFormSuccessStep && <Confirmation phone={phone} />}
       </div>
       <Advantages content={advantages} />

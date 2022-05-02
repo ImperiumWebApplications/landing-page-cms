@@ -1,8 +1,13 @@
 import styled from 'styled-components';
 import CookieConsentModal from 'react-cookie-consent';
 import hexRgb from 'hex-rgb';
+import TagManager from 'react-gtm-module';
 
 import { devices } from '../config/breakpoints.config';
+import {
+  ConsentConfig,
+  setConsentConfig,
+} from '../lib/analytics/setConsentConfig';
 
 export const COOKIE_CONSENT_NAME = 'lq-pages-cc';
 
@@ -104,6 +109,13 @@ export const CookieConsent: React.FunctionComponent<CookieConsentProps> = ({
 }) => {
   if (consent !== 'NotAnswered') return <></>;
 
+  const onAccept = () => {
+    setConsent('Yes');
+    TagManager.dataLayer({
+      dataLayer: setConsentConfig('consent', 'update', ConsentConfig.Granted),
+    });
+  };
+
   return (
     <StyledCookieConsent>
       <CookieConsentModal
@@ -112,7 +124,7 @@ export const CookieConsent: React.FunctionComponent<CookieConsentProps> = ({
         expires={30}
         buttonText="Cookies erlauben"
         buttonClasses="acceptButton"
-        onAccept={() => setConsent('Yes')}
+        onAccept={onAccept}
         ariaAcceptLabel="Cookies erlauben"
         declineButtonText="Ablehnen"
         declineButtonClasses="declineButton"

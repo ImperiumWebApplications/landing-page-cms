@@ -27,7 +27,6 @@ const defaultProps: QuestionnaireProps = {
   ],
   phone: '0123456789',
   countries: undefined,
-  tracking: undefined,
   customSelectHandler: undefined,
 };
 

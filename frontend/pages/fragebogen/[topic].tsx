@@ -26,7 +26,6 @@ const QuestionnairePage: NextPage<QuestionnairePageContent> = ({
           countries={country ? [country] : undefined}
           advantages={questionnaire.advantage}
           phone={domainContent.contact_phone}
-          tracking={domainContent.tracking}
         />
       </QuestionnaireContextProvider>
     </Layout>

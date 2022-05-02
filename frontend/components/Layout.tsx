@@ -2,15 +2,10 @@ import React from 'react';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import { NextSeo } from 'next-seo';
-import { getCookieConsentValue } from 'react-cookie-consent';
 import { ThemeProvider } from 'styled-components';
 
 import type { LandingPage } from '../backend-api';
-import {
-  CookieConsentProps,
-  CookiesAllowed,
-  COOKIE_CONSENT_NAME,
-} from '../components/CookieConsent';
+import type { CookieConsentProps } from '../components/CookieConsent';
 import { Footer } from './Footer';
 import { Header } from './Header';
 import { HeadMeta } from './HeadMeta';
@@ -18,6 +13,7 @@ import { extractSeoProps } from '../config/seo.config';
 import { extractTheme, GlobalStyle } from '../config/theme.config';
 import { isFunnelRoute } from '../utils/isFunnelRoute';
 import { useAnalytics } from '../lib/analytics/initAnalytics';
+import { useCookieConsent } from '../hooks/useCookieConsent';
 
 const ClientSideOnlyCookieConsent = dynamic<CookieConsentProps>(
   () => import('../components/CookieConsent').then((mod) => mod.CookieConsent),
@@ -28,15 +24,8 @@ export const Layout: React.FunctionComponent<{ content: LandingPage }> = ({
   children,
   content,
 }) => {
+  const [allowCookies, setAllowCookies] = useCookieConsent();
   const router = useRouter();
-  const cookieConsent = getCookieConsentValue(COOKIE_CONSENT_NAME as string);
-  const [allowCookies, setAllowCookies] = React.useState<CookiesAllowed>(
-    cookieConsent === 'true'
-      ? 'Yes'
-      : cookieConsent === 'false'
-      ? 'No'
-      : 'NotAnswered',
-  );
 
   useAnalytics(content.domain, content.google_tag_manager_id);
 

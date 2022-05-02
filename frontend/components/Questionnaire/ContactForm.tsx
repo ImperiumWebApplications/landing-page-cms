@@ -11,7 +11,6 @@ import type {
   RadioFields,
   TextFields,
 } from '../../context/Questionnaire/state';
-import type { TrackingIds } from '../../backend-api';
 import { useQuestionnaireContext } from '../../context/Questionnaire';
 import { StyledStepTitle } from './StepTitle';
 import { TextInput } from './TextInput';
@@ -28,7 +27,9 @@ import {
 import { getAnimation } from '../../config/animations.config';
 import { goToStep } from '../../utils/goToStep';
 import { isFormDataComplete } from '../../utils/isFormDataComplete';
-import { sendConversionToAnalytics } from '../../lib/analytics/sendConversionToAnalytics';
+import { sendEventToAnalytics } from '../../lib/analytics/sendEventToAnalytics';
+import { TrackingEvents } from '../../lib/analytics/initAnalytics';
+import { isTrackingAllowed } from '../../lib/analytics/isTrackingAllowed';
 
 const StyledContactForm = styled.div`
   max-width: 45rem;
@@ -119,9 +120,7 @@ const StyledContactForm = styled.div`
   }
 `;
 
-export const ContactForm: React.FunctionComponent<{
-  tracking?: TrackingIds;
-}> = ({ tracking }) => {
+export const ContactForm: React.FunctionComponent = () => {
   const [loading, setLoading] = React.useState<boolean>(false);
   const [error, setError] = React.useState<string | undefined>(undefined);
   const { state, dispatch } = useQuestionnaireContext();
@@ -150,7 +149,8 @@ export const ContactForm: React.FunctionComponent<{
 
       if (!res.ok) throw new Error(res.statusText);
 
-      if (tracking) sendConversionToAnalytics(location.host, tracking);
+      if (isTrackingAllowed(location.host))
+        sendEventToAnalytics(TrackingEvents.QuestionnaireSubmitted);
 
       setLoading(false);
       goToStep(dispatch, state.currentIndex + 1);
