@@ -46,13 +46,17 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
     },
     "logo": {
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
     },
     "questionnaire": {
       "type": "component",
@@ -81,15 +85,14 @@
     "service_type": {
       "type": "string"
     },
-    "tracking": {
-      "displayName": "Tracking",
-      "type": "component",
-      "repeatable": false,
-      "component": "meta.tracking"
-    },
     "google_allow_indexation": {
       "type": "boolean",
       "default": true
+    },
+    "google_tag_manager_id": {
+      "type": "string",
+      "regex": "^(GTM-[A-Z0-9]{7})$",
+      "required": false
     }
   }
 }

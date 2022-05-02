@@ -64,6 +64,7 @@ type VideoObject = { data: DataObject<Video> };
 type SEOTitle = string;
 type SEODescription = string;
 type GoogleIndexation = boolean;
+type GoogleTagManagerId = string;
 type Domain = string;
 type BrandName = string;
 type ColorPrimary = string;
@@ -112,13 +113,6 @@ interface QuestionnaireQuestion {
   id: number;
   question?: string;
   answers?: QuestionnaireAnswer[];
-}
-
-interface TrackingIds {
-  id: number;
-  google_ads_conversion_id?: string;
-  google_ads_id?: string;
-  google_analytics_id?: string;
 }
 
 interface HeroSection {
@@ -220,6 +214,7 @@ interface LandingPage {
   seo_title?: SEOTitle;
   seo_description?: SEODescription;
   google_allow_indexation?: GoogleIndexation;
+  google_tag_manager_id?: GoogleTagManagerId;
   domain: Domain;
   brand_name?: BrandName;
   color_primary?: ColorPrimary;
@@ -238,7 +233,6 @@ interface LandingPage {
   favicon?: Favicon;
   questionnaire?: EntryQuestionnaire;
   sections?: Sections[];
-  tracking?: TrackingIds;
   [key: ?string]: unknown;
 }
 

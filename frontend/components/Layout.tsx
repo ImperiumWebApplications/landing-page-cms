@@ -14,11 +14,10 @@ import {
 import { Footer } from './Footer';
 import { Header } from './Header';
 import { HeadMeta } from './HeadMeta';
-import { TrackingScripts } from './TrackingScripts';
 import { extractSeoProps } from '../config/seo.config';
 import { extractTheme, GlobalStyle } from '../config/theme.config';
 import { isFunnelRoute } from '../utils/isFunnelRoute';
-import { sendPageViewToAnalytics } from '../lib/analytics/sendPageViewToAnalytics';
+import { useAnalytics } from '../lib/analytics/initAnalytics';
 
 const ClientSideOnlyCookieConsent = dynamic<CookieConsentProps>(
   () => import('../components/CookieConsent').then((mod) => mod.CookieConsent),
@@ -39,6 +38,8 @@ export const Layout: React.FunctionComponent<{ content: LandingPage }> = ({
       : 'NotAnswered',
   );
 
+  useAnalytics(content.domain, content.google_tag_manager_id);
+
   // https://github.com/styled-components/styled-components/issues/730#issuecomment-347077307
   React.useEffect(() => {
     const isCookieModalOpen = allowCookies === 'NotAnswered';
@@ -46,25 +47,11 @@ export const Layout: React.FunctionComponent<{ content: LandingPage }> = ({
     else document.body.style.overflowY = 'auto';
   });
 
-  React.useEffect(() => {
-    const handleRouteChange = (url: string) => {
-      const { domain, tracking } = content;
-      sendPageViewToAnalytics(domain, tracking?.google_analytics_id, url);
-    };
-
-    router.events.on('routeChangeComplete', handleRouteChange);
-
-    return () => {
-      router.events.off('routeChangeComplete', handleRouteChange);
-    };
-  }, [router.events, content]);
-
   return (
     <ThemeProvider theme={extractTheme(content)}>
       <GlobalStyle isFunnelRoute={isFunnelRoute(router)} />
       <NextSeo {...extractSeoProps(content)} />
       <HeadMeta theme={extractTheme(content)} brand={content.brand_name} />
-      <TrackingScripts ids={content.tracking} host={content.domain} />
       <Header content={content} />
       <main>{children}</main>
       <Footer content={content} />
