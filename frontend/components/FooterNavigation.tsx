@@ -1,15 +1,10 @@
 import styled from 'styled-components';
 import Link from 'next/link';
-import TagManager from 'react-gtm-module';
 import { resetCookieConsentValue } from 'react-cookie-consent';
 import { useRouter } from 'next/router';
 
 import { COOKIE_CONSENT_NAME } from './CookieConsent';
 import { navigationItems } from '../config/navigation.config';
-import {
-  ConsentConfig,
-  setConsentConfig,
-} from '../lib/analytics/setConsentConfig';
 
 const StyledFooterNavigation = styled.nav`
   display: flex;
@@ -46,9 +41,6 @@ export const FooterNavigation: React.FunctionComponent = () => {
   const onResetCookies = () => {
     window.scrollTo(0, 0);
     resetCookieConsentValue(COOKIE_CONSENT_NAME);
-    TagManager.dataLayer({
-      dataLayer: setConsentConfig('consent', 'update', ConsentConfig.Denied),
-    });
   };
 
   return (

@@ -12,8 +12,12 @@ import { HeadMeta } from './HeadMeta';
 import { extractSeoProps } from '../config/seo.config';
 import { extractTheme, GlobalStyle } from '../config/theme.config';
 import { isFunnelRoute } from '../utils/isFunnelRoute';
-import { useAnalytics } from '../lib/analytics/initAnalytics';
 import { useCookieConsent } from '../hooks/useCookieConsent';
+import { TagManager } from '../lib/analytics/gtm';
+import {
+  sendEventToAnalytics,
+  TagManagerEvents,
+} from '../lib/analytics/sendEventToAnalytics';
 
 const ClientSideOnlyCookieConsent = dynamic<CookieConsentProps>(
   () => import('../components/CookieConsent').then((mod) => mod.CookieConsent),
@@ -27,9 +31,12 @@ export const Layout: React.FunctionComponent<{ content: LandingPage }> = ({
   const [allowCookies, setAllowCookies] = useCookieConsent();
   const router = useRouter();
 
-  useAnalytics(content.domain, content.google_tag_manager_id);
+  React.useEffect(() => {
+    const { ConsentGranted, ConsentDenied } = TagManagerEvents;
+    if (allowCookies === 'Yes') sendEventToAnalytics(ConsentGranted);
+    else sendEventToAnalytics(ConsentDenied);
+  }, [allowCookies]);
 
-  // https://github.com/styled-components/styled-components/issues/730#issuecomment-347077307
   React.useEffect(() => {
     const isCookieModalOpen = allowCookies === 'NotAnswered';
     if (isCookieModalOpen) document.body.style.overflowY = 'hidden';
@@ -41,6 +48,7 @@ export const Layout: React.FunctionComponent<{ content: LandingPage }> = ({
       <GlobalStyle isFunnelRoute={isFunnelRoute(router)} />
       <NextSeo {...extractSeoProps(content)} />
       <HeadMeta theme={extractTheme(content)} brand={content.brand_name} />
+      <TagManager id={content.google_tag_manager_id} host={content.domain} />
       <Header content={content} />
       <main>{children}</main>
       <Footer content={content} />

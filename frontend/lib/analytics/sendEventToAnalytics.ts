@@ -1,9 +1,19 @@
-import TagManager from 'react-gtm-module';
+declare global {
+  interface Window {
+    dataLayer: Record<'event', ValueOf<typeof TagManagerEvents>>[];
+  }
+}
 
-import { TrackingEvents } from './initAnalytics';
+export const TagManagerEvents = {
+  QuestionnaireSubmitted: 'questionnaire_submitted',
+  ConsentGranted: 'consent_granted',
+  ConsentDenied: 'consent_denied',
+} as const;
+
+type ValueOf<T> = T[keyof T];
 
 export const sendEventToAnalytics = (
-  event: typeof TrackingEvents['QuestionnaireSubmitted'],
+  event: ValueOf<typeof TagManagerEvents>,
 ) => {
-  TagManager.dataLayer({ dataLayer: { event } });
+  if (typeof window !== 'undefined') window.dataLayer?.push({ event: event });
 };

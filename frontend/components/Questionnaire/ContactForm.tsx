@@ -27,8 +27,10 @@ import {
 import { getAnimation } from '../../config/animations.config';
 import { goToStep } from '../../utils/goToStep';
 import { isFormDataComplete } from '../../utils/isFormDataComplete';
-import { sendEventToAnalytics } from '../../lib/analytics/sendEventToAnalytics';
-import { TrackingEvents } from '../../lib/analytics/initAnalytics';
+import {
+  sendEventToAnalytics,
+  TagManagerEvents,
+} from '../../lib/analytics/sendEventToAnalytics';
 import { isTrackingAllowed } from '../../lib/analytics/isTrackingAllowed';
 
 const StyledContactForm = styled.div`
@@ -150,7 +152,7 @@ export const ContactForm: React.FunctionComponent = () => {
       if (!res.ok) throw new Error(res.statusText);
 
       if (isTrackingAllowed(location.host))
-        sendEventToAnalytics(TrackingEvents.QuestionnaireSubmitted);
+        sendEventToAnalytics(TagManagerEvents.QuestionnaireSubmitted);
 
       setLoading(false);
       goToStep(dispatch, state.currentIndex + 1);
