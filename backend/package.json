@@ -25,12 +25,12 @@
     "prettier": "^2.5.1"
   },
   "dependencies": {
-    "@strapi/plugin-i18n": "^4.1.7",
-    "@strapi/plugin-users-permissions": "^4.1.7",
-    "@strapi/provider-upload-aws-s3": "^4.1.7",
-    "@strapi/strapi": "^4.1.7",
+    "@strapi/plugin-i18n": "^4.1.8",
+    "@strapi/plugin-users-permissions": "^4.1.8",
+    "@strapi/provider-upload-aws-s3": "^4.1.8",
+    "@strapi/strapi": "^4.1.8",
     "pg": "8.7.3",
-    "strapi-plugin-sentry": "^3.6.8"
+    "strapi-plugin-sentry": "^3.6.9"
   },
   "strapi": {
     "uuid": "051793ca-1c32-4adf-ad67-39de2fef64f7"
