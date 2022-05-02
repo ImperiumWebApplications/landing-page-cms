@@ -9,7 +9,12 @@ import { ContactForm } from '../ContactForm';
 import { NextAPI } from '../../../lib/api/request';
 import { goToStep } from '../../../utils/goToStep';
 import { sendEventToAnalytics } from '../../../lib/analytics/sendEventToAnalytics';
+import { isTrackingAllowed } from '../../../lib/analytics/isTrackingAllowed';
 import { waitFor } from '@testing-library/react';
+
+jest.mock('../../../lib/analytics/isTrackingAllowed', () => ({
+  isTrackingAllowed: jest.fn(),
+}));
 
 jest.mock('../../../lib/analytics/sendEventToAnalytics', () => ({
   sendEventToAnalytics: jest.fn(),
@@ -129,6 +134,8 @@ describe('ContactForm', () => {
   });
 
   test('should invoke tracking event on submit', async () => {
+    (isTrackingAllowed as jest.Mock).mockReturnValueOnce(true);
+
     const { getByLabelText, getByRole } = renderWithLayout(
       <ContactFormWithContext />,
     );
