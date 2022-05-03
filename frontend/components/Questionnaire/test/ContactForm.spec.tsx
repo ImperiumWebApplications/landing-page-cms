@@ -18,6 +18,9 @@ jest.mock('../../../lib/analytics/isTrackingAllowed', () => ({
 
 jest.mock('../../../lib/analytics/sendEventToAnalytics', () => ({
   sendEventToAnalytics: jest.fn(),
+  TagManagerEvents: {
+    QuestionnaireSubmitted: 'questionnaire_submitted',
+  },
 }));
 
 jest.mock('../../../utils/goToStep', () => ({
@@ -145,7 +148,13 @@ describe('ContactForm', () => {
 
     await waitFor(() => {
       fireEvent.click(getByRole('button'));
+    });
+
+    await waitFor(() => {
       expect(sendEventToAnalytics).toHaveBeenCalledTimes(1);
+      expect(sendEventToAnalytics).toHaveBeenCalledWith(
+        'questionnaire_submitted',
+      );
     });
   });
 
