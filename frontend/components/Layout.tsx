@@ -13,7 +13,7 @@ import { extractSeoProps } from '../config/seo.config';
 import { extractTheme, GlobalStyle } from '../config/theme.config';
 import { isFunnelRoute } from '../utils/isFunnelRoute';
 import { useCookieConsent } from '../hooks/useCookieConsent';
-import { TagManager } from '../lib/analytics/gtm';
+import { TagManager } from '../lib/analytics/TagManager';
 import {
   sendEventToAnalytics,
   TagManagerEvents,
