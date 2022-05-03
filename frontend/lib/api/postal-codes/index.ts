@@ -1,8 +1,8 @@
-import {
+import type {
   Country,
-  CountryPostalCodes,
   PostalCodeDetails,
 } from '../../../config/countries.config';
+import { CountryPostalCodes } from './data';
 
 /**
  * Search for a given postal code in all given countries.
@@ -16,9 +16,9 @@ export const getPostalCodeDetails = (code: string, countries: Country[]) => {
   try {
     return countries.reduce((prev, countryCode) => {
       try {
-        const details = CountryPostalCodes[countryCode].filter(
-          (details) => details.zipcode === code,
-        );
+        const details = (
+          CountryPostalCodes[countryCode] as PostalCodeDetails[]
+        ).filter((details) => details.zipcode === code);
         return [...prev, ...details];
       } catch (error) {
         return prev;

@@ -1,6 +1,3 @@
-import PostalCodeDataCH from '../lib/api/postal-codes/data/codes.ch.json';
-import PostalCodeDataDE from '../lib/api/postal-codes/data/codes.de.json';
-
 export type PostalCodeDetails = {
   country_code: string;
   zipcode: string;
@@ -31,11 +28,6 @@ export const CountryDetails = {
     postalCodeLength: 4,
     isValidPostalCode: /(^\d{4}$)/,
   },
-} as const;
-
-export const CountryPostalCodes = {
-  [Country.Germany]: PostalCodeDataDE as PostalCodeDetails[],
-  [Country.Switzerland]: PostalCodeDataCH as PostalCodeDetails[],
 } as const;
 
 export const isKnownCountry = (
