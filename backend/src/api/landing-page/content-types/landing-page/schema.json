@@ -46,17 +46,13 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": [
-        "images"
-      ]
+      "allowedTypes": ["images"]
     },
     "logo": {
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": [
-        "images"
-      ]
+      "allowedTypes": ["images"]
     },
     "questionnaire": {
       "type": "component",
@@ -93,6 +89,11 @@
       "type": "string",
       "regex": "^(GTM-[A-Z0-9]{7})$",
       "required": false
+    },
+    "funnel_target": {
+      "type": "enumeration",
+      "enum": ["Questionnaire", "Call"],
+      "default": "Questionnaire"
     }
   }
 }

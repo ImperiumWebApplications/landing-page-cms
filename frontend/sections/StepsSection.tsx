@@ -1,6 +1,6 @@
 import styled, { useTheme } from 'styled-components';
 
-import { StaticContent } from '../backend-api';
+import { FunnelTarget, StaticContent } from '../backend-api';
 import { Section } from '../components/Section';
 import { Animation } from '../components/Animation';
 import { devices } from '../config/breakpoints.config';
@@ -75,7 +75,8 @@ const StyledStepsSection = styled(Section)`
 export const StepsSection: React.FunctionComponent<{
   id: string;
   staticContent: StaticContent;
-}> = ({ id, staticContent }) => {
+  funnelTarget: FunnelTarget | undefined;
+}> = ({ id, staticContent, funnelTarget }) => {
   const theme = useTheme();
 
   const steps = [
@@ -83,6 +84,10 @@ export const StepsSection: React.FunctionComponent<{
     staticContent.user_step_two,
     staticContent.user_step_three,
   ].filter((s) => !!s);
+
+  if (funnelTarget === 'Call') {
+    steps[0] = steps[0]?.replace('Formular ausfüllen', 'Termin vereinbaren');
+  }
 
   return (
     <StyledStepsSection id={id} bgColor={theme.colors.tertiary}>

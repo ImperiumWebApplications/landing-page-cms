@@ -31,11 +31,18 @@ const IndexPage: NextPage<ContentPageContent> = ({
           id="hero"
           content={sections[SectionMapping.Hero]}
           questionnaire={domainContent.questionnaire}
+          serviceType={domainContent.service_type}
+          contactPhone={domainContent.contact_phone}
+          funnelTarget={domainContent.funnel_target}
         />
       )}
       {/* Steps Section */}
       {staticContent && (
-        <StepsSection id="steps" staticContent={staticContent} />
+        <StepsSection
+          id="steps"
+          funnelTarget={domainContent.funnel_target}
+          staticContent={staticContent}
+        />
       )}
       {/* Video Section */}
       {sections[SectionMapping.Video] && staticContent && (

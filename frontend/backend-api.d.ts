@@ -83,6 +83,7 @@ type VideoDescription = string;
 type ServiceType = string;
 type Logo = ImageObject;
 type Favicon = ImageObject;
+type FunnelTarget = 'Questionnaire' | 'Call';
 type Advantage = { id: number; first_line: string; second_line: string };
 
 interface ConnectedQuestionnaire {
@@ -212,6 +213,7 @@ type Sections =
   | VideoSection;
 
 interface LandingPage {
+  funnel_target?: FunnelTarget;
   seo_title?: SEOTitle;
   seo_description?: SEODescription;
   google_allow_indexation?: GoogleIndexation;

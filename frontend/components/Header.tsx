@@ -54,6 +54,7 @@ export const Header: React.FunctionComponent<{ content: LandingPage }> = ({
   content,
 }) => {
   const _isFunnelRoute = isFunnelRoute(useRouter());
+  const isCallFunnelTarget = content.funnel_target === 'Call';
 
   return (
     <StyledHeader id="header" centerLogo={_isFunnelRoute}>
@@ -62,11 +63,13 @@ export const Header: React.FunctionComponent<{ content: LandingPage }> = ({
           <Logo image={content.logo} />
           {!_isFunnelRoute && (
             <>
-              <Button
-                href={headerButton.href}
-                label={headerButton.label}
-                className="button"
-              />
+              {!isCallFunnelTarget && (
+                <Button
+                  href={headerButton.href}
+                  label={headerButton.label}
+                  className="button"
+                />
+              )}
               <MobileNavigation />
             </>
           )}
