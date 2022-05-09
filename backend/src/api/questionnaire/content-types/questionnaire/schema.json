@@ -29,6 +29,13 @@
     },
     "description": {
       "type": "text"
+    },
+    "priority": {
+      "type": "integer",
+      "max": 10,
+      "min": 1,
+      "default": 5,
+      "required": false
     }
   }
 }

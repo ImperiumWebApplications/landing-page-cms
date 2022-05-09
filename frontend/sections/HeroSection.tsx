@@ -11,6 +11,7 @@ import { Section } from '../components/Section';
 import { QuestionnaireTile } from '../components/QuestionnaireTile';
 import { devices } from '../config/breakpoints.config';
 import { Animation } from '../components/Animation';
+import { byPriority } from '../utils/sortQuestionnairesByPriority';
 
 const StyledHeroSection = styled(Section)`
   overflow-x: clip;
@@ -155,13 +156,13 @@ export const HeroSection: React.FunctionComponent<{
   const firstSentence = content.description?.match(FIRST_SENTENCE_REGEX)?.[0];
 
   const questionnaireTiles = useMemo(() => {
-    return questionnaire?.questionnaires?.data.map(
-      (connectedQuestionnaire, i) => {
+    return questionnaire?.questionnaires?.data
+      .sort(byPriority)
+      .map((connectedQuestionnaire, i) => {
         return (
           <QuestionnaireTile key={i} questionnaire={connectedQuestionnaire} />
         );
-      },
-    );
+      });
   }, [questionnaire?.questionnaires]);
 
   const entryQuestion = useMemo(() => {

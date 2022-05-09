@@ -90,6 +90,7 @@ interface ConnectedQuestionnaire {
   createdAt: CreatedAt;
   updatedAt: UpdatedAt;
   publishedAt: PublishedAt;
+  priority?: number | null;
   description?: string | null;
   icon?: ImageObject;
 }
