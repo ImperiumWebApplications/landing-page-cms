@@ -3305,7 +3305,7 @@
     "@strapi/utils" "4.1.9"
     lodash "4.17.21"
 
-"@strapi/plugin-i18n@^4.1.8":
+"@strapi/plugin-i18n@^4.1.9":
   version "4.1.9"
   resolved "https://registry.yarnpkg.com/@strapi/plugin-i18n/-/plugin-i18n-4.1.9.tgz#d3783d834bbc3d92a5391c8bd29cde7b29b75c0e"
   integrity sha512-b4AakKldXdwMt0ug4cBOUAJsVSr6OvR6uTHoY9hfegfOv4UobGPap6usmJYk27bptwGEYeuM35vRfEsBzvSe4g==
@@ -3337,7 +3337,7 @@
     react-router-dom "5.2.0"
     sharp "0.30.4"
 
-"@strapi/plugin-users-permissions@^4.1.8":
+"@strapi/plugin-users-permissions@^4.1.9":
   version "4.1.9"
   resolved "https://registry.yarnpkg.com/@strapi/plugin-users-permissions/-/plugin-users-permissions-4.1.9.tgz#24c6e66c47f8d70ffa9298eafbdeb62ae3c84207"
   integrity sha512-+4+EFjbgNVrQOVu9i4ypYKrH0HMAaG0yp4AN96kKUkvJs6rwo2qi3NCS9Ylvwhvz7gtkOIWowiT7kVtUr6TgSg==
@@ -3368,7 +3368,7 @@
     "@strapi/utils" "4.1.9"
     sendmail "^1.6.1"
 
-"@strapi/provider-upload-aws-s3@^4.1.8":
+"@strapi/provider-upload-aws-s3@^4.1.9":
   version "4.1.9"
   resolved "https://registry.yarnpkg.com/@strapi/provider-upload-aws-s3/-/provider-upload-aws-s3-4.1.9.tgz#e005c80ca3d5745ea709ba7874973c6e44f701c7"
   integrity sha512-MHJ6z2U5VAa3MLej/LoLDStJvVg4trz0CSMEi1bseEB5S+KCoGgz6s1LhiSqhZm1mZ0cfALW13xx2RVxQ+4Grg==
@@ -3384,7 +3384,7 @@
     "@strapi/utils" "4.1.9"
     fs-extra "10.0.0"
 
-"@strapi/strapi@^4.1.8":
+"@strapi/strapi@^4.1.9":
   version "4.1.9"
   resolved "https://registry.yarnpkg.com/@strapi/strapi/-/strapi-4.1.9.tgz#f191b11a5022357c9d9468f8a034e5c3e884b0d2"
   integrity sha512-bsdJsJh2t2gCMdn0X3/1D8ORG3q2F4gAkrk3xpzBDN7bjd85ahANtp/h/+z3hoP76eBdSswhVgTesWf/hrzsrw==
