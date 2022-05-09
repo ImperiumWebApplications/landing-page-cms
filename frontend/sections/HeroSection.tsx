@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
 import { ArrowForward } from '@styled-icons/fluentui-system-filled';
@@ -153,6 +154,31 @@ export const HeroSection: React.FunctionComponent<{
 }> = ({ id, content, questionnaire }) => {
   const firstSentence = content.description?.match(FIRST_SENTENCE_REGEX)?.[0];
 
+  const questionnaireTiles = useMemo(() => {
+    return questionnaire?.questionnaires?.data.map(
+      (connectedQuestionnaire, i) => {
+        return (
+          <QuestionnaireTile key={i} questionnaire={connectedQuestionnaire} />
+        );
+      },
+    );
+  }, [questionnaire?.questionnaires]);
+
+  const entryQuestion = useMemo(() => {
+    return (
+      <>
+        {questionnaire?.entry_question}{' '}
+        <ArrowForward
+          width={30}
+          style={{
+            transform: 'rotate(90deg)',
+            margin: '0.25rem 0 0 0.25rem',
+          }}
+        />
+      </>
+    );
+  }, [questionnaire?.entry_question]);
+
   return (
     <StyledHeroSection id={id}>
       <div className="intro">
@@ -194,27 +220,10 @@ export const HeroSection: React.FunctionComponent<{
       <Animation type="fadeUp" delay={600}>
         <div className="questionnaires">
           <h3 className="entry-question">
-            {questionnaire?.entry_question}{' '}
-            <ArrowForward
-              width={30}
-              style={{
-                transform: 'rotate(90deg)',
-                margin: '0.25rem 0 0 0.25rem',
-              }}
-            />
+            {questionnaire?.entry_question ? entryQuestion : undefined}
           </h3>
           <div className="tiles">
-            {questionnaire?.questionnaires &&
-              questionnaire.questionnaires.data.map(
-                (connectedQuestionnaire, i) => {
-                  return (
-                    <QuestionnaireTile
-                      key={i}
-                      questionnaire={connectedQuestionnaire}
-                    />
-                  );
-                },
-              )}
+            {questionnaire?.questionnaires ? questionnaireTiles : undefined}
           </div>
         </div>
       </Animation>
