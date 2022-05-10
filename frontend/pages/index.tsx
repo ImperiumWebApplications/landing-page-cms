@@ -7,7 +7,6 @@ import {
   SectionMapping,
 } from '../config/sections.config';
 import { Layout } from '../components/Layout';
-import { HeroSection } from '../sections/HeroSection';
 import { StepsSection } from '../sections/StepsSection';
 import { VideoSection } from '../sections/VideoSection';
 import { StatisticsSection } from '../sections/StatisticsSection';
@@ -16,26 +15,35 @@ import { ServicesSection } from '../sections/ServicesSection';
 import { ReviewsSection } from '../sections/ReviewsSection';
 import { ImagesSection } from '../sections/ImagesSection';
 import { QuestionsSection } from '../sections/QuestionsSection';
+import { HeroSection } from '../sections/HeroSection';
 
 const IndexPage: NextPage<ContentPageContent> = ({
   domainContent,
   staticContent,
 }) => {
   const sections = mapSectionsDataToSectionComponents(domainContent.sections);
+  const funnelTarget = domainContent.funnel_target ?? 'Questionnaire';
 
   return (
     <Layout content={domainContent}>
       {/* Hero Section */}
-      {sections[SectionMapping.Hero] && (
-        <HeroSection
-          id="hero"
-          content={sections[SectionMapping.Hero]}
-          questionnaire={domainContent.questionnaire}
-          serviceType={domainContent.service_type}
-          contactPhone={domainContent.contact_phone}
-          funnelTarget={domainContent.funnel_target}
-        />
-      )}
+      {sections[SectionMapping.Hero] &&
+        (funnelTarget === 'Questionnaire' ? (
+          <HeroSection.Questionnaires
+            id="hero"
+            content={sections[SectionMapping.Hero]}
+            questionnaire={domainContent.questionnaire}
+            funnelTarget={funnelTarget}
+          />
+        ) : (
+          <HeroSection.Call
+            id="hero"
+            content={sections[SectionMapping.Hero]}
+            serviceType={domainContent.service_type}
+            contactPhone={domainContent.contact_phone}
+            funnelTarget={funnelTarget}
+          />
+        ))}
       {/* Steps Section */}
       {staticContent && (
         <StepsSection
