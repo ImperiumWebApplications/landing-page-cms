@@ -10,13 +10,13 @@ const StyledHeroSectionDescription = styled('div')<{
   funnelTarget: FunnelTarget;
 }>`
   h1 {
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0 0.5rem 1rem;
     border-left: 2px dashed ${({ theme }) => theme.colors.secondary};
     margin-bottom: 1rem;
     font-size: 1.4rem;
     line-height: 2rem;
 
-    @media screen and (${devices.sm}) {
+    @media screen and (${devices.md}) {
       font-size: ${({ funnelTarget }) =>
         funnelTarget === 'Call' ? '2.5rem' : '2.1rem'};
       line-height: ${({ funnelTarget }) =>

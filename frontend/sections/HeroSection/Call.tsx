@@ -15,7 +15,11 @@ import { Animation } from '../../components/Animation';
 import { HeroSectionDescription } from './Description';
 
 const StyledHeroSectionCall = styled(Section)`
-  padding-top: 2rem;
+  margin-bottom: 2rem;
+
+  @media screen and (${devices.md}) {
+    margin-bottom: 4rem;
+  }
 
   p {
     max-width: 30rem;
@@ -28,66 +32,54 @@ const StyledHeroSectionCall = styled(Section)`
     }
   }
 
-  .content-wrapper {
-    @media screen and (${devices.specifics.flatDesktop}) {
-      padding-top: 0;
+  > .content-wrapper {
+    position: relative;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .image-wrapper {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    img {
+      border-radius: ${({ theme }) => theme.borderRadius};
     }
   }
 
   .intro {
-    display: grid;
-    grid-template-rows: 100%;
-    grid-template-columns: 100%;
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(5px);
+    padding: 1rem;
+    width: 100%;
+    max-width: 40rem;
+    border-radius: ${({ theme }) => theme.borderRadius};
 
     @media screen and (${devices.md}) {
-      grid-template-columns: 35rem auto;
-      column-gap: 5rem;
-    }
-
-    .background {
-      display: none;
-      position: relative;
-      top: -200px;
-      right: 0;
-      width: 60vw;
-      height: 52rem;
-
-      @media screen and (${devices.md}) {
-        display: block;
-      }
-
-      img {
-        border-radius: ${({ theme }) => theme.borderRadius};
-      }
+      padding: 4rem 2rem;
     }
   }
 
   .booking {
-    margin-top: 2rem;
-    margin-bottom: 4rem;
-    position: relative;
-
-    @media screen and (${devices.md}) {
-      margin-top: -35rem;
-      margin-bottom: 10rem;
-    }
-
-    @media screen and (${devices.specifics.flatDesktop}) {
-      margin-top: -36rem;
-    }
-
-    @media screen and (${devices.xxl}) {
-      margin-top: -32rem;
-    }
-
     .booking-description {
+      margin-top: 1rem;
+
+      @media screen and (${devices.md}) {
+        margin-top: 4rem;
+      }
+
       svg {
         fill: ${({ theme }) => theme.colors.secondary};
       }
     }
 
     .booking-action {
-      margin: 1rem 0 3rem 0;
+      margin: 1rem 0 2rem 0;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
@@ -104,16 +96,19 @@ const StyledHeroSectionCall = styled(Section)`
       }
 
       .direct-call {
-        text-align: right;
+        text-align: left;
+
+        @media screen and (${devices.md}) {
+          text-align: right;
+        }
 
         span {
-          display: inline-block;
-          margin-right: 0.25rem;
+          display: block;
+          margin-bottom: 0.5rem;
           font-size: 0.875rem;
 
           @media screen and (${devices.md}) {
-            display: block;
-            margin-right: unset;
+            margin-bottom: 0;
           }
         }
 
@@ -136,7 +131,7 @@ const StyledHeroSectionCall = styled(Section)`
           }
 
           svg {
-            width: 18px;
+            width: 20px;
             vertical-align: sub;
 
             @media screen and (${devices.md}) {
@@ -179,15 +174,9 @@ export const HeroSectionCall: React.FunctionComponent<{
 }> = ({ id, content, funnelTarget, serviceType, contactPhone }) => {
   return (
     <StyledHeroSectionCall id={id}>
-      <div className="intro">
-        <Animation type="fadeRight" delay={400}>
-          <HeroSectionDescription
-            content={content}
-            funnelTarget={funnelTarget}
-          />
-        </Animation>
-        <Animation type="fadeLeft" delay={400}>
-          <div className="background">
+      <Animation type="fadeIn" delay={200}>
+        <div className="content-wrapper">
+          <div className="image-wrapper">
             {content.background_image?.data && (
               <Image
                 src={content.background_image.data.attributes.url}
@@ -198,39 +187,47 @@ export const HeroSectionCall: React.FunctionComponent<{
               />
             )}
           </div>
-        </Animation>
-      </div>
-      <Animation type="fadeUp" delay={600}>
-        <div className="booking">
-          <p className="booking-description">
-            Buchen Sie Ihr <strong>Beratungsgespräch</strong>{' '}
-            <ArrowForward
-              width={26}
-              style={{
-                transform: 'rotate(120deg)',
-                margin: '1rem 0 0 0.25rem',
-              }}
-            />
-          </p>
-          <div className="booking-action">
-            <Button label="Jetzt Termin vereinbaren" href="/booking" />
-            {contactPhone && (
-              <div className="direct-call">
-                <span>oder rufen Sie einfach an: </span>
-                <a href="/to">
-                  <Telephone /> {contactPhone}
-                </a>
+          <div className="intro">
+            <Animation type="fadeRight" delay={400}>
+              <HeroSectionDescription
+                content={content}
+                funnelTarget={funnelTarget}
+              />
+            </Animation>
+            <Animation type="fadeUp" delay={600}>
+              <div className="booking">
+                <p className="booking-description">
+                  Buchen Sie Ihr <strong>Beratungsgespräch</strong>{' '}
+                  <ArrowForward
+                    width={26}
+                    style={{
+                      transform: 'rotate(120deg)',
+                      margin: '1rem 0 0 0.25rem',
+                    }}
+                  />
+                </p>
+                <div className="booking-action">
+                  <Button label="Jetzt Termin vereinbaren" href="/booking" />
+                  {contactPhone && (
+                    <div className="direct-call">
+                      <span>oder rufen Sie einfach an: </span>
+                      <a href="/to">
+                        <Telephone /> {contactPhone}
+                      </a>
+                    </div>
+                  )}
+                </div>
+                <span className="booking-benefit">
+                  <CheckCircle size={16} /> Kostenlos & Unverbindlich
+                </span>
+                <span className="booking-benefit-sep">–</span>
+                <span className="booking-benefit">
+                  <CheckCircle size={16} /> Lokale {serviceType ?? 'Expertise'}{' '}
+                  aus Ihrer Region
+                </span>
               </div>
-            )}
+            </Animation>
           </div>
-          <span className="booking-benefit">
-            <CheckCircle size={16} /> Kostenlos & Unverbindlich
-          </span>
-          <span className="booking-benefit-sep">–</span>
-          <span className="booking-benefit">
-            <CheckCircle size={16} /> Lokale {serviceType ?? 'Expertise'} aus
-            Ihrer Region
-          </span>
         </div>
       </Animation>
     </StyledHeroSectionCall>
