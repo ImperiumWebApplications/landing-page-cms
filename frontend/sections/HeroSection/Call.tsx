@@ -34,8 +34,7 @@ const StyledHeroSectionCall = styled(Section)`
 
   > .content-wrapper {
     position: relative;
-    padding-left: 0;
-    padding-right: 0;
+    padding: 0;
   }
 
   .image-wrapper {
@@ -61,7 +60,7 @@ const StyledHeroSectionCall = styled(Section)`
     border-radius: ${({ theme }) => theme.borderRadius};
 
     @media screen and (${devices.md}) {
-      padding: 4rem 2rem;
+      padding: 3rem 2rem;
     }
   }
 
@@ -70,7 +69,7 @@ const StyledHeroSectionCall = styled(Section)`
       margin-top: 1rem;
 
       @media screen and (${devices.md}) {
-        margin-top: 4rem;
+        margin-top: 3rem;
       }
 
       svg {
