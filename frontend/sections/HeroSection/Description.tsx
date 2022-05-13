@@ -40,6 +40,17 @@ const StyledHeroSectionDescription = styled('div')<{
     }
   }
 
+  p {
+    max-width: 30rem;
+    font-size: 1rem;
+    line-height: 1.75rem;
+
+    @media screen and (${devices.sm}) {
+      font-size: 1.125rem;
+      line-height: 2rem;
+    }
+  }
+
   .extended-description {
     display: none;
 

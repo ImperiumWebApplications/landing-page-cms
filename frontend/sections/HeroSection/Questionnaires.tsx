@@ -18,17 +18,6 @@ import { HeroSectionDescription } from './Description';
 const StyledHeroSectionQuestionnaires = styled(Section)`
   overflow-x: clip;
 
-  p {
-    max-width: 30rem;
-    font-size: 1rem;
-    line-height: 1.75rem;
-
-    @media screen and (${devices.sm}) {
-      font-size: 1.125rem;
-      line-height: 2rem;
-    }
-  }
-
   .content-wrapper {
     @media screen and (${devices.specifics.flatDesktop}) {
       padding-top: 0;

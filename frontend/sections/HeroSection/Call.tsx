@@ -18,17 +18,6 @@ const StyledHeroSectionCall = styled(Section)`
     margin-bottom: 4rem;
   }
 
-  p {
-    max-width: 30rem;
-    font-size: 1rem;
-    line-height: 1.75rem;
-
-    @media screen and (${devices.sm}) {
-      font-size: 1.125rem;
-      line-height: 2rem;
-    }
-  }
-
   > .content-wrapper {
     position: relative;
     padding: 0;
@@ -64,6 +53,14 @@ const StyledHeroSectionCall = styled(Section)`
   .booking {
     .booking-description {
       margin-top: 1rem;
+      max-width: 30rem;
+      font-size: 1rem;
+      line-height: 1.75rem;
+
+      @media screen and (${devices.sm}) {
+        font-size: 1.125rem;
+        line-height: 2rem;
+      }
 
       @media screen and (${devices.md}) {
         margin-top: 3rem;
