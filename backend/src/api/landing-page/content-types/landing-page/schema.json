@@ -94,6 +94,9 @@
       "type": "enumeration",
       "enum": ["Questionnaire", "Call"],
       "default": "Questionnaire"
+    },
+    "funnel_target_call_link": {
+      "type": "string"
     }
   }
 }

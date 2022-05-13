@@ -6,7 +6,7 @@ import { ArrowForward } from '@styled-icons/fluentui-system-filled';
 import type {
   EntryQuestionnaire,
   FunnelTarget,
-  HeroSection as IHeroSection,
+  HeroSection,
 } from '../../backend-api';
 import { Section } from '../../components/Section';
 import { QuestionnaireTile } from '../../components/QuestionnaireTile';
@@ -112,7 +112,7 @@ const StyledHeroSectionQuestionnaires = styled(Section)`
 
 export const HeroSectionQuestionnaires: React.FunctionComponent<{
   id: string;
-  content: IHeroSection;
+  content: HeroSection;
   funnelTarget: FunnelTarget;
   questionnaire: EntryQuestionnaire | undefined;
 }> = ({ id, content, questionnaire, funnelTarget }) => {

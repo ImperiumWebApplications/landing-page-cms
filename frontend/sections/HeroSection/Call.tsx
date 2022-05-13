@@ -4,10 +4,7 @@ import { ArrowForward } from '@styled-icons/fluentui-system-filled';
 import { CheckCircle } from '@styled-icons/boxicons-solid/CheckCircle';
 import { Telephone } from '@styled-icons/foundation';
 
-import type {
-  FunnelTarget,
-  HeroSection as IHeroSection,
-} from '../../backend-api';
+import type { FunnelTarget, HeroSection } from '../../backend-api';
 import { Section } from '../../components/Section';
 import { devices } from '../../config/breakpoints.config';
 import { Button } from '../../components/Button';
@@ -166,11 +163,12 @@ const StyledHeroSectionCall = styled(Section)`
 
 export const HeroSectionCall: React.FunctionComponent<{
   id: string;
-  content: IHeroSection;
+  content: HeroSection;
   funnelTarget: FunnelTarget;
   serviceType: string | undefined;
+  callLink: string | undefined;
   contactPhone: string | undefined;
-}> = ({ id, content, funnelTarget, serviceType, contactPhone }) => {
+}> = ({ id, content, funnelTarget, serviceType, contactPhone, callLink }) => {
   return (
     <StyledHeroSectionCall id={id}>
       <Animation type="fadeIn" delay={200}>
@@ -206,7 +204,9 @@ export const HeroSectionCall: React.FunctionComponent<{
                   />
                 </p>
                 <div className="booking-action">
-                  <Button label="Jetzt Termin vereinbaren" href="/booking" />
+                  {callLink && (
+                    <Button label="Jetzt Termin vereinbaren" href={callLink} />
+                  )}
                   {contactPhone && (
                     <div className="direct-call">
                       <span>oder rufen Sie einfach an: </span>

@@ -84,6 +84,7 @@ type ServiceType = string;
 type Logo = ImageObject;
 type Favicon = ImageObject;
 type FunnelTarget = 'Questionnaire' | 'Call';
+type TargetCallLink = string;
 type Advantage = { id: number; first_line: string; second_line: string };
 
 interface ConnectedQuestionnaire {
@@ -214,6 +215,7 @@ type Sections =
 
 interface LandingPage {
   funnel_target?: FunnelTarget;
+  funnel_target_call_link?: TargetCallLink;
   seo_title?: SEOTitle;
   seo_description?: SEODescription;
   google_allow_indexation?: GoogleIndexation;

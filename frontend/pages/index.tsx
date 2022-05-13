@@ -41,6 +41,7 @@ const IndexPage: NextPage<ContentPageContent> = ({
             content={sections[SectionMapping.Hero]}
             serviceType={domainContent.service_type}
             contactPhone={domainContent.contact_phone}
+            callLink={domainContent.funnel_target_call_link}
             funnelTarget={funnelTarget}
           />
         ))}
