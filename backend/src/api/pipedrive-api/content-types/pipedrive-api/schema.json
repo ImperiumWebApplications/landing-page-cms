@@ -4,7 +4,8 @@
   "info": {
     "singularName": "pipedrive-api",
     "pluralName": "pipedrive-apis",
-    "displayName": "Pipedrive API"
+    "displayName": "Pipedrive API",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -13,7 +14,7 @@
   "attributes": {
     "api_token": {
       "type": "string",
-      "unique": true,
+      "unique": false,
       "required": true
     },
     "landing_page": {
