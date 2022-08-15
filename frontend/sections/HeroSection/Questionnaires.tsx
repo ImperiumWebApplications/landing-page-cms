@@ -37,6 +37,7 @@ const StyledHeroSectionQuestionnaires = styled(Section)`
     .background {
       display: none;
       position: relative;
+      z-index: -1;
       top: -200px;
       right: 0;
       width: 60vw;
