@@ -110,6 +110,50 @@ export const GlobalStyle = createGlobalStyle<{
       line-height: 2.25rem;
     }
   }
+  h4 {
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+    margin: 0;
+  }
+  h5, h6 {
+    font-weight: 700;
+    font-size: 1.125rem;
+    line-height: 1.25rem;
+    margin: 0;
+    margin-block-end: -0.5em;
+  }
+  ul, ol {
+    margin-left: 1.25rem;
+    text-indent: -1.25rem;
+    line-height: 1em;
+    margin-block-start: -1em;
+  }
+  ul li:before {
+    content: '';
+    background-color: #e6b432;
+    display: inline-block;
+    border-radius: 9999px;
+    margin-right: 0.625rem;
+    height: 0.5rem;
+    width: 0.5rem;
+    vertical-align: middle;
+  }
+  ol {
+    list-style-type: decimal;
+  }
+  ol li:before {
+    content: '';
+    display: inline-block;
+    margin-right: 1rem;
+    height: 0.5rem;
+    width: 0.5rem;
+  }
+  blockquote {
+    border-left: 4px solid #ccc;
+    padding: 0 10px;
+    margin: 0;
+  }
 
   /** Global Elements */
   .shining-button {

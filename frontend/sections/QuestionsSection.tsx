@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactMarkdown from 'react-markdown';
 import styled, { useTheme } from 'styled-components';
 import hexRgb from 'hex-rgb';
 
@@ -147,6 +148,8 @@ export const QuestionsSection: React.FunctionComponent<{
 
   const bgColor = hexRgb(theme.colors.primary, { format: 'css', alpha: 0.1 });
 
+  const displayedAnswer = content.faq_item[selectedQuestion].answer;
+
   return (
     <StyledQuestionsSection id={id} bgColor={bgColor}>
       <h2 className="title">Antworten auf wichtige Fragen</h2>
@@ -167,7 +170,11 @@ export const QuestionsSection: React.FunctionComponent<{
           })}
         </div>
         <div className="answer">
-          {content.faq_item[selectedQuestion].answer}
+          {displayedAnswer ? (
+            <ReactMarkdown>{displayedAnswer}</ReactMarkdown>
+          ) : (
+            <></>
+          )}
         </div>
       </div>
     </StyledQuestionsSection>
