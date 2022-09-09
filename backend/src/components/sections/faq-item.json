@@ -10,7 +10,7 @@
       "type": "string"
     },
     "answer": {
-      "type": "text"
+      "type": "richtext"
     }
   }
 }
