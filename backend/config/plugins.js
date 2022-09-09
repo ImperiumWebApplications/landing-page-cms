@@ -12,6 +12,11 @@ module.exports = ({ env }) => ({
       },
     },
   },
+  'users-permissions': {
+    config: {
+      jwtSecret: env('JWT_SECRET'),
+    },
+  },
   sentry: {
     dsn: env('SENTRY_DSN'),
   },
