@@ -4,8 +4,10 @@ module.exports = ({ env }) => [
     name: 'strapi::security',
     config: {
       contentSecurityPolicy: {
+        useDefaults: true,
         directives: {
           'script-src': ["'self'", "'unsafe-inline'", 'cdn.jsdelivr.net'],
+          'connect-src': ["'self'", 'https:'],
           'img-src': [
             "'self'",
             'data:',
@@ -14,6 +16,13 @@ module.exports = ({ env }) => [
             'strapi.io',
             `${env('AWS_BUCKET')}.s3.${env('AWS_REGION')}.amazonaws.com`,
           ],
+          'media-src': [
+            "'self'",
+            'data:',
+            'blob:',
+            `${env('AWS_BUCKET')}.s3.${env('AWS_REGION')}.amazonaws.com`,
+          ],
+          upgradeInsecureRequests: null,
         },
       },
     },
