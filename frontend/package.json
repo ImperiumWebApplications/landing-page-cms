@@ -47,7 +47,7 @@
     "react-svg": "^14.1.11",
     "regenerator-runtime": "^0.13.9",
     "restyped-axios": "^2.0.0",
-    "sharp": "^0.30.7",
+    "sharp": "^0.31.0",
     "slugify": "^1.6.5",
     "styled-components": "^5.3.5",
     "styled-icons": "^10.45.0",
