@@ -69,6 +69,7 @@ export const StatisticsSection: React.FunctionComponent<{
           alt={content.background_image.data.attributes.alternativeText}
           layout="fill"
           objectFit="cover"
+          style={{ opacity: 0.75 }}
         />
       ) : undefined}
       <div className="backdrop" />
