@@ -10,7 +10,7 @@
       "type": "string"
     },
     "video_description": {
-      "type": "text"
+      "type": "richtext"
     }
   }
 }
