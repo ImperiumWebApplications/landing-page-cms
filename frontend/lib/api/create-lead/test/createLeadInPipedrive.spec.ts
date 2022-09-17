@@ -1,4 +1,4 @@
-import type { SetupServerApi } from 'msw/lib/types/node';
+import type { SetupServerApi } from 'msw/node';
 import { rest } from 'msw';
 
 import { createLeadInPipedrive, CreateLeadInPipedriveProps } from '..';

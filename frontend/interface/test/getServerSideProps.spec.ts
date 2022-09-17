@@ -7,7 +7,7 @@ import {
   requestQuestionnaireContent,
   requestStaticContent,
 } from '../getServerSideProps';
-import { SetupServerApi } from 'msw/lib/types/node';
+import { SetupServerApi } from 'msw/node';
 import {
   domainContent,
   questionnairesContent,

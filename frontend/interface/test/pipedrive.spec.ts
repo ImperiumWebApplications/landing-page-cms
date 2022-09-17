@@ -1,4 +1,4 @@
-import type { SetupServerApi } from 'msw/lib/types/node';
+import type { SetupServerApi } from 'msw/node';
 import { ContactData } from '../../context/Questionnaire/state';
 import {
   currentUser,
