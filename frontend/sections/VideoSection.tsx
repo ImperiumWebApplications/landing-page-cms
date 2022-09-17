@@ -12,6 +12,7 @@ import { startQuestionnaire } from '../config/navigation.config';
 import { Section } from '../components/Section';
 import { Animation } from '../components/Animation';
 import { devices } from '../config/breakpoints.config';
+import ReactMarkdown from 'react-markdown';
 
 const StyledVideoSection = styled(Section)`
   & > .content-wrapper {
@@ -136,7 +137,11 @@ export const VideoSection: React.FunctionComponent<{
       <div className="description">
         <Animation type="fadeRight">
           <h2>{content?.video_title}</h2>
-          <p>{content?.video_description}</p>
+          <p>
+            {content?.video_description ? (
+              <ReactMarkdown>{content.video_description}</ReactMarkdown>
+            ) : undefined}
+          </p>
           <Button
             href={startQuestionnaire.href}
             label={startQuestionnaire.label}
