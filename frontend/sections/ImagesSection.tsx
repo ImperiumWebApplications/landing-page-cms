@@ -125,6 +125,7 @@ export const ImagesSection: React.FunctionComponent<{
                   alt={image.attributes.alternativeText}
                   layout="fill"
                   objectFit="cover"
+                  quality={90}
                 />
               </div>
             );

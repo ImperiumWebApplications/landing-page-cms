@@ -148,6 +148,7 @@ export const HeroSectionQuestionnaires: React.FunctionComponent<{
                 alt={content.background_image?.data.attributes.alternativeText}
                 layout="fill"
                 objectFit="cover"
+                quality={90}
                 priority
               />
             )}
