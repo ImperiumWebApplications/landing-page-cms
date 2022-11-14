@@ -28,7 +28,6 @@
     "test:e2e:dev": "start-server-and-test dev:test http://localhost:3000 cy:open"
   },
   "dependencies": {
-    "@fontsource/overpass": "^4.5.9",
     "@sentry/nextjs": "^6.17.9",
     "core-js": "^3.25.1",
     "handlebars": "^4.7.7",

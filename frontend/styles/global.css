@@ -1,0 +1,7 @@
+@font-face {
+  font-family: 'Overpass';
+  font-weight: 100 900;
+  font-display: fallback;
+  font-style: normal;
+  src: url(/fonts/Overpass-VariableFont.ttf) format('truetype');
+}

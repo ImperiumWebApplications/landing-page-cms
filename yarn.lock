@@ -2239,11 +2239,6 @@
   dependencies:
     "@floating-ui/dom" "^1.0.0"
 
-"@fontsource/overpass@^4.5.9":
-  version "4.5.9"
-  resolved "https://registry.yarnpkg.com/@fontsource/overpass/-/overpass-4.5.9.tgz#bc050fd92461690e193b39378d5039a858c20d49"
-  integrity sha512-77Elez6xGdZrYgl4HE/d4x9FUOKObpMitmOCU/431HXC4ek1hUA7lsm+QcMsHr7Kbc8gxjvl7jUhTlOXNOkPow==
-
 "@formatjs/ecma402-abstract@1.11.4":
   version "1.11.4"
   resolved "https://registry.yarnpkg.com/@formatjs/ecma402-abstract/-/ecma402-abstract-1.11.4.tgz#b962dfc4ae84361f9f08fbce411b4e4340930eda"

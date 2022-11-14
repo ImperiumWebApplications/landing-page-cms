@@ -4,8 +4,8 @@ import 'intersection-observer';
 import 'swiper/css';
 import 'swiper/css/a11y';
 import 'swiper/css/pagination';
-import '@fontsource/overpass';
-import '@fontsource/overpass/700.css';
+
+import '../styles/global.css';
 
 // import { isTestEnvironment } from '../utils/isTestEnvironment';
 
