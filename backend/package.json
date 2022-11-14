@@ -4,7 +4,8 @@
   "description": "The backend application for the landing page content management system.",
   "author": {
     "name": "Konstantin Münster",
-    "email": "info@kmuenster.com"
+    "email": "mail@konstantin.digital",
+    "url": "https://konstantin.digital"
   },
   "scripts": {
     "dev": "strapi develop",

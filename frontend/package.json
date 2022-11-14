@@ -4,7 +4,8 @@
   "description": "The frontend application for the landing page content management system.",
   "author": {
     "name": "Konstantin Münster",
-    "email": "info@kmuenster.com"
+    "email": "mail@konstantin.digital",
+    "url": "https://konstantin.digital"
   },
   "scripts": {
     "dev": "DISABLE_SENTRY=true next dev -p 3000",

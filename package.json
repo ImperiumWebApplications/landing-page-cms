@@ -1,6 +1,11 @@
 {
   "name": "root",
   "private": true,
+  "author": {
+    "name": "Konstantin Münster",
+    "email": "mail@konstantin.digital",
+    "url": "https://konstantin.digital"
+  },
   "devDependencies": {
     "husky": "^7.0.4",
     "lerna": "^4.0.0"
