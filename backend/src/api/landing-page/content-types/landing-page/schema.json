@@ -96,11 +96,14 @@
     },
     "funnel_target": {
       "type": "enumeration",
-      "enum": ["Questionnaire", "Call"],
+      "enum": ["Questionnaire", "Appointment"],
       "default": "Questionnaire"
     },
-    "funnel_target_call_link": {
-      "type": "string"
+    "appointment": {
+      "displayName": "Appointment",
+      "type": "component",
+      "repeatable": false,
+      "component": "appointment.appointment"
     }
   }
 }

@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_appointment_appointments",
+  "info": {
+    "displayName": "Appointment",
+    "icon": "calendar-check"
+  },
+  "options": {},
+  "attributes": {
+    "appointment_duration": {
+      "type": "enumeration",
+      "enum": ["x30min", "x60min", "x90min", "x120min"],
+      "default": "x60min"
+    },
+    "appointment_location": {
+      "displayName": "Locations",
+      "type": "component",
+      "repeatable": false,
+      "component": "appointment.locations"
+    },
+    "appointment_availability": {
+      "displayName": "Availabilities",
+      "type": "component",
+      "repeatable": true,
+      "component": "appointment.availabilities"
+    }
+  }
+}
