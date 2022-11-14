@@ -25,16 +25,20 @@
       "type": "string"
     },
     "color_primary": {
-      "type": "string"
+      "type": "customField",
+      "customField": "plugin::color-picker.color"
     },
     "color_secondary": {
-      "type": "string"
+      "type": "customField",
+      "customField": "plugin::color-picker.color"
     },
     "color_tertiary": {
-      "type": "string"
+      "type": "customField",
+      "customField": "plugin::color-picker.color"
     },
     "color_text": {
-      "type": "string"
+      "type": "customField",
+      "customField": "plugin::color-picker.color"
     },
     "contact_email": {
       "type": "email"
