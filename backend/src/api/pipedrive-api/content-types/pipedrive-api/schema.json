@@ -4,7 +4,7 @@
   "info": {
     "singularName": "pipedrive-api",
     "pluralName": "pipedrive-apis",
-    "displayName": "Pipedrive API",
+    "displayName": "Pipedrive Connections",
     "description": ""
   },
   "options": {
