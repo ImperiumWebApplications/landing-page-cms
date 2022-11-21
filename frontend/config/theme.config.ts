@@ -1,27 +1,34 @@
 import reset from 'styled-reset';
 import { createGlobalStyle } from 'styled-components';
 
-import type { LandingPage } from '../backend-api';
-import { FontConfig } from './font.config';
 import { devices } from './breakpoints.config';
 
-export const extractTheme = (content?: LandingPage) => {
+type ConfigureThemeProps = {
+  colors?: {
+    primary?: string | null;
+    secondary?: string | null;
+    tertiary?: string | null;
+    text?: string | null;
+  };
+};
+
+export const configureTheme = (props: ConfigureThemeProps = {}) => {
   return {
     borderRadius: '0.5rem',
     maxPageWidth: '1400px',
-    font: `"${FontConfig.fontName}", sans-serif`,
+    font: `"Overpass", sans-serif`,
     colors: {
-      primary: content?.color_primary ?? '#000000',
-      secondary: content?.color_secondary ?? '#000000',
-      tertiary: content?.color_tertiary ?? '#232323',
-      text: content?.color_text ?? '#000000',
+      primary: props.colors?.primary ?? '#000000',
+      secondary: props.colors?.secondary ?? '#333333',
+      tertiary: props.colors?.tertiary ?? '#E2E2E2',
+      text: props.colors?.text ?? '#666666',
       success: '#4BB543',
       error: '#ff9999',
     },
   };
 };
 
-export type LeadquelleTheme = ReturnType<typeof extractTheme>;
+export type LeadquelleTheme = ReturnType<typeof configureTheme>;
 
 export const GlobalStyle = createGlobalStyle<{
   theme: LeadquelleTheme;

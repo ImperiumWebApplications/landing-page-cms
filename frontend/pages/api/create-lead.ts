@@ -1,12 +1,12 @@
 import type { NextApiRequest } from 'next';
 import { withSentry } from '@sentry/nextjs';
 
-import type { DefaultApiRouteResponse } from '../../lib/api/response';
+import type { DefaultApiRouteResponse } from '../../lib/next/api/response';
 import { EmailTemplate } from '../../config/emails.config';
 import { normalizeHostname } from '../../utils/normalizeHostname';
-import { InternalAPI } from '../../lib/api/internal';
-import { captureNextAPIError, getErrorMessage } from '../../lib/api/error';
-import { CreateLeadInPipedriveProps } from '../../lib/api/create-lead';
+import { InternalAPI } from '../../lib/next/api/internal';
+import { captureNextAPIError, getErrorMessage } from '../../lib/next/api/error';
+import { CreateLeadInPipedriveProps } from '../../lib/next/api/create-lead';
 
 export interface CreateLeadApiRequest extends NextApiRequest {
   body: CreateLeadInPipedriveProps;

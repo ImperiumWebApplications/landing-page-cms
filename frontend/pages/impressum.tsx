@@ -4,21 +4,46 @@ import { NextSeo } from 'next-seo';
 import dynamic from 'next/dynamic';
 import ReactMarkdown from 'react-markdown';
 
-import type { LandingPage } from '../backend-api';
-import type { ContentPageContent } from '../interface/getServerSideProps';
-import { collectContentPageContent } from '../interface/getServerSideProps';
-import { Country } from '../config/countries.config';
+import type { LandingPage, StaticContent } from '../lib/strapi';
+import { queryStaticPageContent } from '../lib/next/app';
 import { Layout } from '../components/Layout';
-import { Section } from '../components/Section';
 import { populateMarkdownTemplate } from '../utils/populateMarkdownTemplate';
 import { getCountryByDomain } from '../utils/getCountryByDomain';
+import { Country } from '../config/countries.config';
 
 const ClientSideOnlyArticle = dynamic<{ children: ReactElement }>(
   () => import('../components/Article').then((mod) => mod.Article),
   { ssr: false },
 );
 
-const getVatSpecification = (country?: string, vat?: string) => {
+const ImprintPage: NextPage<{ content: LandingPage & StaticContent }> = ({
+  content,
+}) => {
+  const enrichedDomainContent = enrichDomainContent(content);
+  const pageContent = populateMarkdownTemplate(
+    content.imprint,
+    enrichedDomainContent,
+  );
+
+  return (
+    <Layout content={enrichedDomainContent}>
+      <NextSeo noindex={true} />
+      <div id="imprint" className="content-wrapper">
+        <ClientSideOnlyArticle>
+          <ReactMarkdown>{pageContent ?? ''}</ReactMarkdown>
+        </ClientSideOnlyArticle>
+      </div>
+    </Layout>
+  );
+};
+
+export const getServerSideProps = queryStaticPageContent;
+
+export default ImprintPage;
+
+/** Helper */
+
+const getVatSpecification = (country?: string, vat?: string | null) => {
   if (!vat) return undefined;
 
   switch (country) {
@@ -39,28 +64,3 @@ const enrichDomainContent = (domainContent: LandingPage): LandingPage => {
     client_vat: getVatSpecification(country, domainContent.client_vat),
   };
 };
-
-const ImprintPage: NextPage<ContentPageContent> = ({
-  domainContent,
-  staticContent: { imprint: imprintTemplate },
-}) => {
-  const enrichedDomainContent = enrichDomainContent(domainContent);
-
-  return (
-    <Layout content={enrichedDomainContent}>
-      <NextSeo noindex={true} />
-      <Section id="imprint">
-        <ClientSideOnlyArticle>
-          <ReactMarkdown>
-            {populateMarkdownTemplate(imprintTemplate, enrichedDomainContent) ??
-              ''}
-          </ReactMarkdown>
-        </ClientSideOnlyArticle>
-      </Section>
-    </Layout>
-  );
-};
-
-export const getServerSideProps = collectContentPageContent;
-
-export default ImprintPage;

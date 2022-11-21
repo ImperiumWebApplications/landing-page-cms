@@ -3,8 +3,8 @@ import Image from 'next/image';
 import styled from 'styled-components';
 import Link from 'next/link';
 
-import { ImageObject } from '../backend-api';
 import { devices } from '../config/breakpoints.config';
+import type { MediaAttributes } from '../lib/strapi';
 
 const StyledLogo = styled.div`
   a {
@@ -41,18 +41,18 @@ const StyledLogo = styled.div`
 `;
 
 export const Logo: React.FunctionComponent<{
-  image: ImageObject | undefined;
+  image?: MediaAttributes | null;
   colorless?: boolean;
   size?: 'logo-medium' | 'logo-large';
 }> = ({ image, colorless, size }) => {
   return (
     <StyledLogo>
-      {image?.data && (
+      {image && (
         <Link href="/" passHref>
           <a aria-label="Homepage" className={size ?? 'logo-large'}>
             <Image
-              src={image.data.attributes.url}
-              alt={image.data.attributes.alternativeText}
+              src={image.url}
+              alt={image.alternativeText ?? image.url}
               layout="fill"
               objectFit="contain"
               objectPosition="left center"

@@ -1,5 +1,5 @@
 export const populateMarkdownTemplate = (
-  template?: string,
+  template?: string | null,
   data?: Record<string, unknown>,
 ) => {
   if (!template || !data) return;

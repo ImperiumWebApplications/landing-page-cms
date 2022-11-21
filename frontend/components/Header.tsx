@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
 
-import { LandingPage } from '../backend-api';
+import type { LandingPage } from '../lib/strapi';
 import { headerButton } from '../config/navigation.config';
 import { MobileNavigation } from './MobileNavigation';
 import { Logo } from './Logo';
@@ -50,17 +50,17 @@ const StyledHeader = styled.header<{ centerLogo: boolean }>`
   }
 `;
 
-export const Header: React.FunctionComponent<{ content: LandingPage }> = ({
-  content,
-}) => {
+export const Header: React.FC<{
+  content: LandingPage;
+}> = ({ content }) => {
   const _isFunnelRoute = isFunnelRoute(useRouter());
-  const isCallFunnelTarget = content.funnel_target === 'Call';
+  const isCallFunnelTarget = content.funnel_target === 'Appointment';
 
   return (
     <StyledHeader id="header" centerLogo={_isFunnelRoute}>
       <Animation className="animated-header" type="fadeDown" duration={200}>
         <div className="content-wrapper">
-          <Logo image={content.logo} />
+          <Logo image={content.logo?.data.attributes} />
           {!_isFunnelRoute && (
             <>
               {!isCallFunnelTarget && (

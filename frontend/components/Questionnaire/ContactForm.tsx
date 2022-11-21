@@ -18,7 +18,7 @@ import { RadioInput } from './RadioInput';
 import { CheckboxInput } from './CheckboxInput';
 import { LoadingSpinner } from './LoadingSpinner';
 import { QualityBadges } from './QualityBadges';
-import { NextAPI } from '../../lib/api/request';
+import { NextAPI } from '../../lib/next/api/request';
 import { devices } from '../../config/breakpoints.config';
 import {
   formFieldValidations,

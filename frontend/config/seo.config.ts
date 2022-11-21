@@ -1,8 +1,8 @@
 import { NextSeoProps } from 'next-seo';
-import { LandingPage } from '../backend-api';
+import { LandingPage } from '../lib/strapi';
 
 export const extractSeoProps = (content: LandingPage) => {
-  const isSubdomainSite = content.domain.includes('lq-pages.ch');
+  const isSubdomainSite = content.domain?.includes('lq-pages.ch');
   const disallowGoogleIndex = content.google_allow_indexation === false;
 
   return {
@@ -17,21 +17,21 @@ export const extractSeoProps = (content: LandingPage) => {
       description: content.seo_description,
       title: content.seo_title,
     },
-    additionalLinkTags: content.favicon?.data
+    additionalLinkTags: content.favicon?.data.attributes
       ? [
           {
             rel: 'shortcut icon',
-            type: content.favicon.data.attributes.mime,
-            href: content.favicon.data.attributes.url,
+            type: content.favicon?.data.attributes.mime,
+            href: content.favicon?.data.attributes.url,
           },
           {
             rel: 'shortcut icon',
             sizes: '192x192',
-            href: content.favicon.data.attributes.url,
+            href: content.favicon?.data.attributes.url,
           },
           {
             rel: 'apple-touch-icon',
-            href: content.favicon.data.attributes.url,
+            href: content.favicon?.data.attributes.url,
           },
         ]
       : undefined,

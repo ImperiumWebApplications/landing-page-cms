@@ -2,11 +2,10 @@ import styled, { useTheme } from 'styled-components';
 import hexRgb from 'hex-rgb';
 import { CheckmarkCircle } from '@styled-icons/ionicons-outline';
 
-import type { Advantage } from '../../backend-api';
-import { Section } from '../Section';
+import type { LandingPage } from '../../lib/strapi';
 import { devices } from '../../config/breakpoints.config';
 
-const StyledAdvantages = styled(Section)`
+const StyledAdvantages = styled.div`
   border-bottom-left-radius: ${({ theme }) => theme.borderRadius};
   border-bottom-right-radius: ${({ theme }) => theme.borderRadius};
   background-color: ${({ theme }) =>
@@ -51,29 +50,31 @@ const StyledAdvantages = styled(Section)`
   }
 `;
 
-export const Advantages: React.FunctionComponent<{ content?: Advantage[] }> = ({
-  content,
-}) => {
+export const Advantages: React.FC<{
+  content?: NonNullable<LandingPage['questionnaire']>['advantage'];
+}> = ({ content }) => {
   const theme = useTheme();
 
   return (
     <StyledAdvantages id="advantages">
-      {content?.length &&
-        content.map((advantage, i) => {
-          return (
-            <div key={i} className="advantage">
-              <CheckmarkCircle
-                color={theme.colors.success}
-                width={50}
-                height={50}
-              />
-              <div className="advantage-content">
-                <span>{advantage.first_line}</span>
-                {advantage.second_line}
+      <div className="content-wrapper">
+        {content?.length &&
+          content.map((advantage, i) => {
+            return (
+              <div key={i} className="advantage">
+                <CheckmarkCircle
+                  color={theme.colors.success}
+                  width={50}
+                  height={50}
+                />
+                <div className="advantage-content">
+                  <span>{advantage.first_line}</span>
+                  {advantage.second_line}
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+      </div>
     </StyledAdvantages>
   );
 };

@@ -2,8 +2,9 @@ import { Country, CountryDetails } from '../config/countries.config';
 import { isDevEnvironment } from './isDevEnvironment';
 import { isTestEnvironment } from './isTestEnvironment';
 
-export const getCountryByDomain = (domain: string) => {
-  if (isDevEnvironment(domain) || isTestEnvironment()) return Country.Germany;
+export const getCountryByDomain = (domain?: string | null) => {
+  if (!domain || isDevEnvironment(domain) || isTestEnvironment())
+    return Country.Germany;
 
   const topLevelDomain = domain.split('.').pop();
 

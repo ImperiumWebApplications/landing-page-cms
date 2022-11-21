@@ -1,8 +1,8 @@
 import type { MouseEvent } from 'react';
 import styled from 'styled-components';
 
-import type { QuestionnaireAnswer } from '../../backend-api';
 import type { QuestionnaireItem } from '../../context/Questionnaire/state';
+import type { Questionnaire } from '../../lib/strapi';
 import { useQuestionnaireContext } from '../../context/Questionnaire';
 import { SelectableOption } from './SelectableOption';
 import { devices } from '../../config/breakpoints.config';
@@ -36,7 +36,9 @@ export type SingleChoiceEventHandler = ({
 
 export const SingleChoice: React.FunctionComponent<{
   question: { id: number; title: string };
-  answers: QuestionnaireAnswer[];
+  answers: NonNullable<
+    NonNullable<Questionnaire['questions']>[number]['answers']
+  >;
   customSelectHandler?: SingleChoiceEventHandler;
 }> = ({ question, answers, customSelectHandler }) => {
   const { state, dispatch } = useQuestionnaireContext();

@@ -1,8 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { withSentry } from '@sentry/nextjs';
 
-import { getPostalCodeDetails } from '../../lib/api/postal-codes';
-import { captureNextAPIError, getErrorMessage } from '../../lib/api/error';
+import { getPostalCodeDetails } from '../../lib/next/api/postal-codes';
+import { captureNextAPIError, getErrorMessage } from '../../lib/next/api/error';
 import { isPostalCodeFormat } from '../../utils/isPostalCodeFormat';
 import { isCountriesFormat } from '../../utils/isCountriesFormat';
 import { PostalCodeDetails } from '../../config/countries.config';

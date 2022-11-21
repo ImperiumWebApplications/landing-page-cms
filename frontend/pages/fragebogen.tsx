@@ -2,14 +2,7 @@ import React from 'react';
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
 
-import type {
-  ConnectedQuestionnaireObjectList,
-  QuestionnaireAnswer,
-  QuestionnaireQuestion,
-} from '../backend-api';
 import type { SingleChoiceEventHandler } from '../components/Questionnaire/SingleChoice';
-import { collectContentPageContent } from '../interface/getServerSideProps';
-import { ContentPageContent } from '../interface/getServerSideProps';
 import { QuestionnaireContextProvider } from '../context/Questionnaire';
 import { Layout } from '../components/Layout';
 import { Questionnaire } from '../components/Questionnaire/Questionnaire';
@@ -17,16 +10,18 @@ import { PagePlaceholder } from '../components/Questionnaire/Placeholder';
 import { questionnaireRoute } from '../config/navigation.config';
 import { slugifyRoute } from '../utils/slugifyRoute';
 import { getCountryByDomain } from '../utils/getCountryByDomain';
+import { LandingPage } from '../lib/strapi';
+import { queryLandingPageContent } from '../lib/next/app';
 
-const EntryQuestionnairePage: NextPage<ContentPageContent> = ({
-  domainContent,
+const EntryQuestionnairePage: NextPage<{ content: LandingPage }> = ({
+  content,
 }) => {
-  const { questionnaire } = domainContent;
+  const { questionnaire } = content;
   const router = useRouter();
 
-  if (!questionnaire) return <PagePlaceholder domainContent={domainContent} />;
+  if (!questionnaire) return <PagePlaceholder content={content} />;
 
-  const entryQuestion: QuestionnaireQuestion = {
+  const entryQuestion = {
     id: -1,
     question: questionnaire.entry_question ?? 'Was suchen Sie?',
     answers: mapConnectedQuestionnairesToAnswersSchema(
@@ -41,10 +36,10 @@ const EntryQuestionnairePage: NextPage<ContentPageContent> = ({
     await router.push(selectedRoute);
   };
 
-  const country = getCountryByDomain(domainContent.domain);
+  const country = getCountryByDomain(content.domain);
 
   return (
-    <Layout content={domainContent}>
+    <Layout content={content}>
       <QuestionnaireContextProvider>
         <Questionnaire
           questions={[entryQuestion]}
@@ -57,7 +52,7 @@ const EntryQuestionnairePage: NextPage<ContentPageContent> = ({
   );
 };
 
-export const getServerSideProps = collectContentPageContent;
+export const getServerSideProps = queryLandingPageContent;
 
 export default EntryQuestionnairePage;
 
@@ -67,15 +62,15 @@ export default EntryQuestionnairePage;
  */
 
 const mapConnectedQuestionnairesToAnswersSchema = (
-  questionnaires: ConnectedQuestionnaireObjectList | undefined,
+  questionnaires: NonNullable<LandingPage['questionnaire']>['questionnaires'],
 ) => {
   return questionnaires
     ? questionnaires.data.map((questionnaire) => {
         return {
           id: questionnaire.id,
-          answer_value: questionnaire.attributes.name,
-          answer_icon: questionnaire.attributes.icon,
-        } as QuestionnaireAnswer;
+          answer_value: questionnaire.attributes?.name,
+          answer_icon: questionnaire.attributes?.icon,
+        };
       })
     : undefined;
 };

@@ -81,8 +81,8 @@ const StyledContactIcons = styled.div`
 `;
 
 export const ContactIcons: React.FunctionComponent<{
-  phone?: string;
-  email?: string;
+  phone?: string | null;
+  email?: string | null;
 }> = ({ phone, email }) => {
   return (
     <StyledContactIcons>

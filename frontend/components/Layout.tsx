@@ -1,53 +1,66 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import { NextSeo } from 'next-seo';
 import { ThemeProvider } from 'styled-components';
 
-import type { LandingPage } from '../backend-api';
+import type { LandingPage } from '../lib/strapi';
+import {
+  sendEventToAnalytics,
+  TagManager,
+  TagManagerEvents,
+} from '../lib/analytics';
+
 import type { CookieConsentProps } from '../components/CookieConsent';
 import { Footer } from './Footer';
 import { Header } from './Header';
-import { HeadMeta } from './HeadMeta';
+import { Head } from './Head';
+
 import { extractSeoProps } from '../config/seo.config';
-import { extractTheme, GlobalStyle } from '../config/theme.config';
+import { configureTheme, GlobalStyle } from '../config/theme.config';
+
 import { isFunnelRoute } from '../utils/isFunnelRoute';
 import { useCookieConsent } from '../hooks/useCookieConsent';
-import { TagManager } from '../lib/analytics/TagManager';
-import {
-  sendEventToAnalytics,
-  TagManagerEvents,
-} from '../lib/analytics/sendEventToAnalytics';
 
 const ClientSideOnlyCookieConsent = dynamic<CookieConsentProps>(
   () => import('../components/CookieConsent').then((mod) => mod.CookieConsent),
   { ssr: false },
 );
 
-export const Layout: React.FunctionComponent<{ content: LandingPage }> = ({
-  children,
-  content,
-}) => {
+type LayoutProps = {
+  content: LandingPage;
+};
+
+export const Layout: React.FC<LayoutProps> = ({ children, content }) => {
   const [allowCookies, setAllowCookies] = useCookieConsent();
   const router = useRouter();
 
-  React.useEffect(() => {
+  const theme = configureTheme({
+    colors: {
+      primary: content.color_primary,
+      secondary: content.color_secondary,
+      tertiary: content.color_tertiary,
+      text: content.color_text,
+    },
+  });
+
+  useEffect(() => {
     const { ConsentGranted, ConsentDenied } = TagManagerEvents;
     if (allowCookies === 'Yes') sendEventToAnalytics(ConsentGranted);
     else sendEventToAnalytics(ConsentDenied);
   }, [allowCookies]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const isCookieModalOpen = allowCookies === 'NotAnswered';
     if (isCookieModalOpen) document.body.style.overflowY = 'hidden';
     else document.body.style.overflowY = 'auto';
   });
 
   return (
-    <ThemeProvider theme={extractTheme(content)}>
+    <ThemeProvider theme={theme}>
       <GlobalStyle isFunnelRoute={isFunnelRoute(router)} />
       <NextSeo {...extractSeoProps(content)} />
-      <HeadMeta theme={extractTheme(content)} brand={content.brand_name} />
+      <Head theme={theme} brand={content.brand_name} />
       <TagManager id={content.google_tag_manager_id} host={content.domain} />
       <Header content={content} />
       <main>{children}</main>

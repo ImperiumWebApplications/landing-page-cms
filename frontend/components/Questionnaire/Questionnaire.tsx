@@ -2,11 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import hexRgb from 'hex-rgb';
 
-import type { Advantage, QuestionnaireQuestion } from '../../backend-api';
 import type { Country } from '../../config/countries.config';
 import type { SingleChoiceEventHandler } from './SingleChoice';
+import type {
+  LandingPage,
+  Questionnaire as QuestionnaireType,
+} from '../../lib/strapi';
+
 import { useQuestionnaireContext } from '../../context/Questionnaire';
-import { Section } from '../Section';
 import { Advantages } from './Advantages';
 import { Question } from './Question';
 import { PostalCode } from './PostalCode';
@@ -17,7 +20,7 @@ import { BackButton } from './BackButton';
 import { setBrowserHistory } from '../../utils/setBrowserHistory';
 import { devices } from '../../config/breakpoints.config';
 
-const StyledQuestionnaire = styled(Section)`
+const StyledQuestionnaire = styled.div`
   height: 100%;
   padding: 1rem;
   border-bottom: 0.25rem solid white;
@@ -78,14 +81,14 @@ export type QuestionnaireHistoryState = {
 };
 
 export type QuestionnaireProps = {
-  questions: QuestionnaireQuestion[];
+  questions: NonNullable<QuestionnaireType['questions']>;
   countries?: Country[];
-  advantages?: Advantage[];
-  phone?: string;
+  advantages?: NonNullable<LandingPage['questionnaire']>['advantage'];
+  phone?: string | null;
   customSelectHandler?: SingleChoiceEventHandler;
 };
 
-export const Questionnaire: React.FunctionComponent<QuestionnaireProps> = ({
+export const Questionnaire: React.FC<QuestionnaireProps> = ({
   countries,
   advantages,
   questions,
@@ -131,23 +134,25 @@ export const Questionnaire: React.FunctionComponent<QuestionnaireProps> = ({
 
   return (
     <StyledQuestionnaire id="questionnaire">
-      <Progress percentage={progress} />
-      <div className="header">
-        <BackButton hide={state.currentIndex === 0 || isFormSuccessStep} />
-        <span className="free-tier">100% Kostenlos</span>
+      <div className="content-wrapper">
+        <Progress percentage={progress} />
+        <div className="header">
+          <BackButton hide={state.currentIndex === 0 || isFormSuccessStep} />
+          <span className="free-tier">100% Kostenlos</span>
+        </div>
+        <div className="content">
+          {isQuestionStep && (
+            <Question
+              data={currentQuestionData}
+              customSelectHandler={customSelectHandler}
+            />
+          )}
+          {isPostalCodeStep && <PostalCode countries={countries} />}
+          {isContactFormStep && <ContactForm />}
+          {isFormSuccessStep && <Confirmation phone={phone} />}
+        </div>
+        <Advantages content={advantages} />
       </div>
-      <div className="content">
-        {isQuestionStep && (
-          <Question
-            data={currentQuestionData}
-            customSelectHandler={customSelectHandler}
-          />
-        )}
-        {isPostalCodeStep && <PostalCode countries={countries} />}
-        {isContactFormStep && <ContactForm />}
-        {isFormSuccessStep && <Confirmation phone={phone} />}
-      </div>
-      <Advantages content={advantages} />
     </StyledQuestionnaire>
   );
 };

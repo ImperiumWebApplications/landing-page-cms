@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-import { LandingPage } from '../backend-api';
 import { devices } from '../config/breakpoints.config';
 import { FooterNavigation } from './FooterNavigation';
 import { ContactIcons } from './ContactIcons';
 import { Logo } from './Logo';
+import { LandingPage } from '../lib/strapi';
 
 const StyledFooter = styled.footer`
   display: flex;
@@ -51,14 +51,18 @@ const StyledFooter = styled.footer`
   }
 `;
 
-export const Footer: React.FunctionComponent<{ content: LandingPage }> = ({
-  content,
-}) => {
+export const Footer: React.FunctionComponent<{
+  content: LandingPage;
+}> = ({ content }) => {
   return (
     <StyledFooter>
       <div className="content-wrapper">
         <div className="logo-wrapper">
-          <Logo image={content.logo} size="logo-medium" colorless />
+          <Logo
+            image={content.logo?.data.attributes}
+            size="logo-medium"
+            colorless
+          />
           {content.brand_name && (
             <span className="copyright">
               &copy; {`${new Date().getFullYear()} ${content.brand_name}`}

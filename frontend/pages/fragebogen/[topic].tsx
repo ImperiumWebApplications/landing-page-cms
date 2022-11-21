@@ -1,37 +1,38 @@
 import type { NextPage } from 'next';
 
-import type { QuestionnairePageContent } from '../../interface/getServerSideProps';
-import { collectQuestionnairePageContent } from '../../interface/getServerSideProps';
+import type {
+  LandingPage,
+  Questionnaire as QuestionnaireType,
+} from '../../lib/strapi';
 import { Layout } from '../../components/Layout';
 import { QuestionnaireContextProvider } from '../../context/Questionnaire';
 import { Questionnaire } from '../../components/Questionnaire/Questionnaire';
 import { PagePlaceholder } from '../../components/Questionnaire/Placeholder';
 import { getCountryByDomain } from '../../utils/getCountryByDomain';
+import { queryQuestionnairePageContent } from '../../lib/next/app';
 
-const QuestionnairePage: NextPage<QuestionnairePageContent> = ({
-  domainContent,
-  questionnaireContent,
-}) => {
-  const { questionnaire, domain } = domainContent;
-  const country = getCountryByDomain(domain);
+const QuestionnairePage: NextPage<{
+  content: LandingPage;
+  questionnaire: QuestionnaireType;
+}> = ({ content, questionnaire }) => {
+  const country = getCountryByDomain(content.domain);
 
-  if (!questionnaire || !questionnaireContent.questions)
-    return <PagePlaceholder domainContent={domainContent} />;
+  if (!questionnaire?.questions) return <PagePlaceholder content={content} />;
 
   return (
-    <Layout content={domainContent}>
+    <Layout content={content}>
       <QuestionnaireContextProvider>
         <Questionnaire
-          questions={questionnaireContent.questions}
+          questions={questionnaire.questions}
           countries={country ? [country] : undefined}
-          advantages={questionnaire.advantage}
-          phone={domainContent.contact_phone}
+          advantages={content.questionnaire?.advantage}
+          phone={content.contact_phone}
         />
       </QuestionnaireContextProvider>
     </Layout>
   );
 };
 
-export const getServerSideProps = collectQuestionnairePageContent;
+export const getServerSideProps = queryQuestionnairePageContent;
 
 export default QuestionnairePage;

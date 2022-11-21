@@ -27,7 +27,7 @@ const StyledConfirmation = styled.div`
   }
 `;
 
-export const Confirmation: React.FunctionComponent<{ phone?: string }> = ({
+export const Confirmation: React.FC<{ phone?: string | null }> = ({
   phone,
 }) => {
   const theme = useTheme();

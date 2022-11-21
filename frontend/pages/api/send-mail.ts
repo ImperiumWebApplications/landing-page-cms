@@ -1,10 +1,10 @@
 import type { NextApiRequest } from 'next';
 import { withSentry } from '@sentry/nextjs';
 
-import type { DefaultApiRouteResponse } from '../../lib/api/response';
+import type { DefaultApiRouteResponse } from '../../lib/next/api/response';
 import { EmailTemplate } from '../../config/emails.config';
-import { captureNextAPIError, getErrorMessage } from '../../lib/api/error';
-import { sendMail, SendMailProps } from '../../lib/api/send-mail';
+import { captureNextAPIError, getErrorMessage } from '../../lib/next/api/error';
+import { sendMail, SendMailProps } from '../../lib/next/api/send-mail';
 
 interface SendMailApiRequest extends NextApiRequest {
   body: SendMailProps;

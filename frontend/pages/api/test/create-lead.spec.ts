@@ -1,5 +1,5 @@
 import { NextApiRequest } from 'next';
-import { contactDataMock } from '../../../mocks/data/contact';
+import { contactDataMock } from '../../../mocks/questionnaire/data';
 
 import { retrieveDataFromRequestBody } from '../create-lead';
 

@@ -3,11 +3,11 @@ import { ReactElement } from 'react';
 import { ThemeProvider } from 'styled-components';
 import '@testing-library/jest-dom';
 
-import { extractTheme, GlobalStyle } from './config/theme.config';
+import { configureTheme, GlobalStyle } from './config/theme.config';
 
 const LayoutRender: React.FunctionComponent = ({ children }) => {
   return (
-    <ThemeProvider theme={extractTheme()}>
+    <ThemeProvider theme={configureTheme()}>
       <GlobalStyle isFunnelRoute={false} />
       <main>{children}</main>
     </ThemeProvider>

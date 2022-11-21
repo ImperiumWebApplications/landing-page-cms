@@ -3,11 +3,10 @@ import styled from 'styled-components';
 import { useRouter } from 'next/router';
 import { PatchQuestion } from '@styled-icons/bootstrap';
 
-import type { LandingPage } from '../../backend-api';
-import { Section } from '../Section';
+import type { LandingPage } from '../../lib/strapi';
 import { Layout } from '../Layout';
 
-const StyledPlaceholder = styled(Section)`
+const StyledPlaceholder = styled.div`
   margin: 4rem auto;
   text-align: center;
 
@@ -32,11 +31,11 @@ const StyledPlaceholder = styled(Section)`
   }
 `;
 
-export const PagePlaceholder: React.FunctionComponent<{
-  domainContent: LandingPage;
-}> = ({ domainContent }) => {
+export const PagePlaceholder: React.FC<{
+  content: LandingPage;
+}> = ({ content }) => {
   return (
-    <Layout content={domainContent}>
+    <Layout content={content}>
       <Placeholder />
     </Layout>
   );
@@ -47,11 +46,13 @@ export const Placeholder = () => {
 
   return (
     <StyledPlaceholder id="placeholder">
-      <PatchQuestion width={200} height={200} opacity={0.25} />
-      <h1>Leider konnte der aufgerufene Inhalt nicht geladen werden...</h1>
-      <button type="button" onClick={() => router.back()}>
-        Zurück zur letzten Seite
-      </button>
+      <div className="content-wrapper">
+        <PatchQuestion width={200} height={200} opacity={0.25} />
+        <h1>Leider konnte der aufgerufene Inhalt nicht geladen werden...</h1>
+        <button type="button" onClick={() => router.back()}>
+          Zurück zur letzten Seite
+        </button>
+      </div>
     </StyledPlaceholder>
   );
 };

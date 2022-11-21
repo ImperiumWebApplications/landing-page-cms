@@ -11,7 +11,7 @@ import { goToStep } from '../../utils/goToStep';
 import { getCountryDetails } from '../../utils/getCountryDetails';
 import { getPostalCodeLength } from '../../utils/getPostalCodeLength';
 import { normalizeHostname } from '../../utils/normalizeHostname';
-import { NextAPI } from '../../lib/api/request';
+import { NextAPI } from '../../lib/next/api/request';
 
 import { StyledStepTitle } from './StepTitle';
 import { TextInput } from './TextInput';

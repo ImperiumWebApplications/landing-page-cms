@@ -1,11 +1,11 @@
-import type { QuestionnaireQuestion } from '../../backend-api';
+import type { Questionnaire } from '../../lib/strapi';
 import type { SingleChoiceEventHandler } from './SingleChoice';
 import { StyledStepTitle } from './StepTitle';
 import { SingleChoice } from './SingleChoice';
 import { Placeholder } from './Placeholder';
 
-export const Question: React.FunctionComponent<{
-  data: QuestionnaireQuestion;
+export const Question: React.FC<{
+  data: NonNullable<Questionnaire['questions']>[number];
   customSelectHandler?: SingleChoiceEventHandler;
 }> = ({ data, customSelectHandler }) => {
   if (!data.question || !data.answers) return <Placeholder />;

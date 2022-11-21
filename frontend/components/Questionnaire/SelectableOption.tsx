@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import Image from 'next/image';
 import { ReactSVG } from 'react-svg';
 
-import type { ImageObject } from '../../backend-api';
+import type { Media } from '../../lib/strapi';
 import { devices } from '../../config/breakpoints.config';
 import { isSvg } from '../../utils/isSvg';
 
@@ -129,10 +129,10 @@ const StyledSelectableOption = styled.div`
 export const SelectableOption: React.FunctionComponent<{
   label: string;
   selected: boolean;
-  icon?: ImageObject;
+  icon?: Media;
   onSelectHandler: (event: MouseEvent) => void;
 }> = ({ label, selected, icon, onSelectHandler }) => {
-  const isSvgIcon = isSvg(icon?.data?.attributes.ext);
+  const isSvgIcon = isSvg(icon?.data?.attributes?.ext);
 
   return (
     <StyledSelectableOption
@@ -141,15 +141,15 @@ export const SelectableOption: React.FunctionComponent<{
       data-selected={selected ? 'true' : 'false'}
     >
       <div className="icon">
-        {icon?.data && !isSvgIcon && (
+        {icon?.data?.attributes && !isSvgIcon && (
           <Image
             src={icon.data.attributes.url}
-            alt={icon.data.attributes.alternativeText}
+            alt={icon.data.attributes.alternativeText ?? ''}
             width={icon.data.attributes.width}
             height={icon.data.attributes.height}
           />
         )}
-        {icon?.data && isSvgIcon && (
+        {icon?.data?.attributes && isSvgIcon && (
           <ReactSVG
             loading={() => <div className="icon-placeholder" />}
             fallback={() => <div className="icon-placeholder" />}
