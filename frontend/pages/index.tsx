@@ -7,7 +7,7 @@ import { Layout } from '../components/Layout';
 
 const IndexPage: NextPage<{ content: LandingPage }> = ({ content }) => {
   const SectionManager = initSectionManager(content);
-  console.log(SectionManager);
+
   return (
     <Layout content={content}>
       {SectionManager.Hero}

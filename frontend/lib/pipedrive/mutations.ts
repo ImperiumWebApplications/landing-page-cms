@@ -1,6 +1,7 @@
 import { Pipedrive } from '.';
-import { ContactData } from '../../context/Questionnaire/state';
-import { FieldType } from './model';
+
+import type { QuestionnaireState } from '../../features/Questionnaire';
+import type { FieldType } from './model';
 
 export const createPersonField = async (
   token: string,
@@ -25,19 +26,17 @@ export const createPersonField = async (
 
 export const createPerson = async (
   token: string,
-  data: ContactData & { customFields: { [key: string]: string } },
+  data: QuestionnaireState['contact'] & {
+    customFields: { [key: string]: string | undefined };
+  },
 ) => {
   const res = await Pipedrive.instance.post(
     '/persons',
     {
       ...data.customFields,
-      name: `${data.firstName.value} ${data.lastName.value}`,
-      phone: [
-        { value: data.phone.value, primary: true, label: data.phone.label },
-      ],
-      email: [
-        { value: data.email.value, primary: true, label: data.email.label },
-      ],
+      name: `${data.firstName} ${data.lastName}`,
+      phone: [{ value: data.phone, primary: true, label: 'Telefon' }],
+      email: [{ value: data.email, primary: true, label: 'Email' }],
     },
     {
       params: { api_token: token },
@@ -51,16 +50,16 @@ export const createPerson = async (
 
 export const createPersonWithCustomPostalCodeField = async (
   token: string,
-  data: { contactData: ContactData },
+  data: { contactData: QuestionnaireState['contact'] },
 ) => {
   const postalCodeField = await Pipedrive.getCustomPostalCodeField(token, {
-    fieldLabel: data.contactData.postalCode.label,
+    fieldLabel: 'Postleitzahl',
   });
 
   return await createPerson(token, {
     ...data.contactData,
     customFields: {
-      [postalCodeField.key]: data.contactData.postalCode.value,
+      [postalCodeField.key]: data.contactData.postalCode,
     },
   });
 };

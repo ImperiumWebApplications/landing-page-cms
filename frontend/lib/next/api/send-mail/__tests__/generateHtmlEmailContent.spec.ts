@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import { resolve } from 'path';
+import { EmailTemplate } from '../../../../../features/Questionnaire';
 
-import { EmailTemplate } from '../../../../../config/emails.config';
 import { content } from '../../../../../mocks/lib/strapi/data';
 import { generateHtmlEmailContent } from '../utils/generateHtmlEmailContent';
 
@@ -50,7 +50,15 @@ describe('generateHtmlEmailContent', () => {
   it('should use correct template file path', () => {
     generateHtmlEmailContent({ ...defaultData });
     expect(mockedFs.existsSync).toHaveBeenCalledWith(
-      expect.stringContaining(resolve(process.cwd(), 'email')),
+      expect.stringContaining(
+        resolve(
+          process.cwd(),
+          'features',
+          'Questionnaire',
+          'email',
+          'templates',
+        ),
+      ),
     );
   });
 

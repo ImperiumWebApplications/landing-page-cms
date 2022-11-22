@@ -5,11 +5,13 @@ import type {
   Questionnaire as QuestionnaireType,
 } from '../../lib/strapi';
 import { Layout } from '../../components/Layout';
-import { QuestionnaireContextProvider } from '../../context/Questionnaire';
-import { Questionnaire } from '../../components/Questionnaire/Questionnaire';
-import { PagePlaceholder } from '../../components/Questionnaire/Placeholder';
+import { Questionnaire } from '../../features/Questionnaire/Questionnaire';
 import { getCountryByDomain } from '../../utils/getCountryByDomain';
 import { queryQuestionnairePageContent } from '../../lib/next/app';
+import {
+  QuestionnairePlaceholderPage,
+  QuestionnaireProvider,
+} from '../../features/Questionnaire';
 
 const QuestionnairePage: NextPage<{
   content: LandingPage;
@@ -17,18 +19,19 @@ const QuestionnairePage: NextPage<{
 }> = ({ content, questionnaire }) => {
   const country = getCountryByDomain(content.domain);
 
-  if (!questionnaire?.questions) return <PagePlaceholder content={content} />;
+  if (!questionnaire?.questions)
+    return <QuestionnairePlaceholderPage content={content} />;
 
   return (
     <Layout content={content}>
-      <QuestionnaireContextProvider>
+      <QuestionnaireProvider>
         <Questionnaire
           questions={questionnaire.questions}
           countries={country ? [country] : undefined}
           advantages={content.questionnaire?.advantage}
           phone={content.contact_phone}
         />
-      </QuestionnaireContextProvider>
+      </QuestionnaireProvider>
     </Layout>
   );
 };

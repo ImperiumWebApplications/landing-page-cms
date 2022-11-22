@@ -2,16 +2,18 @@ import React from 'react';
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
 
-import type { SingleChoiceEventHandler } from '../components/Questionnaire/SingleChoice';
-import { QuestionnaireContextProvider } from '../context/Questionnaire';
 import { Layout } from '../components/Layout';
-import { Questionnaire } from '../components/Questionnaire/Questionnaire';
-import { PagePlaceholder } from '../components/Questionnaire/Placeholder';
 import { questionnaireRoute } from '../config/navigation.config';
 import { slugifyRoute } from '../utils/slugifyRoute';
 import { getCountryByDomain } from '../utils/getCountryByDomain';
 import { LandingPage } from '../lib/strapi';
 import { queryLandingPageContent } from '../lib/next/app';
+import {
+  Questionnaire,
+  QuestionnairePlaceholderPage,
+  QuestionnaireProvider,
+} from '../features/Questionnaire';
+import { SingleChoiceEventHandler } from '../features/Questionnaire/components/SingleChoice';
 
 const EntryQuestionnairePage: NextPage<{ content: LandingPage }> = ({
   content,
@@ -19,7 +21,7 @@ const EntryQuestionnairePage: NextPage<{ content: LandingPage }> = ({
   const { questionnaire } = content;
   const router = useRouter();
 
-  if (!questionnaire) return <PagePlaceholder content={content} />;
+  if (!questionnaire) return <QuestionnairePlaceholderPage content={content} />;
 
   const entryQuestion = {
     id: -1,
@@ -40,14 +42,14 @@ const EntryQuestionnairePage: NextPage<{ content: LandingPage }> = ({
 
   return (
     <Layout content={content}>
-      <QuestionnaireContextProvider>
+      <QuestionnaireProvider>
         <Questionnaire
           questions={[entryQuestion]}
           countries={country ? [country] : undefined}
           advantages={questionnaire.advantage}
           customSelectHandler={selectHandler}
         />
-      </QuestionnaireContextProvider>
+      </QuestionnaireProvider>
     </Layout>
   );
 };

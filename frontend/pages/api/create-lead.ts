@@ -2,11 +2,11 @@ import type { NextApiRequest } from 'next';
 import { withSentry } from '@sentry/nextjs';
 
 import type { DefaultApiRouteResponse } from '../../lib/next/api/response';
-import { EmailTemplate } from '../../config/emails.config';
-import { normalizeHostname } from '../../utils/normalizeHostname';
+import type { CreateLeadInPipedriveProps } from '../../lib/next/api/create-lead';
+import { EmailTemplate } from '../../features/Questionnaire';
 import { InternalAPI } from '../../lib/next/api/internal';
 import { captureNextAPIError, getErrorMessage } from '../../lib/next/api/error';
-import { CreateLeadInPipedriveProps } from '../../lib/next/api/create-lead';
+import { normalizeHostname } from '../../utils/normalizeHostname';
 
 export interface CreateLeadApiRequest extends NextApiRequest {
   body: CreateLeadInPipedriveProps;
@@ -26,11 +26,12 @@ export const handler = async (
         template: EmailTemplate.Confirmation,
         payload: { questionnaire: data.questionnaire },
         recipient: {
-          firstName: data.contact.firstName.value,
-          lastName: data.contact.lastName.value,
-          email: data.contact.email.value,
-          phone: data.contact.phone.value,
-          postalCode: data.contact.postalCode.value,
+          // We type-check data.contact in retrieveDataFromRequestBody
+          firstName: data.contact.firstName!,
+          lastName: data.contact.lastName!,
+          email: data.contact.email!,
+          phone: data.contact.phone!,
+          postalCode: data.contact.postalCode!,
         },
       }),
     ]);
@@ -62,11 +63,20 @@ export const retrieveDataFromRequestBody = (req: CreateLeadApiRequest) => {
     const contact = req.body.contact;
     const questionnaire = req.body.questionnaire;
 
-    if (!host || !contact || !questionnaire?.length)
+    if (!host || !isContactDataComplete(contact) || !questionnaire?.length)
       throw new Error('Missing or invalid form data.');
 
     return { host, contact, questionnaire };
   } catch (error) {
     throw error;
   }
+};
+
+const isContactDataComplete = (
+  data: CreateLeadApiRequest['body']['contact'],
+) => {
+  const values = Object.values(data);
+  if (values.length === 0) return false;
+
+  return !values.some((value) => typeof value === 'undefined');
 };

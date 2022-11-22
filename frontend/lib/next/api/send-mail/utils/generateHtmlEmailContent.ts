@@ -4,11 +4,11 @@ import { compile } from 'handlebars';
 import mjml2html from 'mjml';
 
 import type { LandingPage } from '../../../../strapi';
-import type {
+import {
   EmailTemplate,
   EmailTemplateContext,
   EmailTemplatePayload,
-} from '../../../../../config/emails.config';
+} from '../../../../../features/Questionnaire';
 
 export const generateHtmlEmailContent = ({
   recipient,
@@ -28,7 +28,13 @@ export const generateHtmlEmailContent = ({
   content: EmailTemplatePayload[keyof typeof EmailTemplate];
 }) => {
   try {
-    const templateDirectory = resolve(process.cwd(), 'email');
+    const templateDirectory = resolve(
+      process.cwd(),
+      'features',
+      'Questionnaire',
+      'email',
+      'templates',
+    );
     const templateFileName = `${template.toLowerCase()}.mjml`;
     const templateFilePath = join(templateDirectory, templateFileName);
 

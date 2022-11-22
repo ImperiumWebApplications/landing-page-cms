@@ -1,25 +1,15 @@
-export type Validator = {
-  regex: RegExp;
-  message: string;
-};
+export const ContactFields = {
+  Salutation: 'salutation',
+  FirstName: 'firstName',
+  LastName: 'lastName',
+  Email: 'email',
+  Phone: 'phone',
+  PostalCode: 'postalCode',
+  City: 'city',
+  TermsAccepted: 'acceptedTerms',
+} as const;
 
-export enum ContactFields {
-  Salutation = 'salutation',
-  FirstName = 'firstName',
-  LastName = 'lastName',
-  Email = 'email',
-  Phone = 'phone',
-  PostalCode = 'postalCode',
-  City = 'city',
-  TermsAccepted = 'acceptedTerms',
-}
-
-export const hiddenFieldsOnContactForm = [
-  ContactFields.PostalCode,
-  ContactFields.City,
-];
-
-export const formFieldLabelConfiguration = {
+export const ContactFieldLabelMap = {
   [ContactFields.Salutation]: ['Frau', 'Herr'],
   [ContactFields.FirstName]: 'Vorname',
   [ContactFields.LastName]: 'Nachname',
@@ -29,11 +19,11 @@ export const formFieldLabelConfiguration = {
   [ContactFields.City]: 'Stadt',
   [ContactFields.TermsAccepted]:
     'Ja, ich stimme der Datenschutzerklärung zu. (Widerruf jederzeit möglich)',
-};
+} as const;
 
-// Add specific validators for a given field.
-// By default, each field has a check for being non-empty.
-export const formFieldValidations: { [key: string]: Validator[] } = {
+export const ContactFieldValidations: {
+  [key: string]: Validator[];
+} = {
   [ContactFields.Salutation]: [],
   [ContactFields.FirstName]: [],
   [ContactFields.LastName]: [],
@@ -57,4 +47,9 @@ export const formFieldValidations: { [key: string]: Validator[] } = {
       message: 'Bitte geben Sie eine gültige Postleitzahl ein.',
     },
   ],
+};
+
+export type Validator = {
+  regex: RegExp;
+  message: string;
 };

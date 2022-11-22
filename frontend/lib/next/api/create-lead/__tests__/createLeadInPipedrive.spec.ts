@@ -14,6 +14,7 @@ import {
 import { StrapiMockHandlers } from '../../../../../mocks/lib/strapi/api';
 import { PipedriveMockHandlers } from '../../../../../mocks/lib/pipedrive/api';
 import { Pipedrive } from '../../../../pipedrive';
+import { ContactFields } from '../../../../../config/form.config';
 
 jest.mock('@sentry/nextjs');
 
@@ -79,7 +80,7 @@ describe('lib/next/api/create-lead', () => {
         ...defaultData,
         contact: {
           ...defaultData.contact,
-          postalCode: { ...defaultData.contact.postalCode, value: '22303' },
+          [ContactFields.PostalCode]: '22303',
         },
       }),
     ).toEqual({
@@ -88,10 +89,8 @@ describe('lib/next/api/create-lead', () => {
       person: {
         '3fe99f5caa3feebc1ceca9ec0c6ec7ad2a779bd4': '22303 Hamburg Winterhude',
         name: 'first name last name',
-        phone: [{ value: '1234567890', primary: true, label: 'Telefonnummer' }],
-        email: [
-          { value: 'test@test.de', primary: true, label: 'E-Mail Adresse' },
-        ],
+        phone: [{ value: '1234567890', primary: true, label: 'Telefon' }],
+        email: [{ value: 'test@test.de', primary: true, label: 'Email' }],
       },
     });
   });

@@ -26,10 +26,7 @@ describe('enrichPostalCodeValue', () => {
         host: 'craftsman24.de',
         contactData: {
           ...contactDataMock,
-          city: {
-            ...contactDataMock.city,
-            value: '',
-          },
+          city: '',
         },
       }),
     ).toEqual('22303 Hamburg Winterhude');
