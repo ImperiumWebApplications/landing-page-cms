@@ -10,6 +10,7 @@ import {
   createUnsuccessfulResponse,
   setupAPIMockServer,
 } from '../../../mocks/utils/mock-rest-api';
+import { PIPEDRIVE_API_URL } from '../instance';
 
 jest.mock('@sentry/nextjs');
 
@@ -29,9 +30,7 @@ describe('pipedrive sdk', () => {
   });
 
   it('should return an error if Pipedrive response is not OK', async () => {
-    server.use(
-      createUnsuccessfulResponse(Pipedrive.instance.getUri() + '/users/me'),
-    );
+    server.use(createUnsuccessfulResponse(PIPEDRIVE_API_URL + '/users/me'));
     const result = async () => await Pipedrive.getCurrentUser('ds');
     await expect(result).rejects.toThrow();
   });

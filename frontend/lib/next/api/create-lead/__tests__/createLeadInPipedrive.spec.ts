@@ -13,8 +13,8 @@ import {
 } from '../../../../../mocks/lib/pipedrive/data';
 import { StrapiMockHandlers } from '../../../../../mocks/lib/strapi/api';
 import { PipedriveMockHandlers } from '../../../../../mocks/lib/pipedrive/api';
-import { Pipedrive } from '../../../../pipedrive';
 import { ContactFields } from '../../../../../config/form.config';
+import { PIPEDRIVE_API_URL } from '../../../../pipedrive/instance';
 
 jest.mock('@sentry/nextjs');
 
@@ -40,15 +40,12 @@ const defaultData: CreateLeadInPipedriveProps = {
 };
 
 export const createUnknownPersonResponse = () => {
-  return rest.get(
-    Pipedrive.instance.getUri() + '/persons/search',
-    (_, res, ctx) => {
-      return res(
-        ctx.status(200),
-        ctx.body(JSON.stringify({ success: true, data: { items: [] } })),
-      );
-    },
-  );
+  return rest.get(PIPEDRIVE_API_URL + '/persons/search', (_, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.body(JSON.stringify({ success: true, data: { items: [] } })),
+    );
+  });
 };
 
 describe('lib/next/api/create-lead', () => {
@@ -97,25 +94,19 @@ describe('lib/next/api/create-lead', () => {
 
   it('should throw error if createPerson fails', async () => {
     server.use(createUnknownPersonResponse());
-    server.use(
-      createErrorResponse(Pipedrive.instance.getUri() + '/personFields'),
-    );
+    server.use(createErrorResponse(PIPEDRIVE_API_URL + '/personFields'));
     const result = async () => await createLeadInPipedrive({ ...defaultData });
     await expect(result).rejects.toThrow('Request failed with status code 500');
   });
 
   it('should throw error if createLead fails', async () => {
-    server.use(
-      createErrorResponse(Pipedrive.instance.getUri() + '/leads', 'post'),
-    );
+    server.use(createErrorResponse(PIPEDRIVE_API_URL + '/leads', 'post'));
     const result = async () => await createLeadInPipedrive({ ...defaultData });
     await expect(result).rejects.toThrow('Request failed with status code 500');
   });
 
   it('should throw error if createNote fails', async () => {
-    server.use(
-      createErrorResponse(Pipedrive.instance.getUri() + '/notes', 'post'),
-    );
+    server.use(createErrorResponse(PIPEDRIVE_API_URL + '/notes', 'post'));
     const result = async () => await createLeadInPipedrive({ ...defaultData });
     await expect(result).rejects.toThrow('Request failed with status code 500');
   });
