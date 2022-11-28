@@ -18,6 +18,7 @@ import { Confirmation } from './components/Confirmation';
 import { Progress } from './components/Progress';
 import { BackButton } from './components/BackButton';
 import { useQuestionnaireContext } from './context/Questionnaire';
+import { FormWrapper } from '../../components/Layout';
 
 const StyledQuestionnaire = styled.div`
   height: 100%;
@@ -107,7 +108,7 @@ export const Questionnaire: React.FC<QuestionnaireProps> = ({
 
   return (
     <StyledQuestionnaire id="questionnaire">
-      <div className="content-wrapper">
+      <FormWrapper className="content-wrapper">
         <Progress percentage={progress} />
         <div className="header">
           <BackButton hide={state.index === 0 || isFormSuccessStep} />
@@ -125,7 +126,7 @@ export const Questionnaire: React.FC<QuestionnaireProps> = ({
           {isFormSuccessStep && <Confirmation phone={phone} />}
         </div>
         <Advantages content={advantages} />
-      </div>
+      </FormWrapper>
     </StyledQuestionnaire>
   );
 };

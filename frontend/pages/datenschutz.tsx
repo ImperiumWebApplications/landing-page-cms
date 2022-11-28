@@ -6,7 +6,7 @@ import ReactMarkdown from 'react-markdown';
 
 import type { LandingPage, StaticContent } from '../lib/strapi';
 import { queryStaticPageContent } from '../lib/next/app';
-import { Layout } from '../components/Layout';
+import { Layout } from '../components/Layout/Layout';
 import { populateMarkdownTemplate } from '../utils/populateMarkdownTemplate';
 
 const ClientSideOnlyArticle = dynamic<{ children: ReactElement }>(

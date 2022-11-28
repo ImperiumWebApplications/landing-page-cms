@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { PatchQuestion } from '@styled-icons/bootstrap';
 
 import type { LandingPage } from '../../lib/strapi';
-import { Layout } from '../../components/Layout';
+import { Layout } from '../../components/Layout/Layout';
 
 const StyledPlaceholder = styled.div`
   margin: 4rem auto;

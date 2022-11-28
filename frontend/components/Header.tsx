@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
 
 import type { LandingPage } from '../lib/strapi';
-import { headerButton } from '../config/navigation.config';
+import {
+  appointmentRoute,
+  questionnaireRoute,
+} from '../config/navigation.config';
 import { MobileNavigation } from './MobileNavigation';
 import { Logo } from './Logo';
 import { Button } from './Button';
@@ -54,25 +57,32 @@ export const Header: React.FC<{
   content: LandingPage;
 }> = ({ content }) => {
   const _isFunnelRoute = isFunnelRoute(useRouter());
-  const isCallFunnelTarget = content.funnel_target === 'Appointment';
+
+  const Navigation = useMemo(() => {
+    if (_isFunnelRoute) return undefined;
+
+    return (
+      <>
+        <Button
+          href={
+            content.funnel_target === 'Appointment'
+              ? appointmentRoute
+              : questionnaireRoute
+          }
+          label="Lassen Sie sich beraten"
+          className="button"
+        />
+        <MobileNavigation />
+      </>
+    );
+  }, [content.funnel_target, _isFunnelRoute]);
 
   return (
     <StyledHeader id="header" centerLogo={_isFunnelRoute}>
       <Animation className="animated-header" type="fadeDown" duration={200}>
         <div className="content-wrapper">
           <Logo image={content.logo?.data.attributes} />
-          {!_isFunnelRoute && (
-            <>
-              {!isCallFunnelTarget && (
-                <Button
-                  href={headerButton.href}
-                  label={headerButton.label}
-                  className="button"
-                />
-              )}
-              <MobileNavigation />
-            </>
-          )}
+          {Navigation}
         </div>
       </Animation>
     </StyledHeader>

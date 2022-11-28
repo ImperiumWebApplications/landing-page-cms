@@ -11,9 +11,9 @@ import '../styles/global.css';
 
 // if (isTestEnvironment()) {
 //   (async () => {
-//     const { backendAPIMockHandlers } = await import('../mocks/backend-api');
+//     const { StrapiMockHandlers } = await import('../mocks/lib/strapi/api');
 //     const { startAPIMockServer } = await import('../mocks/utils/mock-rest-api');
-//     await startAPIMockServer(backendAPIMockHandlers);
+//     await startAPIMockServer(StrapiMockHandlers);
 //   })();
 // }
 

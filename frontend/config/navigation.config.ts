@@ -5,6 +5,7 @@ interface NavigationItem {
 }
 
 export const questionnaireRoute = 'fragebogen';
+export const appointmentRoute = 'termin';
 
 export const navigationItems: NavigationItem[] = [
   {
@@ -20,11 +21,6 @@ export const navigationItems: NavigationItem[] = [
     label: 'Datenschutz',
   },
 ];
-
-export const headerButton: NavigationItem = {
-  href: `/${questionnaireRoute}`,
-  label: 'Lassen Sie sich beraten',
-};
 
 export const startQuestionnaire: NavigationItem = {
   href: `/${questionnaireRoute}`,

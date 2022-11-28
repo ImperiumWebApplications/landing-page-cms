@@ -2,7 +2,7 @@ import React from 'react';
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
 
-import { Layout } from '../components/Layout';
+import { Layout } from '../components/Layout/Layout';
 import { questionnaireRoute } from '../config/navigation.config';
 import { slugifyRoute } from '../utils/slugifyRoute';
 import { getCountryByDomain } from '../utils/getCountryByDomain';

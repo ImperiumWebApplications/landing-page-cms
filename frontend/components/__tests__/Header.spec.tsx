@@ -2,7 +2,6 @@ import { fireEvent } from '@testing-library/react';
 import { useRouter } from 'next/router';
 import React from 'react';
 import {
-  headerButton,
   navigationItems,
   questionnaireRoute,
 } from '../../config/navigation.config';
@@ -38,8 +37,8 @@ describe('Header', () => {
     const logoLink = getByLabelText('Homepage');
     expect(logoLink).toHaveAttribute('href', '/');
 
-    const button = getByText(headerButton.label);
-    expect(button).toHaveAttribute('href', headerButton.href);
+    const button = getByText('Lassen Sie sich beraten');
+    expect(button).toHaveAttribute('href', '/fragebogen');
     expect(button).toHaveAttribute('role', 'button');
   });
 
@@ -58,7 +57,7 @@ describe('Header', () => {
     const logoLink = getByLabelText('Homepage');
     expect(logoLink).toBeInTheDocument();
 
-    const button = queryByText(headerButton.label);
+    const button = queryByText('Lassen Sie sich beraten');
     expect(button).not.toBeInTheDocument();
   });
 

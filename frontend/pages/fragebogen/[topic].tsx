@@ -4,7 +4,7 @@ import type {
   LandingPage,
   Questionnaire as QuestionnaireType,
 } from '../../lib/strapi';
-import { Layout } from '../../components/Layout';
+import { Layout } from '../../components/Layout/Layout';
 import { Questionnaire } from '../../features/Questionnaire/Questionnaire';
 import { getCountryByDomain } from '../../utils/getCountryByDomain';
 import { queryQuestionnairePageContent } from '../../lib/next/app';

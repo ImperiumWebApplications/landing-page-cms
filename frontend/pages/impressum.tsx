@@ -6,7 +6,7 @@ import ReactMarkdown from 'react-markdown';
 
 import type { LandingPage, StaticContent } from '../lib/strapi';
 import { queryStaticPageContent } from '../lib/next/app';
-import { Layout } from '../components/Layout';
+import { Layout } from '../components/Layout/Layout';
 import { populateMarkdownTemplate } from '../utils/populateMarkdownTemplate';
 import { getCountryByDomain } from '../utils/getCountryByDomain';
 import { Country } from '../config/countries.config';

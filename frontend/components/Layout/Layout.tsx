@@ -4,26 +4,26 @@ import { useRouter } from 'next/router';
 import { NextSeo } from 'next-seo';
 import { ThemeProvider } from 'styled-components';
 
-import type { LandingPage } from '../lib/strapi';
+import type { LandingPage } from '../../lib/strapi';
 import {
   sendEventToAnalytics,
   TagManager,
   TagManagerEvents,
-} from '../lib/analytics';
+} from '../../lib/analytics';
 
-import type { CookieConsentProps } from '../components/CookieConsent';
-import { Footer } from './Footer';
-import { Header } from './Header';
-import { Head } from './Head';
+import type { CookieConsentProps } from '../CookieConsent';
+import { Footer } from '../Footer';
+import { Header } from '../Header';
+import { Head } from '../Head';
 
-import { extractSeoProps } from '../config/seo.config';
-import { configureTheme, GlobalStyle } from '../config/theme.config';
+import { extractSeoProps } from '../../config/seo.config';
+import { configureTheme, GlobalStyle } from '../../config/theme.config';
 
-import { isFunnelRoute } from '../utils/isFunnelRoute';
-import { useCookieConsent } from '../hooks/useCookieConsent';
+import { isFunnelRoute } from '../../utils/isFunnelRoute';
+import { useCookieConsent } from '../../hooks/useCookieConsent';
 
 const ClientSideOnlyCookieConsent = dynamic<CookieConsentProps>(
-  () => import('../components/CookieConsent').then((mod) => mod.CookieConsent),
+  () => import('../CookieConsent').then((mod) => mod.CookieConsent),
   { ssr: false },
 );
 
@@ -58,6 +58,14 @@ export const Layout: React.FC<LayoutProps> = ({ children, content }) => {
 
   return (
     <ThemeProvider theme={theme}>
+      <style>{`
+        :root {
+          --color-primary: ${theme.colors.primary};
+          --color-secondary: ${theme.colors.secondary};
+          --color-tertiary: ${theme.colors.tertiary};
+          --color-gray: ${theme.colors.text};
+        }
+      `}</style>
       <GlobalStyle isFunnelRoute={isFunnelRoute(router)} />
       <NextSeo {...extractSeoProps(content)} />
       <Head theme={theme} brand={content.brand_name} />
