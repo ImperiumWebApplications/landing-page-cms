@@ -1,5 +1,3 @@
-import { QuestionnaireState } from '../context/Questionnaire';
-
 export enum EmailTemplate {
   'Confirmation' = 'Confirmation',
 }
@@ -10,7 +8,7 @@ export const EmailSubject = {
 
 export interface EmailTemplatePayload {
   [EmailTemplate.Confirmation]: {
-    questionnaire: QuestionnaireState['questionnaire'];
+    questionnaire?: { question: string; answer: string }[];
   };
 }
 

@@ -27,7 +27,7 @@ afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
 
 const defaultData: SendMailProps = {
-  host: 'test.com',
+  domain: 'test.com',
   template: 'Confirmation',
   recipient: {
     firstName: 'FirstName',
@@ -39,8 +39,8 @@ const defaultData: SendMailProps = {
   payload: {
     questionnaire: [
       {
-        answer: { id: 1, value: 'Answer 1' },
-        question: { id: 1, value: 'Question 1' },
+        answer: 'Answer 1',
+        question: 'Question 1',
       },
     ],
   },
@@ -71,7 +71,7 @@ describe('lib/api/send-mail', () => {
   });
 
   it('should call sendMail with correct params for craftsman24', async () => {
-    await sendMail({ ...defaultData, host: 'craftsman24.ch' });
+    await sendMail({ ...defaultData, domain: 'craftsman24.ch' });
     expect(sendMailMock).toBeCalledWith(
       expect.objectContaining({
         bcc: 'leads@craftsman24.ch',

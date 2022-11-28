@@ -1,37 +1,32 @@
-import type { NextApiRequest } from 'next';
+import type { NextApiRequest, NextApiResponse } from 'next';
 import { withSentry } from '@sentry/nextjs';
 
-import type { DefaultApiRouteResponse } from '../../lib/next/api/response';
-import type { CreateLeadInPipedriveProps } from '../../lib/next/api/create-lead';
-import { EmailTemplate } from '../../features/Questionnaire';
-import { InternalAPI } from '../../lib/next/api/internal';
+import {
+  createLeadInCMS,
+  // createLeadInPipedrive,
+  validateRequestBody,
+} from '../../lib/next/api/create-lead';
+import { sendMail } from '../../lib/next/api/send-mail';
 import { captureNextAPIError, getErrorMessage } from '../../lib/next/api/error';
-import { normalizeHostname } from '../../utils/normalizeHostname';
+import { EmailTemplate } from '../../features/Questionnaire';
 
-export interface CreateLeadApiRequest extends NextApiRequest {
-  body: CreateLeadInPipedriveProps;
-}
-
-export const handler = async (
-  req: CreateLeadApiRequest,
-  res: DefaultApiRouteResponse,
-) => {
+export const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
-    const data = retrieveDataFromRequestBody(req);
+    const data = validateRequestBody(req);
 
     await Promise.all([
-      await InternalAPI.createLeadInPipedrive(data),
-      await InternalAPI.sendMail({
-        host: data.host,
+      // await createLeadInPipedrive(data),
+      await createLeadInCMS(data),
+      await sendMail({
+        domain: data.domain,
         template: EmailTemplate.Confirmation,
-        payload: { questionnaire: data.questionnaire },
+        payload: { questionnaire: data.questionnaireResults },
         recipient: {
-          // We type-check data.contact in retrieveDataFromRequestBody
-          firstName: data.contact.firstName!,
-          lastName: data.contact.lastName!,
-          email: data.contact.email!,
-          phone: data.contact.phone!,
-          postalCode: data.contact.postalCode!,
+          firstName: data.contact.firstName,
+          lastName: data.contact.lastName,
+          email: data.contact.email,
+          phone: data.contact.phone,
+          postalCode: data.contact.postalCode,
         },
       }),
     ]);
@@ -45,38 +40,3 @@ export const handler = async (
 };
 
 export default withSentry(handler);
-
-/**
- *
- * HELPER FUNCTIONS
- *
- */
-
-export const retrieveDataFromRequestBody = (req: CreateLeadApiRequest) => {
-  try {
-    if (req.method !== 'POST') throw new Error('Unsupported HTTP method.');
-
-    if (req.query.API_ROUTE !== process.env.NEXT_PUBLIC_API_ROUTE)
-      throw new Error('Missing or invalid public API route query param.');
-
-    const host = normalizeHostname(req.body.host ?? req.headers?.host);
-    const contact = req.body.contact;
-    const questionnaire = req.body.questionnaire;
-
-    if (!host || !isContactDataComplete(contact) || !questionnaire?.length)
-      throw new Error('Missing or invalid form data.');
-
-    return { host, contact, questionnaire };
-  } catch (error) {
-    throw error;
-  }
-};
-
-const isContactDataComplete = (
-  data: CreateLeadApiRequest['body']['contact'],
-) => {
-  const values = Object.values(data);
-  if (values.length === 0) return false;
-
-  return !values.some((value) => typeof value === 'undefined');
-};

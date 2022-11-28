@@ -1,44 +1,23 @@
-import {
-  createHTMLTable,
-  QuestionnaireState,
-} from '../../../../features/Questionnaire';
-import { Pipedrive } from '../../../pipedrive';
-import { Strapi } from '../../../strapi';
-import { enrichPostalCodeValue } from './utils/enrichPostalCodeValue';
+import { isDevEnvironment } from '../../../../utils/isDevEnvironment';
+import { CreateLeadRequest } from './validator';
 
-export type CreateLeadInPipedriveProps = {
-  host: string;
-  contact: QuestionnaireState['contact'];
-  questionnaire: QuestionnaireState['questionnaire'];
-};
+export * from './create-lead';
+export * from './validator';
 
-export const createLeadInPipedrive = async (
-  data: CreateLeadInPipedriveProps,
-) => {
-  const api = await Strapi.getPipedriveApi(data.host);
-  const token = api?.attributes?.api_token;
-  if (!token) throw new Error('Missing Pipedrive token for domain.');
+export const createLeadFetcher = (data: CreateLeadRequest['body']) => {
+  if (!data.domain) return Promise.reject();
 
-  data.contact.postalCode = enrichPostalCodeValue({
-    host: data.host,
-    contactData: data.contact,
+  const API_ROUTE = `/api/create-lead?API_ROUTE=${
+    process.env.NEXT_PUBLIC_API_ROUTE ?? ''
+  }`;
+
+  const API = isDevEnvironment(data.domain)
+    ? `http://${data.domain}${API_ROUTE}`
+    : `https://${data.domain}${API_ROUTE}`;
+
+  return fetch(API, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
   });
-
-  const person =
-    (await Pipedrive.getPersonByEmail(token, data.contact.email ?? '')) ??
-    (await Pipedrive.createPersonWithCustomPostalCodeField(token, {
-      contactData: data.contact,
-    }));
-
-  const lead = await Pipedrive.createLead(token, {
-    person_id: person.id,
-    title: `${person.name} (${data.host})`,
-  });
-
-  const note = await Pipedrive.createNote(token, {
-    lead_id: lead.id,
-    content: createHTMLTable(data.questionnaire),
-  });
-
-  return { person, lead, note };
 };

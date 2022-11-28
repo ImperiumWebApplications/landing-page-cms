@@ -20,7 +20,7 @@ import { useQuestionnaireContext } from '../context/Questionnaire';
 import { getCountryDetails } from '../../../utils/getCountryDetails';
 import { getPostalCodeLength } from '../../../utils/getPostalCodeLength';
 import { normalizeHostname } from '../../../utils/normalizeHostname';
-import { NextAPI } from '../../../lib/next/api/request';
+import { NextAPI } from '../../../lib/next/api';
 
 const StyledPostalCode = styled.div`
   max-width: 45rem;
@@ -131,15 +131,15 @@ export const PostalCode: React.FunctionComponent<{
     if (!showCitySelect || isTypingCode || isSameCode) return;
     if (isRemovingCode) return setCities([]);
 
-    const host = normalizeHostname(window.location.host);
-    if (!host) return;
+    const domain = normalizeHostname(window.location.host);
+    if (!domain) return;
 
     const fetchAndUpdateCities = async () => {
       try {
         setIsLoading(true);
         const res = await (
           await NextAPI.getPostalCodeDetails({
-            host,
+            domain,
             code,
             countries,
           })

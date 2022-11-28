@@ -1,7 +1,7 @@
 import { fireEvent, waitFor } from '@testing-library/react';
 import { Country } from '../../../config/countries.config';
 import { renderWithLayout } from '../../../jest.setup';
-import { NextAPI } from '../../../lib/next/api/request';
+import { NextAPI } from '../../../lib/next/api';
 import { setBrowserHistoryState } from '../../../utils/setBrowserHistoryState';
 import { PostalCode } from '../components/PostalCode';
 import { QuestionnaireProvider } from '../context/Questionnaire';
@@ -10,7 +10,7 @@ jest.mock('../../../utils/setBrowserHistoryState', () => ({
   setBrowserHistoryState: jest.fn(),
 }));
 
-jest.mock('../../../lib/next/api/request', () => ({
+jest.mock('../../../lib/next/api', () => ({
   NextAPI: {
     getPostalCodeDetails: jest.fn(),
   },
@@ -92,7 +92,7 @@ describe('PostalCode', () => {
     await waitFor(() => {
       expect(NextAPI.getPostalCodeDetails).toHaveBeenCalledTimes(1);
       expect(NextAPI.getPostalCodeDetails).toHaveBeenCalledWith({
-        host: 'localhost',
+        domain: 'localhost',
         code: '22303',
         countries: [Country.Germany],
       });

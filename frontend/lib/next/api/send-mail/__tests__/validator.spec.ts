@@ -1,6 +1,5 @@
 import { NextApiRequest } from 'next';
-
-import { retrieveDataFromRequestBody } from '../send-mail';
+import { validateRequestBody } from '../validator';
 
 jest.mock('@sentry/nextjs');
 
@@ -8,7 +7,7 @@ const DEFAULT_REQ = {
   method: 'POST',
   query: { PRIVATE_API_ROUTE: 'test_api_route' },
   body: {
-    host: 'test.com',
+    domain: 'test.com',
     template: 'Confirmation',
     recipient: {
       firstName: 'FirstName',
@@ -28,10 +27,10 @@ const DEFAULT_REQ = {
   },
 } as unknown as NextApiRequest;
 
-describe('pages/api/send-mail/retrieveDataFromRequestBody', () => {
+describe('lib/api/send-mail/validator', () => {
   it('should throw error for unsupported HTTP method', () => {
     expect(() => {
-      retrieveDataFromRequestBody({
+      validateRequestBody({
         ...DEFAULT_REQ,
         method: 'GET',
       } as NextApiRequest);
@@ -40,7 +39,7 @@ describe('pages/api/send-mail/retrieveDataFromRequestBody', () => {
 
   it('should throw error for missing query param', () => {
     expect(() => {
-      retrieveDataFromRequestBody({
+      validateRequestBody({
         ...DEFAULT_REQ,
         query: {},
       } as NextApiRequest);
@@ -49,7 +48,7 @@ describe('pages/api/send-mail/retrieveDataFromRequestBody', () => {
 
   it('should throw error for unknown email template', () => {
     expect(() => {
-      retrieveDataFromRequestBody({
+      validateRequestBody({
         ...DEFAULT_REQ,
         body: {
           ...DEFAULT_REQ.body,
@@ -61,11 +60,11 @@ describe('pages/api/send-mail/retrieveDataFromRequestBody', () => {
 
   it('should return data for known email template', () => {
     expect(
-      retrieveDataFromRequestBody({
+      validateRequestBody({
         ...DEFAULT_REQ,
       } as NextApiRequest),
     ).toEqual({
-      host: 'test.com',
+      domain: 'test.com',
       payload: {
         questionnaire: [
           {

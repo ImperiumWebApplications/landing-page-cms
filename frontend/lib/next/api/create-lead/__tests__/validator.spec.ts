@@ -1,7 +1,7 @@
-import { NextApiRequest } from 'next';
+import type { NextApiRequest } from 'next';
 
-import { contactDataMock } from '../../../mocks/questionnaire/data';
-import { retrieveDataFromRequestBody } from '../create-lead';
+import { contactDataMock } from '../../../../../mocks/questionnaire/data';
+import { validateRequestBody } from '../validator';
 
 jest.mock('@sentry/nextjs');
 
@@ -9,9 +9,9 @@ const DEFAULT_REQ = {
   method: 'POST',
   query: { API_ROUTE: 'test_public_api_route' },
   body: {
-    host: 'test.com',
+    domain: 'test.com',
     contact: contactDataMock,
-    questionnaire: [
+    questionnaireResults: [
       {
         question: { id: 1, value: 'Question' },
         answer: { id: 1, value: 'Answer ' },
@@ -20,10 +20,10 @@ const DEFAULT_REQ = {
   },
 } as unknown as NextApiRequest;
 
-describe('pages/api/create-lead/retrieveDataFromRequestBody', () => {
+describe('lib/next/api/create-lead/validator', () => {
   it('should throw error for unsupported HTTP method', () => {
     expect(() => {
-      retrieveDataFromRequestBody({
+      validateRequestBody({
         ...DEFAULT_REQ,
         method: 'GET',
       } as NextApiRequest);
@@ -32,7 +32,7 @@ describe('pages/api/create-lead/retrieveDataFromRequestBody', () => {
 
   it('should throw error for missing query param', () => {
     expect(() => {
-      retrieveDataFromRequestBody({
+      validateRequestBody({
         ...DEFAULT_REQ,
         query: {},
       } as NextApiRequest);
@@ -41,19 +41,19 @@ describe('pages/api/create-lead/retrieveDataFromRequestBody', () => {
 
   it('should throw error for missing hostname', () => {
     expect(() => {
-      retrieveDataFromRequestBody({
+      validateRequestBody({
         ...DEFAULT_REQ,
         body: {
           ...DEFAULT_REQ.body,
-          host: '',
+          domain: '',
         },
       } as NextApiRequest);
-    }).toThrow('Missing or invalid form data.');
+    }).toThrow('No domain provided.');
   });
 
   it('should throw error for missing contact data', () => {
     expect(() => {
-      retrieveDataFromRequestBody({
+      validateRequestBody({
         ...DEFAULT_REQ,
         body: {
           ...DEFAULT_REQ.body,
@@ -65,26 +65,24 @@ describe('pages/api/create-lead/retrieveDataFromRequestBody', () => {
 
   it('should throw error for missing questionnaire data', () => {
     expect(() => {
-      retrieveDataFromRequestBody({
+      validateRequestBody({
         ...DEFAULT_REQ,
         body: {
           ...DEFAULT_REQ.body,
-          questionnaire: [],
+          questionnaireResults: [],
         },
       } as NextApiRequest);
     }).toThrow('Missing or invalid form data.');
   });
 
   it('should return all data from the request body', () => {
-    expect(
-      retrieveDataFromRequestBody({ ...DEFAULT_REQ } as NextApiRequest),
-    ).toEqual({
+    expect(validateRequestBody({ ...DEFAULT_REQ } as NextApiRequest)).toEqual({
       contact: contactDataMock,
-      host: 'test.com',
-      questionnaire: [
+      domain: 'test.com',
+      questionnaireResults: [
         {
-          answer: { id: 1, value: 'Answer ' },
-          question: { id: 1, value: 'Question' },
+          answer: 'Answer ',
+          question: 'Question',
         },
       ],
     });

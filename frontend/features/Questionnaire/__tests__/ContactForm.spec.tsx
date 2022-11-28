@@ -4,13 +4,13 @@ import {
   renderWithLayout,
   SelectorMatcherOptions,
 } from '../../../jest.setup';
-import { NextAPI } from '../../../lib/next/api/request';
 import { sendEventToAnalytics } from '../../../lib/analytics/sendEventToAnalytics';
 import { isTrackingAllowed } from '../../../lib/analytics/isTrackingAllowed';
 import { waitFor } from '@testing-library/react';
 import { QuestionnaireProvider } from '../context/Questionnaire';
 import { ContactForm } from '../components/ContactForm';
 import { setBrowserHistoryState } from '../../../utils/setBrowserHistoryState';
+import { NextAPI } from '../../../lib/next/api';
 
 jest.mock('../../../lib/analytics/isTrackingAllowed', () => ({
   isTrackingAllowed: jest.fn(),
@@ -27,9 +27,9 @@ jest.mock('../../../lib/analytics/sendEventToAnalytics', () => ({
   },
 }));
 
-jest.mock('../../../lib/next/api/request', () => ({
+jest.mock('../../../lib/next/api', () => ({
   NextAPI: {
-    createLeadInPipedrive: jest.fn(),
+    createLead: jest.fn(),
   },
 }));
 
@@ -68,7 +68,7 @@ const ContactFormWithContext = () => (
 describe('ContactForm', () => {
   beforeEach(() => {
     jest.resetAllMocks();
-    (NextAPI.createLeadInPipedrive as jest.Mock).mockResolvedValue({
+    (NextAPI.createLead as jest.Mock).mockResolvedValue({
       status: 200,
       ok: true,
     } as Response);
@@ -117,7 +117,7 @@ describe('ContactForm', () => {
   });
 
   test('should render error message correctly', async () => {
-    (NextAPI.createLeadInPipedrive as jest.Mock).mockRejectedValue({
+    (NextAPI.createLead as jest.Mock).mockRejectedValue({
       status: 500,
       ok: false,
     } as Response);
@@ -181,7 +181,7 @@ describe('ContactForm', () => {
       <ContactFormWithContext />,
     );
 
-    expect(NextAPI.createLeadInPipedrive).toHaveBeenCalledTimes(0);
+    expect(NextAPI.createLead).toHaveBeenCalledTimes(0);
     fillContactForm(getByLabelText);
 
     await waitFor(() => {
@@ -189,8 +189,8 @@ describe('ContactForm', () => {
     });
 
     await waitFor(() => {
-      expect(NextAPI.createLeadInPipedrive).toHaveBeenCalledTimes(1);
-      expect(NextAPI.createLeadInPipedrive).toHaveBeenCalledWith({
+      expect(NextAPI.createLead).toHaveBeenCalledTimes(1);
+      expect(NextAPI.createLead).toHaveBeenCalledWith({
         contact: {
           acceptedTerms: true,
           email: 'Email',
@@ -199,8 +199,8 @@ describe('ContactForm', () => {
           phone: '0123456789',
           salutation: 'Frau',
         },
-        host: 'localhost',
-        questionnaire: [],
+        domain: 'localhost',
+        questionnaireResults: [],
       });
     });
   });

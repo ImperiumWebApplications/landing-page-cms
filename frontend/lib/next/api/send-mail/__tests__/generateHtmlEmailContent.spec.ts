@@ -27,8 +27,8 @@ const defaultData = {
   content: {
     questionnaire: [
       {
-        answer: { id: 1, value: 'Answer 1' },
-        question: { id: 1, value: 'Question 1' },
+        answer: 'Answer 1',
+        question: 'Question 1',
       },
     ],
   },
@@ -81,8 +81,8 @@ describe('generateHtmlEmailContent', () => {
       postalCode: '22303',
       questionnaire: [
         {
-          answer: { id: 1, value: 'Answer 1' },
-          question: { id: 1, value: 'Question 1' },
+          answer: 'Answer 1',
+          question: 'Question 1',
         },
       ],
     });

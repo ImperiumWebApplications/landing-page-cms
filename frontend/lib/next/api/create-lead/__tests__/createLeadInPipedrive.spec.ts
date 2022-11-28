@@ -1,7 +1,7 @@
 import type { SetupServerApi } from 'msw/node';
 import { rest } from 'msw';
 
-import { createLeadInPipedrive, CreateLeadInPipedriveProps } from '..';
+import { createLeadInPipedrive, CreateLeadProps } from '..';
 import { contactDataMock } from '../../../../../mocks/questionnaire/data';
 import {
   createErrorResponse,
@@ -28,13 +28,13 @@ beforeEach(() => jest.clearAllMocks());
 afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
 
-const defaultData: CreateLeadInPipedriveProps = {
-  host: 'test.com',
+const defaultData: CreateLeadProps = {
+  domain: 'test.com',
   contact: { ...contactDataMock },
-  questionnaire: [
+  questionnaireResults: [
     {
-      answer: { id: 1, value: 'Answer 1' },
-      question: { id: 1, value: 'Question 1' },
+      answer: 'Answer 1',
+      question: 'Question 1',
     },
   ],
 };

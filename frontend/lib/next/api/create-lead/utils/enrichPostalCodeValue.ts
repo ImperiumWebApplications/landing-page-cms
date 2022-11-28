@@ -19,7 +19,8 @@ export const enrichPostalCodeValue = ({
   const country = getCountryByDomain(host);
   if (!country) return `${contactData.postalCode}`;
 
-  const details = getPostalCodeDetails(contactData.postalCode ?? '', [country]);
+  const code = contactData.postalCode ?? '';
+  const details = getPostalCodeDetails({ code, countries: [country] });
   if (!details.length) return `${contactData.postalCode}`;
 
   return `${contactData.postalCode} ${details?.[0].place}`;

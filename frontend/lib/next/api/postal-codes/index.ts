@@ -1,26 +1,23 @@
-import type {
-  Country,
-  PostalCodeDetails,
-} from '../../../../config/countries.config';
-import { CountryPostalCodes } from './data';
+import type { PostalCodesRequest } from './validator';
+import { isDevEnvironment } from '../../../../utils/isDevEnvironment';
 
-/**
- * Search for a given postal code in all given countries.
- * And return accumulated search results for all countries.
- * @param countries: Country[]
- * @param code: string
- * @returns PostalCodeDetails[]
- */
+export * from './postal-codes';
+export * from './validator';
 
-export const getPostalCodeDetails = (code: string, countries: Country[]) => {
-  return countries.reduce((prev, countryCode) => {
-    try {
-      const details = (
-        CountryPostalCodes[countryCode] as PostalCodeDetails[]
-      ).filter((details) => details.zipcode === code);
-      return [...prev, ...details];
-    } catch (error) {
-      return prev;
-    }
-  }, [] as PostalCodeDetails[]);
+export const postalCodesFetcher = (data: PostalCodesRequest['body']) => {
+  if (!data.code) return Promise.reject();
+
+  const API_ROUTE = `/api/postal-codes?API_ROUTE=${
+    process.env.NEXT_PUBLIC_API_ROUTE ?? ''
+  }`;
+
+  const API = isDevEnvironment(data.domain)
+    ? `http://${data.domain}${API_ROUTE}`
+    : `https://${data.domain}${API_ROUTE}`;
+
+  return fetch(API, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  });
 };

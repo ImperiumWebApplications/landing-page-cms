@@ -3,7 +3,9 @@ import { Country } from '../../../../../config/countries.config';
 
 describe('getPostalCodeDetails', () => {
   it('should return multiple entries for a valid, known postal code', () => {
-    expect(getPostalCodeDetails('22303', [Country.Germany])).toEqual([
+    expect(
+      getPostalCodeDetails({ code: '22303', countries: [Country.Germany] }),
+    ).toEqual([
       {
         community: 'Hamburg, Freie und Hansestadt',
         community_code: '02000',
@@ -47,16 +49,23 @@ describe('getPostalCodeDetails', () => {
   });
 
   it('should return no entries for a valid, unknown postal code', () => {
-    expect(getPostalCodeDetails('22222', [Country.Germany])).toEqual([]);
+    expect(
+      getPostalCodeDetails({ code: '22222', countries: [Country.Germany] }),
+    ).toEqual([]);
   });
 
   it('should return no entries for an invalid postal code', () => {
-    expect(getPostalCodeDetails('2222', [Country.Germany])).toEqual([]);
+    expect(
+      getPostalCodeDetails({ code: '2222', countries: [Country.Germany] }),
+    ).toEqual([]);
   });
 
   it('should return multiple entries for a valid postal code with several countries', () => {
     expect(
-      getPostalCodeDetails('6300', [Country.Germany, Country.Switzerland]),
+      getPostalCodeDetails({
+        code: '6300',
+        countries: [Country.Germany, Country.Switzerland],
+      }),
     ).toEqual([
       {
         community: 'Zug',
@@ -87,7 +96,10 @@ describe('getPostalCodeDetails', () => {
     ]);
 
     expect(
-      getPostalCodeDetails('22303', [Country.Germany, Country.Switzerland]),
+      getPostalCodeDetails({
+        code: '22303',
+        countries: [Country.Germany, Country.Switzerland],
+      }),
     ).toEqual([
       {
         community: 'Hamburg, Freie und Hansestadt',

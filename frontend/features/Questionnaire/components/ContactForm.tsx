@@ -9,7 +9,6 @@ import {
   QuestionnaireState,
   useQuestionnaireContext,
 } from '../context/Questionnaire';
-import { NextAPI } from '../../../lib/next/api/request';
 import {
   isTrackingAllowed,
   sendEventToAnalytics,
@@ -26,6 +25,7 @@ import {
   ContactFieldValidations,
 } from '../../../config/form.config';
 import { CheckboxInput } from './CheckboxInput';
+import { NextAPI } from '../../../lib/next/api';
 
 const StyledContactForm = styled.div`
   max-width: 45rem;
@@ -131,9 +131,9 @@ export const ContactForm: React.FunctionComponent = () => {
       if (!process.env.NEXT_PUBLIC_API_ROUTE)
         throw new Error('Missing credentials for API route');
 
-      const res = await NextAPI.createLeadInPipedrive({
-        host: location.host,
-        questionnaire: state.questionnaire,
+      const res = await NextAPI.createLead({
+        domain: location.host,
+        questionnaireResults: state.questionnaire,
         contact: state.contact,
       });
 

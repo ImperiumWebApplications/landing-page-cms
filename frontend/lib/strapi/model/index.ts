@@ -9,4 +9,5 @@ export const CONTENT_TYPES = {
   STATIC_CONTENT: 'static-content',
   QUESTIONNAIRES: 'questionnaires',
   PIPEDRIVE_APIS: 'pipedrive-apis',
+  LEADS: 'leads',
 } as const;

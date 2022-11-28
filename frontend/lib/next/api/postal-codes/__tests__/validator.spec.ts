@@ -1,6 +1,5 @@
 import { NextApiRequest } from 'next';
-
-import { retrieveDataFromRequestBody } from '../postal-codes';
+import { validateRequestBody } from '../validator';
 
 jest.mock('@sentry/nextjs');
 
@@ -13,10 +12,10 @@ const DEFAULT_REQ = {
   },
 } as unknown as NextApiRequest;
 
-describe('pages/api/postal-codes/retrieveDataFromRequestBody', () => {
+describe('lib/next/api/postal-codes/validator', () => {
   it('should throw error for unsupported HTTP method', () => {
     expect(() => {
-      retrieveDataFromRequestBody({
+      validateRequestBody({
         ...DEFAULT_REQ,
         method: 'GET',
       } as NextApiRequest);
@@ -25,7 +24,7 @@ describe('pages/api/postal-codes/retrieveDataFromRequestBody', () => {
 
   it('should throw error for missing query param', () => {
     expect(() => {
-      retrieveDataFromRequestBody({
+      validateRequestBody({
         ...DEFAULT_REQ,
         query: {},
       } as NextApiRequest);
@@ -34,7 +33,7 @@ describe('pages/api/postal-codes/retrieveDataFromRequestBody', () => {
 
   it('should throw error for invalid list of countries', () => {
     expect(() => {
-      retrieveDataFromRequestBody({
+      validateRequestBody({
         ...DEFAULT_REQ,
         body: {
           ...DEFAULT_REQ.body,
@@ -44,7 +43,7 @@ describe('pages/api/postal-codes/retrieveDataFromRequestBody', () => {
     }).toThrow('Missing or invalid list of countries provided.');
 
     expect(() => {
-      retrieveDataFromRequestBody({
+      validateRequestBody({
         ...DEFAULT_REQ,
         body: {
           ...DEFAULT_REQ.body,
@@ -54,7 +53,7 @@ describe('pages/api/postal-codes/retrieveDataFromRequestBody', () => {
     }).toThrow('Missing or invalid list of countries provided.');
 
     expect(() => {
-      retrieveDataFromRequestBody({
+      validateRequestBody({
         ...DEFAULT_REQ,
         body: {
           ...DEFAULT_REQ.body,
@@ -66,7 +65,7 @@ describe('pages/api/postal-codes/retrieveDataFromRequestBody', () => {
 
   it('should throw error for invalid postal code', () => {
     expect(() => {
-      retrieveDataFromRequestBody({
+      validateRequestBody({
         ...DEFAULT_REQ,
         body: {
           ...DEFAULT_REQ.body,
@@ -76,7 +75,7 @@ describe('pages/api/postal-codes/retrieveDataFromRequestBody', () => {
     }).toThrow('Missing or invalid postal code query param.');
 
     expect(() => {
-      retrieveDataFromRequestBody({
+      validateRequestBody({
         ...DEFAULT_REQ,
         body: {
           ...DEFAULT_REQ.body,
@@ -87,13 +86,13 @@ describe('pages/api/postal-codes/retrieveDataFromRequestBody', () => {
   });
 
   it('should return countries and postal code from request', () => {
-    expect(retrieveDataFromRequestBody(DEFAULT_REQ)).toEqual({
+    expect(validateRequestBody(DEFAULT_REQ)).toEqual({
       countries: ['DE'],
-      postalCode: '22303',
+      code: '22303',
     });
 
     expect(
-      retrieveDataFromRequestBody({
+      validateRequestBody({
         ...DEFAULT_REQ,
         body: {
           countries: ['DE', 'CH'],
@@ -102,7 +101,7 @@ describe('pages/api/postal-codes/retrieveDataFromRequestBody', () => {
       } as NextApiRequest),
     ).toEqual({
       countries: ['DE', 'CH'],
-      postalCode: '6300',
+      code: '6300',
     });
   });
 });
