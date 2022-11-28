@@ -18,6 +18,7 @@ export default ({ env }) => ({
     },
   },
   'users-permissions': {
+    enabled: false,
     config: {
       jwtSecret: env('JWT_SECRET'),
     },
