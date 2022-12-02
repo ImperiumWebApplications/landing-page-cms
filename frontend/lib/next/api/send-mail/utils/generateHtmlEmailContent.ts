@@ -22,6 +22,7 @@ export const generateHtmlEmailContent = ({
     email?: string;
     phone?: string;
     postalCode?: string;
+    city?: string;
   };
   landingPage: LandingPage;
   template: keyof typeof EmailTemplate;
@@ -52,6 +53,7 @@ export const generateHtmlEmailContent = ({
     questionnaire: content?.questionnaire,
     phone: recipient.phone,
     postalCode: recipient.postalCode,
+    city: recipient.city,
   };
 
   const compiledTemplate = hbsTemplate(context);

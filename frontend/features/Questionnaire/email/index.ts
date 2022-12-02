@@ -17,6 +17,7 @@ export interface EmailTemplateContext {
     logoUrl?: string;
     phone?: string;
     postalCode?: string;
+    city?: string;
     firstName: string;
     lastName: string;
     colorPrimary: string;

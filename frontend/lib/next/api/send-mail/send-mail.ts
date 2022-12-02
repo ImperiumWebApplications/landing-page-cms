@@ -18,6 +18,7 @@ export type SendMailProps = {
     email: string;
     phone: string;
     postalCode?: string;
+    city?: string;
   };
 };
 

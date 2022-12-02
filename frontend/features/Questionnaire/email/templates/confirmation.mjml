@@ -62,7 +62,7 @@
           line-height="24px"
           padding-bottom="10px"
         >
-          Ihr Wohnort: <b>{{postalCode}}</b>
+          Ihr Wohnort: <b>{{postalCode}} {{city}}</b>
         </mj-text>
         {{/if}}
 
@@ -86,7 +86,7 @@
           font-weight="700"
           line-height="22px"
         >
-          {{this.question.value}}
+          {{this.question}}
         </mj-text>
         <mj-text
           padding-bottom="0"
@@ -95,7 +95,7 @@
           font-weight="400"
           line-height="16px"
         >
-          {{this.answer.value}}
+          {{this.answer}}
         </mj-text>
       </mj-column>
       {{/each}}

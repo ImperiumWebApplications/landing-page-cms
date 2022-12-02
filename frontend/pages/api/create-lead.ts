@@ -3,7 +3,7 @@ import { withSentry } from '@sentry/nextjs';
 
 import {
   createLeadInCMS,
-  // createLeadInPipedrive,
+  createLeadInPipedrive,
   validateRequestBody,
 } from '../../lib/next/api/create-lead';
 import { sendMail } from '../../lib/next/api/send-mail';
@@ -15,7 +15,7 @@ export const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const data = validateRequestBody(req);
 
     await Promise.all([
-      // await createLeadInPipedrive(data),
+      await createLeadInPipedrive(data),
       await createLeadInCMS(data),
       await sendMail({
         domain: data.domain,
@@ -27,6 +27,7 @@ export const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           email: data.contact.email,
           phone: data.contact.phone,
           postalCode: data.contact.postalCode,
+          city: data.contact.city,
         },
       }),
     ]);
