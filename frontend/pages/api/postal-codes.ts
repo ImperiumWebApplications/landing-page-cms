@@ -22,11 +22,11 @@ export const handler = async (
     const { code, countries } = validateRequestBody(req);
     const postalCodeData = getPostalCodeDetails({ code, countries });
 
-    return res.status(200).json({ success: true, data: postalCodeData });
+    res.status(200).json({ success: true, data: postalCodeData });
   } catch (error) {
     captureNextAPIError(error);
     const message = getErrorMessage(error);
-    return res.status(500).json({ success: false, message });
+    res.status(500).json({ success: false, message });
   }
 };
 

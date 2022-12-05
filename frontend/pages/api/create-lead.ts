@@ -32,11 +32,11 @@ export const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       }),
     ]);
 
-    return res.status(200).json({ success: true });
+    res.status(200).json({ success: true });
   } catch (error) {
     captureNextAPIError(error);
     const message = getErrorMessage(error);
-    return res.status(500).json({ success: false, message });
+    res.status(500).json({ success: false, message });
   }
 };
 
