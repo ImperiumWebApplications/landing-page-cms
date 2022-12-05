@@ -12,10 +12,11 @@ export const createHTMLTable = (
     | { date: string; location: string; duration: number }
   )[],
 ) => {
-  const isQuestionnaireData = 'question' in data[0];
-  const heading = isQuestionnaireData
-    ? 'Antworten aus dem Fragenbogen:'
-    : 'Mögliche Termine:';
+  const isAppointmentsData = data?.[0]?.hasOwnProperty('date');
+
+  const heading = isAppointmentsData
+    ? 'Mögliche Termine:'
+    : 'Antworten aus dem Fragebogen:';
 
   const header = `<p style="margin-bottom:10px;">${heading}</p><table>`;
   const footer = `</table>`;
