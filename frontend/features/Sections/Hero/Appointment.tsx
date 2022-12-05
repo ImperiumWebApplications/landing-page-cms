@@ -2,10 +2,11 @@ import styled from 'styled-components';
 import Image from 'next/image';
 import { ArrowForward } from '@styled-icons/fluentui-system-filled';
 import { CheckCircle } from '@styled-icons/boxicons-solid/CheckCircle';
-import { Telephone } from '@styled-icons/foundation';
 
 import { devices } from '../../../config/breakpoints.config';
+import { appointmentRoute } from '../../../config/navigation.config';
 import { Animation } from '../../../components/Animation';
+import { Button } from '../../../components/Button';
 
 import { HeroSectionDescription } from './Description';
 import { HeroSectionContent } from '../SectionMapper';
@@ -202,14 +203,12 @@ export const HeroSectionAppointment: React.FC<HeroSectionAppointmentProps> = (
                   />
                 </p>
                 <div className="booking-action">
-                  {props.content.phone && (
-                    <div className="direct-call">
-                      <span>oder rufen Sie einfach an: </span>
-                      <a href="/to">
-                        <Telephone /> {props.content.phone}
-                      </a>
-                    </div>
-                  )}
+                  <Button
+                    href={appointmentRoute}
+                    label="Kostenloses Gespräch buchen"
+                    className="button"
+                    fixedWidth="19.25rem"
+                  />
                 </div>
                 <span className="booking-benefit">
                   <CheckCircle size={16} /> Kostenlos & Unverbindlich
