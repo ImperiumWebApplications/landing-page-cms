@@ -31,7 +31,7 @@ export const ProgressPanel: React.FC<ProgressPanelProps> = ({ steps }) => {
         className="hidden md:flex flex-col gap-7 pr-10 lg:pr-16 pt-2 border-r-[3px] border-dashed border-secondary"
         data-progress-panel
       >
-        {steps.map((step, key) => {
+        {steps.slice(0, -1).map((step, key) => {
           const isStepAhead = key >= state.index;
           const isFormSent = steps[state.index].type === 'confirmation';
 
