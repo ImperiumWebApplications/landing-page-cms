@@ -36,7 +36,7 @@ export const createLead = async (lead: CreateLeadMutation) => {
     city: lead.contact.city,
     appointment_requests: lead.appointmentRequests?.map(
       ({ location, duration, date }) => {
-        return { location, duration, proposed_date: date.toISOString() };
+        return { location, duration, proposed_date: date };
       },
     ),
     questionnaire_results: lead.questionnaireResults?.map(

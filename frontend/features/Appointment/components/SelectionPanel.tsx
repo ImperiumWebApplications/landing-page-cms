@@ -1,8 +1,10 @@
 import { useMemo } from 'react';
+import { NextAPI } from '../../../lib/next/api';
 
 import type { AppointmentStep } from '../AppointmentForm';
 
 import { useAppointmentContext } from '../context/Appointment';
+import { useAppointmentDuration } from '../hooks/useAppointmentDuration';
 import { Confirmation } from './Confirmation';
 import { ContactDetails } from './ContactDetails';
 import { DateList } from './DateList';
@@ -16,6 +18,7 @@ type SelectionPanelProps = {
 
 export const SelectionPanel: React.FC<SelectionPanelProps> = ({ steps }) => {
   const { state, dispatch } = useAppointmentContext();
+  const duration = useAppointmentDuration(steps);
 
   const content = steps[state.index];
 
@@ -57,12 +60,22 @@ export const SelectionPanel: React.FC<SelectionPanelProps> = ({ steps }) => {
         return (
           <ContactDetails
             values={state.contact}
-            onSubmit={async (cb) => {
-              cb?.();
-              dispatch({
-                type: 'setIndex',
-                payload: state.index + 1,
+            onSubmit={async (onSuccess) => {
+              const { location, dates } = state;
+              const res = await NextAPI.createLead({
+                domain: window.location.host,
+                contact: state.contact,
+                appointmentRequests: Object.values(dates ?? {}).map((date) => ({
+                  date,
+                  location,
+                  duration,
+                })),
               });
+
+              if (!res.ok) throw Error('Error while submitting lead.');
+
+              onSuccess?.();
+              dispatch({ type: 'setIndex', payload: state.index + 1 });
             }}
             setValues={(values) => {
               dispatch({ type: 'setDetails', payload: values });
@@ -83,7 +96,7 @@ export const SelectionPanel: React.FC<SelectionPanelProps> = ({ steps }) => {
       default:
         return <></>;
     }
-  }, [content, dispatch, state]);
+  }, [content, dispatch, state, duration]);
 
   const MobileGoBackButton = useMemo(() => {
     const handleClick = () => {

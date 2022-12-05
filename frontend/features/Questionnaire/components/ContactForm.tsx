@@ -133,8 +133,13 @@ export const ContactForm: React.FunctionComponent = () => {
 
       const res = await NextAPI.createLead({
         domain: location.host,
-        questionnaireResults: state.questionnaire,
         contact: state.contact,
+        questionnaireResults: state.questionnaire.map(
+          ({ question, answer }) => ({
+            question: question.value,
+            answer: answer.value,
+          }),
+        ),
       });
 
       if (!res.ok) throw new Error(res.statusText);
