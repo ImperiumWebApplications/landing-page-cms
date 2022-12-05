@@ -17,7 +17,7 @@ export interface CreateLeadRequest extends NextApiRequest {
       city?: string;
     };
     appointmentRequests?: {
-      date?: Date;
+      date?: string;
       location?: string;
       duration?: number;
     }[];
@@ -80,7 +80,6 @@ const hasQuestionnaireResults = (
 const hasAppointmentRequests = (
   data: CreateLeadRequest['body']['appointmentRequests'],
 ): data is NonNullable<CreateLeadProps['appointmentRequests']> => {
-  console.log(data);
   return (
     !!data?.length &&
     data.every(

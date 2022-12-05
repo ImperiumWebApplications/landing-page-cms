@@ -1,10 +1,10 @@
 import { createTransport } from 'nodemailer';
-
 import {
   EmailSubject,
   EmailTemplate,
   EmailTemplatePayload,
-} from '../../../../features/Questionnaire';
+} from '../../../../email';
+
 import { Strapi } from '../../../strapi';
 import { generateHtmlEmailContent } from './utils/generateHtmlEmailContent';
 

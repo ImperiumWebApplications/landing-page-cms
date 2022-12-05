@@ -1,10 +1,7 @@
 import type { NextApiRequest } from 'next';
 
 import type { SendMailProps } from './send-mail';
-import {
-  EmailTemplate,
-  EmailTemplatePayload,
-} from '../../../../features/Questionnaire';
+import { EmailTemplate, EmailTemplatePayload } from '../../../../email';
 
 export interface SendMailRequest extends NextApiRequest {
   body: {
@@ -37,7 +34,7 @@ export const validateRequestBody = (req: SendMailRequest): SendMailProps => {
 
   switch (template) {
     case EmailTemplate.Confirmation:
-      if (!!!payload?.questionnaire) break;
+      if (!!!payload?.questionnaire && !!!payload?.appointments) break;
       return { domain, template, recipient, payload };
   }
 

@@ -17,7 +17,7 @@ export type CreateLeadProps = {
   appointmentRequests?: {
     location: string;
     duration: number;
-    date: Date;
+    date: string;
   }[];
   questionnaireResults?: {
     question: string;

@@ -8,7 +8,7 @@ import {
 } from '../../lib/next/api/create-lead';
 import { sendMail } from '../../lib/next/api/send-mail';
 import { captureNextAPIError, getErrorMessage } from '../../lib/next/api/error';
-import { EmailTemplate } from '../../features/Questionnaire';
+import { EmailTemplate } from '../../email';
 
 export const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
@@ -20,7 +20,6 @@ export const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       await sendMail({
         domain: data.domain,
         template: EmailTemplate.Confirmation,
-        payload: { questionnaire: data.questionnaireResults },
         recipient: {
           firstName: data.contact.firstName,
           lastName: data.contact.lastName,
@@ -28,6 +27,10 @@ export const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           phone: data.contact.phone,
           postalCode: data.contact.postalCode,
           city: data.contact.city,
+        },
+        payload: {
+          questionnaire: data.questionnaireResults,
+          appointments: data.appointmentRequests,
         },
       }),
     ]);

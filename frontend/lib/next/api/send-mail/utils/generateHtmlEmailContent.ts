@@ -1,6 +1,8 @@
 import { existsSync, readFileSync } from 'fs';
 import { join, resolve } from 'path';
 import { compile } from 'handlebars';
+import { add, format, parseISO } from 'date-fns';
+import de from 'date-fns/locale/de';
 import mjml2html from 'mjml';
 
 import type { LandingPage } from '../../../../strapi';
@@ -8,7 +10,8 @@ import {
   EmailTemplate,
   EmailTemplateContext,
   EmailTemplatePayload,
-} from '../../../../../features/Questionnaire';
+} from '../../../../../email';
+import { SendMailProps } from '../send-mail';
 
 export const generateHtmlEmailContent = ({
   recipient,
@@ -28,13 +31,7 @@ export const generateHtmlEmailContent = ({
   template: keyof typeof EmailTemplate;
   content: EmailTemplatePayload[keyof typeof EmailTemplate];
 }) => {
-  const templateDirectory = resolve(
-    process.cwd(),
-    'features',
-    'Questionnaire',
-    'email',
-    'templates',
-  );
+  const templateDirectory = resolve(process.cwd(), 'email', 'templates');
   const templateFileName = `${template.toLowerCase()}.mjml`;
   const templateFilePath = join(templateDirectory, templateFileName);
 
@@ -51,6 +48,7 @@ export const generateHtmlEmailContent = ({
     colorPrimary: landingPage?.color_primary ?? '#000000',
     colorText: landingPage?.color_text ?? '#737373',
     questionnaire: content?.questionnaire,
+    appointments: formatAppointmentsDate(content?.appointments),
     phone: recipient.phone,
     postalCode: recipient.postalCode,
     city: recipient.city,
@@ -63,4 +61,22 @@ export const generateHtmlEmailContent = ({
     throw new Error('Error while generating mail template.');
 
   return html;
+};
+
+const formatAppointmentsDate = (
+  appointments: SendMailProps['payload']['appointments'],
+) => {
+  return appointments?.map((appointment) => {
+    const date = parseISO(appointment.date);
+    const formattedDate = format(date, 'cccc, dd.MM.yyyy', { locale: de });
+
+    const endDate = add(date, { minutes: appointment.duration });
+    const formattedEndTime = format(endDate, 'kk:mm', { locale: de });
+    const formattedStartTime = format(date, 'kk:mm', { locale: de });
+
+    return {
+      ...appointment,
+      date: `${formattedDate} (${formattedStartTime} Uhr - ${formattedEndTime} Uhr)`,
+    };
+  });
 };

@@ -9,6 +9,8 @@ export const EmailSubject = {
 export interface EmailTemplatePayload {
   [EmailTemplate.Confirmation]: {
     questionnaire?: { question: string; answer: string }[];
+    /** Date is ISO string, e.g. "2022-12-05T10:00:00.000Z" */
+    appointments?: { date: string; location: string; duration: number }[];
   };
 }
 

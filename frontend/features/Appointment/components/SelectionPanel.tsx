@@ -66,7 +66,7 @@ export const SelectionPanel: React.FC<SelectionPanelProps> = ({ steps }) => {
                 domain: window.location.host,
                 contact: state.contact,
                 appointmentRequests: Object.values(dates ?? {}).map((date) => ({
-                  date,
+                  date: date.toISOString(),
                   location,
                   duration,
                 })),
