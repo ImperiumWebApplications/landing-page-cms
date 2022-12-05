@@ -38,7 +38,7 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
                 ? 'bg-secondary bg-opacity-75 text-[white]'
                 : 'bg-[#FAFAFA] border-[1px] border-primary'
             }
-              relative flex cursor-pointer rounded-2xl px-6 py-4 md:rounded-3xl  md:px-12 md:py-6 focus:outline-none`
+              relative flex cursor-pointer rounded-2xl px-6 py-4 md:rounded-3xl md:px-12 md:py-6 focus:outline-none`
                   }
                 >
                   {({ checked }) => (

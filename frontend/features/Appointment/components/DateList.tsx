@@ -3,7 +3,6 @@ import { useMemo, useState } from 'react';
 import { format } from 'date-fns';
 
 import type { DateOptions } from '../hooks/useDateOptions';
-import type { DateFormStep } from '../AppointmentForm';
 import type { AppointmentState } from '../context/Appointment';
 import { DatePicker } from './DatePicker';
 import { Button } from './Button';
@@ -60,7 +59,7 @@ export const DateList: React.FC<DateListProps> = ({
                 key={key}
                 role="button"
                 tabIndex={0}
-                className={`px-6 py-4 md:px-14 md:py-8 border-secondary border-[1px] rounded-2xl md:rounded-3xl flex flex-row items-center gap-4 lg:gap-8 ${
+                className={`px-6 py-4 md:px-14 md:py-8 rounded-2xl md:rounded-3xl flex flex-row items-center gap-4 lg:gap-8 ${
                   selectedDate
                     ? 'bg-secondary text-[white] font-semibold lg:text-lg'
                     : 'bg-[#FAFAFA]'
@@ -104,7 +103,7 @@ export const DateList: React.FC<DateListProps> = ({
           <Button
             className="my-8 flex-shrink-0"
             onClick={onSubmit}
-            disabled={isInvalidDateList(values, options)}
+            disabled={!values || Object.values(values)?.length === 0}
           >
             Bestätigen und weiter
           </Button>
@@ -112,19 +111,4 @@ export const DateList: React.FC<DateListProps> = ({
       </div>
     </>
   );
-};
-
-const isInvalidDateList = (
-  dates: AppointmentState['dates'],
-  options: DateFormStep['options'],
-) => {
-  if (!dates) return true;
-
-  let hasIncorrectValue = false;
-
-  for (let i = 0; i < options.count; i++) {
-    if (!dates[i] || !(dates[i] instanceof Date)) hasIncorrectValue = true;
-  }
-
-  return hasIncorrectValue;
 };
