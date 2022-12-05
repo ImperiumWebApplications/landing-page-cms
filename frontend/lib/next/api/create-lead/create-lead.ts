@@ -41,10 +41,12 @@ export const createLeadInPipedrive = async (data: CreateLeadProps) => {
   const token = api?.attributes?.api_token;
   if (!token) throw new Error('Missing Pipedrive token for domain.');
 
-  data.contact.postalCode = enrichPostalCodeValue({
-    host: data.domain,
-    contactData: data.contact,
-  });
+  if (data.contact.postalCode) {
+    data.contact.postalCode = enrichPostalCodeValue({
+      host: data.domain,
+      contactData: data.contact,
+    });
+  }
 
   const person =
     (await Pipedrive.getPersonByEmail(token, data.contact.email ?? '')) ??
@@ -57,11 +59,13 @@ export const createLeadInPipedrive = async (data: CreateLeadProps) => {
     title: `${person.name} (${data.domain})`,
   });
 
-  if (!data.questionnaireResults) return { person, lead };
+  const content = data.questionnaireResults ?? data.appointmentRequests;
+
+  if (!content) return { person, lead };
 
   const note = await Pipedrive.createNote(token, {
     lead_id: lead.id,
-    content: createHTMLTable(data.questionnaireResults),
+    content: createHTMLTable(content),
   });
 
   return { person, lead, note };

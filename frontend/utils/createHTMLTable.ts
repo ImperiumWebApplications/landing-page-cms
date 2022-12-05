@@ -1,3 +1,5 @@
+import { formatAppointmentsDate } from '../features/Appointment/utils/formatAppointmentsDate';
+
 export const replaceWhitespaceInHTML = (str: string) =>
   str.replace(
     /(<(pre|script|style|textarea)[^]+?<\/\2)|(^|>)\s+|\s+(?=<|$)/g,
@@ -5,24 +7,52 @@ export const replaceWhitespaceInHTML = (str: string) =>
   );
 
 export const createHTMLTable = (
-  data: { question: string; answer: string }[],
+  data: (
+    | { question: string; answer: string }
+    | { date: string; location: string; duration: number }
+  )[],
 ) => {
-  const header = `<p style="margin-bottom:10px;">Antworten aus dem Fragebogen:</p><table>`;
+  const isQuestionnaireData = 'question' in data[0];
+  const heading = isQuestionnaireData
+    ? 'Antworten aus dem Fragenbogen:'
+    : 'Mögliche Termine:';
+
+  const header = `<p style="margin-bottom:10px;">${heading}</p><table>`;
   const footer = `</table>`;
-  const content = data.length
-    ? data.map?.(({ question, answer }) => {
-        return `
+  const placeholder =
+    '<tr style="border:none"><td style="font-weight:bold;padding:10px">Keine Angaben gemacht.</td></tr>';
+
+  if (!data.length)
+    return replaceWhitespaceInHTML(`${header}${placeholder}${footer}`);
+
+  const content = data.map((item) => {
+    const isQuestionAnswer = 'question' in item && 'answer' in item;
+
+    if (isQuestionAnswer) {
+      return `
       <tr style="border:none">
         <td style="font-weight:bold;padding:10px">
-          ${question}
+          ${item.question}
         </td>
         <td style="padding:10px">
-          ${answer}
+          ${item.answer}
         </td>
       </tr>`;
-      })
-    : [
-        '<tr style="border:none"><td style="font-weight:bold;padding:10px">Keine Angaben gemacht.</td></tr>',
-      ];
+    } else {
+      return `
+      <tr style="border:none">
+        <td style="font-weight:bold;padding:10px">
+          ${formatAppointmentsDate({
+            date: item.date,
+            duration: item.duration,
+          })}
+        </td>
+        <td style="padding:10px">
+          ${item.location}
+        </td>
+      </tr>`;
+    }
+  });
+
   return replaceWhitespaceInHTML(`${header}${content.join('')}${footer}`);
 };

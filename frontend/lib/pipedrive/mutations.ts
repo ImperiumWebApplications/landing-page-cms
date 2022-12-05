@@ -27,7 +27,7 @@ export const createPersonField = async (
 export const createPerson = async (
   token: string,
   data: QuestionnaireState['contact'] & {
-    customFields: { [key: string]: string | undefined };
+    customFields?: { [key: string]: string | undefined };
   },
 ) => {
   const res = await Pipedrive.instance.post(
@@ -52,16 +52,20 @@ export const createPersonWithCustomPostalCodeField = async (
   token: string,
   data: { contactData: QuestionnaireState['contact'] },
 ) => {
-  const postalCodeField = await Pipedrive.getCustomPostalCodeField(token, {
-    fieldLabel: 'Postleitzahl',
-  });
+  if (data.contactData.postalCode) {
+    const postalCodeField = await Pipedrive.getCustomPostalCodeField(token, {
+      fieldLabel: 'Postleitzahl',
+    });
 
-  return await createPerson(token, {
-    ...data.contactData,
-    customFields: {
-      [postalCodeField.key]: data.contactData.postalCode,
-    },
-  });
+    return await createPerson(token, {
+      ...data.contactData,
+      customFields: {
+        [postalCodeField.key]: data.contactData.postalCode,
+      },
+    });
+  } else {
+    return await createPerson(token, { ...data.contactData });
+  }
 };
 
 export const createLead = async (

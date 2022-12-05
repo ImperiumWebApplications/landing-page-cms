@@ -1,17 +1,16 @@
 import { existsSync, readFileSync } from 'fs';
 import { join, resolve } from 'path';
 import { compile } from 'handlebars';
-import { add, format, parseISO } from 'date-fns';
-import de from 'date-fns/locale/de';
 import mjml2html from 'mjml';
 
 import type { LandingPage } from '../../../../strapi';
+import type { SendMailProps } from '../send-mail';
 import {
   EmailTemplate,
   EmailTemplateContext,
   EmailTemplatePayload,
 } from '../../../../../email';
-import { SendMailProps } from '../send-mail';
+import { formatAppointmentsDate } from '../../../../../features/Appointment/utils/formatAppointmentsDate';
 
 export const generateHtmlEmailContent = ({
   recipient,
@@ -48,7 +47,7 @@ export const generateHtmlEmailContent = ({
     colorPrimary: landingPage?.color_primary ?? '#000000',
     colorText: landingPage?.color_text ?? '#737373',
     questionnaire: content?.questionnaire,
-    appointments: formatAppointmentsDate(content?.appointments),
+    appointments: formatAppointmentsDates(content?.appointments),
     phone: recipient.phone,
     postalCode: recipient.postalCode,
     city: recipient.city,
@@ -63,20 +62,14 @@ export const generateHtmlEmailContent = ({
   return html;
 };
 
-const formatAppointmentsDate = (
+const formatAppointmentsDates = (
   appointments: SendMailProps['payload']['appointments'],
 ) => {
-  return appointments?.map((appointment) => {
-    const date = parseISO(appointment.date);
-    const formattedDate = format(date, 'cccc, dd.MM.yyyy', { locale: de });
-
-    const endDate = add(date, { minutes: appointment.duration });
-    const formattedEndTime = format(endDate, 'kk:mm', { locale: de });
-    const formattedStartTime = format(date, 'kk:mm', { locale: de });
-
-    return {
-      ...appointment,
-      date: `${formattedDate} (${formattedStartTime} Uhr - ${formattedEndTime} Uhr)`,
-    };
-  });
+  return appointments?.map((appointment) => ({
+    ...appointment,
+    date: formatAppointmentsDate({
+      date: appointment.date,
+      duration: appointment.duration,
+    }),
+  }));
 };
