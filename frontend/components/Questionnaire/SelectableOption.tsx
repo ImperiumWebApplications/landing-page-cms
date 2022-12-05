@@ -11,7 +11,9 @@ const activeStateCss = css`
   background-color: ${({ theme }) => theme.colors.secondary};
 
   .icon svg,
-  .icon svg path {
+  .icon svg path,
+  .icon svg polygon,
+  .icon svg circle {
     fill: white !important;
   }
 
@@ -82,7 +84,9 @@ const StyledSelectableOption = styled.div`
     }
 
     svg,
-    svg path {
+    svg path,
+    svg polygon,
+    svg circle {
       fill: ${({ theme }) => theme.colors.secondary} !important;
     }
   }
