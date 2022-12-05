@@ -5,8 +5,8 @@ import { CheckCircle } from '@styled-icons/boxicons-solid/CheckCircle';
 
 import { devices } from '../../../config/breakpoints.config';
 import { appointmentRoute } from '../../../config/navigation.config';
-import { Animation } from '../../../components/Animation';
-import { Button } from '../../../components/Button';
+import { Animation } from '../../../components/Animation/Animation';
+import { Button } from '../../../components/Button/Button';
 
 import { HeroSectionDescription } from './Description';
 import { HeroSectionContent } from '../SectionMapper';

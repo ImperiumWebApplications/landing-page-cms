@@ -5,7 +5,7 @@ import ReactMarkdown from 'react-markdown';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, A11y } from 'swiper';
 
-import { Animation } from '../../../components/Animation';
+import { Animation } from '../../../components/Animation/Animation';
 import { devices } from '../../../config/breakpoints.config';
 import { swiperNavigationCss } from '../../../config/swiper.config';
 import { SectionContainer } from '../SectionContainer';

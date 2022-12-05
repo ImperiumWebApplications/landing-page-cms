@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import CookieConsentModal from 'react-cookie-consent';
 import hexRgb from 'hex-rgb';
 
-import { devices } from '../config/breakpoints.config';
+import { devices } from '../../config/breakpoints.config';
 
 export const COOKIE_CONSENT_NAME = 'lq-pages-cc';
 

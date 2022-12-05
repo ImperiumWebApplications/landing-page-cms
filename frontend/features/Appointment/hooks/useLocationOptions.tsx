@@ -4,7 +4,7 @@ import {
   DiscussionIcon,
   HouseIcon,
   VirtualIcon,
-} from '../../../components/Icons';
+} from '../../../components/Icons/Icons';
 import { LandingPage } from '../../../lib/strapi';
 
 export type LocationConfig = NonNullable<

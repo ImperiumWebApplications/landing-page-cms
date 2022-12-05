@@ -6,7 +6,7 @@ import type { DateOptions } from '../hooks/useDateOptions';
 import type { AppointmentState } from '../context/Appointment';
 import { DatePicker } from './DatePicker';
 import { Button } from './Button';
-import { CalendarIcon, ClockIcon } from '../../../components/Icons';
+import { CalendarIcon, ClockIcon } from '../../../components/Icons/Icons';
 
 type DateListProps = {
   options: DateOptions;

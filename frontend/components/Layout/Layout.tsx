@@ -11,10 +11,10 @@ import {
   TagManagerEvents,
 } from '../../lib/analytics';
 
-import type { CookieConsentProps } from '../CookieConsent';
-import { Footer } from '../Footer';
-import { Header } from '../Header';
-import { Head } from '../Head';
+import type { CookieConsentProps } from '../CookieConsent/CookieConsent';
+import { Footer } from '../Footer/Footer';
+import { Header } from '../Header/Header';
+import { Head } from '../Head/Head';
 
 import { extractSeoProps } from '../../config/seo.config';
 import { configureTheme, GlobalStyle } from '../../config/theme.config';
@@ -23,7 +23,8 @@ import { isFunnelRoute } from '../../utils/isFunnelRoute';
 import { useCookieConsent } from '../../hooks/useCookieConsent';
 
 const ClientSideOnlyCookieConsent = dynamic<CookieConsentProps>(
-  () => import('../CookieConsent').then((mod) => mod.CookieConsent),
+  () =>
+    import('../CookieConsent/CookieConsent').then((mod) => mod.CookieConsent),
   { ssr: false },
 );
 

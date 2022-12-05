@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { renderWithLayout, fireEvent } from '../../jest.setup';
-import { Button, ButtonProps } from '../Button';
+import { Button, ButtonProps } from './Button';
 
 const defaultProps: ButtonProps = {
   label: 'Label',

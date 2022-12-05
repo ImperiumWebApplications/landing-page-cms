@@ -4,8 +4,8 @@ import { ArrowRightCircleFill } from '@styled-icons/bootstrap/ArrowRightCircleFi
 import { Play } from '@styled-icons/foundation';
 import ReactMarkdown from 'react-markdown';
 
-import { Button } from '../../../components/Button';
-import { Animation } from '../../../components/Animation';
+import { Button } from '../../../components/Button/Button';
+import { Animation } from '../../../components/Animation/Animation';
 import { startQuestionnaire } from '../../../config/navigation.config';
 import { devices } from '../../../config/breakpoints.config';
 import { SectionContainer } from '../SectionContainer';

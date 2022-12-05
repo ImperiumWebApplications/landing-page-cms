@@ -1,6 +1,6 @@
 import styled, { useTheme } from 'styled-components';
 
-import { Animation } from '../../../components/Animation';
+import { Animation } from '../../../components/Animation/Animation';
 import { devices } from '../../../config/breakpoints.config';
 import { LandingPage } from '../../../lib/strapi';
 import { SectionContainer } from '../SectionContainer';

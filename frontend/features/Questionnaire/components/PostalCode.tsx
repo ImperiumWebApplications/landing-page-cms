@@ -11,7 +11,7 @@ import {
   ContactFieldValidations,
 } from '../../../config/form.config';
 
-import { Button } from '../../../components/Button';
+import { Button } from '../../../components/Button/Button';
 import { StyledStepTitle } from './StepTitle';
 import { TextInput } from './TextInput';
 import { SelectInput } from './SelectInput';

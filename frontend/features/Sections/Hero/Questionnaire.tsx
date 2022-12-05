@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Image from 'next/image';
 import { ArrowForward } from '@styled-icons/fluentui-system-filled';
 
-import { Animation } from '../../../components/Animation';
+import { Animation } from '../../../components/Animation/Animation';
 import { devices } from '../../../config/breakpoints.config';
 import { HeroSectionDescription } from './Description';
 import { SectionContainer } from '../SectionContainer';

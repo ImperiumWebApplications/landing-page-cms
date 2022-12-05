@@ -3,8 +3,8 @@ import Image from 'next/image';
 import styled from 'styled-components';
 import Link from 'next/link';
 
-import { devices } from '../config/breakpoints.config';
-import type { MediaAttributes } from '../lib/strapi';
+import { devices } from '../../config/breakpoints.config';
+import type { MediaAttributes } from '../../lib/strapi';
 
 const StyledLogo = styled.div`
   a {

@@ -3,8 +3,8 @@ import { ArrowRightCircleFill } from 'styled-icons/bootstrap';
 import ReactMarkdown from 'react-markdown';
 import dynamic from 'next/dynamic';
 
-import type { ButtonProps } from '../../../components/Button';
-import { Animation } from '../../../components/Animation';
+import type { ButtonProps } from '../../../components/Button/Button';
+import { Animation } from '../../../components/Animation/Animation';
 import { startQuestionnaire } from '../../../config/navigation.config';
 import { devices } from '../../../config/breakpoints.config';
 import { useMediaQuery } from '../../../hooks/useMediaQuery';
@@ -13,7 +13,7 @@ import { SectionContainer } from '../SectionContainer';
 import { CallToActionSectionContent } from '../SectionMapper';
 
 const ClientSideOnlyButton = dynamic<ButtonProps>(
-  () => import('../../../components/Button').then((mod) => mod.Button),
+  () => import('../../../components/Button/Button').then((mod) => mod.Button),
   { ssr: false },
 );
 

@@ -2,17 +2,17 @@ import React, { useMemo } from 'react';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
 
-import type { LandingPage } from '../lib/strapi';
+import type { LandingPage } from '../../lib/strapi';
 import {
   appointmentRoute,
   questionnaireRoute,
-} from '../config/navigation.config';
-import { MobileNavigation } from './MobileNavigation';
-import { Logo } from './Logo';
-import { Button } from './Button';
-import { Animation } from './Animation';
-import { devices } from '../config/breakpoints.config';
-import { isFunnelRoute } from '../utils/isFunnelRoute';
+} from '../../config/navigation.config';
+import { MobileNavigation } from './components/MobileNavigation';
+import { Logo } from '../Logo/Logo';
+import { Button } from '../Button/Button';
+import { Animation } from '../Animation/Animation';
+import { devices } from '../../config/breakpoints.config';
+import { isFunnelRoute } from '../../utils/isFunnelRoute';
 
 const StyledHeader = styled.header<{ centerLogo: boolean }>`
   .animated-header {

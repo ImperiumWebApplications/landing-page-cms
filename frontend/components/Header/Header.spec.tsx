@@ -10,7 +10,7 @@ import { renderWithLayout } from '../../jest.setup';
 import { useRouterMock } from '../../mocks/lib/next/router';
 import { content } from '../../mocks/lib/strapi/data';
 import { setupIntersectionObserverMock } from '../../mocks/window/intersectionObserver';
-import { Header } from '../Header';
+import { Header } from './Header';
 
 jest.mock('next/router', () => ({
   __esModule: true,

@@ -6,7 +6,7 @@ import { format } from 'date-fns';
 import type { DateOptions } from '../hooks/useDateOptions';
 import { TimePicker } from './TimePicker';
 import { DayPicker } from './DayPicker';
-import { CloseIcon } from '../../../components/Icons';
+import { CloseIcon } from '../../../components/Icons/Icons';
 
 type DatePickerProps = {
   index: number;

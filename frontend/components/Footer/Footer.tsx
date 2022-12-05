@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 
-import { devices } from '../config/breakpoints.config';
-import { FooterNavigation } from './FooterNavigation';
-import { ContactIcons } from './ContactIcons';
-import { Logo } from './Logo';
-import { LandingPage } from '../lib/strapi';
+import type { LandingPage } from '../../lib/strapi';
+import { devices } from '../../config/breakpoints.config';
+import { Logo } from '../Logo/Logo';
+
+import { FooterNavigation } from './components/FooterNavigation';
+import { ContactIcons } from './components/ContactIcons';
 
 const StyledFooter = styled.footer`
   display: flex;

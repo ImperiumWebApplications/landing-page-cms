@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Telephone } from '@styled-icons/foundation';
 import { Mail } from '@styled-icons/fluentui-system-filled';
 import { KeyboardArrowUp } from '@styled-icons/material-outlined';
-import { devices } from '../config/breakpoints.config';
+import { devices } from '../../../config/breakpoints.config';
 
 const StyledContactIcons = styled.div`
   display: flex;

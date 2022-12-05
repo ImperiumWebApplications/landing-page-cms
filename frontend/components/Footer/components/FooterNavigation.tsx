@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { resetCookieConsentValue } from 'react-cookie-consent';
 import { useRouter } from 'next/router';
 
-import { COOKIE_CONSENT_NAME } from './CookieConsent';
-import { navigationItems } from '../config/navigation.config';
+import { COOKIE_CONSENT_NAME } from '../../CookieConsent/CookieConsent';
+import { navigationItems } from '../../../config/navigation.config';
 
 const StyledFooterNavigation = styled.nav`
   display: flex;

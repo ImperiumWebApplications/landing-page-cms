@@ -4,7 +4,7 @@ import { getCookieConsentValue } from 'react-cookie-consent';
 import {
   CookiesAllowed,
   COOKIE_CONSENT_NAME,
-} from '../components/CookieConsent';
+} from '../components/CookieConsent/CookieConsent';
 
 export const useCookieConsent = () => {
   const cookieConsent = getCookieConsentValue(COOKIE_CONSENT_NAME as string);
