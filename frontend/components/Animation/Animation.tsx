@@ -1,8 +1,10 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { Animations, getAnimation } from '../../config/animations.config';
+
 import { useCastedRef } from '../../hooks/useCastedRef';
 import { useOnScreen } from '../../hooks/useOnScreen';
+
+import { Animations, getAnimation } from './Animation.config';
 
 const StyledAnimation = styled.div<AnimationProps & { isOnScreen: boolean }>`
   @media screen and (prefers-reduced-motion: reduce) {

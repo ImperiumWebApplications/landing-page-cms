@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-import { fadeIn, fadeOut } from '../../../config/animations.config';
+import { fadeIn, fadeOut } from '../../Animation/Animation.config';
 import { navigationItems } from '../../../config/navigation.config';
 import { devices } from '../../../config/breakpoints.config';
 

@@ -7,7 +7,6 @@ export enum Animations {
   'fadeDown' = 'fadeDown',
   'fadeLeft' = 'fadeLeft',
   'fadeRight' = 'fadeRight',
-  'rotate360' = 'rotate360',
 }
 
 export const fadeIn = keyframes`
@@ -40,11 +39,6 @@ export const fadeRight = keyframes`
   to { opacity: 1; transform: translateX(0); }
 `;
 
-export const rotate360 = keyframes`
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-`;
-
 export const getAnimation = (type?: keyof typeof Animations) => {
   switch (type) {
     case Animations.fadeIn:
@@ -59,8 +53,6 @@ export const getAnimation = (type?: keyof typeof Animations) => {
       return fadeLeft;
     case Animations.fadeRight:
       return fadeRight;
-    case Animations.rotate360:
-      return rotate360;
     default:
       return undefined;
   }
