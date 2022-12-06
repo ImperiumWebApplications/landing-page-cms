@@ -6,7 +6,7 @@ import {
   useReducer,
 } from 'react';
 
-import { ContactFields } from '../../../config/form.config';
+import { ContactFields } from '../../../components/Form/Form.config';
 import { setBrowserHistoryState } from '../../../utils/setBrowserHistoryState';
 
 /**

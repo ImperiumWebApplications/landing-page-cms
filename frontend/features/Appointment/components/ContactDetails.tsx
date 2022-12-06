@@ -1,8 +1,12 @@
 import { useState } from 'react';
+import {
+  ContactFieldLabelMap,
+  ContactFields,
+  Field,
+} from '../../../components/Form';
 import { AppointmentState } from '../context/Appointment';
 
 import { Button } from './Button';
-import { TextInput } from './TextInput';
 
 type ContactDetailsProps = {
   values: AppointmentState['contact'];
@@ -26,38 +30,37 @@ export const ContactDetails: React.FC<ContactDetailsProps> = ({
       }}
     >
       <div className="max-w-[380px] mx-auto md:mx-0 flex flex-col gap-6 my-8">
-        <TextInput
-          id="name"
-          label="Name"
-          placeholder="Nachname"
-          value={values?.lastName}
-          onChange={(e) => {
-            setValues({ ...values, lastName: e.target.value });
-          }}
-        />
-        <TextInput
-          id="firstName"
-          label="Vorname"
-          placeholder="Vorname"
+        <Field
+          type="text"
+          id={ContactFields.FirstName}
+          label={ContactFieldLabelMap[ContactFields.FirstName]}
           value={values?.firstName}
           onChange={(e) => {
             setValues({ ...values, firstName: e.target.value });
           }}
         />
-        <TextInput
-          id="phone"
-          label="Telefonnr."
-          placeholder="Telefonnr."
+        <Field
+          type="text"
+          id={ContactFields.LastName}
+          label={ContactFieldLabelMap[ContactFields.LastName]}
+          value={values?.lastName}
+          onChange={(e) => {
+            setValues({ ...values, lastName: e.target.value });
+          }}
+        />
+        <Field
+          type="text"
+          id={ContactFields.Phone}
+          label={ContactFieldLabelMap[ContactFields.Phone]}
           value={values?.phone}
           onChange={(e) => {
             setValues({ ...values, phone: e.target.value });
           }}
         />
-        <TextInput
-          id="email"
-          label="E-Mail Adresse"
-          placeholder="E-Mail Adresse"
+        <Field
           type="email"
+          id={ContactFields.Email}
+          label={ContactFieldLabelMap[ContactFields.Email]}
           value={values?.email}
           onChange={(e) => {
             setValues({ ...values, email: e.target.value });

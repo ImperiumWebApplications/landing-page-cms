@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { BadgeCheck } from '@styled-icons/heroicons-outline';
 import * as Sentry from '@sentry/nextjs';
 
-import { getAnimation } from '../../../config/animations.config';
+import { getAnimation } from '../../../components/Animation/Animation.config';
 import { devices } from '../../../config/breakpoints.config';
 import {
   QuestionnaireState,
@@ -18,14 +18,14 @@ import { StyledStepTitle } from './StepTitle';
 import { QualityBadges } from './QualityBadges';
 import { LoadingSpinner } from './LoadingSpinner';
 import { RadioInput } from './RadioInput';
-import { TextInput } from './TextInput';
 import {
   ContactFieldLabelMap,
   ContactFields,
   ContactFieldValidations,
-} from '../../../config/form.config';
+} from '../../../components/Form/Form.config';
 import { CheckboxInput } from './CheckboxInput';
 import { NextAPI } from '../../../lib/next/api';
+import { Field } from '../../../components/Form';
 
 const StyledContactForm = styled.div`
   max-width: 45rem;
@@ -156,6 +156,13 @@ export const ContactForm: React.FunctionComponent = () => {
     }
   };
 
+  const onChange = (
+    field: keyof QuestionnaireState['contact'],
+    value: string,
+  ) => {
+    dispatch({ type: 'setDetails', payload: { field, value } });
+  };
+
   return (
     <StyledContactForm>
       <div className="toast">
@@ -168,29 +175,37 @@ export const ContactForm: React.FunctionComponent = () => {
             field={ContactFields.Salutation}
             options={['Herr', 'Frau']}
           />
-          <TextInput
+          <Field
             type="text"
-            field={ContactFields.FirstName}
+            id={ContactFields.FirstName}
+            value={state.contact.firstName}
             label={ContactFieldLabelMap[ContactFields.FirstName]}
-            validations={ContactFieldValidations[ContactFields.FirstName]}
+            validators={ContactFieldValidations[ContactFields.FirstName]}
+            onChange={(e) => onChange(ContactFields.FirstName, e.target.value)}
           />
-          <TextInput
+          <Field
             type="text"
-            field={ContactFields.LastName}
+            id={ContactFields.LastName}
+            value={state.contact.lastName}
             label={ContactFieldLabelMap[ContactFields.LastName]}
-            validations={ContactFieldValidations[ContactFields.LastName]}
+            validators={ContactFieldValidations[ContactFields.LastName]}
+            onChange={(e) => onChange(ContactFields.LastName, e.target.value)}
           />
-          <TextInput
+          <Field
             type="email"
-            field={ContactFields.Email}
+            id={ContactFields.Email}
+            value={state.contact.email}
             label={ContactFieldLabelMap[ContactFields.Email]}
-            validations={ContactFieldValidations[ContactFields.Email]}
+            validators={ContactFieldValidations[ContactFields.Email]}
+            onChange={(e) => onChange(ContactFields.Email, e.target.value)}
           />
-          <TextInput
+          <Field
             type="text"
-            field={ContactFields.Phone}
+            id={ContactFields.Phone}
+            value={state.contact.phone}
             label={ContactFieldLabelMap[ContactFields.Phone]}
-            validations={ContactFieldValidations[ContactFields.Phone]}
+            validators={ContactFieldValidations[ContactFields.Phone]}
+            onChange={(e) => onChange(ContactFields.Phone, e.target.value)}
           />
           <CheckboxInput
             field={ContactFields.TermsAccepted}

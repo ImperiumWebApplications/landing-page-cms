@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ChangeEventHandler, useEffect, useState } from 'react';
 import styled, { useTheme } from 'styled-components';
 import { InfoCircle } from '@styled-icons/bootstrap';
 import { NavigateNext } from '@styled-icons/material-rounded';
@@ -9,11 +9,10 @@ import {
   ContactFieldLabelMap,
   ContactFields,
   ContactFieldValidations,
-} from '../../../config/form.config';
+} from '../../../components/Form/Form.config';
 
 import { Button } from '../../../components/Button/Button';
 import { StyledStepTitle } from './StepTitle';
-import { TextInput } from './TextInput';
 import { SelectInput } from './SelectInput';
 import { CodeInput } from './CodeInput';
 import { useQuestionnaireContext } from '../context/Questionnaire';
@@ -21,6 +20,7 @@ import { getCountryDetails } from '../../../utils/getCountryDetails';
 import { getPostalCodeLength } from '../../../utils/getPostalCodeLength';
 import { normalizeHostname } from '../../../utils/normalizeHostname';
 import { NextAPI } from '../../../lib/next/api';
+import { Field } from '../../../components/Form';
 
 const StyledPostalCode = styled.div`
   max-width: 45rem;
@@ -110,9 +110,9 @@ export const PostalCode: React.FunctionComponent<{
   const code = state.contact.postalCode ?? '';
 
   // Create local state to store information about list of matched cities
-  const [error, setError] = React.useState<string | undefined>(undefined);
-  const [isLoading, setIsLoading] = React.useState<boolean>(false);
-  const [cities, setCities] = React.useState<PostalCodeDetails[]>([]);
+  const [error, setError] = useState<string | undefined>(undefined);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [cities, setCities] = useState<PostalCodeDetails[]>([]);
 
   // Get country information to decide which layout should be rendered
   const countryDetails = getCountryDetails(countries);
@@ -127,7 +127,7 @@ export const PostalCode: React.FunctionComponent<{
   const isSameCode = cities?.[0] && cities[0].zipcode === code;
   const showCitySelect = isSingleCountryContext || isMultiCountryContext;
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!showCitySelect || isTypingCode || isSameCode) return;
     if (isRemovingCode) return setCities([]);
 
@@ -173,6 +173,13 @@ export const PostalCode: React.FunctionComponent<{
     countries,
   ]);
 
+  const onChange: ChangeEventHandler<HTMLInputElement> = ({ target }) => {
+    dispatch({
+      type: 'setDetails',
+      payload: { field: ContactFields.PostalCode, value: target.value },
+    });
+  };
+
   return (
     <StyledPostalCode>
       <StyledStepTitle className="title">
@@ -191,12 +198,16 @@ export const PostalCode: React.FunctionComponent<{
             />
           </>
         ) : (
-          <TextInput
-            field={ContactFields.PostalCode}
+          <Field
+            id={ContactFields.PostalCode}
             type="text"
-            pattern="[0-9]*"
+            value={state.contact.postalCode}
             label={ContactFieldLabelMap[ContactFields.PostalCode]}
-            validations={ContactFieldValidations[ContactFields.PostalCode]}
+            validators={ContactFieldValidations[ContactFields.PostalCode]}
+            onChange={onChange}
+            inputProps={{
+              pattern: '[0-9]*',
+            }}
           />
         )}
         {isSingleCountryContext || isMultiCountryContext ? (

@@ -25,8 +25,12 @@ export const ContactFieldValidations: {
   [key: string]: Validator[];
 } = {
   [ContactFields.Salutation]: [],
-  [ContactFields.FirstName]: [],
-  [ContactFields.LastName]: [],
+  [ContactFields.FirstName]: [
+    { regex: /(.|\s)*\S(.|\s)*/, message: 'Bitte geben Sie einen Wert ein.' },
+  ],
+  [ContactFields.LastName]: [
+    { regex: /(.|\s)*\S(.|\s)*/, message: 'Bitte geben Sie einen Wert ein.' },
+  ],
   [ContactFields.City]: [],
   [ContactFields.TermsAccepted]: [],
   [ContactFields.Email]: [

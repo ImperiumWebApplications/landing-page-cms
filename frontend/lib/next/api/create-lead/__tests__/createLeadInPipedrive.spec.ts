@@ -13,7 +13,7 @@ import {
 } from '../../../../../mocks/lib/pipedrive/data';
 import { StrapiMockHandlers } from '../../../../../mocks/lib/strapi/api';
 import { PipedriveMockHandlers } from '../../../../../mocks/lib/pipedrive/api';
-import { ContactFields } from '../../../../../config/form.config';
+import { ContactFields } from '../../../../../components/Form/Form.config';
 import { PIPEDRIVE_API_URL } from '../../../../pipedrive/instance';
 
 jest.mock('@sentry/nextjs');

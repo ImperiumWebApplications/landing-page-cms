@@ -3,7 +3,7 @@ import slugify from 'slugify';
 import styled from 'styled-components';
 import CodeInputField from 'react-auth-code-input';
 
-import { ContactFields } from '../../../config/form.config';
+import { ContactFields } from '../../../components/Form/Form.config';
 import { useQuestionnaireContext } from '../context/Questionnaire';
 import { setNativeValue } from '../../../utils/setNativeValue';
 import { Label } from './Label';

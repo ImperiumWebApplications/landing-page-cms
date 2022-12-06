@@ -4,7 +4,7 @@ import slugify from 'slugify';
 import styled from 'styled-components';
 
 import { devices } from '../../../config/breakpoints.config';
-import { ContactFields, Validator } from '../../../config/form.config';
+import { ContactFields, Validator } from '../../../components/Form/Form.config';
 import { useQuestionnaireContext } from '../context/Questionnaire';
 import { Label } from './Label';
 

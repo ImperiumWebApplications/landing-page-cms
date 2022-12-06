@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { ChevronDown } from '@styled-icons/evaicons-solid';
 
 import { devices } from '../../../config/breakpoints.config';
-import { ContactFields } from '../../../config/form.config';
+import { ContactFields } from '../../../components/Form/Form.config';
 import { useQuestionnaireContext } from '../context/Questionnaire';
 import { Label } from './Label';
 

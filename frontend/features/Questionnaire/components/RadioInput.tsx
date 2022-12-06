@@ -2,7 +2,7 @@ import slugify from 'slugify';
 import styled from 'styled-components';
 
 import { devices } from '../../../config/breakpoints.config';
-import { ContactFields } from '../../../config/form.config';
+import { ContactFields } from '../../../components/Form/Form.config';
 import { useQuestionnaireContext } from '../context/Questionnaire';
 
 const StyledRadioInput = styled.div`
