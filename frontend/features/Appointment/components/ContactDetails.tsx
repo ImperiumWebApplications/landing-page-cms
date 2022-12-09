@@ -2,6 +2,7 @@ import { useState } from 'react';
 import {
   ContactFieldLabelMap,
   ContactFields,
+  ContactFieldValidations,
   Field,
 } from '../../../components/Form';
 import { AppointmentState } from '../context/Appointment';
@@ -34,6 +35,7 @@ export const ContactDetails: React.FC<ContactDetailsProps> = ({
           type="text"
           id={ContactFields.FirstName}
           label={ContactFieldLabelMap[ContactFields.FirstName]}
+          validators={ContactFieldValidations[ContactFields.FirstName]}
           value={values?.firstName}
           onChange={(e) => {
             setValues({ ...values, firstName: e.target.value });
@@ -43,6 +45,7 @@ export const ContactDetails: React.FC<ContactDetailsProps> = ({
           type="text"
           id={ContactFields.LastName}
           label={ContactFieldLabelMap[ContactFields.LastName]}
+          validators={ContactFieldValidations[ContactFields.LastName]}
           value={values?.lastName}
           onChange={(e) => {
             setValues({ ...values, lastName: e.target.value });
@@ -52,6 +55,7 @@ export const ContactDetails: React.FC<ContactDetailsProps> = ({
           type="text"
           id={ContactFields.Phone}
           label={ContactFieldLabelMap[ContactFields.Phone]}
+          validators={ContactFieldValidations[ContactFields.Phone]}
           value={values?.phone}
           onChange={(e) => {
             setValues({ ...values, phone: e.target.value });
@@ -61,6 +65,7 @@ export const ContactDetails: React.FC<ContactDetailsProps> = ({
           type="email"
           id={ContactFields.Email}
           label={ContactFieldLabelMap[ContactFields.Email]}
+          validators={ContactFieldValidations[ContactFields.Email]}
           value={values?.email}
           onChange={(e) => {
             setValues({ ...values, email: e.target.value });

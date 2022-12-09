@@ -41,7 +41,7 @@ export const TextField = (props: TextFieldProps) => {
         onBlur={onBlurHandler}
         onFocus={onFocusHandler}
       />
-      <span className="block absolute bottom-1 left-0 px-4 text-sm text-[indianred]">
+      <span className="block absolute bottom-0 left-0 px-4 text-sm text-[indianred]">
         {error}
       </span>
     </div>
