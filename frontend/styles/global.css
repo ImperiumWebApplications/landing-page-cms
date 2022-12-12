@@ -71,6 +71,26 @@ body {
   }
 }
 
+.shimmer {
+  position: relative;
+  animation-name: shimmer;
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  background-size: 1000px 640px;
+  background: linear-gradient(to right, #f2f2f2 8%, #f8f8f8 38%, #f2f2f2 54%);
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
+}
+
 .wrap-words {
   overflow-wrap: break-word;
   word-wrap: break-word;

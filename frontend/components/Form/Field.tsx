@@ -4,7 +4,7 @@ import type { Validator } from './Form.config';
 
 import { TextField, TextFieldProps } from './components/TextField';
 import { CheckboxField, CheckboxFieldProps } from './components/CheckboxField';
-import { SelectFieldProps } from './components/SelectField';
+import { SelectField, SelectFieldProps } from './components/SelectField';
 import {
   RadioGroupField,
   RadioGroupFieldProps,
@@ -15,7 +15,6 @@ export type CommonFieldProps = {
   label?: string;
   validators?: Validator[];
   className?: string;
-  inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
 };
 
 export type FieldProps =
@@ -50,8 +49,12 @@ export const Field = ({ className, ...props }: FieldProps) => {
           <CheckboxField {...props} />
         </FieldWrapper>
       );
-    // case 'select':
-    //   return <SelectField {...props} />;
+    case 'select':
+      return (
+        <FieldWrapper className={className} type={props.type}>
+          <SelectField {...props} />
+        </FieldWrapper>
+      );
     default:
       throw new Error('Unknown field type');
   }

@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler, useEffect, useState } from 'react';
+import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import styled, { useTheme } from 'styled-components';
 import { InfoCircle } from '@styled-icons/bootstrap';
 import { NavigateNext } from '@styled-icons/material-rounded';
@@ -12,15 +12,14 @@ import {
 } from '../../../components/Form/Form.config';
 
 import { Button } from '../../../components/Button/Button';
+import { Field } from '../../../components/Form';
 import { StyledStepTitle } from './StepTitle';
-import { SelectInput } from './SelectInput';
 import { CodeInput } from './CodeInput';
 import { useQuestionnaireContext } from '../context/Questionnaire';
 import { getCountryDetails } from '../../../utils/getCountryDetails';
 import { getPostalCodeLength } from '../../../utils/getPostalCodeLength';
 import { normalizeHostname } from '../../../utils/normalizeHostname';
 import { NextAPI } from '../../../lib/next/api';
-import { Field } from '../../../components/Form';
 
 const StyledPostalCode = styled.div`
   max-width: 45rem;
@@ -45,6 +44,10 @@ const StyledPostalCode = styled.div`
       flex-grow: 1;
       width: 100%;
       margin-top: 1.5rem;
+
+      button {
+        height: 3.5rem;
+      }
 
       @media screen and (${devices.md}) {
         max-width: 20rem;
@@ -127,9 +130,34 @@ export const PostalCode: React.FunctionComponent<{
   const isSameCode = cities?.[0] && cities[0].zipcode === code;
   const showCitySelect = isSingleCountryContext || isMultiCountryContext;
 
+  const updateCity = useCallback(
+    (value: string | undefined) => {
+      dispatch({
+        type: 'setDetails',
+        payload: { field: ContactFields.City, value },
+      });
+    },
+    [dispatch],
+  );
+
+  const resetCities = useCallback(() => {
+    updateCity(undefined);
+    setCities([]);
+  }, [updateCity]);
+
+  const updatePostalCode = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      dispatch({
+        type: 'setDetails',
+        payload: { field: ContactFields.PostalCode, value: event.target.value },
+      });
+    },
+    [dispatch],
+  );
+
   useEffect(() => {
     if (!showCitySelect || isTypingCode || isSameCode) return;
-    if (isRemovingCode) return setCities([]);
+    if (isRemovingCode) return resetCities();
 
     const domain = normalizeHostname(window.location.host);
     if (!domain) return;
@@ -156,8 +184,8 @@ export const PostalCode: React.FunctionComponent<{
         setError(undefined);
         setIsLoading(false);
       } catch (err) {
-        setCities([]);
         setIsLoading(false);
+        resetCities();
         setError(ContactFieldValidations[ContactFields.PostalCode][0].message);
       }
     };
@@ -171,14 +199,8 @@ export const PostalCode: React.FunctionComponent<{
     showCitySelect,
     code,
     countries,
+    resetCities,
   ]);
-
-  const onChange: ChangeEventHandler<HTMLInputElement> = ({ target }) => {
-    dispatch({
-      type: 'setDetails',
-      payload: { field: ContactFields.PostalCode, value: target.value },
-    });
-  };
 
   return (
     <StyledPostalCode>
@@ -204,22 +226,26 @@ export const PostalCode: React.FunctionComponent<{
             value={state.contact.postalCode}
             label={ContactFieldLabelMap[ContactFields.PostalCode]}
             validators={ContactFieldValidations[ContactFields.PostalCode]}
-            onChange={onChange}
+            onChange={updatePostalCode}
             inputProps={{
               pattern: '[0-9]*',
             }}
           />
         )}
         {isSingleCountryContext || isMultiCountryContext ? (
-          <div className="city-input">
-            <SelectInput
-              field={ContactFields.City}
-              label={ContactFieldLabelMap[ContactFields.City]}
-              isLoading={isLoading}
-              disabled={!isCodeCompleted || !!error}
-              options={cities.map((city) => city.place)}
-            />
-          </div>
+          <Field
+            type="select"
+            className="city-input"
+            id={ContactFields.City}
+            value={state.contact.city}
+            label={ContactFieldLabelMap[ContactFields.City]}
+            options={cities.map((city) => city.place)}
+            onChange={updateCity}
+            buttonProps={{
+              disabled: !isCodeCompleted || !!error,
+              loading: isLoading,
+            }}
+          />
         ) : undefined}
       </div>
       <div className="button">

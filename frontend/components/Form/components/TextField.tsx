@@ -7,6 +7,7 @@ export type TextFieldProps = CommonFieldProps & {
   type: 'text' | 'email';
   value: string | undefined;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
+  inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
 };
 
 export const TextField = (props: TextFieldProps) => {
