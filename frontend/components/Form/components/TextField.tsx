@@ -5,6 +5,7 @@ import { Label } from './Label';
 
 export type TextFieldProps = CommonFieldProps & {
   type: 'text' | 'email';
+  value: string | undefined;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
 };
 

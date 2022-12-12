@@ -3,7 +3,7 @@ import cx from 'classnames';
 import type { Validator } from './Form.config';
 
 import { TextField, TextFieldProps } from './components/TextField';
-import { CheckboxFieldProps } from './components/CheckboxField';
+import { CheckboxField, CheckboxFieldProps } from './components/CheckboxField';
 import { SelectFieldProps } from './components/SelectField';
 import {
   RadioGroupField,
@@ -13,7 +13,6 @@ import {
 export type CommonFieldProps = {
   id: string;
   label?: string;
-  value: string | undefined;
   validators?: Validator[];
   className?: string;
   inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
@@ -45,8 +44,12 @@ export const Field = ({ className, ...props }: FieldProps) => {
           <RadioGroupField {...props} />
         </FieldWrapper>
       );
-    // case 'checkbox':
-    //   return <CheckboxField {...props} />;
+    case 'checkbox':
+      return (
+        <FieldWrapper className={className} type={props.type}>
+          <CheckboxField {...props} />
+        </FieldWrapper>
+      );
     // case 'select':
     //   return <SelectField {...props} />;
     default:

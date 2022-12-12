@@ -22,7 +22,6 @@ import {
   ContactFields,
   ContactFieldValidations,
 } from '../../../components/Form/Form.config';
-import { CheckboxInput } from './CheckboxInput';
 import { NextAPI } from '../../../lib/next/api';
 import { Field } from '../../../components/Form';
 
@@ -155,9 +154,9 @@ export const ContactForm: React.FunctionComponent = () => {
     }
   };
 
-  const onChange = (
+  const updateContext = (
     field: keyof QuestionnaireState['contact'],
-    value: string,
+    value: string | boolean,
   ) => {
     dispatch({ type: 'setDetails', payload: { field, value } });
   };
@@ -175,7 +174,7 @@ export const ContactForm: React.FunctionComponent = () => {
             className="col-span-2"
             id={ContactFields.Salutation}
             value={state.contact.salutation}
-            onChange={(value) => onChange(ContactFields.Salutation, value)}
+            onChange={(value) => updateContext(ContactFields.Salutation, value)}
             options={ContactFieldLabelMap[ContactFields.Salutation]}
           />
           <Field
@@ -184,7 +183,9 @@ export const ContactForm: React.FunctionComponent = () => {
             value={state.contact.firstName}
             label={ContactFieldLabelMap[ContactFields.FirstName]}
             validators={ContactFieldValidations[ContactFields.FirstName]}
-            onChange={(e) => onChange(ContactFields.FirstName, e.target.value)}
+            onChange={(e) =>
+              updateContext(ContactFields.FirstName, e.target.value)
+            }
           />
           <Field
             type="text"
@@ -192,7 +193,9 @@ export const ContactForm: React.FunctionComponent = () => {
             value={state.contact.lastName}
             label={ContactFieldLabelMap[ContactFields.LastName]}
             validators={ContactFieldValidations[ContactFields.LastName]}
-            onChange={(e) => onChange(ContactFields.LastName, e.target.value)}
+            onChange={(e) =>
+              updateContext(ContactFields.LastName, e.target.value)
+            }
           />
           <Field
             type="email"
@@ -200,7 +203,7 @@ export const ContactForm: React.FunctionComponent = () => {
             value={state.contact.email}
             label={ContactFieldLabelMap[ContactFields.Email]}
             validators={ContactFieldValidations[ContactFields.Email]}
-            onChange={(e) => onChange(ContactFields.Email, e.target.value)}
+            onChange={(e) => updateContext(ContactFields.Email, e.target.value)}
           />
           <Field
             type="text"
@@ -208,11 +211,21 @@ export const ContactForm: React.FunctionComponent = () => {
             value={state.contact.phone}
             label={ContactFieldLabelMap[ContactFields.Phone]}
             validators={ContactFieldValidations[ContactFields.Phone]}
-            onChange={(e) => onChange(ContactFields.Phone, e.target.value)}
+            onChange={(e) => updateContext(ContactFields.Phone, e.target.value)}
           />
-          <CheckboxInput
-            field={ContactFields.TermsAccepted}
+          <Field
+            type="checkbox"
+            className="max-w-full col-span-2"
+            id={ContactFields.TermsAccepted}
+            value={state.contact.acceptedTerms}
             label={ContactFieldLabelMap[ContactFields.TermsAccepted]}
+            validators={ContactFieldValidations[ContactFields.TermsAccepted]}
+            onChange={() =>
+              updateContext(
+                ContactFields.TermsAccepted,
+                !state.contact.acceptedTerms,
+              )
+            }
           />
         </div>
         <button

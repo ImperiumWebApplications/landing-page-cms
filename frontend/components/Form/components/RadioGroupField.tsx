@@ -5,6 +5,7 @@ import { CheckIcon, CircleIcon } from '../../Icons';
 
 export type RadioGroupFieldProps = CommonFieldProps & {
   type: 'radio';
+  value: string | undefined;
   onChange: (value: string) => void;
   options: readonly string[];
 };
