@@ -63,7 +63,7 @@ const ProgressPanelButton = ({
   return (
     <button
       onClick={onClick}
-      className={`w-full pb-2 pt-3 text-lg leading-none rounded-lg border-primary border-[1px] transition-colors ${
+      className={`w-full text-left px-6 pb-2 pt-3 text-lg leading-none rounded-lg border-primary border-[1px] transition-colors ${
         isActive ? 'text-[white] bg-primary' : 'text-primary'
       } ${
         !disabled ? 'hover:bg-primary hover:text-[white] cursor-pointer' : ''
