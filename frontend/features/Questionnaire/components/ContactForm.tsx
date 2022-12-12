@@ -17,7 +17,6 @@ import {
 import { StyledStepTitle } from './StepTitle';
 import { QualityBadges } from './QualityBadges';
 import { LoadingSpinner } from './LoadingSpinner';
-import { RadioInput } from './RadioInput';
 import {
   ContactFieldLabelMap,
   ContactFields,
@@ -171,9 +170,13 @@ export const ContactForm: React.FunctionComponent = () => {
       <StyledStepTitle>Für wen sind die Angebote bestimmt?</StyledStepTitle>
       <form onSubmit={onSubmitHandler}>
         <div className="input-group">
-          <RadioInput
-            field={ContactFields.Salutation}
-            options={['Herr', 'Frau']}
+          <Field
+            type="radio"
+            className="col-span-2"
+            id={ContactFields.Salutation}
+            value={state.contact.salutation}
+            onChange={(value) => onChange(ContactFields.Salutation, value)}
+            options={ContactFieldLabelMap[ContactFields.Salutation]}
           />
           <Field
             type="text"

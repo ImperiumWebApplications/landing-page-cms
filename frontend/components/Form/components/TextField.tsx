@@ -5,6 +5,7 @@ import { Label } from './Label';
 
 export type TextFieldProps = CommonFieldProps & {
   type: 'text' | 'email';
+  onChange: React.ChangeEventHandler<HTMLInputElement>;
 };
 
 export const TextField = (props: TextFieldProps) => {
@@ -15,18 +16,18 @@ export const TextField = (props: TextFieldProps) => {
   };
 
   const onBlurHandler: React.FocusEventHandler = () => {
-    if (!props.validators?.length) return;
-    props.validators.some((validator) => {
-      const isValid = validator.regex.test(props.value ?? '');
-      if (isValid) return false;
+    if (props.validators?.length)
+      props.validators.some((validator) => {
+        const isValid = validator.regex.test(props.value ?? '');
+        if (isValid) return false;
 
-      setError(validator.message);
-      return true;
-    });
+        setError(validator.message);
+        return true;
+      });
   };
 
   return (
-    <div className="relative max-w-md" data-field={props.type}>
+    <div className="relative">
       <Label htmlFor={props.id}>{props.label}</Label>
       <input
         {...props.inputProps}

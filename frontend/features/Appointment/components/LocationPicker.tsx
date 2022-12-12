@@ -1,17 +1,17 @@
-import type { ComponentProps } from 'react';
 import { RadioGroup as HeadlessRadioGroup } from '@headlessui/react';
 
 import type { LocationOption } from '../hooks/useLocationOptions';
 import { Button } from './Button';
+import { CheckIcon, CircleIcon } from '../../../components/Icons';
 
-type RadioGroupProps = {
+type LocationPickerProps = {
   options: LocationOption[];
   value: string | null | undefined;
   setValue: (value: string) => void;
   onSubmit: () => void;
 };
 
-export const RadioGroup: React.FC<RadioGroupProps> = ({
+export const LocationPicker: React.FC<LocationPickerProps> = ({
   options,
   value,
   setValue,
@@ -68,9 +68,9 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
                         </div>
                         <div className="shrink-0 text-white">
                           {checked ? (
-                            <CheckIcon className="h-4 w-6 md:h-6 md:w-6" />
+                            <CheckIcon className="h-4 w-6 md:h-6 md:w-6 fill-secondary" />
                           ) : (
-                            <CircleIcon className="h-4 w-6 md:h-6 md:w-6" />
+                            <CircleIcon className="h-4 w-6 md:h-6 md:w-6 stroke-secondary" />
                           )}
                         </div>
                       </div>
@@ -92,28 +92,5 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
         </Button>
       </div>
     </div>
-  );
-};
-
-const CheckIcon = (props: ComponentProps<'svg'>) => {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" {...props}>
-      <circle cx={12} cy={12} r={12} fill="#fff" opacity="0.2" />
-      <path
-        d="M7 13l3 3 7-7"
-        stroke="#fff"
-        strokeWidth={3}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-};
-
-const CircleIcon = (props: ComponentProps<'svg'>) => {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" {...props}>
-      <circle cx={12} cy={12} r={11} className="stroke-secondary" />
-    </svg>
   );
 };

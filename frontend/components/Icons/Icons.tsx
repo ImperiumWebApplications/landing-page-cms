@@ -208,3 +208,26 @@ export const CloseIcon = (props: ComponentProps<'svg'>): ReactElement => {
     </svg>
   );
 };
+
+export const CheckIcon = (props: ComponentProps<'svg'>): ReactElement => {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" {...props}>
+      <circle cx={12} cy={12} r={12} />
+      <path
+        d="M7 13l3 3 7-7"
+        stroke="#fff"
+        strokeWidth={3}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+};
+
+export const CircleIcon = (props: ComponentProps<'svg'>): ReactElement => {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" {...props}>
+      <circle cx={12} cy={12} r={11} strokeWidth={2} />
+    </svg>
+  );
+};

@@ -8,7 +8,7 @@ import { useAppointmentDuration } from '../hooks/useAppointmentDuration';
 import { Confirmation } from './Confirmation';
 import { ContactDetails } from './ContactDetails';
 import { DateList } from './DateList';
-import { RadioGroup } from './RadioGroup';
+import { LocationPicker } from './LocationPicker';
 
 const DEFAULT_DESCRIPTION = 'In wenigen Schritten zum persönlichen Gespräch';
 
@@ -26,7 +26,7 @@ export const SelectionPanel: React.FC<SelectionPanelProps> = ({ steps }) => {
     switch (content.type) {
       case 'location':
         return (
-          <RadioGroup
+          <LocationPicker
             options={content.options}
             value={state.location}
             onSubmit={() => {

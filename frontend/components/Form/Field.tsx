@@ -1,16 +1,21 @@
+import cx from 'classnames';
+
 import type { Validator } from './Form.config';
 
 import { TextField, TextFieldProps } from './components/TextField';
 import { CheckboxFieldProps } from './components/CheckboxField';
 import { SelectFieldProps } from './components/SelectField';
-import { RadioGroupFieldProps } from './components/RadioGroupField';
+import {
+  RadioGroupField,
+  RadioGroupFieldProps,
+} from './components/RadioGroupField';
 
 export type CommonFieldProps = {
   id: string;
   label?: string;
   value: string | undefined;
   validators?: Validator[];
-  onChange: React.ChangeEventHandler<HTMLInputElement>;
+  className?: string;
   inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
 };
 
@@ -20,14 +25,26 @@ export type FieldProps =
   | CheckboxFieldProps
   | SelectFieldProps;
 
-export const Field = (props: FieldProps) => {
+export const Field = ({ className, ...props }: FieldProps) => {
   switch (props.type) {
     case 'text':
-      return <TextField {...props} />;
+      return (
+        <FieldWrapper className={className} type={props.type}>
+          <TextField {...props} />
+        </FieldWrapper>
+      );
     case 'email':
-      return <TextField {...props} />;
-    // case 'radio':
-    //   return <RadioGroupField {...props} />;
+      return (
+        <FieldWrapper className={className} type={props.type}>
+          <TextField {...props} />
+        </FieldWrapper>
+      );
+    case 'radio':
+      return (
+        <FieldWrapper className={className} type={props.type}>
+          <RadioGroupField {...props} />
+        </FieldWrapper>
+      );
     // case 'checkbox':
     //   return <CheckboxField {...props} />;
     // case 'select':
@@ -35,4 +52,18 @@ export const Field = (props: FieldProps) => {
     default:
       throw new Error('Unknown field type');
   }
+};
+
+type FieldWrapperProps = {
+  className?: string;
+  children?: React.ReactNode;
+  type?: string;
+};
+
+const FieldWrapper = ({ className, children, type }: FieldWrapperProps) => {
+  return (
+    <div className={cx('max-w-md', className)} data-field={type}>
+      {children}
+    </div>
+  );
 };
