@@ -12,20 +12,20 @@ export type RadioGroupFieldProps = CommonFieldProps & {
 
 export const RadioGroupField = (props: RadioGroupFieldProps) => {
   return (
-    <RadioGroup value={props.value} onChange={props.onChange}>
+    <RadioGroup value={props.value ?? ''} onChange={props.onChange}>
       {props.options.map((option) => (
         <RadioGroup.Option
           key={option}
           value={option}
-          className="inline-flex items-center gap-3 py-2 align-middle cursor-pointer mr-8 focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary rounded-md"
+          className="group inline-flex items-center gap-3 py-2 align-middle cursor-pointer transition-all mr-8 focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary rounded-md"
         >
           {({ checked }) => {
             return (
               <>
                 {checked ? (
-                  <CheckIcon className="h-4 w-6 md:h-6 md:w-6 fill-secondary" />
+                  <CheckIcon className="h-6 w-6 fill-secondary" />
                 ) : (
-                  <CircleIcon className="h-4 w-6 md:h-6 md:w-6 stroke-tertiary" />
+                  <CircleIcon className="h-6 w-6 stroke-tertiary group-hover:stroke-secondary" />
                 )}
                 <RadioGroup.Label as="p">{option}</RadioGroup.Label>
               </>
