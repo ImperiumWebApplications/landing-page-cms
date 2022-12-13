@@ -14,7 +14,6 @@ import {
 import { Button } from '../../../components/Button/Button';
 import { Field } from '../../../components/Form';
 import { StyledStepTitle } from './StepTitle';
-import { CodeInput } from './CodeInput';
 import { useQuestionnaireContext } from '../context/Questionnaire';
 import { getCountryDetails } from '../../../utils/getCountryDetails';
 import { getPostalCodeLength } from '../../../utils/getPostalCodeLength';
@@ -146,10 +145,11 @@ export const PostalCode: React.FunctionComponent<{
   }, [updateCity]);
 
   const updatePostalCode = useCallback(
-    (event: ChangeEvent<HTMLInputElement>) => {
+    (update: ChangeEvent<HTMLInputElement> | string) => {
+      const value = typeof update === 'string' ? update : update.target.value;
       dispatch({
         type: 'setDetails',
-        payload: { field: ContactFields.PostalCode, value: event.target.value },
+        payload: { field: ContactFields.PostalCode, value },
       });
     },
     [dispatch],
@@ -211,12 +211,16 @@ export const PostalCode: React.FunctionComponent<{
       <div className="location-input">
         {isSingleCountryContext ? (
           <>
-            <CodeInput
-              field={ContactFields.PostalCode}
-              type="numeric"
+            <Field
+              type="code"
+              id={ContactFields.PostalCode}
+              value={state.contact.postalCode}
+              onChange={updatePostalCode}
               label={ContactFieldLabelMap[ContactFields.PostalCode]}
               length={postalCodeLength}
-              error={error}
+              inputProps={{
+                className: error ? 'border-[red]' : '',
+              }}
             />
           </>
         ) : (

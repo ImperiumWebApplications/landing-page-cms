@@ -5,6 +5,7 @@ import type { Validator } from './Form.config';
 import { TextField, TextFieldProps } from './components/TextField';
 import { CheckboxField, CheckboxFieldProps } from './components/CheckboxField';
 import { SelectField, SelectFieldProps } from './components/SelectField';
+import { CodeField, CodeFieldProps } from './components/CodeField';
 import {
   RadioGroupField,
   RadioGroupFieldProps,
@@ -18,6 +19,7 @@ export type CommonFieldProps = {
 };
 
 export type FieldProps =
+  | CodeFieldProps
   | TextFieldProps
   | RadioGroupFieldProps
   | CheckboxFieldProps
@@ -53,6 +55,12 @@ export const Field = ({ className, ...props }: FieldProps) => {
       return (
         <FieldWrapper className={className} type={props.type}>
           <SelectField {...props} />
+        </FieldWrapper>
+      );
+    case 'code':
+      return (
+        <FieldWrapper className={className} type={props.type}>
+          <CodeField {...props} />
         </FieldWrapper>
       );
     default:
