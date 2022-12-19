@@ -13,7 +13,11 @@ const activeStateCss = css`
   .icon svg,
   .icon svg path,
   .icon svg polygon,
-  .icon svg circle {
+  .icon svg circle,
+  .icon svg line,
+  .icon svg polyline,
+  .icon svg rect,
+  .icon svg ellipse {
     fill: white !important;
   }
 
@@ -86,7 +90,11 @@ const StyledSelectableOption = styled.div`
     svg,
     svg path,
     svg polygon,
-    svg circle {
+    svg circle,
+    svg line,
+    svg polyline,
+    svg rect,
+    svg ellipse {
       fill: ${({ theme }) => theme.colors.secondary} !important;
     }
   }
