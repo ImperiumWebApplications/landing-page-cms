@@ -248,3 +248,52 @@ export const ChevronDownIcon = (props: ComponentProps<'svg'>): ReactElement => {
     </svg>
   );
 };
+
+export const ChevronRightIcon = (
+  props: ComponentProps<'svg'>,
+): ReactElement => {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      focusable="false"
+      role="img"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path d="m9.29 15.46 3.88-3.88L9.29 7.7a.996.996 0 1 1 1.41-1.41l4.59 4.59c.39.39.39 1.02 0 1.41l-4.59 4.59a.996.996 0 0 1-1.41 0c-.38-.39-.39-1.03 0-1.42z"></path>
+    </svg>
+  );
+};
+
+export const ArrowRightCircleIcon = (
+  props: ComponentProps<'svg'>,
+): ReactElement => {
+  return (
+    <svg
+      viewBox="0 0 16 16"
+      focusable="false"
+      role="img"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"></path>
+    </svg>
+  );
+};
+
+export const PlayIcon = (props: ComponentProps<'svg'>): ReactElement => {
+  return (
+    <svg
+      viewBox="0 0 100 100"
+      focusable="false"
+      role="img"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path d="M76.982 50c0-.847-.474-1.575-1.167-1.957L26.541 19.595a2.23 2.23 0 0 0-1.279-.404 2.244 2.244 0 0 0-2.244 2.243c0 .087.016.169.026.253h-.026v57.131h.026a2.235 2.235 0 0 0 2.218 1.99 2.22 2.22 0 0 0 1.117-.308l.02.035L75.875 51.97l-.02-.035A2.233 2.233 0 0 0 76.982 50z"></path>
+    </svg>
+  );
+};

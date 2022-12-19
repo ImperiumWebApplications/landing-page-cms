@@ -7,7 +7,7 @@ import {
 } from '../../../components/Form';
 import { AppointmentState } from '../context/Appointment';
 
-import { Button } from './Button';
+import { Button } from '../../../components/Button';
 
 type ContactDetailsProps = {
   values: AppointmentState['contact'];
@@ -25,12 +25,12 @@ export const ContactDetails: React.FC<ContactDetailsProps> = ({
 
   return (
     <form
-      className="w-full h-auto md:h-[calc(100%-75px)] flex flex-col justify-between"
+      className="flex h-auto w-full flex-col justify-between md:h-[calc(100%-75px)]"
       onSubmit={(e) => {
         e.preventDefault();
       }}
     >
-      <div className="max-w-[380px] mx-auto md:mx-0 flex flex-col gap-6 my-8">
+      <div className="mx-auto my-8 flex max-w-[380px] flex-col gap-6 md:mx-0">
         <Field
           type="text"
           id={ContactFields.FirstName}
@@ -72,17 +72,19 @@ export const ContactDetails: React.FC<ContactDetailsProps> = ({
           }}
         />
       </div>
-      <div className="w-full text-center md:text-right">
+      <div className="w-full text-center md:text-left">
         {isSubmissionFailed ? (
-          <span className="text-[red] opacity-70 text-sm tracking-tight px-4 block md:inline-block">
+          <span className="block px-4 text-sm tracking-tight text-[red] opacity-70 md:inline-block">
             Fehler beim Absenden
           </span>
         ) : undefined}
         <Button
-          variant="button"
-          type="submit"
+          variant="primary"
+          size="large"
+          label="Jetzt Anfrage abschicken"
+          description="Kostenlos & Unverbindlich"
           className="my-8 flex-shrink-0"
-          isLoading={isSubmitting}
+          loading={isSubmitting}
           disabled={isSubmitting || isInvalidDetailsForm(values)}
           onClick={async () => {
             setIsSubmitting(true);
@@ -97,9 +99,7 @@ export const ContactDetails: React.FC<ContactDetailsProps> = ({
               setIsSubmitting(false);
             }
           }}
-        >
-          Absenden
-        </Button>
+        />
       </div>
     </form>
   );

@@ -16,7 +16,6 @@ import {
 } from '../../../lib/analytics';
 import { StyledStepTitle } from './StepTitle';
 import { QualityBadges } from './QualityBadges';
-import { LoadingSpinner } from './LoadingSpinner';
 import {
   ContactFieldLabelMap,
   ContactFields,
@@ -24,6 +23,7 @@ import {
 } from '../../../components/Form/Form.config';
 import { NextAPI } from '../../../lib/next/api';
 import { Field } from '../../../components/Form';
+import { Button } from '../../../components/Button';
 
 const StyledContactForm = styled.div`
   max-width: 45rem;
@@ -68,42 +68,6 @@ const StyledContactForm = styled.div`
     }
   }
 
-  button {
-    display: block;
-    width: 100%;
-    height: auto;
-    min-height: 4.75rem;
-    margin: 2rem auto;
-    border-radius: ${({ theme }) => theme.borderRadius};
-    background-color: ${({ color, theme }) => color ?? theme.colors.primary};
-    font: ${({ theme }) => theme.font};
-    color: white;
-    padding: 1.25rem 1.75rem 1rem 1.75rem;
-    font-size: 0.9rem;
-    text-align: left;
-    line-height: 1.25rem;
-    letter-spacing: +0.25px;
-    text-decoration: none;
-    cursor: pointer;
-    border: none;
-
-    @media screen and (${devices.sm}) {
-      margin: 4rem auto;
-      width: 25rem;
-    }
-
-    &:disabled {
-      cursor: not-allowed;
-      opacity: 0.8;
-    }
-
-    span {
-      display: block;
-      font-weight: 700;
-      font-size: 1rem;
-    }
-  }
-
   span.error {
     display: block;
     margin: -1rem 0 3rem 0;
@@ -119,8 +83,7 @@ export const ContactForm: React.FunctionComponent = () => {
   const [error, setError] = useState<string | undefined>(undefined);
   const { state, dispatch } = useQuestionnaireContext();
 
-  const onSubmitHandler: React.FormEventHandler = async (event) => {
-    event.preventDefault();
+  const onSubmitHandler = async () => {
     setError(undefined);
 
     try {
@@ -167,7 +130,11 @@ export const ContactForm: React.FunctionComponent = () => {
         <BadgeCheck width={18} /> Letzter Schritt
       </div>
       <StyledStepTitle>Für wen sind die Angebote bestimmt?</StyledStepTitle>
-      <form onSubmit={onSubmitHandler}>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
+      >
         <div className="input-group">
           <Field
             type="radio"
@@ -215,7 +182,7 @@ export const ContactForm: React.FunctionComponent = () => {
           />
           <Field
             type="checkbox"
-            className="max-w-full col-span-2"
+            className="col-span-2 max-w-full"
             id={ContactFields.TermsAccepted}
             value={state.contact.acceptedTerms}
             label={ContactFieldLabelMap[ContactFields.TermsAccepted]}
@@ -228,21 +195,15 @@ export const ContactForm: React.FunctionComponent = () => {
             }
           />
         </div>
-        <button
-          type="submit"
-          className={`call-to-action ${
-            !loading && isFormDataComplete(state) ? 'shining-button' : ''
-          }`}
+        <Button
+          variant="primary"
+          size="large"
+          className="mt-16 mb-20 w-full md:mx-[25%] md:w-[50%]"
+          label="Jetzt Angebot erhalten"
+          description="Kostenlos & Unverbindlich"
           disabled={loading || !isFormDataComplete(state)}
-        >
-          {loading ? (
-            <LoadingSpinner />
-          ) : (
-            <>
-              <span>Jetzt Angebot erhalten</span>Kostenlos & Unverbindlich
-            </>
-          )}
-        </button>
+          onClick={onSubmitHandler}
+        />
         {error && <span className="error">{error}</span>}
       </form>
       <QualityBadges />

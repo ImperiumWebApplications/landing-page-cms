@@ -41,8 +41,8 @@ type AppointmentFormProps = {
 export const AppointmentForm: React.FC<AppointmentFormProps> = (props) => {
   return (
     <AppointmentProvider>
-      <section className="md:h-full pt-8 pb-9 bg-[#FAFAFA]">
-        <FormWrapper className="grid grid-cols-[1fr] md:grid-cols-[1fr_2fr] h-full md:py-14 px-8 md:px-16 md:bg-[white] md:rounded-[20px]">
+      <section className="bg-[#FAFAFA] pt-8 pb-9 md:h-full">
+        <FormWrapper className="grid h-full grid-cols-[1fr] px-8 md:grid-cols-[1fr_2fr] md:rounded-[20px] md:bg-[white] md:py-14 md:px-16 md:shadow-lg">
           <ProgressPanel steps={props.steps} />
           <SelectionPanel steps={props.steps} />
         </FormWrapper>

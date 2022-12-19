@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 import CookieConsentModal from 'react-cookie-consent';
-import hexRgb from 'hex-rgb';
+import cx from 'classnames';
 
 import { devices } from '../../config/breakpoints.config';
+import { getButtonSizeClasses, getButtonVariantClasses } from '../Button';
 
 export const COOKIE_CONSENT_NAME = 'lq-pages-cc';
 
@@ -46,49 +47,6 @@ const StyledCookieConsent = styled.div`
       letter-spacing: +1px;
       font-size: 0.8rem;
     }
-
-    button {
-      margin-top: 1rem;
-      padding: 0.75rem 1.5rem;
-      border: none;
-      background-color: ${({ theme }) => theme.colors.tertiary};
-      border-radius: ${({ theme }) => theme.borderRadius};
-      color: black;
-      font-family: ${({ theme }) => theme.font};
-      font-size: 0.9rem;
-      letter-spacing: 0.5px;
-      cursor: pointer;
-
-      @media screen and (${devices.sm}) {
-        margin-top: 2rem;
-      }
-    }
-
-    .acceptButton {
-      border-color: ${({ theme }) => theme.colors.primary};
-      background-color: ${({ theme }) => theme.colors.primary};
-      color: white;
-
-      &:hover {
-        filter: brightness(110%);
-        box-shadow: 0 0 0 1px ${({ theme }) => theme.colors.tertiary},
-          0 0 0 3px
-            ${({ theme }) =>
-              hexRgb(theme.colors.text, { format: 'css', alpha: 0.75 })};
-      }
-    }
-
-    .declineButton {
-      margin-right: 0.5rem;
-
-      @media screen and (${devices.sm}) {
-        margin-right: 1rem;
-      }
-
-      &:hover {
-        filter: brightness(90%);
-      }
-    }
   }
 `;
 
@@ -111,11 +69,19 @@ export const CookieConsent: React.FunctionComponent<CookieConsentProps> = ({
         enableDeclineButton={true}
         expires={30}
         buttonText="Cookies erlauben"
-        buttonClasses="acceptButton"
+        buttonClasses={cx(
+          'relative rounded-md mt-4',
+          getButtonVariantClasses('primary'),
+          getButtonSizeClasses('medium'),
+        )}
         onAccept={() => setConsent('Yes')}
         ariaAcceptLabel="Cookies erlauben"
         declineButtonText="Ablehnen"
-        declineButtonClasses="declineButton"
+        declineButtonClasses={cx(
+          'relative rounded-md mt-4 mr-4',
+          getButtonVariantClasses('tertiary'),
+          getButtonSizeClasses('medium'),
+        )}
         onDecline={() => setConsent('No')}
         ariaDeclineLabel="Cookies ablehnen"
         cookieName={COOKIE_CONSENT_NAME}

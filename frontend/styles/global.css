@@ -12,19 +12,28 @@
 
 @layer base {
   h1 {
-    @apply text-3xl lg:text-4xl font-semibold mb-4 mt-8;
+    @apply mb-4 mt-8 text-3xl font-semibold lg:text-4xl;
   }
   h2 {
-    @apply text-2xl lg:text-3xl font-semibold mb-2 mt-8;
+    @apply mb-2 mt-8 text-2xl font-semibold lg:text-3xl;
   }
   h3 {
-    @apply text-xl lg:text-2xl font-semibold mb-2 mt-8;
+    @apply mb-2 mt-8 text-xl font-semibold lg:text-2xl;
   }
 }
 
 @layer components {
   [type='checkbox']:checked {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'%3E%3Ccircle cx='12' cy='12' r='12'/%3E%3Cpath d='m7 13 3 3 7-7' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  }
+
+  /** Images Section **/
+  .images-wrapper:first-of-type > span > img {
+    @apply rounded-lg;
+  }
+
+  .images-wrapper:last-of-type > span > img {
+    @apply rounded-lg;
   }
 }
 
@@ -99,4 +108,28 @@ body {
   -moz-hyphens: auto;
   -webkit-hyphens: auto;
   hyphens: auto;
+}
+
+.shining-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.shining-button::after {
+  background: #fff;
+  content: '';
+  height: 155px;
+  left: -75px;
+  opacity: 0.2;
+  position: absolute;
+  top: -50px;
+  transform: rotate(35deg);
+  transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
+  width: 50px;
+  z-index: 15;
+}
+
+.shining-button:hover::after {
+  left: 120%;
+  transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
 }

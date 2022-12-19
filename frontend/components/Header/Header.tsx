@@ -9,9 +9,8 @@ import {
 } from '../../config/navigation.config';
 import { MobileNavigation } from './components/MobileNavigation';
 import { Logo } from '../Logo/Logo';
-import { Button } from '../Button/Button';
+import { Button } from '../Button';
 import { Animation } from '../Animation/Animation';
-import { devices } from '../../config/breakpoints.config';
 import { isFunnelRoute } from '../../utils/isFunnelRoute';
 
 const StyledHeader = styled.header<{ centerLogo: boolean }>`
@@ -40,17 +39,6 @@ const StyledHeader = styled.header<{ centerLogo: boolean }>`
       }
     }
   }
-
-  .button {
-    display: none;
-
-    @media screen and (${devices.md}) {
-      display: block;
-      height: auto;
-      position: relative;
-      z-index: 15;
-    }
-  }
 `;
 
 export const Header: React.FC<{
@@ -64,13 +52,15 @@ export const Header: React.FC<{
     return (
       <>
         <Button
-          href={
+          variant="primary"
+          size="large"
+          className="z-15 relative hidden h-auto text-[0.9rem] uppercase tracking-wider md:block"
+          label="Lassen Sie sich beraten"
+          to={
             content.funnel_target === 'Appointment'
               ? appointmentRoute
               : questionnaireRoute
           }
-          label="Lassen Sie sich beraten"
-          className="button"
         />
         <MobileNavigation />
       </>

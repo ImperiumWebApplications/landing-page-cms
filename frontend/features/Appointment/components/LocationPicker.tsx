@@ -1,8 +1,8 @@
 import { RadioGroup as HeadlessRadioGroup } from '@headlessui/react';
 
 import type { LocationOption } from '../hooks/useLocationOptions';
-import { Button } from './Button';
 import { CheckIcon, CircleIcon } from '../../../components/Icons';
+import { Button } from '../../../components/Button';
 
 type LocationPickerProps = {
   options: LocationOption[];
@@ -18,9 +18,9 @@ export const LocationPicker: React.FC<LocationPickerProps> = ({
   onSubmit,
 }) => {
   return (
-    <div className="w-full h-auto md:h-[calc(100%-75px)] flex flex-col justify-between">
-      <div className="w-full my-8">
-        <div className="w-full max-w-md mx-auto md:mx-0">
+    <div className="flex h-auto w-full flex-col justify-between md:h-[calc(100%-75px)]">
+      <div className="my-8 w-full">
+        <div className="mx-auto w-full max-w-md md:mx-0">
           <HeadlessRadioGroup value={value ?? ''} onChange={setValue}>
             <div className="space-y-4">
               {options.map((option) => (
@@ -30,15 +30,15 @@ export const LocationPicker: React.FC<LocationPickerProps> = ({
                   className={({ active, checked }) =>
                     `${
                       active
-                        ? 'ring-2 ring-white ring-opacity-60 ring-offset-2 ring-secondary'
+                        ? 'ring-white ring-2 ring-secondary ring-opacity-60 ring-offset-2'
                         : ''
                     }
             ${
               checked
-                ? 'bg-secondary bg-opacity-75 text-[white]'
-                : 'bg-[#FAFAFA] border-[1px] border-primary'
+                ? 'bg-secondary bg-opacity-75 text-[white] shadow-md'
+                : 'border-[1px] border-primary bg-[#FAFAFA] shadow-md'
             }
-              relative flex cursor-pointer rounded-2xl px-6 py-4 md:rounded-3xl md:px-12 md:py-6 focus:outline-none`
+              relative flex cursor-pointer rounded-2xl px-6 py-4 focus:outline-none md:rounded-3xl md:px-12 md:py-6`
                   }
                 >
                   {({ checked }) => (
@@ -47,30 +47,30 @@ export const LocationPicker: React.FC<LocationPickerProps> = ({
                         <div className="flex items-center gap-6 md:gap-12">
                           {option.Icon ? (
                             <option.Icon
-                              className={`w-[40px] h-[40px] md:w-[56px] md:h-[56px] ${
+                              className={`h-[40px] w-[40px] md:h-[56px] md:w-[56px] ${
                                 checked ? 'fill-[white]' : 'fill-gray'
                               }`}
                             />
                           ) : undefined}
                           <HeadlessRadioGroup.Label
                             as="p"
-                            className={`text-left font-medium md:text-lg pr-6 ${
+                            className={`pr-6 text-left font-medium md:text-lg ${
                               checked ? 'text-[white]' : 'text-gray'
                             }`}
                           >
                             {option.label}
                             {option.description ? (
-                              <span className="block text-xs tracking-tight font-normal text-[black] opacity-50">
+                              <span className="block text-xs font-normal tracking-tight text-[black] opacity-50">
                                 {option.description}
                               </span>
                             ) : undefined}
                           </HeadlessRadioGroup.Label>
                         </div>
-                        <div className="shrink-0 text-white">
+                        <div className="text-white shrink-0">
                           {checked ? (
-                            <CheckIcon className="h-4 w-6 md:h-6 md:w-6 fill-secondary" />
+                            <CheckIcon className="h-4 w-6 fill-secondary md:h-6 md:w-6" />
                           ) : (
-                            <CircleIcon className="h-4 w-6 md:h-6 md:w-6 stroke-secondary" />
+                            <CircleIcon className="h-4 w-6 stroke-secondary md:h-6 md:w-6" />
                           )}
                         </div>
                       </div>
@@ -84,12 +84,12 @@ export const LocationPicker: React.FC<LocationPickerProps> = ({
       </div>
       <div className="w-full text-center md:text-right">
         <Button
+          variant="primary"
           className="my-8 flex-shrink-0"
           onClick={onSubmit}
           disabled={!value}
-        >
-          Bestätigen und weiter
-        </Button>
+          label="Bestätigen und weiter"
+        />
       </div>
     </div>
   );

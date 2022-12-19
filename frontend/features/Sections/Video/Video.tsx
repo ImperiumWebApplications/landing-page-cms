@@ -1,15 +1,14 @@
-import styled, { useTheme } from 'styled-components';
+import styled from 'styled-components';
 import ReactPlayer from 'react-player/lazy';
-import { ArrowRightCircleFill } from '@styled-icons/bootstrap/ArrowRightCircleFill';
-import { Play } from '@styled-icons/foundation';
 import ReactMarkdown from 'react-markdown';
 
-import { Button } from '../../../components/Button/Button';
+import { Button } from '../../../components/Button';
 import { Animation } from '../../../components/Animation/Animation';
 import { startQuestionnaire } from '../../../config/navigation.config';
 import { devices } from '../../../config/breakpoints.config';
 import { SectionContainer } from '../SectionContainer';
 import type { VideoSectionContent } from '../SectionMapper';
+import { ArrowRightCircleIcon, PlayIcon } from '../../../components/Icons';
 
 const StyledSectionContainer = styled(SectionContainer)`
   & > .content-wrapper {
@@ -25,14 +24,6 @@ const StyledSectionContainer = styled(SectionContainer)`
       flex-direction: row;
       padding-top: 6rem;
       padding-bottom: 6rem;
-    }
-  }
-
-  .description {
-    max-width: 30rem;
-
-    p {
-      margin: 2rem 0;
     }
   }
 
@@ -128,28 +119,23 @@ type VideoSectionProps = {
 };
 
 export const VideoSection: React.FC<VideoSectionProps> = (props) => {
-  const theme = useTheme();
-
   return (
     <StyledSectionContainer id={props.id}>
-      <div className="description">
+      <div className="max-w-md">
         <Animation type="fadeRight">
           <h2>{props.content?.video_title}</h2>
-          <div>
+          <div className="mt-6 mb-16">
             {props.content?.video_description ? (
               <ReactMarkdown>{props.content.video_description}</ReactMarkdown>
             ) : undefined}
           </div>
           <Button
-            href={startQuestionnaire.href}
+            variant="secondary"
+            size="large"
+            className="text-[0.9rem] uppercase"
+            to={startQuestionnaire.href}
             label={startQuestionnaire.label}
-            color={theme.colors.secondary}
-            icon={
-              <ArrowRightCircleFill
-                size={20}
-                style={{ paddingLeft: '0.25rem' }}
-              />
-            }
+            Icon={<ArrowRightCircleIcon className="h-5 w-5" />}
           />
         </Animation>
       </div>
@@ -166,7 +152,7 @@ export const VideoSection: React.FC<VideoSectionProps> = (props) => {
                 type="button"
                 aria-label="Play Video"
               >
-                <Play color="white" />
+                <PlayIcon fill="white" className="mx-auto" />
               </button>
             }
           />

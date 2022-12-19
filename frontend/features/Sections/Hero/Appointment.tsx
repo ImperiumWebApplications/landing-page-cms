@@ -6,7 +6,7 @@ import { CheckCircle } from '@styled-icons/boxicons-solid/CheckCircle';
 import { devices } from '../../../config/breakpoints.config';
 import { appointmentRoute } from '../../../config/navigation.config';
 import { Animation } from '../../../components/Animation/Animation';
-import { Button } from '../../../components/Button/Button';
+import { Button } from '../../../components/Button';
 
 import { HeroSectionDescription } from './Description';
 import { HeroSectionContent } from '../SectionMapper';
@@ -81,7 +81,6 @@ const StyledSectionContainer = styled(SectionContainer)`
       row-gap: 2rem;
 
       @media screen and (${devices.md}) {
-        margin: 2rem 0 2rem 0;
         flex-direction: row;
         align-items: center;
         justify-content: flex-start;
@@ -204,10 +203,11 @@ export const HeroSectionAppointment: React.FC<HeroSectionAppointmentProps> = (
                 </p>
                 <div className="booking-action">
                   <Button
-                    href={appointmentRoute}
+                    to={appointmentRoute}
+                    variant="primary"
+                    size="large"
+                    className="text-[1.125rem]"
                     label="Kostenloses Gespräch buchen"
-                    className="button"
-                    fixedWidth="19.25rem"
                   />
                 </div>
                 <span className="booking-benefit">

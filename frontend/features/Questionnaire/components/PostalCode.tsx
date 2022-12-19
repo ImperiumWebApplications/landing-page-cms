@@ -1,7 +1,6 @@
 import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import styled, { useTheme } from 'styled-components';
 import { InfoCircle } from '@styled-icons/bootstrap';
-import { NavigateNext } from '@styled-icons/material-rounded';
 
 import { devices } from '../../../config/breakpoints.config';
 import { Country, PostalCodeDetails } from '../../../config/countries.config';
@@ -11,8 +10,9 @@ import {
   ContactFieldValidations,
 } from '../../../components/Form/Form.config';
 
-import { Button } from '../../../components/Button/Button';
+import { Button } from '../../../components/Button';
 import { Field } from '../../../components/Form';
+import { ChevronRightIcon } from '../../../components/Icons';
 import { StyledStepTitle } from './StepTitle';
 import { useQuestionnaireContext } from '../context/Questionnaire';
 import { getCountryDetails } from '../../../utils/getCountryDetails';
@@ -264,24 +264,20 @@ export const PostalCode: React.FunctionComponent<{
           <span>Für die Suche nach dem idealen Anbieter in Ihrer Region</span>
         </div>
         <Button
+          variant="primary"
+          size="fullWidth"
           label="Weiter"
+          className="font-semibold"
+          Icon={<ChevronRightIcon width={24} height={24} />}
           disabled={
             (!!countries && !isCodeCompleted) ||
             (!!!countries && code.trim().length < 4) ||
             isLoading ||
             !!error
           }
-          onClickHandler={() => {
+          onClick={() => {
             dispatch({ type: 'setIndex', payload: { index: state.index + 1 } });
           }}
-          icon={
-            <NavigateNext
-              width={24}
-              height={24}
-              style={{ marginBottom: '3px' }}
-            />
-          }
-          fullWidth
         />
       </div>
     </StyledPostalCode>

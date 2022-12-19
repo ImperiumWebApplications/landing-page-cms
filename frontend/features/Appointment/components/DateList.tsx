@@ -5,8 +5,8 @@ import { format } from 'date-fns';
 import type { DateOptions } from '../hooks/useDateOptions';
 import type { AppointmentState } from '../context/Appointment';
 import { DatePicker } from './DatePicker';
-import { Button } from './Button';
 import { CalendarIcon, ClockIcon } from '../../../components/Icons/Icons';
+import { Button } from '../../../components/Button';
 
 type DateListProps = {
   options: DateOptions;
@@ -49,8 +49,8 @@ export const DateList: React.FC<DateListProps> = ({
       {/* */}
       {DatePickerDialog}
       {/* */}
-      <div className="w-full h-auto md:h-[calc(100%-75px)] flex flex-col justify-between">
-        <div className="w-full max-w-md mx-auto md:mx-0 flex flex-col gap-6 my-8">
+      <div className="flex h-auto w-full flex-col justify-between md:h-[calc(100%-75px)]">
+        <div className="mx-auto my-8 flex w-full max-w-md flex-col gap-6 md:mx-0">
           {[...Array(options.count)].map((_, key) => {
             const selectedDate = values?.[key];
 
@@ -59,37 +59,37 @@ export const DateList: React.FC<DateListProps> = ({
                 key={key}
                 role="button"
                 tabIndex={0}
-                className={`px-6 py-4 md:px-14 md:py-8 rounded-2xl md:rounded-3xl flex flex-row items-center gap-4 lg:gap-8 ${
+                className={`flex flex-row items-center gap-4 rounded-2xl px-6 py-4 md:rounded-3xl md:px-14 md:py-8 lg:gap-8 ${
                   selectedDate
-                    ? 'bg-secondary text-[white] font-semibold lg:text-lg'
-                    : 'bg-[#FAFAFA]'
+                    ? 'bg-secondary font-semibold text-[white] shadow-md lg:text-lg'
+                    : 'bg-[#FAFAFA] shadow-md'
                 }`}
                 onClick={() => setShowPicker(key)}
                 onKeyDown={(event) => {
                   if (event.key === 'Enter') setShowPicker(key);
                 }}
               >
-                <div className="w-full flex items-center gap-4">
+                <div className="flex w-full items-center gap-4">
                   <CalendarIcon
-                    className={`block shrink-0 w-[24px] h-[24px] md:w-[40px] md:h-[40px] ${
+                    className={`block h-[24px] w-[24px] shrink-0 md:h-[40px] md:w-[40px] ${
                       selectedDate ? 'fill-[white]' : 'fill-gray'
                     }`}
                   />
                   <div
-                    className="flex items-end w-full min-h-[30px] leading-tight box-border border-gray border-b-[1px]"
+                    className="box-border flex min-h-[30px] w-full items-end border-b-[1px] border-gray leading-tight"
                     style={{ borderBottom: '1px solid var(--color-secondary)' }}
                   >
                     {selectedDate ? format(selectedDate, 'dd.MM.yyyy') : ''}
                   </div>
                 </div>
-                <div className="w-full flex items-center gap-4">
+                <div className="flex w-full items-center gap-4">
                   <ClockIcon
-                    className={`block shrink-0 w-[24px] h-[24px] md:w-[40px] md:h-[40px] ${
+                    className={`block h-[24px] w-[24px] shrink-0 md:h-[40px] md:w-[40px] ${
                       selectedDate ? 'fill-[white]' : 'fill-gray'
                     }`}
                   />
                   <div
-                    className="flex items-end w-full min-h-[30px] leading-tight box-border border-gray border-b-[1px]"
+                    className="box-border flex min-h-[30px] w-full items-end border-b-[1px] border-gray leading-tight"
                     style={{ borderBottom: '1px solid var(--color-secondary)' }}
                   >
                     {selectedDate ? format(selectedDate, 'kk:mm') : ''}
@@ -101,12 +101,12 @@ export const DateList: React.FC<DateListProps> = ({
         </div>
         <div className="w-full text-center md:text-right">
           <Button
+            variant="primary"
             className="my-8 flex-shrink-0"
+            label="Bestätigen und weiter"
             onClick={onSubmit}
             disabled={!values || Object.values(values)?.length === 0}
-          >
-            Bestätigen und weiter
-          </Button>
+          />
         </div>
       </div>
     </>
