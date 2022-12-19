@@ -1,4 +1,5 @@
 import { fireEvent, waitFor } from '@testing-library/react';
+import { SELECT_FIELD_BUTTON_TEST_ID } from '../../../components/Form/components/SelectField';
 import { Country } from '../../../config/countries.config';
 import { renderWithLayout } from '../../../jest.setup';
 import { NextAPI } from '../../../lib/next/api';
@@ -43,40 +44,40 @@ describe('PostalCode', () => {
   });
 
   test('should render regular text input and no city selection if no country was given', () => {
-    const { queryByLabelText, queryAllByRole } = renderWithLayout(
+    const { queryByText, queryAllByRole } = renderWithLayout(
       <PostalCodeWithContext />,
     );
-
-    expect(queryByLabelText(/stadt/i)).not.toBeInTheDocument();
+    expect(queryByText(/stadt/i)).not.toBeInTheDocument();
     expect(queryAllByRole('textbox', { name: 'Postleitzahl' })).toHaveLength(1);
   });
 
   test('should render code input and city selection if single country was given', () => {
-    const { queryByLabelText, queryAllByLabelText, rerender } =
-      renderWithLayout(<PostalCodeWithContext countries={[Country.Germany]} />);
+    const { queryByText, queryAllByLabelText, rerender } = renderWithLayout(
+      <PostalCodeWithContext countries={[Country.Germany]} />,
+    );
 
-    expect(queryByLabelText(/stadt/i)).toBeInTheDocument();
+    expect(queryByText(/stadt/i)).toBeInTheDocument();
     expect(queryAllByLabelText(/postleitzahl/i)).toHaveLength(5);
 
     rerender(<PostalCodeWithContext countries={[Country.Switzerland]} />);
 
-    expect(queryByLabelText(/stadt/i)).toBeInTheDocument();
+    expect(queryByText(/stadt/i)).toBeInTheDocument();
     expect(queryAllByLabelText(/postleitzahl/i)).toHaveLength(4);
   });
 
   test('should render regular text input and city selection if several countries were given', () => {
-    const { queryByLabelText, queryAllByRole } = renderWithLayout(
+    const { queryByText, queryAllByRole } = renderWithLayout(
       <PostalCodeWithContext
         countries={[Country.Germany, Country.Switzerland]}
       />,
     );
 
-    expect(queryByLabelText(/stadt/i)).toBeInTheDocument();
+    expect(queryByText(/stadt/i)).toBeInTheDocument();
     expect(queryAllByRole('textbox', { name: 'Postleitzahl' })).toHaveLength(1);
   });
 
   test('should fetch cities if code input has been filled completely', async () => {
-    const { queryAllByLabelText, queryAllByRole } = renderWithLayout(
+    const { queryAllByLabelText, queryByTestId } = renderWithLayout(
       <PostalCodeWithContext countries={[Country.Germany]} />,
     );
 
@@ -96,16 +97,15 @@ describe('PostalCode', () => {
         code: '22303',
         countries: [Country.Germany],
       });
-      expect(queryAllByRole('option').length).toBe(2);
-      expect(queryAllByRole('option')[0]).toHaveAttribute(
-        'value',
+
+      expect(queryByTestId(SELECT_FIELD_BUTTON_TEST_ID)).toHaveTextContent(
         defaultPostalCodeDetails[0].place,
       );
     });
   });
 
   test('should reset city selection if digit of filled code input has been deleted', async () => {
-    const { queryAllByLabelText, queryAllByRole } = renderWithLayout(
+    const { queryAllByLabelText, queryByTestId } = renderWithLayout(
       <PostalCodeWithContext countries={[Country.Germany]} />,
     );
 
@@ -119,15 +119,17 @@ describe('PostalCode', () => {
     fireEvent.change(inputs[4], { target: { value: 3 } });
 
     await waitFor(() => {
-      expect(queryAllByRole('option').length).toBe(2);
       expect(NextAPI.getPostalCodeDetails).toHaveBeenCalledTimes(1);
+      expect(queryByTestId(SELECT_FIELD_BUTTON_TEST_ID)).toHaveTextContent(
+        defaultPostalCodeDetails[0].place,
+      );
     });
 
     fireEvent.change(inputs[4], { target: { value: '' } });
 
     await waitFor(() => {
-      expect(queryAllByRole('option').length).toBe(0);
       expect(NextAPI.getPostalCodeDetails).toHaveBeenCalledTimes(1);
+      expect(queryByTestId(SELECT_FIELD_BUTTON_TEST_ID)).toHaveTextContent('');
     });
   });
 
@@ -151,12 +153,12 @@ describe('PostalCode', () => {
   });
 
   test('should render disabled button if there was an error', async () => {
-    (NextAPI.getPostalCodeDetails as jest.Mock).mockReturnValue({
+    (NextAPI.getPostalCodeDetails as jest.Mock).mockReturnValueOnce({
       status: 200,
-      json: async () => ({ success: false, data: null }),
+      json: async () => ({ success: true, data: [] }),
     } as Response);
 
-    const { queryAllByLabelText, getByRole, getByText } = renderWithLayout(
+    const { queryAllByLabelText, getAllByRole, getByText } = renderWithLayout(
       <PostalCodeWithContext countries={[Country.Germany]} />,
     );
 
@@ -168,7 +170,9 @@ describe('PostalCode', () => {
     fireEvent.change(inputs[4], { target: { value: 3 } });
 
     await waitFor(() => {
-      expect(getByRole('button')).toBeDisabled();
+      getAllByRole('button').forEach((button) => {
+        expect(button).toBeDisabled();
+      });
       expect(
         getByText('Bitte geben Sie eine gültige Postleitzahl ein.'),
       ).toBeInTheDocument();
@@ -176,7 +180,7 @@ describe('PostalCode', () => {
   });
 
   test('should render disabled button if there were countries given and the code input is not completed', async () => {
-    const { queryAllByLabelText, getByRole } = renderWithLayout(
+    const { queryAllByLabelText, getAllByRole } = renderWithLayout(
       <PostalCodeWithContext countries={[Country.Germany]} />,
     );
 
@@ -187,23 +191,9 @@ describe('PostalCode', () => {
     fireEvent.change(inputs[3], { target: { value: 3 } });
 
     await waitFor(() => {
-      expect(getByRole('button')).toBeDisabled();
-    });
-  });
-
-  test('should have correct context state if button has been clicked', async () => {
-    const { queryAllByLabelText, getByRole } = renderWithLayout(
-      <PostalCodeWithContext countries={[Country.Germany]} />,
-    );
-
-    const inputs = queryAllByLabelText(/postleitzahl/i);
-    fireEvent.change(inputs[0], { target: { value: 2 } });
-    fireEvent.change(inputs[1], { target: { value: 2 } });
-    fireEvent.change(inputs[2], { target: { value: 3 } });
-    fireEvent.change(inputs[3], { target: { value: 3 } });
-
-    await waitFor(() => {
-      expect(getByRole('button')).toBeDisabled();
+      getAllByRole('button').forEach((button) => {
+        expect(button).toBeDisabled();
+      });
     });
   });
 

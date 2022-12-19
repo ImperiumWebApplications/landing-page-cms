@@ -21,7 +21,10 @@ export const CheckboxField = (props: CheckboxFieldProps) => {
         checked={!!props.value}
         onChange={props.onChange}
       />
-      <label htmlFor={props.id} className="wrap-words -mb-1 cursor-pointer">
+      <label
+        htmlFor={props.id}
+        className="wrap-words -mb-1 cursor-pointer leading-normal"
+      >
         {props.label}
       </label>
     </div>

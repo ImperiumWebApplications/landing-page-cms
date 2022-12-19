@@ -13,8 +13,8 @@ import {
 } from '../../../../../mocks/lib/pipedrive/data';
 import { StrapiMockHandlers } from '../../../../../mocks/lib/strapi/api';
 import { PipedriveMockHandlers } from '../../../../../mocks/lib/pipedrive/api';
-import { ContactFields } from '../../../../../components/Form/Form.config';
 import { PIPEDRIVE_API_URL } from '../../../../pipedrive/instance';
+import { ContactFieldConfig } from '../../../../../components/Form';
 
 jest.mock('@sentry/nextjs');
 
@@ -77,7 +77,7 @@ describe('lib/next/api/create-lead', () => {
         ...defaultData,
         contact: {
           ...defaultData.contact,
-          [ContactFields.PostalCode]: '22303',
+          [ContactFieldConfig.PostalCode.name]: '22303',
         },
       }),
     ).toEqual({

@@ -15,6 +15,7 @@ export interface CreateLeadRequest extends NextApiRequest {
       email?: string;
       postalCode?: string;
       city?: string;
+      acceptedTerms?: boolean;
     };
     appointmentRequests?: {
       date?: string;
@@ -61,9 +62,11 @@ export const validateRequestBody = (
 const isContactDataComplete = (
   data: CreateLeadRequest['body']['contact'],
 ): data is CreateLeadProps['contact'] => {
-  if (!data?.email) return false;
+  if (!data?.salutation) return false;
+  if (!data?.acceptedTerms) return false;
   if (!data?.lastName) return false;
   if (!data?.firstName) return false;
+  if (!data?.email) return false;
   if (!data?.phone) return false;
   return true;
 };

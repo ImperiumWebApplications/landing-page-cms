@@ -27,7 +27,7 @@ export const RadioGroupField = (props: RadioGroupFieldProps) => {
                 ) : (
                   <CircleIcon className="h-6 w-6 stroke-tertiary group-hover:stroke-secondary" />
                 )}
-                <RadioGroup.Label as="p">{option}</RadioGroup.Label>
+                <RadioGroup.Label>{option}</RadioGroup.Label>
               </>
             );
           }}

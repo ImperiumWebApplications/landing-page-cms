@@ -6,7 +6,8 @@ import {
   useEffect,
   useReducer,
 } from 'react';
-import { ContactFields } from '../../../components/Form/Form.config';
+
+import type { ContactDetailsFormValues } from '../../../components/Form';
 import { setBrowserHistoryState } from '../../../utils/setBrowserHistoryState';
 
 /**
@@ -25,16 +26,7 @@ export type AppointmentState = {
   index: number;
   location?: string;
   dates?: Record<number, Date>;
-  contact?: {
-    [ContactFields.Salutation]?: string | undefined;
-    [ContactFields.FirstName]?: string | undefined;
-    [ContactFields.LastName]?: string | undefined;
-    [ContactFields.Email]?: string | undefined;
-    [ContactFields.Phone]?: string | undefined;
-    [ContactFields.PostalCode]?: string | undefined;
-    [ContactFields.City]?: string | undefined;
-    [ContactFields.TermsAccepted]?: boolean | undefined;
-  };
+  contact?: ContactDetailsFormValues;
 };
 
 /**

@@ -1,7 +1,5 @@
 import cx from 'classnames';
 
-import type { Validator } from './Form.config';
-
 import { TextField, TextFieldProps } from './components/TextField';
 import { CheckboxField, CheckboxFieldProps } from './components/CheckboxField';
 import { SelectField, SelectFieldProps } from './components/SelectField';
@@ -11,10 +9,15 @@ import {
   RadioGroupFieldProps,
 } from './components/RadioGroupField';
 
+export type Validator = {
+  regex: RegExp;
+  message: string;
+};
+
 export type CommonFieldProps = {
   id: string;
   label?: string;
-  validators?: Validator[];
+  validators?: readonly Validator[];
   className?: string;
 };
 

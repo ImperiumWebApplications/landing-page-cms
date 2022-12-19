@@ -6,7 +6,7 @@ import {
   useReducer,
 } from 'react';
 
-import { ContactFields } from '../../../components/Form/Form.config';
+import type { ContactDetailsFormValues } from '../../../components/Form';
 import { setBrowserHistoryState } from '../../../utils/setBrowserHistoryState';
 
 /**
@@ -32,8 +32,7 @@ export type QuestionnaireAction =
   | {
       type: 'setDetails';
       payload: {
-        field: keyof QuestionnaireState['contact'];
-        value: QuestionnaireState['contact'][keyof QuestionnaireState['contact']];
+        values: QuestionnaireState['contact'];
       };
     };
 
@@ -45,15 +44,9 @@ export type QuestionnaireAnswer = {
 export type QuestionnaireState = {
   index: number;
   questionnaire: QuestionnaireAnswer[];
-  contact: {
-    [ContactFields.Salutation]?: string | undefined;
-    [ContactFields.FirstName]?: string | undefined;
-    [ContactFields.LastName]?: string | undefined;
-    [ContactFields.Email]?: string | undefined;
-    [ContactFields.Phone]?: string | undefined;
-    [ContactFields.PostalCode]?: string | undefined;
-    [ContactFields.City]?: string | undefined;
-    [ContactFields.TermsAccepted]?: boolean | undefined;
+  contact: ContactDetailsFormValues & {
+    city?: string | undefined;
+    postalCode?: string | undefined;
   };
 };
 
@@ -77,10 +70,7 @@ export const questionnaireReducer = (
       return { ...state, questionnaire: updatedQuestionnaire };
     }
     case 'setDetails': {
-      const updatedDetails = { ...state.contact };
-      // @ts-ignore
-      updatedDetails[action.payload.field] = action.payload.value;
-      return { ...state, contact: updatedDetails };
+      return { ...state, contact: { ...action.payload.values } };
     }
     default: {
       throw new Error(`Unhandled action: ${JSON.stringify(action)}`);
@@ -98,12 +88,22 @@ export const QuestionnaireStateContext =
 export const QuestionnaireDispatchContext =
   createContext<QuestionnaireDispatch | null>(null);
 
-export const QuestionnaireProvider: React.FC = ({ children }) => {
-  const [state, dispatch] = useReducer(questionnaireReducer, {
-    index: 0,
-    contact: {},
-    questionnaire: [],
-  });
+type QuestionnaireProviderProps = {
+  initialState?: QuestionnaireState;
+};
+
+export const QuestionnaireProvider: React.FC<QuestionnaireProviderProps> = ({
+  children,
+  initialState,
+}) => {
+  const [state, dispatch] = useReducer(
+    questionnaireReducer,
+    initialState ?? {
+      index: 0,
+      contact: {},
+      questionnaire: [],
+    },
+  );
 
   const browserBackHandler = useCallback((event: PopStateEvent) => {
     const index = event.state?.options.index;

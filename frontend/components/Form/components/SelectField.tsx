@@ -7,6 +7,8 @@ import type { CommonFieldProps } from '../Field';
 import { CheckIcon, ChevronDownIcon } from '../../Icons';
 import { Label } from './Label';
 
+export const SELECT_FIELD_BUTTON_TEST_ID = 'select-field-button';
+
 export type SelectFieldProps = CommonFieldProps & {
   type: 'select';
   value: string | undefined;
@@ -68,6 +70,7 @@ const ListboxButton = ({
     <Listbox.Button
       {...props}
       disabled={disabled || loading}
+      data-testid={SELECT_FIELD_BUTTON_TEST_ID}
       className={cx(
         `w-full rounded-md border-2 border-tertiary bg-[white] py-[17px] pr-12 pl-4 text-left align-middle tracking-wide ${
           disabled || loading

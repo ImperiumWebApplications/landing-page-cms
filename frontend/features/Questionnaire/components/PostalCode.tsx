@@ -4,14 +4,9 @@ import { InfoCircle } from '@styled-icons/bootstrap';
 
 import { devices } from '../../../config/breakpoints.config';
 import { Country, PostalCodeDetails } from '../../../config/countries.config';
-import {
-  ContactFieldLabelMap,
-  ContactFields,
-  ContactFieldValidations,
-} from '../../../components/Form/Form.config';
 
 import { Button } from '../../../components/Button';
-import { Field } from '../../../components/Form';
+import { ContactFieldConfig, Field } from '../../../components/Form';
 import { ChevronRightIcon } from '../../../components/Icons';
 import { StyledStepTitle } from './StepTitle';
 import { useQuestionnaireContext } from '../context/Questionnaire';
@@ -133,10 +128,10 @@ export const PostalCode: React.FunctionComponent<{
     (value: string | undefined) => {
       dispatch({
         type: 'setDetails',
-        payload: { field: ContactFields.City, value },
+        payload: { values: { ...state.contact, city: value } },
       });
     },
-    [dispatch],
+    [dispatch, state.contact],
   );
 
   const resetCities = useCallback(() => {
@@ -149,10 +144,10 @@ export const PostalCode: React.FunctionComponent<{
       const value = typeof update === 'string' ? update : update.target.value;
       dispatch({
         type: 'setDetails',
-        payload: { field: ContactFields.PostalCode, value },
+        payload: { values: { ...state.contact, postalCode: value } },
       });
     },
-    [dispatch],
+    [dispatch, state.contact],
   );
 
   useEffect(() => {
@@ -186,7 +181,7 @@ export const PostalCode: React.FunctionComponent<{
       } catch (err) {
         setIsLoading(false);
         resetCities();
-        setError(ContactFieldValidations[ContactFields.PostalCode][0].message);
+        setError(ContactFieldConfig.PostalCode.validators[0].message);
       }
     };
 
@@ -213,10 +208,10 @@ export const PostalCode: React.FunctionComponent<{
           <>
             <Field
               type="code"
-              id={ContactFields.PostalCode}
+              id={ContactFieldConfig.PostalCode.name}
+              label={ContactFieldConfig.PostalCode.label}
               value={state.contact.postalCode}
               onChange={updatePostalCode}
-              label={ContactFieldLabelMap[ContactFields.PostalCode]}
               length={postalCodeLength}
               inputProps={{
                 className: error ? 'border-[red]' : '',
@@ -225,11 +220,11 @@ export const PostalCode: React.FunctionComponent<{
           </>
         ) : (
           <Field
-            id={ContactFields.PostalCode}
+            id={ContactFieldConfig.PostalCode.name}
             type="text"
+            validators={ContactFieldConfig.PostalCode.validators}
+            label={ContactFieldConfig.PostalCode.label}
             value={state.contact.postalCode}
-            label={ContactFieldLabelMap[ContactFields.PostalCode]}
-            validators={ContactFieldValidations[ContactFields.PostalCode]}
             onChange={updatePostalCode}
             inputProps={{
               pattern: '[0-9]*',
@@ -240,9 +235,9 @@ export const PostalCode: React.FunctionComponent<{
           <Field
             type="select"
             className="city-input"
-            id={ContactFields.City}
+            id={ContactFieldConfig.City.name}
             value={state.contact.city}
-            label={ContactFieldLabelMap[ContactFields.City]}
+            label={ContactFieldConfig.City.label}
             options={cities.map((city) => city.place)}
             onChange={updateCity}
             buttonProps={{
@@ -267,7 +262,7 @@ export const PostalCode: React.FunctionComponent<{
           variant="primary"
           size="fullWidth"
           label="Weiter"
-          className="font-semibold"
+          className="font-semibold uppercase tracking-wider"
           Icon={<ChevronRightIcon width={24} height={24} />}
           disabled={
             (!!countries && !isCodeCompleted) ||

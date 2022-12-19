@@ -13,12 +13,12 @@ import { devices } from '../../config/breakpoints.config';
 import { Advantages } from './components/Advantages';
 import { Question } from './components/Question';
 import { PostalCode } from './components/PostalCode';
-import { ContactForm } from './components/ContactForm';
 import { Confirmation } from './components/Confirmation';
 import { Progress } from './components/Progress';
 import { BackButton } from './components/BackButton';
 import { useQuestionnaireContext } from './context/Questionnaire';
 import { FormWrapper } from '../../components/Layout';
+import { ContactDetails } from './components/ContactDetails';
 
 const StyledQuestionnaire = styled.div`
   height: 100%;
@@ -122,7 +122,7 @@ export const Questionnaire: React.FC<QuestionnaireProps> = ({
             />
           )}
           {isPostalCodeStep && <PostalCode countries={countries} />}
-          {isContactFormStep && <ContactForm />}
+          {isContactFormStep && <ContactDetails />}
           {isFormSuccessStep && <Confirmation phone={phone} />}
         </div>
         <Advantages content={advantages} />
