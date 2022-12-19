@@ -17,7 +17,7 @@ export const RadioGroupField = (props: RadioGroupFieldProps) => {
         <RadioGroup.Option
           key={option}
           value={option}
-          className="group inline-flex items-center gap-3 py-2 align-middle cursor-pointer transition-all mr-8 focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary rounded-md"
+          className="group mr-8 inline-flex cursor-pointer items-center gap-3 rounded-md py-2 align-middle transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary"
         >
           {({ checked }) => {
             return (

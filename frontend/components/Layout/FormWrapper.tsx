@@ -12,6 +12,6 @@ export const FormWrapper: React.FC<ContentWrapperProps> = ({
   className,
 }) => {
   return (
-    <div className={cn('max-w-[1080px] mx-auto', className)}>{children}</div>
+    <div className={cn('mx-auto max-w-[1080px]', className)}>{children}</div>
   );
 };

@@ -78,10 +78,10 @@ export const DatePicker: React.FC<DatePickerProps> = ({
           leaveTo="opacity-0 scale-95"
         >
           <div className="fixed inset-0 flex items-center justify-center p-4 md:ml-[10vw]">
-            <Dialog.Panel className="w-full max-w-xs h-[400px] rounded-md bg-[white]">
+            <Dialog.Panel className="h-[400px] w-full max-w-xs rounded-md bg-[white]">
               <Dialog.Title
                 as="div"
-                className="relative w-full bg-primary text-[white] font-semibold rounded-t-md p-2 text-center"
+                className="relative w-full rounded-t-md bg-primary p-2 text-center font-semibold text-[white]"
               >
                 <span>Wunschtermin {index + 1}</span>
                 <button

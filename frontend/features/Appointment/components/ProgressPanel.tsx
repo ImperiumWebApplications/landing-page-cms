@@ -12,13 +12,13 @@ export const ProgressPanel: React.FC<ProgressPanelProps> = ({ steps }) => {
 
   return (
     <>
-      <div className="flex md:hidden flex-row -mr-7 -ml-7 -mt-8">
+      <div className="-mr-7 -ml-7 -mt-8 flex flex-row md:hidden">
         {steps.map((_, key) => {
           const isStepAhead = key > state.index;
           return (
             <div
               key={key}
-              className={`w-full h-2 ${
+              className={`h-2 w-full ${
                 key === steps.length - 1 ? 'rounded-r-sm' : ''
               } ${key === 0 ? 'rounded-l-sm' : ''} ${
                 isStepAhead ? '' : 'bg-secondary'
@@ -28,7 +28,7 @@ export const ProgressPanel: React.FC<ProgressPanelProps> = ({ steps }) => {
         })}
       </div>
       <div
-        className="hidden md:flex flex-col gap-7 pr-10 lg:pr-16 pt-2 border-r-[3px] border-dashed border-secondary"
+        className="hidden flex-col gap-7 border-r-[3px] border-dashed border-secondary pr-10 pt-2 md:flex lg:pr-16"
         data-progress-panel
       >
         {steps.slice(0, -1).map((step, key) => {
@@ -63,10 +63,10 @@ const ProgressPanelButton = ({
   return (
     <button
       onClick={onClick}
-      className={`w-full text-left px-6 pb-2 pt-3 text-lg leading-none rounded-lg border-primary border-[1px] transition-colors ${
-        isActive ? 'text-[white] bg-primary' : 'text-primary'
+      className={`w-full rounded-lg border-[1px] border-primary px-6 pb-2 pt-3 text-left text-lg leading-none transition-colors ${
+        isActive ? 'bg-primary text-[white]' : 'text-primary'
       } ${
-        !disabled ? 'hover:bg-primary hover:text-[white] cursor-pointer' : ''
+        !disabled ? 'cursor-pointer hover:bg-primary hover:text-[white]' : ''
       }`}
       disabled={disabled}
       {...props}

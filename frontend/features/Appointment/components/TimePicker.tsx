@@ -35,15 +35,15 @@ export const TimePicker: React.FC<TimePickerProps> = ({
   return (
     <>
       <TimePickerHeader date={date} goBack={prevView} />
-      <div className="flex flex-col gap-2 pb-4 px-12 h-[calc(400px-148px)] overflow-y-scroll">
+      <div className="flex h-[calc(400px-148px)] flex-col gap-2 overflow-y-scroll px-12 pb-4">
         {slots.map((slot, key) => {
           const isSelected = slot.toISOString() === date.toISOString();
           return (
             <button
               key={key}
               onClick={() => onTimeClick(slot)}
-              className={`block border-[1px] border-gray p-4 leading-none rounded-md lg:hover:border-secondary lg:hover:bg-secondary lg:hover:text-[white] transition-colors ${
-                isSelected ? 'text-[white] bg-secondary' : 'text-gray'
+              className={`block rounded-md border-[1px] border-gray p-4 leading-none transition-colors lg:hover:border-secondary lg:hover:bg-secondary lg:hover:text-[white] ${
+                isSelected ? 'bg-secondary text-[white]' : 'text-gray'
               }`}
             >
               {format(slot, 'HH:mm')}
@@ -68,10 +68,10 @@ const TimePickerHeader = ({
 
   return (
     <div className="w-full p-6 text-center">
-      <span className="text-gray text-sm">{formattedDate}</span>
+      <span className="text-sm text-gray">{formattedDate}</span>
       <button
         onClick={goBack}
-        className="block text-primary text-sm mx-auto py-2 underline font-normal"
+        className="mx-auto block py-2 text-sm font-normal text-primary underline"
       >
         zurück
       </button>

@@ -104,8 +104,8 @@ export const SelectionPanel: React.FC<SelectionPanelProps> = ({ steps }) => {
     };
 
     return (
-      <div className="md:hidden mb-8">
-        <button className="underline text-secondary" onClick={handleClick}>
+      <div className="mb-8 md:hidden">
+        <button className="text-secondary underline" onClick={handleClick}>
           zurück
         </button>
       </div>
@@ -113,14 +113,14 @@ export const SelectionPanel: React.FC<SelectionPanelProps> = ({ steps }) => {
   }, [state.index, dispatch]);
 
   return (
-    <div className="md:pl-10 lg:pl-20 text-center md:text-left">
-      <h1 className="text-primary font-semibold text-3xl md:text-4xl">
+    <div className="text-center md:pl-10 md:text-left lg:pl-20">
+      <h1 className="text-3xl font-semibold text-primary md:text-4xl">
         {content.heading}
       </h1>
-      <p className="text-gray font-light text-sm pt-2 pb-4">
+      <p className="pt-2 pb-4 text-sm font-light text-gray">
         {content.description ?? DEFAULT_DESCRIPTION}
       </p>
-      <div className="h-[2px] w-[25px] bg-[black] opacity-50 mx-auto md:mx-0" />
+      <div className="mx-auto h-[2px] w-[25px] bg-[black] opacity-50 md:mx-0" />
       {/* */}
       {FormStepComponent}
       {/* */}

@@ -13,15 +13,15 @@ export const CheckboxField = (props: CheckboxFieldProps) => {
       <input
         {...props.inputProps}
         type="checkbox"
-        className={`h-6 w-6 cursor-pointer appearance-none border-2 rounded-md group-hover:border-secondary transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-secondary ${
-          props.value ? 'bg-secondary border-secondary' : 'border-tertiary'
+        className={`h-6 w-6 cursor-pointer appearance-none rounded-md border-2 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 group-hover:border-secondary ${
+          props.value ? 'border-secondary bg-secondary' : 'border-tertiary'
         }`}
         id={props.id}
         name={props.id}
         checked={!!props.value}
         onChange={props.onChange}
       />
-      <label htmlFor={props.id} className="-mb-1 cursor-pointer wrap-words">
+      <label htmlFor={props.id} className="wrap-words -mb-1 cursor-pointer">
         {props.label}
       </label>
     </div>

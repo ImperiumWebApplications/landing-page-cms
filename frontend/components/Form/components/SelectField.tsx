@@ -69,17 +69,17 @@ const ListboxButton = ({
       {...props}
       disabled={disabled || loading}
       className={cx(
-        `w-full py-[17px] pr-12 pl-4 text-left align-middle tracking-wide rounded-md border-2 border-tertiary bg-[white] ${
+        `w-full rounded-md border-2 border-tertiary bg-[white] py-[17px] pr-12 pl-4 text-left align-middle tracking-wide ${
           disabled || loading
-            ? `brightness-95 cursor-not-allowed ${loading ? 'shimmer' : ''}`
-            : 'cursor-pointer hover:border-secondary transition-all'
+            ? `cursor-not-allowed brightness-95 ${loading ? 'shimmer' : ''}`
+            : 'cursor-pointer transition-all hover:border-secondary'
         }`,
         className,
       )}
     >
       {/** Insert \200B (zero-width-whitespace) so that the button has the correct height */}
       <span
-        className={`block leading-normal truncate empty:after:content-['\\200B'] ${
+        className={`block truncate leading-normal empty:after:content-['\\200B'] ${
           loading || disabled ? 'text-gray' : 'text-[black]'
         }`}
       >
@@ -109,7 +109,7 @@ const ListboxOptions = forwardRef<HTMLUListElement, ListboxOptionsProps>(
             key={option}
             value={option}
             className={({ active }) =>
-              `relative w-full cursor-default before:content-none select-none py-2 pr-10 pl-8 ${
+              `relative w-full cursor-default select-none py-2 pr-10 pl-8 before:content-none ${
                 active ? 'bg-tertiary' : ''
               }`
             }

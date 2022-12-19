@@ -7,7 +7,7 @@ export const Label = ({ className, ...props }: ComponentProps<'label'>) => {
       {...props}
       className={cx(
         className,
-        'block mb-1 tracking-wide text-[0.9rem] md:text-base md:mb-3',
+        'mb-1 block text-[0.9rem] tracking-wide md:mb-3 md:text-base',
       )}
     />
   );
