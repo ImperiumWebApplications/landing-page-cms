@@ -1,12 +1,18 @@
 import { useMemo } from 'react';
+
 import { NextAPI } from '../../../lib/next/api';
+import {
+  isTrackingAllowed,
+  sendEventToAnalytics,
+  TagManagerEvents,
+} from '../../../lib/analytics';
 
 import type { AppointmentStep } from '../AppointmentForm';
 
 import { useAppointmentContext } from '../context/Appointment';
 import { useAppointmentDuration } from '../hooks/useAppointmentDuration';
+import { ContactDetailsForm } from '../../../components/Form';
 import { Confirmation } from './Confirmation';
-import { ContactDetails } from './ContactDetails';
 import { DateList } from './DateList';
 import { LocationPicker } from './LocationPicker';
 
@@ -58,7 +64,8 @@ export const SelectionPanel: React.FC<SelectionPanelProps> = ({ steps }) => {
         );
       case 'details':
         return (
-          <ContactDetails
+          <ContactDetailsForm
+            className="my-12"
             values={state.contact}
             onSubmit={async (onSuccess) => {
               const { location, dates } = state;
@@ -72,7 +79,10 @@ export const SelectionPanel: React.FC<SelectionPanelProps> = ({ steps }) => {
                 })),
               });
 
-              if (!res.ok) throw Error('Error while submitting lead.');
+              if (!res.ok) throw Error(res.statusText);
+
+              if (isTrackingAllowed(window.location.host))
+                sendEventToAnalytics(TagManagerEvents.AppointmentRequested);
 
               onSuccess?.();
               dispatch({ type: 'setIndex', payload: state.index + 1 });

@@ -6,6 +6,7 @@ declare global {
 
 export const TagManagerEvents = {
   QuestionnaireSubmitted: 'questionnaire_submitted',
+  AppointmentRequested: 'appointment_requested',
   ConsentGranted: 'consent_granted',
   ConsentDenied: 'consent_denied',
 } as const;
