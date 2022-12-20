@@ -35,6 +35,18 @@
   .images-wrapper:last-of-type > span > img {
     @apply rounded-lg;
   }
+
+  /** Override icon colors on tiles correctly **/
+  .icon svg,
+  .icon svg path,
+  .icon svg polygon,
+  .icon svg circle,
+  .icon svg line,
+  .icon svg polyline,
+  .icon svg rect,
+  .icon svg ellipse {
+    fill: var(--color-secondary) !important;
+  }
 }
 
 html,

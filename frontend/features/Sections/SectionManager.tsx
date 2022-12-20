@@ -16,11 +16,7 @@ export const initSectionManager = (content: LandingPage) => {
 
   return {
     Hero: sectionMap?.hero ? (
-      sectionMap.hero.funnel !== 'Appointment' ? (
-        <HeroSection.Questionnaire id="hero" content={sectionMap.hero} />
-      ) : (
-        <HeroSection.Appointment id="hero" content={sectionMap.hero} />
-      )
+      <HeroSection id="hero" content={sectionMap.hero} />
     ) : null,
     CallToAction: sectionMap?.callToAction ? (
       <CallToActionSection
