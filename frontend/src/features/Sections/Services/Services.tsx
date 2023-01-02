@@ -27,7 +27,10 @@ export const ServicesSection: React.FC<ServicesSectionProps> = (props) => {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
       >
-        <div className="scrollbar-hide -mx-4 mb-8 flex overflow-x-auto whitespace-nowrap p-4 pb-2 md:m-0 md:mb-16 md:items-stretch md:justify-center md:whitespace-normal md:p-0">
+        <div
+          data-testid="services-tab-header"
+          className="scrollbar-hide -mx-4 mb-8 flex overflow-x-auto whitespace-nowrap p-4 pb-2 md:m-0 md:mb-16 md:items-stretch md:justify-center md:whitespace-normal md:p-0"
+        >
           {props.content.service_tab.map(({ tab_name }, i) => {
             return tab_name ? (
               <button
@@ -45,7 +48,10 @@ export const ServicesSection: React.FC<ServicesSectionProps> = (props) => {
             ) : null;
           })}
         </div>
-        <div className="grid grid-flow-row grid-cols-1 md:grid-cols-[60%_40%] md:grid-rows-1 lg:grid-cols-2">
+        <div
+          data-testid="services-tab-content"
+          className="grid grid-flow-row grid-cols-1 md:grid-cols-[60%_40%] md:grid-rows-1 lg:grid-cols-2"
+        >
           <div className="md:mr-20">
             <h2 className="mb-8 text-4xl text-secondary">
               {activeTabContent.title}

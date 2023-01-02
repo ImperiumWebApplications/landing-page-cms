@@ -1,5 +1,3 @@
-import '@testing-library/cypress/add-commands';
-
 const baseUrl = Cypress.config().baseUrl as string;
 
 Cypress.Commands.add('visitWithConsentCookie', (path: string) => {

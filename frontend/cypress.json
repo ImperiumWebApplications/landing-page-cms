@@ -1,7 +1,0 @@
-{
-  "video": false,
-  "pluginsFile": false,
-  "fixturesFolder": false,
-  "screenshotOnRunFailure": false,
-  "baseUrl": "http://localhost:3000"
-}

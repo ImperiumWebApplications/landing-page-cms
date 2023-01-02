@@ -41,6 +41,7 @@ export const VideoSection: React.FC<VideoSectionProps> = (props) => {
               ) : undefined}
             </div>
             <Button
+              data-testid="video-cta-button"
               variant="secondary"
               className="text-[0.9rem] uppercase"
               to={`/${
@@ -62,6 +63,7 @@ export const VideoSection: React.FC<VideoSectionProps> = (props) => {
             viewport={{ once: true }}
             initial={{ opacity: 0, translateX: 10 }}
             whileInView={{ opacity: 1, translateX: 0 }}
+            data-testid="video-wrapper"
             className='group before:absolute before:-right-[10px] before:-top-[10px] before:z-10 before:h-[60px] before:w-[300px] before:rounded-lg before:bg-secondary before:content-[""] after:absolute after:-left-[10px] after:-bottom-[10px] after:z-10 after:h-[60px] after:w-[60px] after:rounded-lg after:bg-primary after:content-[""]'
           >
             <ReactPlayer

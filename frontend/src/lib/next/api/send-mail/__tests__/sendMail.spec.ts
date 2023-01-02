@@ -2,7 +2,7 @@ import type { SetupServerApi } from 'msw/node';
 
 import {
   createUnsuccessfulResponse,
-  setupAPIMockServer,
+  setupMockServer,
 } from '../../../../../../mocks/utils/mock-rest-api';
 import { sendMail, SendMailProps } from '..';
 import { StrapiMockHandlers } from '../../../../../../mocks/lib/strapi/api';
@@ -17,7 +17,7 @@ jest.mock('nodemailer', () => ({
   })),
 }));
 
-const server = setupAPIMockServer(StrapiMockHandlers, {
+const server = setupMockServer(StrapiMockHandlers, {
   forceServer: true,
 }) as SetupServerApi;
 

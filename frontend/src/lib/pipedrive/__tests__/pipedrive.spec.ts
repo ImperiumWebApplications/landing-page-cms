@@ -8,13 +8,13 @@ import {
 } from '../../../../mocks/lib/pipedrive/data';
 import {
   createUnsuccessfulResponse,
-  setupAPIMockServer,
+  setupMockServer,
 } from '../../../../mocks/utils/mock-rest-api';
 import { PIPEDRIVE_API_URL } from '../instance';
 
 jest.mock('@sentry/nextjs');
 
-const server = setupAPIMockServer(PipedriveMockHandlers, {
+const server = setupMockServer(PipedriveMockHandlers, {
   forceServer: true,
 }) as SetupServerApi;
 

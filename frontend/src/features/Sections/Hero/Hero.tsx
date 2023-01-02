@@ -7,6 +7,7 @@ import type { HeroSectionContent } from '../SectionMapper';
 import { QuestionnaireTiles } from './components/QuestionnaireTiles';
 import { AppointmentCTA } from './components/AppointmentCTA';
 import { SectionContainer } from '../SectionContainer';
+import { useSectionContext } from '../SectionContext';
 
 type HeroSectionProps = {
   id: string;
@@ -14,6 +15,7 @@ type HeroSectionProps = {
 };
 
 export const HeroSection: React.FC<HeroSectionProps> = (props) => {
+  const { state } = useSectionContext();
   const { title, subtitle, questionnaire } = props.content;
 
   // Don't use the background image for now
@@ -65,14 +67,14 @@ export const HeroSection: React.FC<HeroSectionProps> = (props) => {
           <div className="h-full w-full rounded-2xl bg-primary opacity-90" />
         </div>
         <div className="mx-auto flex flex-col justify-center px-2 py-12 text-center sm:px-4 md:px-12 md:py-28">
-          <div>
+          <div data-testid="hero-description">
             {Headline}
             {Subtitle}
             <p className="my-4 mx-auto max-w-xl text-sm text-[white] [text-shadow:0_4px_8px_rgba(0,0,0,0.2)] sm:my-8 sm:text-lg md:text-xl">
               {props.content.description}
             </p>
           </div>
-          {props.content.funnel === 'Appointment' ? (
+          {state.funnelTarget === 'Appointment' ? (
             <AppointmentCTA />
           ) : (
             <QuestionnaireTiles content={questionnaire} />

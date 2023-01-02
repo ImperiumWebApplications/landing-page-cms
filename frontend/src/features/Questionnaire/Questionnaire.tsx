@@ -54,6 +54,7 @@ export const Questionnaire: React.FC<QuestionnaireProps> = ({
       <FormWrapper className="relative grid h-auto max-w-6xl grid-cols-1 grid-rows-[auto_1fr] rounded-[20px] bg-[white] p-0 shadow-lg">
         <div className="h-2 w-full overflow-hidden rounded-tl-[20px] rounded-tr-[20px] bg-[rgb(225,228,232)]">
           <span
+            data-testid="questionnaire-progress-bar"
             className="block h-full bg-secondary transition-[1s_ease_100ms]"
             style={{ width: `${progress * 100}%` }}
           />

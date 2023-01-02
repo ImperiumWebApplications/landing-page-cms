@@ -14,6 +14,7 @@ export const AppointmentCTA = () => {
         variant="secondary"
         className="text-sm shadow-lg sm:text-base md:text-lg"
         size="large"
+        data-testid="hero-appointment-button"
       />
       <div className="mt-6 flex flex-col items-center gap-2 text-sm text-[white] md:flex-row md:gap-8">
         {BENEFITS.map((benefit, key) => {

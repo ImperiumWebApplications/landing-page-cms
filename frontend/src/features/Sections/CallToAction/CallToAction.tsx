@@ -58,6 +58,7 @@ export const CallToActionSection: React.FC<CallToActionSectionProps> = (
             <Button
               variant="secondary"
               size="fullWidth"
+              data-testid="call-to-action-button-funnel"
               to={`/${
                 state.funnelTarget === 'Appointment'
                   ? appointmentRoute
@@ -74,6 +75,7 @@ export const CallToActionSection: React.FC<CallToActionSectionProps> = (
               <>
                 <span>Oder</span>
                 <Button
+                  data-testid="call-to-action-button-phone"
                   variant="primary"
                   size="fullWidth"
                   to={`tel:${props.content.phone}`}

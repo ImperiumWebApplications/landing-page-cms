@@ -35,9 +35,12 @@ export const QuestionnaireTiles: React.FC<QuestionnaireTilesProps> = (
     <div className="text-center md:mt-4">
       <h4 className="relative inline-block rounded-lg px-6 pb-1 pt-2 text-base text-[white] md:text-lg">
         <div className="absolute top-0 left-0 -z-10 h-full w-full rounded-lg bg-primary brightness-90" />
-        <span>{entry_question}</span>
+        <span data-testid="questionnaire-tiles-question">{entry_question}</span>
       </h4>
-      <div className="mt-6 flex flex-wrap justify-center gap-2 sm:gap-4 md:gap-8">
+      <div
+        data-testid="questionnaire-tiles-grid"
+        className="mt-6 flex flex-wrap justify-center gap-2 sm:gap-4 md:gap-8"
+      >
         {sortedQuestionnaires.map(({ attributes, id }) => {
           if (!attributes?.name) return null;
 

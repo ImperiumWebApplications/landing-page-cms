@@ -1,19 +1,20 @@
 {
-    "cSpell.words": [
-      "Adresse",
-      "Checkmark",
-      "fontsource",
-      "gtag",
-      "Leadquelle",
-      "mjml",
-      "Nachname",
-      "pipedrive",
-      "Postleitzahl",
-      "restyped",
-      "strapi",
-      "Swiper",
-      "Telefonnummer",
-      "Vorname",
-      "zipcode"
-    ]
+  "cSpell.words": [
+    "Adresse",
+    "Checkmark",
+    "fontsource",
+    "gtag",
+    "Leadquelle",
+    "mjml",
+    "Nachname",
+    "pipedrive",
+    "Postleitzahl",
+    "restyped",
+    "strapi",
+    "Swiper",
+    "Telefonnummer",
+    "testid",
+    "Vorname",
+    "zipcode"
+  ]
 }

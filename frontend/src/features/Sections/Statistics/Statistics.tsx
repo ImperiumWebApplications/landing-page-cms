@@ -31,6 +31,7 @@ export const StatisticsSection: React.FC<StatisticsSectionProps> = ({
           return (
             <div
               key={i}
+              data-testid="statistics-number"
               className="relative p-4 text-5xl font-semibold text-[white] after:absolute after:bottom-2 after:left-4 after:h-1 after:w-8 after:bg-[white] after:content-[''] lg:text-6xl"
             >
               <span className="mb-4 block text-base">{label}</span>

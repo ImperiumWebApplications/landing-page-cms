@@ -2,7 +2,7 @@ import { NextPageContext } from 'next';
 import { SetupServerApi } from 'msw/node';
 import {
   createErrorResponse,
-  setupAPIMockServer,
+  setupMockServer,
 } from '../../../../../mocks/utils/mock-rest-api';
 import { StrapiMockHandlers } from '../../../../../mocks/lib/strapi/api';
 import {
@@ -29,7 +29,7 @@ const configureCtx = ({
   } as unknown as NextPageContext;
 };
 
-const server = setupAPIMockServer(StrapiMockHandlers, {
+const server = setupMockServer(StrapiMockHandlers, {
   forceServer: true,
 }) as SetupServerApi;
 

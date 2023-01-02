@@ -19,7 +19,10 @@ export const CookieConsent: React.FC<CookieConsentProps> = ({
 
   return (
     <div className="absolute top-0 left-0 z-40 h-full w-full bg-[black] bg-opacity-5 backdrop-blur-sm">
-      <div className="relative h-[98vh] w-full">
+      <div
+        data-testid="cookie-consent-modal"
+        className="relative h-[98vh] w-full"
+      >
         <CookieConsentModal
           disableStyles={true}
           enableDeclineButton={true}

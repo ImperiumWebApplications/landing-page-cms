@@ -12,6 +12,7 @@ type CommonButtonProps = {
   className?: string;
   label?: string;
   Icon?: React.ReactElement;
+  ['data-testid']?: string;
 };
 
 type LinkButtonProps = CommonButtonProps & {
@@ -71,7 +72,7 @@ export const Button = (props: ButtonProps) => {
         href={props.to}
         role="button"
         className={className}
-        data-testid={BUTTON_TEST_ID}
+        data-testid={props['data-testid'] ?? 'button'}
       >
         {ButtonLabel}
       </Link>
@@ -84,7 +85,7 @@ export const Button = (props: ButtonProps) => {
         onClick={props.onClick}
         className={className}
         disabled={props.disabled || props.loading}
-        data-testid={BUTTON_TEST_ID}
+        data-testid={props['data-testid'] ?? 'button'}
       >
         <span className="spinner" style={{ opacity: props.loading ? 1 : 0 }} />
         <span

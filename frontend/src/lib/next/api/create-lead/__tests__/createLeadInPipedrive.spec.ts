@@ -5,7 +5,7 @@ import { createLeadInPipedrive, CreateLeadProps } from '..';
 import { contactDataMock } from '../../../../../../mocks/questionnaire/data';
 import {
   createErrorResponse,
-  setupAPIMockServer,
+  setupMockServer,
 } from '../../../../../../mocks/utils/mock-rest-api';
 import {
   createdLead,
@@ -19,7 +19,7 @@ import { ContactFieldConfig } from '../../../../../components/Form';
 jest.mock('@sentry/nextjs');
 
 const handler = [...StrapiMockHandlers, ...PipedriveMockHandlers];
-const server = setupAPIMockServer(handler, {
+const server = setupMockServer(handler, {
   forceServer: true,
 }) as SetupServerApi;
 

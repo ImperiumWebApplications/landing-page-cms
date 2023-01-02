@@ -8,7 +8,7 @@ describe('Cookie Banner', () => {
   });
 
   it('should show cookie banner on page load', () => {
-    cy.get('.CookieConsent')
+    cy.get('[data-testid="cookie-consent-modal"]')
       .should('be.visible')
       .getCookie(COOKIE_CONSENT_NAME)
       .should('not.exist');

@@ -31,7 +31,10 @@ export const QuestionsSection: React.FC<QuestionsSectionProps> = (props) => {
           Antworten auf wichtige Fragen
         </h2>
         <div className="flex flex-col items-start justify-start gap-y-8 lg:flex-row lg:gap-x-12 lg:gap-y-0">
-          <div className="scrollbar-hide my-0 flex w-full overflow-x-auto whitespace-nowrap lg:m-0 lg:block lg:max-w-md lg:flex-shrink-0 lg:p-0">
+          <div
+            data-testid="questions-tab-header"
+            className="scrollbar-hide my-0 flex w-full overflow-x-auto whitespace-nowrap lg:m-0 lg:block lg:max-w-md lg:flex-shrink-0 lg:p-0"
+          >
             {props.content.faq_item.map(({ question }, i, arr) => {
               const selected = i === selectedQuestion;
               return (
@@ -51,7 +54,7 @@ export const QuestionsSection: React.FC<QuestionsSectionProps> = (props) => {
               );
             })}
           </div>
-          <div className="max-w-2xl">
+          <div data-testid="questions-tab-content" className="max-w-2xl">
             {displayedAnswer ? (
               <ReactMarkdown className="article">
                 {displayedAnswer}

@@ -12,6 +12,7 @@ export const BackButton: React.FC<{ hide?: boolean }> = ({ hide }) => {
   return (
     <div
       className="absolute top-[1rem] left-[1rem] flex h-[2.5rem] w-[2.5rem] cursor-pointer items-center justify-center rounded-full bg-tertiary hover:brightness-105"
+      data-testid="questionnaire-back-button"
       aria-label="Einen Schritt zurück"
       onClick={onClickHandler}
     >

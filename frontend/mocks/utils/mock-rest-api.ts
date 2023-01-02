@@ -16,7 +16,7 @@ export const createUnsuccessfulResponse = (url: string) => {
   });
 };
 
-export const setupAPIMockServer = (
+export const setupMockServer = (
   handlers: RequestHandler[],
   {
     forceServer,
@@ -29,8 +29,8 @@ export const setupAPIMockServer = (
     : setupWorker(...handlers);
 };
 
-export const startAPIMockServer = async (handlers: RequestHandler[]) => {
-  const server = setupAPIMockServer(handlers);
+export const startMockServer = async (handlers: RequestHandler[]) => {
+  const server = setupMockServer(handlers);
   return (server as SetupServerApi).listen
     ? (server as SetupServerApi).listen()
     : (server as SetupWorkerApi).start();

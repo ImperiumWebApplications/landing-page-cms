@@ -31,6 +31,7 @@ export const StaticStepsSection: React.FC<StepsSectionProps> = (props) => {
             return (
               <motion.div
                 key={i}
+                data-testid="step"
                 className="flex flex-row items-center justify-start text-lg tracking-tight lg:text-xl"
                 initial={{ opacity: 0, translateY: 10 }}
                 whileInView={{ opacity: 1, translateY: 0 }}

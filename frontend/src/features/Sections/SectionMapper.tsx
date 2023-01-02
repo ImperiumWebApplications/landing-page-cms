@@ -114,7 +114,6 @@ const isHeroSection = (
 const toHeroSectionContent = (content: LandingPage, section: HeroSection) => {
   return {
     ...section,
-    funnel: content.funnel_target ?? null,
     questionnaire: content.questionnaire ?? null,
     phone: content.contact_phone ?? null,
     serviceType: content.service_type ?? null,

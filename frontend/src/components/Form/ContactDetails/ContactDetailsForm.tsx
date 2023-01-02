@@ -126,6 +126,7 @@ export const ContactDetailsForm: React.FC<ContactDetailsFormProps> = ({
           variant="primary"
           size="large"
           label="Jetzt Anfrage abschicken"
+          data-testid="contact-details-form-submit"
           className="my-8 px-6 text-base sm:px-10 sm:text-lg md:px-20"
           loading={isSubmitting}
           disabled={isSubmitting || !isValidContactDetailsData(values)}

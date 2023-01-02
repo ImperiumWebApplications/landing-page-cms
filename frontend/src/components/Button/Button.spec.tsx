@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { render, fireEvent } from '../../../jest.setup';
-import { Button, ButtonProps, BUTTON_TEST_ID } from './Button';
+import { Button, ButtonProps } from './Button';
 
 const defaultProps: ButtonProps = {
   label: 'Label',
@@ -20,14 +20,14 @@ describe('Button', () => {
 
   test('it should render button with to as <a />', () => {
     const { queryByTestId } = render(<Button {...defaultHrefProps} />);
-    const button = queryByTestId(BUTTON_TEST_ID);
+    const button = queryByTestId('button');
     expect(button).toBeVisible();
     expect(button).toHaveAttribute('href', '/to/test');
   });
 
   test('it should render button with onClick as <button />', () => {
     const { queryByTestId } = render(<Button {...defaultButtonProps} />);
-    const button = queryByTestId(BUTTON_TEST_ID);
+    const button = queryByTestId('button');
     expect(button).toBeVisible();
     expect(button).not.toBeDisabled();
     expect(button).not.toHaveAttribute('href');
@@ -35,7 +35,7 @@ describe('Button', () => {
 
   test('it should execute onClick as <button />', () => {
     const { queryByTestId } = render(<Button {...defaultButtonProps} />);
-    const button = queryByTestId(BUTTON_TEST_ID);
+    const button = queryByTestId('button');
     if (button) fireEvent.click(button);
     expect(onClick).toBeCalledTimes(1);
   });
@@ -45,7 +45,7 @@ describe('Button', () => {
       <Button {...defaultButtonProps} loading />,
     );
 
-    const button = queryByTestId(BUTTON_TEST_ID);
+    const button = queryByTestId('button');
     expect(button).toBeDisabled();
     expect(button).not.toHaveClass('cursor-pointer');
   });

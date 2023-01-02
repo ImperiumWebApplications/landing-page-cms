@@ -184,6 +184,7 @@ export const PostalCode: React.FC<{
           variant="primary"
           size="fullWidth"
           label="Weiter"
+          data-testid="postal-code-confirmation-button"
           className="font-semibold uppercase tracking-wider"
           Icon={<ChevronRightIcon width={24} height={24} />}
           disabled={
