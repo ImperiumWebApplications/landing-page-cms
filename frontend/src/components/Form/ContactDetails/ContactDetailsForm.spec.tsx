@@ -103,7 +103,7 @@ describe('ContactDetailsForm', () => {
 
     fillContactForm(getByLabelText);
 
-    fireEvent.click(getByTestId('button'));
+    fireEvent.click(getByTestId('contact-details-form-submit'));
     await findByText(/Fehler/i);
   });
 });
