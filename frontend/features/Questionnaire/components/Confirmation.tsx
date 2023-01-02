@@ -8,8 +8,8 @@ export const Confirmation: React.FC<{ phone?: string | null }> = ({
 }) => {
   return (
     <div className="mx-auto w-full max-w-2xl">
-      <div className="mx-auto -mt-4 mb-8 h-32 w-32">
-        <CheckCircleIcon className="h-32 w-32 fill-primary opacity-50" />
+      <div className="mx-auto -mt-4 mb-8 h-20 w-20">
+        <CheckCircleIcon className="h-20 w-20 fill-primary opacity-50" />
       </div>
       <div>
         <StepTitle>Ihre Anfrage wurde erfolgreich übermittelt.</StepTitle>
@@ -21,10 +21,13 @@ export const Confirmation: React.FC<{ phone?: string | null }> = ({
         </p>
         {phone && (
           <>
-            <h2 className="mx-0 mt-6 mb-2">
+            <h2 className="mx-0 mt-6 mb-2 text-xl">
               Verifizierungsvorgang beschleunigen:
             </h2>
-            <p className="mb-6 text-lg">Kostenfrei anrufen: {phone}</p>
+            <p className="mb-6 text-lg">
+              Kostenfrei anrufen:{' '}
+              <span className="block font-semibold">{phone}</span>
+            </p>
           </>
         )}
         <p>

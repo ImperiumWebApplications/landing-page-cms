@@ -1,4 +1,5 @@
-import { ComponentProps } from 'react';
+import { ComponentProps, useMemo } from 'react';
+import { CheckCircleIcon } from '../../../components/Icons';
 
 import type { AppointmentStep } from '../AppointmentForm';
 import { useAppointmentContext } from '../context/Appointment';
@@ -9,6 +10,24 @@ type ProgressPanelProps = {
 
 export const ProgressPanel: React.FC<ProgressPanelProps> = ({ steps }) => {
   const { state, dispatch } = useAppointmentContext();
+
+  const StepNavigation = useMemo(() => {
+    return steps.slice(0, -1).map((step, key) => {
+      const isStepAhead = key >= state.index;
+      const isFormSent = steps[state.index].type === 'confirmation';
+
+      return (
+        <ProgressPanelButton
+          key={step.label}
+          onClick={() => dispatch({ type: 'setIndex', payload: key })}
+          isActive={state.index === key}
+          disabled={isFormSent || isStepAhead}
+        >
+          {key + 1}. {step.label}
+        </ProgressPanelButton>
+      );
+    });
+  }, [state.index, steps, dispatch]);
 
   return (
     <>
@@ -31,21 +50,11 @@ export const ProgressPanel: React.FC<ProgressPanelProps> = ({ steps }) => {
         className="hidden flex-col gap-7 border-r-[3px] border-dashed border-secondary pr-10 pt-2 md:flex lg:pr-16"
         data-progress-panel
       >
-        {steps.slice(0, -1).map((step, key) => {
-          const isStepAhead = key >= state.index;
-          const isFormSent = steps[state.index].type === 'confirmation';
-
-          return (
-            <ProgressPanelButton
-              key={step.label}
-              onClick={() => dispatch({ type: 'setIndex', payload: key })}
-              isActive={state.index === key}
-              disabled={isFormSent || isStepAhead}
-            >
-              {key + 1}. {step.label}
-            </ProgressPanelButton>
-          );
-        })}
+        {state.index < steps.length - 1 ? (
+          StepNavigation
+        ) : (
+          <CheckCircleIcon className="h-50 w-50 fill-primary opacity-50" />
+        )}
       </div>
     </>
   );
