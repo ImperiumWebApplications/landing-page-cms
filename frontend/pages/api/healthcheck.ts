@@ -1,4 +1,3 @@
-import { withSentry } from '@sentry/nextjs';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 import { getErrorMessage } from '../../lib/next/api/error';
@@ -17,4 +16,4 @@ export const handler = async (
   }
 };
 
-export default withSentry(handler);
+export default handler;

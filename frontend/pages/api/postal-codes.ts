@@ -1,5 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { withSentry } from '@sentry/nextjs';
 
 import {
   getPostalCodeDetails,
@@ -30,4 +29,4 @@ export const handler = async (
   }
 };
 
-export default withSentry(handler);
+export default handler;

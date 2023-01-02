@@ -1,5 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { withSentry } from '@sentry/nextjs';
 
 import { captureNextAPIError, getErrorMessage } from '../../lib/next/api/error';
 import { sendMail, validateRequestBody } from '../../lib/next/api/send-mail';
@@ -18,4 +17,4 @@ export const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 };
 
-export default withSentry(handler);
+export default handler;

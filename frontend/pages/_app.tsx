@@ -1,3 +1,5 @@
+import React from 'react';
+
 import type { AppProps } from 'next/app';
 import 'intersection-observer';
 
@@ -16,6 +18,9 @@ import '../styles/global.css';
 //     await startAPIMockServer(StrapiMockHandlers);
 //   })();
 // }
+
+// suppress useLayoutEffect warnings when running outside a browser
+if (typeof window === 'undefined') React.useLayoutEffect = React.useEffect;
 
 function MyApp({ Component, pageProps }: AppProps) {
   return <Component {...pageProps} />;
