@@ -1,5 +1,5 @@
 import { rest } from 'msw';
-import { PIPEDRIVE_API_URL } from '../../../lib/pipedrive/instance';
+import { PIPEDRIVE_API_URL } from '../../../src/lib/pipedrive/instance';
 import {
   createdLead,
   createdNote,

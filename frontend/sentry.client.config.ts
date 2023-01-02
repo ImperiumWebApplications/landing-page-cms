@@ -1,3 +1,3 @@
-import { initSentryLogger } from './config/sentry.config';
+import { initSentryLogger } from './src/config/sentry.config';
 
 initSentryLogger();

@@ -27,9 +27,6 @@ const customJestConfig = {
       tsconfig: 'tsconfig.jest.json',
     },
   },
-  moduleNameMapper: {
-    'hex-rgb': '<rootDir>/mocks/hex-rgb/index.ts',
-  },
 };
 
 module.exports = createJestConfig(customJestConfig);

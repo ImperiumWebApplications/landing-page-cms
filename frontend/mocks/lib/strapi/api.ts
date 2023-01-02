@@ -1,5 +1,5 @@
 import { rest } from 'msw';
-import { Strapi } from '../../../lib/strapi';
+import { Strapi } from '../../../src/lib/strapi';
 import { content, pipedriveApis, questionnaires, staticContent } from './data';
 
 export const StrapiMockHandlers = [
