@@ -11,7 +11,8 @@
     "lerna": "^4.0.0"
   },
   "resolutions": {
-    "@strapi/strapi/**/sharp": "0.31.0"
+    "@strapi/strapi/**/sharp": "0.31.0",
+    "react": "^18.2.0"
   },
   "scripts": {
     "lazy": "yarn && yarn prepare && yarn lerna bootstrap",

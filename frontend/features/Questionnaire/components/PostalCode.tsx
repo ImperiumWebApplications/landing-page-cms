@@ -1,94 +1,17 @@
 import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
-import styled, { useTheme } from 'styled-components';
-import { InfoCircle } from '@styled-icons/bootstrap';
 
-import { devices } from '../../../config/breakpoints.config';
 import { Country, PostalCodeDetails } from '../../../config/countries.config';
 
-import { Button } from '../../../components/Button';
-import { ContactFieldConfig, Field } from '../../../components/Form';
-import { ChevronRightIcon } from '../../../components/Icons';
-import { StyledStepTitle } from './StepTitle';
 import { useQuestionnaireContext } from '../context/Questionnaire';
 import { getCountryDetails } from '../../../utils/getCountryDetails';
 import { getPostalCodeLength } from '../../../utils/getPostalCodeLength';
 import { normalizeHostname } from '../../../utils/normalizeHostname';
 import { NextAPI } from '../../../lib/next/api';
 
-const StyledPostalCode = styled.div`
-  max-width: 45rem;
-  margin: 0 auto;
-
-  .location-input {
-    max-width: 25rem;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-
-    @media screen and (${devices.md}) {
-      max-width: unset;
-      flex-direction: row;
-      align-items: center;
-      column-gap: 2rem;
-    }
-
-    .city-input {
-      flex-grow: 1;
-      width: 100%;
-      margin-top: 1.5rem;
-
-      button {
-        height: 3.5rem;
-      }
-
-      @media screen and (${devices.md}) {
-        max-width: 20rem;
-        margin-top: 0;
-      }
-
-      @media screen and (${devices.lg}) {
-        max-width: 22.5rem;
-      }
-    }
-  }
-
-  .button {
-    width: 100%;
-    max-width: 25rem;
-    margin: 0 auto;
-
-    span.error {
-      display: block;
-      text-align: center;
-      margin-top: 1rem;
-      font-size: 0.9rem;
-      color: red;
-      opacity: 0.75;
-    }
-
-    .hint {
-      display: flex;
-      margin: 1rem 0 2rem 0;
-      font-size: 0.9rem;
-      line-height: 1.25rem;
-
-      @media screen and (${devices.sm}) {
-        margin: 1rem 0 4rem 0;
-      }
-
-      svg {
-        flex-shrink: 0;
-      }
-
-      span {
-        display: inline-block;
-        margin-left: 0.5rem;
-      }
-    }
-  }
-`;
+import { Button } from '../../../components/Button';
+import { ContactFieldConfig, Field } from '../../../components/Form';
+import { ChevronRightIcon, InfoCircleIcon } from '../../../components/Icons';
+import { StepTitle } from './StepTitle';
 
 /**
  * Possible cases:
@@ -97,11 +20,9 @@ const StyledPostalCode = styled.div`
  * 3. We have several countries -> Select City (yes)  Input Type (Regular Text)
  */
 
-export const PostalCode: React.FunctionComponent<{
+export const PostalCode: React.FC<{
   countries?: Country[];
 }> = ({ countries }) => {
-  const theme = useTheme();
-
   // Extract global state from context
   const { state, dispatch } = useQuestionnaireContext();
   const code = state.contact.postalCode ?? '';
@@ -198,12 +119,12 @@ export const PostalCode: React.FunctionComponent<{
   ]);
 
   return (
-    <StyledPostalCode>
-      <StyledStepTitle className="title">
+    <div className="mx-auto px-8 lg:max-w-3xl lg:px-0">
+      <StepTitle>
         Wunderbar!
         <br /> Nennen Sie uns jetzt bitte Ihre Postleitzahl:
-      </StyledStepTitle>
-      <div className="location-input">
+      </StepTitle>
+      <div className="mx-auto flex max-w-sm flex-col items-start justify-center lg:max-w-none lg:flex-row lg:items-center lg:gap-x-8">
         {isSingleCountryContext ? (
           <>
             <Field
@@ -234,7 +155,7 @@ export const PostalCode: React.FunctionComponent<{
         {isSingleCountryContext || isMultiCountryContext ? (
           <Field
             type="select"
-            className="city-input"
+            className="mt-6 w-full flex-grow lg:mt-0 lg:max-w-sm"
             id={ContactFieldConfig.City.name}
             value={state.contact.city}
             label={ContactFieldConfig.City.label}
@@ -247,16 +168,17 @@ export const PostalCode: React.FunctionComponent<{
           />
         ) : undefined}
       </div>
-      <div className="button">
-        {error && <span className="error">{error}</span>}
-        <div className="hint">
-          <InfoCircle
-            color={theme.colors.secondary}
-            width={16}
-            height={16}
-            fontWeight={700}
-          />
-          <span>Für die Suche nach dem idealen Anbieter in Ihrer Region</span>
+      <div className="mx-auto w-full max-w-sm">
+        {error && (
+          <span className="mt-4 block text-center text-sm text-[red] opacity-75">
+            {error}
+          </span>
+        )}
+        <div className="mx-0 mt-4 mb-8 flex text-sm sm:mb-8">
+          <InfoCircleIcon className="h-4 w-4 fill-secondary font-bold" />
+          <span className="ml-2 inline-block">
+            Für die Suche nach dem idealen Anbieter in Ihrer Region
+          </span>
         </div>
         <Button
           variant="primary"
@@ -275,6 +197,6 @@ export const PostalCode: React.FunctionComponent<{
           }}
         />
       </div>
-    </StyledPostalCode>
+    </div>
   );
 };

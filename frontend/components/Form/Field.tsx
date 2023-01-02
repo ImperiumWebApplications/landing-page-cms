@@ -79,7 +79,7 @@ type FieldWrapperProps = {
 
 const FieldWrapper = ({ className, children, type }: FieldWrapperProps) => {
   return (
-    <div className={cx('max-w-md', className)} data-field={type}>
+    <div className={cx('max-w-full md:max-w-md', className)} data-field={type}>
       {children}
     </div>
   );

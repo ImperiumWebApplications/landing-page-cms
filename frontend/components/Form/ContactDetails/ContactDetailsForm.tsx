@@ -54,10 +54,10 @@ export const ContactDetailsForm: React.FC<ContactDetailsFormProps> = ({
         e.preventDefault();
       }}
     >
-      <div className="grid grid-flow-row grid-cols-2 gap-4 md:gap-8">
+      <div className="grid grid-flow-row grid-cols-1 gap-8 md:grid-flow-row md:grid-cols-2">
         <Field
           type="radio"
-          className="col-span-2"
+          className="md:col-span-2"
           id={ContactFieldConfig.Salutation.name}
           options={ContactFieldConfig.Salutation.label}
           value={values?.salutation}
@@ -107,7 +107,7 @@ export const ContactDetailsForm: React.FC<ContactDetailsFormProps> = ({
         />
         <Field
           type="checkbox"
-          className="col-span-2 max-w-full"
+          className="md:col-span-2 md:max-w-full"
           id={ContactFieldConfig.TermsAccepted.name}
           value={values?.acceptedTerms}
           label={ContactFieldConfig.TermsAccepted.label}
@@ -127,7 +127,7 @@ export const ContactDetailsForm: React.FC<ContactDetailsFormProps> = ({
           size="large"
           label="Jetzt Anfrage abschicken"
           description="Kostenlos & Unverbindlich"
-          className="my-8 flex-shrink-0"
+          className="my-8 flex-shrink-0 px-20 text-lg"
           loading={isSubmitting}
           disabled={isSubmitting || !isValidContactDetailsData(values)}
           onClick={handleSubmit}

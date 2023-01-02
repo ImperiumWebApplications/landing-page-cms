@@ -1,13 +1,11 @@
 import cn from 'classnames';
 
-type ContentWrapperProps = {
+type FormWrapperProps = {
   className?: string;
-  children?:
-    | React.ReactElement
-    | (React.ReactElement | string | null | undefined)[];
+  children?: React.ReactNode;
 };
 
-export const FormWrapper: React.FC<ContentWrapperProps> = ({
+export const FormWrapper: React.FC<FormWrapperProps> = ({
   children,
   className,
 }) => {

@@ -77,10 +77,13 @@ export const Button = (props: ButtonProps) => {
 
   if (props.to) {
     return (
-      <Link href={props.to} passHref>
-        <a role="button" className={className} data-testid={BUTTON_TEST_ID}>
-          {ButtonLabel}
-        </a>
+      <Link
+        href={props.to}
+        role="button"
+        className={className}
+        data-testid={BUTTON_TEST_ID}
+      >
+        {ButtonLabel}
       </Link>
     );
   }
@@ -117,15 +120,15 @@ export const getButtonVariantClasses = (
     case 'primary':
       return disabled
         ? 'text-[gray] bg-tertiary opacity-75 cursor-default'
-        : 'text-[white] bg-primary hover:brightness-[105%] transition:all shining-button';
+        : 'text-[white] bg-primary hover:brightness-[105%] transition:all shining-button shadow-sm';
     case 'secondary':
       return disabled
         ? 'text-[gray] bg-tertiary opacity-75 cursor-default'
-        : 'text-[white] bg-secondary hover:brightness-[105%] transition:all shining-button';
+        : 'text-[white] bg-secondary hover:brightness-[105%] transition:all shining-button shadow-sm';
     case 'tertiary':
       return disabled
         ? 'text-gray bg-tertiary opacity-75 cursor-default'
-        : 'text-gray bg-tertiary hover:brightness-[102%] transition:all shining-button';
+        : 'text-gray bg-tertiary hover:brightness-[102%] transition:all shining-button shadow-sm';
   }
 };
 
@@ -135,12 +138,14 @@ export const getButtonSizeClasses = (
 ) => {
   switch (variant) {
     case 'small':
-      return 'pt-3 pb-2 px-4';
+      return 'inline-block pt-3 pb-2 px-4';
     case 'medium':
-      return 'pt-4 pb-3 px-8';
+      return 'inline-block pt-4 pb-3 px-8';
     case 'large':
-      return `${!!options?.description ? 'pt-4 pb-3 px-10' : 'pt-6 pb-5 px-8'}`;
+      return `inline-block ${
+        !!options?.description ? 'pt-4 pb-3 px-10' : 'pt-6 pb-5 px-8'
+      }`;
     case 'fullWidth':
-      return 'w-full pt-6 pb-5 px-10';
+      return 'inline-block w-full pt-6 pb-5 px-10';
   }
 };

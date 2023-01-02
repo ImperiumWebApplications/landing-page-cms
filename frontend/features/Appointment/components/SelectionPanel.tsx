@@ -65,7 +65,7 @@ export const SelectionPanel: React.FC<SelectionPanelProps> = ({ steps }) => {
       case 'details':
         return (
           <ContactDetailsForm
-            className="my-12"
+            className="my-8"
             values={state.contact}
             onSubmit={async (onSuccess) => {
               const { location, dates } = state;
@@ -114,7 +114,7 @@ export const SelectionPanel: React.FC<SelectionPanelProps> = ({ steps }) => {
     };
 
     return (
-      <div className="mb-8 md:hidden">
+      <div className="mb-8 text-center md:hidden">
         <button className="text-secondary underline" onClick={handleClick}>
           zurück
         </button>
@@ -123,11 +123,11 @@ export const SelectionPanel: React.FC<SelectionPanelProps> = ({ steps }) => {
   }, [state.index, dispatch]);
 
   return (
-    <div className="text-center md:pl-10 md:text-left lg:pl-20">
-      <h1 className="text-3xl font-semibold text-primary md:text-4xl">
+    <div className="md:pl-10 lg:pl-20">
+      <h1 className="text-center text-3xl font-semibold text-primary md:text-left md:text-4xl">
         {content.heading}
       </h1>
-      <p className="pt-2 pb-4 text-sm font-light text-gray">
+      <p className="pt-2 pb-4 text-center text-sm font-light text-gray md:text-left">
         {content.description ?? DEFAULT_DESCRIPTION}
       </p>
       <div className="mx-auto h-[2px] w-[25px] bg-[black] opacity-50 md:mx-0" />

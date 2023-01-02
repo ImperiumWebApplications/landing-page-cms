@@ -1,18 +1,31 @@
-import styled from 'styled-components';
+import cx from 'classnames';
 
-const StyledSection = styled.section<{ bgColor?: string }>`
-  background-color: ${({ bgColor }) => bgColor};
-`;
-
-export const SectionContainer: React.FunctionComponent<{
+type SectionContainerProps = {
   id: string;
   className?: string;
-  bgColor?: string;
+  contentWrapperClassName?: string;
   fullWidth?: boolean;
-}> = ({ id, className, bgColor, fullWidth, children }) => {
+  children?: React.ReactNode;
+  style?: React.CSSProperties;
+};
+
+export const SectionContainer: React.FC<SectionContainerProps> = ({
+  id,
+  className,
+  contentWrapperClassName,
+  fullWidth,
+  style,
+  children,
+}) => {
   return (
-    <StyledSection id={id} className={className} bgColor={bgColor}>
-      {fullWidth ? children : <div className="content-wrapper">{children}</div>}
-    </StyledSection>
+    <div id={id} className={className} style={style}>
+      {fullWidth ? (
+        children
+      ) : (
+        <div className={cx('content-wrapper', contentWrapperClassName)}>
+          {children}
+        </div>
+      )}
+    </div>
   );
 };

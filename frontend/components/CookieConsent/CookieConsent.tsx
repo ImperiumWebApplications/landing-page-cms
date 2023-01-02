@@ -1,54 +1,9 @@
-import styled from 'styled-components';
 import CookieConsentModal from 'react-cookie-consent';
 import cx from 'classnames';
 
-import { devices } from '../../config/breakpoints.config';
 import { getButtonSizeClasses, getButtonVariantClasses } from '../Button';
 
 export const COOKIE_CONSENT_NAME = 'lq-pages-cc';
-
-const StyledCookieConsent = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(1px);
-  z-index: 98;
-
-  .CookieConsent {
-    position: absolute;
-    z-index: 99;
-    background: white;
-    padding: 2rem;
-    bottom: 2rem !important;
-    right: 1rem;
-    width: calc(100% - 2rem);
-    height: auto;
-    border-radius: ${({ theme }) => theme.borderRadius};
-    font-size: 0.9rem;
-    line-height: 1.25rem;
-    box-shadow: rgba(0, 0, 0, 0.22) 0px 19px 43px;
-
-    @media screen and (${devices.sm}) {
-      width: 25rem;
-      padding: 4rem 2rem;
-      right: 2rem;
-    }
-
-    .title {
-      display: block;
-      margin-bottom: 1rem;
-      color: black;
-      opacity: 0.85;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: +1px;
-      font-size: 0.8rem;
-    }
-  }
-`;
 
 export type CookiesAllowed = 'Yes' | 'No' | 'NotAnswered';
 export type CookieConsentProps = {
@@ -56,18 +11,19 @@ export type CookieConsentProps = {
   setConsent: React.Dispatch<React.SetStateAction<CookiesAllowed>>;
 };
 
-export const CookieConsent: React.FunctionComponent<CookieConsentProps> = ({
+export const CookieConsent: React.FC<CookieConsentProps> = ({
   consent,
   setConsent,
 }) => {
   if (consent !== 'NotAnswered') return <></>;
 
   return (
-    <StyledCookieConsent>
+    <div className="absolute top-0 left-0 z-40 h-full w-full bg-[black] bg-opacity-5 backdrop-blur-sm">
       <CookieConsentModal
         disableStyles={true}
         enableDeclineButton={true}
         expires={30}
+        containerClasses="absolute z-50 bg-[white] p-8 bottom-8 right-4 w-[calc(100%-2rem)] h-auto rounded-md text-sm shadow-lg sm:width-[25rem] sm:py-4 sm:px-8 sm:right-8"
         buttonText="Cookies erlauben"
         buttonClasses={cx(
           'relative rounded-md mt-4',
@@ -86,7 +42,9 @@ export const CookieConsent: React.FunctionComponent<CookieConsentProps> = ({
         ariaDeclineLabel="Cookies ablehnen"
         cookieName={COOKIE_CONSENT_NAME}
       >
-        <span className="title">Hinweis</span>
+        <span className="mb-4 block text-sm font-semibold uppercase tracking-wide text-[black] opacity-90">
+          Hinweis
+        </span>
         Diese Webseite nutzt Cookies und Tracking-Technologien. Ein Teil ist zur
         Nutzung erforderlich. Andere Technologien dienen dem Ausspielen
         personalisierter Werbung oder der Auswertung des Nutzerverhaltens. Mit
@@ -97,6 +55,6 @@ export const CookieConsent: React.FunctionComponent<CookieConsentProps> = ({
         </a>
         .
       </CookieConsentModal>
-    </StyledCookieConsent>
+    </div>
   );
 };

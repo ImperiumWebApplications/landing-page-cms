@@ -1,62 +1,19 @@
-import styled from 'styled-components';
 import dynamic from 'next/dynamic';
-import hexRgb from 'hex-rgb';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, A11y } from 'swiper';
 
-import { swiperNavigationCss } from '../../../config/swiper.config';
-import { devices } from '../../../config/breakpoints.config';
+import type { ReviewProps } from './components/Review';
 import { SectionContainer } from '../SectionContainer';
 import { ReviewsSectionContent } from '../SectionMapper';
 
-const ClientSideOnlyReview = dynamic<{
-  // @ts-ignore
-  content: ReviewsSectionContent['rating'][number];
-}>(() => import('./components/Review').then((mod) => mod.Review), {
-  ssr: false,
-});
+import { useThemeColor } from '../../../hooks/useThemeColor';
 
-const StyledSectionContainer = styled(SectionContainer)`
-  text-align: center;
-  background: linear-gradient(
-    to bottom,
-    ${({ theme }) =>
-        hexRgb(theme.colors.primary, { format: 'css', alpha: 0.1 })}
-      60%,
-    white 60%
-  );
-
-  & > .content-wrapper {
-    max-width: 60rem;
-  }
-
-  .swiper-pagination-bullet-active {
-    background: ${({ theme }) => theme.colors.secondary};
-  }
-
-  .heading-prefix {
-    display: inline-block;
-    margin: 1rem auto;
-    font-size: 0.9rem;
-    letter-spacing: 0.5px;
-
-    @media screen and (${devices.md}) {
-      margin: 2rem auto;
-    }
-  }
-
-  .heading {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-
-    @media screen and (${devices.md}) {
-      font-size: 3rem;
-      margin-bottom: 4rem;
-    }
-  }
-
-  ${({ theme }) => swiperNavigationCss(theme.colors.secondary)};
-`;
+const Review = dynamic<ReviewProps>(
+  () => import('./components/Review').then((mod) => mod.Review),
+  {
+    ssr: false,
+  },
+);
 
 type ReviewsSectionProps = {
   id: string;
@@ -64,28 +21,42 @@ type ReviewsSectionProps = {
 };
 
 export const ReviewsSection: React.FC<ReviewsSectionProps> = (props) => {
+  const primaryHex = useThemeColor('primary');
+
   return (
-    <StyledSectionContainer id={props.id}>
-      {props.content.rating?.length && (
-        <>
-          <span className="heading-prefix">Zufriedenheit unserer Kunden</span>
-          <h2 className="heading">Sehr Gut!</h2>
-          <Swiper
-            modules={[Navigation, Pagination, A11y]}
-            navigation
-            pagination
-            loop
-          >
-            {props.content.rating?.map((rating, i) => {
-              return (
-                <SwiperSlide key={i}>
-                  <ClientSideOnlyReview content={rating} />
-                </SwiperSlide>
-              );
-            })}
-          </Swiper>
-        </>
-      )}
-    </StyledSectionContainer>
+    <SectionContainer
+      id={props.id}
+      className="my-12 text-center"
+      style={{
+        background: `linear-gradient(${primaryHex}1A 60%, white 60%)`,
+      }}
+    >
+      <div className="content-wrapper max-w-[60rem] pt-12 md:py-12">
+        {props.content.rating?.length && (
+          <>
+            <span className="mx-auto inline-block text-sm tracking-wide md:my-8">
+              Zufriedenheit unserer Kunden
+            </span>
+            <h2 className="mb-8 text-3xl font-bold md:mb-12 md:text-5xl">
+              Sehr Gut!
+            </h2>
+            <Swiper
+              modules={[Navigation, Pagination, A11y]}
+              navigation
+              pagination
+              loop
+            >
+              {props.content.rating?.map((rating, i) => {
+                return (
+                  <SwiperSlide key={i} className="mb-8">
+                    <Review content={rating} />
+                  </SwiperSlide>
+                );
+              })}
+            </Swiper>
+          </>
+        )}
+      </div>
+    </SectionContainer>
   );
 };

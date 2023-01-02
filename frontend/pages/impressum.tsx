@@ -1,20 +1,14 @@
-import type { ReactElement } from 'react';
 import type { NextPage } from 'next';
 import { NextSeo } from 'next-seo';
-import dynamic from 'next/dynamic';
 import ReactMarkdown from 'react-markdown';
 
 import type { LandingPage, StaticContent } from '../lib/strapi';
+import { Article } from '../components/Article';
+import { Layout } from '../components/Layout';
 import { queryStaticPageContent } from '../lib/next/app';
-import { Layout } from '../components/Layout/Layout';
 import { populateMarkdownTemplate } from '../utils/populateMarkdownTemplate';
 import { getCountryByDomain } from '../utils/getCountryByDomain';
 import { Country } from '../config/countries.config';
-
-const ClientSideOnlyArticle = dynamic<{ children: ReactElement }>(
-  () => import('../components/Article').then((mod) => mod.Article),
-  { ssr: false },
-);
 
 const ImprintPage: NextPage<{ content: LandingPage & StaticContent }> = ({
   content,
@@ -29,9 +23,9 @@ const ImprintPage: NextPage<{ content: LandingPage & StaticContent }> = ({
     <Layout content={enrichedDomainContent}>
       <NextSeo noindex={true} />
       <div id="imprint" className="content-wrapper">
-        <ClientSideOnlyArticle>
+        <Article>
           <ReactMarkdown>{pageContent ?? ''}</ReactMarkdown>
-        </ClientSideOnlyArticle>
+        </Article>
       </div>
     </Layout>
   );

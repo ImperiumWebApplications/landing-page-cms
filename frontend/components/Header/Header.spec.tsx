@@ -24,21 +24,23 @@ describe('Header', () => {
   });
 
   test('should show logo and button', () => {
-    const { getByAltText, getByLabelText, getByText } = renderWithLayout(
+    const { getByAltText, getByLabelText, getByTestId } = renderWithLayout(
       <Header content={content.data[0].attributes} />,
     );
 
     const logoImage = getByAltText('logo.png');
     expect(logoImage).toHaveAttribute(
       'src',
-      '/_next/image?url=https%3A%2F%2Flanding-pages-images-local.s3.eu-central-1.amazonaws.com%2Flogo_485181aa26.png&w=3840&q=75',
+      '/_next/image?url=https%3A%2F%2Flanding-pages-images-local.s3.eu-central-1.amazonaws.com%2Flogo_485181aa26.png&w=640&q=75',
     );
 
     const logoLink = getByLabelText('Homepage');
     expect(logoLink).toHaveAttribute('href', '/');
 
-    const button = getByText('Lassen Sie sich beraten');
+    const button = getByTestId('button');
+    console.log(button);
     expect(button).toHaveAttribute('href', '/fragebogen');
+    expect(button).toHaveTextContent('Lassen Sie sich beraten');
     expect(button).toHaveAttribute('role', 'button');
   });
 
@@ -48,7 +50,7 @@ describe('Header', () => {
       pathname: questionnaireRoute,
     });
 
-    const { getByAltText, getByLabelText, queryByText } = renderWithLayout(
+    const { getByAltText, getByLabelText, queryByTestId } = renderWithLayout(
       <Header content={content.data[0].attributes} />,
     );
 
@@ -57,7 +59,7 @@ describe('Header', () => {
     const logoLink = getByLabelText('Homepage');
     expect(logoLink).toBeInTheDocument();
 
-    const button = queryByText('Lassen Sie sich beraten');
+    const button = queryByTestId('button');
     expect(button).not.toBeInTheDocument();
   });
 
@@ -97,7 +99,7 @@ describe('Header', () => {
     navigationItems.forEach((item) => {
       expect(getByText(item.label)).toHaveAttribute('href', item.href);
       if (item.href === '/datenschutz')
-        expect(getByText(item.label)).toHaveClass('active');
+        expect(getByText(item.label)).toHaveClass('text-secondary');
     });
   });
 });

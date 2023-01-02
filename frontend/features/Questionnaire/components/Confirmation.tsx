@@ -1,51 +1,18 @@
 import React from 'react';
-import styled, { useTheme } from 'styled-components';
-import { CheckmarkCircle } from '@styled-icons/fluentui-system-regular';
 
-import { StyledStepTitle } from './StepTitle';
-
-const StyledConfirmation = styled.div`
-  width: 100%;
-  max-width: 40rem;
-  margin: 0 auto;
-
-  .icon {
-    margin: -1rem auto 2rem auto;
-    width: 7.5rem;
-    height: 7.5rem;
-  }
-
-  .subtitle {
-    margin: 1.5rem 0 0.5rem 0;
-    font-size: 1.25rem;
-    line-height: 1.5rem;
-
-    & + p {
-      font-size: 1.125rem;
-      margin-bottom: 1.5rem;
-    }
-  }
-`;
+import { StepTitle } from './StepTitle';
+import { CheckCircleIcon } from '../../../components/Icons';
 
 export const Confirmation: React.FC<{ phone?: string | null }> = ({
   phone,
 }) => {
-  const theme = useTheme();
-
   return (
-    <StyledConfirmation>
-      <div className="icon">
-        <CheckmarkCircle
-          width={120}
-          height={120}
-          color={theme.colors.primary}
-          opacity={0.5}
-        />
+    <div className="mx-auto w-full max-w-2xl">
+      <div className="mx-auto -mt-4 mb-8 h-32 w-32">
+        <CheckCircleIcon className="h-32 w-32 fill-primary opacity-50" />
       </div>
       <div>
-        <StyledStepTitle>
-          Ihre Anfrage wurde erfolgreich übermittelt.
-        </StyledStepTitle>
+        <StepTitle>Ihre Anfrage wurde erfolgreich übermittelt.</StepTitle>
         <p>
           Zeitnah erhalten Sie von uns einen Anruf, damit wir Ihre Angaben
           gemeinsam validieren können. Kurz darauf werden Sie mindestens ein
@@ -54,8 +21,10 @@ export const Confirmation: React.FC<{ phone?: string | null }> = ({
         </p>
         {phone && (
           <>
-            <h2 className="subtitle">Verifizierungsvorgang beschleunigen:</h2>
-            <p>Kostenfrei anrufen: {phone}</p>
+            <h2 className="mx-0 mt-6 mb-2">
+              Verifizierungsvorgang beschleunigen:
+            </h2>
+            <p className="mb-6 text-lg">Kostenfrei anrufen: {phone}</p>
           </>
         )}
         <p>
@@ -63,6 +32,6 @@ export const Confirmation: React.FC<{ phone?: string | null }> = ({
           die Nutzung Ihres Internetzugangs.
         </p>
       </div>
-    </StyledConfirmation>
+    </div>
   );
 };

@@ -1,4 +1,3 @@
-/** @type {import('tailwindcss').Config} */
 module.exports = {
   future: {
     hoverOnlyWhenSupported: true,
@@ -9,6 +8,21 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
+    fontFamily: {
+      sans: ['Overpass', 'sans-serif'],
+      system: [
+        '-apple-system',
+        'BlinkMacSystemFont',
+        'Segoe UI',
+        'Roboto',
+        'Helvetica',
+        'Arial',
+        'sans-serif',
+        'Apple Color Emoji',
+        'Segoe UI Emoji',
+        'Segoe UI Symbol',
+      ],
+    },
     colors: {
       primary: 'var(--color-primary)',
       secondary: 'var(--color-secondary)',
@@ -16,17 +30,10 @@ module.exports = {
       gray: 'var(--color-gray)',
     },
     extend: {
-      keyframes: {
-        fadeDown: {
-          from: { opacity: 0, transform: 'translateY(-20px)' },
-          to: { opacity: 1, transform: 'translateY(0)' },
-        },
-      },
-      animation: {
-        fadeDown: 'fadeDown 100ms 750ms backwards',
+      borderRadius: {
+        blob: '40% 60% 70% 30% / 40% 40% 60% 50%',
       },
     },
   },
-  plugins: [],
   safelist: ['shimmer'],
 };

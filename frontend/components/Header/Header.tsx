@@ -1,80 +1,71 @@
 import React, { useMemo } from 'react';
-import styled from 'styled-components';
+
 import { useRouter } from 'next/router';
+import { motion } from 'framer-motion';
 
 import type { LandingPage } from '../../lib/strapi';
-import {
-  appointmentRoute,
-  questionnaireRoute,
-} from '../../config/navigation.config';
-import { MobileNavigation } from './components/MobileNavigation';
-import { Logo } from '../Logo/Logo';
-import { Button } from '../Button';
-import { Animation } from '../Animation/Animation';
+import { questionnaireRoute } from '../../config/navigation.config';
 import { isFunnelRoute } from '../../utils/isFunnelRoute';
 
-const StyledHeader = styled.header<{ centerLogo: boolean }>`
-  .animated-header {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    width: 100%;
-    height: auto;
-    min-height: 4rem;
+import { Logo } from '../Logo';
+import { Button } from '../Button';
 
-    .content-wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: ${({ centerLogo }) =>
-        centerLogo ? 'center' : 'space-between'};
-      width: 100%;
+import { MobileNavigation } from './components/MobileNavigation';
 
-      & > div:first-of-type {
-        margin-right: ${({ centerLogo }) => (centerLogo ? '0' : '2rem')};
-
-        a img {
-          object-position: ${({ centerLogo }) =>
-            centerLogo ? 'center !important' : 'inherit'};
-        }
-      }
-    }
-  }
-`;
-
-export const Header: React.FC<{
+type HeaderProps = {
   content: LandingPage;
-}> = ({ content }) => {
-  const _isFunnelRoute = isFunnelRoute(useRouter());
+};
+
+export const Header: React.FC<HeaderProps> = ({ content }) => {
+  const router = useRouter();
+
+  const isFunnel = isFunnelRoute(router);
+  const isIndex = router.pathname === '/';
+  const isAppointmentTarget = content.funnel_target === 'Appointment';
 
   const Navigation = useMemo(() => {
-    if (_isFunnelRoute) return undefined;
+    if (isFunnel) return undefined;
 
     return (
       <>
-        <Button
-          variant="primary"
-          size="large"
-          className="z-15 relative hidden h-auto text-[0.9rem] uppercase tracking-wider md:block"
-          label="Lassen Sie sich beraten"
-          to={
-            content.funnel_target === 'Appointment'
-              ? appointmentRoute
-              : questionnaireRoute
-          }
-        />
+        {!isAppointmentTarget || !isIndex ? (
+          <Button
+            variant="primary"
+            size="large"
+            className="z-15 relative hidden h-auto text-[0.9rem] uppercase tracking-wider md:block"
+            label="Lassen Sie sich beraten"
+            to={`/${questionnaireRoute}`}
+          />
+        ) : null}
         <MobileNavigation />
       </>
     );
-  }, [content.funnel_target, _isFunnelRoute]);
+  }, [isAppointmentTarget, isFunnel, isIndex]);
 
   return (
-    <StyledHeader id="header" centerLogo={_isFunnelRoute}>
-      <Animation className="animated-header" type="fadeDown" duration={200}>
-        <div className="content-wrapper">
-          <Logo image={content.logo?.data.attributes} />
+    <header id="header">
+      <motion.div
+        initial={{ opacity: 0, translateY: -10 }}
+        animate={{ opacity: 1, translateY: 0 }}
+        transition={{ duration: 0.2 }}
+        className="content-wrapper relative z-[2] flex h-auto min-h-[3rem] w-full"
+      >
+        <div
+          className={`flex w-full items-center py-4 md:py-8 ${
+            isAppointmentTarget && isIndex
+              ? 'justify-between md:justify-center'
+              : isFunnel
+              ? 'justify-center'
+              : 'justify-between'
+          }`}
+        >
+          <Logo
+            image={content.logo?.data.attributes}
+            className="h-[50px] w-[200px] sm:h-[60px] sm:w-[300px]"
+          />
           {Navigation}
         </div>
-      </Animation>
-    </StyledHeader>
+      </motion.div>
+    </header>
   );
 };

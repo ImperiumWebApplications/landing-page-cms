@@ -17,23 +17,24 @@
     "precommit": "lint-staged"
   },
   "devDependencies": {
-    "@babel/core": "^7.17.5",
-    "@babel/eslint-parser": "^7.17.0",
+    "@babel/core": "^7.20.5",
+    "@babel/eslint-parser": "^7.19.1",
     "eslint": "^7.32.0",
-    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^3.3.1",
     "lint-staged": "^12.3.4",
     "prettier": "^2.5.1",
     "typescript": "^4.9.3"
   },
   "dependencies": {
-    "@strapi/plugin-color-picker": "^4.5.2",
-    "@strapi/plugin-i18n": "^4.5.2",
-    "@strapi/plugin-users-permissions": "^4.5.2",
-    "@strapi/provider-upload-aws-s3": "^4.5.2",
-    "@strapi/strapi": "^4.5.2",
+    "@strapi/plugin-color-picker": "^4.5.4",
+    "@strapi/plugin-i18n": "^4.5.4",
+    "@strapi/plugin-users-permissions": "^4.5.4",
+    "@strapi/provider-upload-aws-s3": "^4.5.4",
+    "@strapi/strapi": "^4.5.4",
     "pg": "^8.8.0",
-    "strapi-plugin-sentry": "^3.6.11"
+    "strapi-plugin-sentry": "^3.6.11",
+    "react-select": "^5.7.0"
   },
   "strapi": {
     "uuid": "051793ca-1c32-4adf-ad67-39de2fef64f7"

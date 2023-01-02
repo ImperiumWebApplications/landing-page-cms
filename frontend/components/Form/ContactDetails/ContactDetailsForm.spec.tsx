@@ -4,14 +4,13 @@ import {
   Matcher,
   render,
   SelectorMatcherOptions,
-  waitFor,
-} from '../../../../jest.setup';
+} from '../../../jest.setup';
 
 import {
   ContactDetailsForm,
   ContactDetailsFormValues,
-} from '../ContactDetailsForm';
-import { ContactFieldConfig } from '../ContactDetailsForm.config';
+} from './ContactDetailsForm';
+import { ContactFieldConfig } from './ContactDetailsForm.config';
 
 const fillContactForm = (
   fieldSelector: (
@@ -98,32 +97,13 @@ describe('ContactDetailsForm', () => {
   });
 
   test('should render error message', async () => {
-    const { queryByText, getByLabelText, getByRole } = render(
-      <ContactDetailsWrapper onSubmit={() => Promise.reject()} />,
+    const { findByText, getByLabelText, getByTestId } = render(
+      <ContactDetailsWrapper onSubmit={() => Promise.reject('Failed fetch')} />,
     );
 
-    expect(queryByText(/Fehler/i)).not.toBeInTheDocument();
     fillContactForm(getByLabelText);
 
-    await waitFor(() => {
-      fireEvent.click(getByRole('button'));
-    });
-
-    expect(queryByText(/Fehler/i)).toBeInTheDocument();
-  });
-
-  test('should submit error message', async () => {
-    const { queryByText, getByLabelText, getByRole } = render(
-      <ContactDetailsWrapper onSubmit={() => Promise.reject()} />,
-    );
-
-    expect(queryByText(/Fehler/i)).not.toBeInTheDocument();
-    fillContactForm(getByLabelText);
-
-    await waitFor(() => {
-      fireEvent.click(getByRole('button'));
-    });
-
-    expect(queryByText(/Fehler/i)).toBeInTheDocument();
+    fireEvent.click(getByTestId('button'));
+    await findByText(/Fehler/i);
   });
 });

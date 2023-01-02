@@ -72,7 +72,7 @@ const ListboxButton = ({
       disabled={disabled || loading}
       data-testid={SELECT_FIELD_BUTTON_TEST_ID}
       className={cx(
-        `w-full rounded-md border-2 border-tertiary bg-[white] py-[17px] pr-12 pl-4 text-left align-middle tracking-wide ${
+        `h-14 w-full rounded-md border-2 border-tertiary bg-[white] py-[17px] pr-12 pl-4 text-left align-middle tracking-wide ${
           disabled || loading
             ? `cursor-not-allowed brightness-95 ${loading ? 'shimmer' : ''}`
             : 'cursor-pointer transition-all hover:border-secondary'

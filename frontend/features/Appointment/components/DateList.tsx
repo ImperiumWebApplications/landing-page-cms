@@ -62,7 +62,7 @@ export const DateList: React.FC<DateListProps> = ({
                 className={`flex flex-row items-center gap-4 rounded-2xl px-6 py-4 md:rounded-3xl md:px-14 md:py-8 lg:gap-8 ${
                   selectedDate
                     ? 'bg-secondary font-semibold text-[white] shadow-md lg:text-lg'
-                    : 'bg-[#FAFAFA] shadow-md'
+                    : 'border-[1px] border-tertiary bg-[#FAFAFA] shadow-md'
                 }`}
                 onClick={() => setShowPicker(key)}
                 onKeyDown={(event) => {

@@ -1,71 +1,21 @@
-import styled from 'styled-components';
-
 import type { LandingPage } from '../../lib/strapi';
-import { devices } from '../../config/breakpoints.config';
-import { Logo } from '../Logo/Logo';
 
 import { FooterNavigation } from './components/FooterNavigation';
 import { ContactIcons } from './components/ContactIcons';
+import { Logo } from '../Logo';
 
-const StyledFooter = styled.footer`
-  display: flex;
-  width: 100%;
-  height: auto;
-  min-height: 4rem;
-  background-color: ${({ theme }) => theme.colors.primary};
-  color: ${({ theme }) => theme.colors.tertiary};
-
-  & > .content-wrapper {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: repeat(3, 1fr);
-    row-gap: 1rem;
-
-    @media screen and (${devices.md}) {
-      grid-template-rows: 100%;
-      grid-template-columns: auto 1fr auto;
-      row-gap: 0;
-    }
-  }
-
-  .logo-wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-
-    width: 100%;
-    padding-right: 2rem;
-
-    @media screen and (${devices.lg}) {
-      justify-content: space-between;
-      padding-right: 4rem;
-    }
-
-    .copyright {
-      display: block;
-      margin-top: 1rem;
-      font-size: 0.8rem;
-      text-transform: lowercase;
-    }
-  }
-`;
-
-export const Footer: React.FunctionComponent<{
+type FooterProps = {
   content: LandingPage;
-}> = ({ content }) => {
+};
+
+export const Footer: React.FC<FooterProps> = ({ content }) => {
   return (
-    <StyledFooter>
-      <div className="content-wrapper">
-        <div className="logo-wrapper">
-          <Logo
-            image={content.logo?.data.attributes}
-            size="logo-medium"
-            colorless
-          />
+    <footer className="flex h-auto min-h-[3rem] w-full bg-primary text-tertiary">
+      <div className="content-wrapper grid w-full grid-cols-1 grid-rows-3 gap-y-4 py-8 md:grid-cols-[auto_1fr_auto] md:grid-rows-1 md:gap-y-0">
+        <div className="flex w-full flex-col pr-8 lg:justify-between lg:pr-16">
+          <Logo image={content.logo?.data.attributes} colorless />
           {content.brand_name && (
-            <span className="copyright">
+            <span className="mt-4 block text-sm lowercase">
               &copy; {`${new Date().getFullYear()} ${content.brand_name}`}
             </span>
           )}
@@ -76,6 +26,6 @@ export const Footer: React.FunctionComponent<{
           email={content.contact_email}
         />
       </div>
-    </StyledFooter>
+    </footer>
   );
 };

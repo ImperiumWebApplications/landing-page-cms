@@ -1,37 +1,36 @@
 import Image from 'next/image';
 
-import { Animation } from '../../../components/Animation/Animation';
 import { Button } from '../../../components/Button';
 import { startQuestionnaire } from '../../../config/navigation.config';
 
 import { ImagesSectionContent } from '../SectionMapper';
 import { SectionContainer } from '../SectionContainer';
 import { ArrowRightCircleIcon } from '../../../components/Icons';
+import { motion } from 'framer-motion';
 
 type ImagesSectionProps = {
   id: string;
   content: ImagesSectionContent;
 };
 
-export const ImagesSection: React.FunctionComponent<ImagesSectionProps> = (
-  props,
-) => {
+export const ImagesSection: React.FC<ImagesSectionProps> = (props) => {
   return (
-    <SectionContainer id={props.id}>
-      <div className="hidden sm:relative sm:mb-12 sm:grid sm:grid-flow-row sm:grid-cols-2 sm:gap-2 md:grid-cols-3">
+    <SectionContainer id={props.id} className="my-12">
+      <div className="hidden sm:relative sm:grid sm:grid-flow-row sm:grid-cols-2 sm:gap-2 md:grid-cols-3">
         {props.content.images?.data?.length &&
-          props.content.images.data.map((image, i) => {
+          props.content.images.data.map((image, i, arr) => {
+            const isFirstImage = i === 0;
+            const isLastImage = i === arr.length - 1;
             return image.attributes ? (
-              <div
-                key={i}
-                className="images-wrapper relative h-40 w-full max-w-md"
-              >
+              <div key={i} className="relative h-40 w-full max-w-md">
                 <Image
                   src={image.attributes.url}
                   alt={image.attributes.alternativeText ?? ''}
-                  layout="fill"
-                  objectFit="cover"
+                  className={`object-cover ${
+                    isFirstImage ? 'rounded-tl-lg' : ''
+                  } ${isLastImage ? 'rounded-br-lg' : ''}`}
                   quality={90}
+                  fill
                 />
               </div>
             ) : (
@@ -39,14 +38,21 @@ export const ImagesSection: React.FunctionComponent<ImagesSectionProps> = (
             );
           })}
       </div>
-      <Animation type="fadeUp" duration={300} delay={300}>
-        <div className="mt-8 mb-12 flex max-w-7xl flex-col items-start justify-start gap-20 lg:flex-row">
-          <div className="mb-8 text-4xl font-semibold tracking-tighter opacity-75 xl:text-5xl">
+      <motion.div
+        initial={{ opacity: 0, translateY: 10 }}
+        whileInView={{ opacity: 1, translateY: 0 }}
+        transition={{ delay: 0.3 }}
+        viewport={{ once: true }}
+      >
+        <div className="flex max-w-7xl flex-col items-start justify-start gap-8 sm:my-16 lg:flex-row lg:gap-20">
+          <div className="text-4xl font-semibold tracking-tighter opacity-75 md:mb-8 xl:text-5xl">
             Konnten wir Sie überzeugen?
           </div>
           <div className="flex w-full flex-col items-center justify-center gap-8 md:flex-row md:gap-12">
-            <div className="flex w-full flex-col gap-4">
-              <span>Lassen sie sich beraten</span>
+            <div className="flex w-full flex-col gap-3">
+              <span className="text-[0.9rem] font-light uppercase">
+                Lassen sie sich beraten
+              </span>
               <Button
                 variant="secondary"
                 size="large"
@@ -56,8 +62,10 @@ export const ImagesSection: React.FunctionComponent<ImagesSectionProps> = (
               />
             </div>
             {props.content.phone && (
-              <div className="flex w-full flex-col gap-4">
-                <span>Oder rufen Sie einfach an</span>
+              <div className="flex w-full flex-col gap-3">
+                <span className="text-[0.9rem] font-light uppercase">
+                  Oder rufen Sie einfach an
+                </span>
                 <Button
                   variant="primary"
                   size="large"
@@ -68,7 +76,7 @@ export const ImagesSection: React.FunctionComponent<ImagesSectionProps> = (
             )}
           </div>
         </div>
-      </Animation>
+      </motion.div>
     </SectionContainer>
   );
 };

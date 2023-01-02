@@ -1,39 +1,9 @@
-import styled from 'styled-components';
 import Link from 'next/link';
-import { resetCookieConsentValue } from 'react-cookie-consent';
 import { useRouter } from 'next/router';
+import { resetCookieConsentValue } from 'react-cookie-consent';
 
 import { COOKIE_CONSENT_NAME } from '../../CookieConsent/CookieConsent';
 import { navigationItems } from '../../../config/navigation.config';
-
-const StyledFooterNavigation = styled.nav`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-
-  a,
-  button {
-    display: block;
-    margin: 0.25rem 0;
-    font-weight: 400;
-    color: ${({ theme }) => theme.colors.tertiary};
-
-    &.active,
-    &:hover {
-      color: ${({ theme }) => theme.colors.secondary};
-    }
-  }
-
-  button {
-    border: none;
-    background: none;
-    padding: 0;
-    font-family: ${({ theme }) => theme.font};
-    font-size: 1rem;
-    cursor: pointer;
-  }
-`;
 
 export const FooterNavigation: React.FunctionComponent = () => {
   const router = useRouter();
@@ -44,18 +14,28 @@ export const FooterNavigation: React.FunctionComponent = () => {
   };
 
   return (
-    <StyledFooterNavigation>
+    <nav className="flex flex-col">
       {navigationItems.map((navItem, i) => {
         const isActive = router.pathname === navItem.href;
         return (
-          <Link key={i} href={navItem.href} passHref>
-            <a className={isActive ? 'active' : undefined}>{navItem.label}</a>
+          <Link
+            key={i}
+            href={navItem.href}
+            className={`my-[2px] block font-normal ${
+              isActive ? 'text-secondary' : 'text-tertiary hover:text-secondary'
+            }`}
+          >
+            {navItem.label}
           </Link>
         );
       })}
-      <button type="button" onClick={onResetCookies}>
+      <button
+        type="button"
+        className="my-[2px] cursor-pointer text-left font-normal text-tertiary hover:text-secondary"
+        onClick={onResetCookies}
+      >
         Cookie-Erlaubnis widerrufen
       </button>
-    </StyledFooterNavigation>
+    </nav>
   );
 };

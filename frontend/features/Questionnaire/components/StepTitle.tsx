@@ -1,21 +1,11 @@
-import styled from 'styled-components';
+import React from 'react';
 
-import { devices } from '../../../config/breakpoints.config';
-
-export const StyledStepTitle = styled.h1`
-  text-align: center;
-  font-size: 1.5rem;
-  line-height: 2rem;
-  margin-bottom: 2rem;
-
-  @media screen and (${devices.md}) {
-    font-size: 2.25rem;
-    line-height: 2.75rem;
-    margin-bottom: 3rem;
-  }
-
-  @media screen and (${devices.lg}) {
-    font-size: 2.5rem;
-    line-height: 3rem;
-  }
-`;
+export const StepTitle: React.FC<{ children?: React.ReactNode }> = ({
+  children,
+}) => {
+  return (
+    <h1 className="mb-8 text-center text-2xl md:mb-12 md:text-4xl">
+      {children}
+    </h1>
+  );
+};

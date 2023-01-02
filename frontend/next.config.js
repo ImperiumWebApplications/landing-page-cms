@@ -4,7 +4,9 @@ const { withSentryConfig } = require('@sentry/nextjs');
 
 // Next.js configuration
 const moduleExports = {
-  reactStrictMode: true,
+  // Swiper doesn't work with strict mode true
+  // https://github.com/nolimits4web/swiper/issues/5398
+  reactStrictMode: false,
   outputFileTracing: true,
   images: {
     domains: process.env.IMAGE_PROVIDER_URL
@@ -18,6 +20,9 @@ const moduleExports = {
   webpack: (config) => {
     config.experiments = { topLevelAwait: true, layers: true };
     return config;
+  },
+  sentry: {
+    hideSourceMaps: false,
   },
 };
 

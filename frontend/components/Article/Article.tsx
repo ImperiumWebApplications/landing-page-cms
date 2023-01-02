@@ -1,26 +1,9 @@
-import type { ReactElement } from 'react';
-import styled from 'styled-components';
+export type ArticleProps = {
+  children: React.ReactNode;
+};
 
-const StyledArticle = styled.div`
-  padding-top: 3rem;
-  padding-bottom: 5rem;
-
-  // Handling long words and links
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  word-break: break-word;
-  hyphens: auto;
-
-  h2 {
-    margin-top: 2rem;
-  }
-  h3 {
-    margin-top: 1rem;
-  }
-`;
-
-export const Article: React.FunctionComponent<{
-  children: ReactElement;
-}> = ({ children }) => {
-  return <StyledArticle>{children}</StyledArticle>;
+export const Article: React.FC<ArticleProps> = ({ children }) => {
+  return (
+    <div className="wrap-words whitespace-pre-wrap pt-12 pb-20">{children}</div>
+  );
 };

@@ -1,17 +1,11 @@
 import { render, RenderOptions } from '@testing-library/react';
 import { ReactElement } from 'react';
-import { ThemeProvider } from 'styled-components';
 import '@testing-library/jest-dom';
 
-import { configureTheme, GlobalStyle } from './config/theme.config';
-
-const LayoutRender: React.FunctionComponent = ({ children }) => {
-  return (
-    <ThemeProvider theme={configureTheme()}>
-      <GlobalStyle isFunnelRoute={false} />
-      <main>{children}</main>
-    </ThemeProvider>
-  );
+const LayoutRender: React.FC<{ children?: React.ReactElement }> = ({
+  children,
+}) => {
+  return <main>{children}</main>;
 };
 
 export const renderWithLayout = (

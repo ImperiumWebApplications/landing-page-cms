@@ -1,5 +1,7 @@
 import { useMemo } from 'react';
 
+import { motion } from 'framer-motion';
+
 import type { HeroSectionContent } from '../SectionMapper';
 
 import { QuestionnaireTiles } from './components/QuestionnaireTiles';
@@ -34,7 +36,7 @@ export const HeroSection: React.FC<HeroSectionProps> = (props) => {
   const Headline = useMemo(() => {
     return title ? (
       <h1
-        className="text-[3.5rem] leading-tight text-[white] [text-shadow:0_4px_8px_rgba(0,0,0,0.2)]"
+        className="text-4xl leading-tight text-[white] [text-shadow:0_4px_8px_rgba(0,0,0,0.2)] md:text-5xl xl:text-[3.5rem]"
         // Allow line breaks and markup to be inserted via cms
         dangerouslySetInnerHTML={{ __html: title }}
       />
@@ -44,7 +46,7 @@ export const HeroSection: React.FC<HeroSectionProps> = (props) => {
   const Subtitle = useMemo(() => {
     return subtitle ? (
       <span
-        className="-mt-16 block text-[3.5rem] font-bold leading-tight text-[white] opacity-80 [text-shadow:0_4px_8px_rgba(0,0,0,0.2)]"
+        className="-mt-4 block text-2xl font-bold leading-tight text-[white] opacity-80 [text-shadow:0_4px_8px_rgba(0,0,0,0.2)] md:-mt-8 md:text-5xl xl:text-[3.5rem]"
         // Allow line breaks and markup to be inserted via cms
         dangerouslySetInnerHTML={{ __html: subtitle }}
       />
@@ -53,16 +55,20 @@ export const HeroSection: React.FC<HeroSectionProps> = (props) => {
 
   return (
     <SectionContainer id={props.id}>
-      <div className="relative">
+      <motion.div
+        className="relative"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+      >
         <div className="absolute top-0 left-0 -z-20 h-full w-full">
           {/* {BackgroundImage} */}
           <div className="h-full w-full rounded-2xl bg-primary opacity-90" />
         </div>
-        <div className="mx-auto flex flex-col justify-center px-12 py-28 text-center">
+        <div className="mx-auto flex flex-col justify-center px-8 py-12 text-center md:px-12 md:py-28">
           <div>
             {Headline}
             {Subtitle}
-            <p className="my-8 mx-auto max-w-xl text-xl text-[white] [text-shadow:0_4px_8px_rgba(0,0,0,0.2)]">
+            <p className="my-8 mx-auto max-w-xl text-lg text-[white] [text-shadow:0_4px_8px_rgba(0,0,0,0.2)] md:text-xl">
               {props.content.description}
             </p>
           </div>
@@ -72,7 +78,7 @@ export const HeroSection: React.FC<HeroSectionProps> = (props) => {
             <QuestionnaireTiles content={questionnaire} />
           )}
         </div>
-      </div>
+      </motion.div>
     </SectionContainer>
   );
 };

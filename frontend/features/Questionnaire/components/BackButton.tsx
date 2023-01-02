@@ -1,31 +1,7 @@
-import styled from 'styled-components';
-import { ChevronLeft } from '@styled-icons/material-rounded';
-
 import { useQuestionnaireContext } from '../context/Questionnaire';
+import { ChevronLeftIcon } from '../../../components/Icons';
 
-const StyledBackButton = styled.div`
-  cursor: pointer;
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  width: 2.5rem;
-  height: 2.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background-color: ${({ theme }) => theme.colors.tertiary};
-
-  @media (hover) {
-    &:hover {
-      filter: brightness(105%);
-    }
-  }
-`;
-
-export const BackButton: React.FunctionComponent<{ hide?: boolean }> = ({
-  hide,
-}) => {
+export const BackButton: React.FC<{ hide?: boolean }> = ({ hide }) => {
   const { state, dispatch } = useQuestionnaireContext();
   if (hide) return <></>;
 
@@ -34,11 +10,12 @@ export const BackButton: React.FunctionComponent<{ hide?: boolean }> = ({
   };
 
   return (
-    <StyledBackButton
+    <div
+      className="absolute top-[1rem] left-[1rem] flex h-[2.5rem] w-[2.5rem] cursor-pointer items-center justify-center rounded-full bg-tertiary hover:brightness-105"
       aria-label="Einen Schritt zurück"
       onClick={onClickHandler}
     >
-      <ChevronLeft width={32} style={{ marginLeft: '-0.1rem' }} />
-    </StyledBackButton>
+      <ChevronLeftIcon className="-ml-[0.1rem] h-8 w-8" />
+    </div>
   );
 };

@@ -12,14 +12,15 @@ export const AppointmentCTA = () => {
         to={appointmentRoute}
         label="Beratungsgespräch vereinbaren"
         variant="secondary"
-        className="text-lg shadow-lg"
+        className="shadow-lg md:text-lg"
         size="large"
       />
-      <div className="mt-6 flex gap-8 text-sm text-[white]">
+      <div className="mt-6 flex flex-col items-center gap-2 text-sm text-[white] md:flex-row md:gap-8">
         {BENEFITS.map((benefit, key) => {
           return (
-            <div key={key} className="flex items-center">
-              <CheckCircleIcon className="h-5 w-5" /> {benefit}
+            <div key={key} className="flex items-center gap-x-1">
+              <CheckCircleIcon className="h-5 w-5" />{' '}
+              <span className="pt-[2px]">{benefit}</span>
             </div>
           );
         })}

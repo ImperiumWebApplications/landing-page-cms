@@ -91,15 +91,14 @@ describe('QuestionnaireTiles', () => {
     expect(tileIcon).not.toBeInTheDocument();
   });
 
-  test('should render tile with svg icon', () => {
-    const { queryByTestId } = renderWithLayout(
+  test('should render tile with svg icon', async () => {
+    const { queryByTestId, findByTestId } = renderWithLayout(
       <QuestionnaireTiles {...defaultPropsWithSvg} />,
     );
 
     const tileImage = queryByTestId('tile-image');
-    const tileIcon = queryByTestId('tile-icon');
     expect(tileImage).not.toBeInTheDocument();
-    expect(tileIcon).toBeInTheDocument();
+    await findByTestId('tile-icon');
   });
 
   test('should render nothing if name is missing', () => {

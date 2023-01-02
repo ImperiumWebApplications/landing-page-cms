@@ -1,30 +1,12 @@
 import type { MouseEvent } from 'react';
-import styled from 'styled-components';
-import { devices } from '../../../config/breakpoints.config';
-import { Questionnaire } from '../../../lib/strapi';
+
+import type { Questionnaire } from '../../../lib/strapi';
 import {
   QuestionnaireAnswer,
   useQuestionnaireContext,
 } from '../context/Questionnaire';
+
 import { SelectableOption } from './SelectableOption';
-
-const StyledSingleChoice = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: stretch;
-  column-gap: 1rem;
-  row-gap: 1rem;
-  flex-wrap: wrap;
-
-  @media screen and (${devices.md}) {
-    column-gap: 2rem;
-    row-gap: 2rem;
-  }
-
-  [role='button'] {
-    cursor: pointer;
-  }
-`;
 
 export type SingleChoiceEventHandler = ({
   event,
@@ -34,13 +16,19 @@ export type SingleChoiceEventHandler = ({
   input: QuestionnaireAnswer;
 }) => void;
 
-export const SingleChoice: React.FunctionComponent<{
+type SingleChoiceProps = {
+  customSelectHandler?: SingleChoiceEventHandler;
   question: { id: number; title: string };
   answers: NonNullable<
     NonNullable<Questionnaire['questions']>[number]['answers']
   >;
-  customSelectHandler?: SingleChoiceEventHandler;
-}> = ({ question, answers, customSelectHandler }) => {
+};
+
+export const SingleChoice: React.FC<SingleChoiceProps> = ({
+  question,
+  answers,
+  customSelectHandler,
+}) => {
   const { state, dispatch } = useQuestionnaireContext();
 
   const defaultClickHandler: SingleChoiceEventHandler = ({ event, input }) => {
@@ -59,7 +47,7 @@ export const SingleChoice: React.FunctionComponent<{
   const currentAnswer = state.questionnaire[state.index]?.answer.value;
 
   return (
-    <StyledSingleChoice>
+    <div className="flex flex-wrap items-stretch justify-center gap-4 md:gap-8">
       {answers.map(({ id: answer_id, answer_icon, answer_value }) => {
         return !!answer_value ? (
           <SelectableOption
@@ -79,6 +67,6 @@ export const SingleChoice: React.FunctionComponent<{
           />
         ) : undefined;
       })}
-    </StyledSingleChoice>
+    </div>
   );
 };

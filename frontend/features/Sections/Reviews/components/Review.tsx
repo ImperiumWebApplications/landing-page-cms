@@ -1,100 +1,38 @@
 import React from 'react';
-import styled from 'styled-components';
 import Image from 'next/image';
 
-import { devices } from '../../../../config/breakpoints.config';
 import { ReviewsSectionContent } from '../../SectionMapper';
 import { useMediaQuery } from '../../../../hooks/useMediaQuery';
 
-const StyledReview = styled.div`
-  position: relative;
-  background-color: white;
-  border-radius: ${({ theme }) => theme.borderRadius};
-  box-shadow: rgba(0, 0, 0, 0.06) 0px 4px 6px;
-  padding: 5rem 3rem 2rem 3rem;
-  margin: 3.5rem 0.5rem 2rem 0.5rem;
+export type ReviewProps = {
+  content: NonNullable<ReviewsSectionContent['rating']>[0];
+};
 
-  @media screen and (${devices.sm}) {
-    padding: 5rem 2rem 2rem 2rem;
-    margin: 3.5rem 2rem 2rem 2rem;
-  }
-
-  @media screen and (${devices.md}) {
-    padding: 6rem 5rem 4rem 5rem;
-  }
-
-  .description {
-    line-height: 1.75rem;
-    margin-bottom: 2rem;
-
-    .show-more {
-      opacity: 0.75;
-      font-weight: 700;
-    }
-  }
-
-  .avatar {
-    position: absolute;
-    z-index: 2;
-    top: -50px;
-    left: calc(50% - 50px);
-    height: 100px;
-    width: 100px;
-
-    &::before {
-      content: '';
-      position: absolute;
-      width: 110px;
-      height: 55px;
-      left: -5px;
-      top: -5px;
-      border-top-left-radius: 0.5rem;
-      border-top-right-radius: 0.5rem;
-      background-color: ${({ theme }) => theme.colors.primary};
-    }
-
-    &::after {
-      content: '';
-      position: absolute;
-      z-index: -1;
-      width: 110px;
-      height: 55px;
-      left: -5px;
-      bottom: 0px;
-      border-bottom-left-radius: 0.5rem;
-      border-bottom-right-radius: 0.5rem;
-      background-color: ${({ theme }) => theme.colors.tertiary};
-    }
-  }
-`;
-
-export const Review: React.FunctionComponent<{
-  // @ts-ignore
-  content: ReviewsSectionContent['rating'][number];
-}> = ({ content }) => {
-  const isTabletBreakpoint = useMediaQuery(`(${devices.sm})`);
+export const Review: React.FC<ReviewProps> = ({ content }) => {
+  const isTabletBreakpoint = useMediaQuery(`(min-width: 480px)`);
   const [isExpanded, setIsExpanded] = React.useState(false);
 
   return (
-    <StyledReview>
-      <div className="avatar">
-        {content.avatar?.data?.attributes && (
+    <div className="relative mx-2 mt-14 mb-8 rounded-md bg-[white] px-12 pt-20 pb-8 shadow-md sm:mx-8 sm:px-8 md:px-20 md:pt-24 md:pb-16">
+      <div className="absolute -top-11 left-[calc(50%-50px)] z-10 h-[100px] w-[100px] before:absolute before:-left-[5px] before:-top-1 before:-z-[1] before:h-[55px] before:w-[110px] before:rounded-tl-md before:rounded-tr-md before:bg-primary before:content-[''] after:absolute after:-left-[5px] after:bottom-0 after:-z-[1] after:h-[55px] after:w-[110px] after:rounded-br-md after:rounded-bl-md after:bg-tertiary after:content-['']">
+        {content.avatar?.data?.attributes ? (
           <Image
             src={content.avatar.data.attributes.url}
-            alt={content.avatar.data.attributes.alternativeText}
-            layout="fill"
-            objectFit="cover"
+            alt={content.avatar.data.attributes.alternativeText ?? ''}
+            width={100}
+            height={100}
+            className="object-cover"
           />
-        )}
+        ) : null}
       </div>
       {content.description && (
-        <p className="description">
+        <p className="mb-8 leading-relaxed">
           {isTabletBreakpoint || isExpanded
             ? content.description
             : `${content.description?.substring(0, 300)}...`}
           {!isTabletBreakpoint && (
             <span
-              className="show-more"
+              className="font-semibold opacity-75"
               onClick={() => setIsExpanded(!isExpanded)}
             >
               {isExpanded ? ' Weniger anzeigen' : ' Mehr anzeigen'}
@@ -102,10 +40,8 @@ export const Review: React.FunctionComponent<{
           )}
         </p>
       )}
-      <h3 className="name" aria-label="Name">
-        {content.name}
-      </h3>
-      <span className="biography">{content.biography}</span>
-    </StyledReview>
+      <h3 aria-label="Name">{content.name}</h3>
+      <span>{content.biography}</span>
+    </div>
   );
 };

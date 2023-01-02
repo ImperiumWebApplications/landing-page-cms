@@ -90,6 +90,7 @@ export const QuestionnaireDispatchContext =
 
 type QuestionnaireProviderProps = {
   initialState?: QuestionnaireState;
+  children?: React.ReactNode;
 };
 
 export const QuestionnaireProvider: React.FC<QuestionnaireProviderProps> = ({

@@ -1,151 +1,78 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-import { fadeIn, fadeOut } from '../../Animation/Animation.config';
 import { navigationItems } from '../../../config/navigation.config';
-import { devices } from '../../../config/breakpoints.config';
+import { motion } from 'framer-motion';
 
-const StyledMobileMenu = styled.div<{ open: boolean }>`
-  display: block;
-
-  @media screen and (${devices.md}) {
-    display: none;
-  }
-
-  .burger {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 2rem;
-    height: 2rem;
-    z-index: 12;
-    background: transparent;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    overflow-x: hidden;
-
-    div {
-      position: relative;
-      width: 2rem;
-      height: 0.25rem;
-      border-radius: ${({ theme }) => theme.borderRadius};
-      background: ${({ theme, open }) =>
-        open ? theme.colors.tertiary : theme.colors.primary};
-      transition: all 0.3s ease-in-out;
-      transform-origin: 1px;
-    }
-
-    div:nth-child(1) {
-      transform: ${({ open }) => (open ? 'rotate(45deg)' : 'rotate(0)')};
-    }
-
-    div:nth-child(2) {
-      opacity: ${({ open }) => (open ? 0 : 1)};
-      transform: ${({ open }) =>
-        open ? 'translateX(100px)' : 'translateX(0)'};
-    }
-
-    div:nth-child(3) {
-      transform: ${({ open }) => (open ? 'rotate(-45deg)' : 'rotate(0)')};
-    }
-  }
-  .sidebar-backdrop {
-    position: fixed;
-    z-index: 9;
-    display: block;
-    visibility: ${({ open }) => (open ? 'visible' : 'hidden')};
-    animation: ${({ open }) => (open ? fadeIn : fadeOut)} 0.2s ease-in-out;
-    background: ${({ theme }) => theme.colors.primary};
-    opacity: 0.9;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-
-    .sidebar {
-      position: fixed;
-      z-index: 10;
-      display: block;
-      top: 0;
-      bottom: 0;
-      right: 0;
-      width: 100%;
-      height: 100vh;
-      outline: 0;
-
-      nav {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-
-        a {
-          color: ${({ theme }) => theme.colors.tertiary};
-          font-size: 32px;
-          font-weight: 400;
-          padding: 1rem;
-
-          &.active,
-          &:hover {
-            color: ${({ theme }) => theme.colors.secondary};
-          }
-        }
-      }
-    }
-  }
-`;
-
-export const MobileNavigation: React.FunctionComponent = () => {
+export const MobileNavigation: React.FC = () => {
   const router = useRouter();
-  const [open, setOpen] = React.useState<boolean>(false);
+  const [open, setOpen] = useState<boolean>(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (open) document.body.style.overflowY = 'hidden';
     else document.body.style.overflowY = 'visible';
   }, [open]);
 
   return (
-    <StyledMobileMenu open={open}>
+    <div className="block md:hidden">
       <div
         aria-label="Mobile Navigation Toggle"
-        className="burger"
+        className="relative z-10 flex h-8 w-8 cursor-pointer flex-col justify-around overflow-x-hidden border-none bg-[transparent] p-0"
         tabIndex={0}
         onClick={() => setOpen(!open)}
         onKeyUp={(event) => {
           if (event.key === 'Enter') setOpen(!open);
         }}
       >
-        <div />
-        <div />
-        <div />
+        <div
+          className={`relative h-1 w-8 rounded-md ${
+            open ? 'rotate-45 bg-tertiary' : 'rotate-0 bg-primary'
+          } origin-[1px] transition-all`}
+        />
+        <div
+          className={`relative h-1 w-8 rounded-md ${
+            open
+              ? 'translate-x-[100px] bg-tertiary'
+              : 'translate-x-0 bg-primary'
+          } origin-[1px] transition-all`}
+        />
+        <div
+          className={`relative h-1 w-8 rounded-md ${
+            open ? '-rotate-45 bg-tertiary' : 'rotate-0 bg-primary'
+          } origin-[1px] transition-all`}
+        />
       </div>
-      <div
+      <motion.div
+        animate={{
+          opacity: open ? 1 : 0,
+          visibility: open ? 'visible' : 'hidden',
+        }}
+        transition={{ duration: 0.2 }}
         aria-label="sidebar"
-        className="sidebar-backdrop"
         aria-hidden={!open}
         tabIndex={open ? 1 : -1}
+        className={`fixed top-0 left-0 z-[9] block h-full w-full bg-primary`}
       >
-        <div className="sidebar">
-          <nav>
+        <div className="fixed top-0 bottom-0 right-0 z-10 block h-[100vh] w-full outline-none">
+          <nav className="relative flex h-[100vh] flex-col items-center justify-center">
             {navigationItems.map((navItem, i) => {
               const isActive = router.pathname === navItem.href;
               return (
-                <Link key={i} href={navItem.href} passHref>
-                  <a className={isActive ? 'active' : undefined}>
-                    {navItem.label}
-                  </a>
+                <Link
+                  key={i}
+                  href={navItem.href}
+                  className={`px-4 py-8 text-4xl font-normal hover:text-secondary ${
+                    isActive ? 'text-secondary' : 'text-tertiary'
+                  }`}
+                >
+                  {navItem.label}
                 </Link>
               );
             })}
           </nav>
         </div>
-      </div>
-    </StyledMobileMenu>
+      </motion.div>
+    </div>
   );
 };

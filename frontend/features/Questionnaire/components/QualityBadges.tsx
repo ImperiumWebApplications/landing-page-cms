@@ -1,8 +1,5 @@
-import styled from 'styled-components';
 import Image from 'next/image';
-import hexRgb from 'hex-rgb';
-
-import { devices } from '../../../config/breakpoints.config';
+import { useThemeColor } from '../../../hooks/useThemeColor';
 
 const badges = [
   {
@@ -15,33 +12,16 @@ const badges = [
   },
 ];
 
-const StyledQualityBadges = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  column-gap: 3rem;
-  padding: 0.5rem;
-  margin-bottom: -2rem;
+export const QualityBadges: React.FC = () => {
+  const tertiaryHex = useThemeColor('tertiary');
 
-  @media screen and (${devices.md}) {
-    margin-bottom: -6rem;
-  }
-
-  background-image: linear-gradient(
-    to right,
-    ${({ theme }) =>
-      hexRgb(theme.colors.secondary, { format: 'css', alpha: 0 })},
-    ${({ theme }) =>
-      hexRgb(theme.colors.tertiary, { format: 'css', alpha: 1 })},
-    ${({ theme }) =>
-      hexRgb(theme.colors.secondary, { format: 'css', alpha: 0 })}
-  );
-`;
-
-export const QualityBadges: React.FunctionComponent = () => {
   return (
-    <StyledQualityBadges>
+    <div
+      className="-mb-8 flex flex-row items-center justify-center gap-x-12 p-2 md:-mb-24"
+      style={{
+        backgroundImage: `linear-gradient(to right, ${tertiaryHex}00, ${tertiaryHex}, ${tertiaryHex}00)`,
+      }}
+    >
       {badges.map(({ href, badgeSrc }, key) => {
         return (
           <a key={key} href={href} target={'_blank'} rel="noreferrer noopener">
@@ -49,12 +29,12 @@ export const QualityBadges: React.FunctionComponent = () => {
               src={badgeSrc}
               width={120}
               height={120}
-              objectFit="contain"
               alt="Webseiten-Siegel"
+              className="object-contain"
             />
           </a>
         );
       })}
-    </StyledQualityBadges>
+    </div>
   );
 };

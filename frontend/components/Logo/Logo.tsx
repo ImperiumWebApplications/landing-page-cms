@@ -1,67 +1,71 @@
 import React from 'react';
-import Image from 'next/image';
-import styled from 'styled-components';
-import Link from 'next/link';
 
-import { devices } from '../../config/breakpoints.config';
+import Image from 'next/image';
+import Link from 'next/link';
+import cx from 'classnames';
+
 import type { MediaAttributes } from '../../lib/strapi';
 
-const StyledLogo = styled.div`
-  a {
-    display: block;
-    position: relative;
-    cursor: pointer;
+// const StyledLogo = styled.div`
+//   a {
+//     display: block;
+//     position: relative;
+//     cursor: pointer;
 
-    &.logo-medium {
-      width: 180px;
-      height: 45px;
-    }
+//     &.logo-medium {
+//       width: 180px;
+//       height: 45px;
+//     }
 
-    &.logo-large {
-      width: 200px;
-      height: 50px;
-    }
+//     &.logo-large {
+//       width: 200px;
+//       height: 50px;
+//     }
 
-    @media screen and (${devices.sm}) {
-      &.logo-medium {
-        width: 260px;
-        height: 55px;
-      }
+//     @media screen and (${devices.sm}) {
+//       &.logo-medium {
+//         width: 260px;
+//         height: 55px;
+//       }
 
-      &.logo-large {
-        width: 300px;
-        height: 60px;
-      }
-    }
+//       &.logo-large {
+//         width: 300px;
+//         height: 60px;
+//       }
+//     }
 
-    .colorless-filter {
-      filter: brightness(0) invert(1);
-    }
-  }
-`;
+//     .colorless-filter {
+//       filter: brightness(0) invert(1);
+//     }
+//   }
+// `;
 
-export const Logo: React.FunctionComponent<{
+type LogoProps = {
   image?: MediaAttributes | null;
   colorless?: boolean;
-  size?: 'logo-medium' | 'logo-large';
-}> = ({ image, colorless, size }) => {
+  className?: string;
+  priority?: boolean;
+  width?: number;
+  height?: number;
+};
+
+export const Logo: React.FC<LogoProps> = (props) => {
+  if (!props.image?.url) return null;
+
   return (
-    <StyledLogo>
-      {image && (
-        <Link href="/" passHref>
-          <a aria-label="Homepage" className={size ?? 'logo-large'}>
-            <Image
-              src={image.url}
-              alt={image.alternativeText ?? image.url}
-              layout="fill"
-              objectFit="contain"
-              objectPosition="left center"
-              className={colorless ? 'colorless-filter' : undefined}
-              priority
-            />
-          </a>
-        </Link>
-      )}
-    </StyledLogo>
+    <Link href="/" aria-label="Homepage" className="relative">
+      <Image
+        src={props.image?.url}
+        alt={props.image.alternativeText ?? ''}
+        width={props.image.width ?? 300}
+        height={props.image.height ?? 60}
+        className={cx(
+          props.className,
+          props.colorless ? 'colorless-filter' : '',
+          'object-contain object-left',
+        )}
+        priority={props.priority ?? false}
+      />
+    </Link>
   );
 };

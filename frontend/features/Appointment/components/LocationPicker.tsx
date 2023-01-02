@@ -36,7 +36,7 @@ export const LocationPicker: React.FC<LocationPickerProps> = ({
             ${
               checked
                 ? 'bg-secondary bg-opacity-75 text-[white] shadow-md'
-                : 'border-[1px] border-primary bg-[#FAFAFA] shadow-md'
+                : 'border-[1px] border-tertiary bg-[#FAFAFA] shadow-md'
             }
               relative flex cursor-pointer rounded-2xl px-6 py-4 focus:outline-none md:rounded-3xl md:px-12 md:py-6`
                   }

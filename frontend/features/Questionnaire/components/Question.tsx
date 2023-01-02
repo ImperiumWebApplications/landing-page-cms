@@ -1,6 +1,6 @@
 import type { Questionnaire } from '../../../lib/strapi';
 import type { SingleChoiceEventHandler } from './SingleChoice';
-import { StyledStepTitle } from './StepTitle';
+import { StepTitle } from './StepTitle';
 import { SingleChoice } from './SingleChoice';
 import { QuestionnairePlaceholder } from '../QuestionnairePlaceholder';
 
@@ -12,7 +12,7 @@ export const Question: React.FC<{
 
   return (
     <div aria-label="question">
-      <StyledStepTitle className="title">{data.question}</StyledStepTitle>
+      <StepTitle>{data.question}</StepTitle>
       <SingleChoice
         question={{ id: data.id, title: data.question }}
         answers={data.answers}

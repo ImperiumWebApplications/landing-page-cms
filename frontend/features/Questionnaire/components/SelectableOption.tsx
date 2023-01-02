@@ -1,176 +1,80 @@
 import type { MouseEvent } from 'react';
-import styled, { css } from 'styled-components';
+
 import Image from 'next/image';
-import { ReactSVG } from 'react-svg';
+import dynamic from 'next/dynamic';
 
 import type { Media } from '../../../lib/strapi';
-import { devices } from '../../../config/breakpoints.config';
 import { isSvg } from '../../../utils/isSvg';
 
-const activeStateCss = css`
-  background-color: ${({ theme }) => theme.colors.secondary};
+const ReactSVG = dynamic(
+  // @ts-ignore
+  () => import('react-svg').then((mod) => mod.ReactSVG),
+  { ssr: false },
+);
 
-  .icon svg,
-  .icon svg path,
-  .icon svg polygon,
-  .icon svg circle,
-  .icon svg line,
-  .icon svg polyline,
-  .icon svg rect,
-  .icon svg ellipse {
-    fill: white !important;
-  }
-
-  .label {
-    color: white;
-  }
-
-  .icon-placeholder {
-    background-color: white;
-  }
-`;
-
-const StyledSelectableOption = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: calc(50% - 0.5rem);
-  height: auto;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  transition: all 0.3s ease-in-out;
-  background-color: #f8f8f8;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 6px -1px,
-    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
-
-  @media screen and (${devices.md}) {
-    width: 10rem;
-    height: 10rem;
-    border-radius: 1.5rem;
-  }
-
-  @media screen and (${devices.lg}) {
-    width: 12rem;
-    height: 12rem;
-    padding: 2rem;
-  }
-
-  @media (hover) {
-    &:hover {
-      ${activeStateCss};
-    }
-  }
-
-  &[data-selected='true'],
-  &:active {
-    ${activeStateCss};
-  }
-
-  .icon {
-    position: relative;
-    z-index: 2;
-
-    svg {
-      width: 2.5rem;
-      height: 2.5rem;
-
-      @media screen and (${devices.md}) {
-        width: 3rem;
-        height: 3rem;
-      }
-
-      @media screen and (${devices.lg}) {
-        width: 4rem;
-        height: 4rem;
-      }
-    }
-
-    svg,
-    svg path,
-    svg polygon,
-    svg circle,
-    svg line,
-    svg polyline,
-    svg rect,
-    svg ellipse {
-      fill: ${({ theme }) => theme.colors.secondary} !important;
-    }
-  }
-
-  .icon-placeholder {
-    width: 2.5rem;
-    height: 2.5rem;
-    background-color: ${({ theme }) => theme.colors.secondary};
-    border-radius: 50%;
-    border-radius: 40% 60% 70% 30% / 40% 40% 60% 50%;
-    opacity: 0.125;
-    flex-shrink: 0;
-
-    @media screen and (${devices.md}) {
-      width: 3rem;
-      height: 3rem;
-    }
-
-    @media screen and (${devices.lg}) {
-      width: 4rem;
-      height: 4rem;
-    }
-  }
-
-  .label {
-    position: relative;
-    z-index: 2;
-    font-size: 1rem;
-    font-weight: 700;
-    margin-top: 1rem;
-    text-align: center;
-    color: ${({ theme }) => theme.colors.primary};
-
-    @media screen and (${devices.lg}) {
-      margin-top: 2rem;
-    }
-
-    @media screen and (${devices.xl}) {
-      font-size: 1.25rem;
-    }
-  }
-`;
-
-export const SelectableOption: React.FunctionComponent<{
+type SelectableOptionProps = {
   label: string;
   selected: boolean;
   icon?: Media;
   onSelectHandler: (event: MouseEvent) => void;
-}> = ({ label, selected, icon, onSelectHandler }) => {
+};
+
+export const SelectableOption: React.FC<SelectableOptionProps> = ({
+  label,
+  selected,
+  icon,
+  onSelectHandler,
+}) => {
   const isSvgIcon = isSvg(icon?.data?.attributes?.ext);
 
   return (
-    <StyledSelectableOption
+    <div
       role="button"
+      className={`icon group relative grid h-auto w-[calc(50%-0.5rem)] cursor-pointer grid-cols-1 grid-rows-[4rem_1fr] place-content-center rounded-lg border-[1px] p-4 shadow-md transition-all hover:bg-secondary md:w-40 md:grid-rows-[86px_1fr] lg:w-48 lg:p-6 ${
+        selected
+          ? 'border-secondary bg-secondary'
+          : 'border-tertiary bg-[#FAFAFA]'
+      }`}
       onClick={onSelectHandler}
       data-selected={selected ? 'true' : 'false'}
     >
-      <div className="icon">
+      <div className="icon mx-auto">
         {icon?.data?.attributes && !isSvgIcon && (
           <Image
+            className={`h-16 w-16 md:h-[86px] md:w-[86px]`}
             src={icon.data.attributes.url}
             alt={icon.data.attributes.alternativeText ?? ''}
-            width={icon.data.attributes.width}
-            height={icon.data.attributes.height}
+            fill
           />
         )}
         {icon?.data?.attributes && isSvgIcon && (
           <ReactSVG
-            loading={() => <div className="icon-placeholder" />}
-            fallback={() => <div className="icon-placeholder" />}
+            wrapper="svg"
+            className={`h-16 w-16 md:h-[86px] md:w-[86px]`}
+            beforeInjection={(svg) => {
+              svg.removeAttribute('height');
+              svg.removeAttribute('width');
+            }}
+            loading={() => <IconPlaceholder />}
+            fallback={() => <IconPlaceholder />}
             src={icon.data.attributes.url}
           />
         )}
-        {!icon?.data && <div className="icon-placeholder" />}
+        {!icon?.data ? <IconPlaceholder /> : null}
       </div>
-      <div className="label">{label}</div>
-    </StyledSelectableOption>
+      <div
+        className={`mt-2 flex items-center justify-center pt-2 text-center font-semibold leading-tight group-hover:text-[white] xl:text-lg xl:leading-tight ${
+          selected ? 'text-[white]' : 'text-primary'
+        }`}
+      >
+        {label}
+      </div>
+    </div>
+  );
+};
+
+const IconPlaceholder = () => {
+  return (
+    <div className="h-10 w-10 flex-shrink-0 rounded-full bg-secondary opacity-10 md:h-12 md:w-12 lg:h-16 lg:w-16" />
   );
 };

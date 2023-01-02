@@ -13,5 +13,4 @@ module.exports = {
     ],
     '@babel/preset-typescript',
   ],
-  plugins: [['styled-components', { ssr: true }]],
 };
