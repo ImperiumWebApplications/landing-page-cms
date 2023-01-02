@@ -1,8 +1,7 @@
 import { motion } from 'framer-motion';
 
-import type { LandingPage } from '../../../lib/strapi';
-
 import { SectionContainer } from '../SectionContainer';
+import { useSectionContext } from '../SectionContext';
 
 const STEPS = [
   'Formular ausfüllen und Bedarf festhalten',
@@ -12,13 +11,12 @@ const STEPS = [
 
 type StepsSectionProps = {
   id: string;
-  content: {
-    funnel: LandingPage['funnel_target'];
-  };
 };
 
 export const StaticStepsSection: React.FC<StepsSectionProps> = (props) => {
-  if (props.content.funnel === 'Appointment') {
+  const { state } = useSectionContext();
+
+  if (state.funnelTarget === 'Appointment') {
     STEPS[0] = STEPS[0]?.replace('Formular ausfüllen', 'Termin vereinbaren');
   }
 

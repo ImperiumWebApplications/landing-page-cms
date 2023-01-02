@@ -1,12 +1,16 @@
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 
+import {
+  appointmentRoute,
+  questionnaireRoute,
+} from '../../../config/navigation.config';
+import { ArrowRightCircleIcon } from '../../../components/Icons';
 import { Button } from '../../../components/Button';
-import { startQuestionnaire } from '../../../config/navigation.config';
 
 import { ImagesSectionContent } from '../SectionMapper';
 import { SectionContainer } from '../SectionContainer';
-import { ArrowRightCircleIcon } from '../../../components/Icons';
-import { motion } from 'framer-motion';
+import { useSectionContext } from '../SectionContext';
 
 type ImagesSectionProps = {
   id: string;
@@ -14,6 +18,8 @@ type ImagesSectionProps = {
 };
 
 export const ImagesSection: React.FC<ImagesSectionProps> = (props) => {
+  const { state } = useSectionContext();
+
   return (
     <SectionContainer id={props.id} className="my-12">
       <div className="hidden sm:relative sm:grid sm:grid-flow-row sm:grid-cols-2 sm:gap-2 md:grid-cols-3">
@@ -56,8 +62,16 @@ export const ImagesSection: React.FC<ImagesSectionProps> = (props) => {
               <Button
                 variant="secondary"
                 size="large"
-                to={startQuestionnaire.href}
-                label={startQuestionnaire.label}
+                to={`/${
+                  state.funnelTarget === 'Appointment'
+                    ? appointmentRoute
+                    : questionnaireRoute
+                }`}
+                label={
+                  state.funnelTarget === 'Appointment'
+                    ? 'Termin vereinbaren'
+                    : 'Beratung starten'
+                }
                 Icon={<ArrowRightCircleIcon className="h-5 w-5" />}
               />
             </div>

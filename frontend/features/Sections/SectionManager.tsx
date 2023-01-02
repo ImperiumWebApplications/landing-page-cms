@@ -42,11 +42,6 @@ export const initSectionManager = (content: LandingPage) => {
     Video: sectionMap?.video ? (
       <VideoSection id="video" content={sectionMap.video} />
     ) : null,
-    Steps: sectionMap?.images ? (
-      <StaticStepsSection
-        id="steps"
-        content={{ funnel: content.funnel_target }}
-      />
-    ) : null,
+    Steps: sectionMap?.images ? <StaticStepsSection id="steps" /> : null,
   };
 };

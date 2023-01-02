@@ -21,8 +21,3 @@ export const navigationItems: NavigationItem[] = [
     label: 'Datenschutz',
   },
 ];
-
-export const startQuestionnaire: NavigationItem = {
-  href: `/${questionnaireRoute}`,
-  label: 'Beratung starten',
-};

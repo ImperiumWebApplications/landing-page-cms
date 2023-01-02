@@ -2,12 +2,17 @@ import dynamic from 'next/dynamic';
 import ReactMarkdown from 'react-markdown';
 import { motion } from 'framer-motion';
 
+import {
+  appointmentRoute,
+  questionnaireRoute,
+} from '../../../config/navigation.config';
+import { ArrowRightCircleIcon, PlayIcon } from '../../../components/Icons';
 import { Button } from '../../../components/Button';
-import { startQuestionnaire } from '../../../config/navigation.config';
+import { useMediaQuery } from '../../../hooks/useMediaQuery';
+
 import { SectionContainer } from '../SectionContainer';
 import type { VideoSectionContent } from '../SectionMapper';
-import { ArrowRightCircleIcon, PlayIcon } from '../../../components/Icons';
-import { useMediaQuery } from '../../../hooks/useMediaQuery';
+import { useSectionContext } from '../SectionContext';
 
 const ReactPlayer = dynamic(() => import('react-player'), { ssr: false });
 
@@ -18,6 +23,7 @@ type VideoSectionProps = {
 
 export const VideoSection: React.FC<VideoSectionProps> = (props) => {
   const isTabletBreakpoint = useMediaQuery(`(min-width: 768px)`);
+  const { state } = useSectionContext();
 
   return (
     <SectionContainer id={props.id} className="my-12">
@@ -37,8 +43,16 @@ export const VideoSection: React.FC<VideoSectionProps> = (props) => {
             <Button
               variant="secondary"
               className="text-[0.9rem] uppercase"
-              to={startQuestionnaire.href}
-              label={startQuestionnaire.label}
+              to={`/${
+                state.funnelTarget === 'Appointment'
+                  ? appointmentRoute
+                  : questionnaireRoute
+              }`}
+              label={
+                state.funnelTarget === 'Appointment'
+                  ? 'Termin vereinbaren'
+                  : 'Beratung starten'
+              }
               Icon={<ArrowRightCircleIcon className="h-5 w-5" />}
             />
           </motion.div>

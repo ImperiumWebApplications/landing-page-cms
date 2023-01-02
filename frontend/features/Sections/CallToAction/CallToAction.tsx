@@ -1,12 +1,16 @@
 import ReactMarkdown from 'react-markdown';
+import { motion } from 'framer-motion';
 
+import {
+  appointmentRoute,
+  questionnaireRoute,
+} from '../../../config/navigation.config';
 import { Button } from '../../../components/Button';
-import { startQuestionnaire } from '../../../config/navigation.config';
+import { ArrowRightCircleIcon } from '../../../components/Icons';
 
 import { SectionContainer } from '../SectionContainer';
 import { CallToActionSectionContent } from '../SectionMapper';
-import { ArrowRightCircleIcon } from '../../../components/Icons';
-import { motion } from 'framer-motion';
+import { useSectionContext } from '../SectionContext';
 
 type CallToActionSectionProps = {
   id: string;
@@ -16,6 +20,8 @@ type CallToActionSectionProps = {
 export const CallToActionSection: React.FC<CallToActionSectionProps> = (
   props,
 ) => {
+  const { state } = useSectionContext();
+
   return (
     <SectionContainer
       id={props.id}
@@ -52,8 +58,16 @@ export const CallToActionSection: React.FC<CallToActionSectionProps> = (
             <Button
               variant="secondary"
               size="fullWidth"
-              to={startQuestionnaire.href}
-              label={startQuestionnaire.label}
+              to={`/${
+                state.funnelTarget === 'Appointment'
+                  ? appointmentRoute
+                  : questionnaireRoute
+              }`}
+              label={
+                state.funnelTarget === 'Appointment'
+                  ? 'Termin vereinbaren'
+                  : 'Beratung starten'
+              }
               Icon={<ArrowRightCircleIcon className="h-5 w-5" />}
             />
             {props.content.phone ? (
