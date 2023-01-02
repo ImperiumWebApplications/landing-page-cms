@@ -11,7 +11,6 @@ type CommonButtonProps = {
   variant?: ButtonVariant;
   className?: string;
   label?: string;
-  description?: string;
   Icon?: React.ReactElement;
 };
 
@@ -38,9 +37,7 @@ export const Button = (props: ButtonProps) => {
   const variant = props.variant ?? 'secondary';
   const size = props.size ?? 'medium';
 
-  const sizeStyle = getButtonSizeClasses(size, {
-    description: props.description,
-  });
+  const sizeStyle = getButtonSizeClasses(size);
   const variantStyle = getButtonVariantClasses(variant, {
     disabled: props.disabled,
   });
@@ -54,14 +51,7 @@ export const Button = (props: ButtonProps) => {
     return (
       <>
         <div className="inline-block">
-          <span className={`block ${props.description ? 'font-semibold' : ''}`}>
-            {props.label}
-          </span>
-          {props.description ? (
-            <span className="block text-sm font-normal normal-case tracking-normal opacity-95">
-              {props.description}
-            </span>
-          ) : undefined}
+          <span className={`block`}>{props.label}</span>
         </div>
         {props.Icon ? (
           <span className="ml-4">
@@ -73,7 +63,7 @@ export const Button = (props: ButtonProps) => {
         ) : undefined}
       </>
     );
-  }, [props.label, props.description, props.Icon]);
+  }, [props.label, props.Icon]);
 
   if (props.to) {
     return (
@@ -132,19 +122,14 @@ export const getButtonVariantClasses = (
   }
 };
 
-export const getButtonSizeClasses = (
-  variant: ButtonSize,
-  options?: { description?: string },
-) => {
+export const getButtonSizeClasses = (variant: ButtonSize) => {
   switch (variant) {
     case 'small':
       return 'inline-block pt-3 pb-2 px-4';
     case 'medium':
       return 'inline-block pt-4 pb-3 px-8';
     case 'large':
-      return `inline-block ${
-        !!options?.description ? 'pt-4 pb-3 px-10' : 'pt-6 pb-5 px-8'
-      }`;
+      return 'inline-block pt-6 pb-5 px-8';
     case 'fullWidth':
       return 'inline-block w-full pt-6 pb-5 px-10';
   }

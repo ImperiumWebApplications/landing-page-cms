@@ -36,7 +36,7 @@ export const HeroSection: React.FC<HeroSectionProps> = (props) => {
   const Headline = useMemo(() => {
     return title ? (
       <h1
-        className="text-4xl leading-tight text-[white] [text-shadow:0_4px_8px_rgba(0,0,0,0.2)] md:text-5xl xl:text-[3.5rem]"
+        className="mb-2 text-4xl text-[white] [text-shadow:0_4px_8px_rgba(0,0,0,0.2)] md:text-5xl xl:mb-4 xl:text-[3.5rem]"
         // Allow line breaks and markup to be inserted via cms
         dangerouslySetInnerHTML={{ __html: title }}
       />
@@ -46,7 +46,7 @@ export const HeroSection: React.FC<HeroSectionProps> = (props) => {
   const Subtitle = useMemo(() => {
     return subtitle ? (
       <span
-        className="-mt-4 block text-2xl font-bold leading-tight text-[white] opacity-80 [text-shadow:0_4px_8px_rgba(0,0,0,0.2)] md:-mt-8 md:text-5xl xl:text-[3.5rem]"
+        className="block text-xl font-bold text-[white] opacity-80 [text-shadow:0_4px_8px_rgba(0,0,0,0.2)] sm:text-2xl md:text-5xl xl:text-[3.5rem]"
         // Allow line breaks and markup to be inserted via cms
         dangerouslySetInnerHTML={{ __html: subtitle }}
       />
@@ -64,11 +64,11 @@ export const HeroSection: React.FC<HeroSectionProps> = (props) => {
           {/* {BackgroundImage} */}
           <div className="h-full w-full rounded-2xl bg-primary opacity-90" />
         </div>
-        <div className="mx-auto flex flex-col justify-center px-8 py-12 text-center md:px-12 md:py-28">
+        <div className="mx-auto flex flex-col justify-center px-2 py-12 text-center sm:px-4 md:px-12 md:py-28">
           <div>
             {Headline}
             {Subtitle}
-            <p className="my-8 mx-auto max-w-xl text-lg text-[white] [text-shadow:0_4px_8px_rgba(0,0,0,0.2)] md:text-xl">
+            <p className="my-4 mx-auto max-w-xl text-sm text-[white] [text-shadow:0_4px_8px_rgba(0,0,0,0.2)] sm:my-8 sm:text-lg md:text-xl">
               {props.content.description}
             </p>
           </div>

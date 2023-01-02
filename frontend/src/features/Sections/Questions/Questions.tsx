@@ -42,7 +42,7 @@ export const QuestionsSection: React.FC<QuestionsSectionProps> = (props) => {
                     'mr-4 flex max-w-[18rem] flex-shrink-0 cursor-pointer items-center justify-center whitespace-pre-wrap rounded-md py-2 px-3 lg:mt-0 lg:mb-6 lg:mr-6 lg:ml-0 lg:block lg:max-w-none lg:flex-shrink lg:items-start lg:justify-start lg:rounded-none lg:bg-[transparent] lg:p-0',
                     selected
                       ? 'bg-gray bg-opacity-10 text-[white] lg:bg-[transparent] lg:font-semibold lg:text-gray'
-                      : 'border-2 border-dashed border-gray bg-tertiary hover:brightness-125 lg:border-[transparent]',
+                      : 'border-2 border-dashed border-gray hover:brightness-125 lg:border-[transparent]',
                     i === arr.length - 1 ? 'mr-0' : '',
                   )}
                 >

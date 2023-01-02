@@ -12,7 +12,7 @@ export const AppointmentCTA = () => {
         to={appointmentRoute}
         label="Beratungsgespräch vereinbaren"
         variant="secondary"
-        className="shadow-lg md:text-lg"
+        className="text-sm shadow-lg sm:text-base md:text-lg"
         size="large"
       />
       <div className="mt-6 flex flex-col items-center gap-2 text-sm text-[white] md:flex-row md:gap-8">
