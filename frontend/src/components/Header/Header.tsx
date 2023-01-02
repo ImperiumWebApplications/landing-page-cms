@@ -48,7 +48,10 @@ export const Header: React.FC<HeaderProps> = ({ content }) => {
   }, [isAppointmentTarget, isFunnel, isIndex]);
 
   return (
-    <header id="header">
+    <header
+      id="header"
+      className={isFunnel ? 'md:relative md:z-10 md:shadow-sm' : ''}
+    >
       <motion.div
         initial={{ opacity: 0, translateY: -10 }}
         animate={{ opacity: 1, translateY: 0 }}

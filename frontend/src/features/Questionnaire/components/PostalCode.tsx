@@ -119,7 +119,7 @@ export const PostalCode: React.FC<{
   ]);
 
   return (
-    <div className="mx-auto px-8 lg:max-w-3xl lg:px-0">
+    <div className="mx-auto px-0 md:px-8 lg:max-w-3xl lg:px-0">
       <StepTitle>
         Wunderbar!
         <br /> Nennen Sie uns jetzt bitte Ihre Postleitzahl:

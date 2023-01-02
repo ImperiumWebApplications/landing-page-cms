@@ -36,7 +36,7 @@ export const HeroSection: React.FC<HeroSectionProps> = (props) => {
   const Headline = useMemo(() => {
     return title ? (
       <h1
-        className="mb-2 text-4xl text-[white] [text-shadow:0_4px_8px_rgba(0,0,0,0.2)] md:text-5xl xl:mb-4 xl:text-[3.5rem]"
+        className="mx-6 mb-2 text-4xl text-[white] [text-shadow:0_4px_8px_rgba(0,0,0,0.2)] md:text-5xl xl:mb-4 xl:text-[3.5rem]"
         // Allow line breaks and markup to be inserted via cms
         dangerouslySetInnerHTML={{ __html: title }}
       />

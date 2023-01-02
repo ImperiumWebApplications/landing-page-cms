@@ -8,7 +8,6 @@ import type { HeroSectionContent } from '../../SectionMapper';
 import { questionnaireRoute } from '../../../../config/navigation.config';
 import { isSvg } from '../../../../utils/isSvg';
 import { slugifyRoute } from '../../../../utils/slugifyRoute';
-
 import { byPriority } from '../utils/sortQuestionnaires';
 
 const ReactSVG = dynamic(
@@ -38,7 +37,7 @@ export const QuestionnaireTiles: React.FC<QuestionnaireTilesProps> = (
         <div className="absolute top-0 left-0 -z-10 h-full w-full rounded-lg bg-primary brightness-90" />
         <span>{entry_question}</span>
       </h4>
-      <div className="mt-6 flex flex-wrap justify-center gap-4 md:gap-8">
+      <div className="mt-6 flex flex-wrap justify-center gap-2 sm:gap-4 md:gap-8">
         {sortedQuestionnaires.map(({ attributes, id }) => {
           if (!attributes?.name) return null;
 

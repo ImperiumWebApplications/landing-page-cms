@@ -116,7 +116,7 @@ export const ContactDetailsForm: React.FC<ContactDetailsFormProps> = ({
           }}
         />
       </div>
-      <div className="relative mt-12 mb-4 flex w-full justify-center md:mb-12">
+      <div className="relative my-4 flex w-full justify-center md:my-12">
         {isSubmissionFailed ? (
           <span className="absolute top-0 left-0 block w-full px-4 text-center text-sm font-semibold tracking-tight text-[red] opacity-60">
             Fehler beim Absenden. Bitte versuchen Sie es erneut.
@@ -131,7 +131,7 @@ export const ContactDetailsForm: React.FC<ContactDetailsFormProps> = ({
           disabled={isSubmitting || !isValidContactDetailsData(values)}
           onClick={handleSubmit}
         />
-        <span className="absolute bottom-0 left-0 w-full text-center text-[0.8rem]">
+        <span className="absolute bottom-0 left-0 w-full text-center text-xs sm:text-[0.8rem]">
           Ihre Anfrage ist kostenlos und unverbindlich.
         </span>
       </div>
