@@ -4,7 +4,10 @@ import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 
 import type { LandingPage } from '../../lib/strapi';
-import { questionnaireRoute } from '../../config/navigation.config';
+import {
+  appointmentRoute,
+  questionnaireRoute,
+} from '../../config/navigation.config';
 import { isFunnelRoute } from '../../utils/isFunnelRoute';
 
 import { Logo } from '../Logo';
@@ -34,7 +37,9 @@ export const Header: React.FC<HeaderProps> = ({ content }) => {
             size="large"
             className="z-15 relative hidden h-auto text-[0.9rem] uppercase tracking-wider md:block"
             label="Lassen Sie sich beraten"
-            to={`/${questionnaireRoute}`}
+            to={`/${
+              isAppointmentTarget ? appointmentRoute : questionnaireRoute
+            }`}
           />
         ) : null}
         <MobileNavigation />
