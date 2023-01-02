@@ -20,6 +20,7 @@ export const StatisticsSection: React.FC<StatisticsSectionProps> = ({
           alt={content.background_image.data.attributes.alternativeText ?? ''}
           style={{ opacity: 0.75 }}
           className="object-cover"
+          sizes="(max-width: 640px) 100vw, 1200px"
           fill
         />
       ) : undefined}

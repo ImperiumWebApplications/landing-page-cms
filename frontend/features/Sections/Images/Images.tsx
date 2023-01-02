@@ -36,6 +36,7 @@ export const ImagesSection: React.FC<ImagesSectionProps> = (props) => {
                     isFirstImage ? 'rounded-tl-lg' : ''
                   } ${isLastImage ? 'rounded-br-lg' : ''}`}
                   quality={90}
+                  sizes="(max-width: 640px) 100vw, 640px"
                   fill
                 />
               </div>

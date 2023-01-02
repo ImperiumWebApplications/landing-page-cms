@@ -75,6 +75,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = (props) => {
                           alt={image.attributes.alternativeText ?? ''}
                           className="rounded-md object-cover"
                           quality={90}
+                          sizes="(max-width: 640px) 100vw, 640px"
                           fill
                         />
                       </div>

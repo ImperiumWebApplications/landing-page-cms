@@ -44,14 +44,12 @@ type LogoProps = {
   image?: MediaAttributes | null;
   colorless?: boolean;
   className?: string;
-  priority?: boolean;
   width?: number;
   height?: number;
 };
 
 export const Logo: React.FC<LogoProps> = (props) => {
   if (!props.image?.url) return null;
-
   return (
     <Link href="/" aria-label="Homepage" className="relative">
       <Image
@@ -64,7 +62,7 @@ export const Logo: React.FC<LogoProps> = (props) => {
           props.colorless ? 'colorless-filter' : '',
           'object-contain object-left',
         )}
-        priority={props.priority ?? false}
+        priority
       />
     </Link>
   );
