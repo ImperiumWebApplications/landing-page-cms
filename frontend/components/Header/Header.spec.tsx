@@ -38,7 +38,6 @@ describe('Header', () => {
     expect(logoLink).toHaveAttribute('href', '/');
 
     const button = getByTestId('button');
-    console.log(button);
     expect(button).toHaveAttribute('href', '/fragebogen');
     expect(button).toHaveTextContent('Lassen Sie sich beraten');
     expect(button).toHaveAttribute('role', 'button');
