@@ -41,7 +41,7 @@ jobs:
 
       - name: Generate deployment package
         working-directory: ./apps/frontend
-        run: zip -r deploy.zip * .[^.]* -x "**node_modules**"
+        run: zip -r deploy.zip * .[^.]* -x "**node_modules**" -x "*.ebextensions*"
 
       - name: Upload build
         uses: actions/upload-artifact@v3
