@@ -45,11 +45,10 @@ jobs:
 
       - name: Upload build
         uses: actions/upload-artifact@v3
-        working-directory: ./apps/frontend
         with:
           name: $BUILD_ARTIFACT
           retention-days: 5
-          path: deploy.zip
+          path: ./apps/frontend/deploy.zip
 
       - name: Test (Unit)
         working-directory: ./apps/frontend
