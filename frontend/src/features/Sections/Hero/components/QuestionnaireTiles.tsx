@@ -57,17 +57,17 @@ export const QuestionnaireTiles: React.FC<QuestionnaireTilesProps> = (
               className="hover:bg-white flex w-[calc(50%-8px)] cursor-pointer flex-col gap-2 rounded-xl border-4 border-solid border-[#f8f8f8] bg-[#f8f8f8] pt-4 pb-3 shadow-md transition-all hover:border-secondary hover:text-[black] md:max-w-[300px] md:flex-1 md:gap-8 md:pt-8 md:pb-6 md:shadow-2xl"
             >
               <div className="icon flex items-center justify-center">
-                {attributes.icon?.data.attributes && !isSvgIcon ? (
+                {attributes.icon?.data?.attributes && !isSvgIcon ? (
                   <Image
                     data-testid="tile-image"
                     src={attributes.icon.data.attributes.url}
                     className="h-12 w-12 md:h-[5rem] md:w-[5rem]"
                     alt={attributes.icon.data.attributes.alternativeText ?? ''}
-                    width={attributes.icon.data.attributes.width}
-                    height={attributes.icon.data.attributes.height}
+                    width={attributes.icon.data.attributes.width ?? 0}
+                    height={attributes.icon.data.attributes.height ?? 0}
                   />
                 ) : null}
-                {attributes.icon?.data.attributes && isSvgIcon ? (
+                {attributes.icon?.data?.attributes && isSvgIcon ? (
                   <ReactSVG
                     data-testid="tile-icon"
                     wrapper="svg"

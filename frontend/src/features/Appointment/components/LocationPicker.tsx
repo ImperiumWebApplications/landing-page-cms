@@ -89,6 +89,7 @@ export const LocationPicker: React.FC<LocationPickerProps> = ({
           onClick={onSubmit}
           disabled={!value}
           label="Bestätigen und weiter"
+          data-testid="location-picker-submit"
         />
       </div>
     </div>

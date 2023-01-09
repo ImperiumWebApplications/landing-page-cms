@@ -106,6 +106,7 @@ export const DateList: React.FC<DateListProps> = ({
             label="Bestätigen und weiter"
             onClick={onSubmit}
             disabled={!values || Object.values(values)?.length === 0}
+            data-testid="date-list-submit"
           />
         </div>
       </div>

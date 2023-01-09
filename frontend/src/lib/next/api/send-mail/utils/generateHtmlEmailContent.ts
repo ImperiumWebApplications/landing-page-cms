@@ -41,7 +41,7 @@ export const generateHtmlEmailContent = ({
   const hbsTemplate = compile(templateString);
 
   const context: EmailTemplateContext[EmailTemplate] = {
-    logoUrl: landingPage?.logo?.data.attributes?.url,
+    logoUrl: landingPage?.logo?.data?.attributes?.url,
     firstName: recipient?.firstName ?? '',
     lastName: recipient?.lastName ?? '',
     colorPrimary: landingPage?.color_primary ?? '#000000',

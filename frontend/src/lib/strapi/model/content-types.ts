@@ -6,7 +6,7 @@ export type Relation<T> = {
   data: {
     id: number;
     attributes?: T;
-  };
+  } | null;
 };
 
 export type Relations<T> = {
@@ -37,8 +37,8 @@ export type MediaAttributes = {
   name: string | null | undefined;
   alternativeText: string | null | undefined;
   caption: string | null | undefined;
-  width: number;
-  height: number;
+  width: number | null | undefined;
+  height: number | null | undefined;
   formats: Record<string, unknown> | null | undefined;
   hash: string;
   ext: string;
@@ -46,7 +46,7 @@ export type MediaAttributes = {
   size: number;
   url: string;
   previewUrl: string | null | undefined;
-  provider: string;
+  provider: string | null | undefined;
   provider_metadata: string | null | undefined;
   createdAt: string;
   updatedAt: string;

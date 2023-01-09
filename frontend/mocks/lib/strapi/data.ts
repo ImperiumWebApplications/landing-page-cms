@@ -1,4 +1,6 @@
-export const content = {
+import { LandingPage } from '../../../src/lib/strapi';
+
+export const content: { data: { id: number; attributes: LandingPage }[] } = {
   data: [
     {
       id: 1,
@@ -8,19 +10,18 @@ export const content = {
           'Professionelle Arbeit von qualifizierten Fachkräften: Schnell und präzise nach Ihren Wünschen ausgeführt. Jetzt Handwerker finden!',
         domain: 'localhost:3000',
         brand_name: 'Craftsman24',
-        google_allow_indexation: true,
         color_primary: '#359b88',
         color_secondary: '#e6b432',
         color_tertiary: '#efefef',
         color_text: '#737373',
-        contact_email: 'info@craftsman24.net',
+        contact_email: 'konstantin.muenster@mail.com',
         contact_phone: '+41 41 510 42 00',
-        createdAt: '2021-12-03T09:14:29.181Z',
-        updatedAt: '2022-01-18T13:38:25.530Z',
-        publishedAt: '2021-12-03T09:14:31.002Z',
         client_address: 'Leadquelle GmbH\nGrafenauweg 8\n6300 Zug\nSchweiz',
         client_vat: 'CHE-138.210.925',
         service_type: 'Handwerker',
+        google_allow_indexation: false,
+        google_tag_manager_id: 'GTM-MP9BD8S',
+        funnel_target: 'Questionnaire',
         sections: [
           {
             id: 1,
@@ -28,72 +29,72 @@ export const content = {
             title: 'Ihr Projekt in guten Händen.',
             subtitle: 'Einfach. Machen. Lassen.',
             description:
-              'Wir haben die Handwerker für Ihre Projekte. Professionelle Arbeit von qualifizierten Fachkräften: Schnell und präzise nach Ihren Wünschen ausgeführt. Jetzt Handwerker finden!',
+              'Erfahrene Handwerker kümmern sich um Ihr Zuhause: Professionell, präzise und schnell. Jetzt Angebot einholen!',
             background_image: {
               data: {
-                id: 134,
+                id: 160,
                 attributes: {
-                  name: 'banner-picture.jpg',
-                  alternativeText: 'banner-picture.jpg',
-                  caption: 'banner-picture.jpg',
-                  width: 1115,
-                  height: 805,
+                  name: '016cc107bb33d0821adb46c96199ed31.jpeg',
+                  alternativeText: null,
+                  caption: null,
+                  width: 4096,
+                  height: 2731,
                   formats: {
                     large: {
-                      ext: '.jpg',
-                      url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/large_banner_picture_687bbf3c12.jpg',
-                      hash: 'large_banner_picture_687bbf3c12',
+                      ext: '.jpeg',
+                      url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/large_016cc107bb33d0821adb46c96199ed31_1b09d720ae.jpeg',
+                      hash: 'large_016cc107bb33d0821adb46c96199ed31_1b09d720ae',
                       mime: 'image/jpeg',
-                      name: 'large_banner-picture.jpg',
+                      name: 'large_016cc107bb33d0821adb46c96199ed31.jpeg',
                       path: null,
-                      size: 133.67,
+                      size: 109.35,
                       width: 1000,
-                      height: 722,
+                      height: 667,
                     },
                     small: {
-                      ext: '.jpg',
-                      url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/small_banner_picture_687bbf3c12.jpg',
-                      hash: 'small_banner_picture_687bbf3c12',
+                      ext: '.jpeg',
+                      url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/small_016cc107bb33d0821adb46c96199ed31_1b09d720ae.jpeg',
+                      hash: 'small_016cc107bb33d0821adb46c96199ed31_1b09d720ae',
                       mime: 'image/jpeg',
-                      name: 'small_banner-picture.jpg',
+                      name: 'small_016cc107bb33d0821adb46c96199ed31.jpeg',
                       path: null,
                       size: 38.33,
                       width: 500,
-                      height: 361,
+                      height: 333,
                     },
                     medium: {
-                      ext: '.jpg',
-                      url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/medium_banner_picture_687bbf3c12.jpg',
-                      hash: 'medium_banner_picture_687bbf3c12',
+                      ext: '.jpeg',
+                      url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/medium_016cc107bb33d0821adb46c96199ed31_1b09d720ae.jpeg',
+                      hash: 'medium_016cc107bb33d0821adb46c96199ed31_1b09d720ae',
                       mime: 'image/jpeg',
-                      name: 'medium_banner-picture.jpg',
+                      name: 'medium_016cc107bb33d0821adb46c96199ed31.jpeg',
                       path: null,
-                      size: 79.19,
+                      size: 69.97,
                       width: 750,
-                      height: 541,
+                      height: 500,
                     },
                     thumbnail: {
-                      ext: '.jpg',
-                      url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/thumbnail_banner_picture_687bbf3c12.jpg',
-                      hash: 'thumbnail_banner_picture_687bbf3c12',
+                      ext: '.jpeg',
+                      url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/thumbnail_016cc107bb33d0821adb46c96199ed31_1b09d720ae.jpeg',
+                      hash: 'thumbnail_016cc107bb33d0821adb46c96199ed31_1b09d720ae',
                       mime: 'image/jpeg',
-                      name: 'thumbnail_banner-picture.jpg',
+                      name: 'thumbnail_016cc107bb33d0821adb46c96199ed31.jpeg',
                       path: null,
-                      size: 9.43,
-                      width: 216,
+                      size: 12.35,
+                      width: 234,
                       height: 156,
                     },
                   },
-                  hash: 'banner_picture_687bbf3c12',
-                  ext: '.jpg',
+                  hash: '016cc107bb33d0821adb46c96199ed31_1b09d720ae',
+                  ext: '.jpeg',
                   mime: 'image/jpeg',
-                  size: 167.58,
-                  url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/banner_picture_687bbf3c12.jpg',
+                  size: 1035.36,
+                  url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/016cc107bb33d0821adb46c96199ed31_1b09d720ae.jpeg',
                   previewUrl: null,
                   provider: 'aws-s3',
                   provider_metadata: null,
-                  createdAt: '2022-01-04T16:32:53.226Z',
-                  updatedAt: '2022-01-04T16:32:53.226Z',
+                  createdAt: '2022-12-19T14:32:42.274Z',
+                  updatedAt: '2022-12-19T14:32:42.274Z',
                   related: {
                     data: [
                       {
@@ -103,50 +104,10 @@ export const content = {
                           title: 'Ihr Projekt in guten Händen.',
                           subtitle: 'Einfach. Machen. Lassen.',
                           description:
-                            'Wir haben die Handwerker für Ihre Projekte. Professionelle Arbeit von qualifizierten Fachkräften: Schnell und präzise nach Ihren Wünschen ausgeführt. Jetzt Handwerker finden!',
+                            'Erfahrene Handwerker kümmern sich um Ihr Zuhause: Professionell, präzise und schnell. Jetzt Angebot einholen!',
                         },
                       },
                     ],
-                  },
-                  createdBy: {
-                    data: {
-                      id: 1,
-                      attributes: {
-                        firstname: 'Konstantin',
-                        lastname: 'Münster',
-                        username: null,
-                        email: 'info@kmuenster.com',
-                        password:
-                          '$2a$10$/kYDE40sAvVPmgF8NHOVk.BCa3k.G2XD1BeNeekquPtvJihAohEwm',
-                        resetPasswordToken: null,
-                        registrationToken: null,
-                        isActive: true,
-                        blocked: false,
-                        preferedLanguage: null,
-                        createdAt: '2021-12-02T14:46:14.043Z',
-                        updatedAt: '2021-12-02T14:46:14.043Z',
-                      },
-                    },
-                  },
-                  updatedBy: {
-                    data: {
-                      id: 1,
-                      attributes: {
-                        firstname: 'Konstantin',
-                        lastname: 'Münster',
-                        username: null,
-                        email: 'info@kmuenster.com',
-                        password:
-                          '$2a$10$/kYDE40sAvVPmgF8NHOVk.BCa3k.G2XD1BeNeekquPtvJihAohEwm',
-                        resetPasswordToken: null,
-                        registrationToken: null,
-                        isActive: true,
-                        blocked: false,
-                        preferedLanguage: null,
-                        createdAt: '2021-12-02T14:46:14.043Z',
-                        updatedAt: '2021-12-02T14:46:14.043Z',
-                      },
-                    },
                   },
                 },
               },
@@ -222,70 +183,15 @@ export const content = {
                   updatedAt: '2022-01-04T16:32:52.514Z',
                   related: {
                     data: [
-                      {
-                        id: 1,
-                        attributes: {
-                          __type: 'sections.statistics',
-                        },
-                      },
+                      { id: 1, attributes: { __type: 'sections.statistics' } },
                     ],
-                  },
-                  createdBy: {
-                    data: {
-                      id: 1,
-                      attributes: {
-                        firstname: 'Konstantin',
-                        lastname: 'Münster',
-                        username: null,
-                        email: 'info@kmuenster.com',
-                        password:
-                          '$2a$10$/kYDE40sAvVPmgF8NHOVk.BCa3k.G2XD1BeNeekquPtvJihAohEwm',
-                        resetPasswordToken: null,
-                        registrationToken: null,
-                        isActive: true,
-                        blocked: false,
-                        preferedLanguage: null,
-                        createdAt: '2021-12-02T14:46:14.043Z',
-                        updatedAt: '2021-12-02T14:46:14.043Z',
-                      },
-                    },
-                  },
-                  updatedBy: {
-                    data: {
-                      id: 1,
-                      attributes: {
-                        firstname: 'Konstantin',
-                        lastname: 'Münster',
-                        username: null,
-                        email: 'info@kmuenster.com',
-                        password:
-                          '$2a$10$/kYDE40sAvVPmgF8NHOVk.BCa3k.G2XD1BeNeekquPtvJihAohEwm',
-                        resetPasswordToken: null,
-                        registrationToken: null,
-                        isActive: true,
-                        blocked: false,
-                        preferedLanguage: null,
-                        createdAt: '2021-12-02T14:46:14.043Z',
-                        updatedAt: '2021-12-02T14:46:14.043Z',
-                      },
-                    },
                   },
                 },
               },
             },
             number: [
-              {
-                id: 1,
-                label: 'Kunden',
-                number: 211,
-                number_suffix: null,
-              },
-              {
-                id: 2,
-                label: 'Projekte',
-                number: 36412,
-                number_suffix: null,
-              },
+              { id: 1, label: 'Kunden', number: 211, number_suffix: null },
+              { id: 2, label: 'Projekte', number: 36412, number_suffix: null },
               {
                 id: 3,
                 label: 'Auszeichnungen',
@@ -386,46 +292,6 @@ export const content = {
                             },
                           ],
                         },
-                        createdBy: {
-                          data: {
-                            id: 1,
-                            attributes: {
-                              firstname: 'Konstantin',
-                              lastname: 'Münster',
-                              username: null,
-                              email: 'info@kmuenster.com',
-                              password:
-                                '$2a$10$/kYDE40sAvVPmgF8NHOVk.BCa3k.G2XD1BeNeekquPtvJihAohEwm',
-                              resetPasswordToken: null,
-                              registrationToken: null,
-                              isActive: true,
-                              blocked: false,
-                              preferedLanguage: null,
-                              createdAt: '2021-12-02T14:46:14.043Z',
-                              updatedAt: '2021-12-02T14:46:14.043Z',
-                            },
-                          },
-                        },
-                        updatedBy: {
-                          data: {
-                            id: 1,
-                            attributes: {
-                              firstname: 'Konstantin',
-                              lastname: 'Münster',
-                              username: null,
-                              email: 'info@kmuenster.com',
-                              password:
-                                '$2a$10$/kYDE40sAvVPmgF8NHOVk.BCa3k.G2XD1BeNeekquPtvJihAohEwm',
-                              resetPasswordToken: null,
-                              registrationToken: null,
-                              isActive: true,
-                              blocked: false,
-                              preferedLanguage: null,
-                              createdAt: '2021-12-02T14:46:14.043Z',
-                              updatedAt: '2021-12-02T14:46:14.043Z',
-                            },
-                          },
-                        },
                       },
                     },
                     {
@@ -487,46 +353,6 @@ export const content = {
                               },
                             },
                           ],
-                        },
-                        createdBy: {
-                          data: {
-                            id: 1,
-                            attributes: {
-                              firstname: 'Konstantin',
-                              lastname: 'Münster',
-                              username: null,
-                              email: 'info@kmuenster.com',
-                              password:
-                                '$2a$10$/kYDE40sAvVPmgF8NHOVk.BCa3k.G2XD1BeNeekquPtvJihAohEwm',
-                              resetPasswordToken: null,
-                              registrationToken: null,
-                              isActive: true,
-                              blocked: false,
-                              preferedLanguage: null,
-                              createdAt: '2021-12-02T14:46:14.043Z',
-                              updatedAt: '2021-12-02T14:46:14.043Z',
-                            },
-                          },
-                        },
-                        updatedBy: {
-                          data: {
-                            id: 1,
-                            attributes: {
-                              firstname: 'Konstantin',
-                              lastname: 'Münster',
-                              username: null,
-                              email: 'info@kmuenster.com',
-                              password:
-                                '$2a$10$/kYDE40sAvVPmgF8NHOVk.BCa3k.G2XD1BeNeekquPtvJihAohEwm',
-                              resetPasswordToken: null,
-                              registrationToken: null,
-                              isActive: true,
-                              blocked: false,
-                              preferedLanguage: null,
-                              createdAt: '2021-12-02T14:46:14.043Z',
-                              updatedAt: '2021-12-02T14:46:14.043Z',
-                            },
-                          },
                         },
                       },
                     },
@@ -596,51 +422,9 @@ export const content = {
                             },
                             {
                               id: 1,
-                              attributes: {
-                                __type: 'sections.images',
-                              },
+                              attributes: { __type: 'sections.images' },
                             },
                           ],
-                        },
-                        createdBy: {
-                          data: {
-                            id: 1,
-                            attributes: {
-                              firstname: 'Konstantin',
-                              lastname: 'Münster',
-                              username: null,
-                              email: 'info@kmuenster.com',
-                              password:
-                                '$2a$10$/kYDE40sAvVPmgF8NHOVk.BCa3k.G2XD1BeNeekquPtvJihAohEwm',
-                              resetPasswordToken: null,
-                              registrationToken: null,
-                              isActive: true,
-                              blocked: false,
-                              preferedLanguage: null,
-                              createdAt: '2021-12-02T14:46:14.043Z',
-                              updatedAt: '2021-12-02T14:46:14.043Z',
-                            },
-                          },
-                        },
-                        updatedBy: {
-                          data: {
-                            id: 1,
-                            attributes: {
-                              firstname: 'Konstantin',
-                              lastname: 'Münster',
-                              username: null,
-                              email: 'info@kmuenster.com',
-                              password:
-                                '$2a$10$/kYDE40sAvVPmgF8NHOVk.BCa3k.G2XD1BeNeekquPtvJihAohEwm',
-                              resetPasswordToken: null,
-                              registrationToken: null,
-                              isActive: true,
-                              blocked: false,
-                              preferedLanguage: null,
-                              createdAt: '2021-12-02T14:46:14.043Z',
-                              updatedAt: '2021-12-02T14:46:14.043Z',
-                            },
-                          },
                         },
                       },
                     },
@@ -679,9 +463,7 @@ export const content = {
                           data: [
                             {
                               id: 1,
-                              attributes: {
-                                __type: 'sections.images',
-                              },
+                              attributes: { __type: 'sections.images' },
                             },
                             {
                               id: 2,
@@ -699,46 +481,6 @@ export const content = {
                               },
                             },
                           ],
-                        },
-                        createdBy: {
-                          data: {
-                            id: 1,
-                            attributes: {
-                              firstname: 'Konstantin',
-                              lastname: 'Münster',
-                              username: null,
-                              email: 'info@kmuenster.com',
-                              password:
-                                '$2a$10$/kYDE40sAvVPmgF8NHOVk.BCa3k.G2XD1BeNeekquPtvJihAohEwm',
-                              resetPasswordToken: null,
-                              registrationToken: null,
-                              isActive: true,
-                              blocked: false,
-                              preferedLanguage: null,
-                              createdAt: '2021-12-02T14:46:14.043Z',
-                              updatedAt: '2021-12-02T14:46:14.043Z',
-                            },
-                          },
-                        },
-                        updatedBy: {
-                          data: {
-                            id: 1,
-                            attributes: {
-                              firstname: 'Konstantin',
-                              lastname: 'Münster',
-                              username: null,
-                              email: 'info@kmuenster.com',
-                              password:
-                                '$2a$10$/kYDE40sAvVPmgF8NHOVk.BCa3k.G2XD1BeNeekquPtvJihAohEwm',
-                              resetPasswordToken: null,
-                              registrationToken: null,
-                              isActive: true,
-                              blocked: false,
-                              preferedLanguage: null,
-                              createdAt: '2021-12-02T14:46:14.043Z',
-                              updatedAt: '2021-12-02T14:46:14.043Z',
-                            },
-                          },
                         },
                       },
                     },
@@ -803,46 +545,6 @@ export const content = {
                             },
                           ],
                         },
-                        createdBy: {
-                          data: {
-                            id: 1,
-                            attributes: {
-                              firstname: 'Konstantin',
-                              lastname: 'Münster',
-                              username: null,
-                              email: 'info@kmuenster.com',
-                              password:
-                                '$2a$10$/kYDE40sAvVPmgF8NHOVk.BCa3k.G2XD1BeNeekquPtvJihAohEwm',
-                              resetPasswordToken: null,
-                              registrationToken: null,
-                              isActive: true,
-                              blocked: false,
-                              preferedLanguage: null,
-                              createdAt: '2021-12-02T14:46:14.043Z',
-                              updatedAt: '2021-12-02T14:46:14.043Z',
-                            },
-                          },
-                        },
-                        updatedBy: {
-                          data: {
-                            id: 1,
-                            attributes: {
-                              firstname: 'Konstantin',
-                              lastname: 'Münster',
-                              username: null,
-                              email: 'info@kmuenster.com',
-                              password:
-                                '$2a$10$/kYDE40sAvVPmgF8NHOVk.BCa3k.G2XD1BeNeekquPtvJihAohEwm',
-                              resetPasswordToken: null,
-                              registrationToken: null,
-                              isActive: true,
-                              blocked: false,
-                              preferedLanguage: null,
-                              createdAt: '2021-12-02T14:46:14.043Z',
-                              updatedAt: '2021-12-02T14:46:14.043Z',
-                            },
-                          },
-                        },
                       },
                     },
                   ],
@@ -894,46 +596,6 @@ export const content = {
                           },
                         ],
                       },
-                      createdBy: {
-                        data: {
-                          id: 1,
-                          attributes: {
-                            firstname: 'Konstantin',
-                            lastname: 'Münster',
-                            username: null,
-                            email: 'info@kmuenster.com',
-                            password:
-                              '$2a$10$/kYDE40sAvVPmgF8NHOVk.BCa3k.G2XD1BeNeekquPtvJihAohEwm',
-                            resetPasswordToken: null,
-                            registrationToken: null,
-                            isActive: true,
-                            blocked: false,
-                            preferedLanguage: null,
-                            createdAt: '2021-12-02T14:46:14.043Z',
-                            updatedAt: '2021-12-02T14:46:14.043Z',
-                          },
-                        },
-                      },
-                      updatedBy: {
-                        data: {
-                          id: 1,
-                          attributes: {
-                            firstname: 'Konstantin',
-                            lastname: 'Münster',
-                            username: null,
-                            email: 'info@kmuenster.com',
-                            password:
-                              '$2a$10$/kYDE40sAvVPmgF8NHOVk.BCa3k.G2XD1BeNeekquPtvJihAohEwm',
-                            resetPasswordToken: null,
-                            registrationToken: null,
-                            isActive: true,
-                            blocked: false,
-                            preferedLanguage: null,
-                            createdAt: '2021-12-02T14:46:14.043Z',
-                            updatedAt: '2021-12-02T14:46:14.043Z',
-                          },
-                        },
-                      },
                     },
                   },
                 },
@@ -944,9 +606,7 @@ export const content = {
                 biography: 'aus Mühlheim',
                 description:
                   'Nach einem Sturm mussten wir schnell einen Dachdecker zum Flicken unseres Daches finden. Hat keine 48 Stunden gedauert, bis wir von euch verschiedene Angebote hatten. Da die Preise weit auseinander lagen und wir nur ein begrenztes Budget hatten (Versicherung übernimmt mal wieder nix), kam uns das Angebot des günstigen Dachdeckers gerade recht. Nach den ersten schweren Regenfällen können wir sagen: Arbeiten wurden vollständig und sehr gut erledigt. Vielen Dank für eure Hilfe, mit der wir unterm Strich fast 900 € gespart haben! Gerne wieder.',
-                avatar: {
-                  data: null,
-                },
+                avatar: { data: null },
               },
             ],
           },
@@ -988,12 +648,7 @@ export const content = {
                     updatedAt: '2022-01-04T16:32:52.195Z',
                     related: {
                       data: [
-                        {
-                          id: 1,
-                          attributes: {
-                            __type: 'sections.images',
-                          },
-                        },
+                        { id: 1, attributes: { __type: 'sections.images' } },
                         {
                           id: 2,
                           attributes: {
@@ -1010,46 +665,6 @@ export const content = {
                           },
                         },
                       ],
-                    },
-                    createdBy: {
-                      data: {
-                        id: 1,
-                        attributes: {
-                          firstname: 'Konstantin',
-                          lastname: 'Münster',
-                          username: null,
-                          email: 'info@kmuenster.com',
-                          password:
-                            '$2a$10$/kYDE40sAvVPmgF8NHOVk.BCa3k.G2XD1BeNeekquPtvJihAohEwm',
-                          resetPasswordToken: null,
-                          registrationToken: null,
-                          isActive: true,
-                          blocked: false,
-                          preferedLanguage: null,
-                          createdAt: '2021-12-02T14:46:14.043Z',
-                          updatedAt: '2021-12-02T14:46:14.043Z',
-                        },
-                      },
-                    },
-                    updatedBy: {
-                      data: {
-                        id: 1,
-                        attributes: {
-                          firstname: 'Konstantin',
-                          lastname: 'Münster',
-                          username: null,
-                          email: 'info@kmuenster.com',
-                          password:
-                            '$2a$10$/kYDE40sAvVPmgF8NHOVk.BCa3k.G2XD1BeNeekquPtvJihAohEwm',
-                          resetPasswordToken: null,
-                          registrationToken: null,
-                          isActive: true,
-                          blocked: false,
-                          preferedLanguage: null,
-                          createdAt: '2021-12-02T14:46:14.043Z',
-                          updatedAt: '2021-12-02T14:46:14.043Z',
-                        },
-                      },
                     },
                   },
                 },
@@ -1086,53 +701,8 @@ export const content = {
                     updatedAt: '2022-01-04T16:32:52.431Z',
                     related: {
                       data: [
-                        {
-                          id: 1,
-                          attributes: {
-                            __type: 'sections.images',
-                          },
-                        },
+                        { id: 1, attributes: { __type: 'sections.images' } },
                       ],
-                    },
-                    createdBy: {
-                      data: {
-                        id: 1,
-                        attributes: {
-                          firstname: 'Konstantin',
-                          lastname: 'Münster',
-                          username: null,
-                          email: 'info@kmuenster.com',
-                          password:
-                            '$2a$10$/kYDE40sAvVPmgF8NHOVk.BCa3k.G2XD1BeNeekquPtvJihAohEwm',
-                          resetPasswordToken: null,
-                          registrationToken: null,
-                          isActive: true,
-                          blocked: false,
-                          preferedLanguage: null,
-                          createdAt: '2021-12-02T14:46:14.043Z',
-                          updatedAt: '2021-12-02T14:46:14.043Z',
-                        },
-                      },
-                    },
-                    updatedBy: {
-                      data: {
-                        id: 1,
-                        attributes: {
-                          firstname: 'Konstantin',
-                          lastname: 'Münster',
-                          username: null,
-                          email: 'info@kmuenster.com',
-                          password:
-                            '$2a$10$/kYDE40sAvVPmgF8NHOVk.BCa3k.G2XD1BeNeekquPtvJihAohEwm',
-                          resetPasswordToken: null,
-                          registrationToken: null,
-                          isActive: true,
-                          blocked: false,
-                          preferedLanguage: null,
-                          createdAt: '2021-12-02T14:46:14.043Z',
-                          updatedAt: '2021-12-02T14:46:14.043Z',
-                        },
-                      },
                     },
                   },
                 },
@@ -1169,53 +739,8 @@ export const content = {
                     updatedAt: '2022-01-04T16:32:51.629Z',
                     related: {
                       data: [
-                        {
-                          id: 1,
-                          attributes: {
-                            __type: 'sections.images',
-                          },
-                        },
+                        { id: 1, attributes: { __type: 'sections.images' } },
                       ],
-                    },
-                    createdBy: {
-                      data: {
-                        id: 1,
-                        attributes: {
-                          firstname: 'Konstantin',
-                          lastname: 'Münster',
-                          username: null,
-                          email: 'info@kmuenster.com',
-                          password:
-                            '$2a$10$/kYDE40sAvVPmgF8NHOVk.BCa3k.G2XD1BeNeekquPtvJihAohEwm',
-                          resetPasswordToken: null,
-                          registrationToken: null,
-                          isActive: true,
-                          blocked: false,
-                          preferedLanguage: null,
-                          createdAt: '2021-12-02T14:46:14.043Z',
-                          updatedAt: '2021-12-02T14:46:14.043Z',
-                        },
-                      },
-                    },
-                    updatedBy: {
-                      data: {
-                        id: 1,
-                        attributes: {
-                          firstname: 'Konstantin',
-                          lastname: 'Münster',
-                          username: null,
-                          email: 'info@kmuenster.com',
-                          password:
-                            '$2a$10$/kYDE40sAvVPmgF8NHOVk.BCa3k.G2XD1BeNeekquPtvJihAohEwm',
-                          resetPasswordToken: null,
-                          registrationToken: null,
-                          isActive: true,
-                          blocked: false,
-                          preferedLanguage: null,
-                          createdAt: '2021-12-02T14:46:14.043Z',
-                          updatedAt: '2021-12-02T14:46:14.043Z',
-                        },
-                      },
                     },
                   },
                 },
@@ -1252,53 +777,8 @@ export const content = {
                     updatedAt: '2022-01-04T16:32:51.448Z',
                     related: {
                       data: [
-                        {
-                          id: 1,
-                          attributes: {
-                            __type: 'sections.images',
-                          },
-                        },
+                        { id: 1, attributes: { __type: 'sections.images' } },
                       ],
-                    },
-                    createdBy: {
-                      data: {
-                        id: 1,
-                        attributes: {
-                          firstname: 'Konstantin',
-                          lastname: 'Münster',
-                          username: null,
-                          email: 'info@kmuenster.com',
-                          password:
-                            '$2a$10$/kYDE40sAvVPmgF8NHOVk.BCa3k.G2XD1BeNeekquPtvJihAohEwm',
-                          resetPasswordToken: null,
-                          registrationToken: null,
-                          isActive: true,
-                          blocked: false,
-                          preferedLanguage: null,
-                          createdAt: '2021-12-02T14:46:14.043Z',
-                          updatedAt: '2021-12-02T14:46:14.043Z',
-                        },
-                      },
-                    },
-                    updatedBy: {
-                      data: {
-                        id: 1,
-                        attributes: {
-                          firstname: 'Konstantin',
-                          lastname: 'Münster',
-                          username: null,
-                          email: 'info@kmuenster.com',
-                          password:
-                            '$2a$10$/kYDE40sAvVPmgF8NHOVk.BCa3k.G2XD1BeNeekquPtvJihAohEwm',
-                          resetPasswordToken: null,
-                          registrationToken: null,
-                          isActive: true,
-                          blocked: false,
-                          preferedLanguage: null,
-                          createdAt: '2021-12-02T14:46:14.043Z',
-                          updatedAt: '2021-12-02T14:46:14.043Z',
-                        },
-                      },
                     },
                   },
                 },
@@ -1335,53 +815,8 @@ export const content = {
                     updatedAt: '2022-01-04T16:32:51.463Z',
                     related: {
                       data: [
-                        {
-                          id: 1,
-                          attributes: {
-                            __type: 'sections.images',
-                          },
-                        },
+                        { id: 1, attributes: { __type: 'sections.images' } },
                       ],
-                    },
-                    createdBy: {
-                      data: {
-                        id: 1,
-                        attributes: {
-                          firstname: 'Konstantin',
-                          lastname: 'Münster',
-                          username: null,
-                          email: 'info@kmuenster.com',
-                          password:
-                            '$2a$10$/kYDE40sAvVPmgF8NHOVk.BCa3k.G2XD1BeNeekquPtvJihAohEwm',
-                          resetPasswordToken: null,
-                          registrationToken: null,
-                          isActive: true,
-                          blocked: false,
-                          preferedLanguage: null,
-                          createdAt: '2021-12-02T14:46:14.043Z',
-                          updatedAt: '2021-12-02T14:46:14.043Z',
-                        },
-                      },
-                    },
-                    updatedBy: {
-                      data: {
-                        id: 1,
-                        attributes: {
-                          firstname: 'Konstantin',
-                          lastname: 'Münster',
-                          username: null,
-                          email: 'info@kmuenster.com',
-                          password:
-                            '$2a$10$/kYDE40sAvVPmgF8NHOVk.BCa3k.G2XD1BeNeekquPtvJihAohEwm',
-                          resetPasswordToken: null,
-                          registrationToken: null,
-                          isActive: true,
-                          blocked: false,
-                          preferedLanguage: null,
-                          createdAt: '2021-12-02T14:46:14.043Z',
-                          updatedAt: '2021-12-02T14:46:14.043Z',
-                        },
-                      },
                     },
                   },
                 },
@@ -1433,53 +868,8 @@ export const content = {
                               'Arbeitsplatten einbauen & zuschneiden\nZwischenwände ziehen\nDachschrägen verkleiden\nZimmerdecke abhängen\nInnenausbau\nOSB-Platten verlegen\nTüren einbauen\nRigipsplatten anbringen',
                           },
                         },
-                        {
-                          id: 1,
-                          attributes: {
-                            __type: 'sections.images',
-                          },
-                        },
+                        { id: 1, attributes: { __type: 'sections.images' } },
                       ],
-                    },
-                    createdBy: {
-                      data: {
-                        id: 1,
-                        attributes: {
-                          firstname: 'Konstantin',
-                          lastname: 'Münster',
-                          username: null,
-                          email: 'info@kmuenster.com',
-                          password:
-                            '$2a$10$/kYDE40sAvVPmgF8NHOVk.BCa3k.G2XD1BeNeekquPtvJihAohEwm',
-                          resetPasswordToken: null,
-                          registrationToken: null,
-                          isActive: true,
-                          blocked: false,
-                          preferedLanguage: null,
-                          createdAt: '2021-12-02T14:46:14.043Z',
-                          updatedAt: '2021-12-02T14:46:14.043Z',
-                        },
-                      },
-                    },
-                    updatedBy: {
-                      data: {
-                        id: 1,
-                        attributes: {
-                          firstname: 'Konstantin',
-                          lastname: 'Münster',
-                          username: null,
-                          email: 'info@kmuenster.com',
-                          password:
-                            '$2a$10$/kYDE40sAvVPmgF8NHOVk.BCa3k.G2XD1BeNeekquPtvJihAohEwm',
-                          resetPasswordToken: null,
-                          registrationToken: null,
-                          isActive: true,
-                          blocked: false,
-                          preferedLanguage: null,
-                          createdAt: '2021-12-02T14:46:14.043Z',
-                          updatedAt: '2021-12-02T14:46:14.043Z',
-                        },
-                      },
                     },
                   },
                 },
@@ -1507,7 +897,7 @@ export const content = {
                 question:
                   'Kann auch ein Handwerker aus meiner Region beauftragt werden?',
                 answer:
-                  'Auch wenn Sie gerne einen Handwerker in Ihrer Nähe beauftragen möchten, statt einen Betrieb in einem anderen Bundesland zu beauftragen, können wir Ihnen helfen. Wenn Sie es wünschen, erhalten Sie ausschließlich Angebote von Handwerkern aus Ihrer Region.',
+                  'Auch wenn Sie gerne einen Handwerker in Ihrer Nähe beauftragen möchten, statt einen Betrieb in einem anderen Bundesland zu beauftragen, können wir Ihnen helfen. Wenn Sie es wünschen, erhalten Sie ausschließlich Angebote von Handwerkern aus Ihrer Region.\n\n##### Test Überschrift\n\nAuch wenn Sie gerne einen **Handwerker in Ihrer Nähe** beauftragen möchten, statt einen Betrieb in einem anderen Bundesland zu beauftragen, können wir Ihnen helfen. Wenn Sie es wünschen, erhalten Sie ausschließlich Angebote von Handwerkern aus Ihrer Region.\n* Punkt 1\n* Punkt 2\n* Punkt 3\n\n### Test 2\n\nAuch wenn Sie gerne einen **Handwerker in Ihrer Nähe** beauftragen möchten, statt einen Betrieb in einem anderen Bundesland zu beauftragen, können wir Ihnen helfen. Wenn Sie es wünschen, erhalten Sie ausschließlich Angebote von Handwerkern aus Ihrer Region.\n\n1. dasdasda\n2. dasdad\n3. dasda\n\n\n> dasdsdasdasd',
               },
             ],
           },
@@ -1516,41 +906,29 @@ export const content = {
             __component: 'sections.video',
             video_title: 'Klicken Sie auf das Video, um es zu starten',
             video_description:
-              'Sie sagen uns, was Sie brauchen, wir lassen Ihnen kostenlos und unverbindlich die besten Angebote zukommen und Sie müssen sich nur noch entscheiden. Nach Ihrer Anfrage erhalten Sie von uns kostenlos und unverbindlich Angebote von Handwerkern. So können Sie sich einfach den Partner heraussuchen, der das beste Preis-Leistungs-Verhältnis bietet oder der Ihnen am ehesten zusagt.\n\nEinfacher geht’s nicht.',
+              'Sie sagen uns, was Sie brauchen, wir lassen Ihnen kostenlos und unverbindlich die besten Angebote zukommen und Sie müssen sich nur noch entscheiden. Nach Ihrer Anfrage erhalten Sie von uns kostenlos und unverbindlich Angebote von Handwerkern. So können Sie sich einfach den Partner heraussuchen, der das beste Preis-Leistungs-Verhältnis bietet oder der Ihnen am ehesten zusagt.',
           },
         ],
         logo: {
           data: {
-            id: 127,
+            id: 145,
             attributes: {
-              name: 'logo.png',
-              alternativeText: 'logo.png',
-              caption: 'logo.png',
-              width: 302,
-              height: 41,
-              formats: {
-                thumbnail: {
-                  ext: '.png',
-                  url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/thumbnail_logo_485181aa26.png',
-                  hash: 'thumbnail_logo_485181aa26',
-                  mime: 'image/png',
-                  name: 'thumbnail_logo.png',
-                  path: null,
-                  size: 7.75,
-                  width: 245,
-                  height: 33,
-                },
-              },
-              hash: 'logo_485181aa26',
-              ext: '.png',
-              mime: 'image/png',
-              size: 3.69,
-              url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/logo_485181aa26.png',
+              name: 'craftsman24_logo.svg',
+              alternativeText: 'craftsman24_logo.svg',
+              caption: 'craftsman24_logo.svg',
+              width: null,
+              height: null,
+              formats: null,
+              hash: 'craftsman24_logo_57de4fbf9d',
+              ext: '.svg',
+              mime: 'image/svg+xml',
+              size: 5.97,
+              url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/craftsman24_logo_57de4fbf9d.svg',
               previewUrl: null,
-              provider: 'aws-s3',
+              provider: null,
               provider_metadata: null,
-              createdAt: '2022-01-04T16:32:52.135Z',
-              updatedAt: '2022-01-04T16:32:52.135Z',
+              createdAt: '2022-03-14T16:31:48.172Z',
+              updatedAt: '2022-03-14T16:31:48.172Z',
             },
           },
         },
@@ -1593,11 +971,7 @@ export const content = {
           id: 1,
           entry_question: 'Was suchen Sie?',
           advantage: [
-            {
-              id: 1,
-              first_line: 'Sparen Sie',
-              second_line: 'bis zu 30%',
-            },
+            { id: 1, first_line: 'Sparen Sie', second_line: 'bis zu 30%' },
             {
               id: 2,
               first_line: 'Partner',
@@ -1615,10 +989,8 @@ export const content = {
                 id: 1,
                 attributes: {
                   name: 'Fliesen',
-                  createdAt: '2021-12-03T10:07:12.859Z',
-                  updatedAt: '2022-01-10T11:56:06.694Z',
-                  publishedAt: '2021-12-03T10:07:14.376Z',
-                  description: null,
+                  description: 'Vom Austausch der Fliesen im Bad bis zu...',
+                  priority: 5,
                   icon: {
                     data: {
                       id: 122,
@@ -1648,10 +1020,8 @@ export const content = {
                 id: 2,
                 attributes: {
                   name: 'Maler',
-                  createdAt: '2021-12-03T10:20:46.466Z',
-                  updatedAt: '2022-01-04T16:42:24.040Z',
-                  publishedAt: '2021-12-03T10:38:54.157Z',
                   description: 'Neue Farbe für Fassaden und Innenräume...',
+                  priority: 5,
                   icon: {
                     data: {
                       id: 125,
@@ -1681,10 +1051,9 @@ export const content = {
                 id: 5,
                 attributes: {
                   name: 'Trocken- & Innenausbau',
-                  createdAt: '2021-12-07T08:36:24.020Z',
-                  updatedAt: '2022-01-04T16:42:33.269Z',
-                  publishedAt: '2021-12-07T08:37:40.639Z',
-                  description: null,
+                  description:
+                    'Individuelle Lösungen für den Trockenbau: Neue...',
+                  priority: 1,
                   icon: {
                     data: {
                       id: 125,
@@ -1711,6 +1080,43 @@ export const content = {
                 },
               },
             ],
+          },
+        },
+        appointment: {
+          id: 1,
+          appointment_duration: 'x60min',
+          appointment_availability: [
+            {
+              id: 1,
+              from_time: '09:00:00',
+              to_time: '17:00:00',
+              day: 'Monday',
+            },
+            {
+              id: 2,
+              from_time: '09:00:00',
+              to_time: '17:00:00',
+              day: 'Tuesday',
+            },
+            {
+              id: 3,
+              from_time: '09:00:00',
+              to_time: '17:00:00',
+              day: 'Wednesday',
+            },
+            {
+              id: 4,
+              from_time: '09:00:00',
+              to_time: '14:00:00',
+              day: 'Friday',
+            },
+          ],
+          appointment_location: {
+            id: 1,
+            appointment_location_at_home: true,
+            appointment_location_on_site: true,
+            appointment_location_virtual: true,
+            appointment_location_to_be_discussed: true,
           },
         },
       },

@@ -35,7 +35,10 @@ export const TimePicker: React.FC<TimePickerProps> = ({
   return (
     <>
       <TimePickerHeader date={date} goBack={prevView} />
-      <div className="flex h-[calc(400px-148px)] flex-col gap-2 overflow-y-scroll px-12 pb-4">
+      <div
+        className="flex h-[calc(400px-148px)] flex-col gap-2 overflow-y-scroll px-12 pb-4"
+        data-testid="time-picker"
+      >
         {slots.map((slot, key) => {
           const isSelected = slot.toISOString() === date.toISOString();
           return (

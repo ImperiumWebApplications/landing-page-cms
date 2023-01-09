@@ -68,7 +68,7 @@ export const Header: React.FC<HeaderProps> = ({ content }) => {
           }`}
         >
           <Logo
-            image={content.logo?.data.attributes}
+            image={content.logo?.data?.attributes}
             className="h-[50px] w-[200px] sm:h-[60px] sm:w-[300px]"
           />
           {Navigation}

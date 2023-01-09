@@ -6,7 +6,7 @@ describe('Sections', () => {
       .should('be.visible')
       .should(
         'have.text',
-        'Ihr Projekt in guten Händen.Einfach. Machen. Lassen.Wir haben die Handwerker für Ihre Projekte. Professionelle Arbeit von qualifizierten Fachkräften: Schnell und präzise nach Ihren Wünschen ausgeführt. Jetzt Handwerker finden!',
+        'Ihr Projekt in guten Händen.Einfach. Machen. Lassen.Erfahrene Handwerker kümmern sich um Ihr Zuhause: Professionell, präzise und schnell. Jetzt Angebot einholen!',
       );
 
     cy.get('[data-testid="questionnaire-tiles-question"]')
@@ -16,8 +16,8 @@ describe('Sections', () => {
     cy.get('[data-testid="questionnaire-tiles-grid"] > a')
       .should('have.length', 3)
       .first()
-      .should('have.text', 'Fliesen')
-      .should('have.attr', 'href', '/fragebogen/fliesen-1');
+      .should('have.text', 'Trocken- & Innenausbau')
+      .should('have.attr', 'href', '/fragebogen/trocken-und-innenausbau-5');
   });
 
   it('should display Steps section', () => {

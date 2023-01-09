@@ -17,7 +17,7 @@ export const extractSeoProps = (content: LandingPage) => {
       description: content.seo_description,
       title: content.seo_title,
     },
-    additionalLinkTags: content.favicon?.data.attributes
+    additionalLinkTags: content.favicon?.data?.attributes
       ? [
           {
             rel: 'shortcut icon',

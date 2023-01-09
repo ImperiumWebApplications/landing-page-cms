@@ -123,7 +123,7 @@ export const SelectionPanel: React.FC<SelectionPanelProps> = ({ steps }) => {
   }, [state.index, dispatch]);
 
   return (
-    <div className="md:pl-10 lg:pl-20">
+    <div className="md:pl-10 lg:pl-20" data-selection-panel>
       <h1 className="text-center text-3xl font-semibold text-primary md:text-left md:text-4xl">
         {content.heading}
       </h1>
