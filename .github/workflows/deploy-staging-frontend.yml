@@ -3,7 +3,7 @@ name: Deploy/Staging/Frontend
 on:
   push:
     branches: ["dev"]
-    paths: ["apps/frontend/**"]
+    # paths: ["apps/frontend/**"]
 
 jobs:
   build:
