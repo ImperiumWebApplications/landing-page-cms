@@ -27,12 +27,7 @@ export type CreateLeadProps = {
 
 export const createLeadInCMS = async (data: CreateLeadProps) => {
   const landingPage = await Strapi.getLandingPageId(data.domain);
-
-  if (!landingPage)
-    throw new Error('No landing page found for domain: ' + data.domain);
-
   const lead = await Strapi.createLead({ ...data, landingPage });
-
   return { lead };
 };
 

@@ -48,7 +48,7 @@ export const createUnknownPersonResponse = () => {
   });
 };
 
-describe('lib/next/api/create-lead', () => {
+describe('lib/next/api/create-lead/pipedrive', () => {
   it('should return person, lead, and note object for known person', async () => {
     expect(await createLeadInPipedrive({ ...defaultData })).toEqual({
       lead: createdLead,
