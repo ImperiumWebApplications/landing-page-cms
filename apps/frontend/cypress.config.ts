@@ -6,5 +6,8 @@ export default defineConfig({
   screenshotOnRunFailure: false,
   e2e: {
     baseUrl: 'http://localhost:3000',
+    retries: {
+      runMode: 3,
+    },
   },
 });

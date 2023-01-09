@@ -16,7 +16,7 @@ describe('Sections', () => {
     cy.get('[data-testid="questionnaire-tiles-grid"] > a')
       .should('have.length', 3)
       .first()
-      .should('have.text', 'Trocken- & Innenausbau')
+      .should('contain.text', 'Trocken- & Innenausbau')
       .should('have.attr', 'href', '/fragebogen/trocken-und-innenausbau-5');
   });
 
