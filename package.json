@@ -14,7 +14,9 @@
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
     "check-types": "turbo run check-types",
-    "format": "prettier --write \"**/(*.js|*.ts|*.yml|*.tsx|*.md|*.json)\""
+    "prettier": "prettier --ignore-path .gitignore --write \"**/*.+(js|json|ts|tsx|md|mdx)\"",
+    "format": "yarn prettier -- --write",
+    "check-format": "yarn prettier -- --check"
   },
   "devDependencies": {
     "prettier": "^2.8.2",

@@ -82,7 +82,7 @@ export const QuestionnaireTiles: React.FC<QuestionnaireTilesProps> = (
                 ) : null}
               </div>
               <span className="flex flex-grow items-center justify-center font-semibold leading-tight text-gray md:text-xl">
-                {attributes.name}
+                {attributes.name.trim()}
               </span>
             </Link>
           );

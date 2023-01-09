@@ -30,7 +30,7 @@ const configureLocationMap = (
   appointment_location_on_site: {
     position: 1,
     label: 'Im Geschäft',
-    description: content.client_address?.replaceAll('\n', ', ') ?? undefined,
+    description: content.client_address?.replace(/\n/g, ', ') ?? undefined,
     Icon: BusinessIcon,
   },
   appointment_location_virtual: {
