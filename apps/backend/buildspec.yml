@@ -7,7 +7,7 @@ phases:
 
   pre_build:
     commands:
-      - cd backend
+      - cd apps/backend
       - npm install
 
   build:
@@ -20,6 +20,6 @@ phases:
       - if [ "$CODEBUILD_INITIATOR" = "codepipeline/landing-page-cms-backend-dev" ]; then rm -rf .ebextensions ; fi
 
 artifacts:
-  base-directory: backend
+  base-directory: apps/backend
   files:
     - '**/*'

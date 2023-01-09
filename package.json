@@ -6,22 +6,23 @@
     "email": "mail@konstantin.digital",
     "url": "https://konstantin.digital"
   },
-  "devDependencies": {
-    "husky": "^7.0.4",
-    "lerna": "^4.0.0"
-  },
-  "resolutions": {
-    "@strapi/strapi/**/sharp": "0.31.0",
-    "react": "^18.2.0"
-  },
-  "scripts": {
-    "lazy": "yarn && yarn prepare && yarn lerna bootstrap",
-    "bootstrap": "yarn lerna bootstrap",
-    "lint": "lerna run lint --parallel",
-    "prepare": "husky install"
-  },
   "workspaces": [
-    "backend",
-    "frontend"
-  ]
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev --parallel",
+    "lint": "turbo run lint",
+    "check-types": "turbo run check-types",
+    "format": "prettier --write \"**/(*.js|*.ts|*.yml|*.tsx|*.md|*.json)\""
+  },
+  "devDependencies": {
+    "prettier": "^2.8.2",
+    "turbo": "^1.6.3"
+  },
+  "dependencies": {},
+  "packageManager": "yarn@1.22.19",
+  "resolutions": {
+    "react": "^18.2.0"
+  }
 }

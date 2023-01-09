@@ -13,8 +13,7 @@
     "build": "strapi build",
     "strapi": "strapi",
     "format": "prettier --write \"**/*.+(js|jsx|json|yml|yaml|css|less|scss|ts|tsx|graphql|md|mdx)\"",
-    "lint": "eslint .",
-    "precommit": "lint-staged"
+    "lint": "eslint ."
   },
   "devDependencies": {
     "@babel/core": "^7.20.5",
@@ -22,8 +21,6 @@
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^3.3.1",
-    "lint-staged": "^12.3.4",
-    "prettier": "^2.5.1",
     "typescript": "^4.9.3"
   },
   "dependencies": {

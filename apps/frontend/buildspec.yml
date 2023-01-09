@@ -19,7 +19,7 @@ phases:
 
   pre_build:
     commands:
-      - cd frontend
+      - cd apps/frontend
       - npm install
       - npm install -g next
 
@@ -27,6 +27,7 @@ phases:
     commands:
       - NEXT_PUBLIC_API_ROUTE=$PUBLIC_API_ROUTE_QUERY NEXT_PUBLIC_SENTRY_DSN=$SENTRY_DSN SENTRY_AUTH_TOKEN=$SENTRY_AUTH_TOKEN npm run build
       - npm run test
+      - npm run test:e2e:run
 
   post_build:
     commands:
@@ -34,6 +35,6 @@ phases:
       - if [ "$CODEBUILD_INITIATOR" = "codepipeline/landing-page-cms-frontend-dev" ]; then rm -rf .ebextensions ; fi
 
 artifacts:
-  base-directory: frontend
+  base-directory: apps/frontend
   files:
     - '**/*'
