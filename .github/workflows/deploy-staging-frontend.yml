@@ -2,7 +2,7 @@ name: Deploy/Staging/Frontend
 
 on:
   push:
-    branches: ["main"]
+    branches: ["dev"]
     paths: ["apps/frontend/**"]
 
 jobs:
