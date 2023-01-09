@@ -1,5 +1,8 @@
 name: Deploy/Staging/Frontend
 
+env:
+  BUILD_ARTIFACT: staging-frontend-build
+
 on:
   push:
     branches: ["dev"]
@@ -36,6 +39,18 @@ jobs:
           NEXT_PUBLIC_SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
           NEXT_PUBLIC_API_ROUTE: "RCooqUQMNl77xg89tP848X6rETMeCapGNIUyzuz6oZzhOd7SHfPcUi6kYeIcZ52f"
 
+      - name: Generate deployment package
+        working-directory: ./apps/frontend
+        run: zip -r deploy.zip * -x "**node_modules**"
+
+      - name: Upload build
+        uses: actions/upload-artifact@v3
+        working-directory: ./apps/frontend
+        with:
+          name: $BUILD_ARTIFACT
+          retention-days: 5
+          path: deploy.zip
+
       - name: Test (Unit)
         working-directory: ./apps/frontend
         run: yarn test
@@ -43,3 +58,25 @@ jobs:
       - name: Test (E2E)
         working-directory: ./apps/frontend
         run: yarn test:e2e:run
+
+  deploy:
+    needs: build
+    name: Deploy to AWS
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download Build Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: $BUILD_ARTIFACT
+      - name: Deploy to Elastic Beanstalk
+        uses: einaregilsson/beanstalk-deploy@v13
+        with:
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          use_existing_version_if_available: true
+          application_name: landing-page-cms-frontend
+          environment_name: landing-page-cms-frontend-staging
+          version_label: ${{github.SHA}}
+          region: eu-central-1
+          deployment_package: deploy.zip
