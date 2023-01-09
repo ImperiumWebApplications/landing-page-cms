@@ -96,7 +96,7 @@ describe('Funnel > Appointment', () => {
       const day = today.getDate();
       const formattedDay = day < 10 ? '0' + day : day;
       const timezoneOffset = today.getTimezoneOffset() / 60;
-      const formattedTime = `0${8 + timezoneOffset}:00:00.000Z`;
+      const formattedTime = `0${9 + timezoneOffset}:00:00.000Z`;
       expect(ctx.request.body).to.deep.equal({
         domain: 'localhost:3000',
         contact: {
