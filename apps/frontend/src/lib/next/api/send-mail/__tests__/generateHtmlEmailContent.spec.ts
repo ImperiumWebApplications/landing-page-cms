@@ -68,7 +68,7 @@ describe('generateHtmlEmailContent', () => {
       firstName: 'FirstName',
       lastName: 'LastName',
       logoUrl:
-        'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/logo_485181aa26.png',
+        'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/craftsman24_logo_57de4fbf9d.svg',
       phone: '1234567890',
       postalCode: '22303',
       questionnaire: [

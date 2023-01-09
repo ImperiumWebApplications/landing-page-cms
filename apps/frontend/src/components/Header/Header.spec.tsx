@@ -28,10 +28,10 @@ describe('Header', () => {
       <Header content={content.data[0].attributes} />,
     );
 
-    const logoImage = getByAltText('logo.png');
+    const logoImage = getByAltText('craftsman24_logo.svg');
     expect(logoImage).toHaveAttribute(
       'src',
-      '/_next/image?url=https%3A%2F%2Flanding-pages-images-local.s3.eu-central-1.amazonaws.com%2Flogo_485181aa26.png&w=640&q=75',
+      'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/craftsman24_logo_57de4fbf9d.svg',
     );
 
     const logoLink = getByLabelText('Homepage');
@@ -53,7 +53,7 @@ describe('Header', () => {
       <Header content={content.data[0].attributes} />,
     );
 
-    const logoImage = getByAltText('logo.png');
+    const logoImage = getByAltText('craftsman24_logo.svg');
     expect(logoImage).toBeInTheDocument();
     const logoLink = getByLabelText('Homepage');
     expect(logoLink).toBeInTheDocument();

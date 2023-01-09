@@ -61,9 +61,9 @@ describe('lib/api/send-mail', () => {
     await sendMail({ ...defaultData });
     expect(sendMailMock).toBeCalledWith(
       expect.objectContaining({
-        bcc: 'info@craftsman24.net',
+        bcc: 'konstantin.muenster@mail.com',
         from: '"Craftsman24" <testuseremail>',
-        replyTo: 'info@craftsman24.net',
+        replyTo: 'konstantin.muenster@mail.com',
         subject: 'Vielen Dank für Ihre Anfrage!',
         to: 'test@test.com',
       }),
@@ -76,7 +76,7 @@ describe('lib/api/send-mail', () => {
       expect.objectContaining({
         bcc: 'leads@craftsman24.ch',
         from: '"Craftsman24" <testuseremail>',
-        replyTo: 'info@craftsman24.net',
+        replyTo: 'konstantin.muenster@mail.com',
         subject: 'Vielen Dank für Ihre Anfrage!',
         to: 'test@test.com',
       }),
