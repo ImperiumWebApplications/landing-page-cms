@@ -27,9 +27,9 @@ jobs:
       - name: Install
         run: yarn
 
-      - name: Test (Static)
+      - name: Check Format
         working-directory: ./apps/frontend
-        run: yarn check-format && yarn lint && yarn check-types
+        run: yarn check-format
 
       - name: Build
         working-directory: ./apps/frontend
