@@ -5,7 +5,7 @@ const createJestConfig = require('next/jest')?.({
 });
 
 const customJestConfig = {
-  preset: 'ts-jest/presets/js-with-babel',
+  preset: 'ts-jest',
   testEnvironment: 'jsdom',
   transformIgnorePatterns: ['/node_modules/'],
   testPathIgnorePatterns: [
