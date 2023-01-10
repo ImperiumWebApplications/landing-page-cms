@@ -2,7 +2,6 @@ name: Deploy/Staging/Frontend
 
 env:
   BUILD_ARTIFACT: staging-frontend-build
-  DIRECTORY: ./apps/frontend
 
 on:
   push:
@@ -19,25 +18,23 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Cache turbo
-        uses: actions/cache@v3
-        with:
-          path: .turbo
-          key: ${{ runner.os }}-turbo-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-turbo-
-
       - name: Setup node
         uses: actions/setup-node@v3
         with:
           node-version: 14
           cache: "yarn"
 
+      - name: Cache deps
+        uses: actions/cache@v2
+        with:
+          path: "**/node_modules"
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
       - name: Install deps
         run: yarn install --frozen-lockfile
 
       - name: Run Prettier
-        working-directory: $DIRECTORY
+        working-directory: ./apps/frontend
         run: yarn check-format
 
   build-and-test:
@@ -49,25 +46,23 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Cache turbo
-        uses: actions/cache@v3
-        with:
-          path: .turbo
-          key: ${{ runner.os }}-turbo-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-turbo-
-
       - name: Setup node
         uses: actions/setup-node@v3
         with:
           node-version: 14
           cache: "yarn"
 
+      - name: Cache deps
+        uses: actions/cache@v2
+        with:
+          path: "**/node_modules"
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
       - name: Install deps
         run: yarn install --frozen-lockfile
 
       - name: Create build
-        working-directory: $DIRECTORY
+        working-directory: ./apps/frontend
         run: yarn build
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
@@ -75,15 +70,15 @@ jobs:
           NEXT_PUBLIC_API_ROUTE: "RCooqUQMNl77xg89tP848X6rETMeCapGNIUyzuz6oZzhOd7SHfPcUi6kYeIcZ52f"
 
       - name: Test (Unit)
-        working-directory: $DIRECTORY
+        working-directory: ./apps/frontend
         run: yarn test
 
       - name: Test (E2E)
-        working-directory: $DIRECTORY
+        working-directory: ./apps/frontend
         run: yarn test:e2e:run
 
       - name: Generate dist
-        working-directory: $DIRECTORY
+        working-directory: ./apps/frontend
         run: zip -r deploy.zip * .[^.]* -x "**node_modules**" -x "*.ebextensions*"
 
       - name: Upload dist
