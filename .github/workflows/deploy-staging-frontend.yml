@@ -9,46 +9,52 @@ on:
     # paths: ["apps/frontend/**"]
 
 jobs:
-  build:
-    name: Build and Test
+  prettier:
+    name: Check Format
     timeout-minutes: 15
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 2
+      - name: Checkout repo
+        uses: actions/checkout@v3
 
-      - uses: actions/setup-node@v3
+      - name: Setup node
+        uses: actions/setup-node@v3
         with:
           node-version: 14
           cache: "yarn"
 
-      - name: Install
-        run: yarn
+      - name: Install deps
+        run: yarn install --frozen-lockfile
 
-      - name: Check Format
-        working-directory: ./apps/frontend
+      - name: Run Prettier
         run: yarn check-format
 
-      - name: Build
+  build-and-test:
+    name: Build & Test
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14
+          cache: "yarn"
+
+      - name: Install deps
+        run: yarn install --frozen-lockfile
+
+      - name: Create build
         working-directory: ./apps/frontend
         run: yarn build
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
           NEXT_PUBLIC_SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
           NEXT_PUBLIC_API_ROUTE: "RCooqUQMNl77xg89tP848X6rETMeCapGNIUyzuz6oZzhOd7SHfPcUi6kYeIcZ52f"
-
-      - name: Generate deployment package
-        working-directory: ./apps/frontend
-        run: zip -r deploy.zip * .[^.]* -x "**node_modules**" -x "*.ebextensions*"
-
-      - name: Upload build
-        uses: actions/upload-artifact@v3
-        with:
-          name: $BUILD_ARTIFACT
-          retention-days: 5
-          path: ./apps/frontend/deploy.zip
 
       - name: Test (Unit)
         working-directory: ./apps/frontend
@@ -58,17 +64,29 @@ jobs:
         working-directory: ./apps/frontend
         run: yarn test:e2e:run
 
+      - name: Generate dist
+        working-directory: ./apps/frontend
+        run: zip -r deploy.zip * .[^.]* -x "**node_modules**" -x "*.ebextensions*"
+
+      - name: Upload dist
+        uses: actions/upload-artifact@v3
+        with:
+          name: $BUILD_ARTIFACT
+          retention-days: 5
+          path: ./apps/frontend/deploy.zip
+
   deploy:
-    needs: build
+    needs: [prettier, build-and-test]
     name: Deploy to AWS
     runs-on: ubuntu-latest
 
     steps:
-      - name: Download Build Artifact
+      - name: Download dist
         uses: actions/download-artifact@v3
         with:
           name: $BUILD_ARTIFACT
-      - name: Deploy to Elastic Beanstalk
+
+      - name: Deploy to EB
         uses: einaregilsson/beanstalk-deploy@v21
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
