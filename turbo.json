@@ -3,6 +3,7 @@
   "pipeline": {
     "lint": {},
     "check-types": {},
+    "check-format": {},
     "test": {
       "dependsOn": ["^build"],
       "outputs": []

@@ -13,8 +13,8 @@
     "build": "strapi build",
     "strapi": "strapi",
     "prettier": "prettier --ignore-path .gitignore --write \"**/*.+(js|json|ts|tsx|md|mdx)\"",
-    "format": "yarn prettier -- --write",
-    "check-format": "yarn prettier -- --check",
+    "format": "yarn prettier --write",
+    "check-format": "yarn prettier --check",
     "lint": "eslint .",
     "check-types": "tsc --noEmit"
   },
