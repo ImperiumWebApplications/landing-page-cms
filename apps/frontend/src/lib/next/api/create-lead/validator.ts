@@ -1,8 +1,7 @@
 import { NextApiRequest } from 'next';
+import { normalizeHostname } from '../../../../utils/normalizeHostname';
 
 import type { CreateLeadProps } from './create-lead';
-
-import { normalizeHostname } from '../../../../utils/normalizeHostname';
 
 export interface CreateLeadRequest extends NextApiRequest {
   body: {

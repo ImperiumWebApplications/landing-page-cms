@@ -1,4 +1,4 @@
-import { createHTMLTable } from '../createHTMLTable';
+import { createHTMLTable } from '../utils/createHTMLTable';
 
 describe('createHTMLTable', () => {
   it('should return table with header and footer', () => {

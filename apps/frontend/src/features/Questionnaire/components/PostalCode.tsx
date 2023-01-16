@@ -6,7 +6,7 @@ import { useQuestionnaireContext } from '../context/Questionnaire';
 import { getCountryDetails } from '../../../utils/getCountryDetails';
 import { getPostalCodeLength } from '../../../utils/getPostalCodeLength';
 import { normalizeHostname } from '../../../utils/normalizeHostname';
-import { NextAPI } from '../../../lib/next/api';
+import { NextAPI } from '../../../lib/next/api/client';
 
 import { Button } from '../../../components/Button';
 import { ContactFieldConfig, Field } from '../../../components/Form';

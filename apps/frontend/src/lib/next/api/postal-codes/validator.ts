@@ -1,8 +1,8 @@
 import type { NextApiRequest } from 'next';
 
-import { isCountriesFormat } from '../../../../utils/isCountriesFormat';
-import { isPostalCodeFormat } from '../../../../utils/isPostalCodeFormat';
-import { GetPostalCodeDetailsProps } from './postal-codes';
+import type { GetPostalCodeDetailsProps } from './postal-codes';
+import { isCountriesFormat } from './utils/isCountriesFormat';
+import { isPostalCodeFormat } from './utils/isPostalCodeFormat';
 
 export interface PostalCodesRequest extends NextApiRequest {
   body: {

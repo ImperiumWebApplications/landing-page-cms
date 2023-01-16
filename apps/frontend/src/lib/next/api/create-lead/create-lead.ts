@@ -1,7 +1,7 @@
 import { Strapi } from '../../../strapi';
 import { Pipedrive } from '../../../pipedrive';
 import { enrichPostalCodeValue } from './utils/enrichPostalCodeValue';
-import { createHTMLTable } from '../../../../utils/createHTMLTable';
+import { createHTMLTable } from '../send-mail/utils/createHTMLTable';
 
 export type CreateLeadProps = {
   domain: string;

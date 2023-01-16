@@ -2,7 +2,7 @@ import { fireEvent, waitFor } from '@testing-library/react';
 import { SELECT_FIELD_BUTTON_TEST_ID } from '../../../components/Form/components/SelectField';
 import { Country } from '../../../config/countries.config';
 import { renderWithLayout } from '../../../../jest.setup';
-import { NextAPI } from '../../../lib/next/api';
+import { NextAPI } from '../../../lib/next/api/client';
 import { setBrowserHistoryState } from '../../../utils/setBrowserHistoryState';
 import { PostalCode } from '../components/PostalCode';
 import { QuestionnaireProvider } from '../context/Questionnaire';
@@ -11,7 +11,7 @@ jest.mock('../../../utils/setBrowserHistoryState', () => ({
   setBrowserHistoryState: jest.fn(),
 }));
 
-jest.mock('../../../lib/next/api', () => ({
+jest.mock('../../../lib/next/api/client', () => ({
   NextAPI: {
     getPostalCodeDetails: jest.fn(),
   },

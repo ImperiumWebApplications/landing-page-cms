@@ -1,4 +1,4 @@
-import { formatAppointmentsDate } from '../features/Appointment/utils/formatAppointmentsDate';
+import { formatAppointmentsDate } from './formatAppointmentsDate';
 
 export const replaceWhitespaceInHTML = (str: string) =>
   str.replace(

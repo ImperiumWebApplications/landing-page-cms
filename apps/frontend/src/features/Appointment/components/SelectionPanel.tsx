@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-import { NextAPI } from '../../../lib/next/api';
+import { NextAPI } from '../../../lib/next/api/client';
 import {
   isTrackingAllowed,
   sendEventToAnalytics,

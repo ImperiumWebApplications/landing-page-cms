@@ -1,4 +1,4 @@
-import { QuestionnaireState } from '../../../../../features/Questionnaire';
+import type { QuestionnaireState } from '../../../../../features/Questionnaire';
 import { getCountryByDomain } from '../../../../../utils/getCountryByDomain';
 import { getPostalCodeDetails } from '../../postal-codes';
 

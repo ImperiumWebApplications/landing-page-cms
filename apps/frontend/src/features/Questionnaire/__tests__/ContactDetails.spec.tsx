@@ -4,7 +4,7 @@ import { isTrackingAllowed } from '../../../lib/analytics/isTrackingAllowed';
 import { waitFor } from '@testing-library/react';
 import { QuestionnaireProvider } from '../context/Questionnaire';
 import { setBrowserHistoryState } from '../../../utils/setBrowserHistoryState';
-import { NextAPI } from '../../../lib/next/api';
+import { NextAPI } from '../../../lib/next/api/client';
 import { ContactDetails as StatelessContactDetails } from '../components/ContactDetails';
 
 jest.mock('../../../lib/analytics/isTrackingAllowed', () => ({
@@ -22,7 +22,7 @@ jest.mock('../../../lib/analytics/sendEventToAnalytics', () => ({
   },
 }));
 
-jest.mock('../../../lib/next/api', () => ({
+jest.mock('../../../lib/next/api/client', () => ({
   NextAPI: {
     createLead: jest.fn(),
   },
