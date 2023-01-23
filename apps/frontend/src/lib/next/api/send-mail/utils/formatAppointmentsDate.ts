@@ -1,4 +1,5 @@
 import { add, format, parseISO } from 'date-fns';
+import { utcToZonedTime } from 'date-fns-tz';
 import de from 'date-fns/locale/de';
 
 /**
@@ -13,11 +14,14 @@ export const formatAppointmentsDate = ({
   duration: number;
 }) => {
   const parsedDate = parseISO(date);
-  const formattedDate = format(parsedDate, 'cccc, dd.MM.yyyy', { locale: de });
+  const timeZone = 'Europe/Berlin';
+  const zonedDate = utcToZonedTime(parsedDate, timeZone);
 
-  const endDate = add(parsedDate, { minutes: duration });
+  const formattedDate = format(zonedDate, 'cccc, dd.MM.yyyy', { locale: de });
+
+  const endDate = add(zonedDate, { minutes: duration });
   const formattedEndTime = format(endDate, 'kk:mm', { locale: de });
-  const formattedStartTime = format(parsedDate, 'kk:mm', { locale: de });
+  const formattedStartTime = format(zonedDate, 'kk:mm', { locale: de });
 
   return `${formattedDate} (${formattedStartTime} Uhr - ${formattedEndTime} Uhr)`;
 };
