@@ -75,6 +75,8 @@ export const QuestionnaireTiles: React.FC<QuestionnaireTilesProps> = (
                     beforeInjection={(svg) => {
                       svg.removeAttribute('width');
                       svg.removeAttribute('height');
+                      svg.removeAttribute('x');
+                      svg.removeAttribute('y');
                     }}
                     loading={() => <div className="loading" />}
                     src={attributes.icon.data.attributes.url}

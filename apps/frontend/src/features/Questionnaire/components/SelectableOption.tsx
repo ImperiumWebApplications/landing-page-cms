@@ -54,6 +54,8 @@ export const SelectableOption: React.FC<SelectableOptionProps> = ({
             beforeInjection={(svg) => {
               svg.removeAttribute('height');
               svg.removeAttribute('width');
+              svg.removeAttribute('x');
+              svg.removeAttribute('y');
             }}
             loading={() => <IconPlaceholder />}
             fallback={() => <IconPlaceholder />}
