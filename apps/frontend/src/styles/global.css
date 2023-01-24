@@ -139,6 +139,7 @@
   .group:hover .icon svg rect,
   .group:hover .icon svg ellipse {
     fill: white !important;
+    stroke: white !important;
   }
 
   /** Used for Logo **/
