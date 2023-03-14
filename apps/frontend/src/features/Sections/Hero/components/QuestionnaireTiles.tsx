@@ -9,6 +9,7 @@ import { questionnaireRoute } from '../../../../config/navigation.config';
 import { isSvg } from '../../../../utils/isSvg';
 import { slugifyRoute } from '../../../../utils/slugifyRoute';
 import { byPriority } from '../utils/sortQuestionnaires';
+import { ChevronRightIcon } from '../../../../components/Icons';
 
 const ReactSVG = dynamic(
   // @ts-ignore
@@ -32,14 +33,13 @@ export const QuestionnaireTiles: React.FC<QuestionnaireTilesProps> = (
   if (!sortedQuestionnaires?.length) return null;
 
   return (
-    <div className="text-center md:mt-4">
-      <h4 className="relative inline-block rounded-lg px-6 pb-1 pt-2 text-base text-[white] md:text-lg">
-        <div className="absolute top-0 left-0 -z-10 h-full w-full rounded-lg bg-primary brightness-90" />
+    <div className="pt-6 md:pt-0">
+      <h4 className="text-center text-xl font-bold text-primary md:text-left md:text-2xl">
         <span data-testid="questionnaire-tiles-question">{entry_question}</span>
       </h4>
       <div
         data-testid="questionnaire-tiles-grid"
-        className="mt-6 flex flex-wrap justify-center gap-2 sm:gap-4 md:gap-8"
+        className="mt-6 flex flex-wrap justify-center gap-2 sm:gap-4 lg:gap-8"
       >
         {sortedQuestionnaires.map(({ attributes, id }) => {
           if (!attributes?.name) return null;
@@ -48,20 +48,22 @@ export const QuestionnaireTiles: React.FC<QuestionnaireTilesProps> = (
           const route = `/${questionnaireRoute}/${slug}-${id}`;
 
           const isSvgIcon = isSvg(attributes.icon?.data?.attributes?.ext);
+          const iconClassName =
+            'h-[50px] w-[50px] md:h-[100px] md:w-[100px] lg:h-[120px] lg:w-[120px]';
 
           return (
             <Link
               key={id}
               role="button"
               href={route}
-              className="hover:bg-white flex w-[calc(50%-8px)] cursor-pointer flex-col gap-2 rounded-xl border-4 border-solid border-[#f8f8f8] bg-[#f8f8f8] pt-4 pb-3 shadow-md transition-all hover:border-secondary hover:text-[black] md:max-w-[300px] md:flex-1 md:gap-4 md:pt-8 md:pb-6 md:shadow-2xl"
+              className="group flex w-full gap-4 rounded-md border border-solid border-secondary bg-[white] p-3 shadow-sm transition-all hover:border-primary hover:ring-2 hover:ring-primary hover:ring-offset-2 md:w-auto md:flex-1 md:flex-col md:rounded-lg md:p-6 md:shadow-lg"
             >
               <div className="icon flex items-center justify-center">
                 {attributes.icon?.data?.attributes && !isSvgIcon ? (
                   <Image
                     data-testid="tile-image"
                     src={attributes.icon.data.attributes.url}
-                    className="h-12 w-12 object-contain md:h-[6rem] md:w-[6rem]"
+                    className={iconClassName}
                     alt={attributes.icon.data.attributes.alternativeText ?? ''}
                     width={attributes.icon.data.attributes.width ?? 0}
                     height={attributes.icon.data.attributes.height ?? 0}
@@ -71,7 +73,7 @@ export const QuestionnaireTiles: React.FC<QuestionnaireTilesProps> = (
                   <ReactSVG
                     data-testid="tile-icon"
                     wrapper="svg"
-                    className="h-12 w-12 md:h-[6rem] md:w-[6rem]"
+                    className={iconClassName}
                     beforeInjection={(svg) => {
                       svg.removeAttribute('width');
                       svg.removeAttribute('height');
@@ -83,9 +85,14 @@ export const QuestionnaireTiles: React.FC<QuestionnaireTilesProps> = (
                   />
                 ) : null}
               </div>
-              <span className="flex flex-grow items-center justify-center font-semibold leading-tight text-gray md:text-xl">
+              <span className="flex flex-grow items-center text-center text-sm font-semibold leading-tight text-primary md:justify-center md:text-base">
                 {attributes.name}
               </span>
+              <div className="flex items-center md:hidden">
+                <div className="p rounded-full group-focus:bg-primary">
+                  <ChevronRightIcon className="h-6 w-6 fill-primary group-focus:fill-[white]" />
+                </div>
+              </div>
             </Link>
           );
         })}

@@ -8,7 +8,6 @@ import { ReviewsSection } from './Reviews';
 import { buildSectionMap } from './SectionMapper';
 import { ServicesSection } from './Services';
 import { StatisticsSection } from './Statistics';
-import { StaticStepsSection } from './Steps';
 import { VideoSection } from './Video';
 
 export const initSectionManager = (content: LandingPage) => {
@@ -42,6 +41,5 @@ export const initSectionManager = (content: LandingPage) => {
     Video: sectionMap?.video ? (
       <VideoSection id="video" content={sectionMap.video} />
     ) : null,
-    Steps: sectionMap?.images ? <StaticStepsSection id="steps" /> : null,
   };
 };

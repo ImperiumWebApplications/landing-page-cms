@@ -1,13 +1,13 @@
 import { useMemo } from 'react';
 
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 
 import type { HeroSectionContent } from '../SectionMapper';
 
 import { QuestionnaireTiles } from './components/QuestionnaireTiles';
-import { AppointmentCTA } from './components/AppointmentCTA';
+import { Steps } from './components/Steps';
 import { SectionContainer } from '../SectionContainer';
-import { useSectionContext } from '../SectionContext';
 
 type HeroSectionProps = {
   id: string;
@@ -15,30 +15,28 @@ type HeroSectionProps = {
 };
 
 export const HeroSection: React.FC<HeroSectionProps> = (props) => {
-  const { state } = useSectionContext();
   const { title, subtitle, questionnaire } = props.content;
 
-  // Don't use the background image for now
-  // ––
-  // const BackgroundImage = useMemo(() => {
-  //   const backgroundImage = props.content.background_image?.data.attributes;
-  //   return backgroundImage ? (
-  //     <Image
-  //       src={backgroundImage.url}
-  //       alt={backgroundImage.alternativeText ?? ''}
-  //       layout="fill"
-  //       objectFit="cover"
-  //       className="rounded-2xl"
-  //       quality={90}
-  //       priority
-  //     />
-  //   ) : null;
-  // }, [props.content.background_image?.data.attributes]);
+  const BackgroundImage = useMemo(() => {
+    const backgroundImage = props.content.background_image?.data?.attributes;
+    return backgroundImage ? (
+      <div className="relative h-full">
+        <Image
+          src={backgroundImage.url}
+          alt={backgroundImage.alternativeText ?? ''}
+          className="z-0 h-full max-h-[640px] w-full rounded-tr-md object-cover pl-16 lg:pl-4"
+          quality={90}
+          fill
+          priority
+        />
+      </div>
+    ) : null;
+  }, [props.content.background_image?.data?.attributes]);
 
   const Headline = useMemo(() => {
     return title ? (
       <h1
-        className="mx-6 mb-2 text-4xl text-[white] [text-shadow:0_4px_8px_rgba(0,0,0,0.2)] md:text-5xl xl:mb-4 xl:text-[3.5rem]"
+        className="text-3xl font-bold leading-[1.125] text-primary md:text-4xl lg:text-[42px]"
         // Allow line breaks and markup to be inserted via cms
         dangerouslySetInnerHTML={{ __html: title }}
       />
@@ -48,7 +46,7 @@ export const HeroSection: React.FC<HeroSectionProps> = (props) => {
   const Subtitle = useMemo(() => {
     return subtitle ? (
       <span
-        className="block text-xl font-bold text-[white] opacity-80 [text-shadow:0_4px_8px_rgba(0,0,0,0.2)] sm:text-2xl md:text-5xl xl:text-[3.5rem]"
+        className="mt-2 block text-lg font-normal text-secondary md:mt-8 md:text-xl lg:text-2xl"
         // Allow line breaks and markup to be inserted via cms
         dangerouslySetInnerHTML={{ __html: subtitle }}
       />
@@ -56,31 +54,30 @@ export const HeroSection: React.FC<HeroSectionProps> = (props) => {
   }, [subtitle]);
 
   return (
-    <SectionContainer id={props.id}>
+    <SectionContainer id={props.id} fullWidth>
       <motion.div
-        className="relative"
+        className="relative mx-auto flex max-w-[1400px] flex-col bg-tertiary md:-mt-[150px] md:grid md:grid-cols-6 md:grid-rows-6 md:rounded-md"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
       >
-        <div className="absolute top-0 left-0 -z-20 h-full w-full">
-          {/* {BackgroundImage} */}
-          <div className="h-full w-full rounded-2xl bg-primary opacity-90" />
-        </div>
-        <div className="mx-auto flex flex-col justify-center px-2 py-12 text-center sm:px-4 md:px-12 md:py-28">
-          <div data-testid="hero-description">
-            {Headline}
-            {Subtitle}
-            <p className="my-4 mx-auto max-w-xl text-sm text-[white] [text-shadow:0_4px_8px_rgba(0,0,0,0.2)] sm:my-8 sm:text-lg md:text-xl">
-              {props.content.description}
-            </p>
+        <div className="md:col-start-1 md:col-end-7 md:row-start-2 md:row-end-4">
+          <div className="content-wrapper">
+            <div className="max-w-md py-6 md:mb-20 md:pb-0 md:pt-4 lg:max-w-lg">
+              {Headline}
+              {Subtitle}
+            </div>
           </div>
-          {state.funnelTarget === 'Appointment' ? (
-            <AppointmentCTA />
-          ) : (
+        </div>
+        <div className="hidden md:col-start-4 md:col-end-7 md:row-start-1 md:row-end-6 md:block">
+          {BackgroundImage}
+        </div>
+        <div className="relative z-10 bg-[white] md:col-start-1 md:col-end-7 md:row-start-4 md:row-end-7 md:bg-[unset]">
+          <div className="content-wrapper md:pb-32">
             <QuestionnaireTiles content={questionnaire} />
-          )}
+          </div>
         </div>
       </motion.div>
+      <Steps />
     </SectionContainer>
   );
 };
