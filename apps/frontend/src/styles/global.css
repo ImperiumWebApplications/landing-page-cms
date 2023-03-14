@@ -126,7 +126,7 @@
   .icon[data-selected='true'] svg polyline,
   .icon[data-selected='true'] svg rect,
   .icon[data-selected='true'] svg ellipse {
-    fill: white !important;
+    fill: var(--color-primary) !important;
   }
   .icon:active svg,
   .icon:active svg path,
@@ -136,7 +136,7 @@
   .icon:active svg polyline,
   .icon:active svg rect,
   .icon:active svg ellipse {
-    fill: white !important;
+    fill: var(--color-primary) !important;
   }
   .group:hover .icon svg,
   .group:hover .icon svg path,
@@ -146,8 +146,8 @@
   .group:hover .icon svg polyline,
   .group:hover .icon svg rect,
   .group:hover .icon svg ellipse {
-    fill: white !important;
-    stroke: white !important;
+    fill: var(--color-primary) !important;
+    stroke: var(--color-primary) !important;
   }
 
   /** Used for Logo **/
