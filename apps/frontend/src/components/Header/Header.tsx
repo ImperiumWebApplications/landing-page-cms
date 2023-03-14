@@ -1,19 +1,14 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 
 import type { LandingPage } from '../../lib/strapi';
-import {
-  appointmentRoute,
-  questionnaireRoute,
-} from '../../config/navigation.config';
 import { isFunnelRoute } from '../../utils/isFunnelRoute';
+import { navigationItems } from '../../config/navigation.config';
 
 import { Logo } from '../Logo';
-import { Button } from '../Button';
-
-import { MobileNavigation } from './components/MobileNavigation';
+import { Navigation } from './components/Navigation';
 
 type HeaderProps = {
   content: LandingPage;
@@ -21,36 +16,14 @@ type HeaderProps = {
 
 export const Header: React.FC<HeaderProps> = ({ content }) => {
   const router = useRouter();
-
   const isFunnel = isFunnelRoute(router);
-  const isIndex = router.pathname === '/';
-  const isAppointmentTarget = content.funnel_target === 'Appointment';
-
-  const Navigation = useMemo(() => {
-    if (isFunnel) return undefined;
-
-    return (
-      <>
-        {!isAppointmentTarget || !isIndex ? (
-          <Button
-            variant="primary"
-            size="large"
-            className="z-15 relative hidden h-auto text-[0.9rem] uppercase tracking-wider md:block"
-            label="Lassen Sie sich beraten"
-            to={`/${
-              isAppointmentTarget ? appointmentRoute : questionnaireRoute
-            }`}
-          />
-        ) : null}
-        <MobileNavigation />
-      </>
-    );
-  }, [isAppointmentTarget, isFunnel, isIndex]);
 
   return (
     <header
       id="header"
-      className={isFunnel ? 'md:relative md:z-10 md:shadow-sm' : ''}
+      className={
+        isFunnel ? 'md:relative md:z-10 md:shadow-sm' : 'min-[1400px]:mt-[50px]'
+      }
     >
       <motion.div
         initial={{ opacity: 0, translateY: -10 }}
@@ -60,18 +33,14 @@ export const Header: React.FC<HeaderProps> = ({ content }) => {
       >
         <div
           className={`flex w-full items-center py-4 md:py-8 ${
-            isAppointmentTarget && isIndex
-              ? 'justify-between md:justify-center'
-              : isFunnel
-              ? 'justify-center'
-              : 'justify-between'
+            isFunnel ? 'justify-center' : 'justify-between'
           }`}
         >
           <Logo
             image={content.logo?.data?.attributes}
-            className="h-[50px] w-[200px] sm:h-[60px] sm:w-[300px]"
+            className="h-[60px] w-[180px] md:h-[80px] md:w-[200px]"
           />
-          {Navigation}
+          {!isFunnel ? <Navigation items={navigationItems} /> : null}
         </div>
       </motion.div>
     </header>

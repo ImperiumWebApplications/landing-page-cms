@@ -1,4 +1,4 @@
-interface NavigationItem {
+export interface NavigationItem {
   href: string;
   label: string;
   openNewTab?: boolean;

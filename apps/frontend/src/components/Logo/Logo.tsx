@@ -6,40 +6,6 @@ import cx from 'classnames';
 
 import type { MediaAttributes } from '../../lib/strapi';
 
-// const StyledLogo = styled.div`
-//   a {
-//     display: block;
-//     position: relative;
-//     cursor: pointer;
-
-//     &.logo-medium {
-//       width: 180px;
-//       height: 45px;
-//     }
-
-//     &.logo-large {
-//       width: 200px;
-//       height: 50px;
-//     }
-
-//     @media screen and (${devices.sm}) {
-//       &.logo-medium {
-//         width: 260px;
-//         height: 55px;
-//       }
-
-//       &.logo-large {
-//         width: 300px;
-//         height: 60px;
-//       }
-//     }
-
-//     .colorless-filter {
-//       filter: brightness(0) invert(1);
-//     }
-//   }
-// `;
-
 type LogoProps = {
   image?: MediaAttributes | null;
   colorless?: boolean;

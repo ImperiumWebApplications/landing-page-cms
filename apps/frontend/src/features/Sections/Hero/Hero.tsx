@@ -71,7 +71,7 @@ export const HeroSection: React.FC<HeroSectionProps> = (props) => {
         <div className="hidden md:col-start-4 md:col-end-7 md:row-start-1 md:row-end-6 md:block">
           {BackgroundImage}
         </div>
-        <div className="relative z-10 bg-[white] md:col-start-1 md:col-end-7 md:row-start-4 md:row-end-7 md:bg-[unset]">
+        <div className="relative bg-[white] md:z-10 md:col-start-1 md:col-end-7 md:row-start-4 md:row-end-7 md:bg-[unset]">
           <div className="content-wrapper md:pb-32">
             <QuestionnaireTiles content={questionnaire} />
           </div>
