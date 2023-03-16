@@ -20,9 +20,7 @@ const IndexPage: NextPage<{ content: LandingPage }> = ({ content }) => {
     <Layout content={content}>
       <SectionContextProvider initialState={initialSectionState}>
         {SectionManager.Hero}
-        {SectionManager.Steps}
         {SectionManager.Video}
-        {SectionManager.Statistics}
         {SectionManager.CallToAction}
         {SectionManager.Services}
         {SectionManager.Reviews}
