@@ -13,7 +13,7 @@
     "video_description": {
       "type": "richtext"
     },
-    "statistic": {
+    "statistics": {
       "type": "component",
       "repeatable": true,
       "component": "sections.number"

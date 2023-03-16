@@ -47,7 +47,7 @@
     @apply font-semibold no-underline;
   }
   p {
-    @apply text-base text-gray;
+    @apply text-gray;
   }
   ul {
     @apply my-4 ml-[1em] max-w-md list-outside list-disc space-y-1 text-gray marker:text-secondary;
@@ -235,6 +235,14 @@
   }
 }
 
+@layer utilities {
+  .diagonal-bg-clip {
+    background: var(--color-tertiary);
+    color: white;
+    clip-path: polygon(0 20%, 100% 0, 100% 80%, 0 100%);
+  }
+}
+
 #__next {
   min-height: 100%;
   display: grid;
@@ -243,15 +251,19 @@
 }
 
 /** Video Player in Video.tsx */
+.react-player__preview {
+  border-radius: 10px;
+}
+
 .react-player__preview::before {
   content: '';
   position: absolute;
   z-index: 13;
   width: 100%;
   height: 100%;
-  opacity: 0.5;
-  filter: brightness(20%);
-  background-color: black;
+  opacity: 0.3;
+  background-color: var(--color-primary);
+  border-radius: 10px;
 }
 
 .swiper .swiper-button-prev,

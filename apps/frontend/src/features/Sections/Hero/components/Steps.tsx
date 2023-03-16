@@ -15,7 +15,7 @@ export const Steps: React.FC = () => {
 
   return (
     <div className="content-wrapper">
-      <div className="relative z-10 mt-8 flex flex-col items-center justify-between gap-6 rounded-md bg-primary px-2 py-6 text-[white] md:mx-2 md:-mt-14 md:flex-row md:gap-0">
+      <div className="relative z-10 mt-8 flex flex-col items-center justify-between gap-6 rounded-md bg-primary px-2 py-6 text-[white] md:-mt-14 md:flex-row md:gap-0">
         {STEPS.map((step, i) => {
           const delay = 300 + 200 * i;
 

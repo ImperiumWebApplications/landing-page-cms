@@ -150,6 +150,11 @@ export type ImagesSection = Component<{
 export type VideoSection = Component<{
   video_title?: TextField;
   video_description?: TextField;
+  statistics?: RepeatableComponent<{
+    label?: TextField;
+    number?: NumberField;
+    number_suffix?: TextField;
+  }>;
 }>;
 
 export type QuestionsSection = Component<{
