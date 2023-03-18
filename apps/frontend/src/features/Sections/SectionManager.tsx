@@ -10,24 +10,25 @@ import { ServicesSection } from './Services';
 import { StatisticsSection } from './Statistics';
 import { VideoSection } from './Video';
 
-export const initSectionManager = (content: LandingPage) => {
+export const initSectionManager = (
+  content: LandingPage,
+  { isNewDesign }: { isNewDesign?: boolean },
+) => {
   const sectionMap = buildSectionMap(content);
-
-  const isNewLandingPageStructure = !!sectionMap?.services?.benefits?.length;
 
   return {
     Hero: sectionMap?.hero ? (
       <HeroSection id="hero" content={sectionMap.hero} />
     ) : null,
     CallToAction:
-      sectionMap?.callToAction && !isNewLandingPageStructure ? (
+      sectionMap?.callToAction && !isNewDesign ? (
         <CallToActionSection
           id="call-to-action"
           content={sectionMap.callToAction}
         />
       ) : null,
     Images:
-      sectionMap?.images && !isNewLandingPageStructure ? (
+      sectionMap?.images && !isNewDesign ? (
         <ImagesSection id="images" content={sectionMap.images} />
       ) : null,
     Questions: sectionMap?.questions ? (
@@ -40,7 +41,7 @@ export const initSectionManager = (content: LandingPage) => {
       <ServicesSection id="services" content={sectionMap.services} />
     ) : null,
     Statistics:
-      sectionMap?.statistics && !isNewLandingPageStructure ? (
+      sectionMap?.statistics && !isNewDesign ? (
         <StatisticsSection id="statistics" content={sectionMap.statistics} />
       ) : null,
     Video: sectionMap?.video ? (

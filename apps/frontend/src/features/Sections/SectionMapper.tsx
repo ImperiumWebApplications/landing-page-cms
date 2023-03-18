@@ -165,7 +165,7 @@ export type ReviewsSectionContent = ReturnType<typeof toReviewsSectionContent>;
  * Services Section
  */
 
-const isServicesSection = (
+export const isServicesSection = (
   section: DynamicZoneItem<Section>,
 ): section is DynamicZoneItem<ServicesSection> =>
   section.__component === LandingPageSections.SERVICES;

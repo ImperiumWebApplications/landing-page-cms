@@ -8,12 +8,17 @@ import {
   SectionState,
 } from '../features/Sections';
 import { Layout } from '../components/Layout/Layout';
+import { isServicesSection } from '../features/Sections/SectionMapper';
 
 const IndexPage: NextPage<{ content: LandingPage }> = ({ content }) => {
-  const SectionManager = initSectionManager(content);
+  const isNewDesign =
+    !!content.sections?.find(isServicesSection)?.benefits?.length;
+
+  const SectionManager = initSectionManager(content, { isNewDesign });
 
   const initialSectionState: SectionState = {
     funnelTarget: content.funnel_target,
+    isNewDesign,
   };
 
   return (

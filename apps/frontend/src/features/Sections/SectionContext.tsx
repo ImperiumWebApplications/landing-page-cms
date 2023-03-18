@@ -4,6 +4,7 @@ import type { LandingPage } from '../../lib/strapi';
 
 export type SectionState = {
   funnelTarget: LandingPage['funnel_target'];
+  isNewDesign?: boolean;
 };
 
 const SectionStateContext = createContext<SectionState | null>(null);
@@ -19,7 +20,10 @@ export const SectionContextProvider = ({
 }: SectionContextProviderProps) => {
   return (
     <SectionStateContext.Provider
-      value={{ funnelTarget: initialState.funnelTarget }}
+      value={{
+        funnelTarget: initialState.funnelTarget,
+        isNewDesign: initialState.isNewDesign,
+      }}
     >
       {children}
     </SectionStateContext.Provider>

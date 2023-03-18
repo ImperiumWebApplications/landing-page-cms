@@ -16,7 +16,7 @@ type ServicesSectionProps = {
 
 export const Services_OLD: React.FC<ServicesSectionProps> = (props) => {
   const [activeTab, setActiveTab] = useState(0);
-  console.log(props);
+
   if (!props.content.service_tab?.length) return <></>;
 
   const activeTabContent = props.content.service_tab[activeTab];

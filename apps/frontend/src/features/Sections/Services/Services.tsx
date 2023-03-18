@@ -10,6 +10,7 @@ import { Workflow } from './components/Workflow';
 import { SectionContainer } from '../SectionContainer';
 import { ServicesSectionContent } from '../SectionMapper';
 import { Services_OLD } from './Services_OLD';
+import { useSectionContext } from '../SectionContext';
 
 type ServicesSectionProps = {
   id: string;
@@ -17,6 +18,8 @@ type ServicesSectionProps = {
 };
 
 export const ServicesSection: React.FC<ServicesSectionProps> = (props) => {
+  const { state } = useSectionContext();
+
   const ServiceImage = useMemo(() => {
     const { url, alternativeText, name } =
       props.content.service_image?.data?.attributes || {};
@@ -31,7 +34,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = (props) => {
     ) : null;
   }, [props.content.service_image?.data?.attributes]);
 
-  if (props.content.service_tab?.length && !props.content.benefits?.length)
+  if (props.content.service_tab?.length && !state.isNewDesign)
     return <Services_OLD {...props} />;
 
   return (
