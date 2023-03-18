@@ -8,25 +8,25 @@ export type ReviewProps = {
   content: NonNullable<ReviewsSectionContent['rating']>[0];
 };
 
-export const Review: React.FC<ReviewProps> = ({ content }) => {
+export const Review_OLD: React.FC<ReviewProps> = ({ content }) => {
   const isTabletBreakpoint = useMediaQuery(`(min-width: 480px)`);
   const [isExpanded, setIsExpanded] = React.useState(false);
 
   return (
-    <div className="relative mx-2 mt-12 mb-8 rounded-md bg-tertiary px-5 pt-[50px] pb-5 text-center shadow-sm md:mt-24 md:px-10 md:pb-12 md:pt-[70px]">
-      <div className="absolute -top-11 left-[calc(50%-50px)] z-10 h-[80px] w-[80px]">
+    <div className="relative mx-2 mt-14 mb-8 rounded-md bg-[white] px-6 pt-20 pb-8 shadow-md sm:mx-8 md:px-20 md:pt-24 md:pb-16">
+      <div className="absolute -top-11 left-[calc(50%-50px)] z-10 h-[100px] w-[100px] before:absolute before:-left-[5px] before:-top-1 before:-z-[1] before:h-[55px] before:w-[110px] before:rounded-tl-md before:rounded-tr-md before:bg-primary before:content-[''] after:absolute after:-left-[5px] after:bottom-0 after:-z-[1] after:h-[55px] after:w-[110px] after:rounded-br-md after:rounded-bl-md after:bg-tertiary after:content-['']">
         {content.avatar?.data?.attributes ? (
           <Image
             src={content.avatar.data.attributes.url}
             alt={content.avatar.data.attributes.alternativeText ?? ''}
-            width={80}
-            height={80}
-            className="rounded-full object-cover"
+            width={100}
+            height={100}
+            className="object-cover"
           />
         ) : null}
       </div>
       {content.description && (
-        <p className="mb-4 text-sm leading-relaxed sm:text-base md:mb-8">
+        <p className="mb-8 text-sm leading-relaxed sm:text-base">
           {isTabletBreakpoint || isExpanded
             ? content.description
             : `${content.description?.substring(0, 300)}...`}
@@ -40,13 +40,8 @@ export const Review: React.FC<ReviewProps> = ({ content }) => {
           )}
         </p>
       )}
-      <span
-        aria-label="Name"
-        className="mb-2 block text-sm font-bold text-primary md:text-base"
-      >
-        {content.name}
-      </span>
-      <span className="text-sm md:text-base">{content.biography}</span>
+      <h3 aria-label="Name">{content.name}</h3>
+      <span>{content.biography}</span>
     </div>
   );
 };

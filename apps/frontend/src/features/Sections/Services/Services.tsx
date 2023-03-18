@@ -70,9 +70,12 @@ export const ServicesSection: React.FC<ServicesSectionProps> = (props) => {
             </div>
           </div>
         </div>
-        <CallToActionBanner description="Wir helfen Ihnen unverbindlich und kostenlos, den besten Profi zu finden." />
+        <CallToActionBanner
+          description="Wir helfen Ihnen unverbindlich und kostenlos, den besten Profi zu finden."
+          className="my-12 md:my-20"
+        />
       </div>
-      <div className="mx-auto -mt-32 max-w-[1400px] bg-tertiary pt-36 pb-10 md:-mt-44 md:rounded-md md:pb-20 md:pt-40">
+      <div className="mx-auto -mt-32 max-w-[1400px] bg-tertiary pt-36 pb-10 md:-mt-[10.5rem] md:rounded-md md:pb-20 md:pt-36">
         <div className="content-wrapper">
           <h2 className="mb-4 text-base leading-tight md:mb-8 md:text-2xl">
             Absolut kosten- und risikofreie Anfrage senden!

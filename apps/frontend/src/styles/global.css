@@ -266,8 +266,37 @@
   border-radius: 10px;
 }
 
-.swiper .swiper-button-prev,
-.swiper .swiper-button-next {
+/** Review Slider **/
+
+.review-slider .swiper .swiper-pagination-bullet {
+  background: var(--color-secondary);
+  opacity: 1;
+  width: 12px;
+  height: 12px;
+  margin: 0 8px;
+}
+
+.review-slider .swiper .swiper-pagination-bullet-active {
+  position: relative;
+  background: var(--color-primary);
+}
+
+.review-slider .swiper .swiper-pagination-bullet-active:after {
+  content: '';
+  position: absolute;
+  border: 1px solid var(--color-primary);
+  background: transparent;
+  border-radius: 999px;
+  top: -4px;
+  left: -4px;
+  width: 20px;
+  height: 20px;
+}
+
+/** Review Slider OLD **/
+
+.review-slider_OLD.swiper .swiper-button-prev,
+.review-slider_OLD.swiper .swiper-button-next {
   position: absolute;
   top: calc(50% - 32px);
   backdrop-filter: blur(0.5rem);
@@ -281,28 +310,28 @@
   cursor: pointer;
 }
 
-.swiper .swiper-pagination-bullet-active {
+.review-slider_OLD.swiper .swiper-pagination-bullet-active {
   background: var(--color-secondary);
 }
 
-.swiper .swiper-button-next:after,
-.swiper .swiper-button-prev:after {
+.review-slider_OLD.swiper .swiper-button-next:after,
+.review-slider_OLD.swiper .swiper-button-prev:after {
   content: '';
   background-color: var(--color-tertiary);
   height: 48px;
   width: 48px;
 }
 
-.swiper .swiper-button-prev {
+.review-slider_OLD.swiper .swiper-button-prev {
   left: -10px;
 }
-.swiper .swiper-button-prev:after {
+.review-slider_OLD.swiper .swiper-button-prev:after {
   mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='48px' viewBox='0 0 24 24' width='48px' fill='%23000000'%3E%3Cpath d='M0 0h24v24H0V0z' fill='none'/%3E%3Cpath d='M14.91 6.71c-.39-.39-1.02-.39-1.41 0L8.91 11.3c-.39.39-.39 1.02 0 1.41l4.59 4.59c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L11.03 12l3.88-3.88c.38-.39.38-1.03 0-1.41z'/%3E%3C/svg%3E");
 }
 
-.swiper .swiper-button-next {
+.review-slider_OLD.swiper .swiper-button-next {
   right: -10px;
 }
-.swiper .swiper-button-next:after {
+.review-slider_OLD.swiper .swiper-button-next:after {
   mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='48px' viewBox='0 0 24 24' width='48px' fill='%23000000'%3E%3Cpath d='M0 0h24v24H0V0z' fill='none'/%3E%3Cpath d='M9.31 6.71c-.39.39-.39 1.02 0 1.41L13.19 12l-3.88 3.88c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41L10.72 6.7c-.38-.38-1.02-.38-1.41.01z'/%3E%3C/svg%3E");
 }

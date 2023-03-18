@@ -1,3 +1,5 @@
+import cx from 'classnames';
+
 import { questionnaireRoute } from '../../config/navigation.config';
 
 import { Button } from '../Button';
@@ -5,16 +7,23 @@ import { ArrowRight } from '../Icons';
 
 type CallToActionBannerProps = {
   description: string;
+  className?: string;
 };
 
 export const CallToActionBanner: React.FC<CallToActionBannerProps> = (
   props,
 ) => {
   return (
-    <div className="relative z-[1] my-12 flex flex-col items-center justify-between gap-8 rounded-lg bg-primary px-5 py-5 pb-0 md:my-20 md:flex-row md:px-14 md:py-10 lg:px-20 lg:py-14">
-      <div className="max-w-2xl text-center text-xl font-bold text-[white] md:text-left md:text-2xl lg:text-3xl xl:text-4xl">
-        {props.description}
-      </div>
+    <div
+      className={cx(
+        'relative flex flex-col items-center justify-between gap-8 rounded-lg bg-primary px-5 py-5 pb-0 md:flex-row md:px-14 md:py-10 lg:px-20 lg:py-12',
+        props.className,
+      )}
+    >
+      <div
+        className="max-w-2xl text-center text-xl font-bold text-[white] md:text-left md:text-2xl lg:text-3xl xl:text-[32px]"
+        dangerouslySetInnerHTML={{ __html: props.description }}
+      />
       <div>
         <Button
           data-testid="video-cta-button"
