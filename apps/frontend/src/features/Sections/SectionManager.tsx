@@ -13,19 +13,23 @@ import { VideoSection } from './Video';
 export const initSectionManager = (content: LandingPage) => {
   const sectionMap = buildSectionMap(content);
 
+  const isNewLandingPageStructure = !!sectionMap?.services?.benefits?.length;
+
   return {
     Hero: sectionMap?.hero ? (
       <HeroSection id="hero" content={sectionMap.hero} />
     ) : null,
-    CallToAction: sectionMap?.callToAction ? (
-      <CallToActionSection
-        id="call-to-action"
-        content={sectionMap.callToAction}
-      />
-    ) : null,
-    Images: sectionMap?.images ? (
-      <ImagesSection id="images" content={sectionMap.images} />
-    ) : null,
+    CallToAction:
+      sectionMap?.callToAction && !isNewLandingPageStructure ? (
+        <CallToActionSection
+          id="call-to-action"
+          content={sectionMap.callToAction}
+        />
+      ) : null,
+    Images:
+      sectionMap?.images && !isNewLandingPageStructure ? (
+        <ImagesSection id="images" content={sectionMap.images} />
+      ) : null,
     Questions: sectionMap?.questions ? (
       <QuestionsSection id="questions" content={sectionMap.questions} />
     ) : null,
@@ -35,9 +39,10 @@ export const initSectionManager = (content: LandingPage) => {
     Services: sectionMap?.services ? (
       <ServicesSection id="services" content={sectionMap.services} />
     ) : null,
-    Statistics: sectionMap?.statistics ? (
-      <StatisticsSection id="statistics" content={sectionMap.statistics} />
-    ) : null,
+    Statistics:
+      sectionMap?.statistics && !isNewLandingPageStructure ? (
+        <StatisticsSection id="statistics" content={sectionMap.statistics} />
+      ) : null,
     Video: sectionMap?.video ? (
       <VideoSection id="video" content={sectionMap.video} />
     ) : null,

@@ -50,7 +50,7 @@ export const VideoSection: React.FC<VideoSectionProps> = (props) => {
                 className="w-[220px] text-[0.9rem]"
                 to={`/${questionnaireRoute}`}
                 label="Beratung starten"
-                Icon={<ArrowRight />}
+                Icon={<ArrowRight className="stroke-[white]" />}
               />
             </motion.div>
           </div>

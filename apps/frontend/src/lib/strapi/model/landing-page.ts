@@ -124,6 +124,13 @@ export type CallToActionSection = Component<{
 }>;
 
 export type ServicesSection = Component<{
+  title?: TextField;
+  description?: TextField;
+  service_image?: Media;
+  benefits?: RepeatableComponent<{
+    title?: TextField;
+    description?: TextField;
+  }>;
   service_tab?: RepeatableComponent<{
     tab_name?: TextField;
     title?: TextField;

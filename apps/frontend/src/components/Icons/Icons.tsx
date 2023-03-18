@@ -324,9 +324,10 @@ export const ArrowRight = (props: ComponentProps<'svg'>): ReactElement => {
       role="img"
       fill="currentColor"
       xmlns="http://www.w3.org/2000/svg"
+      strokeWidth="1.5"
       {...props}
     >
-      <g fill="none" stroke="#fff" strokeWidth="1.5">
+      <g fill="none">
         <path d="M18.285 6.41H0" />
         <path d="m12.816.535 6 5.906-6.156 5.813" />
       </g>
@@ -359,17 +360,15 @@ export const PlayIcon = (props: ComponentProps<'svg'>): ReactElement => {
 export const CheckCircleIcon = (props: ComponentProps<'svg'>): ReactElement => {
   return (
     <svg
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 28.54 28.54"
       focusable="false"
       role="img"
       fill="currentColor"
-      xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
-      <g>
-        <path d="M9.71 11.29a1 1 0 0 0-1.42 1.42l3 3A1 1 0 0 0 12 16a1 1 0 0 0 .72-.34l7-8a1 1 0 0 0-1.5-1.32L12 13.54z"></path>
-        <path d="M21 11a1 1 0 0 0-1 1 8 8 0 0 1-8 8A8 8 0 0 1 6.33 6.36 7.93 7.93 0 0 1 12 4a8.79 8.79 0 0 1 1.9.22 1 1 0 1 0 .47-1.94A10.54 10.54 0 0 0 12 2a10 10 0 0 0-7 17.09A9.93 9.93 0 0 0 12 22a10 10 0 0 0 10-10 1 1 0 0 0-1-1z"></path>
-      </g>
+      <path d="M14.27 28.54A14.286 14.286 0 0 1 0 14.27 14.287 14.287 0 0 1 14.27 0a14.286 14.286 0 0 1 14.27 14.27 14.286 14.286 0 0 1-14.27 14.27Zm0-27.178A12.922 12.922 0 0 0 1.363 14.269 12.922 12.922 0 0 0 14.27 27.177 12.922 12.922 0 0 0 27.177 14.27 12.922 12.922 0 0 0 14.27 1.363Z" />
+      <path d="m11.502 21.312-5.921-5.921 2.13-2.13 3.791 3.79 9.574-9.574 2.13 2.13Z" />
     </svg>
   );
 };
