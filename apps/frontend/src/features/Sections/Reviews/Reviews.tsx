@@ -43,7 +43,7 @@ export const ReviewsSection: React.FC<ReviewsSectionProps> = (props) => {
   if (!props.content.rating?.length) return null;
 
   return (
-    <SectionContainer id={props.id} className="my-10 md:my-16">
+    <SectionContainer id={props.id} className="my-10 md:my-[70px]">
       <h2 className="mb-6 text-center text-xl text-primary md:text-4xl">
         Zufriedenheit unserer Kunden
       </h2>

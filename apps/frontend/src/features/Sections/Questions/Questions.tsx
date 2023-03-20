@@ -27,7 +27,7 @@ export const QuestionsSection: React.FC<QuestionsSectionProps> = (props) => {
   if (!questions?.length) return null;
 
   return (
-    <SectionContainer id={props.id} className="mt-16 mb-12 md:my-16">
+    <SectionContainer id={props.id} className="mt-16 mb-12 md:my-[70px]">
       <h2 className="mb-2 text-center text-xl text-primary md:mb-12 md:text-4xl">
         Häufig gestellte Fragen
       </h2>

@@ -38,7 +38,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = (props) => {
     return <Services_OLD {...props} />;
 
   return (
-    <SectionContainer id={props.id} className="my-8 md:my-16" fullWidth>
+    <SectionContainer id={props.id} className="my-8 md:my-[70px]" fullWidth>
       <div className="content-wrapper">
         <div className="grid grid-cols-1 md:grid-cols-2 md:gap-16">
           <div className="relative hidden md:block">{ServiceImage}</div>

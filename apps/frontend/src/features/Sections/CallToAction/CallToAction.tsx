@@ -25,7 +25,7 @@ export const CallToActionSection: React.FC<CallToActionSectionProps> = (
   return (
     <SectionContainer
       id={props.id}
-      className="my-16 overflow-x-hidden md:my-32"
+      className="my-[70px] overflow-x-hidden md:my-32"
     >
       <motion.div
         initial={{ opacity: 0 }}
