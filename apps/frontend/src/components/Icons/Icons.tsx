@@ -464,3 +464,32 @@ export const InfoCircleIcon = (props: ComponentProps<'svg'>): ReactElement => {
     </svg>
   );
 };
+
+export const PlusIcon = (props: ComponentProps<'svg'>): ReactElement => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 15 15"
+      focusable="false"
+      role="img"
+      {...props}
+    >
+      <path fill="none" d="M15 7.445H0" />
+      <path fill="none" d="M7.5 0v15" />
+    </svg>
+  );
+};
+
+export const MinusIcon = (props: ComponentProps<'svg'>): ReactElement => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 15 1"
+      focusable="false"
+      role="img"
+      {...props}
+    >
+      <path fill="none" d="M15 .5H0" />
+    </svg>
+  );
+};
