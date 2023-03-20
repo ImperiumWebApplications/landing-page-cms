@@ -1,5 +1,5 @@
 import { ComponentPropsWithoutRef, forwardRef, useRef } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, A11y, Swiper as SwiperType } from 'swiper';
 import dynamic from 'next/dynamic';
 import cx from 'classnames';
@@ -15,6 +15,10 @@ import { Reviews_OLD } from './Reviews_OLD';
 import { ReviewProps } from './components/Review';
 
 const SwiperModules = [Navigation, Pagination, A11y];
+
+const Swiper = dynamic(() => import('swiper/react').then((mod) => mod.Swiper), {
+  ssr: false,
+});
 
 const Review = dynamic<ReviewProps>(
   () => import('./components/Review').then((mod) => mod.Review),
