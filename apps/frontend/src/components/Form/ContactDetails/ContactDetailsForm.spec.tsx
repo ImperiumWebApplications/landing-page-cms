@@ -88,12 +88,11 @@ describe('ContactDetailsForm', () => {
     expect(accepted).toHaveAttribute('type', 'checkbox');
   });
 
-  test('should render disabled button if form data is incomplete', () => {
-    const { getByLabelText, getByRole } = render(<ContactDetailsWrapper />);
+  test('should show error message if form data is invalid on submit', async () => {
+    const { findByText, getByTestId } = render(<ContactDetailsWrapper />);
 
-    expect(getByRole('button')).toBeDisabled();
-    fillContactForm(getByLabelText);
-    expect(getByRole('button')).not.toBeDisabled();
+    fireEvent.click(getByTestId('contact-details-form-submit'));
+    await findByText(/Bitte füllen Sie alle Felder korrekt aus./i);
   });
 
   test('should render error message', async () => {

@@ -3,6 +3,10 @@ import { renderWithLayout } from '../../../../jest.setup';
 import { QuestionnaireProvider } from '../context/Questionnaire';
 import { Questionnaire, QuestionnaireProps } from '../Questionnaire';
 
+jest.mock('next/router', () => ({
+  useRouter: () => ({}),
+}));
+
 const defaultProps: QuestionnaireProps = {
   questions: [
     {
@@ -21,9 +25,6 @@ const defaultProps: QuestionnaireProps = {
         { id: 4, answer_value: 'Süden' },
       ],
     },
-  ],
-  advantages: [
-    { first_line: 'Erste Zeile', id: 1, second_line: 'Zweite Zeile' },
   ],
   phone: '0123456789',
   countries: undefined,

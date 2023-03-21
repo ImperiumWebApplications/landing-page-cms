@@ -11,6 +11,7 @@ import { useRouterMock } from '../../../mocks/lib/next/router';
 import { content } from '../../../mocks/lib/strapi/data';
 import { setupIntersectionObserverMock } from '../../../mocks/window/intersectionObserver';
 import { Header } from './Header';
+import { act } from 'react-dom/test-utils';
 
 jest.mock('next/router', () => ({
   __esModule: true,
@@ -23,8 +24,8 @@ describe('Header', () => {
     (useRouter as jest.Mock).mockReturnValue(useRouterMock);
   });
 
-  test('should show logo and button', () => {
-    const { getByAltText, getByLabelText, getByTestId } = renderWithLayout(
+  test('should show logo', () => {
+    const { getByAltText, getByLabelText } = renderWithLayout(
       <Header content={content.data[0].attributes} />,
     );
 
@@ -36,20 +37,15 @@ describe('Header', () => {
 
     const logoLink = getByLabelText('Homepage');
     expect(logoLink).toHaveAttribute('href', '/');
-
-    const button = getByTestId('button');
-    expect(button).toHaveAttribute('href', '/fragebogen');
-    expect(button).toHaveTextContent('Lassen Sie sich beraten');
-    expect(button).toHaveAttribute('role', 'button');
   });
 
-  test('should only show logo on funnel route', () => {
+  test('should show logo on funnel route', () => {
     (useRouter as jest.Mock).mockReturnValue({
       ...useRouterMock,
       pathname: questionnaireRoute,
     });
 
-    const { getByAltText, getByLabelText, queryByTestId } = renderWithLayout(
+    const { getByAltText, getByLabelText } = renderWithLayout(
       <Header content={content.data[0].attributes} />,
     );
 
@@ -57,48 +53,50 @@ describe('Header', () => {
     expect(logoImage).toBeInTheDocument();
     const logoLink = getByLabelText('Homepage');
     expect(logoLink).toBeInTheDocument();
-
-    const button = queryByTestId('button');
-    expect(button).not.toBeInTheDocument();
   });
 
   test('should contain mobile navigation button', () => {
     const { getByLabelText } = renderWithLayout(
       <Header content={content.data[0].attributes} />,
     );
-    expect(getByLabelText('Mobile Navigation Toggle')).toBeInTheDocument();
+    expect(getByLabelText('Toggle Navigation')).toBeInTheDocument();
   });
 
   test('should open mobile navigation on click', () => {
-    const { getByLabelText } = renderWithLayout(
+    const { getByRole, getByLabelText } = renderWithLayout(
       <Header content={content.data[0].attributes} />,
     );
 
-    const toggle = getByLabelText('Mobile Navigation Toggle');
-    const sidebar = getByLabelText('sidebar');
-    expect(sidebar).toHaveAttribute('aria-hidden', 'true');
+    const toggle = getByLabelText('Toggle Navigation');
 
-    fireEvent.click(toggle);
-    expect(sidebar).toHaveAttribute('aria-hidden', 'false');
+    act(() => {
+      fireEvent.click(toggle);
+    });
 
-    fireEvent.click(toggle);
-    expect(sidebar).toHaveAttribute('aria-hidden', 'true');
+    const menu = getByRole('menu');
+    expect(menu).toHaveAttribute('data-headlessui-state', 'open');
   });
 
-  test('should contain mobile navigation items', () => {
+  test('should contain navigation items', () => {
     (useRouter as jest.Mock).mockReturnValue({
       ...useRouterMock,
       pathname: '/datenschutz',
     });
 
-    const { getByText } = renderWithLayout(
+    const { getByText, getByLabelText } = renderWithLayout(
       <Header content={content.data[0].attributes} />,
     );
+
+    const toggle = getByLabelText('Toggle Navigation');
+
+    act(() => {
+      fireEvent.click(toggle);
+    });
 
     navigationItems.forEach((item) => {
       expect(getByText(item.label)).toHaveAttribute('href', item.href);
       if (item.href === '/datenschutz')
-        expect(getByText(item.label)).toHaveClass('text-secondary');
+        expect(getByText(item.label)).toHaveClass('text-primary');
     });
   });
 });
