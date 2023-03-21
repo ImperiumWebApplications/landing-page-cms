@@ -21,9 +21,7 @@ export const Header: React.FC<HeaderProps> = ({ content }) => {
   return (
     <header
       id="header"
-      className={
-        isFunnel ? 'md:relative md:z-10 md:shadow-sm' : 'min-[1400px]:mt-[50px]'
-      }
+      className={isFunnel ? 'md:relative md:z-10' : 'min-[1400px]:mt-[50px]'}
     >
       <motion.div
         initial={{ opacity: 0, translateY: -10 }}
@@ -32,13 +30,17 @@ export const Header: React.FC<HeaderProps> = ({ content }) => {
         className="content-wrapper relative z-[2] flex h-auto min-h-[3rem] w-full"
       >
         <div
-          className={`flex w-full items-center py-4 md:py-8 ${
-            isFunnel ? 'justify-center' : 'justify-between'
+          className={`flex w-full items-center ${
+            isFunnel ? 'justify-center py-2' : 'justify-between py-4 md:py-8'
           }`}
         >
           <Logo
             image={content.logo?.data?.attributes}
-            className="h-[60px] w-[180px] md:h-[80px] md:w-[200px]"
+            className={
+              isFunnel
+                ? 'h-[60px] w-[180px]'
+                : 'h-[60px] w-[180px] md:h-[80px] md:w-[200px]'
+            }
           />
           {!isFunnel ? <Navigation items={navigationItems} /> : null}
         </div>

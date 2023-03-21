@@ -52,7 +52,7 @@ export const Button = (props: ButtonProps) => {
     return (
       <>
         <div className="inline-block">
-          <span className="block font-normal">{props.label}</span>
+          <span className="inline-block">{props.label}</span>
         </div>
         {props.Icon ? (
           <span className="ml-4">
@@ -89,7 +89,7 @@ export const Button = (props: ButtonProps) => {
       >
         <span className="spinner" style={{ opacity: props.loading ? 1 : 0 }} />
         <span
-          className="inline-flex items-center font-normal"
+          className="inline-flex items-center"
           style={{ opacity: props.loading ? 0 : 1 }}
         >
           {ButtonLabel}
@@ -110,28 +110,28 @@ export const getButtonVariantClasses = (
   switch (variant) {
     case 'primary':
       return disabled
-        ? 'text-[gray] bg-tertiary opacity-75 cursor-default'
+        ? 'text-[gray] bg-[black]/5 cursor-default'
         : 'text-[white] bg-primary hover:brightness-[105%] transition:all shining-button shadow-sm';
     case 'secondary':
       return disabled
-        ? 'text-[gray] bg-tertiary opacity-75 cursor-default'
+        ? 'text-[gray] bg-[black]/5 cursor-default'
         : 'text-[white] bg-secondary hover:brightness-[105%] transition:all shining-button shadow-sm';
     case 'tertiary':
       return disabled
-        ? 'text-gray bg-tertiary opacity-75 cursor-default'
-        : 'text-gray bg-tertiary hover:brightness-[102%] transition:all shining-button shadow-sm';
+        ? 'text-gray bg-[black]/5 cursor-default'
+        : 'text-gray bg-[black]/10 hover:brightness-[102%] transition:all shining-button shadow-sm';
   }
 };
 
 export const getButtonSizeClasses = (variant: ButtonSize) => {
   switch (variant) {
     case 'small':
-      return 'inline-block py-3 px-4';
+      return 'inline-block pt-3 pb-2 px-4';
     case 'medium':
-      return 'inline-block py-4 px-8';
+      return 'inline-block pt-4 pb-3 px-8';
     case 'large':
-      return 'inline-block py-6 px-8';
+      return 'inline-block pt-6 pb-5 px-8';
     case 'fullWidth':
-      return 'inline-block w-full py-6 px-10';
+      return 'inline-block w-full pt-6 pb-5 px-10';
   }
 };

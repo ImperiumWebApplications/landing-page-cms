@@ -20,6 +20,9 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::questionnaire.questionnaire"
+    },
+    "headline": {
+      "type": "string"
     }
   }
 }

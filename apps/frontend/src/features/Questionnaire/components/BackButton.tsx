@@ -1,22 +1,30 @@
+import cx from 'classnames';
+
 import { useQuestionnaireContext } from '../context/Questionnaire';
 import { ChevronLeftIcon } from '../../../components/Icons';
 
-export const BackButton: React.FC<{ hide?: boolean }> = ({ hide }) => {
+export const BackButton: React.FC<{ className?: string }> = ({ className }) => {
   const { state, dispatch } = useQuestionnaireContext();
-  if (hide) return <></>;
 
   const onClickHandler: React.MouseEventHandler = () => {
-    dispatch({ type: 'setIndex', payload: { index: state.index - 1 } });
+    if (state.index !== 0) {
+      dispatch({ type: 'setIndex', payload: { index: state.index - 1 } });
+    } else {
+      window.location.href = '/';
+    }
   };
 
   return (
     <div
-      className="absolute top-[1rem] left-[1rem] flex h-[2.5rem] w-[2.5rem] cursor-pointer items-center justify-center rounded-full bg-tertiary hover:brightness-105"
+      className={cx(
+        'flex h-7 w-7 cursor-pointer items-center justify-center rounded-full bg-[black]/10 hover:brightness-105',
+        className,
+      )}
       data-testid="questionnaire-back-button"
       aria-label="Einen Schritt zurück"
       onClick={onClickHandler}
     >
-      <ChevronLeftIcon className="-ml-[0.1rem] h-8 w-8" />
+      <ChevronLeftIcon className="-ml-[0.1rem] h-4 stroke-gray" />
     </div>
   );
 };

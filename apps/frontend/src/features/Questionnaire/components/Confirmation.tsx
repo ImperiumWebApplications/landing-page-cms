@@ -2,38 +2,47 @@ import React from 'react';
 
 import { StepTitle } from './StepTitle';
 import { CheckCircleIcon } from '../../../components/Icons';
+import { Button } from '../../../components/Button';
 
 export const Confirmation: React.FC<{ phone?: string | null }> = ({
   phone,
 }) => {
   return (
-    <div className="mx-auto w-full max-w-2xl">
+    <div className="mx-auto w-full max-w-xl">
       <div className="mx-auto -mt-4 mb-8 h-20 w-20">
         <CheckCircleIcon className="h-20 w-20 fill-primary opacity-50" />
       </div>
-      <div>
+      <div className="mb-12 text-center">
         <StepTitle>Ihre Anfrage wurde erfolgreich übermittelt.</StepTitle>
-        <p>
+        <p className="-mt-4">
           Zeitnah erhalten Sie von uns einen Anruf, damit wir Ihre Angaben
           gemeinsam validieren können. Kurz darauf werden Sie mindestens ein
           Angebot, von einem unserer Premium Partner erhalten. So ist eine
           professionelle Unterstützung, für Sie persönlich garantiert.
         </p>
         {phone && (
-          <>
-            <h2 className="mx-0 mt-6 mb-2 text-xl">
-              Verifizierungsvorgang beschleunigen:
+          <div className="my-8 mx-auto max-w-md border-t border-b border-dashed border-[black]/10 py-6">
+            <h2 className="mx-0 mb-4 text-xl">
+              Verifizierungsvorgang beschleunigen
             </h2>
-            <p className="mb-6 text-lg">
+            <p className="text-sm">
               Kostenfrei anrufen:{' '}
-              <span className="block font-semibold">{phone}</span>
+              <a href={`tel:${phone}`} className="block text-xl tracking-wider">
+                {phone}
+              </a>
             </p>
-          </>
+          </div>
         )}
-        <p>
+        <p className="mx-auto max-w-md">
           Es werden Ihnen dabei keine anderen Kosten entstehen, als die durch
           die Nutzung Ihres Internetzugangs.
         </p>
+        <Button
+          to="/"
+          variant="tertiary"
+          className="mt-12 font-normal"
+          label="Zurück zur Startseite"
+        />
       </div>
     </div>
   );

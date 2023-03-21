@@ -1,10 +1,12 @@
 import type { MouseEvent } from 'react';
 
+import cx from 'classnames';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
 
 import type { Media } from '../../../lib/strapi';
 import { isSvg } from '../../../utils/isSvg';
+import { CheckCircleIcon } from '../../../components/Icons';
 
 const ReactSVG = dynamic(
   // @ts-ignore
@@ -30,18 +32,25 @@ export const SelectableOption: React.FC<SelectableOptionProps> = ({
   return (
     <div
       role="button"
-      className={`icon group relative grid h-auto w-[calc(50%-0.5rem)] cursor-pointer grid-cols-1 grid-rows-[4rem_1fr] place-content-center rounded-lg border-[1px] p-4 shadow-md transition-all hover:bg-secondary md:w-40 md:grid-rows-[86px_1fr] lg:w-48 lg:p-6 ${
-        selected
-          ? 'border-secondary bg-secondary'
-          : 'border-tertiary bg-[#FAFAFA]'
+      className={`icon group relative grid h-auto w-[calc(50%-5px)] max-w-xs cursor-pointer grid-cols-1 grid-rows-[78px_1fr] place-content-center rounded-lg border-[1px] p-4 transition-all hover:border-primary hover:shadow-sm hover:ring-2 hover:ring-primary hover:ring-offset-2 md:grid-rows-[96px_1fr] lg:w-[180px] lg:p-6 ${
+        selected ? 'border-primary' : 'border-secondary'
       }`}
       onClick={onSelectHandler}
       data-selected={selected ? 'true' : 'false'}
     >
+      <div
+        aria-hidden="true"
+        className={cx(
+          'absolute top-2 right-2 transition-all group-hover:block',
+          selected ? 'block' : 'hidden',
+        )}
+      >
+        <CheckCircleIcon className="h-6 w-6" />
+      </div>
       <div className="icon mx-auto">
         {icon?.data?.attributes && !isSvgIcon && (
           <Image
-            className={`h-16 w-16 md:h-[86px] md:w-[86px]`}
+            className={`h-[78px] w-[78px] md:h-[96px] md:w-[96px]`}
             src={icon.data.attributes.url}
             alt={icon.data.attributes.alternativeText ?? ''}
             fill
@@ -50,7 +59,7 @@ export const SelectableOption: React.FC<SelectableOptionProps> = ({
         {icon?.data?.attributes && isSvgIcon && (
           <ReactSVG
             wrapper="svg"
-            className={`h-16 w-16 md:h-[86px] md:w-[86px]`}
+            className={`h-[78px] w-[78px] md:h-[96px] md:w-[96px]`}
             beforeInjection={(svg) => {
               svg.removeAttribute('height');
               svg.removeAttribute('width');
@@ -65,8 +74,8 @@ export const SelectableOption: React.FC<SelectableOptionProps> = ({
         {!icon?.data ? <IconPlaceholder /> : null}
       </div>
       <div
-        className={`mt-2 flex items-center justify-center pt-2 text-center font-semibold leading-tight group-hover:text-[white] xl:text-lg xl:leading-tight ${
-          selected ? 'text-[white]' : 'text-primary'
+        className={`mt-2 flex items-center justify-center pt-2 text-center text-sm font-bold leading-tight group-hover:text-primary md:text-base ${
+          selected ? 'text-primary' : 'text-gray'
         }`}
       >
         {label}
@@ -77,6 +86,6 @@ export const SelectableOption: React.FC<SelectableOptionProps> = ({
 
 const IconPlaceholder = () => {
   return (
-    <div className="h-10 w-10 flex-shrink-0 rounded-full bg-secondary opacity-10 md:h-12 md:w-12 lg:h-16 lg:w-16" />
+    <div className="h-[68px] w-[68px] flex-shrink-0 rounded-full bg-secondary opacity-10" />
   );
 };

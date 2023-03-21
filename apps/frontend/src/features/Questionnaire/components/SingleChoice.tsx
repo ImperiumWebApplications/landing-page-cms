@@ -47,7 +47,7 @@ export const SingleChoice: React.FC<SingleChoiceProps> = ({
   const currentAnswer = state.questionnaire[state.index]?.answer.value;
 
   return (
-    <div className="flex flex-wrap items-stretch justify-center gap-4 md:gap-8">
+    <div className="flex flex-wrap items-stretch justify-center gap-[10px] md:gap-4">
       {answers.map(({ id: answer_id, answer_icon, answer_value }) => {
         return !!answer_value ? (
           <SelectableOption

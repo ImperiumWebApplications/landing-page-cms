@@ -10,7 +10,7 @@ import { NextAPI } from '../../../lib/next/api/client';
 
 import { Button } from '../../../components/Button';
 import { ContactFieldConfig, Field } from '../../../components/Form';
-import { ChevronRightIcon, InfoCircleIcon } from '../../../components/Icons';
+import { InfoCircleIcon } from '../../../components/Icons';
 import { StepTitle } from './StepTitle';
 
 /**
@@ -119,12 +119,9 @@ export const PostalCode: React.FC<{
   ]);
 
   return (
-    <div className="mx-auto px-0 md:px-8 lg:max-w-3xl lg:px-0">
-      <StepTitle>
-        Wunderbar!
-        <br /> Nennen Sie uns jetzt bitte Ihre Postleitzahl:
-      </StepTitle>
-      <div className="mx-auto flex max-w-sm flex-col items-start justify-center lg:max-w-none lg:flex-row lg:items-center lg:gap-x-8">
+    <div className="mx-auto px-0 md:px-8 lg:max-w-xl lg:px-0">
+      <StepTitle>Nennen Sie uns jetzt bitte Ihre Postleitzahl:</StepTitle>
+      <div className="mx-auto flex max-w-sm flex-col items-start justify-center lg:max-w-none lg:flex-row lg:items-center lg:gap-x-4">
         {isSingleCountryContext ? (
           <>
             <Field
@@ -147,6 +144,7 @@ export const PostalCode: React.FC<{
             label={ContactFieldConfig.PostalCode.label}
             value={state.contact.postalCode}
             onChange={updatePostalCode}
+            className="w-[300px]"
             inputProps={{
               pattern: '[0-9]*',
             }}
@@ -155,7 +153,7 @@ export const PostalCode: React.FC<{
         {isSingleCountryContext || isMultiCountryContext ? (
           <Field
             type="select"
-            className="mt-6 w-full flex-grow lg:mt-0 lg:max-w-sm"
+            className="mt-6 w-full flex-grow lg:mt-0 lg:max-w-xs"
             id={ContactFieldConfig.City.name}
             value={state.contact.city}
             label={ContactFieldConfig.City.label}
@@ -168,35 +166,36 @@ export const PostalCode: React.FC<{
           />
         ) : undefined}
       </div>
-      <div className="mx-auto w-full max-w-sm">
+      <div className="mx-auto w-full max-w-md">
         {error && (
           <span className="mt-4 block text-center text-sm text-[red] opacity-75">
             {error}
           </span>
         )}
-        <div className="mx-0 mt-4 mb-8 flex text-sm sm:mb-8">
-          <InfoCircleIcon className="h-4 w-4 fill-secondary font-bold" />
-          <span className="ml-2 inline-block">
+        <div className="mx-0 mt-4 mb-8 flex items-center text-sm sm:mb-8">
+          <InfoCircleIcon className="hidden h-4 w-4 fill-gray font-bold md:block" />
+          <span className="inline-block md:ml-2">
             Für die Suche nach dem idealen Anbieter in Ihrer Region
           </span>
         </div>
-        <Button
-          variant="primary"
-          size="fullWidth"
-          label="Weiter"
-          data-testid="postal-code-confirmation-button"
-          className="font-semibold uppercase tracking-wider"
-          Icon={<ChevronRightIcon width={24} height={24} />}
-          disabled={
-            (!!countries && !isCodeCompleted) ||
-            (!!!countries && code.trim().length < 4) ||
-            isLoading ||
-            !!error
-          }
-          onClick={() => {
-            dispatch({ type: 'setIndex', payload: { index: state.index + 1 } });
-          }}
-        />
+        <div className="text-center">
+          <Button
+            label="Weiter"
+            data-testid="postal-code-confirmation-button"
+            disabled={
+              (!!countries && !isCodeCompleted) ||
+              (!!!countries && code.trim().length < 4) ||
+              isLoading ||
+              !!error
+            }
+            onClick={() => {
+              dispatch({
+                type: 'setIndex',
+                payload: { index: state.index + 1 },
+              });
+            }}
+          />
+        </div>
       </div>
     </div>
   );

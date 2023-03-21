@@ -26,9 +26,9 @@ const QuestionnairePage: NextPage<{
     <Layout content={content}>
       <QuestionnaireProvider>
         <Questionnaire
+          headline={content.questionnaire?.headline}
           questions={questionnaire.questions}
           countries={country ? [country] : undefined}
-          advantages={content.questionnaire?.advantage}
           phone={content.contact_phone}
         />
       </QuestionnaireProvider>

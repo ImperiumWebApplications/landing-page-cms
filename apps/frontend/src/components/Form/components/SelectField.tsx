@@ -36,7 +36,7 @@ export const SelectField = (props: SelectFieldProps) => {
         id={props.id}
         value={props.value ?? ''}
         onChange={props.onChange}
-        disabled={!props.options.length}
+        disabled={props.buttonProps?.disabled || !props.options.length}
       >
         <ListboxButton {...props.buttonProps} value={props.value ?? ''} />
         <Transition
@@ -69,13 +69,12 @@ const ListboxButton = ({
   return (
     <Listbox.Button
       {...props}
-      disabled={disabled || loading}
       data-testid={SELECT_FIELD_BUTTON_TEST_ID}
       className={cx(
-        `h-14 w-full rounded-md border-2 border-tertiary bg-[white] py-[17px] pr-12 pl-4 text-left align-middle tracking-wide ${
+        `h-[52px] w-full rounded-md border-2 border-[black]/10 bg-[white] py-2 pr-12 pl-4 text-left align-middle ${
           disabled || loading
             ? `cursor-not-allowed brightness-95 ${loading ? 'shimmer' : ''}`
-            : 'cursor-pointer transition-all hover:border-secondary'
+            : 'cursor-pointer transition-all hover:border-primary'
         }`,
         className,
       )}
@@ -105,31 +104,32 @@ const ListboxOptions = forwardRef<HTMLUListElement, ListboxOptionsProps>(
     return (
       <Listbox.Options
         ref={ref}
-        className="absolute top-[3.5rem] left-0 z-50 ml-0 mt-1 max-h-60 w-full overflow-auto rounded-md bg-[white] py-1 text-gray shadow-lg ring-1 ring-[black] ring-opacity-5 focus:outline-none"
+        className="absolute top-[3.25rem] left-0 z-50 ml-0 mt-1 max-h-60 w-full overflow-auto rounded-md bg-[white] py-1 text-gray shadow-lg ring-1 ring-[black] ring-opacity-5 focus:outline-none"
       >
-        {props.options.map((option) => (
+        {props.options.map((option, i) => (
           <Listbox.Option
-            key={option}
+            key={option + i}
             value={option}
             className={({ active }) =>
               `relative w-full cursor-default select-none py-2 pr-10 pl-8 before:content-none ${
-                active ? 'bg-tertiary' : ''
+                active ? 'cursor-pointer bg-tertiary' : ''
               }`
             }
           >
             {({ selected }) => (
               <>
                 <span
-                  className={`block leading-normal ${
-                    selected ? 'font-medium' : 'font-normal'
-                  }`}
+                  className={cx(
+                    'block leading-normal',
+                    selected ? 'text-primary' : '',
+                  )}
                 >
                   {option}
                 </span>
                 {selected ? (
-                  <span className="absolute inset-y-0 right-0 flex items-center pr-4 text-secondary">
+                  <span className="absolute inset-y-0 right-0 flex items-center pr-4 text-primary">
                     <CheckIcon
-                      className="h-5 w-5 fill-secondary"
+                      className="h-5 w-5 fill-primary"
                       aria-hidden="true"
                     />
                   </span>

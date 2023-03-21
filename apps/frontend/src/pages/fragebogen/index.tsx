@@ -2,18 +2,18 @@ import React from 'react';
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
 
-import { Layout } from '../components/Layout/Layout';
-import { questionnaireRoute } from '../config/navigation.config';
-import { slugifyRoute } from '../utils/slugifyRoute';
-import { getCountryByDomain } from '../utils/getCountryByDomain';
-import { LandingPage } from '../lib/strapi';
-import { queryLandingPageContent } from '../lib/next/app';
+import { Layout } from '../../components/Layout/Layout';
+import { questionnaireRoute } from '../../config/navigation.config';
+import { slugifyRoute } from '../../utils/slugifyRoute';
+import { getCountryByDomain } from '../../utils/getCountryByDomain';
+import { LandingPage } from '../../lib/strapi';
+import { queryLandingPageContent } from '../../lib/next/app';
 import {
   Questionnaire,
   QuestionnairePlaceholderPage,
   QuestionnaireProvider,
-} from '../features/Questionnaire';
-import { SingleChoiceEventHandler } from '../features/Questionnaire/components/SingleChoice';
+} from '../../features/Questionnaire';
+import { SingleChoiceEventHandler } from '../../features/Questionnaire/components/SingleChoice';
 
 const EntryQuestionnairePage: NextPage<{ content: LandingPage }> = ({
   content,
@@ -25,7 +25,7 @@ const EntryQuestionnairePage: NextPage<{ content: LandingPage }> = ({
 
   const entryQuestion = {
     id: -1,
-    question: questionnaire.entry_question ?? 'Was suchen Sie?',
+    question: 'Was suchen Sie?',
     answers: mapConnectedQuestionnairesToAnswersSchema(
       questionnaire.questionnaires,
     ),
@@ -44,9 +44,9 @@ const EntryQuestionnairePage: NextPage<{ content: LandingPage }> = ({
     <Layout content={content}>
       <QuestionnaireProvider>
         <Questionnaire
+          headline={questionnaire.headline}
           questions={[entryQuestion]}
           countries={country ? [country] : undefined}
-          advantages={questionnaire.advantage}
           customSelectHandler={selectHandler}
         />
       </QuestionnaireProvider>

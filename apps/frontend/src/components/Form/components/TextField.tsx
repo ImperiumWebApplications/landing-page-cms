@@ -34,8 +34,8 @@ export const TextField = (props: TextFieldProps) => {
       <input
         {...props.inputProps}
         type={props.type}
-        className={`w-full rounded-lg border-2 border-solid p-4 text-base tracking-wide outline-tertiary transition-all hover:ring-2 hover:ring-secondary focus:ring-2 focus:ring-secondary focus:ring-offset-2 ${
-          error ? 'border-[indianred]' : 'border-tertiary'
+        className={`w-full rounded-lg border-2 border-solid px-4 py-3 text-base tracking-wide outline-[black]/10 transition-all hover:ring-2 hover:ring-primary focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
+          error ? 'border-[indianred]' : 'border-[black]/10'
         }`}
         name={props.id}
         aria-label={props.label}
@@ -44,7 +44,7 @@ export const TextField = (props: TextFieldProps) => {
         onBlur={onBlurHandler}
         onFocus={onFocusHandler}
       />
-      <span className="absolute bottom-0 left-0 block px-4 text-sm text-[indianred]">
+      <span className="absolute -bottom-5 left-0 block text-xs text-[indianred]">
         {error}
       </span>
     </div>

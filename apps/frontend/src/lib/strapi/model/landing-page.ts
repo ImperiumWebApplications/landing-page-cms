@@ -54,6 +54,7 @@ export type LandingPage = {
 
   questionnaire?: Component<{
     entry_question?: TextField;
+    headline?: TextField;
     questionnaires?: Relations<Questionnaire>;
     advantage?: RepeatableComponent<{
       first_line?: TextField;

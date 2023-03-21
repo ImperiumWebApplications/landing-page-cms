@@ -1,40 +1,40 @@
 import React from 'react';
 
+import { useRouter } from 'next/router';
+
 import type { Country } from '../../config/countries.config';
 import type { SingleChoiceEventHandler } from './components/SingleChoice';
-import type {
-  LandingPage,
-  Questionnaire as QuestionnaireType,
-} from '../../lib/strapi';
+import type { Questionnaire as QuestionnaireType } from '../../lib/strapi';
 
-import { Advantages } from './components/Advantages';
 import { Question } from './components/Question';
 import { PostalCode } from './components/PostalCode';
 import { Confirmation } from './components/Confirmation';
 import { BackButton } from './components/BackButton';
-import { useQuestionnaireContext } from './context/Questionnaire';
-import { FormWrapper } from '../../components/Layout';
 import { ContactDetails } from './components/ContactDetails';
+import { ProgressBar } from './components/ProgressBar';
+import { useQuestionnaireContext } from './context/Questionnaire';
+import { questionnaireRoute } from '../../config/navigation.config';
 
 export type QuestionnaireHistoryState = {
   step?: number;
 };
 
 export type QuestionnaireProps = {
+  headline?: string | null;
   questions: NonNullable<QuestionnaireType['questions']>;
   countries?: Country[];
-  advantages?: NonNullable<LandingPage['questionnaire']>['advantage'];
   phone?: string | null;
   customSelectHandler?: SingleChoiceEventHandler;
 };
 
 export const Questionnaire: React.FC<QuestionnaireProps> = ({
+  headline,
   countries,
-  advantages,
   questions,
   phone,
-  customSelectHandler,
+  customSelectHandler: selectHandler,
 }) => {
+  const router = useRouter();
   const { state } = useQuestionnaireContext();
 
   const zeroBasedQuestionsCount = questions.length - 1;
@@ -44,38 +44,40 @@ export const Questionnaire: React.FC<QuestionnaireProps> = ({
   const isFormSuccessStep = state.index === zeroBasedQuestionsCount + 3;
 
   const question = questions[state.index];
-  const progress = state.index / (zeroBasedQuestionsCount + 3);
+
+  const isEntryQuestion = router.pathname === `/${questionnaireRoute}`;
+  const base = !isEntryQuestion ? 1 : 0;
+  const progress = (state.index + base) / (zeroBasedQuestionsCount + 3 + base);
 
   return (
     <div
       id="questionnaire"
-      className="h-full border-b-4 border-solid border-[white] bg-[#FAFAFA] p-4 md:p-12"
+      className="mx-auto h-full max-w-[1400px] bg-tertiary md:rounded-t-[10px]"
     >
-      <FormWrapper className="relative grid h-auto max-w-6xl grid-cols-1 grid-rows-[auto_1fr] rounded-[20px] bg-[white] p-0 shadow-lg">
-        <div className="h-2 w-full overflow-hidden rounded-tl-[20px] rounded-tr-[20px] bg-[rgb(225,228,232)]">
-          <span
-            data-testid="questionnaire-progress-bar"
-            className="block h-full bg-secondary transition-[1s_ease_100ms]"
-            style={{ width: `${progress * 100}%` }}
-          />
-        </div>
-        <div className="relative pt-8 text-center text-base uppercase tracking-wide after:absolute after:-bottom-4 after:left-[calc(50%-0.75rem)] after:h-[0.125rem] after:w-6 after:bg-secondary after:content-[''] md:pt-16">
-          <BackButton hide={state.index === 0 || isFormSuccessStep} />
-          <span className="text-sm">100% Kostenlos</span>
-        </div>
-        <div className="px-4 pt-12 pb-16 md:px-8 md:pt-16 md:pb-32">
-          {isQuestionStep ? (
-            <Question
-              data={question}
-              customSelectHandler={customSelectHandler}
-            />
-          ) : null}
+      <header className="content-wrapper py-4 text-center md:pt-14 md:pb-12">
+        <h1 className="text-lg text-gray md:text-3xl">{headline}</h1>
+        <span className="mt-2 block text-sm md:mt-4">100% Kostenlos</span>
+      </header>
+      <main className="max-w relative mx-auto grid h-auto min-h-[420px] max-w-[964px] grid-cols-1 grid-rows-[auto_1fr] bg-[white] py-5 md:mb-12 md:rounded-[10px] md:pt-12 md:pb-10 md:shadow-sm">
+        <BackButton
+          className={
+            isFormSuccessStep
+              ? 'hidden'
+              : 'fixed left-4 top-[25px] z-10 md:absolute md:left-8 md:top-8'
+          }
+        />
+        <div className="px-4">
+          {isQuestionStep && (
+            <Question data={question} customSelectHandler={selectHandler} />
+          )}
           {isPostalCodeStep && <PostalCode countries={countries} />}
           {isContactFormStep && <ContactDetails />}
           {isFormSuccessStep && <Confirmation phone={phone} />}
         </div>
-        <Advantages content={advantages} />
-      </FormWrapper>
+        {!isEntryQuestion && !isContactFormStep && !isFormSuccessStep && (
+          <ProgressBar progress={progress * 100} />
+        )}
+      </main>
     </div>
   );
 };

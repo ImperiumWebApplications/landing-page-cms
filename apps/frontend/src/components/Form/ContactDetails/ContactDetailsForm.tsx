@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import cx from 'classnames';
 import * as Sentry from '@sentry/nextjs';
 
@@ -32,11 +32,19 @@ export const ContactDetailsForm: React.FC<ContactDetailsFormProps> = ({
 }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmissionFailed, setIsSubmissionFailed] = useState(false);
+  const [isInvalidInput, setIsInvalidInput] = useState(false);
 
   const handleSubmit = useCallback(async () => {
+    if (!isValidContactDetailsData(values)) {
+      setIsInvalidInput(true);
+      return;
+    }
+
+    setIsInvalidInput(false);
+    setIsSubmissionFailed(false);
     setIsSubmitting(true);
+
     try {
-      setIsSubmissionFailed(false);
       await onSubmit?.(() => {
         setIsSubmitting(false);
       });
@@ -45,7 +53,11 @@ export const ContactDetailsForm: React.FC<ContactDetailsFormProps> = ({
       setIsSubmitting(false);
       Sentry.captureException(err);
     }
-  }, [onSubmit]);
+  }, [onSubmit, values]);
+
+  useEffect(() => {
+    setIsInvalidInput(false);
+  }, [values]);
 
   return (
     <form
@@ -54,7 +66,7 @@ export const ContactDetailsForm: React.FC<ContactDetailsFormProps> = ({
         e.preventDefault();
       }}
     >
-      <div className="grid grid-flow-row grid-cols-1 gap-8 md:grid-flow-row md:grid-cols-2">
+      <div className="grid grid-flow-row grid-cols-1 gap-6 md:grid-flow-row md:grid-cols-2">
         <Field
           type="radio"
           className="md:col-span-2"
@@ -107,7 +119,7 @@ export const ContactDetailsForm: React.FC<ContactDetailsFormProps> = ({
         />
         <Field
           type="checkbox"
-          className="md:col-span-2 md:max-w-full"
+          className="md:col-span-2 md:!max-w-full"
           id={ContactFieldConfig.TermsAccepted.name}
           value={values?.acceptedTerms}
           label={ContactFieldConfig.TermsAccepted.label}
@@ -116,26 +128,38 @@ export const ContactDetailsForm: React.FC<ContactDetailsFormProps> = ({
           }}
         />
       </div>
-      <div className="relative my-4 flex w-full justify-center md:my-12">
-        {isSubmissionFailed ? (
-          <span className="absolute top-0 left-0 block w-full px-4 text-center text-sm font-semibold tracking-tight text-[red] opacity-60">
-            Fehler beim Absenden. Bitte versuchen Sie es erneut.
+      <div className="relative my-4 flex w-full justify-center md:my-6">
+        {isSubmissionFailed || isInvalidInput ? (
+          <span className="absolute -top-2 left-0 block w-full px-4 text-center text-sm tracking-tight text-[indianred]">
+            {getErrorMessage({ isSubmissionFailed, isInvalidInput })}
           </span>
         ) : undefined}
         <Button
           variant="primary"
-          size="large"
           label="Jetzt Anfrage abschicken"
           data-testid="contact-details-form-submit"
-          className="my-8 px-6 text-base sm:px-10 sm:text-lg md:px-20"
+          className="my-4 px-6 text-base sm:px-10 md:px-20"
           loading={isSubmitting}
-          disabled={isSubmitting || !isValidContactDetailsData(values)}
+          disabled={isSubmitting}
           onClick={handleSubmit}
         />
-        <span className="absolute bottom-0 left-0 w-full text-center text-xs sm:text-[0.8rem]">
+        <span className="absolute -bottom-3 left-0 w-full text-center text-xs sm:text-[0.8rem]">
           Ihre Anfrage ist kostenlos und unverbindlich.
         </span>
       </div>
     </form>
   );
+};
+
+const getErrorMessage = ({
+  isSubmissionFailed,
+  isInvalidInput,
+}: Record<string, boolean>) => {
+  if (isInvalidInput) {
+    return 'Bitte füllen Sie alle Felder korrekt aus.';
+  }
+  if (isSubmissionFailed) {
+    return 'Leider ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.';
+  }
+  return '';
 };

@@ -36,7 +36,7 @@ export const CodeField = (props: CodeFieldProps) => {
       <Label htmlFor={props.id}>{props.label}</Label>
       <CodeInputField
         inputClassName={cx(
-          'appearance-none inline-block w-12 h-14 text-2xl text-center uppercase focus:-outline-offset-1 focus:outline-1 focus:outline-secondary border-y-2 border-l-[1px] border-tertiary first-of-type:border-l-2 first-of-type:rounded-tl-md first-of-type:rounded-bl-md last-of-type:rounded-tr-md last-of-type:rounded-br-md last-of-type:border-r-2',
+          'appearance-none inline-block w-10 h-[52px] text-xl text-center uppercase focus:-outline-offset-1 focus:outline-1 focus:outline-primary border-y-2 border-l-[1px] border-[black]/10 first-of-type:border-l-2 first-of-type:rounded-tl-md first-of-type:rounded-bl-md last-of-type:rounded-tr-md last-of-type:rounded-br-md last-of-type:border-r-2',
           props.inputProps?.className,
         )}
         ariaLabel={props.label}
