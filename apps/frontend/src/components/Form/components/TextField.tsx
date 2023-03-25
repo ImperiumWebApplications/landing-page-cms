@@ -34,7 +34,7 @@ export const TextField = (props: TextFieldProps) => {
       <input
         {...props.inputProps}
         type={props.type}
-        className={`w-full rounded-lg border-2 border-solid px-4 py-3 text-base tracking-wide outline-[black]/10 transition-all hover:ring-2 hover:ring-primary focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
+        className={`w-full rounded-lg border-2 border-solid px-4 py-3 text-base tracking-wide text-[black] outline-[black]/10 transition-all hover:ring-2 hover:ring-primary focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
           error ? 'border-[indianred]' : 'border-[black]/10'
         }`}
         name={props.id}

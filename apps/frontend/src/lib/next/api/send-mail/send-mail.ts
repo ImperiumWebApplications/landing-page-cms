@@ -47,16 +47,26 @@ export const sendMail = async (data: SendMailProps) => {
     },
   });
 
+  // To prospect
   await transporter.sendMail({
     subject: EmailSubject[template],
     from: `"${landingPage.brand_name}" <${process.env.MAIL_USER}>`,
     replyTo: landingPage.contact_email ?? undefined,
     to: recipient.email,
-    bcc: isCraftsman24(domain)
-      ? 'leads@craftsman24.ch'
-      : landingPage.contact_email ?? undefined,
     html,
   });
+
+  // To landing page contact
+  if (landingPage.contact_email) {
+    await transporter.sendMail({
+      subject: EmailSubject[template],
+      from: `"${landingPage.brand_name}" <${process.env.MAIL_USER}>`,
+      to: isCraftsman24(domain)
+        ? 'leads@craftsman24.ch'
+        : landingPage.contact_email,
+      html,
+    });
+  }
 };
 
 const isCraftsman24 = (host: string) => host.includes('craftsman24');
