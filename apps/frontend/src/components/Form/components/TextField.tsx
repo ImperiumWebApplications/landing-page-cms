@@ -38,7 +38,6 @@ export const TextField = (props: TextFieldProps) => {
           error ? 'border-[indianred]' : 'border-[black]/10'
         }`}
         name={props.id}
-        autoComplete={props.id}
         aria-label={props.label}
         value={props.value ?? ''}
         onChange={props.onChange}
