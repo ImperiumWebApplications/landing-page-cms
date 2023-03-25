@@ -75,7 +75,7 @@ export const Questionnaire: React.FC<QuestionnaireProps> = ({
           {isFormSuccessStep && <Confirmation phone={phone} />}
         </div>
         {!isEntryQuestion && !isContactFormStep && !isFormSuccessStep && (
-          <ProgressBar progress={progress * 100} />
+          <ProgressBar progress={Math.floor(progress * 100)} />
         )}
       </main>
     </div>
