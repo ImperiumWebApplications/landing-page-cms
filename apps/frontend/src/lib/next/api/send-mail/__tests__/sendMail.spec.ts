@@ -59,26 +59,42 @@ describe('lib/api/send-mail', () => {
 
   it('should call sendMail with correct params', async () => {
     await sendMail({ ...defaultData });
-    expect(sendMailMock).toBeCalledWith(
+
+    expect(sendMailMock.mock.calls[0][0]).toEqual(
       expect.objectContaining({
-        bcc: 'konstantin.muenster@mail.com',
         from: '"Craftsman24" <testuseremail>',
         replyTo: 'konstantin.muenster@mail.com',
         subject: 'Vielen Dank für Ihre Anfrage!',
         to: 'test@test.com',
       }),
     );
+
+    expect(sendMailMock.mock.calls[1][0]).toEqual(
+      expect.objectContaining({
+        from: '"Craftsman24" <testuseremail>',
+        subject: 'Vielen Dank für Ihre Anfrage!',
+        to: 'konstantin.muenster@mail.com',
+      }),
+    );
   });
 
   it('should call sendMail with correct params for craftsman24', async () => {
     await sendMail({ ...defaultData, domain: 'craftsman24.ch' });
-    expect(sendMailMock).toBeCalledWith(
+
+    expect(sendMailMock.mock.calls[0][0]).toEqual(
       expect.objectContaining({
-        bcc: 'leads@craftsman24.ch',
         from: '"Craftsman24" <testuseremail>',
         replyTo: 'konstantin.muenster@mail.com',
         subject: 'Vielen Dank für Ihre Anfrage!',
         to: 'test@test.com',
+      }),
+    );
+
+    expect(sendMailMock.mock.calls[1][0]).toEqual(
+      expect.objectContaining({
+        from: '"Craftsman24" <testuseremail>',
+        subject: 'Vielen Dank für Ihre Anfrage!',
+        to: 'leads@craftsman24.ch',
       }),
     );
   });
