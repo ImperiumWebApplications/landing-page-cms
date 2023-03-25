@@ -29,6 +29,7 @@ export const PostalCode: React.FC<{
 
   // Create local state to store information about list of matched cities
   const [error, setError] = useState<string | undefined>(undefined);
+  const [failedCode, setFailedCode] = useState<string | undefined>(undefined);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [cities, setCities] = useState<PostalCodeDetails[]>([]);
 
@@ -42,8 +43,9 @@ export const PostalCode: React.FC<{
 
   const isTypingCode = !isCodeCompleted && !cities.length;
   const isRemovingCode = !isCodeCompleted && cities.length;
-  const isSameCode = cities?.[0] && cities[0].zipcode === code;
   const showCitySelect = isSingleCountryContext || isMultiCountryContext;
+  const isSameSelectedCode = cities?.[0] && cities[0].zipcode === code;
+  const isSameFailedCode = failedCode === code;
 
   const updateCity = useCallback(
     (value: string | undefined) => {
@@ -72,7 +74,9 @@ export const PostalCode: React.FC<{
   );
 
   useEffect(() => {
-    if (!showCitySelect || isTypingCode || isSameCode) return;
+    // Avoid unnecessary requests if the code has not changed
+    if (isSameSelectedCode || isSameFailedCode) return;
+    if (!showCitySelect || isTypingCode) return;
     if (isRemovingCode) return resetCities();
 
     const domain = normalizeHostname(window.location.host);
@@ -102,6 +106,7 @@ export const PostalCode: React.FC<{
       } catch (err) {
         setIsLoading(false);
         resetCities();
+        setFailedCode(code);
         setError(ContactFieldConfig.PostalCode.validators[0].message);
       }
     };
@@ -111,7 +116,8 @@ export const PostalCode: React.FC<{
     isRemovingCode,
     isTypingCode,
     isCodeCompleted,
-    isSameCode,
+    isSameFailedCode,
+    isSameSelectedCode,
     showCitySelect,
     code,
     countries,
