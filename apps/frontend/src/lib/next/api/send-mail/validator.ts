@@ -19,7 +19,8 @@ export interface SendMailRequest extends NextApiRequest {
 }
 
 export const validateRequestBody = (req: SendMailRequest): SendMailProps => {
-  if (req.method !== 'POST') throw new Error('Unsupported HTTP method.');
+  if (req.method !== 'POST' && req.method !== 'OPTIONS')
+    throw new Error('Unsupported HTTP method.');
 
   if (req.query.PRIVATE_API_ROUTE !== process.env.PRIVATE_API_ROUTE)
     throw new Error('Missing API route token.');

@@ -16,7 +16,8 @@ export const validateRequestBody = (
   req: NextApiRequest,
 ): GetPostalCodeDetailsProps => {
   try {
-    if (req.method !== 'POST') throw new Error('Unsupported HTTP method.');
+    if (req.method !== 'POST' && req.method !== 'OPTIONS')
+      throw new Error('Unsupported HTTP method.');
 
     if (req.query.API_ROUTE !== process.env.NEXT_PUBLIC_API_ROUTE)
       throw new Error('Missing or invalid public API route query param.');
