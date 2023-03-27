@@ -15,9 +15,13 @@ export const Steps: React.FC = () => {
 
   return (
     <div className="content-wrapper">
-      <div className="relative z-10 mt-8 flex flex-col items-center justify-between gap-6 rounded-md bg-primary px-2 py-6 text-[white] md:-mt-14 md:flex-row md:gap-0">
+      <motion.div
+        className="relative z-10 mt-8 flex flex-col items-center justify-between gap-6 rounded-md bg-primary px-2 py-6 text-[white] md:-mt-14 md:flex-row md:gap-0"
+        initial={{ opacity: 0, translateY: 10 }}
+        animate={{ opacity: 1, translateY: 0 }}
+      >
         {STEPS.map((step, i) => {
-          const delay = 300 + 200 * i;
+          const delay = 200 + 200 * i;
 
           return (
             <motion.div
@@ -28,9 +32,8 @@ export const Steps: React.FC = () => {
                 i !== 0 ? 'border-[white]/50 md:border-l' : '',
               )}
               initial={{ opacity: 0, translateY: 10 }}
-              whileInView={{ opacity: 1, translateY: 0 }}
+              animate={{ opacity: 1, translateY: 0 }}
               transition={{ delay: delay / 1000 }}
-              viewport={{ once: true }}
             >
               <div className="flex max-w-[90%] items-center justify-center text-sm md:max-w-[200px] md:text-base lg:max-w-[280px]">
                 <div className="mr-4 flex flex-shrink-0 items-center justify-center">
@@ -41,7 +44,7 @@ export const Steps: React.FC = () => {
             </motion.div>
           );
         })}
-      </div>
+      </motion.div>
     </div>
   );
 };

@@ -60,22 +60,38 @@ export const HeroSection: React.FC<HeroSectionProps> = (props) => {
         className="relative mx-auto flex max-w-[1400px] flex-col bg-tertiary md:-mt-[150px] md:grid md:grid-cols-6 md:grid-rows-4 md:rounded-md"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
+        transition={{ duration: 0.1 }}
       >
         <div className="md:col-start-1 md:col-end-7 md:row-start-1 md:row-end-3">
           <div className="content-wrapper">
-            <div className="max-w-md py-6 md:pb-0 md:pt-40">
+            <motion.div
+              className="max-w-md py-6 md:pb-0 md:pt-40"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.2, delay: 0.1 }}
+            >
               {Headline}
               {Subtitle}
-            </div>
+            </motion.div>
           </div>
         </div>
-        <div className="hidden md:col-start-4 md:col-end-7 md:row-start-1 md:row-end-5 md:block">
+        <motion.div
+          className="hidden md:col-start-4 md:col-end-7 md:row-start-1 md:row-end-5 md:block"
+          initial={{ opacity: 0, translateX: 5 }}
+          animate={{ opacity: 1, translateX: 0 }}
+          transition={{ duration: 0.2, delay: 0.2 }}
+        >
           {BackgroundImage}
-        </div>
+        </motion.div>
         <div className="relative bg-[white] md:z-10 md:col-start-1 md:col-end-7 md:row-start-3 md:row-end-6 md:bg-[unset]">
-          <div className="content-wrapper md:pt-8 md:pb-32">
+          <motion.div
+            className="content-wrapper md:pt-8 md:pb-32"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3, delay: 0.4 }}
+          >
             <QuestionnaireTiles content={questionnaire} />
-          </div>
+          </motion.div>
         </div>
       </motion.div>
       <Steps />

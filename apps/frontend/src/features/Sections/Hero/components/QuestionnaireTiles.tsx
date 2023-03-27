@@ -100,7 +100,7 @@ export const QuestionnaireTiles: React.FC<QuestionnaireTilesProps> = (
 
 const LoadingIcon = () => (
   <div
-    className={cx(iconClassName, 'animate-pulse rounded-full bg-[black]/5 p-4')}
+    className={cx(iconClassName, 'animate-pulse rounded-full bg-tertiary p-4')}
   >
     <span className="sr-only">Wird geladen</span>
   </div>

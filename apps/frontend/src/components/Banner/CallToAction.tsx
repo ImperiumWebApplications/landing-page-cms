@@ -1,4 +1,5 @@
 import cx from 'classnames';
+import { motion } from 'framer-motion';
 
 import { questionnaireRoute } from '../../config/navigation.config';
 
@@ -14,7 +15,10 @@ export const CallToActionBanner: React.FC<CallToActionBannerProps> = (
   props,
 ) => {
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0, scaleY: 0.8 }}
+      whileInView={{ opacity: 1, scaleY: 1 }}
+      viewport={{ once: true }}
       className={cx(
         'relative flex flex-col items-center justify-between gap-8 rounded-lg bg-primary px-5 py-5 pb-0 md:flex-row md:px-14 md:py-10 lg:px-20 lg:py-12',
         props.className,
@@ -34,6 +38,6 @@ export const CallToActionBanner: React.FC<CallToActionBannerProps> = (
           Icon={<ArrowRight className="stroke-[white]" />}
         />
       </div>
-    </div>
+    </motion.div>
   );
 };

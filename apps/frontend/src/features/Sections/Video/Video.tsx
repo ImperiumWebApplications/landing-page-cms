@@ -31,6 +31,7 @@ export const VideoSection: React.FC<VideoSectionProps> = (props) => {
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.3 }}
               viewport={{ once: true }}
               className="flex flex-col items-center lg:items-start"
             >
@@ -66,9 +67,14 @@ export const VideoSection: React.FC<VideoSectionProps> = (props) => {
             </motion.div>
           </div>
         </div>
-        <div className="content-wrapper">
+        <motion.div
+          className="content-wrapper"
+          viewport={{ once: true }}
+          initial={{ opacity: 0, translateY: 20 }}
+          whileInView={{ opacity: 1, translateY: 0 }}
+        >
           <Statistics items={props.content.statistics} />
-        </div>
+        </motion.div>
       </div>
     </SectionContainer>
   );
