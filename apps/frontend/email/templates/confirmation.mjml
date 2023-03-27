@@ -62,7 +62,7 @@
           line-height="24px"
           padding-bottom="10px"
         >
-          Ihr Wohnort: <b>{{postalCode}}</b>
+          Ihr Wohnort: <b>{{postalCode}} {{city}}</b>
         </mj-text>
         {{/if}}
 
