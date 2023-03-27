@@ -1,6 +1,7 @@
 import React from 'react';
 
 import type { AppProps } from 'next/app';
+import { Sen } from 'next/font/google';
 import 'intersection-observer';
 
 import 'swiper/css';
@@ -23,8 +24,25 @@ if (isTestEnvironment()) {
 // suppress useLayoutEffect warnings when running outside a browser
 if (typeof window === 'undefined') React.useLayoutEffect = React.useEffect;
 
+const SenFont = Sen({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  display: 'swap',
+  variable: '--font-sen',
+  preload: true,
+});
+
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+  return (
+    <>
+      <style jsx global>{`
+        html {
+          font-family: ${SenFont.style.fontFamily};
+        }
+      `}</style>
+      <Component {...pageProps} />
+    </>
+  );
 }
 
 export default MyApp;

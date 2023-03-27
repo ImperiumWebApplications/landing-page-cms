@@ -1,29 +1,13 @@
-@font-face {
-  font-family: 'Sen';
-  font-weight: 700;
-  font-display: fallback;
-  font-style: normal;
-  src: url(/fonts/Sen-Bold.woff2) format('woff2');
-}
-
-@font-face {
-  font-family: 'Sen';
-  font-weight: 400;
-  font-display: fallback;
-  font-style: normal;
-  src: url(/fonts/Sen-Regular.woff2) format('woff2');
-}
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   html {
-    @apply h-full w-full font-sans text-gray motion-safe:scroll-smooth;
+    @apply h-full w-full text-gray motion-safe:scroll-smooth;
   }
   body {
-    @apply h-full w-full font-sans text-gray motion-safe:scroll-smooth;
+    @apply h-full w-full text-gray motion-safe:scroll-smooth;
   }
   h1 {
     @apply m-0 text-4xl font-semibold text-primary md:text-5xl;
