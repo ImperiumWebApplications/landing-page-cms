@@ -12,8 +12,8 @@
       "default": "Ihr Projekt in guten Händen."
     },
     "subtitle": {
-      "type": "string",
-      "default": "<br />Einfach. Machen. Lassen."
+      "type": "text",
+      "default": "Einfach. Machen. Lassen."
     },
     "background_image": {
       "type": "media",

@@ -1,15 +1,19 @@
 {
   "collectionName": "components_sections_images",
   "info": {
-    "displayName": "Images",
-    "icon": "images"
+    "displayName": "Images (DEPRECATED)",
+    "icon": "images",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "images": {
-      "allowedTypes": ["images"],
       "type": "media",
-      "multiple": true
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
     }
   }
 }
