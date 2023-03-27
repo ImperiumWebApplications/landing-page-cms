@@ -50,7 +50,7 @@ const Step1Svg: React.FC<ComponentProps<'svg'>> = (props) => {
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="2"
-        className="stroke-primary"
+        className="stroke-secondary"
       >
         <path d="M26.237 31.893H1" />
         <path d="M41.685 16.446H1" />
@@ -71,7 +71,7 @@ const ConnectLineSvg = () => {
       <path
         d="M.446.948s85.991 42.86 212 0"
         fill="none"
-        className="stroke-primary"
+        className="stroke-secondary"
         strokeWidth="2"
       />
     </svg>

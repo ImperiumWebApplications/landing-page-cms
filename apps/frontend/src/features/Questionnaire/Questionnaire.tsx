@@ -14,6 +14,7 @@ import { ContactDetails } from './components/ContactDetails';
 import { ProgressBar } from './components/ProgressBar';
 import { useQuestionnaireContext } from './context/Questionnaire';
 import { questionnaireRoute } from '../../config/navigation.config';
+import { useIsScrolled } from '../../hooks/useIsScrolled';
 
 export type QuestionnaireHistoryState = {
   step?: number;
@@ -35,6 +36,7 @@ export const Questionnaire: React.FC<QuestionnaireProps> = ({
   customSelectHandler: selectHandler,
 }) => {
   const router = useRouter();
+  const isScrolled = useIsScrolled();
   const { state } = useQuestionnaireContext();
 
   const zeroBasedQuestionsCount = questions.length - 1;
@@ -61,9 +63,9 @@ export const Questionnaire: React.FC<QuestionnaireProps> = ({
       <main className="max-w relative mx-auto grid h-auto min-h-[420px] max-w-[964px] grid-cols-1 grid-rows-[auto_1fr] bg-[white] py-5 md:mb-12 md:rounded-[10px] md:pt-12 md:pb-10 md:shadow-sm">
         <BackButton
           className={
-            isFormSuccessStep
-              ? 'hidden'
-              : 'fixed left-4 top-[25px] z-10 md:absolute md:left-8 md:top-8'
+            isFormSuccessStep || isScrolled
+              ? 'invisible absolute opacity-0'
+              : 'fixed left-4 top-[25px] z-10 opacity-100 transition-all md:absolute md:left-8 md:top-8'
           }
         />
         <div className="px-4">

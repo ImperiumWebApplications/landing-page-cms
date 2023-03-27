@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef, forwardRef, useRef } from 'react';
+import { ComponentPropsWithoutRef, forwardRef, useCallback } from 'react';
 import { SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, A11y, Swiper as SwiperType } from 'swiper';
 import dynamic from 'next/dynamic';
@@ -20,6 +20,8 @@ const Swiper = dynamic(() => import('swiper/react').then((mod) => mod.Swiper), {
   ssr: false,
 });
 
+const SWIPER_ID = 'review-slider';
+
 const Review = dynamic<ReviewProps>(
   () => import('./components/Review').then((mod) => mod.Review),
   {
@@ -36,7 +38,12 @@ export const ReviewsSection: React.FC<ReviewsSectionProps> = (props) => {
   const isTabletBreakpoint = useMediaQuery(`(min-width: 768px)`);
   const { state } = useSectionContext();
 
-  const swiperRef = useRef<{ swiper: SwiperType }>(null);
+  // Using a ref does not work since we dynamically import the Swiper component
+  const getSwiperInstance = useCallback(() => {
+    const swiperElement = document.getElementById(SWIPER_ID);
+    if (!swiperElement) return null;
+    return (swiperElement as HTMLElement & { swiper: SwiperType }).swiper;
+  }, []);
 
   if (!state.isNewDesign) return <Reviews_OLD {...props} />;
 
@@ -49,7 +56,7 @@ export const ReviewsSection: React.FC<ReviewsSectionProps> = (props) => {
       </h2>
       <div className="review-slider relative">
         <Swiper
-          ref={swiperRef}
+          id={SWIPER_ID}
           modules={SwiperModules}
           slidesPerView={isTabletBreakpoint ? 2 : 1}
           pagination
@@ -66,14 +73,14 @@ export const ReviewsSection: React.FC<ReviewsSectionProps> = (props) => {
         <NavigationButton
           className="-left-4 xl:-left-10"
           aria-label="Zurück"
-          onClick={() => swiperRef.current?.swiper.slidePrev()}
+          onClick={() => getSwiperInstance()?.slidePrev()}
         >
           <ChevronLeftIcon aria-hidden="true" className="w-2 stroke-[white]" />
         </NavigationButton>
         <NavigationButton
           className="-right-4 xl:-right-10"
           aria-label="Weiter"
-          onClick={() => swiperRef.current?.swiper.slideNext()}
+          onClick={() => getSwiperInstance()?.slideNext()}
         >
           <ChevronRightIcon aria-hidden="true" className="w-2 stroke-[white]" />
         </NavigationButton>

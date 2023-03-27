@@ -28,8 +28,9 @@ export const ServicesSection: React.FC<ServicesSectionProps> = (props) => {
       <Image
         src={url}
         alt={alternativeText ?? name ?? ''}
-        fill
         className="rounded-lg object-cover"
+        fill
+        sizes="(max-width: 768px) 100vw, 1000px"
       />
     ) : null;
   }, [props.content.service_image?.data?.attributes]);
@@ -88,12 +89,12 @@ export const ServicesSection: React.FC<ServicesSectionProps> = (props) => {
             <div className="block md:inline-block">
               <ArrowRight
                 aria-hidden="true"
-                className="mx-4 hidden stroke-secondary md:inline-block"
+                className="mx-4 hidden stroke-primary md:inline-block"
                 strokeWidth={2}
               />
               <CheckCircleIcon
                 aria-hidden="true"
-                className="mr-2 inline-block h-4 w-4 fill-secondary md:hidden"
+                className="mr-2 inline-block h-4 w-4 fill-primary md:hidden"
               />
               <span className="text-sm md:text-base">
                 100% kostenlos & unverbindlich
@@ -102,12 +103,12 @@ export const ServicesSection: React.FC<ServicesSectionProps> = (props) => {
             <div className="block md:inline-block">
               <ArrowRight
                 aria-hidden="true"
-                className="mx-4 hidden stroke-secondary md:inline-block"
+                className="mx-4 hidden stroke-primary md:inline-block"
                 strokeWidth={2}
               />
               <CheckCircleIcon
                 aria-hidden="true"
-                className="mr-2 inline-block h-4 w-4 fill-secondary md:hidden"
+                className="mr-2 inline-block h-4 w-4 fill-primary md:hidden"
               />
               <span className="text-sm md:text-base">
                 Keine Auftragspflicht
