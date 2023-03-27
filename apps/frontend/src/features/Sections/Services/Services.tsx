@@ -53,13 +53,15 @@ export const ServicesSection: React.FC<ServicesSectionProps> = (props) => {
                 {props.content.description}
               </ReactMarkdown>
             ) : null}
-            <div className="mt-6 flex flex-col gap-2 md:mt-8">
+            <div className="mt-6 flex flex-col gap-4 md:mt-8 md:mb-12 md:gap-6">
               {props.content.benefits?.map((benefit, i) => {
                 return (
                   <div key={i} className="flex items-start justify-start gap-3">
                     <CheckCircleIcon className="block h-7 w-7 flex-shrink-0 fill-secondary" />
                     <div className="text-sm md:text-base">
-                      {benefit.title ? <span>{benefit.title}</span> : null}
+                      {benefit.title ? (
+                        <span className="font-bold">{benefit.title}</span>
+                      ) : null}
                       {benefit.description ? (
                         <p>{benefit.description}</p>
                       ) : null}
@@ -86,12 +88,12 @@ export const ServicesSection: React.FC<ServicesSectionProps> = (props) => {
             <div className="block md:inline-block">
               <ArrowRight
                 aria-hidden="true"
-                className="mx-4 hidden stroke-primary md:inline-block"
+                className="mx-4 hidden stroke-secondary md:inline-block"
                 strokeWidth={2}
               />
               <CheckCircleIcon
                 aria-hidden="true"
-                className="mr-2 inline-block h-4 w-4 fill-primary md:hidden"
+                className="mr-2 inline-block h-4 w-4 fill-secondary md:hidden"
               />
               <span className="text-sm md:text-base">
                 100% kostenlos & unverbindlich
@@ -100,12 +102,12 @@ export const ServicesSection: React.FC<ServicesSectionProps> = (props) => {
             <div className="block md:inline-block">
               <ArrowRight
                 aria-hidden="true"
-                className="mx-4 hidden stroke-primary md:inline-block"
+                className="mx-4 hidden stroke-secondary md:inline-block"
                 strokeWidth={2}
               />
               <CheckCircleIcon
                 aria-hidden="true"
-                className="mr-2 inline-block h-4 w-4 fill-primary md:hidden"
+                className="mr-2 inline-block h-4 w-4 fill-secondary md:hidden"
               />
               <span className="text-sm md:text-base">
                 Keine Auftragspflicht

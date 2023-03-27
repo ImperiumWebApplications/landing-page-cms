@@ -21,7 +21,7 @@ export const Review: React.FC<ReviewProps> = ({ content }) => {
             alt={content.avatar.data.attributes.alternativeText ?? ''}
             width={80}
             height={80}
-            className="rounded-full object-cover"
+            className="h-full w-full rounded-full object-cover"
           />
         ) : null}
       </div>

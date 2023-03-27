@@ -25,9 +25,10 @@ export const HeroSection: React.FC<HeroSectionProps> = (props) => {
           src={backgroundImage.url}
           alt={backgroundImage.alternativeText ?? ''}
           className="z-0 h-full max-h-[640px] w-full rounded-tr-md object-cover pl-16 lg:pl-4"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
           quality={90}
-          fill
           priority
+          fill
         />
       </div>
     ) : null;
@@ -62,7 +63,7 @@ export const HeroSection: React.FC<HeroSectionProps> = (props) => {
       >
         <div className="md:col-start-1 md:col-end-7 md:row-start-1 md:row-end-3">
           <div className="content-wrapper">
-            <div className="max-w-md py-6 md:pb-0 md:pt-36">
+            <div className="max-w-md py-6 md:pb-0 md:pt-40">
               {Headline}
               {Subtitle}
             </div>
@@ -72,7 +73,7 @@ export const HeroSection: React.FC<HeroSectionProps> = (props) => {
           {BackgroundImage}
         </div>
         <div className="relative bg-[white] md:z-10 md:col-start-1 md:col-end-7 md:row-start-3 md:row-end-6 md:bg-[unset]">
-          <div className="content-wrapper md:pt-4 md:pb-32">
+          <div className="content-wrapper md:pt-8 md:pb-32">
             <QuestionnaireTiles content={questionnaire} />
           </div>
         </div>

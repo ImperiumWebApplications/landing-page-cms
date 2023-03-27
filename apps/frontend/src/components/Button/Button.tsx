@@ -126,12 +126,12 @@ export const getButtonVariantClasses = (
 export const getButtonSizeClasses = (variant: ButtonSize) => {
   switch (variant) {
     case 'small':
-      return 'inline-block pt-3 pb-2 px-4';
+      return 'inline-block py-3 px-4';
     case 'medium':
-      return 'inline-block pt-4 pb-3 px-8';
+      return 'inline-block py-4 px-8';
     case 'large':
-      return 'inline-block pt-6 pb-5 px-8';
+      return 'inline-block py-6 px-8';
     case 'fullWidth':
-      return 'inline-block w-full pt-6 pb-5 px-10';
+      return 'inline-block w-full py-6 px-10';
   }
 };
