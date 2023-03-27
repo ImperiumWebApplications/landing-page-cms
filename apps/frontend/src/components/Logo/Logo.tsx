@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { ReactSVG } from 'react-svg';
 import Image from 'next/image';
 import Link from 'next/link';
 import cx from 'classnames';
@@ -16,8 +17,24 @@ type LogoProps = {
 
 export const Logo: React.FC<LogoProps> = (props) => {
   if (!props.image?.url) return null;
-  return (
-    <Link href="/" aria-label="Homepage" className="relative">
+
+  const LogoContent =
+    props.image?.ext === '.svg' ? (
+      <ReactSVG
+        className={cx(
+          'svg-logo-wrapper',
+          props.className,
+          props.colorless ? 'colorless-filter' : '',
+        )}
+        beforeInjection={(svg) => {
+          svg.removeAttribute('height');
+          svg.removeAttribute('width');
+          svg.removeAttribute('x');
+          svg.removeAttribute('y');
+        }}
+        src={props.image.url}
+      />
+    ) : (
       <Image
         src={props.image?.url}
         alt={props.image.alternativeText ?? ''}
@@ -30,6 +47,11 @@ export const Logo: React.FC<LogoProps> = (props) => {
         )}
         priority
       />
+    );
+
+  return (
+    <Link href="/" aria-label="Homepage" className="relative">
+      {LogoContent}
     </Link>
   );
 };
