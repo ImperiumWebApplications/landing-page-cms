@@ -13,7 +13,7 @@ export const Review: React.FC<ReviewProps> = ({ content }) => {
   const [isExpanded, setIsExpanded] = React.useState(false);
 
   return (
-    <div className="relative mx-2 mt-12 mb-8 rounded-md bg-tertiary px-5 pt-[50px] pb-5 text-center shadow-sm md:mt-24 md:px-10 md:pb-12 md:pt-[70px]">
+    <div className="relative mx-2 mt-12 mb-8 flex h-[75%] flex-col justify-center rounded-md bg-tertiary px-5 pt-[50px] pb-5 text-center shadow-sm md:mt-24 md:px-10 md:pb-12 md:pt-[70px]">
       <div className="absolute -top-11 left-[calc(50%-50px)] z-10 h-[80px] w-[80px]">
         {content.avatar?.data?.attributes ? (
           <Image

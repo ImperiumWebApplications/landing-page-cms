@@ -28,6 +28,7 @@ export const SelectableOption: React.FC<SelectableOptionProps> = ({
   onSelectHandler,
 }) => {
   const isSvgIcon = isSvg(icon?.data?.attributes?.ext);
+  const iconClassName = 'h-[78px] w-[78px] md:h-[96px] md:w-[96px]';
 
   return (
     <div
@@ -47,19 +48,20 @@ export const SelectableOption: React.FC<SelectableOptionProps> = ({
       >
         <CheckCircleIcon className="h-6 w-6" />
       </div>
-      <div className="icon mx-auto">
+      <div className="mx-auto">
         {icon?.data?.attributes && !isSvgIcon && (
           <Image
-            className={`h-[78px] w-[78px] md:h-[96px] md:w-[96px]`}
+            className={cx(iconClassName, 'object-contain')}
             src={icon.data.attributes.url}
             alt={icon.data.attributes.alternativeText ?? ''}
-            fill
+            width={icon.data.attributes.width ?? 100}
+            height={icon.data.attributes.height ?? 100}
           />
         )}
         {icon?.data?.attributes && isSvgIcon && (
           <ReactSVG
             wrapper="svg"
-            className={`h-[78px] w-[78px] md:h-[96px] md:w-[96px]`}
+            className={iconClassName}
             beforeInjection={(svg) => {
               svg.removeAttribute('height');
               svg.removeAttribute('width');

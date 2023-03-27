@@ -3,7 +3,6 @@ import { useRouter } from 'next/router';
 
 import type { LandingPage } from '../../lib/strapi';
 
-import { QuestionMarkBadgeIcon } from '../../components/Icons';
 import { Layout } from '../../components/Layout';
 
 export const QuestionnairePlaceholderPage: React.FC<{
@@ -22,7 +21,6 @@ export const QuestionnairePlaceholder = () => {
   return (
     <div id="placeholder" className="my-16 mx-auto text-center">
       <div className="content-wrapper">
-        <QuestionMarkBadgeIcon width={200} height={200} opacity={0.25} />
         <h1 className="my-8 text-2xl">
           Leider konnte der aufgerufene Inhalt nicht geladen werden...
         </h1>

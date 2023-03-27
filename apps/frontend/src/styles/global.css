@@ -252,6 +252,10 @@
 
 /** Review Slider **/
 
+.review-slider .swiper-slide {
+  height: auto;
+}
+
 .review-slider .swiper .swiper-pagination-bullet {
   background: var(--color-secondary);
   opacity: 1;
