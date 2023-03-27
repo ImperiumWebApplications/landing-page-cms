@@ -21,13 +21,13 @@ export const CookieConsent: React.FC<CookieConsentProps> = ({
     <div className="absolute top-0 left-0 z-40 h-full w-full bg-[black] bg-opacity-5 backdrop-blur-sm">
       <div
         data-testid="cookie-consent-modal"
-        className="relative h-[98vh] w-full"
+        className="relative h-[80vh] w-full md:h-[98vh]"
       >
         <CookieConsentModal
           disableStyles={true}
           enableDeclineButton={true}
           expires={30}
-          containerClasses="absolute z-50 bg-[white] p-8 bottom-8 right-4 w-[calc(100%-2rem)] h-auto rounded-md text-sm shadow-lg md:max-w-lg sm:width-[25rem] sm:right-8"
+          containerClasses="absolute z-50 bg-[white] p-8 right-4 w-[calc(100%-2rem)] h-auto rounded-md text-sm shadow-lg md:max-w-lg sm:width-[25rem] sm:right-8"
           buttonText="Cookies erlauben"
           buttonClasses={cx(
             'relative rounded-md mt-4',
