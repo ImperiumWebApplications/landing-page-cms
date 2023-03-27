@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
+import cx from 'classnames';
 
 import type { HeroSectionContent } from '../../SectionMapper';
 
@@ -13,8 +14,12 @@ import { byPriority } from '../utils/sortQuestionnaires';
 const ReactSVG = dynamic(
   // @ts-ignore
   () => import('react-svg').then((mod) => mod.ReactSVG),
-  { ssr: false },
+  { ssr: false, loading: () => <LoadingIcon /> },
 );
+
+// Used for icons, images, and loading skeleton in tiles
+const iconClassName =
+  'h-[60px] w-[60px] md:h-[74px] md:w-[74px] lg:h-[100px] lg:w-[100px]';
 
 export type QuestionnaireTilesProps = {
   content: HeroSectionContent['questionnaire'];
@@ -47,8 +52,6 @@ export const QuestionnaireTiles: React.FC<QuestionnaireTilesProps> = (
           const route = `/${questionnaireRoute}/${slug}-${id}`;
 
           const isSvgIcon = isSvg(attributes.icon?.data?.attributes?.ext);
-          const iconClassName =
-            'h-[60px] w-[60px] md:h-[74px] md:w-[74px] lg:h-[100px] lg:w-[100px]';
 
           return (
             <Link
@@ -72,15 +75,15 @@ export const QuestionnaireTiles: React.FC<QuestionnaireTilesProps> = (
                   <ReactSVG
                     data-testid="tile-icon"
                     wrapper="svg"
+                    src={attributes.icon.data.attributes.url}
                     className={iconClassName}
+                    loading={() => <LoadingIcon />}
                     beforeInjection={(svg) => {
                       svg.removeAttribute('width');
                       svg.removeAttribute('height');
                       svg.removeAttribute('x');
                       svg.removeAttribute('y');
                     }}
-                    loading={() => <div className="loading" />}
-                    src={attributes.icon.data.attributes.url}
                   />
                 ) : null}
               </div>
@@ -94,3 +97,11 @@ export const QuestionnaireTiles: React.FC<QuestionnaireTilesProps> = (
     </div>
   );
 };
+
+const LoadingIcon = () => (
+  <div
+    className={cx(iconClassName, 'animate-pulse rounded-full bg-[black]/5 p-4')}
+  >
+    <span className="sr-only">Wird geladen</span>
+  </div>
+);
