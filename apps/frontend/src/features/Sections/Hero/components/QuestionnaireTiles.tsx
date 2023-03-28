@@ -58,7 +58,7 @@ export const QuestionnaireTiles: React.FC<QuestionnaireTilesProps> = (
               key={id}
               role="button"
               href={route}
-              className="group flex w-[calc(50%-8px)] max-w-[260px] flex-col items-center gap-4 rounded-md border border-solid border-secondary bg-[white] p-3 shadow-sm transition-all hover:border-primary hover:ring-2 hover:ring-primary hover:ring-offset-2 focus-visible:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 md:w-auto md:flex-1 md:rounded-lg md:p-6 md:shadow-lg"
+              className="group flex w-[calc(50%-8px)] max-w-[260px] select-none flex-col items-center gap-4 rounded-md border border-solid border-secondary bg-[white] p-3 shadow-sm transition-all hover:border-primary hover:ring-2 hover:ring-primary hover:ring-offset-2 focus-visible:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 md:w-auto md:flex-1 md:rounded-lg md:p-6 md:shadow-lg"
             >
               <div className="icon flex items-center justify-center">
                 {attributes.icon?.data?.attributes && !isSvgIcon ? (
