@@ -106,7 +106,7 @@ export type ImagesSectionContent = ReturnType<typeof toImagesSectionContent>;
  * Hero Section
  */
 
-const isHeroSection = (
+export const isHeroSection = (
   section: DynamicZoneItem<Section>,
 ): section is DynamicZoneItem<HeroSection> =>
   section.__component === LandingPageSections.HERO;
