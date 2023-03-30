@@ -50,7 +50,7 @@ export const Footer: React.FC<FooterProps> = ({ content }) => {
           <div className="text-center">
             {content.client_address ? (
               <div className="inline text-sm">
-                Adresse: {content.client_address}
+                Adresse {content.client_address}
               </div>
             ) : null}
             {content.contact_email ? (
