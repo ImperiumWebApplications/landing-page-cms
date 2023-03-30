@@ -1,18 +1,7 @@
 import { motion } from 'framer-motion';
 import cx from 'classnames';
 
-import { useSectionContext } from '../../SectionContext';
-
 export const Steps: React.FC = () => {
-  const { state } = useSectionContext();
-
-  if (state.funnelTarget === 'Appointment') {
-    STEPS[0].title = STEPS[0].title.replace(
-      'Formular ausfüllen',
-      'Termin vereinbaren',
-    );
-  }
-
   return (
     <div className="content-wrapper">
       <motion.div
@@ -134,11 +123,11 @@ const STEPS = [
     svg: <FormSvg />,
   },
   {
-    title: 'Kostenlose Angebote von Firmen erhalten',
+    title: 'Kostenlos & unverbindlich Angebot erhalten',
     svg: <OffersSvg />,
   },
   {
-    title: 'Bestes Preis-Leistungsverhältnis auswählen',
+    title: 'Bestes Preis-Leistungs-Verhältnis',
     svg: <HandsSvg />,
   },
 ];
