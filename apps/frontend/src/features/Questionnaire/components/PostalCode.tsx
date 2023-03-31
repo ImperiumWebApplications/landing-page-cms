@@ -73,6 +73,12 @@ export const PostalCode: React.FC<{
     [dispatch, state.contact],
   );
 
+  const isRegularTextFieldInputValid = useCallback((code?: string) => {
+    if (!code || code.trim().length < 4) return false;
+    const { validators } = ContactFieldConfig.PostalCode;
+    return validators.some((validator) => validator.regex.test(code ?? ''));
+  }, []);
+
   useEffect(() => {
     // Avoid unnecessary requests if the code has not changed
     if (isSameSelectedCode || isSameFailedCode) return;
@@ -150,7 +156,7 @@ export const PostalCode: React.FC<{
             label={ContactFieldConfig.PostalCode.label}
             value={state.contact.postalCode}
             onChange={updatePostalCode}
-            className="w-[300px]"
+            className="mb-2 w-[300px]"
             inputProps={{
               pattern: '[0-9]*',
             }}
@@ -190,7 +196,8 @@ export const PostalCode: React.FC<{
             data-testid="postal-code-confirmation-button"
             disabled={
               (!!countries && !isCodeCompleted) ||
-              (!!!countries && code.trim().length < 4) ||
+              (!!!countries &&
+                !isRegularTextFieldInputValid(state.contact.postalCode)) ||
               isLoading ||
               !!error
             }
