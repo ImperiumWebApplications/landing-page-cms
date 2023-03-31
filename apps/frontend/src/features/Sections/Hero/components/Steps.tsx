@@ -5,7 +5,7 @@ export const Steps: React.FC = () => {
   return (
     <div className="content-wrapper">
       <motion.div
-        className="relative z-10 mt-8 flex flex-col items-center justify-between gap-6 rounded-md bg-primary px-2 py-6 text-[white] md:-mt-14 md:flex-row md:gap-0"
+        className="relative z-10 mt-8 flex flex-col items-start justify-between gap-6 rounded-md bg-primary px-2 py-6 text-[white] md:-mt-14 md:flex-row md:items-center md:gap-0"
         initial={{ opacity: 0, translateY: 10 }}
         animate={{ opacity: 1, translateY: 0 }}
       >
@@ -17,7 +17,7 @@ export const Steps: React.FC = () => {
               key={i}
               data-testid="step"
               className={cx(
-                'flex h-full min-h-[40px] flex-1 items-center justify-center leading-tight md:min-h-[60px]',
+                'flex h-full min-h-[40px] w-full flex-1 items-start px-4 leading-tight md:min-h-[60px] md:items-center md:justify-center md:px-0',
                 i !== 0 ? 'border-[white]/50 md:border-l' : '',
               )}
               initial={{ opacity: 0, translateY: 10 }}
@@ -28,7 +28,7 @@ export const Steps: React.FC = () => {
                 <div className="mr-4 flex flex-shrink-0 items-center justify-center">
                   {step.svg}
                 </div>
-                {step.title}
+                <span dangerouslySetInnerHTML={{ __html: step.title }} />
               </div>
             </motion.div>
           );
@@ -119,7 +119,7 @@ const OffersSvg = () => {
 
 const STEPS = [
   {
-    title: 'Formular ausfüllen und Bedarf festhalten',
+    title: 'Formular ausfüllen<br>und Bedarf festhalten',
     svg: <FormSvg />,
   },
   {
@@ -127,7 +127,7 @@ const STEPS = [
     svg: <OffersSvg />,
   },
   {
-    title: 'Bestes Preis-Leistungs-Verhältnis',
+    title: 'Bestes Preis-<br>Leistungs-Verhältnis',
     svg: <HandsSvg />,
   },
 ];
