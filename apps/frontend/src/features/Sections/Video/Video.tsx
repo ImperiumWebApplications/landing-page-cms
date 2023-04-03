@@ -33,7 +33,7 @@ export const VideoSection: React.FC<VideoSectionProps> = (props) => {
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.3 }}
               viewport={{ once: true }}
-              className="flex flex-col items-center lg:items-start"
+              className="flex flex-col"
             >
               <h2 className="text-base leading-tight md:text-2xl">
                 {props.content?.video_title}
