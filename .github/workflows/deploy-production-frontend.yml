@@ -73,7 +73,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: $BUILD_ARTIFACT
-          retention-days: 5
+          retention-days: 1
           path: ./apps/frontend/deploy.zip
 
   deploy:
