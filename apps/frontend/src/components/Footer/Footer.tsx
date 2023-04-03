@@ -49,9 +49,7 @@ export const Footer: React.FC<FooterProps> = ({ content }) => {
           <div className="h-[1px] w-full bg-secondary" />
           <div className="text-center">
             {content.client_address ? (
-              <div className="inline text-sm">
-                Adresse {content.client_address}
-              </div>
+              <div className="inline text-sm">{content.client_address}</div>
             ) : null}
             {content.contact_email ? (
               <>
