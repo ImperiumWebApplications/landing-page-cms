@@ -33,6 +33,7 @@ export const getLandingPage = async (domain: string) => {
           fields: '*',
           populate: {
             advantage: { fields: '*' },
+            advantages: { fields: '*' },
             questionnaires: { fields: '*', populate: ['icon'] },
           },
         },

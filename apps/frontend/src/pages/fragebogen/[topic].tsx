@@ -29,6 +29,7 @@ const QuestionnairePage: NextPage<{
       <QuestionnaireProvider>
         <Questionnaire
           headline={hero?.title || content.questionnaire?.headline}
+          advantages={content.questionnaire?.advantages}
           questions={questionnaire.questions}
           countries={country ? [country] : undefined}
           phone={content.contact_phone}

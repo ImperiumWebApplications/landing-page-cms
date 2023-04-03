@@ -60,6 +60,11 @@ export type LandingPage = {
       first_line?: TextField;
       second_line?: TextField;
     }>;
+    advantages?: Component<{
+      personalized_advice?: TextField;
+      years_of_experience?: TextField;
+      custom_service?: TextField;
+    }>;
   }>;
 
   appointment?: Component<{

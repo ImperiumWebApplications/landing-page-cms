@@ -23,6 +23,12 @@
     },
     "headline": {
       "type": "string"
+    },
+    "advantages": {
+      "displayName": "advantages",
+      "type": "component",
+      "repeatable": false,
+      "component": "questionnaire.advantages"
     }
   }
 }

@@ -45,6 +45,7 @@ const EntryQuestionnairePage: NextPage<{ content: LandingPage }> = ({
       <QuestionnaireProvider>
         <Questionnaire
           headline={questionnaire.headline}
+          advantages={content.questionnaire?.advantages}
           questions={[entryQuestion]}
           countries={country ? [country] : undefined}
           customSelectHandler={selectHandler}
