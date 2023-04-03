@@ -27,7 +27,7 @@ export const Header: React.FC<HeaderProps> = ({ content }) => {
         initial={{ opacity: 0, translateY: -10 }}
         animate={{ opacity: 1, translateY: 0 }}
         transition={{ duration: 0.2 }}
-        className="content-wrapper relative z-[2] flex h-auto min-h-[3rem] w-full"
+        className="content-wrapper-xl relative z-[2] flex h-auto min-h-[3rem] w-full"
       >
         <div
           className={`flex w-full items-center ${

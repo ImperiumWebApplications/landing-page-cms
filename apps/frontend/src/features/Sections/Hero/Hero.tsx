@@ -24,7 +24,7 @@ export const HeroSection: React.FC<HeroSectionProps> = (props) => {
         <Image
           src={backgroundImage.url}
           alt={backgroundImage.alternativeText ?? ''}
-          className="z-0 h-full max-h-[640px] w-full rounded-tr-md object-cover pl-16 lg:pl-4"
+          className="z-0 h-full max-h-[640px] w-full rounded-tr-md object-cover pl-16 lg:pl-4 3xl:max-h-[720px]"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
           quality={90}
           priority
@@ -37,7 +37,7 @@ export const HeroSection: React.FC<HeroSectionProps> = (props) => {
   const Headline = useMemo(() => {
     return title ? (
       <h1
-        className="text-3xl font-bold !leading-tight text-primary md:text-4xl lg:text-[42px]"
+        className="text-3xl font-bold !leading-tight text-primary md:text-4xl lg:text-[42px] 3xl:text-5xl"
         // Allow line breaks and markup to be inserted via cms
         dangerouslySetInnerHTML={{ __html: title }}
       />
@@ -47,7 +47,7 @@ export const HeroSection: React.FC<HeroSectionProps> = (props) => {
   const Subtitle = useMemo(() => {
     return subtitle ? (
       <span
-        className="mt-2 block text-lg font-normal text-secondary md:mt-8 md:text-xl"
+        className="mt-2 block text-lg font-normal text-secondary md:mt-8 md:text-xl 3xl:text-[22px] 3xl:leading-normal"
         // Allow line breaks and markup to be inserted via cms
         dangerouslySetInnerHTML={{ __html: subtitle }}
       />
@@ -57,15 +57,15 @@ export const HeroSection: React.FC<HeroSectionProps> = (props) => {
   return (
     <SectionContainer id={props.id} fullWidth>
       <motion.div
-        className="relative mx-auto flex max-w-[1400px] flex-col bg-tertiary md:-mt-[150px] md:grid md:grid-cols-6 md:grid-rows-4 md:rounded-md"
+        className="relative mx-auto flex max-w-[1400px] flex-col bg-tertiary md:-mt-[150px] md:grid md:grid-cols-6 md:grid-rows-4 md:rounded-md 3xl:max-w-[1800px]"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.1 }}
       >
         <div className="md:col-start-1 md:col-end-7 md:row-start-1 md:row-end-3">
-          <div className="content-wrapper">
+          <div className="content-wrapper-xl">
             <motion.div
-              className="max-w-md py-6 md:pb-0 md:pt-40"
+              className="max-w-md py-6 md:pb-0 md:pt-40 3xl:max-w-lg"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.2, delay: 0.1 }}
@@ -85,7 +85,7 @@ export const HeroSection: React.FC<HeroSectionProps> = (props) => {
         </motion.div>
         <div className="relative bg-[white] md:z-10 md:col-start-1 md:col-end-7 md:row-start-3 md:row-end-6 md:bg-[unset]">
           <motion.div
-            className="content-wrapper md:pt-8 md:pb-32"
+            className="content-wrapper-xl md:pt-8 md:pb-32"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.3, delay: 0.4 }}

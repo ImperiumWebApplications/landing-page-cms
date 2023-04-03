@@ -14,6 +14,9 @@ module.exports = {
       gray: 'var(--color-gray)',
     },
     extend: {
+      screens: {
+        '3xl': '1800px',
+      },
       fontFamily: {
         system: [
           '-apple-system',

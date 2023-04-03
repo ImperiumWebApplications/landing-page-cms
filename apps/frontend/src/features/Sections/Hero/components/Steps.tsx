@@ -3,7 +3,7 @@ import cx from 'classnames';
 
 export const Steps: React.FC = () => {
   return (
-    <div className="content-wrapper">
+    <div className="content-wrapper-xl">
       <motion.div
         className="relative z-10 mt-8 flex flex-col items-start justify-between gap-6 rounded-md bg-primary px-2 py-6 text-[white] md:-mt-14 md:flex-row md:items-center md:gap-0"
         initial={{ opacity: 0, translateY: 10 }}
@@ -24,7 +24,7 @@ export const Steps: React.FC = () => {
               animate={{ opacity: 1, translateY: 0 }}
               transition={{ delay: delay / 1000 }}
             >
-              <div className="flex max-w-[90%] items-center justify-center text-sm md:max-w-[200px] md:text-base lg:max-w-[280px]">
+              <div className="flex max-w-[90%] items-center justify-center text-sm md:max-w-[200px] md:text-base lg:max-w-[280px] 3xl:max-w-[320px] 3xl:text-lg">
                 <div className="mr-4 flex flex-shrink-0 items-center justify-center">
                   {step.svg}
                 </div>

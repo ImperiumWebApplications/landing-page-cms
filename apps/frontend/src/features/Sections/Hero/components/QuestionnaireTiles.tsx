@@ -19,7 +19,7 @@ const ReactSVG = dynamic(
 
 // Used for icons, images, and loading skeleton in tiles
 const iconClassName =
-  'h-[60px] w-[60px] md:h-[74px] md:w-[74px] lg:h-[100px] lg:w-[100px]';
+  'h-[60px] w-[60px] md:h-[74px] md:w-[74px] lg:h-[100px] lg:w-[100px] 3xl:h-[140px] 3xl:w-[140px]';
 
 export type QuestionnaireTilesProps = {
   content: HeroSectionContent['questionnaire'];
@@ -58,7 +58,7 @@ export const QuestionnaireTiles: React.FC<QuestionnaireTilesProps> = (
               key={id}
               role="button"
               href={route}
-              className="group flex w-[calc(50%-8px)] max-w-[260px] select-none flex-col items-center gap-4 rounded-md border border-solid border-secondary bg-[white] p-3 shadow-sm transition-all hover:border-primary hover:ring-2 hover:ring-primary hover:ring-offset-2 focus-visible:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 md:w-auto md:flex-1 md:rounded-lg md:p-6 md:shadow-lg"
+              className="group flex w-[calc(50%-8px)] max-w-[260px] select-none flex-col items-center gap-4 rounded-md border border-solid border-secondary bg-[white] p-3 shadow-sm transition-all hover:border-primary hover:ring-2 hover:ring-primary hover:ring-offset-2 focus-visible:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 md:w-auto md:flex-1 md:rounded-lg md:p-6 md:shadow-lg 3xl:max-w-[280px]"
             >
               <div className="icon flex items-center justify-center">
                 {attributes.icon?.data?.attributes && !isSvgIcon ? (
@@ -87,7 +87,7 @@ export const QuestionnaireTiles: React.FC<QuestionnaireTilesProps> = (
                   />
                 ) : null}
               </div>
-              <span className="flex flex-grow items-center text-center text-sm font-semibold leading-tight text-primary md:justify-center md:text-base">
+              <span className="flex flex-grow items-center text-center text-sm font-semibold leading-tight text-primary md:justify-center md:text-base 3xl:text-lg">
                 {attributes.name}
               </span>
             </Link>
