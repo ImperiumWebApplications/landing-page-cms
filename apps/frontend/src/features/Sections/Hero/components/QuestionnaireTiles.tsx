@@ -38,7 +38,7 @@ export const QuestionnaireTiles: React.FC<QuestionnaireTilesProps> = (
 
   return (
     <div className="pt-4 sm:pt-6 md:pt-0">
-      <h4 className="text-center text-xl font-bold text-primary md:text-left md:text-2xl">
+      <h4 className="text-center text-lg font-bold text-primary sm:text-xl md:text-left md:text-2xl">
         <span data-testid="questionnaire-tiles-question">{entry_question}</span>
       </h4>
       <div
