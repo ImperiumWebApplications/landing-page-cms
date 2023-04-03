@@ -37,13 +37,13 @@ export const QuestionnaireTiles: React.FC<QuestionnaireTilesProps> = (
   if (!sortedQuestionnaires?.length) return null;
 
   return (
-    <div className="pt-6 md:pt-0">
+    <div className="pt-4 sm:pt-6 md:pt-0">
       <h4 className="text-center text-xl font-bold text-primary md:text-left md:text-2xl">
         <span data-testid="questionnaire-tiles-question">{entry_question}</span>
       </h4>
       <div
         data-testid="questionnaire-tiles-grid"
-        className="mt-6 flex flex-wrap justify-start gap-2 sm:gap-4 md:flex-nowrap lg:gap-8"
+        className="flex flex-wrap justify-start gap-2 pt-4 sm:mt-6 sm:gap-4 md:flex-nowrap lg:gap-8"
       >
         {sortedQuestionnaires.map(({ attributes, id }) => {
           if (!attributes?.name) return null;
