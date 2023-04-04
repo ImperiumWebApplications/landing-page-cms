@@ -62,7 +62,7 @@ describe('lib/next/api/create-lead/cms', () => {
         city: 'Hamburg Winterhude',
         email: 'test@test.de',
         first_name: 'first name',
-        landing_page: 1,
+        landing_page: 4,
         last_name: 'last name',
         phone: '1234567890',
         postal_code: '22303',

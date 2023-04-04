@@ -63,12 +63,12 @@ describe('generateHtmlEmailContent', () => {
   it('should call handlebars template function with correct context', () => {
     generateHtmlEmailContent({ ...defaultData });
     expect(hbsTemplateMock).toHaveBeenCalledWith({
-      colorPrimary: '#359b88',
-      colorText: '#737373',
+      colorPrimary: '#673A99',
+      colorText: '#505050',
       firstName: 'FirstName',
       lastName: 'LastName',
       logoUrl:
-        'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/craftsman24_logo_57de4fbf9d.png',
+        'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/leadquelle_logo_7a57e30208.svg',
       phone: '1234567890',
       postalCode: '22303',
       questionnaire: [

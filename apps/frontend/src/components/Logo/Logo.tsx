@@ -21,6 +21,7 @@ export const Logo: React.FC<LogoProps> = (props) => {
   const LogoContent =
     props.image?.ext === '.svg' ? (
       <ReactSVG
+        data-testid="logo-svg"
         className={cx(
           'svg-logo-wrapper',
           props.className,
@@ -36,6 +37,7 @@ export const Logo: React.FC<LogoProps> = (props) => {
       />
     ) : (
       <Image
+        data-testid="logo-image"
         src={props.image?.url}
         alt={props.image.alternativeText ?? ''}
         width={props.image.width ?? 300}
@@ -50,7 +52,12 @@ export const Logo: React.FC<LogoProps> = (props) => {
     );
 
   return (
-    <Link href="/" aria-label="Homepage" className="relative">
+    <Link
+      href="/"
+      aria-label="Homepage"
+      className="relative"
+      data-testid="logo-wrapper"
+    >
       {LogoContent}
     </Link>
   );

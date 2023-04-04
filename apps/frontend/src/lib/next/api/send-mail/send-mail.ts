@@ -61,12 +61,8 @@ export const sendMail = async (data: SendMailProps) => {
     await transporter.sendMail({
       subject: EmailSubject[template],
       from: `"${landingPage.brand_name}" <${process.env.MAIL_USER}>`,
-      to: isCraftsman24(domain)
-        ? 'leads@craftsman24.ch'
-        : landingPage.contact_email,
+      to: landingPage.contact_email,
       html,
     });
   }
 };
-
-const isCraftsman24 = (host: string) => host.includes('craftsman24');

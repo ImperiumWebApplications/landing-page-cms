@@ -62,8 +62,8 @@ describe('lib/api/send-mail', () => {
 
     expect(sendMailMock.mock.calls[0][0]).toEqual(
       expect.objectContaining({
-        from: '"Craftsman24" <testuseremail>',
-        replyTo: 'konstantin.muenster@mail.com',
+        from: '"Leadquelle" <testuseremail>',
+        replyTo: 'info@kmuenster.com',
         subject: 'Vielen Dank für Ihre Anfrage!',
         to: 'test@test.com',
       }),
@@ -71,30 +71,9 @@ describe('lib/api/send-mail', () => {
 
     expect(sendMailMock.mock.calls[1][0]).toEqual(
       expect.objectContaining({
-        from: '"Craftsman24" <testuseremail>',
+        from: '"Leadquelle" <testuseremail>',
         subject: 'Vielen Dank für Ihre Anfrage!',
-        to: 'konstantin.muenster@mail.com',
-      }),
-    );
-  });
-
-  it('should call sendMail with correct params for craftsman24', async () => {
-    await sendMail({ ...defaultData, domain: 'craftsman24.ch' });
-
-    expect(sendMailMock.mock.calls[0][0]).toEqual(
-      expect.objectContaining({
-        from: '"Craftsman24" <testuseremail>',
-        replyTo: 'konstantin.muenster@mail.com',
-        subject: 'Vielen Dank für Ihre Anfrage!',
-        to: 'test@test.com',
-      }),
-    );
-
-    expect(sendMailMock.mock.calls[1][0]).toEqual(
-      expect.objectContaining({
-        from: '"Craftsman24" <testuseremail>',
-        subject: 'Vielen Dank für Ihre Anfrage!',
-        to: 'leads@craftsman24.ch',
+        to: 'info@kmuenster.com',
       }),
     );
   });

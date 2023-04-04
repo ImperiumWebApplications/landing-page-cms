@@ -85,8 +85,8 @@ describe('QuestionnaireTiles', () => {
       <QuestionnaireTiles {...defaultPropsWithJpg} />,
     );
 
-    const tileImage = queryByTestId('tile-image');
-    const tileIcon = queryByTestId('tile-icon');
+    const tileImage = queryByTestId('hero-tile-image');
+    const tileIcon = queryByTestId('hero-tile-icon');
     expect(tileImage).toBeInTheDocument();
     expect(tileIcon).not.toBeInTheDocument();
   });
@@ -96,9 +96,9 @@ describe('QuestionnaireTiles', () => {
       <QuestionnaireTiles {...defaultPropsWithSvg} />,
     );
 
-    const tileImage = queryByTestId('tile-image');
+    const tileImage = queryByTestId('hero-tile-image');
     expect(tileImage).not.toBeInTheDocument();
-    await findByTestId('tile-icon');
+    await findByTestId('hero-tile-icon');
   });
 
   test('should render nothing if name is missing', () => {

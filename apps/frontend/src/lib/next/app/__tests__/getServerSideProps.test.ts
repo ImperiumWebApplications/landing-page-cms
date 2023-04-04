@@ -12,7 +12,7 @@ import {
 } from '../getServerSideProps';
 import {
   content,
-  questionnaires,
+  questionnaire,
   staticContent,
 } from '../../../../../mocks/lib/strapi/data';
 import { Strapi } from '../../../strapi';
@@ -72,7 +72,7 @@ describe('queryQuestionnairePageContent', () => {
     expect(result).toEqual({
       props: {
         content: content.data[0].attributes,
-        questionnaire: questionnaires.data[0].attributes,
+        questionnaire: questionnaire.data[0].attributes,
       },
     });
   });

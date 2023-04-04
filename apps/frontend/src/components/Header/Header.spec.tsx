@@ -25,14 +25,15 @@ describe('Header', () => {
   });
 
   test('should show logo', () => {
-    const { getByAltText, getByLabelText } = renderWithLayout(
+    const { getByLabelText, getByTestId } = renderWithLayout(
       <Header content={content.data[0].attributes} />,
     );
 
-    const logoImage = getByAltText('craftsman24_logo.png');
-    expect(logoImage).toHaveAttribute(
-      'src',
-      '/_next/image?url=https%3A%2F%2Flanding-pages-images-local.s3.eu-central-1.amazonaws.com%2Fcraftsman24_logo_57de4fbf9d.png&w=384&q=75',
+    const logo = getByTestId('logo-svg');
+    const svg = logo.querySelector('[data-src]');
+    expect(svg).toHaveAttribute(
+      'data-src',
+      'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/leadquelle_logo_7a57e30208.svg',
     );
 
     const logoLink = getByLabelText('Homepage');
@@ -45,12 +46,12 @@ describe('Header', () => {
       pathname: questionnaireRoute,
     });
 
-    const { getByAltText, getByLabelText } = renderWithLayout(
+    const { getByTestId, getByLabelText } = renderWithLayout(
       <Header content={content.data[0].attributes} />,
     );
 
-    const logoImage = getByAltText('craftsman24_logo.png');
-    expect(logoImage).toBeInTheDocument();
+    const logoSvg = getByTestId('logo-svg');
+    expect(logoSvg).toBeInTheDocument();
     const logoLink = getByLabelText('Homepage');
     expect(logoLink).toBeInTheDocument();
   });
