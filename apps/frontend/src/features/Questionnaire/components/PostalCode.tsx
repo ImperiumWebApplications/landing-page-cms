@@ -193,7 +193,7 @@ export const PostalCode: React.FC<{
         <div className="text-center">
           <Button
             label="Weiter"
-            data-testid="postal-code-confirmation-button"
+            data-testid="questionnaire-postal-code-button"
             disabled={
               (!!countries && !isCodeCompleted) ||
               (!!!countries &&

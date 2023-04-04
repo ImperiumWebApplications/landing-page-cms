@@ -14,12 +14,14 @@ import {
   QuestionnaireProvider,
 } from '../../features/Questionnaire';
 import { SingleChoiceEventHandler } from '../../features/Questionnaire/components/SingleChoice';
+import { isHeroSection } from '../../features/Sections/SectionMapper';
 
 const EntryQuestionnairePage: NextPage<{ content: LandingPage }> = ({
   content,
 }) => {
   const { questionnaire } = content;
   const router = useRouter();
+  const hero = content.sections?.find(isHeroSection);
 
   if (!questionnaire) return <QuestionnairePlaceholderPage content={content} />;
 
@@ -44,7 +46,7 @@ const EntryQuestionnairePage: NextPage<{ content: LandingPage }> = ({
     <Layout content={content}>
       <QuestionnaireProvider>
         <Questionnaire
-          headline={questionnaire.headline}
+          headline={hero?.title || questionnaire.headline}
           advantages={content.questionnaire?.advantages}
           questions={[entryQuestion]}
           countries={country ? [country] : undefined}

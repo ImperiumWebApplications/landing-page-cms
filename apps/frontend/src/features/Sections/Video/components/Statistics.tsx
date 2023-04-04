@@ -19,6 +19,7 @@ export const Statistics: React.FC<StatisticsProps> = (props) => {
               <div className="hidden w-[1px] border-l border-secondary lg:block" />
             ) : null}
             <div
+              data-testid="video-statistic"
               className={cx(
                 'mx-auto inline-flex flex-col items-center justify-center gap-2 md:gap-4',
               )}

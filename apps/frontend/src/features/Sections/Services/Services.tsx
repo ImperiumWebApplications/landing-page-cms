@@ -45,7 +45,10 @@ export const ServicesSection: React.FC<ServicesSectionProps> = (props) => {
           <div className="relative hidden md:block">{ServiceImage}</div>
           <div>
             {props.content.title ? (
-              <h2 className="text-base leading-tight md:mb-6 md:text-2xl">
+              <h2
+                data-testid="services-headline"
+                className="text-base leading-tight md:mb-6 md:text-2xl"
+              >
                 {props.content.title}
               </h2>
             ) : null}
@@ -57,7 +60,11 @@ export const ServicesSection: React.FC<ServicesSectionProps> = (props) => {
             <div className="mt-6 flex flex-col gap-4 md:mt-8 md:mb-12 md:gap-6">
               {props.content.benefits?.map((benefit, i) => {
                 return (
-                  <div key={i} className="flex items-start justify-start gap-3">
+                  <div
+                    key={i}
+                    data-testid="services-benefit"
+                    className="flex items-start justify-start gap-3"
+                  >
                     <CheckCircleIcon className="block h-7 w-7 flex-shrink-0 fill-secondary" />
                     <div className="text-sm md:text-base">
                       {benefit.title ? (
@@ -74,6 +81,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = (props) => {
           </div>
         </div>
         <CallToActionBanner
+          data-testid="services-cta"
           description="Wir helfen Ihnen unverbindlich und kostenlos, den besten Profi zu finden."
           className="my-12 md:my-20"
         />

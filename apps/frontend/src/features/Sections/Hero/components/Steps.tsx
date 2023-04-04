@@ -15,7 +15,7 @@ export const Steps: React.FC = () => {
           return (
             <motion.div
               key={i}
-              data-testid="step"
+              data-testid="hero-step"
               className={cx(
                 'flex h-full min-h-[40px] w-full flex-1 items-start px-4 leading-tight md:min-h-[60px] md:items-center md:justify-center md:px-0',
                 i !== 0 ? 'border-[white]/50 md:border-l' : '',

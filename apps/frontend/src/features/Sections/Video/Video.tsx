@@ -46,7 +46,7 @@ export const VideoSection: React.FC<VideoSectionProps> = (props) => {
                 ) : undefined}
               </div>
               <Button
-                data-testid="video-cta-button"
+                data-testid="video-button"
                 variant="secondary"
                 className="w-[220px] text-[0.9rem]"
                 to={`/${questionnaireRoute}`}

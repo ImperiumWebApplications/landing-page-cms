@@ -1,5 +1,5 @@
 import cx from 'classnames';
-import { motion } from 'framer-motion';
+import { HTMLMotionProps, motion } from 'framer-motion';
 
 import { questionnaireRoute } from '../../config/navigation.config';
 
@@ -8,12 +8,13 @@ import { ArrowRight } from '../Icons';
 
 type CallToActionBannerProps = {
   description: string;
-  className?: string;
-};
+} & HTMLMotionProps<'div'>;
 
-export const CallToActionBanner: React.FC<CallToActionBannerProps> = (
-  props,
-) => {
+export const CallToActionBanner: React.FC<CallToActionBannerProps> = ({
+  description,
+  className,
+  ...rest
+}) => {
   return (
     <motion.div
       initial={{ opacity: 0, scaleY: 0.8 }}
@@ -21,16 +22,16 @@ export const CallToActionBanner: React.FC<CallToActionBannerProps> = (
       viewport={{ once: true }}
       className={cx(
         'relative flex flex-col items-center justify-between gap-8 rounded-lg bg-primary px-5 py-5 pb-0 md:flex-row md:px-14 md:py-10 lg:px-20 lg:py-12',
-        props.className,
+        className,
       )}
+      {...rest}
     >
       <div
         className="max-w-2xl text-center text-xl font-bold text-[white] md:text-left md:text-2xl lg:text-3xl xl:text-[32px]"
-        dangerouslySetInnerHTML={{ __html: props.description }}
+        dangerouslySetInnerHTML={{ __html: description }}
       />
       <div>
         <Button
-          data-testid="video-cta-button"
           variant="secondary"
           className="-mb-8 w-[220px] text-[0.9rem] md:mb-0"
           to={`/${questionnaireRoute}`}

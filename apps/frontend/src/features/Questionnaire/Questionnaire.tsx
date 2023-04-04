@@ -45,6 +45,8 @@ export const Questionnaire: React.FC<QuestionnaireProps> = ({
   const isScrolled = useIsScrolled();
   const { state } = useQuestionnaireContext();
 
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+
   const zeroBasedQuestionsCount = questions.length - 1;
   const isQuestionStep = state.index <= zeroBasedQuestionsCount;
   const isPostalCodeStep = state.index === zeroBasedQuestionsCount + 1;
@@ -64,7 +66,7 @@ export const Questionnaire: React.FC<QuestionnaireProps> = ({
 
   return (
     <div
-      id="questionnaire"
+      data-testid="questionnaire"
       className="mx-auto flex h-full max-w-[1400px] flex-col justify-between bg-tertiary md:rounded-t-[10px]"
     >
       <div>
@@ -75,7 +77,7 @@ export const Questionnaire: React.FC<QuestionnaireProps> = ({
         <div className="max-w relative mx-auto grid h-auto min-h-[420px] max-w-[964px] grid-cols-1 grid-rows-[auto_1fr] bg-[white] py-5 md:mb-12 md:rounded-[10px] md:pt-12 md:pb-10 md:shadow-sm">
           <BackButton
             className={
-              isFormSuccessStep || isScrolled
+              isFormSuccessStep || (isScrolled && isMobile)
                 ? 'invisible absolute opacity-0'
                 : 'fixed left-4 top-[25px] z-10 opacity-100 transition-all md:absolute md:left-8 md:top-8'
             }

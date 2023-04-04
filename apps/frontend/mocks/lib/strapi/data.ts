@@ -1,110 +1,118 @@
-import { LandingPage } from '../../../src/lib/strapi';
+import {
+  LandingPage,
+  Questionnaire,
+  StaticContent,
+} from '../../../src/lib/strapi';
 
 export const content: { data: { id: number; attributes: LandingPage }[] } = {
   data: [
     {
-      id: 1,
+      id: 4,
       attributes: {
-        seo_title: 'Craftsman24 – Wir haben die Handwerker für Ihre Projekte.',
+        seo_title: 'Mehr Leads mit Leadquelle. Ganz sicher!',
         seo_description:
-          'Professionelle Arbeit von qualifizierten Fachkräften: Schnell und präzise nach Ihren Wünschen ausgeführt. Jetzt Handwerker finden!',
+          'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC.',
         domain: 'localhost:3000',
-        brand_name: 'Craftsman24',
-        color_primary: '#359b88',
-        color_secondary: '#e6b432',
-        color_tertiary: '#efefef',
-        color_text: '#737373',
-        contact_email: 'konstantin.muenster@mail.com',
-        contact_phone: '+41 41 510 42 00',
-        client_address: 'Leadquelle GmbH\nGrafenauweg 8\n6300 Zug\nSchweiz',
-        client_vat: 'CHE-138.210.925',
-        service_type: 'Handwerker',
+        brand_name: 'Leadquelle',
+        color_primary: '#673A99',
+        color_secondary: '#FF6658',
+        color_tertiary: '#FEF7E5',
+        color_text: '#505050',
+        contact_email: 'info@kmuenster.com',
+        contact_phone: '+49123456789',
+        createdAt: '2023-03-06T18:02:40.609Z',
+        updatedAt: '2023-04-04T07:33:27.469Z',
+        publishedAt: '2023-03-06T18:02:41.884Z',
+        client_address:
+          'Leadquelle Schweiz GmbH\nGeschäftsführer:\nDominik Eisenhardt\nGrafenauweg 8\n6300 Zug',
+        client_vat: 'DE123333',
+        service_type: null,
         google_allow_indexation: false,
-        google_tag_manager_id: 'GTM-MP9BD8S',
+        google_tag_manager_id: null,
         funnel_target: 'Questionnaire',
         sections: [
           {
-            id: 1,
+            id: 3,
             __component: 'sections.hero',
-            title: 'Ihr Projekt in guten Händen.',
-            subtitle: 'Einfach. Machen. Lassen.',
-            description:
-              'Erfahrene Handwerker kümmern sich um Ihr Zuhause: Professionell, präzise und schnell. Jetzt Angebot einholen!',
+            title: 'Erreichen Sie Ihre Werbeziele',
+            subtitle:
+              'Als lokale Online-Marketing-Agentur konzipieren und gestalten wir Online-Produkte für kleine und mittlere Unternehmen.',
+            description: null,
             background_image: {
               data: {
-                id: 160,
+                id: 176,
                 attributes: {
-                  name: '016cc107bb33d0821adb46c96199ed31.jpeg',
+                  name: 'Gruppe maskieren 80.png',
                   alternativeText: null,
                   caption: null,
-                  width: 4096,
-                  height: 2731,
+                  width: 1340,
+                  height: 1220,
                   formats: {
                     large: {
-                      ext: '.jpeg',
-                      url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/large_016cc107bb33d0821adb46c96199ed31_1b09d720ae.jpeg',
-                      hash: 'large_016cc107bb33d0821adb46c96199ed31_1b09d720ae',
-                      mime: 'image/jpeg',
-                      name: 'large_016cc107bb33d0821adb46c96199ed31.jpeg',
+                      ext: '.png',
+                      url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/large_Gruppe_maskieren_80_4640cccb6d.png',
+                      hash: 'large_Gruppe_maskieren_80_4640cccb6d',
+                      mime: 'image/png',
+                      name: 'large_Gruppe maskieren 80.png',
                       path: null,
-                      size: 109.35,
+                      size: 1827.05,
                       width: 1000,
-                      height: 667,
+                      height: 910,
                     },
                     small: {
-                      ext: '.jpeg',
-                      url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/small_016cc107bb33d0821adb46c96199ed31_1b09d720ae.jpeg',
-                      hash: 'small_016cc107bb33d0821adb46c96199ed31_1b09d720ae',
-                      mime: 'image/jpeg',
-                      name: 'small_016cc107bb33d0821adb46c96199ed31.jpeg',
+                      ext: '.png',
+                      url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/small_Gruppe_maskieren_80_4640cccb6d.png',
+                      hash: 'small_Gruppe_maskieren_80_4640cccb6d',
+                      mime: 'image/png',
+                      name: 'small_Gruppe maskieren 80.png',
                       path: null,
-                      size: 38.33,
+                      size: 482.71,
                       width: 500,
-                      height: 333,
+                      height: 455,
                     },
                     medium: {
-                      ext: '.jpeg',
-                      url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/medium_016cc107bb33d0821adb46c96199ed31_1b09d720ae.jpeg',
-                      hash: 'medium_016cc107bb33d0821adb46c96199ed31_1b09d720ae',
-                      mime: 'image/jpeg',
-                      name: 'medium_016cc107bb33d0821adb46c96199ed31.jpeg',
+                      ext: '.png',
+                      url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/medium_Gruppe_maskieren_80_4640cccb6d.png',
+                      hash: 'medium_Gruppe_maskieren_80_4640cccb6d',
+                      mime: 'image/png',
+                      name: 'medium_Gruppe maskieren 80.png',
                       path: null,
-                      size: 69.97,
+                      size: 1056.17,
                       width: 750,
-                      height: 500,
+                      height: 683,
                     },
                     thumbnail: {
-                      ext: '.jpeg',
-                      url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/thumbnail_016cc107bb33d0821adb46c96199ed31_1b09d720ae.jpeg',
-                      hash: 'thumbnail_016cc107bb33d0821adb46c96199ed31_1b09d720ae',
-                      mime: 'image/jpeg',
-                      name: 'thumbnail_016cc107bb33d0821adb46c96199ed31.jpeg',
+                      ext: '.png',
+                      url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/thumbnail_Gruppe_maskieren_80_4640cccb6d.png',
+                      hash: 'thumbnail_Gruppe_maskieren_80_4640cccb6d',
+                      mime: 'image/png',
+                      name: 'thumbnail_Gruppe maskieren 80.png',
                       path: null,
-                      size: 12.35,
-                      width: 234,
+                      size: 65.05,
+                      width: 171,
                       height: 156,
                     },
                   },
-                  hash: '016cc107bb33d0821adb46c96199ed31_1b09d720ae',
-                  ext: '.jpeg',
-                  mime: 'image/jpeg',
-                  size: 1035.36,
-                  url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/016cc107bb33d0821adb46c96199ed31_1b09d720ae.jpeg',
+                  hash: 'Gruppe_maskieren_80_4640cccb6d',
+                  ext: '.png',
+                  mime: 'image/png',
+                  size: 609.45,
+                  url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/Gruppe_maskieren_80_4640cccb6d.png',
                   previewUrl: null,
                   provider: 'aws-s3',
                   provider_metadata: null,
-                  createdAt: '2022-12-19T14:32:42.274Z',
-                  updatedAt: '2022-12-19T14:32:42.274Z',
+                  createdAt: '2023-04-04T07:29:14.343Z',
+                  updatedAt: '2023-04-04T07:29:14.343Z',
                   related: {
                     data: [
                       {
-                        id: 1,
+                        id: 3,
                         attributes: {
                           __type: 'sections.hero',
-                          title: 'Ihr Projekt in guten Händen.',
-                          subtitle: 'Einfach. Machen. Lassen.',
-                          description:
-                            'Erfahrene Handwerker kümmern sich um Ihr Zuhause: Professionell, präzise und schnell. Jetzt Angebot einholen!',
+                          title: 'Erreichen Sie Ihre Werbeziele',
+                          subtitle:
+                            'Als lokale Online-Marketing-Agentur konzipieren und gestalten wir Online-Produkte für kleine und mittlere Unternehmen.',
+                          description: null,
                         },
                       },
                     ],
@@ -114,92 +122,32 @@ export const content: { data: { id: number; attributes: LandingPage }[] } = {
             },
           },
           {
-            id: 1,
-            __component: 'sections.statistics',
-            background_image: {
-              data: {
-                id: 131,
-                attributes: {
-                  name: 'work.jpg',
-                  alternativeText: 'work.jpg',
-                  caption: 'work.jpg',
-                  width: 1920,
-                  height: 1280,
-                  formats: {
-                    large: {
-                      ext: '.jpg',
-                      url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/large_work_a81a4126a1.jpg',
-                      hash: 'large_work_a81a4126a1',
-                      mime: 'image/jpeg',
-                      name: 'large_work.jpg',
-                      path: null,
-                      size: 63.43,
-                      width: 1000,
-                      height: 667,
-                    },
-                    small: {
-                      ext: '.jpg',
-                      url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/small_work_a81a4126a1.jpg',
-                      hash: 'small_work_a81a4126a1',
-                      mime: 'image/jpeg',
-                      name: 'small_work.jpg',
-                      path: null,
-                      size: 24.22,
-                      width: 500,
-                      height: 333,
-                    },
-                    medium: {
-                      ext: '.jpg',
-                      url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/medium_work_a81a4126a1.jpg',
-                      hash: 'medium_work_a81a4126a1',
-                      mime: 'image/jpeg',
-                      name: 'medium_work.jpg',
-                      path: null,
-                      size: 41.37,
-                      width: 750,
-                      height: 500,
-                    },
-                    thumbnail: {
-                      ext: '.jpg',
-                      url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/thumbnail_work_a81a4126a1.jpg',
-                      hash: 'thumbnail_work_a81a4126a1',
-                      mime: 'image/jpeg',
-                      name: 'thumbnail_work.jpg',
-                      path: null,
-                      size: 8.8,
-                      width: 234,
-                      height: 156,
-                    },
-                  },
-                  hash: 'work_a81a4126a1',
-                  ext: '.jpg',
-                  mime: 'image/jpeg',
-                  size: 148.59,
-                  url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/work_a81a4126a1.jpg',
-                  previewUrl: null,
-                  provider: 'aws-s3',
-                  provider_metadata: null,
-                  createdAt: '2022-01-04T16:32:52.514Z',
-                  updatedAt: '2022-01-04T16:32:52.514Z',
-                  related: {
-                    data: [
-                      { id: 1, attributes: { __type: 'sections.statistics' } },
-                    ],
-                  },
-                },
-              },
-            },
-            number: [
-              { id: 1, label: 'Kunden', number: 211, number_suffix: null },
-              { id: 2, label: 'Projekte', number: 36412, number_suffix: null },
+            id: 2,
+            __component: 'sections.video',
+            video_title: 'Unser Prinzip für Ihren Erfolg!',
+            video_description:
+              'Unser Video enthält eine ausführliche Vorstellung unserer Dienstleistungen und zeigt Ihnen, wie Sie davon profitieren können. Mit anschaulichen Beispielen und Anwendungsfällen demonstrieren wir, wie unsere Lösungen Ihnen helfen können, Ihre Ziele zu erreichen.',
+            statistics: [
               {
-                id: 3,
-                label: 'Auszeichnungen',
-                number: 26,
+                id: 16,
+                label: 'Premiumpartner',
+                number: 322,
                 number_suffix: null,
               },
               {
-                id: 4,
+                id: 17,
+                label: 'Premiumpartner',
+                number: 322,
+                number_suffix: null,
+              },
+              {
+                id: 18,
+                label: 'Kundenzufriedenheit',
+                number: 100,
+                number_suffix: '%',
+              },
+              {
+                id: 19,
                 label: 'Kundenzufriedenheit',
                 number: 100,
                 number_suffix: '%',
@@ -207,391 +155,166 @@ export const content: { data: { id: number; attributes: LandingPage }[] } = {
             ],
           },
           {
-            id: 1,
-            __component: 'sections.call-to-action',
-            title:
-              'Wir arbeiten mit Handwerkern aus verschiedenen Branchen zusammen',
-            subtitle:
-              'Um Ihnen die gängigsten Leistungen rund um Ihr Haus und Ihre Wohnung anbieten zu können, bieten wir fünf verschiedene Handwerker-Säulen an.',
-            service_description:
-              'Wir vermitteln daher ausschließlich Handwerker,\ndie folgende Kriterien erfüllen:\n\n- Geprüfte Qualifikation und Zulassung\n- Umfangreiche Erfahrung und transparentes Firmenprofil\n- Referenzen und positives Feedback\n- Faire und transparente Preisgestaltung mit klarer Kalkulation',
-          },
-          {
-            id: 1,
+            id: 2,
             __component: 'sections.services',
-            service_tab: [
+            title: 'Unsere Mission',
+            description:
+              'Zielführendes Online-Marketing für regionale Unternehmen, einfach und effizient.',
+            service_image: {
+              data: {
+                id: 177,
+                attributes: {
+                  name: 'online-marketing.png',
+                  alternativeText: null,
+                  caption: null,
+                  width: 920,
+                  height: 1100,
+                  formats: {
+                    large: {
+                      ext: '.png',
+                      url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/large_online_marketing_d08af8020f.png',
+                      hash: 'large_online_marketing_d08af8020f',
+                      mime: 'image/png',
+                      name: 'large_online-marketing.png',
+                      path: null,
+                      size: 1001.28,
+                      width: 836,
+                      height: 1000,
+                    },
+                    small: {
+                      ext: '.png',
+                      url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/small_online_marketing_d08af8020f.png',
+                      hash: 'small_online_marketing_d08af8020f',
+                      mime: 'image/png',
+                      name: 'small_online-marketing.png',
+                      path: null,
+                      size: 263.18,
+                      width: 418,
+                      height: 500,
+                    },
+                    medium: {
+                      ext: '.png',
+                      url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/medium_online_marketing_d08af8020f.png',
+                      hash: 'medium_online_marketing_d08af8020f',
+                      mime: 'image/png',
+                      name: 'medium_online-marketing.png',
+                      path: null,
+                      size: 577.7,
+                      width: 627,
+                      height: 750,
+                    },
+                    thumbnail: {
+                      ext: '.png',
+                      url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/thumbnail_online_marketing_d08af8020f.png',
+                      hash: 'thumbnail_online_marketing_d08af8020f',
+                      mime: 'image/png',
+                      name: 'thumbnail_online-marketing.png',
+                      path: null,
+                      size: 29.42,
+                      width: 130,
+                      height: 156,
+                    },
+                  },
+                  hash: 'online_marketing_d08af8020f',
+                  ext: '.png',
+                  mime: 'image/png',
+                  size: 280.65,
+                  url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/online_marketing_d08af8020f.png',
+                  previewUrl: null,
+                  provider: 'aws-s3',
+                  provider_metadata: null,
+                  createdAt: '2023-04-04T07:32:51.472Z',
+                  updatedAt: '2023-04-04T07:32:51.472Z',
+                  related: {
+                    data: [
+                      {
+                        id: 2,
+                        attributes: {
+                          __type: 'sections.services',
+                          title: 'Unsere Mission',
+                          description:
+                            'Zielführendes Online-Marketing für regionale Unternehmen, einfach und effizient.',
+                        },
+                      },
+                    ],
+                  },
+                },
+              },
+            },
+            benefits: [
               {
                 id: 1,
-                tab_name: 'Fliesen',
-                title: 'Den besten Fliesenleger finden',
-                subtitle:
-                  'Wer professionell und fehlerfrei Fliesen verlegen möchte, braucht eine Menge Geschick und Erfahrung.',
+                title: 'Kunden gewinnen',
                 description:
-                  'Die Kosten für das Fliesenlegen variieren dabei auch stark je nach Materialgüte und Qualität der Fliesen. Wir arbeiten ausschließlich mit professionellen und geprüften Fachbetrieben zusammen, damit Sie sicher sein können, dass Sie ein perfektes Endergebnis zum bestmöglichen Preis bekommen. Insbesondere beim Verlegen von Bodenfliesen ist es wichtig, dass Baustoffe, Fliesenkleber und die Fliesen selbst aufeinander abgestimmt und fachgerecht verlegt werden.',
-                service_examples:
-                  'Böden verfliesen\nWände verfliesen\nKeramik- und Kunststein-Arbeiten\nArbeitsplatten aus Stein verlegen und anpassen\nMosaikarbeiten',
-                service_images: {
-                  data: [
-                    {
-                      id: 116,
-                      attributes: {
-                        name: 'shutterstock_1135608866x653.jpg',
-                        alternativeText: 'shutterstock_1135608866x653.jpg',
-                        caption: 'shutterstock_1135608866x653.jpg',
-                        width: 653,
-                        height: 367,
-                        formats: {
-                          small: {
-                            ext: '.jpg',
-                            url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/small_shutterstock_1135608866x653_616c10d2c7.jpg',
-                            hash: 'small_shutterstock_1135608866x653_616c10d2c7',
-                            mime: 'image/jpeg',
-                            name: 'small_shutterstock_1135608866x653.jpg',
-                            path: null,
-                            size: 18.1,
-                            width: 500,
-                            height: 281,
-                          },
-                          thumbnail: {
-                            ext: '.jpg',
-                            url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/thumbnail_shutterstock_1135608866x653_616c10d2c7.jpg',
-                            hash: 'thumbnail_shutterstock_1135608866x653_616c10d2c7',
-                            mime: 'image/jpeg',
-                            name: 'thumbnail_shutterstock_1135608866x653.jpg',
-                            path: null,
-                            size: 5.58,
-                            width: 245,
-                            height: 138,
-                          },
-                        },
-                        hash: 'shutterstock_1135608866x653_616c10d2c7',
-                        ext: '.jpg',
-                        mime: 'image/jpeg',
-                        size: 28.2,
-                        url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/shutterstock_1135608866x653_616c10d2c7.jpg',
-                        previewUrl: null,
-                        provider: 'aws-s3',
-                        provider_metadata: null,
-                        createdAt: '2022-01-04T16:32:50.956Z',
-                        updatedAt: '2022-01-04T16:32:50.956Z',
-                        related: {
-                          data: [
-                            {
-                              id: 1,
-                              attributes: {
-                                __type: 'sections.service-tab',
-                                tab_name: 'Fliesen',
-                                title: 'Den besten Fliesenleger finden',
-                                subtitle:
-                                  'Wer professionell und fehlerfrei Fliesen verlegen möchte, braucht eine Menge Geschick und Erfahrung.',
-                                description:
-                                  'Die Kosten für das Fliesenlegen variieren dabei auch stark je nach Materialgüte und Qualität der Fliesen. Wir arbeiten ausschließlich mit professionellen und geprüften Fachbetrieben zusammen, damit Sie sicher sein können, dass Sie ein perfektes Endergebnis zum bestmöglichen Preis bekommen. Insbesondere beim Verlegen von Bodenfliesen ist es wichtig, dass Baustoffe, Fliesenkleber und die Fliesen selbst aufeinander abgestimmt und fachgerecht verlegt werden.',
-                                service_examples:
-                                  'Böden verfliesen\nWände verfliesen\nKeramik- und Kunststein-Arbeiten\nArbeitsplatten aus Stein verlegen und anpassen\nMosaikarbeiten',
-                              },
-                            },
-                          ],
-                        },
-                      },
-                    },
-                    {
-                      id: 117,
-                      attributes: {
-                        name: 'shutterstock_1096399088x653.jpg',
-                        alternativeText: 'shutterstock_1096399088x653.jpg',
-                        caption: 'shutterstock_1096399088x653.jpg',
-                        width: 653,
-                        height: 367,
-                        formats: {
-                          small: {
-                            ext: '.jpg',
-                            url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/small_shutterstock_1096399088x653_7214ea8ac9.jpg',
-                            hash: 'small_shutterstock_1096399088x653_7214ea8ac9',
-                            mime: 'image/jpeg',
-                            name: 'small_shutterstock_1096399088x653.jpg',
-                            path: null,
-                            size: 30.93,
-                            width: 500,
-                            height: 281,
-                          },
-                          thumbnail: {
-                            ext: '.jpg',
-                            url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/thumbnail_shutterstock_1096399088x653_7214ea8ac9.jpg',
-                            hash: 'thumbnail_shutterstock_1096399088x653_7214ea8ac9',
-                            mime: 'image/jpeg',
-                            name: 'thumbnail_shutterstock_1096399088x653.jpg',
-                            path: null,
-                            size: 8.94,
-                            width: 245,
-                            height: 138,
-                          },
-                        },
-                        hash: 'shutterstock_1096399088x653_7214ea8ac9',
-                        ext: '.jpg',
-                        mime: 'image/jpeg',
-                        size: 49.41,
-                        url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/shutterstock_1096399088x653_7214ea8ac9.jpg',
-                        previewUrl: null,
-                        provider: 'aws-s3',
-                        provider_metadata: null,
-                        createdAt: '2022-01-04T16:32:50.977Z',
-                        updatedAt: '2022-01-04T16:32:50.977Z',
-                        related: {
-                          data: [
-                            {
-                              id: 1,
-                              attributes: {
-                                __type: 'sections.service-tab',
-                                tab_name: 'Fliesen',
-                                title: 'Den besten Fliesenleger finden',
-                                subtitle:
-                                  'Wer professionell und fehlerfrei Fliesen verlegen möchte, braucht eine Menge Geschick und Erfahrung.',
-                                description:
-                                  'Die Kosten für das Fliesenlegen variieren dabei auch stark je nach Materialgüte und Qualität der Fliesen. Wir arbeiten ausschließlich mit professionellen und geprüften Fachbetrieben zusammen, damit Sie sicher sein können, dass Sie ein perfektes Endergebnis zum bestmöglichen Preis bekommen. Insbesondere beim Verlegen von Bodenfliesen ist es wichtig, dass Baustoffe, Fliesenkleber und die Fliesen selbst aufeinander abgestimmt und fachgerecht verlegt werden.',
-                                service_examples:
-                                  'Böden verfliesen\nWände verfliesen\nKeramik- und Kunststein-Arbeiten\nArbeitsplatten aus Stein verlegen und anpassen\nMosaikarbeiten',
-                              },
-                            },
-                          ],
-                        },
-                      },
-                    },
-                  ],
-                },
+                  'Wir haben eine Erfolgsbilanz, die für sich spricht, und wir sind stolz darauf, dass wir unseren helfen konnten, ihre Ziele zu erreichen. Kunden',
               },
               {
                 id: 2,
-                tab_name: 'Trocken- und Innenausbau',
-                title:
-                  'Den besten Handwerker für Trockenbau- / Innenausbau finden',
-                subtitle:
-                  'Eine der häufigsten Trockenbau-Tätigkeiten ist das Anbringen von Gipskartonplatten, auch als Rigipsplatten bekannt. Neben den reinen Arbeitskosten darf man natürlich die Materialkosten für Latten, Schrauben, Spachtelmasse und die Gipskartonplatten selbst nicht vergessen.',
+                title: 'Gefunden werden',
                 description:
-                  'Platten, die für Feuchträume geeignet sind, sind deutlich teurer, sind aber in vielen Räumen sehr empfehlenswert. Auch hier sollten Sie keinesfalls am Baustoff sparen, sondern stets darauf achten, dass die Materialien an die Anforderungen des Raumes angepasst sind.',
-                service_examples:
-                  'Arbeitsplatten einbauen & zuschneiden\nZwischenwände ziehen\nDachschrägen verkleiden\nZimmerdecke abhängen\nInnenausbau\nOSB-Platten verlegen\nTüren einbauen\nRigipsplatten anbringen',
-                service_images: {
-                  data: [
-                    {
-                      id: 126,
-                      attributes: {
-                        name: 'shutterstock_1111840049.jpg',
-                        alternativeText: 'shutterstock_1111840049.jpg',
-                        caption: 'shutterstock_1111840049.jpg',
-                        width: 435,
-                        height: 130,
-                        formats: {
-                          thumbnail: {
-                            ext: '.jpg',
-                            url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/thumbnail_shutterstock_1111840049_b579fe95fa.jpg',
-                            hash: 'thumbnail_shutterstock_1111840049_b579fe95fa',
-                            mime: 'image/jpeg',
-                            name: 'thumbnail_shutterstock_1111840049.jpg',
-                            path: null,
-                            size: 3.31,
-                            width: 245,
-                            height: 73,
-                          },
-                        },
-                        hash: 'shutterstock_1111840049_b579fe95fa',
-                        ext: '.jpg',
-                        mime: 'image/jpeg',
-                        size: 8.27,
-                        url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/shutterstock_1111840049_b579fe95fa.jpg',
-                        previewUrl: null,
-                        provider: 'aws-s3',
-                        provider_metadata: null,
-                        createdAt: '2022-01-04T16:32:51.903Z',
-                        updatedAt: '2022-01-04T16:32:51.903Z',
-                        related: {
-                          data: [
-                            {
-                              id: 2,
-                              attributes: {
-                                __type: 'sections.service-tab',
-                                tab_name: 'Trocken- und Innenausbau',
-                                title:
-                                  'Den besten Handwerker für Trockenbau- / Innenausbau finden',
-                                subtitle:
-                                  'Eine der häufigsten Trockenbau-Tätigkeiten ist das Anbringen von Gipskartonplatten, auch als Rigipsplatten bekannt. Neben den reinen Arbeitskosten darf man natürlich die Materialkosten für Latten, Schrauben, Spachtelmasse und die Gipskartonplatten selbst nicht vergessen.',
-                                description:
-                                  'Platten, die für Feuchträume geeignet sind, sind deutlich teurer, sind aber in vielen Räumen sehr empfehlenswert. Auch hier sollten Sie keinesfalls am Baustoff sparen, sondern stets darauf achten, dass die Materialien an die Anforderungen des Raumes angepasst sind.',
-                                service_examples:
-                                  'Arbeitsplatten einbauen & zuschneiden\nZwischenwände ziehen\nDachschrägen verkleiden\nZimmerdecke abhängen\nInnenausbau\nOSB-Platten verlegen\nTüren einbauen\nRigipsplatten anbringen',
-                              },
-                            },
-                            {
-                              id: 1,
-                              attributes: { __type: 'sections.images' },
-                            },
-                          ],
-                        },
-                      },
-                    },
-                    {
-                      id: 128,
-                      attributes: {
-                        name: 'shutterstock_1054466477-1.jpg',
-                        alternativeText: 'shutterstock_1054466477-1.jpg',
-                        caption: 'shutterstock_1054466477-1.jpg',
-                        width: 435,
-                        height: 130,
-                        formats: {
-                          thumbnail: {
-                            ext: '.jpg',
-                            url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/thumbnail_shutterstock_1054466477_1_f57cbc3fd0.jpg',
-                            hash: 'thumbnail_shutterstock_1054466477_1_f57cbc3fd0',
-                            mime: 'image/jpeg',
-                            name: 'thumbnail_shutterstock_1054466477-1.jpg',
-                            path: null,
-                            size: 5.25,
-                            width: 245,
-                            height: 73,
-                          },
-                        },
-                        hash: 'shutterstock_1054466477_1_f57cbc3fd0',
-                        ext: '.jpg',
-                        mime: 'image/jpeg',
-                        size: 12.74,
-                        url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/shutterstock_1054466477_1_f57cbc3fd0.jpg',
-                        previewUrl: null,
-                        provider: 'aws-s3',
-                        provider_metadata: null,
-                        createdAt: '2022-01-04T16:32:52.195Z',
-                        updatedAt: '2022-01-04T16:32:52.195Z',
-                        related: {
-                          data: [
-                            {
-                              id: 1,
-                              attributes: { __type: 'sections.images' },
-                            },
-                            {
-                              id: 2,
-                              attributes: {
-                                __type: 'sections.service-tab',
-                                tab_name: 'Trocken- und Innenausbau',
-                                title:
-                                  'Den besten Handwerker für Trockenbau- / Innenausbau finden',
-                                subtitle:
-                                  'Eine der häufigsten Trockenbau-Tätigkeiten ist das Anbringen von Gipskartonplatten, auch als Rigipsplatten bekannt. Neben den reinen Arbeitskosten darf man natürlich die Materialkosten für Latten, Schrauben, Spachtelmasse und die Gipskartonplatten selbst nicht vergessen.',
-                                description:
-                                  'Platten, die für Feuchträume geeignet sind, sind deutlich teurer, sind aber in vielen Räumen sehr empfehlenswert. Auch hier sollten Sie keinesfalls am Baustoff sparen, sondern stets darauf achten, dass die Materialien an die Anforderungen des Raumes angepasst sind.',
-                                service_examples:
-                                  'Arbeitsplatten einbauen & zuschneiden\nZwischenwände ziehen\nDachschrägen verkleiden\nZimmerdecke abhängen\nInnenausbau\nOSB-Platten verlegen\nTüren einbauen\nRigipsplatten anbringen',
-                              },
-                            },
-                          ],
-                        },
-                      },
-                    },
-                    {
-                      id: 133,
-                      attributes: {
-                        name: 'shutterstock_592142972x653.jpg',
-                        alternativeText: 'shutterstock_592142972x653.jpg',
-                        caption: 'shutterstock_592142972x653.jpg',
-                        width: 653,
-                        height: 367,
-                        formats: {
-                          small: {
-                            ext: '.jpg',
-                            url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/small_shutterstock_592142972x653_b6525310d6.jpg',
-                            hash: 'small_shutterstock_592142972x653_b6525310d6',
-                            mime: 'image/jpeg',
-                            name: 'small_shutterstock_592142972x653.jpg',
-                            path: null,
-                            size: 35.85,
-                            width: 500,
-                            height: 281,
-                          },
-                          thumbnail: {
-                            ext: '.jpg',
-                            url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/thumbnail_shutterstock_592142972x653_b6525310d6.jpg',
-                            hash: 'thumbnail_shutterstock_592142972x653_b6525310d6',
-                            mime: 'image/jpeg',
-                            name: 'thumbnail_shutterstock_592142972x653.jpg',
-                            path: null,
-                            size: 9.71,
-                            width: 245,
-                            height: 138,
-                          },
-                        },
-                        hash: 'shutterstock_592142972x653_b6525310d6',
-                        ext: '.jpg',
-                        mime: 'image/jpeg',
-                        size: 57.78,
-                        url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/shutterstock_592142972x653_b6525310d6.jpg',
-                        previewUrl: null,
-                        provider: 'aws-s3',
-                        provider_metadata: null,
-                        createdAt: '2022-01-04T16:32:53.153Z',
-                        updatedAt: '2022-01-04T16:32:53.153Z',
-                        related: {
-                          data: [
-                            {
-                              id: 2,
-                              attributes: {
-                                __type: 'sections.service-tab',
-                                tab_name: 'Trocken- und Innenausbau',
-                                title:
-                                  'Den besten Handwerker für Trockenbau- / Innenausbau finden',
-                                subtitle:
-                                  'Eine der häufigsten Trockenbau-Tätigkeiten ist das Anbringen von Gipskartonplatten, auch als Rigipsplatten bekannt. Neben den reinen Arbeitskosten darf man natürlich die Materialkosten für Latten, Schrauben, Spachtelmasse und die Gipskartonplatten selbst nicht vergessen.',
-                                description:
-                                  'Platten, die für Feuchträume geeignet sind, sind deutlich teurer, sind aber in vielen Räumen sehr empfehlenswert. Auch hier sollten Sie keinesfalls am Baustoff sparen, sondern stets darauf achten, dass die Materialien an die Anforderungen des Raumes angepasst sind.',
-                                service_examples:
-                                  'Arbeitsplatten einbauen & zuschneiden\nZwischenwände ziehen\nDachschrägen verkleiden\nZimmerdecke abhängen\nInnenausbau\nOSB-Platten verlegen\nTüren einbauen\nRigipsplatten anbringen',
-                              },
-                            },
-                          ],
-                        },
-                      },
-                    },
-                  ],
-                },
+                  'Mit unserer Hilfe können Sie sicher sein, dass Ihre Website die notwendigen Keywords und Inhalte enthält, um in den Suchmaschinenergebnissen ganz oben zu stehen. ',
+              },
+              {
+                id: 3,
+                title: 'Bekanntheit erhöhen',
+                description:
+                  'Wir bieten eine breite Palette von Marketingdienst- Leistungen an, um Ihre Marke ins Rampenlicht zu stellen und Ihre Bekanntheit zu steigern. Unsere Experten helfen, eine effektive Marketingstrategie zu entwickeln, die auf Ihre Zielgruppe und Ziele abgestimmt ist.',
               },
             ],
+            service_tab: [],
           },
           {
-            id: 1,
+            id: 4,
             __component: 'sections.reviews',
             rating: [
               {
-                id: 1,
-                name: 'Juliane S.',
-                biography: 'aus Düsseldorf',
+                id: 7,
+                name: 'Simone Bach',
+                biography: 'Lorem Ipsum',
                 description:
-                  'Obwohl – oder vielleicht gerade weil – wir in einer großen Stadt leben, hatten wir unsere liebe Mühe, jemanden zu finden, der uns eine Zwischenwand für unseren begehbaren Kleiderschrank einbauen kann. Umso überraschter waren wir, dass wir mit eurer Hilfe drei Handwerker in unserer Nähe finden konnten, die preislich alle relativ nah beieinander lagen. Haben uns für den Mittelweg entschieden und es nicht bereut. Sogar das Verputzen haben die Jungs erledigt und sich um alles Material gekümmert. Topp! Alles bestens gelaufen, wir werden Craftsman24 auf jeden Fall weiterempfehlen!',
+                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sollicitudin ipsum sed urna ornare aliquam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sollicitudin ip',
                 avatar: {
                   data: {
-                    id: 129,
+                    id: 168,
                     attributes: {
-                      name: 'Juliane.jpg',
-                      alternativeText: 'Juliane.jpg',
-                      caption: 'Juliane.jpg',
-                      width: 100,
-                      height: 100,
-                      formats: null,
-                      hash: 'Juliane_51f5b1bb5f',
+                      name: 'Gruppe maskieren 70.jpg',
+                      alternativeText: null,
+                      caption: null,
+                      width: 160,
+                      height: 160,
+                      formats: {
+                        thumbnail: {
+                          ext: '.jpg',
+                          url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/thumbnail_Gruppe_maskieren_70_f4ca0c056f.jpg',
+                          hash: 'thumbnail_Gruppe_maskieren_70_f4ca0c056f',
+                          mime: 'image/jpeg',
+                          name: 'thumbnail_Gruppe maskieren 70.jpg',
+                          path: null,
+                          size: 5.6,
+                          width: 156,
+                          height: 156,
+                        },
+                      },
+                      hash: 'Gruppe_maskieren_70_f4ca0c056f',
                       ext: '.jpg',
                       mime: 'image/jpeg',
-                      size: 2.28,
-                      url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/Juliane_51f5b1bb5f.jpg',
+                      size: 5.75,
+                      url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/Gruppe_maskieren_70_f4ca0c056f.jpg',
                       previewUrl: null,
                       provider: 'aws-s3',
                       provider_metadata: null,
-                      createdAt: '2022-01-04T16:32:52.421Z',
-                      updatedAt: '2022-01-04T16:32:52.421Z',
+                      createdAt: '2023-03-06T18:20:19.961Z',
+                      updatedAt: '2023-03-06T18:20:19.961Z',
                       related: {
                         data: [
                           {
-                            id: 1,
+                            id: 7,
                             attributes: {
                               __type: 'sections.rating',
-                              name: 'Juliane S.',
-                              biography: 'aus Düsseldorf',
+                              name: 'Simone Bach',
+                              biography: 'Lorem Ipsum',
                               description:
-                                'Obwohl – oder vielleicht gerade weil – wir in einer großen Stadt leben, hatten wir unsere liebe Mühe, jemanden zu finden, der uns eine Zwischenwand für unseren begehbaren Kleiderschrank einbauen kann. Umso überraschter waren wir, dass wir mit eurer Hilfe drei Handwerker in unserer Nähe finden konnten, die preislich alle relativ nah beieinander lagen. Haben uns für den Mittelweg entschieden und es nicht bereut. Sogar das Verputzen haben die Jungs erledigt und sich um alles Material gekümmert. Topp! Alles bestens gelaufen, wir werden Craftsman24 auf jeden Fall weiterempfehlen!',
+                                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sollicitudin ipsum sed urna ornare aliquam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sollicitudin ip',
                             },
                           },
                         ],
@@ -601,334 +324,114 @@ export const content: { data: { id: number; attributes: LandingPage }[] } = {
                 },
               },
               {
-                id: 2,
+                id: 6,
                 name: 'Simone Bach',
-                biography: 'aus Mühlheim',
+                biography: 'Lorem Ipsum',
                 description:
-                  'Nach einem Sturm mussten wir schnell einen Dachdecker zum Flicken unseres Daches finden. Hat keine 48 Stunden gedauert, bis wir von euch verschiedene Angebote hatten. Da die Preise weit auseinander lagen und wir nur ein begrenztes Budget hatten (Versicherung übernimmt mal wieder nix), kam uns das Angebot des günstigen Dachdeckers gerade recht. Nach den ersten schweren Regenfällen können wir sagen: Arbeiten wurden vollständig und sehr gut erledigt. Vielen Dank für eure Hilfe, mit der wir unterm Strich fast 900 € gespart haben! Gerne wieder.',
-                avatar: { data: null },
+                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sollicitudin ipsum sed urna ornare aliquam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.',
+                avatar: {
+                  data: {
+                    id: 169,
+                    attributes: {
+                      name: 'Gruppe maskieren 77.jpg',
+                      alternativeText: null,
+                      caption: null,
+                      width: 160,
+                      height: 160,
+                      formats: {
+                        thumbnail: {
+                          ext: '.jpg',
+                          url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/thumbnail_Gruppe_maskieren_77_8cb600412d.jpg',
+                          hash: 'thumbnail_Gruppe_maskieren_77_8cb600412d',
+                          mime: 'image/jpeg',
+                          name: 'thumbnail_Gruppe maskieren 77.jpg',
+                          path: null,
+                          size: 5.79,
+                          width: 156,
+                          height: 156,
+                        },
+                      },
+                      hash: 'Gruppe_maskieren_77_8cb600412d',
+                      ext: '.jpg',
+                      mime: 'image/jpeg',
+                      size: 6.03,
+                      url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/Gruppe_maskieren_77_8cb600412d.jpg',
+                      previewUrl: null,
+                      provider: 'aws-s3',
+                      provider_metadata: null,
+                      createdAt: '2023-03-06T18:20:19.976Z',
+                      updatedAt: '2023-03-06T18:20:35.126Z',
+                      related: {
+                        data: [
+                          {
+                            id: 6,
+                            attributes: {
+                              __type: 'sections.rating',
+                              name: 'Simone Bach',
+                              biography: 'Lorem Ipsum',
+                              description:
+                                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sollicitudin ipsum sed urna ornare aliquam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.',
+                            },
+                          },
+                        ],
+                      },
+                    },
+                  },
+                },
               },
             ],
           },
           {
-            id: 1,
-            __component: 'sections.images',
-            images: {
-              data: [
-                {
-                  id: 128,
-                  attributes: {
-                    name: 'shutterstock_1054466477-1.jpg',
-                    alternativeText: 'shutterstock_1054466477-1.jpg',
-                    caption: 'shutterstock_1054466477-1.jpg',
-                    width: 435,
-                    height: 130,
-                    formats: {
-                      thumbnail: {
-                        ext: '.jpg',
-                        url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/thumbnail_shutterstock_1054466477_1_f57cbc3fd0.jpg',
-                        hash: 'thumbnail_shutterstock_1054466477_1_f57cbc3fd0',
-                        mime: 'image/jpeg',
-                        name: 'thumbnail_shutterstock_1054466477-1.jpg',
-                        path: null,
-                        size: 5.25,
-                        width: 245,
-                        height: 73,
-                      },
-                    },
-                    hash: 'shutterstock_1054466477_1_f57cbc3fd0',
-                    ext: '.jpg',
-                    mime: 'image/jpeg',
-                    size: 12.74,
-                    url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/shutterstock_1054466477_1_f57cbc3fd0.jpg',
-                    previewUrl: null,
-                    provider: 'aws-s3',
-                    provider_metadata: null,
-                    createdAt: '2022-01-04T16:32:52.195Z',
-                    updatedAt: '2022-01-04T16:32:52.195Z',
-                    related: {
-                      data: [
-                        { id: 1, attributes: { __type: 'sections.images' } },
-                        {
-                          id: 2,
-                          attributes: {
-                            __type: 'sections.service-tab',
-                            tab_name: 'Trocken- und Innenausbau',
-                            title:
-                              'Den besten Handwerker für Trockenbau- / Innenausbau finden',
-                            subtitle:
-                              'Eine der häufigsten Trockenbau-Tätigkeiten ist das Anbringen von Gipskartonplatten, auch als Rigipsplatten bekannt. Neben den reinen Arbeitskosten darf man natürlich die Materialkosten für Latten, Schrauben, Spachtelmasse und die Gipskartonplatten selbst nicht vergessen.',
-                            description:
-                              'Platten, die für Feuchträume geeignet sind, sind deutlich teurer, sind aber in vielen Räumen sehr empfehlenswert. Auch hier sollten Sie keinesfalls am Baustoff sparen, sondern stets darauf achten, dass die Materialien an die Anforderungen des Raumes angepasst sind.',
-                            service_examples:
-                              'Arbeitsplatten einbauen & zuschneiden\nZwischenwände ziehen\nDachschrägen verkleiden\nZimmerdecke abhängen\nInnenausbau\nOSB-Platten verlegen\nTüren einbauen\nRigipsplatten anbringen',
-                          },
-                        },
-                      ],
-                    },
-                  },
-                },
-                {
-                  id: 130,
-                  attributes: {
-                    name: 'shutterstock_535324096.jpg',
-                    alternativeText: 'shutterstock_535324096.jpg',
-                    caption: 'shutterstock_535324096.jpg',
-                    width: 435,
-                    height: 130,
-                    formats: {
-                      thumbnail: {
-                        ext: '.jpg',
-                        url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/thumbnail_shutterstock_535324096_2ff6d85b77.jpg',
-                        hash: 'thumbnail_shutterstock_535324096_2ff6d85b77',
-                        mime: 'image/jpeg',
-                        name: 'thumbnail_shutterstock_535324096.jpg',
-                        path: null,
-                        size: 6.07,
-                        width: 245,
-                        height: 73,
-                      },
-                    },
-                    hash: 'shutterstock_535324096_2ff6d85b77',
-                    ext: '.jpg',
-                    mime: 'image/jpeg',
-                    size: 15.18,
-                    url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/shutterstock_535324096_2ff6d85b77.jpg',
-                    previewUrl: null,
-                    provider: 'aws-s3',
-                    provider_metadata: null,
-                    createdAt: '2022-01-04T16:32:52.431Z',
-                    updatedAt: '2022-01-04T16:32:52.431Z',
-                    related: {
-                      data: [
-                        { id: 1, attributes: { __type: 'sections.images' } },
-                      ],
-                    },
-                  },
-                },
-                {
-                  id: 124,
-                  attributes: {
-                    name: 'shutterstock_1163474824.jpg',
-                    alternativeText: 'shutterstock_1163474824.jpg',
-                    caption: 'shutterstock_1163474824.jpg',
-                    width: 435,
-                    height: 130,
-                    formats: {
-                      thumbnail: {
-                        ext: '.jpg',
-                        url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/thumbnail_shutterstock_1163474824_c3998bee06.jpg',
-                        hash: 'thumbnail_shutterstock_1163474824_c3998bee06',
-                        mime: 'image/jpeg',
-                        name: 'thumbnail_shutterstock_1163474824.jpg',
-                        path: null,
-                        size: 4.76,
-                        width: 245,
-                        height: 73,
-                      },
-                    },
-                    hash: 'shutterstock_1163474824_c3998bee06',
-                    ext: '.jpg',
-                    mime: 'image/jpeg',
-                    size: 11.71,
-                    url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/shutterstock_1163474824_c3998bee06.jpg',
-                    previewUrl: null,
-                    provider: 'aws-s3',
-                    provider_metadata: null,
-                    createdAt: '2022-01-04T16:32:51.629Z',
-                    updatedAt: '2022-01-04T16:32:51.629Z',
-                    related: {
-                      data: [
-                        { id: 1, attributes: { __type: 'sections.images' } },
-                      ],
-                    },
-                  },
-                },
-                {
-                  id: 121,
-                  attributes: {
-                    name: 'pavel-untilov-meKJoXhVSNc-unsplash.jpg',
-                    alternativeText: 'pavel-untilov-meKJoXhVSNc-unsplash.jpg',
-                    caption: 'pavel-untilov-meKJoXhVSNc-unsplash.jpg',
-                    width: 435,
-                    height: 130,
-                    formats: {
-                      thumbnail: {
-                        ext: '.jpg',
-                        url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/thumbnail_pavel_untilov_me_K_Jo_Xh_VS_Nc_unsplash_eada5f99b5.jpg',
-                        hash: 'thumbnail_pavel_untilov_me_K_Jo_Xh_VS_Nc_unsplash_eada5f99b5',
-                        mime: 'image/jpeg',
-                        name: 'thumbnail_pavel-untilov-meKJoXhVSNc-unsplash.jpg',
-                        path: null,
-                        size: 3.41,
-                        width: 245,
-                        height: 73,
-                      },
-                    },
-                    hash: 'pavel_untilov_me_K_Jo_Xh_VS_Nc_unsplash_eada5f99b5',
-                    ext: '.jpg',
-                    mime: 'image/jpeg',
-                    size: 8.22,
-                    url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/pavel_untilov_me_K_Jo_Xh_VS_Nc_unsplash_eada5f99b5.jpg',
-                    previewUrl: null,
-                    provider: 'aws-s3',
-                    provider_metadata: null,
-                    createdAt: '2022-01-04T16:32:51.448Z',
-                    updatedAt: '2022-01-04T16:32:51.448Z',
-                    related: {
-                      data: [
-                        { id: 1, attributes: { __type: 'sections.images' } },
-                      ],
-                    },
-                  },
-                },
-                {
-                  id: 123,
-                  attributes: {
-                    name: 'shutterstock_1505384501-small.jpg',
-                    alternativeText: 'shutterstock_1505384501-small.jpg',
-                    caption: 'shutterstock_1505384501-small.jpg',
-                    width: 435,
-                    height: 130,
-                    formats: {
-                      thumbnail: {
-                        ext: '.jpg',
-                        url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/thumbnail_shutterstock_1505384501_small_00f64603bb.jpg',
-                        hash: 'thumbnail_shutterstock_1505384501_small_00f64603bb',
-                        mime: 'image/jpeg',
-                        name: 'thumbnail_shutterstock_1505384501-small.jpg',
-                        path: null,
-                        size: 5.08,
-                        width: 245,
-                        height: 73,
-                      },
-                    },
-                    hash: 'shutterstock_1505384501_small_00f64603bb',
-                    ext: '.jpg',
-                    mime: 'image/jpeg',
-                    size: 15.14,
-                    url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/shutterstock_1505384501_small_00f64603bb.jpg',
-                    previewUrl: null,
-                    provider: 'aws-s3',
-                    provider_metadata: null,
-                    createdAt: '2022-01-04T16:32:51.463Z',
-                    updatedAt: '2022-01-04T16:32:51.463Z',
-                    related: {
-                      data: [
-                        { id: 1, attributes: { __type: 'sections.images' } },
-                      ],
-                    },
-                  },
-                },
-                {
-                  id: 126,
-                  attributes: {
-                    name: 'shutterstock_1111840049.jpg',
-                    alternativeText: 'shutterstock_1111840049.jpg',
-                    caption: 'shutterstock_1111840049.jpg',
-                    width: 435,
-                    height: 130,
-                    formats: {
-                      thumbnail: {
-                        ext: '.jpg',
-                        url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/thumbnail_shutterstock_1111840049_b579fe95fa.jpg',
-                        hash: 'thumbnail_shutterstock_1111840049_b579fe95fa',
-                        mime: 'image/jpeg',
-                        name: 'thumbnail_shutterstock_1111840049.jpg',
-                        path: null,
-                        size: 3.31,
-                        width: 245,
-                        height: 73,
-                      },
-                    },
-                    hash: 'shutterstock_1111840049_b579fe95fa',
-                    ext: '.jpg',
-                    mime: 'image/jpeg',
-                    size: 8.27,
-                    url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/shutterstock_1111840049_b579fe95fa.jpg',
-                    previewUrl: null,
-                    provider: 'aws-s3',
-                    provider_metadata: null,
-                    createdAt: '2022-01-04T16:32:51.903Z',
-                    updatedAt: '2022-01-04T16:32:51.903Z',
-                    related: {
-                      data: [
-                        {
-                          id: 2,
-                          attributes: {
-                            __type: 'sections.service-tab',
-                            tab_name: 'Trocken- und Innenausbau',
-                            title:
-                              'Den besten Handwerker für Trockenbau- / Innenausbau finden',
-                            subtitle:
-                              'Eine der häufigsten Trockenbau-Tätigkeiten ist das Anbringen von Gipskartonplatten, auch als Rigipsplatten bekannt. Neben den reinen Arbeitskosten darf man natürlich die Materialkosten für Latten, Schrauben, Spachtelmasse und die Gipskartonplatten selbst nicht vergessen.',
-                            description:
-                              'Platten, die für Feuchträume geeignet sind, sind deutlich teurer, sind aber in vielen Räumen sehr empfehlenswert. Auch hier sollten Sie keinesfalls am Baustoff sparen, sondern stets darauf achten, dass die Materialien an die Anforderungen des Raumes angepasst sind.',
-                            service_examples:
-                              'Arbeitsplatten einbauen & zuschneiden\nZwischenwände ziehen\nDachschrägen verkleiden\nZimmerdecke abhängen\nInnenausbau\nOSB-Platten verlegen\nTüren einbauen\nRigipsplatten anbringen',
-                          },
-                        },
-                        { id: 1, attributes: { __type: 'sections.images' } },
-                      ],
-                    },
-                  },
-                },
-              ],
-            },
-          },
-          {
-            id: 1,
+            id: 2,
             __component: 'sections.faq',
             faq_item: [
               {
-                id: 1,
-                question: 'Was kostet meine Nachfrage?',
+                id: 4,
+                question: 'Was unterscheidet Ihre Firma von anderen Anbietern?',
                 answer:
-                  'Nach Ihrer Anfrage erhalten Sie von uns kostenlos und unverbindlich Angebote von Handwerkern. So können Sie sich einfach den Partner heraussuchen, der das beste Preis-Leistungs-Verhältnis bietet oder der Ihnen am ehesten zusagt.\n\nUnsere Dienstleistung ist dabei für Sie zu 100% kostenlos und unverbindlich. Sie gehen kein Vertragsverhältnis ein, es entsteht keine Auftragsverpflichtung und Sie sind uns keinerlei Zahlung schuldig.\n\nWir arbeiten seit Jahren mit verschiedenen Handwerksbetrieben aus unterschiedlichen Regionen zusammen und haben keine spezielle Verbindung zu einem bestimmten Handwerker. Dementsprechend möchten wir Ihnen keinen Handwerker aufzwängen oder eine Leistung besonders teuer verkaufen – davon haben weder wir noch Sie etwas. Nur wenn Sie uns weiterempfehlen und zufrieden sind, sind wir es auch.\n\nUnser oberstes Ziel ist daher Ihre Zufriedenheit. Wir finden den besten Handwerker bzw. die beste Handwerkerin für das Projekt, das Ihnen am Herzen liegt.',
+                  'Die genauen Kosten für eine professionelle Planung Ihres Gartens schwanken stark von Region zu Region und hängen natürlich auch vom Umfang der Planung ab. Wir empfehlen, sich zunächst mit unseren Experten in Verbindung zu setzen und im Rahmen der Bedarfsanalyse zu prüfen, ob Sie überhaupt einen Landschaftsbauer oder Architekten für Ihre Gartenplanung benötigen. Vieles lässt sich mit fachkundigem Rat und einem guten Online Gartenplaner heute alleine planen.',
               },
               {
-                id: 2,
-                question: 'Mit welchen Handwerkerkosten muss ich rechnen?',
+                id: 5,
+                question: 'Wie teuer ist ein Gartenplaner?',
                 answer:
-                  'Nach Ihrer Anfrage erhalten Sie von uns kostenlos und unverbindlich Angebote von Handwerkern.\nSo können Sie sich einfach den Partner heraussuchen, der das beste Preis-Leistungs-Verhältnis bietet oder der Ihnen am ehesten zusagt.\n\nUnsere Dienstleistung ist dabei für Sie zu 100% kostenlos und unverbindlich. Sie gehen kein Vertragsverhältnis ein, es entsteht keine Auftragsverpflichtung und Sie sind uns keinerlei Zahlung schuldig.\n\nWir arbeiten seit Jahren mit verschiedenen Handwerksbetrieben aus unterschiedlichen Regionen zusammen und haben keine spezielle Verbindung zu einem bestimmten Handwerker. Dementsprechend möchten wir Ihnen keinen Handwerker aufzwängen oder eine Leistung besonders teuer verkaufen – davon haben weder wir noch Sie etwas. Nur wenn Sie uns weiterempfehlen und zufrieden sind, sind wir es auch.\n\nUnser oberstes Ziel ist daher Ihre Zufriedenheit. Wir finden den besten Handwerker bzw. die beste Handwerkerin für das Projekt, das Ihnen am Herzen liegt.',
+                  'Die genauen Kosten für eine professionelle Planung Ihres Gartens schwanken stark von Region zu Region und hängen natürlich auch vom Umfang der Planung ab. Wir empfehlen, sich zunächst mit unseren Experten in Verbindung zu setzen und im Rahmen der Bedarfsanalyse zu prüfen, ob Sie überhaupt einen Landschaftsbauer oder Architekten für Ihre Gartenplanung benötigen. Vieles lässt sich mit fachkundigem Rat und einem guten Online Gartenplaner heute alleine planen.',
               },
               {
-                id: 3,
-                question:
-                  'Kann auch ein Handwerker aus meiner Region beauftragt werden?',
+                id: 6,
+                question: 'Wie gestalte ich meine Terrasse?',
                 answer:
-                  'Auch wenn Sie gerne einen Handwerker in Ihrer Nähe beauftragen möchten, statt einen Betrieb in einem anderen Bundesland zu beauftragen, können wir Ihnen helfen. Wenn Sie es wünschen, erhalten Sie ausschließlich Angebote von Handwerkern aus Ihrer Region.\n\n##### Test Überschrift\n\nAuch wenn Sie gerne einen **Handwerker in Ihrer Nähe** beauftragen möchten, statt einen Betrieb in einem anderen Bundesland zu beauftragen, können wir Ihnen helfen. Wenn Sie es wünschen, erhalten Sie ausschließlich Angebote von Handwerkern aus Ihrer Region.\n* Punkt 1\n* Punkt 2\n* Punkt 3\n\n### Test 2\n\nAuch wenn Sie gerne einen **Handwerker in Ihrer Nähe** beauftragen möchten, statt einen Betrieb in einem anderen Bundesland zu beauftragen, können wir Ihnen helfen. Wenn Sie es wünschen, erhalten Sie ausschließlich Angebote von Handwerkern aus Ihrer Region.\n\n1. dasdasda\n2. dasdad\n3. dasda\n\n\n> dasdsdasdasd',
+                  'Die genauen Kosten für eine professionelle Planung Ihres Gartens schwanken stark von Region zu Region und hängen natürlich auch vom Umfang der Planung ab. Wir empfehlen, sich zunächst mit unseren Experten in Verbindung zu setzen und im Rahmen der Bedarfsanalyse zu prüfen, ob Sie überhaupt einen Landschaftsbauer oder Architekten für Ihre Gartenplanung benötigen. Vieles lässt sich mit fachkundigem Rat und einem guten Online Gartenplaner heute alleine planen.',
+              },
+              {
+                id: 7,
+                question: 'Brauche ich eine Genehmigung für einen Gartenzaun?',
+                answer:
+                  'Die genauen Kosten für eine professionelle Planung Ihres Gartens schwanken stark von Region zu Region und hängen natürlich auch vom Umfang der Planung ab. Wir empfehlen, sich zunächst mit unseren Experten in Verbindung zu setzen und im Rahmen der Bedarfsanalyse zu prüfen, ob Sie überhaupt einen Landschaftsbauer oder Architekten für Ihre Gartenplanung benötigen. Vieles lässt sich mit fachkundigem Rat und einem guten Online Gartenplaner heute alleine planen.',
               },
             ],
-          },
-          {
-            id: 1,
-            __component: 'sections.video',
-            video_title: 'Klicken Sie auf das Video, um es zu starten',
-            video_description:
-              'Sie sagen uns, was Sie brauchen, wir lassen Ihnen kostenlos und unverbindlich die besten Angebote zukommen und Sie müssen sich nur noch entscheiden. Nach Ihrer Anfrage erhalten Sie von uns kostenlos und unverbindlich Angebote von Handwerkern. So können Sie sich einfach den Partner heraussuchen, der das beste Preis-Leistungs-Verhältnis bietet oder der Ihnen am ehesten zusagt.',
           },
         ],
         logo: {
           data: {
-            id: 145,
+            id: 175,
             attributes: {
-              name: 'craftsman24_logo.png',
-              alternativeText: 'craftsman24_logo.png',
-              caption: 'craftsman24_logo.png',
+              name: 'leadquelle-logo.svg',
+              alternativeText: null,
+              caption: null,
               width: 180,
-              height: 60,
+              height: 41,
               formats: null,
-              hash: 'craftsman24_logo_57de4fbf9d',
-              ext: '.png',
-              mime: 'image/png',
-              size: 5.97,
-              url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/craftsman24_logo_57de4fbf9d.png',
+              hash: 'leadquelle_logo_7a57e30208',
+              ext: '.svg',
+              mime: 'image/svg+xml',
+              size: 18.54,
+              url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/leadquelle_logo_7a57e30208.svg',
               previewUrl: null,
-              provider: null,
+              provider: 'aws-s3',
               provider_metadata: null,
-              createdAt: '2022-03-14T16:31:48.172Z',
-              updatedAt: '2022-03-14T16:31:48.172Z',
+              createdAt: '2023-03-27T11:20:02.505Z',
+              updatedAt: '2023-03-27T11:20:02.505Z',
             },
           },
         },
@@ -968,112 +471,156 @@ export const content: { data: { id: number; attributes: LandingPage }[] } = {
           },
         },
         questionnaire: {
-          id: 1,
-          entry_question: 'Was suchen Sie?',
-          advantage: [
-            { id: 1, first_line: 'Sparen Sie', second_line: 'bis zu 30%' },
-            {
-              id: 2,
-              first_line: 'Partner',
-              second_line: 'bekannt aus den Medien',
-            },
-            {
-              id: 3,
-              first_line: 'Bedarfsanalyse',
-              second_line: 'in nur 2-Minuten',
-            },
-          ],
+          id: 5,
+          entry_question: 'Welches Ziel möchten Sie erreichen?',
+          headline: null,
+          advantage: [],
+          advantages: {
+            id: 8,
+            personalized_advice:
+              '<b>Persönliche Unterstützung</b><br>rund um das Thema Immobilien',
+            years_of_experience:
+              '<b>Über 10 Jahre Erfahrung</b><br>im Immobiliengeschäft',
+            custom_service:
+              '<b>100 % Individuell</b><br>Wir erfüllen Ihre Wünsche',
+          },
           questionnaires: {
             data: [
               {
-                id: 1,
+                id: 7,
                 attributes: {
-                  name: 'Fliesen',
-                  description: 'Vom Austausch der Fliesen im Bad bis zu...',
-                  priority: 5,
+                  name: 'Terasse',
+                  // @ts-ignore
+                  createdAt: '2023-03-06T18:25:24.162Z',
+                  updatedAt: '2023-03-06T18:25:24.721Z',
+                  publishedAt: '2023-03-06T18:25:24.719Z',
+                  description: null,
+                  priority: 2,
                   icon: {
                     data: {
-                      id: 122,
+                      id: 173,
                       attributes: {
-                        name: 'fliesen.svg',
-                        alternativeText: 'fliesen.svg',
-                        caption: 'fliesen.svg',
-                        width: 51,
-                        height: 51,
+                        name: 'Terrasse_2fcfef5608.svg',
+                        alternativeText: null,
+                        caption: null,
+                        width: 372,
+                        height: 408,
                         formats: null,
-                        hash: 'fliesen_ad21600c27',
+                        hash: 'Terrasse_2fcfef5608_6bfa642461',
                         ext: '.svg',
                         mime: 'image/svg+xml',
-                        size: 5.38,
-                        url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/fliesen_ad21600c27.svg',
+                        size: 35.93,
+                        url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/Terrasse_2fcfef5608_6bfa642461.svg',
                         previewUrl: null,
                         provider: 'aws-s3',
                         provider_metadata: null,
-                        createdAt: '2022-01-04T16:32:51.449Z',
-                        updatedAt: '2022-01-04T16:32:51.449Z',
+                        createdAt: '2023-03-06T18:24:52.522Z',
+                        updatedAt: '2023-03-06T18:24:52.522Z',
                       },
                     },
                   },
                 },
               },
               {
-                id: 2,
+                id: 6,
                 attributes: {
-                  name: 'Maler',
-                  description: 'Neue Farbe für Fassaden und Innenräume...',
-                  priority: 5,
-                  icon: {
-                    data: {
-                      id: 125,
-                      attributes: {
-                        name: 'maler.svg',
-                        alternativeText: 'maler.svg',
-                        caption: 'maler.svg',
-                        width: 45,
-                        height: 51,
-                        formats: null,
-                        hash: 'maler_7dc875b12e',
-                        ext: '.svg',
-                        mime: 'image/svg+xml',
-                        size: 2.59,
-                        url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/maler_7dc875b12e.svg',
-                        previewUrl: null,
-                        provider: 'aws-s3',
-                        provider_metadata: null,
-                        createdAt: '2022-01-04T16:32:51.673Z',
-                        updatedAt: '2022-01-04T16:32:51.673Z',
-                      },
-                    },
-                  },
-                },
-              },
-              {
-                id: 5,
-                attributes: {
-                  name: 'Trocken- & Innenausbau',
-                  description:
-                    'Individuelle Lösungen für den Trockenbau: Neue...',
+                  name: 'Wintergarten',
+                  // @ts-ignore
+                  createdAt: '2023-03-06T18:25:08.088Z',
+                  updatedAt: '2023-03-20T10:31:00.744Z',
+                  publishedAt: '2023-03-06T18:25:08.833Z',
+                  description: null,
                   priority: 1,
                   icon: {
                     data: {
-                      id: 125,
+                      id: 172,
                       attributes: {
-                        name: 'maler.svg',
-                        alternativeText: 'maler.svg',
-                        caption: 'maler.svg',
-                        width: 45,
-                        height: 51,
+                        name: 'Wi_Ga1_4b4c56d9b8.svg',
+                        alternativeText: null,
+                        caption: null,
+                        width: 436,
+                        height: 407,
                         formats: null,
-                        hash: 'maler_7dc875b12e',
+                        hash: 'Wi_Ga1_4b4c56d9b8_4332319236',
                         ext: '.svg',
                         mime: 'image/svg+xml',
-                        size: 2.59,
-                        url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/maler_7dc875b12e.svg',
+                        size: 13.53,
+                        url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/Wi_Ga1_4b4c56d9b8_4332319236.svg',
                         previewUrl: null,
                         provider: 'aws-s3',
                         provider_metadata: null,
-                        createdAt: '2022-01-04T16:32:51.673Z',
-                        updatedAt: '2022-01-04T16:32:51.673Z',
+                        createdAt: '2023-03-06T18:24:51.803Z',
+                        updatedAt: '2023-03-06T18:24:51.803Z',
+                      },
+                    },
+                  },
+                },
+              },
+              {
+                id: 8,
+                attributes: {
+                  name: 'Zaun',
+                  // @ts-ignore
+                  createdAt: '2023-03-06T18:25:38.380Z',
+                  updatedAt: '2023-03-06T18:25:38.999Z',
+                  publishedAt: '2023-03-06T18:25:38.998Z',
+                  description: null,
+                  priority: 3,
+                  icon: {
+                    data: {
+                      id: 171,
+                      attributes: {
+                        name: 'Zaun_52e43d7cf3.svg',
+                        alternativeText: null,
+                        caption: null,
+                        width: 405,
+                        height: 403,
+                        formats: null,
+                        hash: 'Zaun_52e43d7cf3_097e70d80c',
+                        ext: '.svg',
+                        mime: 'image/svg+xml',
+                        size: 15.45,
+                        url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/Zaun_52e43d7cf3_097e70d80c.svg',
+                        previewUrl: null,
+                        provider: 'aws-s3',
+                        provider_metadata: null,
+                        createdAt: '2023-03-06T18:24:51.799Z',
+                        updatedAt: '2023-03-06T18:24:51.799Z',
+                      },
+                    },
+                  },
+                },
+              },
+              {
+                id: 9,
+                attributes: {
+                  name: 'Garten- und Landschaftsbau',
+                  // @ts-ignore
+                  createdAt: '2023-03-06T18:25:52.522Z',
+                  updatedAt: '2023-03-06T18:25:53.082Z',
+                  publishedAt: '2023-03-06T18:25:53.079Z',
+                  description: null,
+                  priority: 5,
+                  icon: {
+                    data: {
+                      id: 170,
+                      attributes: {
+                        name: 'Gartenbau_14b4d34d05.svg',
+                        alternativeText: null,
+                        caption: null,
+                        width: 339,
+                        height: 391,
+                        formats: null,
+                        hash: 'Gartenbau_14b4d34d05_e3dc138db5',
+                        ext: '.svg',
+                        mime: 'image/svg+xml',
+                        size: 11.01,
+                        url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/Gartenbau_14b4d34d05_e3dc138db5.svg',
+                        previewUrl: null,
+                        provider: 'aws-s3',
+                        provider_metadata: null,
+                        createdAt: '2023-03-06T18:24:51.749Z',
+                        updatedAt: '2023-03-06T18:24:51.749Z',
                       },
                     },
                   },
@@ -1082,58 +629,155 @@ export const content: { data: { id: number; attributes: LandingPage }[] } = {
             ],
           },
         },
-        appointment: {
-          id: 1,
-          appointment_duration: 'x60min',
-          appointment_availability: [
-            {
-              id: 1,
-              from_time: '09:00:00',
-              to_time: '17:00:00',
-              day: 'Monday',
-            },
-            {
-              id: 2,
-              from_time: '09:00:00',
-              to_time: '17:00:00',
-              day: 'Tuesday',
-            },
-            {
-              id: 3,
-              from_time: '09:00:00',
-              to_time: '17:00:00',
-              day: 'Wednesday',
-            },
-            {
-              id: 4,
-              from_time: '09:00:00',
-              to_time: '14:00:00',
-              day: 'Friday',
-            },
-          ],
-          appointment_location: {
-            id: 1,
-            appointment_location_at_home: true,
-            appointment_location_on_site: true,
-            appointment_location_virtual: true,
-            appointment_location_to_be_discussed: true,
-          },
-        },
+        appointment: null,
       },
     },
   ],
 };
 
-export const staticContent = {
+export const questionnaire: {
+  data: { id: number; attributes: Questionnaire }[];
+} = {
+  data: [
+    {
+      id: 6,
+      attributes: {
+        name: 'Wintergarten',
+        // @ts-ignore
+        createdAt: '2023-03-06T18:25:08.088Z',
+        updatedAt: '2023-03-20T10:31:00.744Z',
+        publishedAt: '2023-03-06T18:25:08.833Z',
+        description: null,
+        priority: 1,
+        icon: {
+          data: {
+            id: 172,
+            attributes: {
+              name: 'Wi_Ga1_4b4c56d9b8.svg',
+              alternativeText: null,
+              caption: null,
+              width: 436,
+              height: 407,
+              formats: null,
+              hash: 'Wi_Ga1_4b4c56d9b8_4332319236',
+              ext: '.svg',
+              mime: 'image/svg+xml',
+              size: 13.53,
+              url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/Wi_Ga1_4b4c56d9b8_4332319236.svg',
+              previewUrl: null,
+              provider: 'aws-s3',
+              provider_metadata: null,
+              createdAt: '2023-03-06T18:24:51.803Z',
+              updatedAt: '2023-03-06T18:24:51.803Z',
+              related: {
+                data: [
+                  {
+                    id: 6,
+                    attributes: {
+                      __type: 'api::questionnaire.questionnaire',
+                      name: 'Wintergarten',
+                      createdAt: '2023-03-06T18:25:08.088Z',
+                      updatedAt: '2023-03-20T10:31:00.744Z',
+                      publishedAt: '2023-03-06T18:25:08.833Z',
+                      description: null,
+                      priority: 1,
+                    },
+                  },
+                ],
+              },
+            },
+          },
+        },
+        questions: [
+          {
+            id: 12,
+            question: 'Was möchten Sie versichern?',
+            answers: [
+              { id: 50, answer_value: 'Alles', answer_icon: { data: null } },
+              { id: 51, answer_value: 'Nichts', answer_icon: { data: null } },
+            ],
+          },
+          {
+            id: 13,
+            question: 'Möchten Sie weiss, einfarbig oder mehrfarbig?',
+            answers: [
+              { id: 52, answer_value: 'Weiss', answer_icon: { data: null } },
+              {
+                id: 53,
+                answer_value: 'Einfarbig',
+                answer_icon: { data: null },
+              },
+              { id: 54, answer_value: 'Bunt', answer_icon: { data: null } },
+              {
+                id: 55,
+                answer_value: 'Mehrfarbig',
+                answer_icon: { data: null },
+              },
+              {
+                id: 56,
+                answer_value: 'Weiß nicht',
+                answer_icon: {
+                  data: {
+                    id: 172,
+                    attributes: {
+                      name: 'Wi_Ga1_4b4c56d9b8.svg',
+                      alternativeText: null,
+                      caption: null,
+                      width: 436,
+                      height: 407,
+                      formats: null,
+                      hash: 'Wi_Ga1_4b4c56d9b8_4332319236',
+                      ext: '.svg',
+                      mime: 'image/svg+xml',
+                      size: 13.53,
+                      url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/Wi_Ga1_4b4c56d9b8_4332319236.svg',
+                      previewUrl: null,
+                      provider: 'aws-s3',
+                      provider_metadata: null,
+                      createdAt: '2023-03-06T18:24:51.803Z',
+                      updatedAt: '2023-03-06T18:24:51.803Z',
+                      related: {
+                        data: [
+                          {
+                            id: 6,
+                            attributes: {
+                              __type: 'api::questionnaire.questionnaire',
+                              name: 'Wintergarten',
+                              createdAt: '2023-03-06T18:25:08.088Z',
+                              updatedAt: '2023-03-20T10:31:00.744Z',
+                              publishedAt: '2023-03-06T18:25:08.833Z',
+                              description: null,
+                              priority: 1,
+                            },
+                          },
+                        ],
+                      },
+                    },
+                  },
+                },
+              },
+            ],
+          },
+        ],
+      },
+    },
+  ],
+};
+
+export const staticContent: {
+  data: { id: number; attributes: StaticContent };
+} = {
   data: {
     id: 2,
     attributes: {
+      // @ts-ignore
       createdAt: '2021-12-07T12:50:30.878Z',
-      updatedAt: '2022-01-07T14:56:39.955Z',
+      updatedAt: '2022-03-28T07:38:03.052Z',
       user_step_one: 'Formular ausfüllen und Bedarf festhalten',
       user_step_two: 'Kostenlose Angebote von Firmen erhalten',
       user_step_three: 'Bestes Preis-Leistungsverhältnis auswählen',
-      imprint: null,
+      imprint:
+        '# Impressum\n\n${client_address}\n\n\n### Kontakt\nTelefon: ${contact_phone}\nE-Mail: ${contact_email}\n\n${client_vat}\n\n### Haftung für Links\nUnser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.\n\nBei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.',
       privacy: null,
       video_file: {
         data: {
@@ -1217,307 +861,4 @@ export const staticContent = {
       },
     },
   },
-};
-
-export const questionnaires = {
-  data: [
-    {
-      id: 1,
-      attributes: {
-        name: 'Fliesen',
-        createdAt: '2021-12-03T10:07:12.859Z',
-        updatedAt: '2022-01-10T11:56:06.694Z',
-        publishedAt: '2021-12-03T10:07:14.376Z',
-        description: null,
-        icon: {
-          data: {
-            id: 122,
-            attributes: {
-              name: 'fliesen.svg',
-              alternativeText: 'fliesen.svg',
-              caption: 'fliesen.svg',
-              width: 51,
-              height: 51,
-              formats: null,
-              hash: 'fliesen_ad21600c27',
-              ext: '.svg',
-              mime: 'image/svg+xml',
-              size: 5.38,
-              url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/fliesen_ad21600c27.svg',
-              previewUrl: null,
-              provider: 'aws-s3',
-              provider_metadata: null,
-              createdAt: '2022-01-04T16:32:51.449Z',
-              updatedAt: '2022-01-04T16:32:51.449Z',
-              related: {
-                data: [
-                  {
-                    id: 1,
-                    attributes: {
-                      __type: 'questionnaire.answer',
-                      answer_value: 'Badezimmer',
-                    },
-                  },
-                  {
-                    id: 1,
-                    attributes: {
-                      __type: 'api::questionnaire.questionnaire',
-                      name: 'Fliesen',
-                      createdAt: '2021-12-03T10:07:12.859Z',
-                      updatedAt: '2022-01-10T11:56:06.694Z',
-                      publishedAt: '2021-12-03T10:07:14.376Z',
-                      description: null,
-                    },
-                  },
-                ],
-              },
-              createdBy: {
-                data: {
-                  id: 1,
-                  attributes: {
-                    firstname: 'Konstantin',
-                    lastname: 'Münster',
-                    username: null,
-                    email: 'info@kmuenster.com',
-                    password:
-                      '$2a$10$/kYDE40sAvVPmgF8NHOVk.BCa3k.G2XD1BeNeekquPtvJihAohEwm',
-                    resetPasswordToken: null,
-                    registrationToken: null,
-                    isActive: true,
-                    blocked: false,
-                    preferedLanguage: null,
-                    createdAt: '2021-12-02T14:46:14.043Z',
-                    updatedAt: '2021-12-02T14:46:14.043Z',
-                  },
-                },
-              },
-              updatedBy: {
-                data: {
-                  id: 1,
-                  attributes: {
-                    firstname: 'Konstantin',
-                    lastname: 'Münster',
-                    username: null,
-                    email: 'info@kmuenster.com',
-                    password:
-                      '$2a$10$/kYDE40sAvVPmgF8NHOVk.BCa3k.G2XD1BeNeekquPtvJihAohEwm',
-                    resetPasswordToken: null,
-                    registrationToken: null,
-                    isActive: true,
-                    blocked: false,
-                    preferedLanguage: null,
-                    createdAt: '2021-12-02T14:46:14.043Z',
-                    updatedAt: '2021-12-02T14:46:14.043Z',
-                  },
-                },
-              },
-            },
-          },
-        },
-        questions: [
-          {
-            id: 10,
-            question: 'Was möchten Sie fliesen?',
-            answers: [
-              {
-                id: 43,
-                answer_value: 'Badezimmer',
-                answer_icon: {
-                  data: {
-                    id: 144,
-                    attributes: {
-                      name: 'badezimmer.svg',
-                      alternativeText: 'badezimmer.svg',
-                      caption: 'badezimmer.svg',
-                      width: 480,
-                      height: 432,
-                      formats: null,
-                      hash: 'badezimmer_a83f18c101',
-                      ext: '.svg',
-                      mime: 'image/svg+xml',
-                      size: 2.79,
-                      url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/badezimmer_a83f18c101.svg',
-                      previewUrl: null,
-                      provider: 'aws-s3',
-                      provider_metadata: null,
-                      createdAt: '2022-01-10T11:51:26.110Z',
-                      updatedAt: '2022-01-10T11:51:26.110Z',
-                    },
-                  },
-                },
-              },
-              {
-                id: 44,
-                answer_value: 'Küche',
-                answer_icon: {
-                  data: {
-                    id: 141,
-                    attributes: {
-                      name: 'kueche.svg',
-                      alternativeText: 'kueche.svg',
-                      caption: 'kueche.svg',
-                      width: 484,
-                      height: 541,
-                      formats: null,
-                      hash: 'kueche_5fd22552e1',
-                      ext: '.svg',
-                      mime: 'image/svg+xml',
-                      size: 4.33,
-                      url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/kueche_5fd22552e1.svg',
-                      previewUrl: null,
-                      provider: 'aws-s3',
-                      provider_metadata: null,
-                      createdAt: '2022-01-10T11:51:26.108Z',
-                      updatedAt: '2022-01-10T11:51:26.108Z',
-                    },
-                  },
-                },
-              },
-              {
-                id: 45,
-                answer_value: 'Aussenbereich',
-                answer_icon: {
-                  data: {
-                    id: 142,
-                    attributes: {
-                      name: 'aussenbereich.svg',
-                      alternativeText: 'aussenbereich.svg',
-                      caption: 'aussenbereich.svg',
-                      width: 496,
-                      height: 448,
-                      formats: null,
-                      hash: 'aussenbereich_2431b62d96',
-                      ext: '.svg',
-                      mime: 'image/svg+xml',
-                      size: 2.39,
-                      url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/aussenbereich_2431b62d96.svg',
-                      previewUrl: null,
-                      provider: 'aws-s3',
-                      provider_metadata: null,
-                      createdAt: '2022-01-10T11:51:26.109Z',
-                      updatedAt: '2022-01-10T11:51:26.109Z',
-                    },
-                  },
-                },
-              },
-              {
-                id: 46,
-                answer_value: 'Sonstiges',
-                answer_icon: {
-                  data: {
-                    id: 143,
-                    attributes: {
-                      name: 'sonstiges.svg',
-                      alternativeText: 'sonstiges.svg',
-                      caption: 'sonstiges.svg',
-                      width: 410,
-                      height: 420,
-                      formats: null,
-                      hash: 'sonstiges_157d258325',
-                      ext: '.svg',
-                      mime: 'image/svg+xml',
-                      size: 2.46,
-                      url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/sonstiges_157d258325.svg',
-                      previewUrl: null,
-                      provider: 'aws-s3',
-                      provider_metadata: null,
-                      createdAt: '2022-01-10T11:51:26.109Z',
-                      updatedAt: '2022-01-10T11:51:26.109Z',
-                    },
-                  },
-                },
-              },
-            ],
-          },
-          {
-            id: 11,
-            question: 'Ist das Objekt im Neubauzustand?',
-            answers: [
-              {
-                id: 47,
-                answer_value: 'Ja',
-                answer_icon: {
-                  data: null,
-                },
-              },
-              {
-                id: 48,
-                answer_value: 'Nein',
-                answer_icon: {
-                  data: null,
-                },
-              },
-              {
-                id: 49,
-                answer_value: 'Sonstiges',
-                answer_icon: {
-                  data: {
-                    id: 143,
-                    attributes: {
-                      name: 'sonstiges.svg',
-                      alternativeText: 'sonstiges.svg',
-                      caption: 'sonstiges.svg',
-                      width: 410,
-                      height: 420,
-                      formats: null,
-                      hash: 'sonstiges_157d258325',
-                      ext: '.svg',
-                      mime: 'image/svg+xml',
-                      size: 2.46,
-                      url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/sonstiges_157d258325.svg',
-                      previewUrl: null,
-                      provider: 'aws-s3',
-                      provider_metadata: null,
-                      createdAt: '2022-01-10T11:51:26.109Z',
-                      updatedAt: '2022-01-10T11:51:26.109Z',
-                    },
-                  },
-                },
-              },
-            ],
-          },
-        ],
-      },
-    },
-  ],
-};
-
-export const pipedriveApis = {
-  data: [
-    {
-      id: 1,
-      attributes: {
-        api_token: '8a1c319e7a2dc740792a19c70e8a0da609005a16',
-        createdAt: '2022-02-07T15:21:41.997Z',
-        updatedAt: '2022-03-07T16:51:41.240Z',
-        landing_page: {
-          data: {
-            id: 1,
-            attributes: {
-              seo_title:
-                'Craftsman24 – Wir haben die Handwerker für Ihre Projekte.',
-              seo_description:
-                'Professionelle Arbeit von qualifizierten Fachkräften: Schnell und präzise nach Ihren Wünschen ausgeführt. Jetzt Handwerker finden!',
-              domain: 'localhost:3000',
-              brand_name: 'Craftsman24',
-              color_primary: '#359b88',
-              color_secondary: '#e6b432',
-              color_tertiary: '#efefef',
-              color_text: '#737373',
-              contact_email: 'konstantin.muenster@mail.com',
-              contact_phone: '+41 41 510 42 00',
-              createdAt: '2021-12-03T09:14:29.181Z',
-              updatedAt: '2022-04-05T11:11:52.802Z',
-              publishedAt: '2021-12-03T09:14:31.002Z',
-              client_address:
-                'Leadquelle GmbH\nGrafenauweg 8\n6300 Zug\nSchweiz',
-              client_vat: 'CHE-138.210.925',
-              service_type: 'Handwerker',
-              google_allow_indexation: false,
-            },
-          },
-        },
-      },
-    },
-  ],
 };

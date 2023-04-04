@@ -8,7 +8,10 @@ export const Confirmation: React.FC<{ phone?: string | null }> = ({
   phone,
 }) => {
   return (
-    <div className="mx-auto w-full max-w-xl">
+    <div
+      data-testid="questionnaire-confirmation"
+      className="mx-auto w-full max-w-xl"
+    >
       <div className="mx-auto -mt-4 mb-8 h-20 w-20">
         <CheckCircleIcon className="h-20 w-20 fill-primary opacity-50" />
       </div>
@@ -22,12 +25,16 @@ export const Confirmation: React.FC<{ phone?: string | null }> = ({
         </p>
         {phone && (
           <div className="my-8 mx-auto max-w-md border-t border-b border-dashed border-[black]/10 py-6">
-            <h2 className="mx-0 mb-4 text-xl">
+            <h3 className="mx-0 mb-4 text-xl">
               Verifizierungsvorgang beschleunigen
-            </h2>
+            </h3>
             <p className="text-sm">
               Kostenfrei anrufen:{' '}
-              <a href={`tel:${phone}`} className="block text-xl tracking-wider">
+              <a
+                data-testid="questionnaire-confirmation-phone"
+                href={`tel:${phone}`}
+                className="block text-xl tracking-wider"
+              >
                 {phone}
               </a>
             </p>

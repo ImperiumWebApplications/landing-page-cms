@@ -39,10 +39,10 @@ export const QuestionnaireTiles: React.FC<QuestionnaireTilesProps> = (
   return (
     <div className="pt-4 sm:pt-6 md:pt-0">
       <h4 className="text-center text-lg font-bold text-primary sm:text-xl md:text-left md:text-2xl">
-        <span data-testid="questionnaire-tiles-question">{entry_question}</span>
+        <span data-testid="hero-tiles-question">{entry_question}</span>
       </h4>
       <div
-        data-testid="questionnaire-tiles-grid"
+        data-testid="hero-tiles-grid"
         className="flex flex-wrap justify-start gap-2 pt-4 sm:mt-6 sm:gap-4 md:flex-nowrap lg:gap-8"
       >
         {sortedQuestionnaires.map(({ attributes, id }) => {
@@ -63,7 +63,7 @@ export const QuestionnaireTiles: React.FC<QuestionnaireTilesProps> = (
               <div className="icon flex items-center justify-center">
                 {attributes.icon?.data?.attributes && !isSvgIcon ? (
                   <Image
-                    data-testid="tile-image"
+                    data-testid="hero-tile-image"
                     src={attributes.icon.data.attributes.url}
                     className={iconClassName}
                     alt={attributes.icon.data.attributes.alternativeText ?? ''}
@@ -73,7 +73,7 @@ export const QuestionnaireTiles: React.FC<QuestionnaireTilesProps> = (
                 ) : null}
                 {attributes.icon?.data?.attributes && isSvgIcon ? (
                   <ReactSVG
-                    data-testid="tile-icon"
+                    data-testid="hero-tile-icon"
                     wrapper="svg"
                     src={attributes.icon.data.attributes.url}
                     className={iconClassName}

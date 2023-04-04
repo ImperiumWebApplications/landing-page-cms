@@ -54,7 +54,7 @@ export const ReviewsSection: React.FC<ReviewsSectionProps> = (props) => {
       <h2 className="mb-6 text-center text-xl text-primary md:text-4xl">
         Zufriedenheit unserer Kunden
       </h2>
-      <div className="review-slider relative">
+      <div data-testid="reviews-slider" className="review-slider relative">
         <Swiper
           id={SWIPER_ID}
           modules={SwiperModules}
@@ -86,6 +86,7 @@ export const ReviewsSection: React.FC<ReviewsSectionProps> = (props) => {
         </NavigationButton>
       </div>
       <CallToActionBanner
+        data-testid="reviews-cta"
         description="Konnten wir Sie überzeugen?<br />Lassen Sie sich beraten"
         className="mt-6 mb-14 md:my-14"
       />

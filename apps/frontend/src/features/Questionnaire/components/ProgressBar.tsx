@@ -17,6 +17,7 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({ progress }) => {
         {progress}%
       </div>
       <span
+        data-testid="questionnaire-progress-bar"
         className="block h-full rounded-full bg-primary transition-[1s_ease_100ms]"
         style={{ width: `${progress}%` }}
       />

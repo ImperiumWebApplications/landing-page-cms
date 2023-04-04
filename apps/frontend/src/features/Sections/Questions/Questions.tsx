@@ -28,7 +28,10 @@ export const QuestionsSection: React.FC<QuestionsSectionProps> = (props) => {
 
   return (
     <SectionContainer id={props.id} className="mt-16 mb-12 md:my-[70px]">
-      <h2 className="mb-2 text-center text-xl text-primary md:mb-12 md:text-4xl">
+      <h2
+        data-testid="questions-headline"
+        className="mb-2 text-center text-xl text-primary md:mb-12 md:text-4xl"
+      >
         Häufig gestellte Fragen
       </h2>
       <div className="mx-auto flex max-w-3xl flex-col">
@@ -39,7 +42,10 @@ export const QuestionsSection: React.FC<QuestionsSectionProps> = (props) => {
             <Disclosure key={id}>
               {({ open }) => (
                 <div className="border-b border-[#505050] border-opacity-25 py-5">
-                  <Disclosure.Button className="flex w-full flex-row justify-between gap-8 font-bold">
+                  <Disclosure.Button
+                    data-testid="questions-question"
+                    className="flex w-full flex-row justify-between gap-8 font-bold"
+                  >
                     <span
                       className={cx(
                         'text-left text-sm leading-5 md:text-base md:leading-7',
@@ -69,7 +75,7 @@ export const QuestionsSection: React.FC<QuestionsSectionProps> = (props) => {
                     leaveFrom="transform scale-100 opacity-100 max-h-96"
                     leaveTo="transform scale-95 opacity-0 max-h-0"
                   >
-                    <Disclosure.Panel>
+                    <Disclosure.Panel data-testid="questions-answer">
                       <ReactMarkdown className="article text-sm md:text-base">
                         {answer}
                       </ReactMarkdown>

@@ -11,6 +11,7 @@ export const Advantages: React.FC<AdvantagesProps> = (props) => {
         return (
           <div
             key={i}
+            data-testid="questionnaire-advantage"
             className="flex max-w-xs items-center text-sm md:justify-center"
           >
             <CheckCircleIcon className="h-8 w-8 shrink-0 fill-[#4BB982]" />
