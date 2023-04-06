@@ -12,8 +12,8 @@ import { VideoPlayer } from './components/VideoPlayer';
 import { Statistics } from './components/Statistics';
 
 const VIDEO = {
-  url: '/videos/video_b690cf2964.mp4',
-  thumbnail: '/images/video_thumbnail_643e7caa05.jpg',
+  url: '/videos/video.mp4',
+  thumbnail: '/images/video-thumbnail.png',
 };
 
 type VideoSectionProps = {
