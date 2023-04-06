@@ -148,26 +148,6 @@
     height: 100%;
   }
 
-  .colorless-filter img {
-    filter: brightness(0) invert(1);
-  }
-
-  .colorless-filter svg,
-  .colorless-filter svg path,
-  .colorless-filter svg polygon,
-  .colorless-filter svg circle,
-  .colorless-filter svg line,
-  .colorless-filter svg polyline,
-  .colorless-filter svg rect,
-  .colorless-filter svg ellipse {
-    fill: white !important;
-  }
-
-  /** Special rule for leadquelle logo */
-  .colorless-filter svg path[data-name='Rechteck 752'] {
-    fill: transparent !important;
-  }
-
   /** Used for Button hover and loading effect **/
   .shining-button {
     position: relative;

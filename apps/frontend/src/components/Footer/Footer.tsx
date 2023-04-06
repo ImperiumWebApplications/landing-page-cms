@@ -21,11 +21,13 @@ export const Footer: React.FC<FooterProps> = ({ content }) => {
     <footer className="flex h-auto w-full bg-primary text-tertiary">
       <div className="content-wrapper w-full py-6 md:py-10">
         <div className="flex w-full flex-col justify-center gap-4 md:gap-6">
-          <Logo
-            className="mx-auto block w-40 md:w-44"
-            image={content.logo?.data?.attributes}
-            colorless
-          />
+          <div className="mx-auto flex w-44 items-center justify-center rounded-md bg-[white]/95 py-2">
+            <Logo
+              className="mx-auto block w-40"
+              image={content.logo?.data?.attributes}
+              colorless
+            />
+          </div>
           <nav className="flex flex-row flex-wrap items-center justify-center gap-x-4 md:gap-x-12">
             {navigationItems.map((navItem, i) => {
               return (
