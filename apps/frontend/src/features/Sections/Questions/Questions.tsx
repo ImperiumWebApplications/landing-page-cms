@@ -70,10 +70,10 @@ export const QuestionsSection: React.FC<QuestionsSectionProps> = (props) => {
                   </Disclosure.Button>
                   <Transition
                     className="overflow-hidden transition-all duration-200"
-                    enterFrom="transform scale-95 opacity-0 max-h-0"
-                    enterTo="transform scale-100 opacity-100 max-h-96"
-                    leaveFrom="transform scale-100 opacity-100 max-h-96"
-                    leaveTo="transform scale-95 opacity-0 max-h-0"
+                    enterFrom="transform scale-95 opacity-0"
+                    enterTo="transform scale-100 opacity-100"
+                    leaveFrom="transform scale-100 opacity-100"
+                    leaveTo="transform scale-95 opacity-0"
                   >
                     <Disclosure.Panel data-testid="questions-answer">
                       <ReactMarkdown className="article text-sm md:text-base">
