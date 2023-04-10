@@ -1,4 +1,9 @@
-import { ComponentPropsWithoutRef, forwardRef, useCallback } from 'react';
+import {
+  ComponentPropsWithoutRef,
+  forwardRef,
+  useCallback,
+  useState,
+} from 'react';
 import { SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, A11y, Swiper as SwiperType } from 'swiper';
 import dynamic from 'next/dynamic';
@@ -12,7 +17,6 @@ import { ReviewsSectionContent } from '../SectionMapper';
 import { useSectionContext } from '../SectionContext';
 
 import { Reviews_OLD } from './Reviews_OLD';
-import { ReviewProps } from './components/Review';
 
 const SwiperModules = [Navigation, Pagination, A11y];
 
@@ -22,7 +26,7 @@ const Swiper = dynamic(() => import('swiper/react').then((mod) => mod.Swiper), {
 
 const SWIPER_ID = 'review-slider';
 
-const Review = dynamic<ReviewProps>(
+const Review = dynamic(
   () => import('./components/Review').then((mod) => mod.Review),
   {
     ssr: false,
@@ -37,6 +41,9 @@ type ReviewsSectionProps = {
 export const ReviewsSection: React.FC<ReviewsSectionProps> = (props) => {
   const isTabletBreakpoint = useMediaQuery(`(min-width: 768px)`);
   const { state } = useSectionContext();
+
+  const [expanded, setExpanded] = useState(false);
+  const onExpand = useCallback(() => setExpanded(!expanded), [expanded]);
 
   // Using a ref does not work since we dynamically import the Swiper component
   const getSwiperInstance = useCallback(() => {
@@ -65,7 +72,11 @@ export const ReviewsSection: React.FC<ReviewsSectionProps> = (props) => {
           {props.content.rating?.map((rating, i) => {
             return (
               <SwiperSlide key={i} className="mb-8">
-                <Review content={rating} />
+                <Review
+                  content={rating}
+                  expanded={expanded}
+                  onExpand={onExpand}
+                />
               </SwiperSlide>
             );
           })}
