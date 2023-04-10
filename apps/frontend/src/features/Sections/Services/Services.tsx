@@ -89,7 +89,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = (props) => {
       <div className="mx-auto -mt-32 max-w-[1400px] bg-tertiary pt-36 pb-10 md:-mt-[10.5rem] md:rounded-md md:pb-20 md:pt-36">
         <div className="content-wrapper">
           <h2 className="mb-4 text-base leading-tight md:mb-8 md:text-2xl">
-            Absolut kosten- und risikofreie Anfrage senden!
+            Absolut kostenlos und risikofrei Anfrage senden!
           </h2>
           <Workflow className="my-8 md:my-16" />
           <div className="mt-12 text-center text-primary md:mt-0">
