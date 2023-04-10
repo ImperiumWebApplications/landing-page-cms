@@ -28,7 +28,7 @@ export const SelectableOption: React.FC<SelectableOptionProps> = ({
   onSelectHandler,
 }) => {
   const isSvgIcon = isSvg(icon?.data?.attributes?.ext);
-  const iconClassName = 'h-[78px] w-[78px] md:h-[96px] md:w-[96px]';
+  const iconClassName = 'h-[78px] max-w-[100%] md:h-[96px]';
 
   return (
     <div
