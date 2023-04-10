@@ -48,7 +48,7 @@ export const VideoSection: React.FC<VideoSectionProps> = (props) => {
               <Button
                 data-testid="video-button"
                 variant="secondary"
-                className="w-[220px] text-[0.9rem]"
+                className="max-w-fit text-[0.9rem]"
                 to={`/${questionnaireRoute}`}
                 label="Beratung starten"
                 Icon={<ArrowRight className="stroke-[white]" />}
