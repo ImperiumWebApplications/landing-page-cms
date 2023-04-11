@@ -18,7 +18,7 @@ export const Review: React.FC<ReviewProps> = ({
   const isMinTabletWidth = useMediaQuery(`(min-width: 480px)`);
 
   return (
-    <div className="relative mx-2 mt-12 mb-8 flex h-[100%] flex-col justify-center rounded-md bg-tertiary px-5 pt-[25px] pb-5 text-center shadow-sm md:mt-24 md:h-[82.5%] md:px-10 md:pb-[60px] md:pt-[60px]">
+    <div className="relative mx-2 mt-12 mb-8 flex h-[100%] flex-col justify-center rounded-md bg-tertiary px-5 pt-[25px] pb-5 text-center shadow-sm md:mt-24 md:h-[80%] md:px-10 md:pb-[60px] md:pt-[60px]">
       <div className="absolute -top-11 left-[calc(50%-50px)] z-10 h-[80px] w-[80px]">
         {content.avatar?.data?.attributes ? (
           <Image
