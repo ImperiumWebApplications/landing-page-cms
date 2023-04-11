@@ -12,7 +12,7 @@
     },
     "years_of_experience": {
       "type": "string",
-      "default": "<b>Über XX Jahre Erfahrung</b><br>im XXgeschäft"
+      "default": "<b>Über 10 Jahre Erfahrung</b><br>im XXgeschäft"
     },
     "custom_service": {
       "type": "string",
