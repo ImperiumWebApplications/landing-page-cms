@@ -21,9 +21,9 @@ export const Footer: React.FC<FooterProps> = ({ content }) => {
     <footer className="flex h-auto w-full bg-primary text-tertiary">
       <div className="content-wrapper w-full py-6 md:py-10">
         <div className="flex w-full flex-col justify-center gap-4 md:gap-6">
-          <div className="mx-auto flex w-44 items-center justify-center rounded-md bg-[white]/95 py-2">
+          <div className="mx-auto flex w-56 items-center justify-center rounded-md bg-[white]/95 py-2 px-2">
             <Logo
-              className="mx-auto block w-40"
+              className="mx-auto block w-48"
               image={content.logo?.data?.attributes}
               colorless
             />
