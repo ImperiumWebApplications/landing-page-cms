@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_static_content_reviews_sections",
+  "info": {
+    "displayName": "Reviews Section"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "call_to_action_banner_title": {
+      "type": "string"
+    }
+  }
+}

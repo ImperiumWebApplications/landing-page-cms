@@ -12,32 +12,41 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "user_step_one": {
-      "type": "string"
-    },
-    "user_step_two": {
-      "type": "string"
-    },
-    "user_step_three": {
-      "type": "string"
-    },
-    "video_file": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": ["videos"]
-    },
-    "video_thumbnail": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": ["images"]
-    },
     "imprint": {
       "type": "richtext"
     },
     "privacy": {
       "type": "richtext"
+    },
+    "video_section": {
+      "displayName": "Video Section",
+      "type": "component",
+      "repeatable": false,
+      "component": "static-content.video-section"
+    },
+    "services_section": {
+      "displayName": "Services Section",
+      "type": "component",
+      "repeatable": false,
+      "component": "static-content.services-section"
+    },
+    "hero_section": {
+      "displayName": "Hero Section",
+      "type": "component",
+      "repeatable": false,
+      "component": "static-content.hero-section"
+    },
+    "reviews_section": {
+      "displayName": "Reviews Section",
+      "type": "component",
+      "repeatable": false,
+      "component": "static-content.reviews-section"
+    },
+    "questions_section": {
+      "displayName": "Questions Section",
+      "type": "component",
+      "repeatable": false,
+      "component": "static-content.questions-section"
     }
   }
 }

@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_static_content_hero_advantages",
+  "info": {
+    "displayName": "Hero Advantage"
+  },
+  "options": {},
+  "attributes": {
+    "description": {
+      "type": "string"
+    },
+    "icon": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

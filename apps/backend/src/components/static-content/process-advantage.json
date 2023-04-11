@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_static_content_process_advantages",
+  "info": {
+    "displayName": "Process Advantage"
+  },
+  "options": {},
+  "attributes": {
+    "description": {
+      "type": "string"
+    }
+  }
+}

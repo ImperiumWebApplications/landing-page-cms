@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_static_content_questions_sections",
+  "info": {
+    "displayName": "Questions Section"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    }
+  }
+}
