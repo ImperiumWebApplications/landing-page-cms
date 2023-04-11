@@ -1,7 +1,4 @@
-import type { NextPage } from 'next';
-
-import type { LandingPage } from '../lib/strapi';
-import { queryLandingPageContent } from '../lib/next/app';
+import { ContentPage, queryContentPageContent } from '../lib/next/app';
 import { Layout } from '../components/Layout/Layout';
 import {
   AppointmentForm,
@@ -9,7 +6,7 @@ import {
   useLocationOptions,
 } from '../features/Appointment';
 
-const AppointmentPage: NextPage<{ content: LandingPage }> = ({ content }) => {
+const AppointmentPage: ContentPage = ({ content }) => {
   const locationOptions = useLocationOptions(content);
   const dateOptions = useDateOptions(content.appointment);
 
@@ -47,6 +44,6 @@ const AppointmentPage: NextPage<{ content: LandingPage }> = ({ content }) => {
   );
 };
 
-export const getServerSideProps = queryLandingPageContent;
+export const getServerSideProps = queryContentPageContent;
 
 export default AppointmentPage;
