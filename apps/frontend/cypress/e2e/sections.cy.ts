@@ -132,7 +132,7 @@ describe('Sections', () => {
       .should('be.visible')
       .should('have.text', 'Häufig gestellte Fragen');
 
-    cy.get('[data-testid="questions-answer"]').should('not.exist');
+    cy.get('[data-testid="questions-answer"]').should('not.be.visible');
 
     cy.get('[data-testid="questions-question"]')
       .should('have.length', 4)
@@ -142,7 +142,7 @@ describe('Sections', () => {
       .should('have.attr', 'aria-expanded', 'true');
 
     cy.get('[data-testid="questions-answer"]')
-      .should('have.length', 1)
+      .should('be.visible')
       .should(
         'have.text',
         'Die genauen Kosten für eine professionelle Planung Ihres Gartens schwanken stark von Region zu Region und hängen natürlich auch vom Umfang der Planung ab. Wir empfehlen, sich zunächst mit unseren Experten in Verbindung zu setzen und im Rahmen der Bedarfsanalyse zu prüfen, ob Sie überhaupt einen Landschaftsbauer oder Architekten für Ihre Gartenplanung benötigen. Vieles lässt sich mit fachkundigem Rat und einem guten Online Gartenplaner heute alleine planen.',
