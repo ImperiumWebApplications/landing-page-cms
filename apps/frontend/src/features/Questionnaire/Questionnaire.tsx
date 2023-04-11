@@ -67,7 +67,7 @@ export const Questionnaire: React.FC<QuestionnaireProps> = ({
   return (
     <div
       data-testid="questionnaire"
-      className="mx-auto flex h-full max-w-[1400px] flex-col justify-between bg-tertiary md:rounded-t-[10px]"
+      className="mx-auto flex h-full flex-col justify-between bg-tertiary"
     >
       <div>
         <div className="content-wrapper py-4 text-center md:pt-14 md:pb-12">
