@@ -1,8 +1,13 @@
-import type { GetServerSidePropsResult, NextPageContext } from 'next';
+import type { GetServerSidePropsResult, NextPage, NextPageContext } from 'next';
 import * as Sentry from '@sentry/nextjs';
 
 import { normalizeHostname } from '../../../utils/normalizeHostname';
-import { Strapi } from '../../strapi';
+import {
+  LandingPage,
+  Questionnaire,
+  StaticContent,
+  Strapi,
+} from '../../strapi';
 
 export const serverRedirect = (
   path: string,
@@ -13,22 +18,10 @@ export const serverRedirect = (
   },
 });
 
-export const queryLandingPageContent = async (ctx: NextPageContext) => {
-  try {
-    const domain = normalizeHostname(ctx.req?.headers.host);
-    if (!domain) throw new Error('No host given in headers.');
-
-    const data = await Strapi.getLandingPage(domain);
-    if (!data.attributes) throw new Error('No data for domain: ' + data);
-
-    return { props: { content: data.attributes } };
-  } catch (err) {
-    Sentry.captureException(err, {
-      tags: { interface: 'GetServerSidePropsRequest' },
-    });
-    return serverRedirect('/404');
-  }
-};
+export type QuestionnairePage = NextPage<{
+  content: LandingPage;
+  questionnaire: Questionnaire;
+}>;
 
 export const queryQuestionnairePageContent = async (ctx: NextPageContext) => {
   try {
@@ -38,16 +31,18 @@ export const queryQuestionnairePageContent = async (ctx: NextPageContext) => {
     const id = (ctx.query.topic as string)?.split('-').slice(1).pop();
     if (!id) throw new Error('No ID given for fetching questionnaire.');
 
-    const data = await Strapi.getLandingPage(domain);
-    if (!data.attributes) throw new Error('No data for domain: ' + data);
+    const [content, questionnaire] = await Promise.all([
+      Strapi.getLandingPage(domain),
+      Strapi.getQuestionnaire(id),
+    ]);
 
-    const questionnaire = await Strapi.getQuestionnaire(id);
+    if (!content.attributes) throw new Error('No data for domain: ' + content);
     if (!questionnaire.attributes)
       throw new Error('No data for questionnaire: ' + questionnaire);
 
     return {
       props: {
-        content: data.attributes,
+        content: content.attributes,
         questionnaire: questionnaire.attributes,
       },
     };
@@ -59,19 +54,29 @@ export const queryQuestionnairePageContent = async (ctx: NextPageContext) => {
   }
 };
 
-export const queryStaticPageContent = async (ctx: NextPageContext) => {
+export type ContentPage = NextPage<{
+  content: LandingPage;
+  staticContent: StaticContent;
+}>;
+
+export const queryContentPageContent = async (ctx: NextPageContext) => {
   try {
     const domain = normalizeHostname(ctx.req?.headers.host);
     if (!domain) throw new Error('No host given in headers.');
 
-    const data = await Strapi.getLandingPage(domain);
-    if (!data.attributes) throw new Error('No data for domain: ' + data);
+    const [content, staticContent] = await Promise.all([
+      Strapi.getLandingPage(domain),
+      Strapi.getStaticContent(),
+    ]);
 
-    const staticContent = await Strapi.getStaticContent();
+    if (!content.attributes) throw new Error('No data for domain: ' + content);
     if (!staticContent.attributes) throw new Error('No static content found');
 
     return {
-      props: { content: { ...data.attributes, ...staticContent.attributes } },
+      props: {
+        content: content.attributes,
+        staticContent: staticContent.attributes,
+      },
     };
   } catch (err) {
     Sentry.captureException(err, {

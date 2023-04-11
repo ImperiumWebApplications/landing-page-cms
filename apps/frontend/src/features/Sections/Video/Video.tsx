@@ -1,6 +1,7 @@
 import ReactMarkdown from 'react-markdown';
 import { motion } from 'framer-motion';
 
+import type { StaticContent } from '../../../lib/strapi/model';
 import { questionnaireRoute } from '../../../config/navigation.config';
 import { ArrowRight } from '../../../components/Icons';
 import { Button } from '../../../components/Button';
@@ -11,17 +12,18 @@ import type { VideoSectionContent } from '../SectionMapper';
 import { VideoPlayer } from './components/VideoPlayer';
 import { Statistics } from './components/Statistics';
 
-const VIDEO = {
-  url: '/videos/video.mp4',
-  thumbnail: '/images/video-thumbnail.png',
-};
-
 type VideoSectionProps = {
   id: string;
   content: VideoSectionContent;
+  staticContent: StaticContent['video_section'];
 };
 
 export const VideoSection: React.FC<VideoSectionProps> = (props) => {
+  const video = props.staticContent?.video?.data?.attributes;
+  const thumbnail = props.staticContent?.video_thumbnail?.data?.attributes;
+
+  if (!video?.url) return null;
+
   return (
     <SectionContainer id={props.id} fullWidth>
       <div className="relative mx-auto max-w-[1400px] overflow-hidden">
@@ -63,7 +65,7 @@ export const VideoSection: React.FC<VideoSectionProps> = (props) => {
               data-testid="video-wrapper"
               className="group"
             >
-              <VideoPlayer url={VIDEO.url} thumbnail={VIDEO.thumbnail} />
+              <VideoPlayer url={video.url} thumbnail={thumbnail?.url} />
             </motion.div>
           </div>
         </div>

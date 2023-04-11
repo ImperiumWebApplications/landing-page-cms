@@ -1,28 +1,25 @@
-import type { NextPage } from 'next';
 import { NextSeo } from 'next-seo';
 import ReactMarkdown from 'react-markdown';
 
-import type { LandingPage, StaticContent } from '../lib/strapi';
+import type { LandingPage } from '../lib/strapi';
 import { Article } from '../components/Article';
 import { Layout } from '../components/Layout';
-import { queryStaticPageContent } from '../lib/next/app';
+import { ContentPage, queryContentPageContent } from '../lib/next/app';
 import { populateMarkdownTemplate } from '../utils/populateMarkdownTemplate';
 import { getCountryByDomain } from '../utils/getCountryByDomain';
 import { Country } from '../config/countries.config';
 
-const ImprintPage: NextPage<{ content: LandingPage & StaticContent }> = ({
-  content,
-}) => {
+const ImprintPage: ContentPage = ({ content, staticContent }) => {
   const enrichedDomainContent = enrichDomainContent(content);
   const pageContent = populateMarkdownTemplate(
-    content.imprint,
+    staticContent.imprint,
     enrichedDomainContent,
   );
 
   return (
     <Layout content={enrichedDomainContent}>
       <NextSeo noindex={true} />
-      <div id="imprint" className="content-wrapper">
+      <div id="imprint" className="content-wrapper-xl">
         <Article>
           <ReactMarkdown>{pageContent ?? ''}</ReactMarkdown>
         </Article>
@@ -31,7 +28,7 @@ const ImprintPage: NextPage<{ content: LandingPage & StaticContent }> = ({
   );
 };
 
-export const getServerSideProps = queryStaticPageContent;
+export const getServerSideProps = queryContentPageContent;
 
 export default ImprintPage;
 

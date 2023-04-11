@@ -3,9 +3,10 @@ import React, { useMemo } from 'react';
 import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
 
-import { ArrowRight, CheckCircleIcon } from '../../../components/Icons';
+import type { StaticContent } from '../../../lib/strapi';
+import { CheckCircleIcon } from '../../../components/Icons';
 import { CallToActionBanner } from '../../../components/Banner';
-import { Workflow } from './components/Workflow';
+import { ServiceProcess } from './components/ServiceProcess';
 
 import { SectionContainer } from '../SectionContainer';
 import { ServicesSectionContent } from '../SectionMapper';
@@ -15,6 +16,7 @@ import { useSectionContext } from '../SectionContext';
 type ServicesSectionProps = {
   id: string;
   content: ServicesSectionContent;
+  staticContent: StaticContent['services_section'];
 };
 
 export const ServicesSection: React.FC<ServicesSectionProps> = (props) => {
@@ -80,51 +82,21 @@ export const ServicesSection: React.FC<ServicesSectionProps> = (props) => {
             </div>
           </div>
         </div>
-        <CallToActionBanner
-          data-testid="services-cta"
-          description="Wir helfen Ihnen unverbindlich und kostenlos, den besten Profi zu finden."
-          className="my-12 md:my-20"
-        />
+        {props.staticContent?.call_to_action_banner_title ? (
+          <CallToActionBanner
+            data-testid="services-cta"
+            description={props.staticContent?.call_to_action_banner_title}
+            className="my-12 md:my-20"
+          />
+        ) : null}
       </div>
-      <div className="mx-auto -mt-32 max-w-[1400px] bg-tertiary pt-36 pb-10 md:-mt-[10.5rem] md:rounded-md md:pb-20 md:pt-36">
-        <div className="content-wrapper">
-          <h2 className="mb-4 text-center text-base leading-tight md:mb-8 md:text-2xl">
-            Absolut kostenlos und risikofrei Anfrage senden!
-          </h2>
-          <Workflow className="my-8 md:my-16" />
-          <div className="mt-12 text-center text-primary md:mt-0">
-            <span className="font-bold">Unser Service</span>
-            <div className="block md:inline-block">
-              <ArrowRight
-                aria-hidden="true"
-                className="mx-4 hidden stroke-primary md:inline-block"
-                strokeWidth={2}
-              />
-              <CheckCircleIcon
-                aria-hidden="true"
-                className="mr-2 inline-block h-4 w-4 fill-primary md:hidden"
-              />
-              <span className="text-sm md:text-base">
-                100% kostenlos & unverbindlich
-              </span>
-            </div>
-            <div className="block md:inline-block">
-              <ArrowRight
-                aria-hidden="true"
-                className="mx-4 hidden stroke-primary md:inline-block"
-                strokeWidth={2}
-              />
-              <CheckCircleIcon
-                aria-hidden="true"
-                className="mr-2 inline-block h-4 w-4 fill-primary md:hidden"
-              />
-              <span className="text-sm md:text-base">
-                Keine Auftragspflicht
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
+      <ServiceProcess
+        title={props.staticContent?.process_title}
+        steps={props.staticContent?.process_step}
+        processAdvantageTitle={props.staticContent?.process_advantage_title}
+        processAdvantages={props.staticContent?.process_advantage}
+        className="-mt-32 pt-36 pb-10 md:-mt-[10.5rem] md:pb-20 md:pt-36"
+      />
     </SectionContainer>
   );
 };

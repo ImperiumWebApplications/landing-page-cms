@@ -9,6 +9,7 @@ import { Navigation, Pagination, A11y, Swiper as SwiperType } from 'swiper';
 import dynamic from 'next/dynamic';
 import cx from 'classnames';
 
+import type { StaticContent } from '../../../lib/strapi';
 import { ChevronLeftIcon, ChevronRightIcon } from '../../../components/Icons';
 import { CallToActionBanner } from '../../../components/Banner';
 import { useMediaQuery } from '../../../hooks/useMediaQuery';
@@ -36,6 +37,7 @@ const Review = dynamic(
 type ReviewsSectionProps = {
   id: string;
   content: ReviewsSectionContent;
+  staticContent: StaticContent['reviews_section'];
 };
 
 export const ReviewsSection: React.FC<ReviewsSectionProps> = (props) => {
@@ -59,7 +61,7 @@ export const ReviewsSection: React.FC<ReviewsSectionProps> = (props) => {
   return (
     <SectionContainer id={props.id} className="my-10 md:my-[70px]">
       <h2 className="mb-6 text-center text-xl text-primary md:text-4xl">
-        Zufriedenheit unserer Kunden
+        {props.staticContent?.title}
       </h2>
       <div data-testid="reviews-slider" className="review-slider relative">
         <Swiper
@@ -96,11 +98,13 @@ export const ReviewsSection: React.FC<ReviewsSectionProps> = (props) => {
           <ChevronRightIcon aria-hidden="true" className="w-2 stroke-[white]" />
         </NavigationButton>
       </div>
-      <CallToActionBanner
-        data-testid="reviews-cta"
-        description="Konnten wir Sie überzeugen?<br />Lassen Sie sich beraten"
-        className="mt-6 mb-14 md:my-14"
-      />
+      {props.staticContent?.call_to_action_banner_title ? (
+        <CallToActionBanner
+          data-testid="reviews-cta"
+          description={props.staticContent?.call_to_action_banner_title}
+          className="mt-6 mb-14 md:my-14"
+        />
+      ) : null}
     </SectionContainer>
   );
 };

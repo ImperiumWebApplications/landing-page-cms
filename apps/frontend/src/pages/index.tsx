@@ -1,7 +1,4 @@
-import type { NextPage } from 'next';
-
-import type { LandingPage } from '../lib/strapi';
-import { queryLandingPageContent } from '../lib/next/app';
+import { ContentPage, queryContentPageContent } from '../lib/next/app';
 import {
   initSectionManager,
   SectionContextProvider,
@@ -10,11 +7,13 @@ import {
 import { Layout } from '../components/Layout/Layout';
 import { isServicesSection } from '../features/Sections/SectionMapper';
 
-const IndexPage: NextPage<{ content: LandingPage }> = ({ content }) => {
+const IndexPage: ContentPage = ({ content, staticContent }) => {
   const isNewDesign =
     !!content.sections?.find(isServicesSection)?.benefits?.length;
 
-  const SectionManager = initSectionManager(content, { isNewDesign });
+  const SectionManager = initSectionManager(content, staticContent, {
+    isNewDesign,
+  });
 
   const initialSectionState: SectionState = {
     funnelTarget: content.funnel_target,
@@ -36,6 +35,6 @@ const IndexPage: NextPage<{ content: LandingPage }> = ({ content }) => {
   );
 };
 
-export const getServerSideProps = queryLandingPageContent;
+export const getServerSideProps = queryContentPageContent;
 
 export default IndexPage;

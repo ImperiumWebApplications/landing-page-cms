@@ -3,19 +3,22 @@ import { useMemo } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 
+import type { StaticContent } from '../../../lib/strapi';
 import type { HeroSectionContent } from '../SectionMapper';
 
 import { QuestionnaireTiles } from './components/QuestionnaireTiles';
-import { Steps } from './components/Steps';
+import { HeroAdvantages } from './components/HeroAdvantages';
 import { SectionContainer } from '../SectionContainer';
 
 type HeroSectionProps = {
   id: string;
   content: HeroSectionContent;
+  staticContent: StaticContent['hero_section'];
 };
 
 export const HeroSection: React.FC<HeroSectionProps> = (props) => {
   const { title, subtitle, questionnaire } = props.content;
+  const { hero_advantage: advantages } = props.staticContent ?? {};
 
   const BackgroundImage = useMemo(() => {
     const backgroundImage = props.content.background_image?.data?.attributes;
@@ -96,7 +99,7 @@ export const HeroSection: React.FC<HeroSectionProps> = (props) => {
           </motion.div>
         </div>
       </motion.div>
-      <Steps />
+      <HeroAdvantages advantages={advantages} />
     </SectionContainer>
   );
 };

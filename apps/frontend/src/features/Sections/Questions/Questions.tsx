@@ -4,6 +4,7 @@ import cx from 'classnames';
 import ReactMarkdown from 'react-markdown';
 import { Disclosure, Transition } from '@headlessui/react';
 
+import type { StaticContent } from '../../../lib/strapi/model';
 import { MinusIcon, PlusIcon } from '../../../components/Icons';
 
 import { SectionContainer } from '../SectionContainer';
@@ -15,6 +16,7 @@ import { Questions_OLD } from './Questions_OLD';
 type QuestionsSectionProps = {
   id: string;
   content: QuestionsSectionContent;
+  staticContent: StaticContent['questions_section'];
 };
 
 export const QuestionsSection: React.FC<QuestionsSectionProps> = (props) => {
@@ -32,7 +34,7 @@ export const QuestionsSection: React.FC<QuestionsSectionProps> = (props) => {
         data-testid="questions-headline"
         className="mb-2 text-center text-xl text-primary md:mb-12 md:text-4xl"
       >
-        Häufig gestellte Fragen
+        {props.staticContent?.title}
       </h2>
       <div className="mx-auto flex max-w-3xl flex-col">
         {questions.map(({ id, question, answer }) => {

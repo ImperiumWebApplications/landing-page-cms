@@ -7,7 +7,7 @@ const ReactPlayer = dynamic(() => import('react-player'), { ssr: false });
 
 type VideoPlayerProps = {
   url: string;
-  thumbnail: string;
+  thumbnail?: string;
 };
 
 export const VideoPlayer: React.FC<VideoPlayerProps> = (props) => {
