@@ -6,9 +6,8 @@ import {
 } from '../../../../../mocks/utils/mock-rest-api';
 import { StrapiMockHandlers } from '../../../../../mocks/lib/strapi/api';
 import {
-  queryLandingPageContent,
+  queryContentPageContent,
   queryQuestionnairePageContent,
-  queryStaticPageContent,
 } from '../getServerSideProps';
 import {
   content,
@@ -38,16 +37,21 @@ beforeEach(() => jest.clearAllMocks());
 afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
 
-describe('queryLandingPageContent', () => {
+describe('queryContentPageContent', () => {
   it('should return domain content', async () => {
     const ctx = configureCtx({ host: 'test' });
-    const result = await queryLandingPageContent(ctx);
-    expect(result).toEqual({ props: { content: content.data[0].attributes } });
+    const result = await queryContentPageContent(ctx);
+    expect(result).toEqual({
+      props: {
+        content: content.data[0].attributes,
+        staticContent: staticContent.data.attributes,
+      },
+    });
   });
 
   it('should return redirect if no host is specified', async () => {
     const ctx = configureCtx({ host: undefined });
-    const result = await queryLandingPageContent(ctx);
+    const result = await queryContentPageContent(ctx);
     expect(result).toEqual({
       redirect: { destination: '/404', permanent: false },
     });
@@ -58,7 +62,7 @@ describe('queryLandingPageContent', () => {
       createErrorResponse(Strapi.instance.options.url + '/landing-pages'),
     );
     const ctx = configureCtx({ host: 'test' });
-    const result = await queryLandingPageContent(ctx);
+    const result = await queryContentPageContent(ctx);
     expect(result).toEqual({
       redirect: { destination: '/404', permanent: false },
     });
@@ -89,31 +93,6 @@ describe('queryQuestionnairePageContent', () => {
     );
     const ctx = configureCtx({ topic: 'fliesen-1' });
     const result = await queryQuestionnairePageContent(ctx);
-    expect(result).toEqual({
-      redirect: { destination: '/404', permanent: false },
-    });
-  });
-});
-
-describe('queryStaticPageContent', () => {
-  it('should return static content', async () => {
-    const ctx = configureCtx({ host: 'test' });
-    const result = await queryStaticPageContent(ctx);
-    expect(result).toEqual({
-      props: {
-        content: {
-          ...content.data[0].attributes,
-          ...staticContent.data.attributes,
-        },
-      },
-    });
-  });
-  it('should return redirect if content is undefined', async () => {
-    server.use(
-      createErrorResponse(Strapi.instance.options.url + '/static-content'),
-    );
-    const ctx = configureCtx({ host: 'test' });
-    const result = await queryStaticPageContent(ctx);
     expect(result).toEqual({
       redirect: { destination: '/404', permanent: false },
     });

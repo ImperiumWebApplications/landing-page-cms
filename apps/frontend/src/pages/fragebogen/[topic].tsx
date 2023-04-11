@@ -1,23 +1,17 @@
-import type { NextPage } from 'next';
-
-import type {
-  LandingPage,
-  Questionnaire as QuestionnaireType,
-} from '../../lib/strapi';
 import { Layout } from '../../components/Layout/Layout';
 import { Questionnaire } from '../../features/Questionnaire/Questionnaire';
 import { getCountryByDomain } from '../../utils/getCountryByDomain';
-import { queryQuestionnairePageContent } from '../../lib/next/app';
+import {
+  queryQuestionnairePageContent,
+  QuestionnairePage,
+} from '../../lib/next/app';
 import {
   QuestionnairePlaceholderPage,
   QuestionnaireProvider,
 } from '../../features/Questionnaire';
 import { isHeroSection } from '../../features/Sections/SectionMapper';
 
-const QuestionnairePage: NextPage<{
-  content: LandingPage;
-  questionnaire: QuestionnaireType;
-}> = ({ content, questionnaire }) => {
+const QuestionnairePage: QuestionnairePage = ({ content, questionnaire }) => {
   const country = getCountryByDomain(content.domain);
   const hero = content.sections?.find(isHeroSection);
 

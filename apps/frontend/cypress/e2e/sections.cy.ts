@@ -23,7 +23,7 @@ describe('Sections', () => {
       .should('contain.text', 'Wintergarten')
       .should('have.attr', 'href', '/fragebogen/wintergarten-6');
 
-    cy.get('[data-testid="hero-step"]')
+    cy.get('[data-testid="hero-advantage-description"]')
       .should('have.length', 3)
       .should('be.visible')
       .first()

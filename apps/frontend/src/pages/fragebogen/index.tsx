@@ -1,5 +1,4 @@
 import React from 'react';
-import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
 
 import { Layout } from '../../components/Layout/Layout';
@@ -7,7 +6,7 @@ import { questionnaireRoute } from '../../config/navigation.config';
 import { slugifyRoute } from '../../utils/slugifyRoute';
 import { getCountryByDomain } from '../../utils/getCountryByDomain';
 import { LandingPage } from '../../lib/strapi';
-import { queryLandingPageContent } from '../../lib/next/app';
+import { ContentPage, queryContentPageContent } from '../../lib/next/app';
 import {
   Questionnaire,
   QuestionnairePlaceholderPage,
@@ -16,9 +15,7 @@ import {
 import { SingleChoiceEventHandler } from '../../features/Questionnaire/components/SingleChoice';
 import { isHeroSection } from '../../features/Sections/SectionMapper';
 
-const EntryQuestionnairePage: NextPage<{ content: LandingPage }> = ({
-  content,
-}) => {
+const EntryQuestionnairePage: ContentPage = ({ content }) => {
   const { questionnaire } = content;
   const router = useRouter();
   const hero = content.sections?.find(isHeroSection);
@@ -57,7 +54,7 @@ const EntryQuestionnairePage: NextPage<{ content: LandingPage }> = ({
   );
 };
 
-export const getServerSideProps = queryLandingPageContent;
+export const getServerSideProps = queryContentPageContent;
 
 export default EntryQuestionnairePage;
 

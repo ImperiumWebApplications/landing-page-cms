@@ -30,7 +30,6 @@ export const HeroAdvantages: React.FC<HeroAdvantagesProps> = ({
           return (
             <motion.div
               key={id}
-              data-testid="hero-step"
               className={cx(
                 'flex h-full min-h-[40px] w-full flex-1 items-start px-4 leading-tight md:min-h-[60px] md:items-center md:justify-center md:px-0',
                 i !== 0 ? 'border-[white]/50 md:border-l' : '',
@@ -43,7 +42,10 @@ export const HeroAdvantages: React.FC<HeroAdvantagesProps> = ({
                 <div className="mr-4 flex flex-shrink-0 items-center justify-center">
                   <ReactSVG src={icon.data.attributes.url} wrapper="span" />
                 </div>
-                <span dangerouslySetInnerHTML={{ __html: description }} />
+                <span
+                  data-testid="hero-advantage-description"
+                  dangerouslySetInnerHTML={{ __html: description }}
+                />
               </div>
             </motion.div>
           );
