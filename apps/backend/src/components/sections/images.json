@@ -1,7 +1,7 @@
 {
   "collectionName": "components_sections_images",
   "info": {
-    "displayName": "Images (DEPRECATED)",
+    "displayName": "Images (INAKTIV)",
     "icon": "images",
     "description": ""
   },
@@ -11,9 +11,7 @@
       "type": "media",
       "multiple": true,
       "required": false,
-      "allowedTypes": [
-        "images"
-      ]
+      "allowedTypes": ["images"]
     }
   }
 }

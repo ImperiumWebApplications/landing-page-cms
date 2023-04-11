@@ -1,7 +1,7 @@
 {
   "collectionName": "components_sections_statistics",
   "info": {
-    "displayName": "Statistics (DEPRECATED)",
+    "displayName": "Statistics (INAKTIV)",
     "icon": "hashtag",
     "description": ""
   },
@@ -11,9 +11,7 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": [
-        "images"
-      ]
+      "allowedTypes": ["images"]
     },
     "number": {
       "displayName": "Number",
