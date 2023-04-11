@@ -70,19 +70,22 @@ export const QuestionsSection: React.FC<QuestionsSectionProps> = (props) => {
                       )}
                     </div>
                   </Disclosure.Button>
-                  <Transition
-                    className="overflow-hidden transition-all duration-200"
-                    enterFrom="transform opacity-0"
-                    enterTo="transform opacity-100"
-                    leaveFrom="transform opacity-100"
-                    leaveTo="transform opacity-0"
+                  <Disclosure.Panel
+                    unmount={false}
+                    data-testid="questions-answer"
                   >
-                    <Disclosure.Panel data-testid="questions-answer">
+                    <Transition
+                      className="overflow-hidden transition-all duration-200"
+                      enterFrom="transform opacity-0"
+                      enterTo="transform opacity-100"
+                      leaveFrom="transform opacity-100"
+                      leaveTo="transform opacity-0"
+                    >
                       <ReactMarkdown className="article text-sm md:text-base">
                         {answer}
                       </ReactMarkdown>
-                    </Disclosure.Panel>
-                  </Transition>
+                    </Transition>
+                  </Disclosure.Panel>
                 </div>
               )}
             </Disclosure>
