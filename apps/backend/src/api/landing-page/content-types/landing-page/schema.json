@@ -83,7 +83,8 @@
       ]
     },
     "service_type": {
-      "type": "string"
+      "type": "string",
+      "private": true
     },
     "google_allow_indexation": {
       "type": "boolean",
@@ -104,6 +105,20 @@
       "type": "component",
       "repeatable": false,
       "component": "appointment.appointment"
+    },
+    "questionnaires_relations": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::questionnaire.questionnaire",
+      "inversedBy": "landing_pages_relations"
+    },
+    "questionnaires_entry_question": {
+      "type": "string"
+    },
+    "questionnaires_advantages": {
+      "type": "component",
+      "repeatable": false,
+      "component": "questionnaire.advantages"
     }
   }
 }

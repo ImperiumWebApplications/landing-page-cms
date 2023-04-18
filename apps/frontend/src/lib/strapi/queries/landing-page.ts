@@ -29,11 +29,14 @@ export const getLandingPage = async (domain: string) => {
         logo: { fields: '*' },
         favicon: { fields: '*' },
         tracking: { fields: '*' },
+
+        questionnaires_relations: { fields: '*', populate: ['icon'] },
+        questionnaires_advantages: { fields: '*' },
+
         questionnaire: {
           fields: '*',
           populate: {
             advantage: { fields: '*' },
-            advantages: { fields: '*' },
             questionnaires: { fields: '*', populate: ['icon'] },
           },
         },

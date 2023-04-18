@@ -1,4 +1,3 @@
-import { useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
@@ -9,7 +8,6 @@ import type { HeroSectionContent } from '../../SectionMapper';
 import { questionnaireRoute } from '../../../../config/navigation.config';
 import { isSvg } from '../../../../utils/isSvg';
 import { slugifyRoute } from '../../../../utils/slugifyRoute';
-import { byPriority } from '../utils/sortQuestionnaires';
 
 const ReactSVG = dynamic(
   // @ts-ignore
@@ -22,30 +20,27 @@ const iconClassName =
   'h-[60px] max-w-[100%] md:h-[74px] lg:h-[100px] 3xl:h-[140px]';
 
 export type QuestionnaireTilesProps = {
-  content: HeroSectionContent['questionnaire'];
+  question: HeroSectionContent['questionnaires_question'];
+  answers: HeroSectionContent['questionnaires_relations'];
 };
 
 export const QuestionnaireTiles: React.FC<QuestionnaireTilesProps> = (
   props,
 ) => {
-  const { entry_question, questionnaires } = props.content ?? {};
-
-  const sortedQuestionnaires = useMemo(() => {
-    return questionnaires?.data.sort(byPriority);
-  }, [questionnaires?.data]);
-
-  if (!sortedQuestionnaires?.length) return null;
+  if (!props.answers?.length) return null;
 
   return (
     <div className="pt-4 sm:pt-6 md:pt-0">
       <h4 className="text-center text-lg font-bold text-primary sm:text-xl md:text-left md:text-2xl">
-        <span data-testid="hero-tiles-question">{entry_question}</span>
+        <span data-testid="hero-tiles-question">
+          {props.question ?? 'Was suchen Sie?'}
+        </span>
       </h4>
       <div
         data-testid="hero-tiles-grid"
         className="flex flex-wrap justify-start gap-2 pt-4 sm:mt-6 sm:gap-4 md:flex-nowrap lg:gap-8"
       >
-        {sortedQuestionnaires.map(({ attributes, id }) => {
+        {props.answers.map(({ attributes, id }) => {
           if (!attributes?.name) return null;
 
           const slug = slugifyRoute(attributes.name);

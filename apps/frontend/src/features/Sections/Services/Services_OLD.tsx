@@ -61,12 +61,6 @@ export const Services_OLD: React.FC<ServicesSectionProps> = (props) => {
             <p>{activeTabContent.description}</p>
             <div className="mt-8 mr-8 md:mt-16 md:mr-16">
               <ProgressBar label="Kundenzufriedenheit" value={98} />
-              {props.content.serviceType ? (
-                <ProgressBar
-                  label={`Kompetenz der ${props.content.serviceType}`}
-                  value={100}
-                />
-              ) : null}
               <ProgressBar label="Erfolgreiche Vermittlungen" value={92} />
             </div>
           </div>

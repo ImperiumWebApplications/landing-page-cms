@@ -17,8 +17,9 @@ type HeroSectionProps = {
 };
 
 export const HeroSection: React.FC<HeroSectionProps> = (props) => {
-  const { title, subtitle, questionnaire } = props.content;
   const { hero_advantage: advantages } = props.staticContent ?? {};
+  const { title, subtitle, questionnaires_question, questionnaires_relations } =
+    props.content;
 
   const BackgroundImage = useMemo(() => {
     const backgroundImage = props.content.background_image?.data?.attributes;
@@ -95,7 +96,10 @@ export const HeroSection: React.FC<HeroSectionProps> = (props) => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.3, delay: 0.4 }}
           >
-            <QuestionnaireTiles content={questionnaire} />
+            <QuestionnaireTiles
+              question={questionnaires_question}
+              answers={questionnaires_relations}
+            />
           </motion.div>
         </div>
       </motion.div>

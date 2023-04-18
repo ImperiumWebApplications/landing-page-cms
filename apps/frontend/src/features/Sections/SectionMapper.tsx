@@ -114,9 +114,14 @@ export const isHeroSection = (
 const toHeroSectionContent = (content: LandingPage, section: HeroSection) => {
   return {
     ...section,
-    questionnaire: content.questionnaire ?? null,
-    phone: content.contact_phone ?? null,
-    serviceType: content.service_type ?? null,
+    questionnaires_question:
+      content.questionnaires_entry_question ??
+      content.questionnaire?.entry_question ??
+      null,
+    questionnaires_relations:
+      content.questionnaires_relations?.data ??
+      content.questionnaire?.questionnaires?.data ??
+      null,
   };
 };
 
@@ -170,13 +175,9 @@ export const isServicesSection = (
 ): section is DynamicZoneItem<ServicesSection> =>
   section.__component === LandingPageSections.SERVICES;
 
-const toServicesSectionContent = (
-  content: LandingPage,
-  section: ServicesSection,
-) => {
+const toServicesSectionContent = (_: LandingPage, section: ServicesSection) => {
   return {
     ...section,
-    serviceType: content.service_type ?? null,
   };
 };
 

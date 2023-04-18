@@ -32,7 +32,6 @@ export type LandingPage = {
   google_allow_indexation?: BooleanField;
 
   domain?: TextField;
-  service_type?: TextField;
   brand_name?: TextField;
   contact_email?: TextField;
   contact_phone?: TextField;
@@ -47,11 +46,21 @@ export type LandingPage = {
   color_tertiary?: TextField;
   color_text?: TextField;
 
+  /** DEPRECATED */
   funnel_target?: EnumerationField<'Questionnaire' | 'Appointment'>;
 
   favicon?: Media;
   logo?: Media;
 
+  questionnaires_relations?: Relations<Questionnaire>;
+  questionnaires_entry_question?: TextField;
+  questionnaires_advantages?: Component<{
+    personalized_advice?: TextField;
+    years_of_experience?: TextField;
+    custom_service?: TextField;
+  }>;
+
+  /** DEPRECATED */
   questionnaire?: Component<{
     entry_question?: TextField;
     headline?: TextField;
@@ -67,6 +76,7 @@ export type LandingPage = {
     }>;
   }>;
 
+  /** DEPRECATED */
   appointment?: Component<{
     appointment_duration?: EnumerationField<
       'x30min' | 'x60min' | 'x90min' | 'x120min'
@@ -99,21 +109,26 @@ export type LandingPage = {
 
 export type Section =
   | HeroSection
+  /** DEPRECATED */
   | StatisticsSection
+  /** DEPRECATED */
   | CallToActionSection
   | ServicesSection
   | ReviewsSection
   | QuestionsSection
+  /** DEPRECATED */
   | ImagesSection
   | VideoSection;
 
 export type HeroSection = Component<{
   title?: TextField;
   subtitle?: TextField;
+  /** DEPRECATED */
   description?: TextField;
   background_image?: Media;
 }>;
 
+/** DEPRECATED */
 export type StatisticsSection = Component<{
   background_image?: Media;
   number?: RepeatableComponent<{
@@ -123,6 +138,7 @@ export type StatisticsSection = Component<{
   }>;
 }>;
 
+/** DEPRECATED */
 export type CallToActionSection = Component<{
   title?: TextField;
   subtitle?: TextField;
@@ -137,6 +153,7 @@ export type ServicesSection = Component<{
     title?: TextField;
     description?: TextField;
   }>;
+  /** DEPRECATED */
   service_tab?: RepeatableComponent<{
     tab_name?: TextField;
     title?: TextField;
@@ -156,6 +173,7 @@ export type ReviewsSection = Component<{
   }>;
 }>;
 
+/** DEPRECATED */
 export type ImagesSection = Component<{
   images?: MediaList;
 }>;

@@ -6,65 +6,57 @@ import {
 } from '../QuestionnaireTiles';
 
 const defaultPropsWithJpg: QuestionnaireTilesProps = {
-  content: {
-    questionnaires: {
-      data: [
-        {
-          id: 12,
-          attributes: {
-            name: 'Test_Name',
-            description: 'TestDesc',
-            icon: {
-              data: {
-                id: 131,
-                // @ts-ignore
-                attributes: {
-                  name: 'work.jpg',
-                  alternativeText: 'work.jpg',
-                  caption: 'work.jpg',
-                  ext: '.jpg',
-                  width: 124,
-                  height: 124,
-                  url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/work_a81a4126a1.jpg',
-                },
-              },
+  answers: [
+    {
+      id: 12,
+      attributes: {
+        name: 'Test_Name',
+        description: 'TestDesc',
+        icon: {
+          data: {
+            id: 131,
+            // @ts-ignore
+            attributes: {
+              name: 'work.jpg',
+              alternativeText: 'work.jpg',
+              caption: 'work.jpg',
+              ext: '.jpg',
+              width: 124,
+              height: 124,
+              url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/work_a81a4126a1.jpg',
             },
           },
         },
-      ],
+      },
     },
-  },
+  ],
 };
 
 const defaultPropsWithSvg: QuestionnaireTilesProps = {
-  content: {
-    questionnaires: {
-      data: [
-        {
-          id: 12,
-          attributes: {
-            name: 'Test_Name',
-            description: 'TestDesc',
-            icon: {
-              data: {
-                id: 131,
-                //@ts-ignore
-                attributes: {
-                  name: 'work.svg',
-                  alternativeText: 'work.svg',
-                  caption: 'work.svg',
-                  ext: '.svg',
-                  width: 124,
-                  height: 124,
-                  url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/work_a81a4126a1.svg',
-                },
-              },
+  answers: [
+    {
+      id: 12,
+      attributes: {
+        name: 'Test_Name',
+        description: 'TestDesc',
+        icon: {
+          data: {
+            id: 131,
+            //@ts-ignore
+            attributes: {
+              name: 'work.svg',
+              alternativeText: 'work.svg',
+              caption: 'work.svg',
+              ext: '.svg',
+              width: 124,
+              height: 124,
+              url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/work_a81a4126a1.svg',
             },
           },
         },
-      ],
+      },
     },
-  },
+  ],
 };
 
 describe('QuestionnaireTiles', () => {
@@ -110,8 +102,7 @@ describe('QuestionnaireTiles', () => {
             {
               id: 12,
               attributes: {
-                ...defaultPropsWithJpg.content?.questionnaires?.data[0]
-                  .attributes,
+                ...defaultPropsWithJpg.answers?.[0].attributes,
                 name: null,
               },
             },

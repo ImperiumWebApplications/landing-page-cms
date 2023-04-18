@@ -470,164 +470,159 @@ export const content: { data: { id: number; attributes: LandingPage }[] } = {
             },
           },
         },
-        questionnaire: {
-          id: 5,
-          entry_question: 'Welches Ziel möchten Sie erreichen?',
-          headline: null,
-          advantage: [],
-          advantages: {
-            id: 8,
-            personalized_advice:
-              '<b>Persönliche Unterstützung</b><br>rund um das Thema Immobilien',
-            years_of_experience:
-              '<b>Über 10 Jahre Erfahrung</b><br>im Immobiliengeschäft',
-            custom_service:
-              '<b>100 % Individuell</b><br>Wir erfüllen Ihre Wünsche',
-          },
-          questionnaires: {
-            data: [
-              {
-                id: 7,
-                attributes: {
-                  name: 'Terasse',
-                  // @ts-ignore
-                  createdAt: '2023-03-06T18:25:24.162Z',
-                  updatedAt: '2023-03-06T18:25:24.721Z',
-                  publishedAt: '2023-03-06T18:25:24.719Z',
-                  description: null,
-                  priority: 2,
-                  icon: {
-                    data: {
-                      id: 173,
-                      attributes: {
-                        name: 'Terrasse_2fcfef5608.svg',
-                        alternativeText: null,
-                        caption: null,
-                        width: 372,
-                        height: 408,
-                        formats: null,
-                        hash: 'Terrasse_2fcfef5608_6bfa642461',
-                        ext: '.svg',
-                        mime: 'image/svg+xml',
-                        size: 35.93,
-                        url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/Terrasse_2fcfef5608_6bfa642461.svg',
-                        previewUrl: null,
-                        provider: 'aws-s3',
-                        provider_metadata: null,
-                        createdAt: '2023-03-06T18:24:52.522Z',
-                        updatedAt: '2023-03-06T18:24:52.522Z',
-                      },
+        questionnaires_entry_question: 'Welches Ziel möchten Sie erreichen?',
+        questionnaires_relations: {
+          data: [
+            {
+              id: 7,
+              attributes: {
+                name: 'Terasse',
+                // @ts-ignore
+                createdAt: '2023-03-06T18:25:24.162Z',
+                updatedAt: '2023-03-06T18:25:24.721Z',
+                publishedAt: '2023-03-06T18:25:24.719Z',
+                description: null,
+                priority: 2,
+                icon: {
+                  data: {
+                    id: 173,
+                    attributes: {
+                      name: 'Terrasse_2fcfef5608.svg',
+                      alternativeText: null,
+                      caption: null,
+                      width: 372,
+                      height: 408,
+                      formats: null,
+                      hash: 'Terrasse_2fcfef5608_6bfa642461',
+                      ext: '.svg',
+                      mime: 'image/svg+xml',
+                      size: 35.93,
+                      url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/Terrasse_2fcfef5608_6bfa642461.svg',
+                      previewUrl: null,
+                      provider: 'aws-s3',
+                      provider_metadata: null,
+                      createdAt: '2023-03-06T18:24:52.522Z',
+                      updatedAt: '2023-03-06T18:24:52.522Z',
                     },
                   },
                 },
               },
-              {
-                id: 6,
-                attributes: {
-                  name: 'Wintergarten',
-                  // @ts-ignore
-                  createdAt: '2023-03-06T18:25:08.088Z',
-                  updatedAt: '2023-03-20T10:31:00.744Z',
-                  publishedAt: '2023-03-06T18:25:08.833Z',
-                  description: null,
-                  priority: 1,
-                  icon: {
-                    data: {
-                      id: 172,
-                      attributes: {
-                        name: 'Wi_Ga1_4b4c56d9b8.svg',
-                        alternativeText: null,
-                        caption: null,
-                        width: 436,
-                        height: 407,
-                        formats: null,
-                        hash: 'Wi_Ga1_4b4c56d9b8_4332319236',
-                        ext: '.svg',
-                        mime: 'image/svg+xml',
-                        size: 13.53,
-                        url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/Wi_Ga1_4b4c56d9b8_4332319236.svg',
-                        previewUrl: null,
-                        provider: 'aws-s3',
-                        provider_metadata: null,
-                        createdAt: '2023-03-06T18:24:51.803Z',
-                        updatedAt: '2023-03-06T18:24:51.803Z',
-                      },
+            },
+            {
+              id: 2,
+              attributes: {
+                name: 'Maler',
+                // @ts-ignore
+                createdAt: '2021-12-03T10:20:46.466Z',
+                updatedAt: '2022-05-09T07:48:40.391Z',
+                publishedAt: '2021-12-03T10:38:54.157Z',
+                description: 'Neue Farbe für Fassaden und Innenräume...',
+                priority: 5,
+                icon: {
+                  data: {
+                    id: 125,
+                    attributes: {
+                      name: 'maler.svg',
+                      alternativeText: 'maler.svg',
+                      caption: 'maler.svg',
+                      width: 45,
+                      height: 51,
+                      formats: null,
+                      hash: 'maler_7dc875b12e',
+                      ext: '.svg',
+                      mime: 'image/svg+xml',
+                      size: 2.59,
+                      url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/maler_7dc875b12e.svg',
+                      previewUrl: null,
+                      provider: 'aws-s3',
+                      provider_metadata: null,
+                      createdAt: '2022-01-04T16:32:51.673Z',
+                      updatedAt: '2022-01-04T16:32:51.673Z',
                     },
                   },
                 },
               },
-              {
-                id: 8,
-                attributes: {
-                  name: 'Zaun',
-                  // @ts-ignore
-                  createdAt: '2023-03-06T18:25:38.380Z',
-                  updatedAt: '2023-03-06T18:25:38.999Z',
-                  publishedAt: '2023-03-06T18:25:38.998Z',
-                  description: null,
-                  priority: 3,
-                  icon: {
-                    data: {
-                      id: 171,
-                      attributes: {
-                        name: 'Zaun_52e43d7cf3.svg',
-                        alternativeText: null,
-                        caption: null,
-                        width: 405,
-                        height: 403,
-                        formats: null,
-                        hash: 'Zaun_52e43d7cf3_097e70d80c',
-                        ext: '.svg',
-                        mime: 'image/svg+xml',
-                        size: 15.45,
-                        url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/Zaun_52e43d7cf3_097e70d80c.svg',
-                        previewUrl: null,
-                        provider: 'aws-s3',
-                        provider_metadata: null,
-                        createdAt: '2023-03-06T18:24:51.799Z',
-                        updatedAt: '2023-03-06T18:24:51.799Z',
-                      },
+            },
+            {
+              id: 9,
+              attributes: {
+                name: 'Garten- und Landschaftsbau',
+                // @ts-ignore
+                createdAt: '2023-03-06T18:25:52.522Z',
+                updatedAt: '2023-03-06T18:25:53.082Z',
+                publishedAt: '2023-03-06T18:25:53.079Z',
+                description: null,
+                priority: 5,
+                icon: {
+                  data: {
+                    id: 170,
+                    attributes: {
+                      name: 'Gartenbau_14b4d34d05.svg',
+                      alternativeText: null,
+                      caption: null,
+                      width: 339,
+                      height: 391,
+                      formats: null,
+                      hash: 'Gartenbau_14b4d34d05_e3dc138db5',
+                      ext: '.svg',
+                      mime: 'image/svg+xml',
+                      size: 11.01,
+                      url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/Gartenbau_14b4d34d05_e3dc138db5.svg',
+                      previewUrl: null,
+                      provider: 'aws-s3',
+                      provider_metadata: null,
+                      createdAt: '2023-03-06T18:24:51.749Z',
+                      updatedAt: '2023-03-06T18:24:51.749Z',
                     },
                   },
                 },
               },
-              {
-                id: 9,
-                attributes: {
-                  name: 'Garten- und Landschaftsbau',
-                  // @ts-ignore
-                  createdAt: '2023-03-06T18:25:52.522Z',
-                  updatedAt: '2023-03-06T18:25:53.082Z',
-                  publishedAt: '2023-03-06T18:25:53.079Z',
-                  description: null,
-                  priority: 5,
-                  icon: {
-                    data: {
-                      id: 170,
-                      attributes: {
-                        name: 'Gartenbau_14b4d34d05.svg',
-                        alternativeText: null,
-                        caption: null,
-                        width: 339,
-                        height: 391,
-                        formats: null,
-                        hash: 'Gartenbau_14b4d34d05_e3dc138db5',
-                        ext: '.svg',
-                        mime: 'image/svg+xml',
-                        size: 11.01,
-                        url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/Gartenbau_14b4d34d05_e3dc138db5.svg',
-                        previewUrl: null,
-                        provider: 'aws-s3',
-                        provider_metadata: null,
-                        createdAt: '2023-03-06T18:24:51.749Z',
-                        updatedAt: '2023-03-06T18:24:51.749Z',
-                      },
+            },
+            {
+              id: 8,
+              attributes: {
+                name: 'Zaun',
+                // @ts-ignore
+                createdAt: '2023-03-06T18:25:38.380Z',
+                updatedAt: '2023-03-06T18:25:38.999Z',
+                publishedAt: '2023-03-06T18:25:38.998Z',
+                description: null,
+                priority: 3,
+                icon: {
+                  data: {
+                    id: 171,
+                    attributes: {
+                      name: 'Zaun_52e43d7cf3.svg',
+                      alternativeText: null,
+                      caption: null,
+                      width: 405,
+                      height: 403,
+                      formats: null,
+                      hash: 'Zaun_52e43d7cf3_097e70d80c',
+                      ext: '.svg',
+                      mime: 'image/svg+xml',
+                      size: 15.45,
+                      url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/Zaun_52e43d7cf3_097e70d80c.svg',
+                      previewUrl: null,
+                      provider: 'aws-s3',
+                      provider_metadata: null,
+                      createdAt: '2023-03-06T18:24:51.799Z',
+                      updatedAt: '2023-03-06T18:24:51.799Z',
                     },
                   },
                 },
               },
-            ],
-          },
+            },
+          ],
+        },
+        questionnaires_advantages: {
+          id: 10,
+          personalized_advice:
+            '<b>Persönliche Unterstützung</b><br>rund um das Thema Immobilien',
+          years_of_experience:
+            '<b>Über 10 Jahre Erfahrung</b><br>im Immobiliengeschäft',
+          custom_service:
+            '<b>100 % Individuell</b><br>Wir erfüllen Ihre Wünsche',
         },
         appointment: null,
       },

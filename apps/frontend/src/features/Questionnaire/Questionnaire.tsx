@@ -29,7 +29,7 @@ export type QuestionnaireProps = {
   questions: NonNullable<QuestionnaireType['questions']>;
   countries?: Country[];
   phone?: string | null;
-  advantages?: NonNullable<LandingPage['questionnaire']>['advantages'];
+  advantages?: LandingPage['questionnaires_advantages'];
   customSelectHandler?: SingleChoiceEventHandler;
 };
 

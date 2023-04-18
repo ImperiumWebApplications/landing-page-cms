@@ -20,8 +20,8 @@ describe('Sections', () => {
     cy.get('[data-testid="hero-tiles-grid"] > a')
       .should('have.length', 4)
       .first()
-      .should('contain.text', 'Wintergarten')
-      .should('have.attr', 'href', '/fragebogen/wintergarten-6');
+      .should('contain.text', 'Terasse')
+      .should('have.attr', 'href', '/fragebogen/terasse-7');
 
     cy.get('[data-testid="hero-advantage-description"]')
       .should('have.length', 3)

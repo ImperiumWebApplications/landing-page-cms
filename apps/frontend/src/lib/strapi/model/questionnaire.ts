@@ -11,8 +11,6 @@ import type {
 
 export type Questionnaire = {
   name?: TextField;
-  description?: TextField;
-  priority?: NumberField;
   icon?: Media;
   questions?: RepeatableComponent<{
     question?: TextField;
@@ -21,4 +19,9 @@ export type Questionnaire = {
       answer_icon?: Media;
     }>;
   }>;
+
+  /** DEPRECATED */
+  description?: TextField;
+  /** DEPRECATED */
+  priority?: NumberField;
 };

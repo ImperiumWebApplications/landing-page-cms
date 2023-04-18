@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 
-import { Layout } from '../../components/Layout/Layout';
+import { Layout } from '../../components/Layout';
 import { questionnaireRoute } from '../../config/navigation.config';
 import { slugifyRoute } from '../../utils/slugifyRoute';
 import { getCountryByDomain } from '../../utils/getCountryByDomain';
@@ -16,18 +16,16 @@ import { SingleChoiceEventHandler } from '../../features/Questionnaire/component
 import { isHeroSection } from '../../features/Sections/SectionMapper';
 
 const EntryQuestionnairePage: ContentPage = ({ content }) => {
-  const { questionnaire } = content;
+  const { entryQuestion, questionnaires } = extractQuestionnaires(content);
   const router = useRouter();
-  const hero = content.sections?.find(isHeroSection);
 
-  if (!questionnaire) return <QuestionnairePlaceholderPage content={content} />;
+  if (!questionnaires)
+    return <QuestionnairePlaceholderPage content={content} />;
 
-  const entryQuestion = {
+  const question = {
     id: -1,
-    question: 'Was suchen Sie?',
-    answers: mapConnectedQuestionnairesToAnswersSchema(
-      questionnaire.questionnaires,
-    ),
+    question: entryQuestion ?? 'Was suchen Sie?',
+    answers: mapConnectedQuestionnairesToAnswersSchema(questionnaires),
   };
 
   const selectHandler: SingleChoiceEventHandler = async ({ event, input }) => {
@@ -43,11 +41,14 @@ const EntryQuestionnairePage: ContentPage = ({ content }) => {
     <Layout content={content}>
       <QuestionnaireProvider>
         <Questionnaire
-          headline={hero?.title || questionnaire.headline}
-          advantages={content.questionnaire?.advantages}
-          questions={[entryQuestion]}
+          headline={content.sections?.find(isHeroSection)?.title}
+          questions={[question]}
           countries={country ? [country] : undefined}
           customSelectHandler={selectHandler}
+          advantages={
+            content.questionnaires_advantages ??
+            content.questionnaire?.advantages
+          }
         />
       </QuestionnaireProvider>
     </Layout>
@@ -64,7 +65,7 @@ export default EntryQuestionnairePage;
  */
 
 const mapConnectedQuestionnairesToAnswersSchema = (
-  questionnaires: NonNullable<LandingPage['questionnaire']>['questionnaires'],
+  questionnaires: LandingPage['questionnaires_relations'],
 ) => {
   return questionnaires
     ? questionnaires.data.map((questionnaire) => {
@@ -75,4 +76,22 @@ const mapConnectedQuestionnairesToAnswersSchema = (
         };
       })
     : undefined;
+};
+
+export const extractQuestionnaires = (landingPage: LandingPage) => {
+  const {
+    questionnaires_relations,
+    questionnaires_entry_question,
+    questionnaires_advantages,
+    questionnaire: deprecatedQuestionnaire,
+  } = landingPage;
+
+  return {
+    questionnaires:
+      questionnaires_relations ?? deprecatedQuestionnaire?.questionnaires,
+    entryQuestion:
+      questionnaires_entry_question ?? deprecatedQuestionnaire?.entry_question,
+    advantages:
+      questionnaires_advantages ?? deprecatedQuestionnaire?.advantages,
+  };
 };

@@ -36,6 +36,12 @@
       "min": 1,
       "default": 5,
       "required": false
+    },
+    "landing_pages_relations": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::landing-page.landing-page",
+      "mappedBy": "questionnaires_relations"
     }
   }
 }

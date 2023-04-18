@@ -13,7 +13,6 @@ import { isHeroSection } from '../../features/Sections/SectionMapper';
 
 const QuestionnairePage: QuestionnairePage = ({ content, questionnaire }) => {
   const country = getCountryByDomain(content.domain);
-  const hero = content.sections?.find(isHeroSection);
 
   if (!questionnaire?.questions)
     return <QuestionnairePlaceholderPage content={content} />;
@@ -22,11 +21,14 @@ const QuestionnairePage: QuestionnairePage = ({ content, questionnaire }) => {
     <Layout content={content}>
       <QuestionnaireProvider>
         <Questionnaire
-          headline={hero?.title || content.questionnaire?.headline}
-          advantages={content.questionnaire?.advantages}
+          headline={content.sections?.find(isHeroSection)?.title}
           questions={questionnaire.questions}
           countries={country ? [country] : undefined}
           phone={content.contact_phone}
+          advantages={
+            content.questionnaires_advantages ??
+            content.questionnaire?.advantages
+          }
         />
       </QuestionnaireProvider>
     </Layout>
