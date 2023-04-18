@@ -59,7 +59,7 @@ export const Footer: React.FC<FooterProps> = ({ content }) => {
                 <div className="inline text-sm">
                   <a
                     className="font-normal"
-                    href={`mailto:${content.contact_email}`}
+                    href={`mailto:${content.contact_email}?subject=Neue Anfrage`}
                   >
                     {content.contact_email}
                   </a>
