@@ -48,7 +48,7 @@ describe('Funnel > Questionnaire', () => {
     cy.visitWithConsentCookie('/fragebogen');
 
     cy.get('[aria-label="question"] > h2')
-      .should('have.text', 'Was suchen Sie?')
+      .should('have.text', 'Welches Ziel möchten Sie erreichen?')
       .get('[aria-label="question"] > div')
       .children()
       .should('have.length', 4)
