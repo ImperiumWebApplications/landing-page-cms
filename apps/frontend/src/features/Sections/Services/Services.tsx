@@ -4,6 +4,7 @@ import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
 
 import type { StaticContent } from '../../../lib/strapi';
+import { NAVIGATION_ANCHOR } from '../../../config/navigation.config';
 import { CheckCircleIcon } from '../../../components/Icons';
 import { CallToActionBanner } from '../../../components/Banner';
 import { ServiceProcess } from './components/ServiceProcess';
@@ -14,7 +15,6 @@ import { Services_OLD } from './Services_OLD';
 import { useSectionContext } from '../SectionContext';
 
 type ServicesSectionProps = {
-  id: string;
   content: ServicesSectionContent;
   staticContent: StaticContent['services_section'];
 };
@@ -38,16 +38,22 @@ export const ServicesSection: React.FC<ServicesSectionProps> = (props) => {
   }, [props.content.service_image?.data?.attributes]);
 
   if (props.content.service_tab?.length && !state.isNewDesign)
-    return <Services_OLD {...props} />;
+    return <Services_OLD id="services" {...props} />;
 
   return (
-    <SectionContainer id={props.id} className="my-8 md:my-[70px]" fullWidth>
+    <SectionContainer
+      className="my-8 md:my-[70px]"
+      data-section="services"
+      fullWidth
+    >
       <div className="content-wrapper">
         <div className="grid grid-cols-1 md:grid-cols-2 md:gap-16">
           <div className="relative hidden md:block">{ServiceImage}</div>
           <div>
             {props.content.title ? (
               <h2
+                id={NAVIGATION_ANCHOR.Mission}
+                style={{ scrollMarginTop: '64px' }}
                 data-testid="services-headline"
                 className="text-base leading-tight md:mb-6 md:text-2xl"
               >

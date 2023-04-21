@@ -10,6 +10,7 @@ import dynamic from 'next/dynamic';
 import cx from 'classnames';
 
 import type { StaticContent } from '../../../lib/strapi';
+import { NAVIGATION_ANCHOR } from '../../../config/navigation.config';
 import { ChevronLeftIcon, ChevronRightIcon } from '../../../components/Icons';
 import { CallToActionBanner } from '../../../components/Banner';
 import { useMediaQuery } from '../../../hooks/useMediaQuery';
@@ -35,7 +36,6 @@ const Review = dynamic(
 );
 
 type ReviewsSectionProps = {
-  id: string;
   content: ReviewsSectionContent;
   staticContent: StaticContent['reviews_section'];
 };
@@ -54,13 +54,17 @@ export const ReviewsSection: React.FC<ReviewsSectionProps> = (props) => {
     return (swiperElement as HTMLElement & { swiper: SwiperType }).swiper;
   }, []);
 
-  if (!state.isNewDesign) return <Reviews_OLD {...props} />;
+  if (!state.isNewDesign) return <Reviews_OLD id="reviews" {...props} />;
 
   if (!props.content.rating?.length) return null;
 
   return (
-    <SectionContainer id={props.id} className="my-10 md:my-[70px]">
-      <h2 className="mb-6 text-center text-xl text-primary md:text-4xl">
+    <SectionContainer data-section="reviews" className="my-10 md:my-[70px]">
+      <h2
+        id={NAVIGATION_ANCHOR.Kundenstimmen}
+        style={{ scrollMarginTop: '64px' }}
+        className="mb-6 text-center text-xl text-primary md:text-4xl"
+      >
         {props.staticContent?.title}
       </h2>
       <div data-testid="reviews-slider" className="review-slider relative">

@@ -3,6 +3,9 @@ import { ReactSVG } from 'react-svg';
 
 import type { StaticContent } from '../../../../lib/strapi';
 import { ArrowRight, CheckCircleIcon } from '../../../../components/Icons';
+import { NAVIGATION_ANCHOR } from '../../../../config/navigation.config';
+
+export const SERVICE_PROCESS_ID = 'process';
 
 type StaticServicesSection = NonNullable<StaticContent['services_section']>;
 
@@ -35,7 +38,11 @@ export const ServiceProcess: React.FC<ServiceProcessProps> = (props) => {
       )}
     >
       <div className="content-wrapper">
-        <h2 className="mb-4 text-center text-base leading-tight md:mb-8 md:text-2xl">
+        <h2
+          id={NAVIGATION_ANCHOR.Ablauf}
+          style={{ scrollMarginTop: '48px' }}
+          className="mb-4 text-center text-base leading-tight md:mb-8 md:text-2xl"
+        >
           {title}
         </h2>
         <div className="my-8 flex flex-col justify-between gap-10 md:my-16 md:flex-row">

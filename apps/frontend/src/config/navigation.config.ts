@@ -7,17 +7,38 @@ export interface NavigationItem {
 export const questionnaireRoute = 'fragebogen';
 export const appointmentRoute = 'termin';
 
+export const NAVIGATION_ANCHOR = {
+  Ablauf: 'ablauf',
+  FAQ: 'faq',
+  Kundenstimmen: 'kundenstimmen',
+  Mission: 'mission',
+  Prinzip: 'prinzip',
+  Services: 'services',
+};
+
 export const navigationItems: NavigationItem[] = [
   {
     href: '/',
-    label: 'Homepage',
+    label: 'Startseite',
   },
   {
-    href: '/impressum',
-    label: 'Impressum',
+    href: `/#${NAVIGATION_ANCHOR.Prinzip}`,
+    label: 'Prinzip',
   },
   {
-    href: '/datenschutz',
-    label: 'Datenschutz',
+    href: `/#${NAVIGATION_ANCHOR.Mission}`,
+    label: 'Unsere Mission',
+  },
+  {
+    href: `/#${NAVIGATION_ANCHOR.Ablauf}`,
+    label: 'Der Ablauf',
+  },
+  {
+    href: `/#${NAVIGATION_ANCHOR.Kundenstimmen}`,
+    label: 'Kundenstimmen',
+  },
+  {
+    href: `/#${NAVIGATION_ANCHOR.FAQ}`,
+    label: 'Häufig gestelle Fragen',
   },
 ];

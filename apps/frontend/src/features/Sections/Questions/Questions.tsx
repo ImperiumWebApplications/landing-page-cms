@@ -5,6 +5,7 @@ import ReactMarkdown from 'react-markdown';
 import { Disclosure, Transition } from '@headlessui/react';
 
 import type { StaticContent } from '../../../lib/strapi/model';
+import { NAVIGATION_ANCHOR } from '../../../config/navigation.config';
 import { MinusIcon, PlusIcon } from '../../../components/Icons';
 
 import { SectionContainer } from '../SectionContainer';
@@ -14,7 +15,6 @@ import { useSectionContext } from '../SectionContext';
 import { Questions_OLD } from './Questions_OLD';
 
 type QuestionsSectionProps = {
-  id: string;
   content: QuestionsSectionContent;
   staticContent: StaticContent['questions_section'];
 };
@@ -22,15 +22,20 @@ type QuestionsSectionProps = {
 export const QuestionsSection: React.FC<QuestionsSectionProps> = (props) => {
   const { state } = useSectionContext();
 
-  if (!state.isNewDesign) return <Questions_OLD {...props} />;
+  if (!state.isNewDesign) return <Questions_OLD id="questions" {...props} />;
 
   const questions = props.content.faq_item;
 
   if (!questions?.length) return null;
 
   return (
-    <SectionContainer id={props.id} className="mt-16 mb-12 md:my-[70px]">
+    <SectionContainer
+      data-section="questions"
+      className="mt-16 mb-12 md:my-[70px]"
+    >
       <h2
+        id={NAVIGATION_ANCHOR.FAQ}
+        style={{ scrollMarginTop: '64px' }}
         data-testid="questions-headline"
         className="mb-2 text-center text-xl text-primary md:mb-12 md:text-4xl"
       >

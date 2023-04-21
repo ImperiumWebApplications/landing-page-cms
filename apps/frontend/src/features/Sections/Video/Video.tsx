@@ -2,7 +2,10 @@ import ReactMarkdown from 'react-markdown';
 import { motion } from 'framer-motion';
 
 import type { StaticContent } from '../../../lib/strapi/model';
-import { questionnaireRoute } from '../../../config/navigation.config';
+import {
+  NAVIGATION_ANCHOR,
+  questionnaireRoute,
+} from '../../../config/navigation.config';
 import { ArrowRight } from '../../../components/Icons';
 import { Button } from '../../../components/Button';
 
@@ -13,7 +16,6 @@ import { VideoPlayer } from './components/VideoPlayer';
 import { Statistics } from './components/Statistics';
 
 type VideoSectionProps = {
-  id: string;
   content: VideoSectionContent;
   staticContent: StaticContent['video_section'];
 };
@@ -25,12 +27,14 @@ export const VideoSection: React.FC<VideoSectionProps> = (props) => {
   if (!video?.url) return null;
 
   return (
-    <SectionContainer id={props.id} fullWidth>
+    <SectionContainer data-section="video" fullWidth>
       <div className="relative mx-auto max-w-[1400px] overflow-hidden">
         <div className="diagonal-bg-clip absolute top-[15%] left-0 -z-10 h-full w-[1400px] md:top-[20%] lg:top-[40%]" />
         <div className="content-wrapper mt-8 flex flex-col items-center justify-start gap-x-12 md:mt-16 lg:mt-0 lg:flex-row lg:py-24">
           <div className="max-w-[490px]">
             <motion.div
+              id={NAVIGATION_ANCHOR.Prinzip}
+              style={{ scrollMarginTop: '64px' }}
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.3 }}
