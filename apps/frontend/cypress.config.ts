@@ -9,5 +9,17 @@ export default defineConfig({
     retries: {
       runMode: 3,
     },
+    setupNodeEvents(on) {
+      on('before:browser:launch', (browser, launchOptions) => {
+        const REDUCE = 1;
+        if (browser.family === 'firefox') {
+          launchOptions.preferences['ui.prefersReducedMotion'] = REDUCE;
+        }
+        if (browser.family === 'chromium') {
+          launchOptions.args.push('--force-prefers-reduced-motion');
+        }
+        return launchOptions;
+      });
+    },
   },
 });

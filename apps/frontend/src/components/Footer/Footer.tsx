@@ -5,7 +5,7 @@ import type { LandingPage } from '../../lib/strapi';
 
 import { Logo } from '../Logo';
 import { COOKIE_CONSENT_NAME } from '../CookieConsent';
-import { navigationItems } from '../../config/navigation.config';
+import { footerNavigationItems } from '../../config/navigation.config';
 
 type FooterProps = {
   content: LandingPage;
@@ -29,7 +29,7 @@ export const Footer: React.FC<FooterProps> = ({ content }) => {
             />
           </div>
           <nav className="flex flex-row flex-wrap items-center justify-center gap-x-4 md:gap-x-12">
-            {navigationItems.map((navItem, i) => {
+            {footerNavigationItems.map((navItem, i) => {
               return (
                 <Link
                   key={i}

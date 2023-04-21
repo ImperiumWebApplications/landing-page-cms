@@ -11,8 +11,8 @@ describe('Navigation', () => {
       .get('header [role="menu"] a[role="menuitem"]')
       .last()
       .click()
-      .assertUrl('/datenschutz')
-      .get('#privacy')
+      .assertUrl('/#faq')
+      .get('#faq')
       .should('be.visible');
   });
 
