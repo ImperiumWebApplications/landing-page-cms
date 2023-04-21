@@ -1,4 +1,3 @@
-import { NAVIGATION_ANCHOR } from '../../config/navigation.config';
 import { LandingPage, StaticContent } from '../../lib/strapi';
 import { CallToActionSection } from './CallToAction';
 
