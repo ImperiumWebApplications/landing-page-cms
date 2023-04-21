@@ -17,6 +17,7 @@ export interface EmailTemplatePayload {
 export interface EmailTemplateContext {
   [EmailTemplate.Confirmation]: {
     logoUrl?: string;
+    email?: string;
     phone?: string;
     postalCode?: string;
     city?: string;

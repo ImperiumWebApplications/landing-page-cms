@@ -55,6 +55,24 @@
         >
           Ihre Rufnummer: <b>{{phone}}</b>
         </mj-text>
+        {{/if}} {{#if email}}
+        <mj-text
+          font-size="16px"
+          font-weight="400"
+          line-height="16px"
+          padding-bottom="0"
+        >
+          Ihre E-Mail Adresse: <b>{{email}}</b>
+        </mj-text>
+        {{/if}} {{#if firstName }}
+        <mj-text
+          font-size="16px"
+          font-weight="400"
+          line-height="16px"
+          padding-bottom="0"
+        >
+          Ihr Name: <b>{{firstName}} {{lastName}}</b>
+        </mj-text>
         {{/if}} {{#if postalCode}}
         <mj-text
           font-size="16px"

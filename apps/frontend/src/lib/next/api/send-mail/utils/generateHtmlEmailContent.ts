@@ -49,6 +49,7 @@ export const generateHtmlEmailContent = ({
     questionnaire: content?.questionnaire,
     appointments: formatAppointmentsDates(content?.appointments),
     phone: recipient.phone,
+    email: recipient.email,
     postalCode: recipient.postalCode,
     city: recipient.city,
   };
