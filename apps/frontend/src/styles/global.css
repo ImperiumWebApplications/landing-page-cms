@@ -136,6 +136,13 @@
   .group:hover .icon svg ellipse {
     fill: var(--color-primary) !important;
   }
+  /** https://stackoverflow.com/questions/30102792/css-media-query-to-target-only-ios-devices */
+  /** Needed for QuestionnaireTiles to work on iOS **/
+  @supports (-webkit-touch-callout: none) {
+    .icon svg.iOS-max-width-fix {
+      width: 100%;
+    }
+  }
 
   /** Used for Logo **/
   .svg-logo-wrapper > div {

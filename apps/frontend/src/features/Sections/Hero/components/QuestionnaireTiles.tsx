@@ -17,7 +17,7 @@ const ReactSVG = dynamic(
 
 // Used for icons, images, and loading skeleton in tiles
 const iconClassName =
-  'h-[60px] max-w-[100%] md:h-[74px] lg:h-[100px] 3xl:h-[140px]';
+  'h-[60px] max-w-[100%] iOS-max-width-fix md:h-[74px] lg:h-[100px] 3xl:h-[140px]';
 
 export type QuestionnaireTilesProps = {
   question: HeroSectionContent['questionnaires_question'];
