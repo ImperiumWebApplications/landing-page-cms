@@ -26,7 +26,11 @@ export const RadioGroupField = (props: RadioGroupFieldProps) => {
                 {checked ? (
                   <CheckIcon className="h-6 w-6 fill-primary" />
                 ) : (
-                  <CircleIcon className="h-6 w-6 stroke-[black]/10 group-hover:stroke-primary" />
+                  <CircleIcon
+                    className={`h-6 w-6 group-hover:stroke-primary ${
+                      props.error ? 'stroke-[indianred]' : 'stroke-[black]/10'
+                    }`}
+                  />
                 )}
                 <RadioGroup.Label>{option}</RadioGroup.Label>
               </>

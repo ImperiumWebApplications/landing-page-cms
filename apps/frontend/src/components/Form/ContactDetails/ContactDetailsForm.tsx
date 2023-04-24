@@ -73,6 +73,7 @@ export const ContactDetailsForm: React.FC<ContactDetailsFormProps> = ({
           id={ContactFieldConfig.Salutation.name}
           options={ContactFieldConfig.Salutation.label}
           value={values?.salutation}
+          error={isInvalidInput && !values?.salutation}
           onChange={(v) => {
             setValues({ ...values, salutation: v });
           }}
@@ -82,6 +83,7 @@ export const ContactDetailsForm: React.FC<ContactDetailsFormProps> = ({
           id={ContactFieldConfig.FirstName.name}
           label={ContactFieldConfig.FirstName.label}
           validators={ContactFieldConfig.FirstName.validators}
+          error={isInvalidInput && !values?.firstName}
           value={values?.firstName}
           onChange={(e) => {
             setValues({ ...values, firstName: e.target.value });
@@ -92,6 +94,7 @@ export const ContactDetailsForm: React.FC<ContactDetailsFormProps> = ({
           id={ContactFieldConfig.LastName.name}
           label={ContactFieldConfig.LastName.label}
           validators={ContactFieldConfig.LastName.validators}
+          error={isInvalidInput && !values?.lastName}
           value={values?.lastName}
           onChange={(e) => {
             setValues({ ...values, lastName: e.target.value });
@@ -102,6 +105,7 @@ export const ContactDetailsForm: React.FC<ContactDetailsFormProps> = ({
           id={ContactFieldConfig.Phone.name}
           label={ContactFieldConfig.Phone.label}
           validators={ContactFieldConfig.Phone.validators}
+          error={isInvalidInput && !values?.phone}
           value={values?.phone}
           onChange={(e) => {
             setValues({ ...values, phone: e.target.value });
@@ -112,6 +116,7 @@ export const ContactDetailsForm: React.FC<ContactDetailsFormProps> = ({
           id={ContactFieldConfig.Email.name}
           label={ContactFieldConfig.Email.label}
           validators={ContactFieldConfig.Email.validators}
+          error={isInvalidInput && !values?.email}
           value={values?.email}
           onChange={(e) => {
             setValues({ ...values, email: e.target.value });
@@ -123,6 +128,7 @@ export const ContactDetailsForm: React.FC<ContactDetailsFormProps> = ({
           id={ContactFieldConfig.TermsAccepted.name}
           value={values?.acceptedTerms}
           label={ContactFieldConfig.TermsAccepted.label}
+          error={isInvalidInput && !values?.acceptedTerms}
           onChange={() => {
             setValues({ ...values, acceptedTerms: !values?.acceptedTerms });
           }}
