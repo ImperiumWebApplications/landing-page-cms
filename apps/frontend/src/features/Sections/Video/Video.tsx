@@ -51,14 +51,16 @@ export const VideoSection: React.FC<VideoSectionProps> = (props) => {
                   </ReactMarkdown>
                 ) : undefined}
               </div>
-              <Button
-                data-testid="video-button"
-                variant="secondary"
-                className="max-w-fit text-[0.9rem]"
-                to={`/${questionnaireRoute}`}
-                label="Beratung starten"
-                Icon={<ArrowRight className="stroke-[white]" />}
-              />
+              <div className="flex-shrink-0">
+                <Button
+                  data-testid="video-button"
+                  variant="secondary"
+                  className="w-auto text-[0.9rem]"
+                  to={`/${questionnaireRoute}`}
+                  label="Beratung starten"
+                  Icon={<ArrowRight className="stroke-[white]" />}
+                />
+              </div>
             </motion.div>
           </div>
           <div className="relative mx-auto mt-8 mb-8 md:mb-16 lg:my-0">

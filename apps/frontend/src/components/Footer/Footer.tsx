@@ -55,8 +55,8 @@ export const Footer: React.FC<FooterProps> = ({ content }) => {
             ) : null}
             {content.contact_email ? (
               <>
-                <div className="inline px-4">|</div>
-                <div className="inline text-sm">
+                <div className="hidden px-4 md:inline">|</div>
+                <div className="mt-3 block text-sm md:mt-0 md:inline">
                   <a
                     className="font-normal"
                     href={`mailto:${content.contact_email}?subject=Neue Anfrage`}

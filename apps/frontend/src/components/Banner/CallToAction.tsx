@@ -30,10 +30,10 @@ export const CallToActionBanner: React.FC<CallToActionBannerProps> = ({
         className="max-w-2xl text-center text-xl font-bold text-[white] md:text-left md:text-2xl lg:text-3xl xl:text-[32px]"
         dangerouslySetInnerHTML={{ __html: description }}
       />
-      <div>
+      <div className="flex-shrink-0">
         <Button
           variant="secondary"
-          className="-mb-8 max-w-fit text-[0.9rem] md:mb-0"
+          className="-mb-8 w-auto text-[0.9rem] md:mb-0"
           to={`/${questionnaireRoute}`}
           label="Beratung starten"
           Icon={<ArrowRight className="stroke-[white]" />}
