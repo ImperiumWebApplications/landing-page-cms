@@ -119,6 +119,11 @@
       "type": "component",
       "repeatable": false,
       "component": "questionnaire.advantages"
+    },
+    "countries": {
+      "type": "customField",
+      "options": ["Germany:DE", "Switzerland:CH", "Austria:AT"],
+      "customField": "plugin::multi-select.multi-select"
     }
   }
 }

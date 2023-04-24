@@ -25,7 +25,7 @@ export const getPostalCodeDetails = ({
     try {
       const details = (
         CountryPostalCodes[countryCode] as PostalCodeDetails[]
-      ).filter((details) => details.zipcode === code);
+      ).filter((details) => details.code === code);
       return [...prev, ...details];
     } catch (error) {
       return prev;

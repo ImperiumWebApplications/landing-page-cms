@@ -17,11 +17,11 @@ import { StepTitle } from './StepTitle';
  * Possible cases:
  * 1. We have no country at all -> Select City (no)   Input Type (Regular Text)
  * 2. We have a single country  -> Select City (yes)  Input Type (Code Input)
- * 3. We have several countries -> Select City (yes)  Input Type (Regular Text)
+ * 3. We have several countries -> Select City (no)  Input Type (Regular Text)
  */
 
 export const PostalCode: React.FC<{
-  countries?: Country[];
+  countries?: string[] | null;
 }> = ({ countries }) => {
   // Extract global state from context
   const { state, dispatch } = useQuestionnaireContext();
@@ -43,8 +43,8 @@ export const PostalCode: React.FC<{
 
   const isTypingCode = !isCodeCompleted && !cities.length;
   const isRemovingCode = !isCodeCompleted && cities.length;
-  const showCitySelect = isSingleCountryContext || isMultiCountryContext;
-  const isSameSelectedCode = cities?.[0] && cities[0].zipcode === code;
+  const showCitySelect = isSingleCountryContext;
+  const isSameSelectedCode = cities?.[0] && cities[0].code === code;
   const isSameFailedCode = failedCode === code;
 
   const updateCity = useCallback(
@@ -162,7 +162,7 @@ export const PostalCode: React.FC<{
             }}
           />
         )}
-        {isSingleCountryContext || isMultiCountryContext ? (
+        {isSingleCountryContext ? (
           <Field
             type="select"
             className="mt-6 w-full flex-grow lg:mt-0 lg:max-w-xs"

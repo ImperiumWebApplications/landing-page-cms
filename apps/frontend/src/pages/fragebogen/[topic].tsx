@@ -1,6 +1,5 @@
 import { Layout } from '../../components/Layout/Layout';
 import { Questionnaire } from '../../features/Questionnaire/Questionnaire';
-import { getCountryByDomain } from '../../utils/getCountryByDomain';
 import {
   queryQuestionnairePageContent,
   QuestionnairePage,
@@ -12,8 +11,6 @@ import {
 import { isHeroSection } from '../../features/Sections/SectionMapper';
 
 const QuestionnairePage: QuestionnairePage = ({ content, questionnaire }) => {
-  const country = getCountryByDomain(content.domain);
-
   if (!questionnaire?.questions)
     return <QuestionnairePlaceholderPage content={content} />;
 
@@ -23,7 +20,7 @@ const QuestionnairePage: QuestionnairePage = ({ content, questionnaire }) => {
         <Questionnaire
           headline={content.sections?.find(isHeroSection)?.title}
           questions={questionnaire.questions}
-          countries={country ? [country] : undefined}
+          countries={content.countries}
           phone={content.contact_phone}
           advantages={
             content.questionnaires_advantages ??

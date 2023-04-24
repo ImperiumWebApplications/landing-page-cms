@@ -27,8 +27,8 @@ export type QuestionnaireHistoryState = {
 export type QuestionnaireProps = {
   headline?: string | null;
   questions: NonNullable<QuestionnaireType['questions']>;
-  countries?: Country[];
-  phone?: string | null;
+  countries?: LandingPage['countries'];
+  phone?: LandingPage['contact_phone'];
   advantages?: LandingPage['questionnaires_advantages'];
   customSelectHandler?: SingleChoiceEventHandler;
 };

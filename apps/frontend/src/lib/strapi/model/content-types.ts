@@ -63,3 +63,4 @@ export type EnumerationField<T> = T | null | undefined;
 export type NumberField = number | null | undefined;
 export type BooleanField = boolean | null | undefined;
 export type DateField = Date | null | undefined;
+export type MultiSelectField = string[] | null | undefined;

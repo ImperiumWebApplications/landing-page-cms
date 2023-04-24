@@ -5,6 +5,7 @@ import type {
   EnumerationField,
   Media,
   MediaList,
+  MultiSelectField,
   NumberField,
   Relations,
   RepeatableComponent,
@@ -33,6 +34,7 @@ export type LandingPage = {
 
   domain?: TextField;
   brand_name?: TextField;
+  countries?: MultiSelectField;
   contact_email?: TextField;
   contact_phone?: TextField;
   client_address?: TextField;
