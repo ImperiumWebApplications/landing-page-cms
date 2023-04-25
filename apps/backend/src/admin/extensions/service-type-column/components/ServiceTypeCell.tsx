@@ -26,7 +26,7 @@ export const ServiceTypeCell = ({ id }) => {
             headers: {
               'Content-Type': 'application/json',
               Accept: 'application/json',
-              Authorization: `Bearer ${process.env.ADMIN_CLIENT_JWT_TOKEN}`,
+              Authorization: `Bearer ${CUSTOM_VARIABLES.ADMIN_CLIENT_JWT_TOKEN}`,
             },
           },
         );
