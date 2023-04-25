@@ -72,3 +72,21 @@ export const getLandingPageId = async (domain: string) => {
 
   return res.data[0].id;
 };
+
+export const getRelatedLandingPages = async (questionnaireId: string) => {
+  const res = await strapi.find<CollectionType<LandingPage>>(
+    CONTENT_TYPES.LANDING_PAGES,
+    {
+      populate: { questionnaires_relations: { fields: '*' } },
+      filters: {
+        questionnaires_relations: {
+          id: {
+            $eq: questionnaireId,
+          },
+        },
+      },
+    },
+  );
+
+  return res.data;
+};

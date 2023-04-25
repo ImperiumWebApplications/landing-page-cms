@@ -39,6 +39,7 @@ export type LandingPage = {
   contact_phone?: TextField;
   client_address?: TextField;
   client_vat?: TextField;
+  service_type?: TextField;
 
   seo_title?: TextField;
   seo_description?: TextField;

@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
 
 import styled from 'styled-components';
-import { Typography } from '@strapi/design-system';
+import { Typography, Loader } from '@strapi/design-system';
 
-import { getAuthToken } from '../utils/getAuthToken';
-
-const REQUEST_ENDPOINT = '/api/landing-pages?populate=questionnaires_relations';
+const REQUEST_ENDPOINT = `https://leadquelle.net/api/service-types`;
 
 const TypographyMaxWidth = styled(Typography)`
   max-width: 300px;
@@ -13,43 +11,34 @@ const TypographyMaxWidth = styled(Typography)`
 
 export const ServiceTypeCell = ({ id }) => {
   const [label, setLabel] = useState('');
+  const [isFetching, setIsFetching] = useState(false);
 
   useEffect(() => {
     (async () => {
       try {
-        const token = getAuthToken();
-        if (!token) throw new Error('No auth token found');
-        const res = await fetch(
-          `${REQUEST_ENDPOINT}&filters[questionnaires_relations][id][$eq]=${id}`,
-          {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json',
-              Accept: 'application/json',
-              Authorization: `Bearer ${CUSTOM_VARIABLES.ADMIN_CLIENT_JWT_TOKEN}`,
-            },
+        setIsFetching(true);
+        const res = await fetch(`${REQUEST_ENDPOINT}?questionnaire=${id}`, {
+          method: 'GET',
+          headers: {
+            Accept: 'application/json',
           },
-        );
-
-        const json = await res.json();
-
-        const landingPagesWithServiceType = json.data.filter((landingPage) => {
-          return landingPage.attributes.service_type;
         });
 
-        if (landingPagesWithServiceType.length > 0) {
-          const serviceTypes = landingPagesWithServiceType
-            .map((landingPage) => landingPage.attributes.service_type)
-            .join(', ');
+        const json = await res.json();
+        if (!json.success) throw new Error('Error while fetching service type');
 
-          setLabel(serviceTypes);
-        }
+        const serviceTypes = json.data.relatedServiceTypes;
+        if (serviceTypes.length > 0) setLabel(serviceTypes.join(', '));
+
+        setIsFetching(false);
       } catch (e) {
+        setIsFetching(false);
         console.log('Error while fetching service type', e);
       }
     })();
   }, []);
 
+  if (isFetching) return <Loader small>Loading...</Loader>;
   if (!label) return <Typography textColor="neutral800">-</Typography>;
 
   return (
