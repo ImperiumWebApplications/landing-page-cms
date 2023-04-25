@@ -18,7 +18,7 @@ export const ServiceTypeCell = ({ id }) => {
     (async () => {
       try {
         const token = getAuthToken();
-        if (!token) throw new Error('No token found');
+        if (!token) throw new Error('No auth token found');
         const res = await fetch(
           `${REQUEST_ENDPOINT}&filters[questionnaires_relations][id][$eq]=${id}`,
           {
