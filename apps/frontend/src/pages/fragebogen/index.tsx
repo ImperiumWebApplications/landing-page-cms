@@ -4,7 +4,6 @@ import { useRouter } from 'next/router';
 import { Layout } from '../../components/Layout';
 import { questionnaireRoute } from '../../config/navigation.config';
 import { slugifyRoute } from '../../utils/slugifyRoute';
-import { getCountryByDomain } from '../../utils/getCountryByDomain';
 import { LandingPage } from '../../lib/strapi';
 import { ContentPage, queryContentPageContent } from '../../lib/next/app';
 import {
@@ -35,15 +34,13 @@ const EntryQuestionnairePage: ContentPage = ({ content }) => {
     await router.push(selectedRoute);
   };
 
-  const country = getCountryByDomain(content.domain);
-
   return (
     <Layout content={content}>
       <QuestionnaireProvider>
         <Questionnaire
           headline={content.sections?.find(isHeroSection)?.title}
           questions={[question]}
-          countries={country ? [country] : undefined}
+          countries={content.countries}
           customSelectHandler={selectHandler}
           advantages={
             content.questionnaires_advantages ??

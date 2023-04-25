@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
 
-import { Country, PostalCodeDetails } from '../../../config/countries.config';
+import { PostalCodeDetails } from '../../../config/countries.config';
 
 import { useQuestionnaireContext } from '../context/Questionnaire';
 import { getCountryDetails } from '../../../utils/getCountryDetails';
@@ -39,7 +39,7 @@ export const PostalCode: React.FC<{
 
   const isCodeCompleted = !!postalCodeLength && postalCodeLength <= code.length;
   const isSingleCountryContext = !!postalCodeLength && countries?.length === 1;
-  const isMultiCountryContext = !!countries && countries.length > 1;
+  // const isMultiCountryContext = !!countries && countries.length > 1;
 
   const isTypingCode = !isCodeCompleted && !cities.length;
   const isRemovingCode = !isCodeCompleted && cities.length;

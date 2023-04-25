@@ -1,4 +1,4 @@
-import { fireEvent, waitFor } from '@testing-library/react';
+import { act, fireEvent, waitFor } from '@testing-library/react';
 import { SELECT_FIELD_BUTTON_TEST_ID } from '../../../components/Form/components/SelectField';
 import { Country } from '../../../config/countries.config';
 import { renderWithLayout } from '../../../../jest.setup';
@@ -65,14 +65,14 @@ describe('PostalCode', () => {
     expect(queryAllByLabelText(/postleitzahl/i)).toHaveLength(4);
   });
 
-  test('should render regular text input and city selection if several countries were given', () => {
+  test('should render regular text input and no city selection if several countries were given', () => {
     const { queryByText, queryAllByRole } = renderWithLayout(
       <PostalCodeWithContext
         countries={[Country.Germany, Country.Switzerland]}
       />,
     );
 
-    expect(queryByText(/stadt/i)).toBeInTheDocument();
+    expect(queryByText(/stadt/i)).not.toBeInTheDocument();
     expect(queryAllByRole('textbox', { name: 'Postleitzahl' })).toHaveLength(1);
   });
 
@@ -84,14 +84,16 @@ describe('PostalCode', () => {
     expect(NextAPI.getPostalCodeDetails).toHaveBeenCalledTimes(0);
 
     const inputs = queryAllByLabelText(/postleitzahl/i);
-    fireEvent.change(inputs[0], { target: { value: 2 } });
-    fireEvent.change(inputs[1], { target: { value: 2 } });
-    fireEvent.change(inputs[2], { target: { value: 3 } });
-    fireEvent.change(inputs[3], { target: { value: 0 } });
-    fireEvent.change(inputs[4], { target: { value: 3 } });
+    act(() => {
+      fireEvent.change(inputs[0], { target: { value: 2 } });
+      fireEvent.change(inputs[1], { target: { value: 2 } });
+      fireEvent.change(inputs[2], { target: { value: 3 } });
+      fireEvent.change(inputs[3], { target: { value: 0 } });
+      fireEvent.change(inputs[4], { target: { value: 3 } });
+    });
 
     await waitFor(() => {
-      expect(NextAPI.getPostalCodeDetails).toHaveBeenCalledTimes(1);
+      expect(NextAPI.getPostalCodeDetails).toHaveBeenCalledTimes(3);
       expect(NextAPI.getPostalCodeDetails).toHaveBeenCalledWith({
         domain: 'localhost',
         code: '22303',
@@ -112,20 +114,25 @@ describe('PostalCode', () => {
     expect(NextAPI.getPostalCodeDetails).toHaveBeenCalledTimes(0);
 
     const inputs = queryAllByLabelText(/postleitzahl/i);
-    fireEvent.change(inputs[0], { target: { value: 2 } });
-    fireEvent.change(inputs[1], { target: { value: 2 } });
-    fireEvent.change(inputs[2], { target: { value: 3 } });
-    fireEvent.change(inputs[3], { target: { value: 0 } });
-    fireEvent.change(inputs[4], { target: { value: 3 } });
+
+    act(() => {
+      fireEvent.change(inputs[0], { target: { value: 2 } });
+      fireEvent.change(inputs[1], { target: { value: 2 } });
+      fireEvent.change(inputs[2], { target: { value: 3 } });
+      fireEvent.change(inputs[3], { target: { value: 0 } });
+      fireEvent.change(inputs[4], { target: { value: 3 } });
+    });
 
     await waitFor(() => {
-      expect(NextAPI.getPostalCodeDetails).toHaveBeenCalledTimes(1);
+      expect(NextAPI.getPostalCodeDetails).toHaveBeenCalledTimes(3);
       expect(queryByTestId(SELECT_FIELD_BUTTON_TEST_ID)).toHaveTextContent(
         defaultPostalCodeDetails[0].place,
       );
     });
 
-    fireEvent.change(inputs[4], { target: { value: '' } });
+    act(() => {
+      fireEvent.change(inputs[4], { target: { value: '' } });
+    });
 
     await waitFor(() => {
       expect(NextAPI.getPostalCodeDetails).toHaveBeenCalledTimes(1);
@@ -139,13 +146,17 @@ describe('PostalCode', () => {
     );
 
     const input = getByLabelText(/postleitzahl/i);
-    fireEvent.change(input, { target: { value: '223' } });
+    act(() => {
+      fireEvent.change(input, { target: { value: '223' } });
+    });
 
     await waitFor(() => {
       expect(getByRole('button')).toBeDisabled();
     });
 
-    fireEvent.change(input, { target: { value: '2233' } });
+    act(() => {
+      fireEvent.change(input, { target: { value: '2233' } });
+    });
 
     await waitFor(() => {
       expect(getByRole('button')).not.toBeDisabled();
@@ -163,11 +174,13 @@ describe('PostalCode', () => {
     );
 
     const inputs = queryAllByLabelText(/postleitzahl/i);
-    fireEvent.change(inputs[0], { target: { value: 2 } });
-    fireEvent.change(inputs[1], { target: { value: 2 } });
-    fireEvent.change(inputs[2], { target: { value: 3 } });
-    fireEvent.change(inputs[3], { target: { value: 3 } });
-    fireEvent.change(inputs[4], { target: { value: 3 } });
+    act(() => {
+      fireEvent.change(inputs[0], { target: { value: 2 } });
+      fireEvent.change(inputs[1], { target: { value: 2 } });
+      fireEvent.change(inputs[2], { target: { value: 3 } });
+      fireEvent.change(inputs[3], { target: { value: 3 } });
+      fireEvent.change(inputs[4], { target: { value: 3 } });
+    });
 
     await waitFor(() => {
       getAllByRole('button').forEach((button) => {
@@ -185,11 +198,12 @@ describe('PostalCode', () => {
     );
 
     const inputs = queryAllByLabelText(/postleitzahl/i);
-    fireEvent.change(inputs[0], { target: { value: 2 } });
-    fireEvent.change(inputs[1], { target: { value: 2 } });
-    fireEvent.change(inputs[2], { target: { value: 3 } });
-    fireEvent.change(inputs[3], { target: { value: 3 } });
-
+    act(() => {
+      fireEvent.change(inputs[0], { target: { value: 2 } });
+      fireEvent.change(inputs[1], { target: { value: 2 } });
+      fireEvent.change(inputs[2], { target: { value: 3 } });
+      fireEvent.change(inputs[3], { target: { value: 3 } });
+    });
     await waitFor(() => {
       getAllByRole('button').forEach((button) => {
         expect(button).toBeDisabled();
@@ -204,11 +218,12 @@ describe('PostalCode', () => {
 
     expect(setBrowserHistoryState as jest.Mock).toHaveBeenCalledTimes(0);
 
-    fireEvent.change(getByLabelText(/postleitzahl/i), {
-      target: { value: 22303 },
+    act(() => {
+      fireEvent.change(getByLabelText(/postleitzahl/i), {
+        target: { value: 22303 },
+      });
+      fireEvent.click(getByRole('button'));
     });
-    fireEvent.click(getByRole('button'));
-
     await waitFor(() => {
       expect(setBrowserHistoryState as jest.Mock).toHaveBeenCalledTimes(1);
     });
@@ -224,18 +239,19 @@ describe('PostalCode', () => {
     expect(NextAPI.getPostalCodeDetails).toHaveBeenCalledTimes(0);
 
     const inputs = queryAllByLabelText(/postleitzahl/i);
-    fireEvent.change(inputs[0], { target: { value: 2 } });
-    fireEvent.change(inputs[1], { target: { value: 2 } });
-    fireEvent.change(inputs[2], { target: { value: 3 } });
-    fireEvent.change(inputs[3], { target: { value: 0 } });
-    fireEvent.change(inputs[4], { target: { value: 3 } });
-
+    act(() => {
+      fireEvent.change(inputs[0], { target: { value: 2 } });
+      fireEvent.change(inputs[1], { target: { value: 2 } });
+      fireEvent.change(inputs[2], { target: { value: 3 } });
+      fireEvent.change(inputs[3], { target: { value: 0 } });
+      fireEvent.change(inputs[4], { target: { value: 3 } });
+    });
     await waitFor(() => {
       expect(NextAPI.getPostalCodeDetails).toHaveBeenCalledTimes(1);
     });
-
-    fireEvent.change(inputs[4], { target: { value: 3 } });
-
+    act(() => {
+      fireEvent.change(inputs[4], { target: { value: 3 } });
+    });
     await waitFor(() => {
       expect(NextAPI.getPostalCodeDetails).toHaveBeenCalledTimes(1);
     });

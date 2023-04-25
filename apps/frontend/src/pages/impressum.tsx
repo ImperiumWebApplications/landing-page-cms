@@ -6,7 +6,6 @@ import { Article } from '../components/Article';
 import { Layout } from '../components/Layout';
 import { ContentPage, queryContentPageContent } from '../lib/next/app';
 import { populateMarkdownTemplate } from '../utils/populateMarkdownTemplate';
-import { getCountryByDomain } from '../utils/getCountryByDomain';
 import { Country } from '../config/countries.config';
 
 const ImprintPage: ContentPage = ({ content, staticContent }) => {
@@ -48,7 +47,10 @@ const getVatSpecification = (country?: string, vat?: string | null) => {
 };
 
 const enrichDomainContent = (domainContent: LandingPage): LandingPage => {
-  const country = getCountryByDomain(domainContent.domain);
+  const country =
+    domainContent.countries?.length === 1
+      ? domainContent.countries[0]
+      : undefined;
 
   return {
     ...domainContent,

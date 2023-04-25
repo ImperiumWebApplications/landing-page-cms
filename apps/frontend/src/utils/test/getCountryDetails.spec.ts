@@ -16,7 +16,6 @@ describe('getCountryDetails', () => {
       {
         isValidPostalCode: /(^\d{4}$)/,
         postalCodeLength: 4,
-        topLevelDomain: 'ch',
       },
     ]);
   });
@@ -26,7 +25,6 @@ describe('getCountryDetails', () => {
       {
         isValidPostalCode: /(^\d{4}$)/,
         postalCodeLength: 4,
-        topLevelDomain: 'ch',
       },
     ]);
   });

@@ -2,7 +2,6 @@ import React, { useMemo } from 'react';
 
 import { useRouter } from 'next/router';
 
-import type { Country } from '../../config/countries.config';
 import type { SingleChoiceEventHandler } from './components/SingleChoice';
 import type {
   LandingPage,

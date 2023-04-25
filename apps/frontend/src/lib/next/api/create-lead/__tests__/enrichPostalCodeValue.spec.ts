@@ -5,7 +5,7 @@ describe('enrichPostalCodeValue', () => {
   it('should return code and city if city is given', () => {
     expect(
       enrichPostalCodeValue({
-        host: 'craftsman24.de',
+        countries: ['DE'],
         contactData: contactDataMock,
       }),
     ).toEqual('22303 Hamburg Winterhude');
@@ -14,7 +14,7 @@ describe('enrichPostalCodeValue', () => {
   it('should return code and city if city is given and host is unknown', () => {
     expect(
       enrichPostalCodeValue({
-        host: 'craftsman24.cc',
+        countries: undefined,
         contactData: contactDataMock,
       }),
     ).toEqual('22303 Hamburg Winterhude');
@@ -23,7 +23,7 @@ describe('enrichPostalCodeValue', () => {
   it('should return code and city if city is not given and host is known', () => {
     expect(
       enrichPostalCodeValue({
-        host: 'craftsman24.de',
+        countries: ['DE'],
         contactData: {
           ...contactDataMock,
           city: '',

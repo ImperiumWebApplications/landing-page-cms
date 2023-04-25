@@ -1,6 +1,5 @@
 import { Strapi } from '../../../strapi';
 import { Pipedrive } from '../../../pipedrive';
-import { enrichPostalCodeValue } from './utils/enrichPostalCodeValue';
 import { createHTMLTable } from '../send-mail/utils/createHTMLTable';
 
 export type CreateLeadProps = {
@@ -36,12 +35,12 @@ export const createLeadInPipedrive = async (data: CreateLeadProps) => {
   const token = api?.attributes?.api_token;
   if (!token) throw new Error('Missing Pipedrive token for domain.');
 
-  if (data.contact.postalCode) {
-    data.contact.postalCode = enrichPostalCodeValue({
-      host: data.domain,
-      contactData: data.contact,
-    });
-  }
+  // if (data.contact.postalCode) {
+  //   data.contact.postalCode = enrichPostalCodeValue({
+  //     host: data.domain,
+  //     contactData: data.contact,
+  //   });
+  // }
 
   const person =
     (await Pipedrive.getPersonByEmail(token, data.contact.email ?? '')) ??

@@ -1,12 +1,12 @@
 import {
-  Country,
+  isKnownCountry,
   PostalCodeDetails,
 } from '../../../../config/countries.config';
 import { CountryPostalCodes } from './data';
 
 export type GetPostalCodeDetailsProps = {
   code: string;
-  countries: Country[];
+  countries: string[];
 };
 
 /**
@@ -23,6 +23,7 @@ export const getPostalCodeDetails = ({
 }: GetPostalCodeDetailsProps) => {
   return countries.reduce((prev, countryCode) => {
     try {
+      if (!isKnownCountry(countryCode)) return prev;
       const details = (
         CountryPostalCodes[countryCode] as PostalCodeDetails[]
       ).filter((details) => details.code === code);
