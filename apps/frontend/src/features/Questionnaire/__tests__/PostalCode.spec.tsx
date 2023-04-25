@@ -135,7 +135,7 @@ describe('PostalCode', () => {
     });
 
     await waitFor(() => {
-      expect(NextAPI.getPostalCodeDetails).toHaveBeenCalledTimes(1);
+      expect(NextAPI.getPostalCodeDetails).toHaveBeenCalledTimes(3);
       expect(queryByTestId(SELECT_FIELD_BUTTON_TEST_ID)).toHaveTextContent('');
     });
   });
