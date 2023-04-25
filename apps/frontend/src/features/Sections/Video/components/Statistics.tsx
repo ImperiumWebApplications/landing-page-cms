@@ -25,7 +25,7 @@ export const Statistics: React.FC<StatisticsProps> = (props) => {
               )}
             >
               <div className="text-5xl font-bold text-primary lg:text-7xl">
-                {item.number}
+                {formatNumber(item.number)}
                 {item.number_suffix}
               </div>
               <span className="text-sm text-secondary md:text-base">
@@ -37,4 +37,8 @@ export const Statistics: React.FC<StatisticsProps> = (props) => {
       })}
     </div>
   );
+};
+
+const formatNumber = (number: number) => {
+  return new Intl.NumberFormat('de-DE').format(number);
 };
