@@ -60,7 +60,7 @@ export const QuestionnaireTiles: React.FC<QuestionnaireTilesProps> = (
                   <Image
                     data-testid="hero-tile-image"
                     src={attributes.icon.data.attributes.url}
-                    className={iconClassName}
+                    className={`${iconClassName} object-contain`}
                     alt={attributes.icon.data.attributes.alternativeText ?? ''}
                     width={attributes.icon.data.attributes.width ?? 0}
                     height={attributes.icon.data.attributes.height ?? 0}
