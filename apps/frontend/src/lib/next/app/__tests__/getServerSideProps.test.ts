@@ -49,6 +49,14 @@ describe('queryContentPageContent', () => {
     });
   });
 
+  it('should request static content with correct locale', async () => {
+    Strapi.getStaticContent = jest.fn().mockResolvedValue(staticContent);
+    const ctx = configureCtx({ host: 'test' });
+    await queryContentPageContent(ctx);
+    expect(Strapi.getStaticContent).toBeCalledTimes(1);
+    expect(Strapi.getStaticContent).toBeCalledWith({ locale: 'German' });
+  });
+
   it('should return redirect if no host is specified', async () => {
     const ctx = configureCtx({ host: undefined });
     const result = await queryContentPageContent(ctx);

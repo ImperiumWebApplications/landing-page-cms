@@ -14,6 +14,7 @@ export const content: { data: { id: number; attributes: LandingPage }[] } = {
           'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC.',
         domain: 'localhost:3000',
         countries: ['DE'],
+        language: 'German',
         brand_name: 'Leadquelle',
         color_primary: '#673A99',
         color_secondary: '#FF6658',
