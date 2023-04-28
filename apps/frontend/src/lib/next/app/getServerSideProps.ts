@@ -64,10 +64,10 @@ export const queryContentPageContent = async (ctx: NextPageContext) => {
     const domain = normalizeHostname(ctx.req?.headers.host);
     if (!domain) throw new Error('No host given in headers.');
 
-    const [content, staticContent] = await Promise.all([
-      Strapi.getLandingPage(domain),
-      Strapi.getStaticContent(),
-    ]);
+    const content = await Strapi.getLandingPage(domain);
+    const staticContent = await Strapi.getStaticContent({
+      locale: content.attributes.language,
+    });
 
     if (!content.attributes) throw new Error('No data for domain: ' + content);
     if (!staticContent.attributes) throw new Error('No static content found');

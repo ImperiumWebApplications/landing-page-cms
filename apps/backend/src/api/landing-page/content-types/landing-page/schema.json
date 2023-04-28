@@ -123,6 +123,11 @@
       "type": "customField",
       "options": ["Germany:DE", "Switzerland:CH", "Austria:AT"],
       "customField": "plugin::multi-select.multi-select"
+    },
+    "language": {
+      "type": "enumeration",
+      "enum": ["German", "English"],
+      "default": "German"
     }
   }
 }

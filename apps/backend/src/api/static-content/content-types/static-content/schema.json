@@ -10,43 +10,82 @@
   "options": {
     "draftAndPublish": false
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
     "imprint": {
-      "type": "richtext"
+      "type": "richtext",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "privacy": {
-      "type": "richtext"
+      "type": "richtext",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "video_section": {
       "displayName": "Video Section",
       "type": "component",
       "repeatable": false,
-      "component": "static-content.video-section"
+      "component": "static-content.video-section",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "services_section": {
       "displayName": "Services Section",
       "type": "component",
       "repeatable": false,
-      "component": "static-content.services-section"
+      "component": "static-content.services-section",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "hero_section": {
       "displayName": "Hero Section",
       "type": "component",
       "repeatable": false,
-      "component": "static-content.hero-section"
+      "component": "static-content.hero-section",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "reviews_section": {
       "displayName": "Reviews Section",
       "type": "component",
       "repeatable": false,
-      "component": "static-content.reviews-section"
+      "component": "static-content.reviews-section",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "questions_section": {
       "displayName": "Questions Section",
       "type": "component",
       "repeatable": false,
-      "component": "static-content.questions-section"
+      "component": "static-content.questions-section",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     }
   }
 }
