@@ -44,9 +44,9 @@ export const VideoSection: React.FC<VideoSectionProps> = (props) => {
               <h2 className="text-base leading-tight md:text-2xl">
                 {props.content?.video_title}
               </h2>
-              <div className="mt-4 mb-8 md:mt-6 lg:mb-16">
+              <div className="mb-4 md:mt-2 lg:mb-12">
                 {props.content?.video_description ? (
-                  <ReactMarkdown className="text-sm md:text-base">
+                  <ReactMarkdown className="article text-sm md:text-base">
                     {props.content.video_description}
                   </ReactMarkdown>
                 ) : undefined}
