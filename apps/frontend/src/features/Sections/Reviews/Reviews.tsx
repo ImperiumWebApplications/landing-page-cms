@@ -10,7 +10,6 @@ import dynamic from 'next/dynamic';
 import cx from 'classnames';
 
 import type { StaticContent } from '../../../lib/strapi';
-import { NAVIGATION_ANCHOR } from '../../../config/navigation.config';
 import { ChevronLeftIcon, ChevronRightIcon } from '../../../components/Icons';
 import { CallToActionBanner } from '../../../components/Banner';
 import { useMediaQuery } from '../../../hooks/useMediaQuery';
@@ -61,7 +60,7 @@ export const ReviewsSection: React.FC<ReviewsSectionProps> = (props) => {
   return (
     <SectionContainer data-section="reviews" className="my-10 md:my-[70px]">
       <h2
-        id={NAVIGATION_ANCHOR.Kundenstimmen}
+        id={props.staticContent?.navigation_item?.anchor_id ?? undefined}
         style={{ scrollMarginTop: '64px' }}
         className="mb-6 text-center text-xl text-primary md:text-4xl"
       >

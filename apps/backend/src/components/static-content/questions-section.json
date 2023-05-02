@@ -1,12 +1,18 @@
 {
   "collectionName": "components_static_content_questions_sections",
   "info": {
-    "displayName": "Questions Section"
+    "displayName": "Questions Section",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "title": {
       "type": "string"
+    },
+    "navigation_item": {
+      "type": "component",
+      "repeatable": false,
+      "component": "static-content.anchor-link"
     }
   }
 }

@@ -861,6 +861,11 @@ export const staticContent: {
       },
       video_section: {
         id: 1,
+        navigation_item: {
+          id: 2,
+          label: 'Prinzip',
+          anchor_id: 'prinzip',
+        },
         video: {
           data: {
             id: 180,
@@ -1045,6 +1050,16 @@ export const staticContent: {
             },
           },
         ],
+        navigation_item: {
+          id: 4,
+          label: 'Unsere Mission',
+          anchor_id: 'mission',
+        },
+        process_navigation_item: {
+          id: 3,
+          label: 'Ablauf',
+          anchor_id: 'ablauf',
+        },
         process_advantage: [
           { id: 1, description: '100% kostenlos & unverbindlich' },
           { id: 2, description: 'Keine Auftragspflicht' },
@@ -1055,8 +1070,21 @@ export const staticContent: {
         title: 'Zufriedenheit unserer Kunden',
         call_to_action_banner_title:
           'Konnten wir Sie überzeugen?<br />Lassen Sie sich beraten',
+        navigation_item: {
+          id: 5,
+          label: 'Kundenstimmen',
+          anchor_id: 'kundenstimmen',
+        },
       },
-      questions_section: { id: 1, title: 'Häufig gestellte Fragen' },
+      questions_section: {
+        id: 1,
+        title: 'Häufig gestellte Fragen',
+        navigation_item: {
+          id: 6,
+          label: 'Häufig gestellte Fragen',
+          anchor_id: 'faq',
+        },
+      },
     },
   },
 };

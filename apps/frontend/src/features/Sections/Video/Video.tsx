@@ -2,10 +2,7 @@ import ReactMarkdown from 'react-markdown';
 import { motion } from 'framer-motion';
 
 import type { StaticContent } from '../../../lib/strapi/model';
-import {
-  NAVIGATION_ANCHOR,
-  questionnaireRoute,
-} from '../../../config/navigation.config';
+import { questionnaireRoute } from '../../../config/navigation.config';
 import { ArrowRight } from '../../../components/Icons';
 import { Button } from '../../../components/Button';
 
@@ -33,7 +30,7 @@ export const VideoSection: React.FC<VideoSectionProps> = (props) => {
         <div className="content-wrapper mt-8 flex flex-col items-center justify-start gap-x-12 md:mt-16 lg:mt-0 lg:flex-row lg:py-24">
           <div className="max-w-[490px]">
             <motion.div
-              id={NAVIGATION_ANCHOR.Prinzip}
+              id={props.staticContent?.navigation_item?.anchor_id ?? undefined}
               style={{ scrollMarginTop: '64px' }}
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}

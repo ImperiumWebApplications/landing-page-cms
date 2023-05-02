@@ -5,17 +5,6 @@ export enum Language {
   English = 'English',
 }
 
-export const QuestionnaireConfig = {
-  [Language.German]: {
-    route: 'fragebogen',
-    entryQuestionFallback: 'Was suchen Sie?',
-  },
-  [Language.English]: {
-    route: 'fragebogen',
-    entryQuestionFallback: 'What are you looking for?',
-  },
-};
-
 export const FooterConfig = {
   [Language.German]: {
     revokeConsentLabel: 'Cookie-Erlaubnis widerrufen',

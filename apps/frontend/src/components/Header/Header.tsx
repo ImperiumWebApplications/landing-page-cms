@@ -3,20 +3,22 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 
-import type { LandingPage } from '../../lib/strapi';
+import type { LandingPage, StaticContent } from '../../lib/strapi';
 import { isFunnelRoute } from '../../utils/isFunnelRoute';
-import { navigationItems } from '../../config/navigation.config';
 
 import { Logo } from '../Logo';
 import { Navigation } from './components/Navigation';
 
 type HeaderProps = {
   content: LandingPage;
+  staticContent: StaticContent;
 };
 
-export const Header: React.FC<HeaderProps> = ({ content }) => {
+export const Header: React.FC<HeaderProps> = ({ content, staticContent }) => {
   const router = useRouter();
   const isFunnel = isFunnelRoute(router);
+
+  const navigation = getNavigation(staticContent, content.language);
 
   return (
     <header
@@ -42,9 +44,55 @@ export const Header: React.FC<HeaderProps> = ({ content }) => {
                 : 'h-[60px] w-[180px] md:h-[80px] md:w-[200px]'
             }
           />
-          {!isFunnel ? <Navigation items={navigationItems} /> : null}
+          {!isFunnel ? <Navigation items={navigation} /> : null}
         </div>
       </motion.div>
     </header>
   );
+};
+
+const getNavigation = (
+  content: StaticContent,
+  language: LandingPage['language'],
+) => {
+  const navigation = {
+    home: {
+      href: '/',
+      label: language === 'English' ? 'Home' : 'Startseite',
+    },
+    video: content.video_section?.navigation_item?.anchor_id
+      ? {
+          href: `/#${content.video_section.navigation_item.anchor_id}`,
+          label: content.video_section?.navigation_item?.label,
+        }
+      : undefined,
+    services: content.services_section?.navigation_item?.anchor_id
+      ? {
+          href: `/#${content.services_section.navigation_item.anchor_id}`,
+          label: content.services_section?.navigation_item?.label,
+        }
+      : undefined,
+    process: content.services_section?.process_navigation_item?.anchor_id
+      ? {
+          href: `/#${content.services_section.process_navigation_item.anchor_id}`,
+          label: content.services_section?.process_navigation_item?.label,
+        }
+      : undefined,
+    reviews: content.reviews_section?.navigation_item?.anchor_id
+      ? {
+          href: `/#${content.reviews_section?.navigation_item.anchor_id}`,
+          label: content.reviews_section?.navigation_item?.label,
+        }
+      : undefined,
+    questions: content.questions_section?.navigation_item?.anchor_id
+      ? {
+          href: `/#${content.questions_section?.navigation_item.anchor_id}`,
+          label: content.questions_section?.navigation_item?.label,
+        }
+      : undefined,
+  };
+
+  return Object.values(navigation).filter(
+    (item) => item?.href && item?.label,
+  ) as { href: string; label: string }[];
 };

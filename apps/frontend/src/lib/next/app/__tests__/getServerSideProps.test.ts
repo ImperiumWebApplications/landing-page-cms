@@ -50,7 +50,7 @@ describe('queryContentPageContent', () => {
   });
 
   it('should request static content with correct locale', async () => {
-    Strapi.getStaticContent = jest.fn().mockResolvedValue(staticContent);
+    Strapi.getStaticContent = jest.fn().mockResolvedValue(staticContent.data);
     const ctx = configureCtx({ host: 'test' });
     await queryContentPageContent(ctx);
     expect(Strapi.getStaticContent).toBeCalledTimes(1);
@@ -85,6 +85,7 @@ describe('queryQuestionnairePageContent', () => {
       props: {
         content: content.data[0].attributes,
         questionnaire: questionnaire.data[0].attributes,
+        staticContent: staticContent.data.attributes,
       },
     });
   });

@@ -5,7 +5,7 @@ import cx from 'classnames';
 
 import type { HeroSectionContent } from '../../SectionMapper';
 
-import { Language, QuestionnaireConfig } from '../../../../config/i18n.config';
+import { questionnaireRoute } from '../../../../config/navigation.config';
 import { isSvg } from '../../../../utils/isSvg';
 import { slugifyRoute } from '../../../../utils/slugifyRoute';
 
@@ -22,7 +22,6 @@ const iconClassName =
 export type QuestionnaireTilesProps = {
   question: HeroSectionContent['questionnaires_question'];
   answers: HeroSectionContent['questionnaires_relations'];
-  language: Language;
 };
 
 export const QuestionnaireTiles: React.FC<QuestionnaireTilesProps> = (
@@ -30,14 +29,10 @@ export const QuestionnaireTiles: React.FC<QuestionnaireTilesProps> = (
 ) => {
   if (!props.answers?.length) return null;
 
-  const config = QuestionnaireConfig[props.language];
-
   return (
     <div className="pt-4 sm:pt-6 md:pt-0">
       <h4 className="text-center text-lg font-bold text-primary sm:text-xl md:text-left md:text-2xl">
-        <span data-testid="hero-tiles-question">
-          {props.question ?? config.entryQuestionFallback}
-        </span>
+        <span data-testid="hero-tiles-question">{props.question}</span>
       </h4>
       <div
         data-testid="hero-tiles-grid"
@@ -47,7 +42,7 @@ export const QuestionnaireTiles: React.FC<QuestionnaireTilesProps> = (
           if (!attributes?.name) return null;
 
           const slug = slugifyRoute(attributes.name);
-          const route = `/${config.route}/${slug}-${id}`;
+          const route = `/${questionnaireRoute}/${slug}-${id}`;
 
           const isSvgIcon = isSvg(attributes.icon?.data?.attributes?.ext);
 

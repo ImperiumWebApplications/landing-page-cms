@@ -4,7 +4,6 @@ import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
 
 import type { StaticContent } from '../../../lib/strapi';
-import { NAVIGATION_ANCHOR } from '../../../config/navigation.config';
 import { CheckCircleIcon } from '../../../components/Icons';
 import { CallToActionBanner } from '../../../components/Banner';
 import { ServiceProcess } from './components/ServiceProcess';
@@ -52,7 +51,9 @@ export const ServicesSection: React.FC<ServicesSectionProps> = (props) => {
           <div>
             {props.content.title ? (
               <h2
-                id={NAVIGATION_ANCHOR.Mission}
+                id={
+                  props.staticContent?.navigation_item?.anchor_id ?? undefined
+                }
                 style={{ scrollMarginTop: '64px' }}
                 data-testid="services-headline"
                 className="text-base leading-tight md:mb-6 md:text-2xl"
@@ -97,11 +98,8 @@ export const ServicesSection: React.FC<ServicesSectionProps> = (props) => {
         ) : null}
       </div>
       <ServiceProcess
-        title={props.staticContent?.process_title}
-        steps={props.staticContent?.process_step}
-        processAdvantageTitle={props.staticContent?.process_advantage_title}
-        processAdvantages={props.staticContent?.process_advantage}
         className="-mt-32 pt-36 pb-10 md:-mt-[10.5rem] md:pb-20 md:pt-36"
+        staticContent={props.staticContent}
       />
     </SectionContainer>
   );

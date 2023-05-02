@@ -23,12 +23,15 @@ export type StaticContent = {
   }>;
   /** Static Content for Video Section */
   video_section?: Component<{
+    navigation_item?: AnchorLinkComponent;
     video?: Media;
     video_thumbnail?: Media;
   }>;
   /** Static Content for Services Section */
   services_section?: Component<{
     call_to_action_banner_title?: TextField;
+    navigation_item?: AnchorLinkComponent;
+    process_navigation_item?: AnchorLinkComponent;
     process_title?: TextField;
     process_step?: RepeatableComponent<{
       description?: TextField;
@@ -41,11 +44,18 @@ export type StaticContent = {
   }>;
   /** Static Content for Reviews Section */
   reviews_section?: Component<{
+    navigation_item?: AnchorLinkComponent;
     title?: TextField;
     call_to_action_banner_title?: TextField;
   }>;
   /** Static Content for Questions Section */
   questions_section?: Component<{
+    navigation_item?: AnchorLinkComponent;
     title?: TextField;
   }>;
 };
+
+type AnchorLinkComponent = Component<{
+  anchor_id?: TextField;
+  label?: TextField;
+}>;

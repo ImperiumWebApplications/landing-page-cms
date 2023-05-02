@@ -1,23 +1,27 @@
 {
   "collectionName": "components_static_content_video_sections",
   "info": {
-    "displayName": "Video Section"
+    "displayName": "Video Section",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "video": {
-      "allowedTypes": [
-        "videos"
-      ],
       "type": "media",
-      "multiple": false
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["videos"]
     },
     "video_thumbnail": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
-      "multiple": false
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "navigation_item": {
+      "type": "component",
+      "repeatable": false,
+      "component": "static-content.anchor-link"
     }
   }
 }

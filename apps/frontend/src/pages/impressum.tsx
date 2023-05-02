@@ -2,11 +2,11 @@ import { NextSeo } from 'next-seo';
 import ReactMarkdown from 'react-markdown';
 
 import type { LandingPage } from '../lib/strapi';
+import { Country } from '../config/i18n.config';
 import { Article } from '../components/Article';
 import { Layout } from '../components/Layout';
 import { ContentPage, queryContentPageContent } from '../lib/next/app';
 import { populateMarkdownTemplate } from '../utils/populateMarkdownTemplate';
-import { Country } from '../config/countries.config';
 
 const ImprintPage: ContentPage = ({ content, staticContent }) => {
   const enrichedDomainContent = enrichDomainContent(content);
@@ -16,7 +16,7 @@ const ImprintPage: ContentPage = ({ content, staticContent }) => {
   );
 
   return (
-    <Layout content={enrichedDomainContent}>
+    <Layout content={enrichedDomainContent} staticContent={staticContent}>
       <NextSeo noindex={true} />
       <div id="imprint" className="content-wrapper-xl">
         <Article>

@@ -21,7 +21,7 @@ const IndexPage: ContentPage = ({ content, staticContent }) => {
   };
 
   return (
-    <Layout content={content}>
+    <Layout content={content} staticContent={staticContent}>
       <SectionContextProvider initialState={initialSectionState}>
         {SectionManager.Hero}
         {SectionManager.Video}

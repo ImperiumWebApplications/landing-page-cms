@@ -1,55 +1,54 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 
+import { questionnaireRoute } from '../../config/navigation.config';
 import { Layout } from '../../components/Layout';
-import { QuestionnaireConfig } from '../../config/i18n.config';
 import { slugifyRoute } from '../../utils/slugifyRoute';
 import { LandingPage } from '../../lib/strapi';
 import { ContentPage, queryContentPageContent } from '../../lib/next/app';
 import {
   Questionnaire,
-  QuestionnairePlaceholderPage,
+  QuestionnairePlaceholder,
   QuestionnaireProvider,
 } from '../../features/Questionnaire';
 import { SingleChoiceEventHandler } from '../../features/Questionnaire/components/SingleChoice';
 import { isHeroSection } from '../../features/Sections/SectionMapper';
 
-const EntryQuestionnairePage: ContentPage = ({ content }) => {
+const EntryQuestionnairePage: ContentPage = ({ content, staticContent }) => {
   const { entryQuestion, questionnaires } = extractQuestionnaires(content);
   const router = useRouter();
 
-  const config = QuestionnaireConfig[content.language ?? 'German'];
-
-  if (!questionnaires)
-    return <QuestionnairePlaceholderPage content={content} />;
-
   const question = {
     id: -1,
-    question: entryQuestion ?? config.entryQuestionFallback,
+    question: entryQuestion,
     answers: mapConnectedQuestionnairesToAnswersSchema(questionnaires),
   };
 
   const selectHandler: SingleChoiceEventHandler = async ({ event, input }) => {
     event.preventDefault();
     const slug = slugifyRoute(input.answer.value);
-    const selectedRoute = `/${config.route}/${slug}-${input.answer.id}`;
+    const selectedRoute = `/${questionnaireRoute}/${slug}-${input.answer.id}`;
     await router.push(selectedRoute);
   };
 
   return (
-    <Layout content={content}>
-      <QuestionnaireProvider>
-        <Questionnaire
-          headline={content.sections?.find(isHeroSection)?.title}
-          questions={[question]}
-          countries={content.countries}
-          customSelectHandler={selectHandler}
-          advantages={
-            content.questionnaires_advantages ??
-            content.questionnaire?.advantages
-          }
-        />
-      </QuestionnaireProvider>
+    <Layout content={content} staticContent={staticContent}>
+      {questionnaires?.data.length ? (
+        <QuestionnaireProvider>
+          <Questionnaire
+            headline={content.sections?.find(isHeroSection)?.title}
+            questions={[question]}
+            countries={content.countries}
+            customSelectHandler={selectHandler}
+            advantages={
+              content.questionnaires_advantages ??
+              content.questionnaire?.advantages
+            }
+          />
+        </QuestionnaireProvider>
+      ) : (
+        <QuestionnairePlaceholder />
+      )}
     </Layout>
   );
 };

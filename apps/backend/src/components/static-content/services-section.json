@@ -27,6 +27,16 @@
       "repeatable": true,
       "component": "static-content.process-advantage",
       "max": 3
+    },
+    "process_navigation_item": {
+      "type": "component",
+      "repeatable": false,
+      "component": "static-content.anchor-link"
+    },
+    "navigation_item": {
+      "type": "component",
+      "repeatable": false,
+      "component": "static-content.anchor-link"
     }
   }
 }

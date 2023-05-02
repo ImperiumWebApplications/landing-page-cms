@@ -5,7 +5,6 @@ import ReactMarkdown from 'react-markdown';
 import { Disclosure, Transition } from '@headlessui/react';
 
 import type { StaticContent } from '../../../lib/strapi/model';
-import { NAVIGATION_ANCHOR } from '../../../config/navigation.config';
 import { MinusIcon, PlusIcon } from '../../../components/Icons';
 
 import { SectionContainer } from '../SectionContainer';
@@ -34,7 +33,7 @@ export const QuestionsSection: React.FC<QuestionsSectionProps> = (props) => {
       className="mt-16 mb-12 md:my-[70px]"
     >
       <h2
-        id={NAVIGATION_ANCHOR.FAQ}
+        id={props.staticContent?.navigation_item?.anchor_id ?? undefined}
         style={{ scrollMarginTop: '64px' }}
         data-testid="questions-headline"
         className="mb-2 text-center text-xl text-primary md:mb-12 md:text-4xl"

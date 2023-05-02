@@ -1,7 +1,8 @@
 {
   "collectionName": "components_static_content_reviews_sections",
   "info": {
-    "displayName": "Reviews Section"
+    "displayName": "Reviews Section",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -10,6 +11,11 @@
     },
     "call_to_action_banner_title": {
       "type": "string"
+    },
+    "navigation_item": {
+      "type": "component",
+      "repeatable": false,
+      "component": "static-content.anchor-link"
     }
   }
 }

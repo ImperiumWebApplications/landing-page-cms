@@ -3,8 +3,12 @@ import Link from 'next/link';
 import cx from 'classnames';
 import { Menu, Transition } from '@headlessui/react';
 
-import type { NavigationItem } from '../../../config/navigation.config';
 import { CloseIcon } from '../../Icons';
+
+type NavigationItem = {
+  href: string;
+  label: string;
+};
 
 type NavigationProps = {
   items: NavigationItem[];

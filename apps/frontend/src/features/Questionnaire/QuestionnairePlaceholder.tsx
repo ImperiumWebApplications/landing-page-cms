@@ -1,20 +1,6 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 
-import type { LandingPage } from '../../lib/strapi';
-
-import { Layout } from '../../components/Layout';
-
-export const QuestionnairePlaceholderPage: React.FC<{
-  content: LandingPage;
-}> = ({ content }) => {
-  return (
-    <Layout content={content}>
-      <QuestionnairePlaceholder />
-    </Layout>
-  );
-};
-
 export const QuestionnairePlaceholder = () => {
   const router = useRouter();
 

@@ -3,30 +3,24 @@ import { ReactSVG } from 'react-svg';
 
 import type { StaticContent } from '../../../../lib/strapi';
 import { ArrowRight, CheckCircleIcon } from '../../../../components/Icons';
-import { NAVIGATION_ANCHOR } from '../../../../config/navigation.config';
 
 export const SERVICE_PROCESS_ID = 'process';
 
-type StaticServicesSection = NonNullable<StaticContent['services_section']>;
-
 type ServiceProcessProps = {
   className?: string;
-  title: StaticServicesSection['process_title'];
-  steps: StaticServicesSection['process_step'];
-  processAdvantageTitle: StaticServicesSection['process_advantage_title'];
-  processAdvantages: StaticServicesSection['process_advantage'];
+  staticContent: StaticContent['services_section'];
 };
 
 export const ServiceProcess: React.FC<ServiceProcessProps> = (props) => {
-  const title = props.title;
-  const steps = props.steps?.filter(
+  const title = props.staticContent?.process_title;
+  const steps = props.staticContent?.process_step?.filter(
     ({ description, icon }) => description && icon?.data?.attributes?.url,
   );
 
   if (!steps?.length) return null;
 
-  const advantagesTitle = props.processAdvantageTitle;
-  const advantages = props.processAdvantages?.filter(
+  const advantagesTitle = props.staticContent?.process_advantage_title;
+  const advantages = props.staticContent?.process_advantage?.filter(
     ({ description }) => !!description,
   );
 
@@ -39,7 +33,9 @@ export const ServiceProcess: React.FC<ServiceProcessProps> = (props) => {
     >
       <div className="content-wrapper">
         <h2
-          id={NAVIGATION_ANCHOR.Ablauf}
+          id={
+            props.staticContent?.process_navigation_item?.anchor_id ?? undefined
+          }
           style={{ scrollMarginTop: '48px' }}
           className="mb-4 text-center text-base leading-tight md:mb-8 md:text-2xl"
         >
@@ -78,7 +74,7 @@ export const ServiceProcess: React.FC<ServiceProcessProps> = (props) => {
         </div>
         {advantagesTitle && advantages?.length ? (
           <div className="mt-12 text-center text-primary md:mt-0">
-            <span className="font-bold">{props.processAdvantageTitle}</span>
+            <span className="font-bold">{advantagesTitle}</span>
             {advantages.map(({ id, description }) => {
               return (
                 <div key={id} className="block md:inline-block">
