@@ -33,17 +33,36 @@ export default ImprintPage;
 
 /** Helper */
 
-const getVatSpecification = (country?: string, vat?: string | null) => {
+const getVatSpecification = (
+  country?: string,
+  language?: string,
+  vat?: string | null,
+) => {
   if (!vat) return undefined;
 
-  switch (country) {
-    case Country.Germany:
-      return `Umsatzsteuer-Identifikationsnummer gem. § 27a UStG:\n${vat}`;
-    case Country.Switzerland:
-      return `Unternehmens-Identifikationsnummer (UID):\n${vat}`;
-    default:
-      return `Unternehmens-Identifikation:\n${vat}`;
+  if (language === 'German') {
+    switch (country) {
+      case Country.Germany:
+        return `Umsatzsteuer-Identifikationsnummer gem. § 27a UStG:\n${vat}`;
+      case Country.Switzerland:
+        return `Unternehmens-Identifikationsnummer (UID):\n${vat}`;
+      default:
+        return `Unternehmens-Identifikation:\n${vat}`;
+    }
   }
+
+  if (language === 'English') {
+    switch (country) {
+      case Country.Germany:
+        return `Value Added Tax Identification Number(according to § 27a UStG):\n${vat}`;
+      case Country.Switzerland:
+        return `Company Identification Number (UID):\n${vat}`;
+      default:
+        return `Company Identification:\n${vat}`;
+    }
+  }
+
+  return undefined;
 };
 
 const enrichDomainContent = (domainContent: LandingPage): LandingPage => {
@@ -52,8 +71,11 @@ const enrichDomainContent = (domainContent: LandingPage): LandingPage => {
       ? domainContent.countries[0]
       : undefined;
 
+  const language = domainContent.language ?? 'German';
+  const vat = domainContent.client_vat;
+
   return {
     ...domainContent,
-    client_vat: getVatSpecification(country, domainContent.client_vat),
+    client_vat: getVatSpecification(country, language, vat),
   };
 };
