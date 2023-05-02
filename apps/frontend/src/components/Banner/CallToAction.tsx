@@ -8,11 +8,13 @@ import { ArrowRight } from '../Icons';
 
 type CallToActionBannerProps = {
   description: string;
+  buttonLabel?: string | null;
 } & HTMLMotionProps<'div'>;
 
 export const CallToActionBanner: React.FC<CallToActionBannerProps> = ({
   description,
   className,
+  buttonLabel,
   ...rest
 }) => {
   return (
@@ -30,15 +32,17 @@ export const CallToActionBanner: React.FC<CallToActionBannerProps> = ({
         className="max-w-2xl text-center text-xl font-bold text-[white] md:text-left md:text-2xl lg:text-3xl xl:text-[32px]"
         dangerouslySetInnerHTML={{ __html: description }}
       />
-      <div className="flex-shrink-0">
-        <Button
-          variant="secondary"
-          className="-mb-8 w-auto text-[0.9rem] md:mb-0"
-          to={`/${questionnaireRoute}`}
-          label="Beratung starten"
-          Icon={<ArrowRight className="stroke-[white]" />}
-        />
-      </div>
+      {buttonLabel ? (
+        <div className="flex-shrink-0">
+          <Button
+            variant="secondary"
+            className="-mb-8 w-auto text-[0.9rem] md:mb-0"
+            to={`/${questionnaireRoute}`}
+            label={buttonLabel}
+            Icon={<ArrowRight className="stroke-[white]" />}
+          />
+        </div>
+      ) : null}
     </motion.div>
   );
 };

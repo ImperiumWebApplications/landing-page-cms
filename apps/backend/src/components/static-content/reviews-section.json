@@ -16,6 +16,9 @@
       "type": "component",
       "repeatable": false,
       "component": "static-content.anchor-link"
+    },
+    "call_to_action_button_label": {
+      "type": "string"
     }
   }
 }

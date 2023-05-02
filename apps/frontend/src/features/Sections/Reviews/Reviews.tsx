@@ -104,6 +104,7 @@ export const ReviewsSection: React.FC<ReviewsSectionProps> = (props) => {
       {props.staticContent?.call_to_action_banner_title ? (
         <CallToActionBanner
           data-testid="reviews-cta"
+          buttonLabel={props.staticContent?.call_to_action_button_label}
           description={props.staticContent?.call_to_action_banner_title}
           className="mt-6 mb-14 md:my-14"
         />

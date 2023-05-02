@@ -92,6 +92,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = (props) => {
         {props.staticContent?.call_to_action_banner_title ? (
           <CallToActionBanner
             data-testid="services-cta"
+            buttonLabel={props.staticContent?.call_to_action_button_label}
             description={props.staticContent?.call_to_action_banner_title}
             className="my-12 md:my-20"
           />

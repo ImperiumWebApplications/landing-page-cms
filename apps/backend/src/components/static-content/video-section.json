@@ -10,18 +10,25 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["videos"]
+      "allowedTypes": [
+        "videos"
+      ]
     },
     "video_thumbnail": {
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
     },
     "navigation_item": {
       "type": "component",
       "repeatable": false,
       "component": "static-content.anchor-link"
+    },
+    "call_to_action_button_label": {
+      "type": "string"
     }
   }
 }

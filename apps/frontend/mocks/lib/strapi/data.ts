@@ -866,6 +866,7 @@ export const staticContent: {
           label: 'Prinzip',
           anchor_id: 'prinzip',
         },
+        call_to_action_button_label: 'Beratung starten',
         video: {
           data: {
             id: 180,
@@ -960,6 +961,7 @@ export const staticContent: {
       },
       services_section: {
         id: 1,
+        call_to_action_button_label: 'Beratung starten',
         call_to_action_banner_title:
           'Wir helfen Ihnen unverbindlich und kostenlos, den besten Profi zu finden.',
         process_title: 'Absolut kostenlos und risikofrei Anfrage senden!',
@@ -1068,6 +1070,7 @@ export const staticContent: {
       reviews_section: {
         id: 1,
         title: 'Zufriedenheit unserer Kunden',
+        call_to_action_button_label: 'Beratung starten',
         call_to_action_banner_title:
           'Konnten wir Sie überzeugen?<br />Lassen Sie sich beraten',
         navigation_item: {

@@ -26,10 +26,12 @@ export type StaticContent = {
     navigation_item?: AnchorLinkComponent;
     video?: Media;
     video_thumbnail?: Media;
+    call_to_action_button_label?: TextField;
   }>;
   /** Static Content for Services Section */
   services_section?: Component<{
     call_to_action_banner_title?: TextField;
+    call_to_action_button_label?: TextField;
     navigation_item?: AnchorLinkComponent;
     process_navigation_item?: AnchorLinkComponent;
     process_title?: TextField;
@@ -47,6 +49,7 @@ export type StaticContent = {
     navigation_item?: AnchorLinkComponent;
     title?: TextField;
     call_to_action_banner_title?: TextField;
+    call_to_action_button_label?: TextField;
   }>;
   /** Static Content for Questions Section */
   questions_section?: Component<{
