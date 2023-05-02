@@ -1,4 +1,4 @@
-import { Country } from '../../config/i18n.config';
+import { Country } from '../../config/countries.config';
 import { isPostalCodeFormat } from '../isPostalCodeFormat';
 
 describe('isPostalCodeFormat', () => {

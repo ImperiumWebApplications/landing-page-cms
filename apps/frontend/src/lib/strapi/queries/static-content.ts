@@ -14,6 +14,12 @@ export const getStaticContent = async ({
     {
       locale: getStrapiLocale(locale),
       populate: {
+        footer: {
+          fields: '*',
+          populate: {
+            links: { fields: '*' },
+          },
+        },
         hero_section: {
           fields: '*',
           populate: {
@@ -57,7 +63,7 @@ export const getStaticContent = async ({
   );
 
   if (!res.data.attributes) throw new Error('No static content found');
-
+  console.log(JSON.stringify(res.data.attributes, null, 2));
   return res.data;
 };
 

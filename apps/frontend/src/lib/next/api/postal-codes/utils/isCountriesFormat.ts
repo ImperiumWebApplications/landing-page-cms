@@ -1,4 +1,7 @@
-import { Country, isKnownCountry } from '../../../../../config/i18n.config';
+import {
+  Country,
+  isKnownCountry,
+} from '../../../../../config/countries.config';
 
 export const isCountriesFormat = (
   countries: unknown,

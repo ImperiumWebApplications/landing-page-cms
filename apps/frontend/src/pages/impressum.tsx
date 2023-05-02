@@ -2,7 +2,7 @@ import { NextSeo } from 'next-seo';
 import ReactMarkdown from 'react-markdown';
 
 import type { LandingPage } from '../lib/strapi';
-import { Country } from '../config/i18n.config';
+import { Country } from '../config/countries.config';
 import { Article } from '../components/Article';
 import { Layout } from '../components/Layout';
 import { ContentPage, queryContentPageContent } from '../lib/next/app';

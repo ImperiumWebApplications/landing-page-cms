@@ -86,6 +86,17 @@
           "localized": true
         }
       }
+    },
+    "footer": {
+      "displayName": "Footer Configuration",
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "static-content.footer-configuration"
     }
   }
 }

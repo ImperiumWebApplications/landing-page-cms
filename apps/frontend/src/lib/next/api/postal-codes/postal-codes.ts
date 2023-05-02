@@ -1,7 +1,7 @@
 import {
   isKnownCountry,
   PostalCodeDetails,
-} from '../../../../config/i18n.config';
+} from '../../../../config/countries.config';
 import { CountryPostalCodes } from './data';
 
 export type GetPostalCodeDetailsProps = {

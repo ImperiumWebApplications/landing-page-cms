@@ -1,23 +1,24 @@
 import Link from 'next/link';
 import { resetCookieConsentValue } from 'react-cookie-consent';
 
-import type { LandingPage } from '../../lib/strapi';
-import { FooterConfig } from '../../config/i18n.config';
+import type { LandingPage, StaticContent } from '../../lib/strapi';
 
 import { Logo } from '../Logo';
 import { COOKIE_CONSENT_NAME } from '../CookieConsent';
 
 type FooterProps = {
   content: LandingPage;
+  staticContent: StaticContent;
 };
 
-export const Footer: React.FC<FooterProps> = ({ content }) => {
+export const Footer: React.FC<FooterProps> = ({ content, staticContent }) => {
   const onResetCookies = () => {
     window.scrollTo(0, 0);
     resetCookieConsentValue(COOKIE_CONSENT_NAME);
   };
 
-  const config = FooterConfig[content.language ?? 'German'];
+  const emailSubject =
+    content.language === 'English' ? 'New request' : 'Neue Anfrage';
 
   return (
     <footer className="flex h-auto w-full bg-primary text-tertiary">
@@ -31,7 +32,9 @@ export const Footer: React.FC<FooterProps> = ({ content }) => {
             />
           </div>
           <nav className="flex flex-row flex-wrap items-center justify-center gap-x-4 md:gap-x-12">
-            {config.navigation.map((navItem, i) => {
+            {staticContent.footer?.links?.map((navItem, i) => {
+              if (!navItem.href || !navItem.label) return null;
+
               return (
                 <Link
                   key={i}
@@ -47,7 +50,7 @@ export const Footer: React.FC<FooterProps> = ({ content }) => {
               className="my-[2px] cursor-pointer text-left font-normal text-secondary hover:text-[white]"
               onClick={onResetCookies}
             >
-              {config.revokeConsentLabel}
+              {staticContent.footer?.revoke_consent_label ?? 'Reset cookies'}
             </button>
           </nav>
           <div className="h-[1px] w-full bg-secondary" />
@@ -61,7 +64,7 @@ export const Footer: React.FC<FooterProps> = ({ content }) => {
                 <div className="mt-3 block text-sm md:mt-0 md:inline">
                   <a
                     className="font-normal"
-                    href={`mailto:${content.contact_email}?subject=Neue Anfrage`}
+                    href={`mailto:${content.contact_email}?subject=${emailSubject}`}
                   >
                     {content.contact_email}
                   </a>

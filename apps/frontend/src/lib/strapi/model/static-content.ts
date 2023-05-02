@@ -14,6 +14,14 @@ export type StaticContent = {
   imprint: TextField;
   /** Markdown Text */
   privacy: TextField;
+  /** Footer Configuration */
+  footer?: Component<{
+    revoke_consent_label?: TextField;
+    links?: RepeatableComponent<{
+      label?: TextField;
+      href?: TextField;
+    }>;
+  }>;
   /** Static Content for Hero Section */
   hero_section?: Component<{
     hero_advantage?: RepeatableComponent<{

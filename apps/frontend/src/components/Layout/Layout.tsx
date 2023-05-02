@@ -54,7 +54,7 @@ export const Layout: React.FC<LayoutProps> = ({
       <TagManager id={content.google_tag_manager_id} host={content.domain} />
       <Header content={content} staticContent={staticContent} />
       <main>{children}</main>
-      <Footer content={content} />
+      <Footer content={content} staticContent={staticContent} />
       <CookieConsent consent={allowCookies} setConsent={setAllowCookies} />
     </>
   );

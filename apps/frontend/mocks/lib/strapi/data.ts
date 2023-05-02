@@ -773,6 +773,27 @@ export const staticContent: {
       imprint:
         '# Impressum\n\n${client_address}\n\n\n### Kontakt\nTelefon: ${contact_phone}\nE-Mail: ${contact_email}\n\n${client_vat}\n\n### Haftung für Links\nUnser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.\n\nBei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.',
       privacy: null,
+      footer: {
+        id: 1,
+        revoke_consent_label: 'Cookie-Erlaubnis widerrufen',
+        links: [
+          {
+            id: 1,
+            href: '/',
+            label: 'Startseite',
+          },
+          {
+            id: 2,
+            href: '/impressum',
+            label: 'Impressum',
+          },
+          {
+            id: 3,
+            href: '/datenschutz',
+            label: 'Datenschutz',
+          },
+        ],
+      },
       hero_section: {
         id: 1,
         hero_advantage: [
