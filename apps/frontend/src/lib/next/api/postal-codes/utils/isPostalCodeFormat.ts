@@ -9,7 +9,7 @@
 import {
   CountryDetails,
   isKnownCountry,
-} from '../../../../../config/countries.config';
+} from '../../../../../config/i18n.config';
 
 export const isPostalCodeFormat = (
   code: string | number,

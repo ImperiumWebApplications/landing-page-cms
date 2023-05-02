@@ -2,10 +2,10 @@ import Link from 'next/link';
 import { resetCookieConsentValue } from 'react-cookie-consent';
 
 import type { LandingPage } from '../../lib/strapi';
+import { FooterConfig } from '../../config/i18n.config';
 
 import { Logo } from '../Logo';
 import { COOKIE_CONSENT_NAME } from '../CookieConsent';
-import { footerNavigationItems } from '../../config/navigation.config';
 
 type FooterProps = {
   content: LandingPage;
@@ -16,6 +16,8 @@ export const Footer: React.FC<FooterProps> = ({ content }) => {
     window.scrollTo(0, 0);
     resetCookieConsentValue(COOKIE_CONSENT_NAME);
   };
+
+  const config = FooterConfig[content.language ?? 'German'];
 
   return (
     <footer className="flex h-auto w-full bg-primary text-tertiary">
@@ -29,7 +31,7 @@ export const Footer: React.FC<FooterProps> = ({ content }) => {
             />
           </div>
           <nav className="flex flex-row flex-wrap items-center justify-center gap-x-4 md:gap-x-12">
-            {footerNavigationItems.map((navItem, i) => {
+            {config.navigation.map((navItem, i) => {
               return (
                 <Link
                   key={i}
@@ -45,7 +47,7 @@ export const Footer: React.FC<FooterProps> = ({ content }) => {
               className="my-[2px] cursor-pointer text-left font-normal text-secondary hover:text-[white]"
               onClick={onResetCookies}
             >
-              Cookie-Erlaubnis widerrufen
+              {config.revokeConsentLabel}
             </button>
           </nav>
           <div className="h-[1px] w-full bg-secondary" />

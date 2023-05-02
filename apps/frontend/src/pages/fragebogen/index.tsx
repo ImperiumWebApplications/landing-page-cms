@@ -2,7 +2,7 @@ import React from 'react';
 import { useRouter } from 'next/router';
 
 import { Layout } from '../../components/Layout';
-import { questionnaireRoute } from '../../config/navigation.config';
+import { QuestionnaireConfig } from '../../config/i18n.config';
 import { slugifyRoute } from '../../utils/slugifyRoute';
 import { LandingPage } from '../../lib/strapi';
 import { ContentPage, queryContentPageContent } from '../../lib/next/app';
@@ -18,19 +18,21 @@ const EntryQuestionnairePage: ContentPage = ({ content }) => {
   const { entryQuestion, questionnaires } = extractQuestionnaires(content);
   const router = useRouter();
 
+  const config = QuestionnaireConfig[content.language ?? 'German'];
+
   if (!questionnaires)
     return <QuestionnairePlaceholderPage content={content} />;
 
   const question = {
     id: -1,
-    question: entryQuestion ?? 'Was suchen Sie?',
+    question: entryQuestion ?? config.entryQuestionFallback,
     answers: mapConnectedQuestionnairesToAnswersSchema(questionnaires),
   };
 
   const selectHandler: SingleChoiceEventHandler = async ({ event, input }) => {
     event.preventDefault();
     const slug = slugifyRoute(input.answer.value);
-    const selectedRoute = `/${questionnaireRoute}/${slug}-${input.answer.id}`;
+    const selectedRoute = `/${config.route}/${slug}-${input.answer.id}`;
     await router.push(selectedRoute);
   };
 

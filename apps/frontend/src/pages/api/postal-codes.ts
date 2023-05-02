@@ -5,7 +5,7 @@ import {
   validateRequestBody,
 } from '../../lib/next/api/postal-codes';
 import { captureNextAPIError, getErrorMessage } from '../../lib/next/api/error';
-import type { PostalCodeDetails } from '../../config/countries.config';
+import type { PostalCodeDetails } from '../../config/i18n.config';
 
 export type GetPostalCodeResponse = NextApiResponse<{
   success: boolean;

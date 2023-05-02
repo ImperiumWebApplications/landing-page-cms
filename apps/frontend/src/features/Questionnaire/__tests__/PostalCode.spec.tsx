@@ -1,6 +1,6 @@
 import { act, fireEvent, waitFor } from '@testing-library/react';
 import { SELECT_FIELD_BUTTON_TEST_ID } from '../../../components/Form/components/SelectField';
-import { Country } from '../../../config/countries.config';
+import { Country } from '../../../config/i18n.config';
 import { renderWithLayout } from '../../../../jest.setup';
 import { NextAPI } from '../../../lib/next/api/client';
 import { setBrowserHistoryState } from '../../../utils/setBrowserHistoryState';

@@ -1,4 +1,4 @@
-import { CountryDetails } from '../config/countries.config';
+import { CountryDetails } from '../config/i18n.config';
 
 export const getCountryDetails = (countries?: string[] | null) => {
   return (countries ?? [])

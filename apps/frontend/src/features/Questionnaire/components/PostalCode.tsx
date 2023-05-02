@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
 
-import { PostalCodeDetails } from '../../../config/countries.config';
+import { PostalCodeDetails } from '../../../config/i18n.config';
 
 import { useQuestionnaireContext } from '../context/Questionnaire';
 import { getCountryDetails } from '../../../utils/getCountryDetails';

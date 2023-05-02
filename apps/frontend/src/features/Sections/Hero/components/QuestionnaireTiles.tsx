@@ -5,7 +5,7 @@ import cx from 'classnames';
 
 import type { HeroSectionContent } from '../../SectionMapper';
 
-import { questionnaireRoute } from '../../../../config/navigation.config';
+import { Language, QuestionnaireConfig } from '../../../../config/i18n.config';
 import { isSvg } from '../../../../utils/isSvg';
 import { slugifyRoute } from '../../../../utils/slugifyRoute';
 
@@ -22,6 +22,7 @@ const iconClassName =
 export type QuestionnaireTilesProps = {
   question: HeroSectionContent['questionnaires_question'];
   answers: HeroSectionContent['questionnaires_relations'];
+  language: Language;
 };
 
 export const QuestionnaireTiles: React.FC<QuestionnaireTilesProps> = (
@@ -29,11 +30,13 @@ export const QuestionnaireTiles: React.FC<QuestionnaireTilesProps> = (
 ) => {
   if (!props.answers?.length) return null;
 
+  const config = QuestionnaireConfig[props.language];
+
   return (
     <div className="pt-4 sm:pt-6 md:pt-0">
       <h4 className="text-center text-lg font-bold text-primary sm:text-xl md:text-left md:text-2xl">
         <span data-testid="hero-tiles-question">
-          {props.question ?? 'Was suchen Sie?'}
+          {props.question ?? config.entryQuestionFallback}
         </span>
       </h4>
       <div
@@ -44,7 +47,7 @@ export const QuestionnaireTiles: React.FC<QuestionnaireTilesProps> = (
           if (!attributes?.name) return null;
 
           const slug = slugifyRoute(attributes.name);
-          const route = `/${questionnaireRoute}/${slug}-${id}`;
+          const route = `/${config.route}/${slug}-${id}`;
 
           const isSvgIcon = isSvg(attributes.icon?.data?.attributes?.ext);
 
@@ -96,7 +99,5 @@ export const QuestionnaireTiles: React.FC<QuestionnaireTilesProps> = (
 const LoadingIcon = () => (
   <div
     className={cx(iconClassName, 'animate-pulse rounded-full bg-tertiary p-4')}
-  >
-    <span className="sr-only">Wird geladen</span>
-  </div>
+  />
 );

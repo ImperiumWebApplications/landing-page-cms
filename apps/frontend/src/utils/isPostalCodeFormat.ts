@@ -1,4 +1,4 @@
-import { CountryDetails, isKnownCountry } from '../config/countries.config';
+import { CountryDetails, isKnownCountry } from '../config/i18n.config';
 
 /**
  * Checks if the given postal code matches the local

@@ -1,5 +1,5 @@
 import { getPostalCodeDetails } from '..';
-import { Country } from '../../../../../config/countries.config';
+import { Country } from '../../../../../config/i18n.config';
 
 describe('getPostalCodeDetails', () => {
   it('should return multiple entries for a valid, known postal code', () => {

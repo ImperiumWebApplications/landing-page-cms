@@ -34,7 +34,7 @@ export type LandingPage = {
 
   domain?: TextField;
   brand_name?: TextField;
-  countries?: MultiSelectField;
+  countries?: MultiSelectField<'AT' | 'DE' | 'CH'>;
   language?: EnumerationField<'German' | 'English'>;
   contact_email?: TextField;
   contact_phone?: TextField;

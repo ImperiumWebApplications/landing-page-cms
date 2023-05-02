@@ -42,18 +42,3 @@ export const navigationItems: NavigationItem[] = [
     label: 'Häufig gestelle Fragen',
   },
 ];
-
-export const footerNavigationItems: NavigationItem[] = [
-  {
-    href: '/',
-    label: 'Startseite',
-  },
-  {
-    href: '/impressum',
-    label: 'Impressum',
-  },
-  {
-    href: '/datenschutz',
-    label: 'Datenschutz',
-  },
-];
