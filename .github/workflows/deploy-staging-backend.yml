@@ -21,7 +21,7 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v3
         with:
-          node-version: 14
+          node-version: 18
           cache: "yarn"
 
       - name: Install deps
@@ -43,7 +43,7 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v3
         with:
-          node-version: 14
+          node-version: 18
           cache: "yarn"
 
       - name: Install deps
@@ -84,7 +84,7 @@ jobs:
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           use_existing_version_if_available: true
           application_name: landing-page-cms-backend
-          environment_name: landing-page-cms-backend-staging
+          environment_name: landing-page-cms-backend-staging-v18
           version_label: ${{github.SHA}}
           region: eu-central-1
           deployment_package: deploy.zip
