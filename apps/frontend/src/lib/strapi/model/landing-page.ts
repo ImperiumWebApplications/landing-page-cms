@@ -186,6 +186,8 @@ export type ImagesSection = Component<{
 }>;
 
 export type VideoSection = Component<{
+  video?: Media;
+  video_thumbnail?: Media;
   video_title?: TextField;
   video_description?: TextField;
   statistics?: RepeatableComponent<{

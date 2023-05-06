@@ -22,10 +22,14 @@ type VideoSectionProps = {
 export const VideoSection: React.FC<VideoSectionProps> = (props) => {
   const { language } = useLanguageContext();
 
-  const video = props.staticContent?.video?.data?.attributes;
-  const thumbnail = props.staticContent?.video_thumbnail?.data?.attributes;
+  const thumbnailUrl =
+    props.content.video_thumbnail?.data?.attributes?.url ??
+    props.staticContent?.video_thumbnail?.data?.attributes?.url;
 
-  if (!video?.url) return null;
+  const video = props.content.video?.data ?? props.staticContent?.video?.data;
+  const videoUrl = video?.attributes?.url;
+
+  if (!videoUrl) return null;
 
   return (
     <SectionContainer data-section="video" fullWidth>
@@ -74,7 +78,7 @@ export const VideoSection: React.FC<VideoSectionProps> = (props) => {
               data-testid="video-wrapper"
               className="group"
             >
-              <VideoPlayer url={video.url} thumbnail={thumbnail?.url} />
+              <VideoPlayer url={videoUrl} thumbnail={thumbnailUrl} />
             </motion.div>
           </div>
         </div>

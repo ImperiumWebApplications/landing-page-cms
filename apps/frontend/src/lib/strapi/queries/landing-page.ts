@@ -16,6 +16,8 @@ export const getLandingPage = async (domain: string) => {
             background_image: { populate: '*' },
             number: { populate: '*' },
             statistics: { populate: '*' },
+            video: { populate: '*' },
+            video_thumbnail: { populate: '*' },
             images: { populate: '*' },
             faq_item: { populate: '*' },
             service_image: { populate: '*' },
