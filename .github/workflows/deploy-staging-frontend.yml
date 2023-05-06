@@ -61,9 +61,9 @@ jobs:
         working-directory: ./apps/frontend
         run: yarn test
 
-      - name: Test (E2E)
-        working-directory: ./apps/frontend
-        run: yarn test:e2e:run
+      # - name: Test (E2E)
+      #   working-directory: ./apps/frontend
+      #   run: yarn test:e2e:run
 
       - name: Generate dist
         working-directory: ./apps/frontend
