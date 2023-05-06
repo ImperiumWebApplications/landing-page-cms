@@ -14,7 +14,6 @@ import { Services_OLD } from './Services_OLD';
 import { useSectionContext } from '../SectionContext';
 
 type ServicesSectionProps = {
-  id: string;
   content: ServicesSectionContent;
   staticContent: StaticContent['services_section'];
 };
@@ -38,16 +37,24 @@ export const ServicesSection: React.FC<ServicesSectionProps> = (props) => {
   }, [props.content.service_image?.data?.attributes]);
 
   if (props.content.service_tab?.length && !state.isNewDesign)
-    return <Services_OLD {...props} />;
+    return <Services_OLD id="services" {...props} />;
 
   return (
-    <SectionContainer id={props.id} className="my-8 md:my-[70px]" fullWidth>
+    <SectionContainer
+      className="my-8 md:my-[70px]"
+      data-section="services"
+      fullWidth
+    >
       <div className="content-wrapper">
         <div className="grid grid-cols-1 md:grid-cols-2 md:gap-16">
           <div className="relative hidden md:block">{ServiceImage}</div>
           <div>
             {props.content.title ? (
               <h2
+                id={
+                  props.staticContent?.navigation_item?.anchor_id ?? undefined
+                }
+                style={{ scrollMarginTop: '64px' }}
                 data-testid="services-headline"
                 className="text-base leading-tight md:mb-6 md:text-2xl"
               >
@@ -85,17 +92,15 @@ export const ServicesSection: React.FC<ServicesSectionProps> = (props) => {
         {props.staticContent?.call_to_action_banner_title ? (
           <CallToActionBanner
             data-testid="services-cta"
+            buttonLabel={props.staticContent?.call_to_action_button_label}
             description={props.staticContent?.call_to_action_banner_title}
             className="my-12 md:my-20"
           />
         ) : null}
       </div>
       <ServiceProcess
-        title={props.staticContent?.process_title}
-        steps={props.staticContent?.process_step}
-        processAdvantageTitle={props.staticContent?.process_advantage_title}
-        processAdvantages={props.staticContent?.process_advantage}
         className="-mt-32 pt-36 pb-10 md:-mt-[10.5rem] md:pb-20 md:pt-36"
+        staticContent={props.staticContent}
       />
     </SectionContainer>
   );

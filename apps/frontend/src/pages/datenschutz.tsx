@@ -16,7 +16,7 @@ const PrivacyPage: ContentPage = ({ content, staticContent }) => {
   const pageContent = populateMarkdownTemplate(staticContent.privacy, content);
 
   return (
-    <Layout content={content}>
+    <Layout content={content} staticContent={staticContent}>
       <NextSeo noindex={true} />
       <div id="privacy" className="content-wrapper-xl">
         <Article>

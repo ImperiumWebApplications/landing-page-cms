@@ -2,7 +2,7 @@ import { NextSeoProps } from 'next-seo';
 import { LandingPage } from '../lib/strapi';
 
 export const extractSeoProps = (content: LandingPage) => {
-  const isSubdomainSite = content.domain?.includes('lq-pages.ch');
+  const isSubdomainSite = content.domain?.includes('leadquelle.net');
   const disallowGoogleIndex = content.google_allow_indexation === false;
 
   return {

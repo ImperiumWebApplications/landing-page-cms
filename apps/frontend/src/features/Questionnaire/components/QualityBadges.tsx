@@ -1,27 +1,30 @@
 import Image from 'next/image';
 
-const badges = [
-  {
-    href: 'https://kagu-media.de/kostenloses-guetesiegel-fuer-ihre-webseite/',
-    badgeSrc: '/images/kagu-gepruefte-webseite.png',
-  },
-  {
-    href: 'https://tech-aktuell.de/',
-    badgeSrc: '/images/tech-webseiten-check.png',
-  },
-];
+import type { MediaList } from '../../../lib/strapi/model';
 
-export const QualityBadges: React.FC = () => {
+type QualityBadgesProps = {
+  badges?: MediaList | undefined;
+};
+
+export const QualityBadges: React.FC<QualityBadgesProps> = ({ badges }) => {
+  if (!badges?.data?.length) return null;
+
   return (
     <div className="mt-6 flex flex-row items-center justify-center gap-x-12 p-2">
-      {badges.map(({ href, badgeSrc }, key) => {
+      {badges.data.map(({ attributes }, key) => {
+        if (!attributes?.url) return null;
         return (
-          <a key={key} href={href} target={'_blank'} rel="noreferrer noopener">
+          <a
+            key={key}
+            href={attributes.url}
+            target={'_blank'}
+            rel="noreferrer noopener"
+          >
             <Image
-              src={badgeSrc}
+              src={attributes.url}
               width={100}
               height={100}
-              alt="Webseiten-Siegel"
+              alt={attributes.alternativeText ?? 'badge'}
               className="object-contain"
             />
           </a>

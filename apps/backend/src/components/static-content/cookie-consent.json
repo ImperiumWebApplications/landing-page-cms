@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_static_content_cookie_consents",
+  "info": {
+    "displayName": "Cookie Consent"
+  },
+  "options": {},
+  "attributes": {
+    "accept_label": {
+      "type": "string"
+    },
+    "decline_label": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    }
+  }
+}

@@ -6,12 +6,12 @@ import {
   useLocationOptions,
 } from '../features/Appointment';
 
-const AppointmentPage: ContentPage = ({ content }) => {
+const AppointmentPage: ContentPage = ({ content, staticContent }) => {
   const locationOptions = useLocationOptions(content);
   const dateOptions = useDateOptions(content.appointment);
 
   return (
-    <Layout content={content}>
+    <Layout content={content} staticContent={staticContent}>
       <AppointmentForm
         steps={[
           {

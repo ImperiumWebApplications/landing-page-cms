@@ -1,30 +1,26 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 
-import { Layout } from '../../components/Layout';
 import { questionnaireRoute } from '../../config/navigation.config';
+import { Layout } from '../../components/Layout';
 import { slugifyRoute } from '../../utils/slugifyRoute';
-import { getCountryByDomain } from '../../utils/getCountryByDomain';
 import { LandingPage } from '../../lib/strapi';
 import { ContentPage, queryContentPageContent } from '../../lib/next/app';
 import {
   Questionnaire,
-  QuestionnairePlaceholderPage,
+  QuestionnairePlaceholder,
   QuestionnaireProvider,
 } from '../../features/Questionnaire';
 import { SingleChoiceEventHandler } from '../../features/Questionnaire/components/SingleChoice';
 import { isHeroSection } from '../../features/Sections/SectionMapper';
 
-const EntryQuestionnairePage: ContentPage = ({ content }) => {
+const EntryQuestionnairePage: ContentPage = ({ content, staticContent }) => {
   const { entryQuestion, questionnaires } = extractQuestionnaires(content);
   const router = useRouter();
 
-  if (!questionnaires)
-    return <QuestionnairePlaceholderPage content={content} />;
-
   const question = {
     id: -1,
-    question: entryQuestion ?? 'Was suchen Sie?',
+    question: entryQuestion,
     answers: mapConnectedQuestionnairesToAnswersSchema(questionnaires),
   };
 
@@ -35,22 +31,25 @@ const EntryQuestionnairePage: ContentPage = ({ content }) => {
     await router.push(selectedRoute);
   };
 
-  const country = getCountryByDomain(content.domain);
-
   return (
-    <Layout content={content}>
-      <QuestionnaireProvider>
-        <Questionnaire
-          headline={content.sections?.find(isHeroSection)?.title}
-          questions={[question]}
-          countries={country ? [country] : undefined}
-          customSelectHandler={selectHandler}
-          advantages={
-            content.questionnaires_advantages ??
-            content.questionnaire?.advantages
-          }
-        />
-      </QuestionnaireProvider>
+    <Layout content={content} staticContent={staticContent}>
+      {questionnaires?.data.length ? (
+        <QuestionnaireProvider>
+          <Questionnaire
+            headline={content.sections?.find(isHeroSection)?.title}
+            questions={[question]}
+            staticContent={staticContent.questionnaire}
+            countries={content.countries}
+            customSelectHandler={selectHandler}
+            advantages={
+              content.questionnaires_advantages ??
+              content.questionnaire?.advantages
+            }
+          />
+        </QuestionnaireProvider>
+      ) : (
+        <QuestionnairePlaceholder />
+      )}
     </Layout>
   );
 };

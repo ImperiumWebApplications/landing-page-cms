@@ -1,5 +1,8 @@
 import CookieConsentModal from 'react-cookie-consent';
 import cx from 'classnames';
+import ReactMarkdown from 'react-markdown';
+
+import type { StaticContent } from '../../lib/strapi';
 
 import { getButtonSizeClasses, getButtonVariantClasses } from '../Button';
 
@@ -9,11 +12,13 @@ export type CookiesAllowed = 'Yes' | 'No' | 'NotAnswered';
 export type CookieConsentProps = {
   consent: CookiesAllowed;
   setConsent: React.Dispatch<React.SetStateAction<CookiesAllowed>>;
+  staticContent: StaticContent['cookie_consent_dialog'];
 };
 
 export const CookieConsent: React.FC<CookieConsentProps> = ({
   consent,
   setConsent,
+  staticContent,
 }) => {
   if (consent !== 'NotAnswered') return <></>;
 
@@ -28,36 +33,30 @@ export const CookieConsent: React.FC<CookieConsentProps> = ({
           enableDeclineButton={true}
           expires={30}
           containerClasses="absolute z-50 bg-[white] p-8 right-4 w-[calc(100%-2rem)] h-auto rounded-md text-sm shadow-lg md:max-w-lg sm:width-[25rem] sm:right-8"
-          buttonText="Cookies erlauben"
+          buttonText={staticContent?.accept_label}
+          ariaAcceptLabel={staticContent?.accept_label ?? undefined}
           buttonClasses={cx(
             'relative rounded-md mt-4',
             getButtonVariantClasses('primary'),
             getButtonSizeClasses('medium'),
           )}
           onAccept={() => setConsent('Yes')}
-          ariaAcceptLabel="Cookies erlauben"
-          declineButtonText="Ablehnen"
+          declineButtonText={staticContent?.decline_label}
+          ariaDeclineLabel={staticContent?.decline_label ?? undefined}
           declineButtonClasses={cx(
             'relative rounded-md mt-4 mr-4',
             getButtonVariantClasses('tertiary'),
             getButtonSizeClasses('medium'),
           )}
           onDecline={() => setConsent('No')}
-          ariaDeclineLabel="Cookies ablehnen"
           cookieName={COOKIE_CONSENT_NAME}
         >
           <span className="my-4 block text-lg font-semibold uppercase tracking-wide text-[black] opacity-90">
-            Hinweis
+            {staticContent?.title}
           </span>
-          Diese Webseite nutzt Cookies und Tracking-Technologien. Ein Teil ist
-          zur Nutzung erforderlich. Andere Technologien dienen dem Ausspielen
-          personalisierter Werbung oder der Auswertung des Nutzerverhaltens. Mit
-          einem Klick auf <strong>Cookies erlauben</strong> genehmigen Sie uns
-          die Datenverarbeitung und Weitergabe an Dritte gemäß der{' '}
-          <a href="/datenschutz" target="_blank">
-            Datenschutzerklärung
-          </a>
-          .
+          {staticContent?.description ? (
+            <ReactMarkdown>{staticContent?.description}</ReactMarkdown>
+          ) : null}
         </CookieConsentModal>
       </div>
     </div>

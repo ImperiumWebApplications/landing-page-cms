@@ -17,7 +17,7 @@ const ReactSVG = dynamic(
 
 // Used for icons, images, and loading skeleton in tiles
 const iconClassName =
-  'h-[60px] max-w-[100%] md:h-[74px] lg:h-[100px] 3xl:h-[140px]';
+  'h-[60px] max-w-[100%] iOS-max-width-fix md:h-[74px] lg:h-[100px] 3xl:h-[140px]';
 
 export type QuestionnaireTilesProps = {
   question: HeroSectionContent['questionnaires_question'];
@@ -32,9 +32,7 @@ export const QuestionnaireTiles: React.FC<QuestionnaireTilesProps> = (
   return (
     <div className="pt-4 sm:pt-6 md:pt-0">
       <h4 className="text-center text-lg font-bold text-primary sm:text-xl md:text-left md:text-2xl">
-        <span data-testid="hero-tiles-question">
-          {props.question ?? 'Was suchen Sie?'}
-        </span>
+        <span data-testid="hero-tiles-question">{props.question}</span>
       </h4>
       <div
         data-testid="hero-tiles-grid"
@@ -60,7 +58,7 @@ export const QuestionnaireTiles: React.FC<QuestionnaireTilesProps> = (
                   <Image
                     data-testid="hero-tile-image"
                     src={attributes.icon.data.attributes.url}
-                    className={iconClassName}
+                    className={`${iconClassName} object-contain`}
                     alt={attributes.icon.data.attributes.alternativeText ?? ''}
                     width={attributes.icon.data.attributes.width ?? 0}
                     height={attributes.icon.data.attributes.height ?? 0}
@@ -96,7 +94,5 @@ export const QuestionnaireTiles: React.FC<QuestionnaireTilesProps> = (
 const LoadingIcon = () => (
   <div
     className={cx(iconClassName, 'animate-pulse rounded-full bg-tertiary p-4')}
-  >
-    <span className="sr-only">Wird geladen</span>
-  </div>
+  />
 );

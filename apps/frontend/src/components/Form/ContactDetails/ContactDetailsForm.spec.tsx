@@ -42,6 +42,7 @@ const ContactDetailsWrapper = (props: { onSubmit?: () => Promise<void> }) => {
   const [details, setDetails] = useState<ContactDetailsFormValues>();
   return (
     <ContactDetailsForm
+      language="German"
       onSubmit={props.onSubmit}
       values={details}
       setValues={(values) => {
@@ -55,35 +56,36 @@ describe('ContactDetailsForm', () => {
   test('should render fields correctly', () => {
     const { getByLabelText } = render(<ContactDetailsWrapper />);
 
+    const { Salutation, FirstName, LastName, Email, Phone, TermsAccepted } =
+      ContactFieldConfig;
+
     const salutationFrau = getByLabelText(
-      ContactFieldConfig.Salutation.label[0],
+      Salutation.getConfig('German').label[0],
     );
     expect(salutationFrau).toBeInTheDocument();
 
     const salutationHerr = getByLabelText(
-      ContactFieldConfig.Salutation.label[1],
+      Salutation.getConfig('German').label[1],
     );
     expect(salutationHerr).toBeInTheDocument();
 
-    const firstName = getByLabelText(ContactFieldConfig.FirstName.label);
+    const firstName = getByLabelText(FirstName.getConfig('German').label);
     expect(firstName).toBeInTheDocument();
     expect(firstName).toHaveAttribute('type', 'text');
 
-    const lastName = getByLabelText(ContactFieldConfig.LastName.label);
+    const lastName = getByLabelText(LastName.getConfig('German').label);
     expect(lastName).toBeInTheDocument();
     expect(lastName).toHaveAttribute('type', 'text');
 
-    const email = getByLabelText(ContactFieldConfig.Email.label);
+    const email = getByLabelText(Email.getConfig('German').label);
     expect(email).toBeInTheDocument();
     expect(email).toHaveAttribute('type', 'email');
 
-    const phone = getByLabelText(ContactFieldConfig.Phone.label);
+    const phone = getByLabelText(Phone.getConfig('German').label);
     expect(phone).toBeInTheDocument();
     expect(phone).toHaveAttribute('type', 'text');
 
-    const accepted = getByLabelText(
-      'Ja, ich stimme der Datenschutzerklärung zu. (Widerruf jederzeit möglich)',
-    );
+    const accepted = getByLabelText(TermsAccepted.getConfig('German').label);
     expect(accepted).toBeInTheDocument();
     expect(accepted).toHaveAttribute('type', 'checkbox');
   });

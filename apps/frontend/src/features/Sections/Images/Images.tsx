@@ -13,7 +13,6 @@ import { SectionContainer } from '../SectionContainer';
 import { useSectionContext } from '../SectionContext';
 
 type ImagesSectionProps = {
-  id: string;
   content: ImagesSectionContent;
 };
 
@@ -21,7 +20,7 @@ export const ImagesSection: React.FC<ImagesSectionProps> = (props) => {
   const { state } = useSectionContext();
 
   return (
-    <SectionContainer id={props.id} className="my-12">
+    <SectionContainer className="my-12">
       <div className="hidden sm:relative sm:grid sm:grid-flow-row sm:grid-cols-2 sm:gap-2 md:grid-cols-3">
         {props.content.images?.data?.length &&
           props.content.images.data.map((image, i, arr) => {

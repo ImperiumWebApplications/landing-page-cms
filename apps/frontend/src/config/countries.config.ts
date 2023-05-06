@@ -1,30 +1,21 @@
-export type PostalCodeDetails = {
-  country_code: string;
-  zipcode: string;
-  place: string;
-  state?: string;
-  state_code?: string;
-  province?: string;
-  province_code?: string;
-  community?: string;
-  community_code?: string;
-  latitude: string;
-  longitude: string;
-};
+/** Country Configuration */
 
 export enum Country {
-  Switzerland = 'CH',
+  Austria = 'AT',
   Germany = 'DE',
+  Switzerland = 'CH',
 }
 
 export const CountryDetails = {
+  [Country.Austria]: {
+    postalCodeLength: 4,
+    isValidPostalCode: /(^\d{4}$)/,
+  },
   [Country.Germany]: {
-    topLevelDomain: 'de',
     postalCodeLength: 5,
     isValidPostalCode: /(^\d{5}$)/,
   },
   [Country.Switzerland]: {
-    topLevelDomain: 'ch',
     postalCodeLength: 4,
     isValidPostalCode: /(^\d{4}$)/,
   },
@@ -34,4 +25,9 @@ export const isKnownCountry = (
   country: string,
 ): country is keyof typeof CountryDetails => {
   return country in CountryDetails;
+};
+
+export type PostalCodeDetails = {
+  code: string;
+  place: string;
 };

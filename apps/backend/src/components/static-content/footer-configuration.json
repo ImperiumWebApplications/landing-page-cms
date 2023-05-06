@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_static_content_footer_configurations",
+  "info": {
+    "displayName": "Footer Configuration",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "revoke_consent_label": {
+      "type": "string"
+    },
+    "links": {
+      "displayName": "Link",
+      "type": "component",
+      "repeatable": true,
+      "component": "static-content.link"
+    }
+  }
+}

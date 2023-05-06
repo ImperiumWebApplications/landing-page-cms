@@ -13,6 +13,8 @@ export const content: { data: { id: number; attributes: LandingPage }[] } = {
         seo_description:
           'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC.',
         domain: 'localhost:3000',
+        countries: ['DE'],
+        language: 'German',
         brand_name: 'Leadquelle',
         color_primary: '#673A99',
         color_secondary: '#FF6658',
@@ -771,6 +773,115 @@ export const staticContent: {
       imprint:
         '# Impressum\n\n${client_address}\n\n\n### Kontakt\nTelefon: ${contact_phone}\nE-Mail: ${contact_email}\n\n${client_vat}\n\n### Haftung für Links\nUnser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.\n\nBei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.',
       privacy: null,
+      footer: {
+        id: 1,
+        revoke_consent_label: 'Cookie-Erlaubnis widerrufen',
+        links: [
+          {
+            id: 1,
+            href: '/',
+            label: 'Startseite',
+          },
+          {
+            id: 2,
+            href: '/impressum',
+            label: 'Impressum',
+          },
+          {
+            id: 3,
+            href: '/datenschutz',
+            label: 'Datenschutz',
+          },
+        ],
+      },
+      cookie_consent_dialog: {
+        id: 1,
+        accept_label: 'Cookies erlauben',
+        decline_label: 'Ablehnen',
+        title: 'Hinweis',
+        description:
+          'Diese Webseite nutzt Cookies und Tracking-Technologien. Ein Teil ist zur Nutzung erforderlich. Andere Technologien dienen dem Ausspielen personalisierter Werbung oder der Auswertung des Nutzerverhaltens. Mit einem Klick auf **Cookies erlauben** genehmigen Sie uns die Datenverarbeitung und Weitergabe an Dritte gemäß der [Datenschutzerklärung](/datenschutz).',
+      },
+      questionnaire: {
+        id: 1,
+        subheadline: '100% Kostenlos',
+        postal_code_step_title: 'Nennen Sie uns jetzt bitte Ihre Postleitzahl:',
+        postal_code_explanation:
+          'Für die Suche nach dem idealen Anbieter in Ihrer Region',
+        contact_details_step_title: 'Für wen sind die Angebote bestimmt?',
+        contact_details_last_step_hint: 'Letzter Schritt',
+        contact_details_button_label: 'Jetzt Anfrage abschicken',
+        contact_details_button_caption:
+          'Ihre Anfrage ist kostenlos und unverbindlich.',
+        confirmation_step_title: 'Ihre Anfrage wurde erfolgreich übermittelt.',
+        confirmation_paragraph_top:
+          'Zeitnah erhalten Sie von uns einen Anruf, damit wir Ihre Angaben gemeinsam validieren können. Kurz darauf werden Sie mindestens ein Angebot, von einem unserer Premium Partner erhalten. So ist eine professionelle Unterstützung, für Sie persönlich garantiert.',
+        confirmation_paragraph_bottom:
+          'Es werden Ihnen dabei keine anderen Kosten entstehen, als die durch die Nutzung Ihres Internetzugangs.',
+        confirmation_call_to_action_title:
+          'Verifizierungsvorgang beschleunigen',
+        confirmation_home_button_label: 'Zurück zur Startseite',
+        confirmation_call_to_action_prefix: 'Kostenfrei anrufen:',
+        postal_code_button_label: 'Weiter',
+        contact_details_badges: {
+          data: [
+            {
+              id: 199,
+              attributes: {
+                name: 'kagu-gepruefte-webseite.png',
+                alternativeText: null,
+                caption: null,
+                width: 200,
+                height: 120,
+                formats: null,
+                hash: 'kagu_gepruefte_webseite_eaaf888a84',
+                ext: '.png',
+                mime: 'image/png',
+                size: 3.36,
+                url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/kagu_gepruefte_webseite_eaaf888a84.png',
+                previewUrl: null,
+                provider: 'aws-s3',
+                provider_metadata: null,
+                createdAt: '2023-05-05T12:33:31.497Z',
+                updatedAt: '2023-05-05T12:33:31.497Z',
+              },
+            },
+            {
+              id: 200,
+              attributes: {
+                name: 'tech-webseiten-check.png',
+                alternativeText: null,
+                caption: null,
+                width: 195,
+                height: 191,
+                formats: {
+                  thumbnail: {
+                    ext: '.png',
+                    url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/thumbnail_tech_webseiten_check_3b6ae92abc.png',
+                    hash: 'thumbnail_tech_webseiten_check_3b6ae92abc',
+                    mime: 'image/png',
+                    name: 'thumbnail_tech-webseiten-check.png',
+                    path: null,
+                    size: 15.09,
+                    width: 159,
+                    height: 156,
+                  },
+                },
+                hash: 'tech_webseiten_check_3b6ae92abc',
+                ext: '.png',
+                mime: 'image/png',
+                size: 3.17,
+                url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/tech_webseiten_check_3b6ae92abc.png',
+                previewUrl: null,
+                provider: 'aws-s3',
+                provider_metadata: null,
+                createdAt: '2023-05-05T12:33:31.539Z',
+                updatedAt: '2023-05-05T12:33:31.539Z',
+              },
+            },
+          ],
+        },
+      },
       hero_section: {
         id: 1,
         hero_advantage: [
@@ -859,6 +970,12 @@ export const staticContent: {
       },
       video_section: {
         id: 1,
+        navigation_item: {
+          id: 2,
+          label: 'Prinzip',
+          anchor_id: 'prinzip',
+        },
+        call_to_action_button_label: 'Beratung starten',
         video: {
           data: {
             id: 180,
@@ -953,6 +1070,7 @@ export const staticContent: {
       },
       services_section: {
         id: 1,
+        call_to_action_button_label: 'Beratung starten',
         call_to_action_banner_title:
           'Wir helfen Ihnen unverbindlich und kostenlos, den besten Profi zu finden.',
         process_title: 'Absolut kostenlos und risikofrei Anfrage senden!',
@@ -1043,6 +1161,16 @@ export const staticContent: {
             },
           },
         ],
+        navigation_item: {
+          id: 4,
+          label: 'Unsere Mission',
+          anchor_id: 'mission',
+        },
+        process_navigation_item: {
+          id: 3,
+          label: 'Ablauf',
+          anchor_id: 'ablauf',
+        },
         process_advantage: [
           { id: 1, description: '100% kostenlos & unverbindlich' },
           { id: 2, description: 'Keine Auftragspflicht' },
@@ -1051,10 +1179,24 @@ export const staticContent: {
       reviews_section: {
         id: 1,
         title: 'Zufriedenheit unserer Kunden',
+        call_to_action_button_label: 'Beratung starten',
         call_to_action_banner_title:
           'Konnten wir Sie überzeugen?<br />Lassen Sie sich beraten',
+        navigation_item: {
+          id: 5,
+          label: 'Kundenstimmen',
+          anchor_id: 'kundenstimmen',
+        },
       },
-      questions_section: { id: 1, title: 'Häufig gestellte Fragen' },
+      questions_section: {
+        id: 1,
+        title: 'Häufig gestellte Fragen',
+        navigation_item: {
+          id: 6,
+          label: 'Häufig gestellte Fragen',
+          anchor_id: 'faq',
+        },
+      },
     },
   },
 };

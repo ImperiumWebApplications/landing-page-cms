@@ -1,20 +1,16 @@
-import {
-  Country,
-  CountryDetails,
-  isKnownCountry,
-} from '../config/countries.config';
+import { CountryDetails, isKnownCountry } from '../config/countries.config';
 
 /**
  * Checks if the given postal code matches the local
  * postal code format in any of the given countries.
  * @param code: string | number
- * @param countries?: string[] | Country[]
+ * @param countries?: string[]
  * @returns boolean;
  */
 
 export const isPostalCodeFormat = (
   code: string | number,
-  countries?: string[] | Country[],
+  countries?: string[],
 ): code is string | number => {
   if (!countries || !countries.length) return false;
 

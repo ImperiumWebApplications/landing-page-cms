@@ -16,6 +16,8 @@ export const getLandingPage = async (domain: string) => {
             background_image: { populate: '*' },
             number: { populate: '*' },
             statistics: { populate: '*' },
+            video: { populate: '*' },
+            video_thumbnail: { populate: '*' },
             images: { populate: '*' },
             faq_item: { populate: '*' },
             service_image: { populate: '*' },
@@ -71,4 +73,22 @@ export const getLandingPageId = async (domain: string) => {
   if (!res.data.length) throw new Error('No site found for domain: ' + domain);
 
   return res.data[0].id;
+};
+
+export const getRelatedLandingPages = async (questionnaireId: string) => {
+  const res = await strapi.find<CollectionType<LandingPage>>(
+    CONTENT_TYPES.LANDING_PAGES,
+    {
+      populate: { questionnaires_relations: { fields: '*' } },
+      filters: {
+        questionnaires_relations: {
+          id: {
+            $eq: questionnaireId,
+          },
+        },
+      },
+    },
+  );
+
+  return res.data;
 };

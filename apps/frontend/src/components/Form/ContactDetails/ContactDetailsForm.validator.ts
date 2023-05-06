@@ -8,8 +8,10 @@ export const isValidContactDetailsData = (
   if (!contact.salutation) return false;
   if (!contact.acceptedTerms) return false;
 
+  const { FirstName, LastName, Phone, Email } = ContactFieldConfig;
+
   if (
-    ContactFieldConfig.FirstName.validators.some(({ regex }) => {
+    FirstName.getConfig('English').validators.some(({ regex }) => {
       const isValid = regex.test(contact.firstName ?? '');
       return !isValid;
     })
@@ -17,7 +19,7 @@ export const isValidContactDetailsData = (
     return false;
 
   if (
-    ContactFieldConfig.LastName.validators.some(({ regex }) => {
+    LastName.getConfig('English').validators.some(({ regex }) => {
       const isValid = regex.test(contact.lastName ?? '');
       return !isValid;
     })
@@ -25,7 +27,7 @@ export const isValidContactDetailsData = (
     return false;
 
   if (
-    ContactFieldConfig.Phone.validators.some(({ regex }) => {
+    Phone.getConfig('English').validators.some(({ regex }) => {
       const isValid = regex.test(contact.phone ?? '');
       return !isValid;
     })
@@ -33,7 +35,7 @@ export const isValidContactDetailsData = (
     return false;
 
   if (
-    ContactFieldConfig.Email.validators.some(({ regex }) => {
+    Email.getConfig('English').validators.some(({ regex }) => {
       const isValid = regex.test(contact.email ?? '');
       return !isValid;
     })

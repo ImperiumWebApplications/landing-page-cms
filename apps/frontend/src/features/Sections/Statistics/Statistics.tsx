@@ -4,16 +4,14 @@ import { SectionContainer } from '../SectionContainer';
 import { StatisticsSectionContent } from '../SectionMapper';
 
 type StatisticsSectionProps = {
-  id: string;
   content: StatisticsSectionContent;
 };
 
 export const StatisticsSection: React.FC<StatisticsSectionProps> = ({
-  id,
   content,
 }) => {
   return (
-    <SectionContainer id={id} className="relative my-12 bg-secondary" fullWidth>
+    <SectionContainer className="relative my-12 bg-secondary" fullWidth>
       {content.background_image?.data?.attributes ? (
         <Image
           src={content.background_image.data.attributes.url}

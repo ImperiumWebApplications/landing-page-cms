@@ -5,6 +5,7 @@ import type {
   EnumerationField,
   Media,
   MediaList,
+  MultiSelectField,
   NumberField,
   Relations,
   RepeatableComponent,
@@ -27,16 +28,22 @@ export const LandingPageSections = {
   VIDEO: 'sections.video',
 } as const;
 
+export type LandingPageLanguage = 'German' | 'English';
+
 export type LandingPage = {
   google_tag_manager_id?: TextField;
   google_allow_indexation?: BooleanField;
 
   domain?: TextField;
   brand_name?: TextField;
+  countries?: MultiSelectField<'AT' | 'DE' | 'CH'>;
+  /** Don't access directly. Use `useLanguageContext`. */
+  language?: EnumerationField<LandingPageLanguage>;
   contact_email?: TextField;
   contact_phone?: TextField;
   client_address?: TextField;
   client_vat?: TextField;
+  service_type?: TextField;
 
   seo_title?: TextField;
   seo_description?: TextField;
@@ -179,6 +186,8 @@ export type ImagesSection = Component<{
 }>;
 
 export type VideoSection = Component<{
+  video?: Media;
+  video_thumbnail?: Media;
   video_title?: TextField;
   video_description?: TextField;
   statistics?: RepeatableComponent<{

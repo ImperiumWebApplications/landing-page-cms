@@ -19,6 +19,7 @@ export type CommonFieldProps = {
   label?: string;
   validators?: readonly Validator[];
   className?: string;
+  error?: boolean;
 };
 
 export type FieldProps =

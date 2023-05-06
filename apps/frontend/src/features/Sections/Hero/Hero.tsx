@@ -11,7 +11,7 @@ import { HeroAdvantages } from './components/HeroAdvantages';
 import { SectionContainer } from '../SectionContainer';
 
 type HeroSectionProps = {
-  id: string;
+  id?: string;
   content: HeroSectionContent;
   staticContent: StaticContent['hero_section'];
 };
@@ -61,7 +61,7 @@ export const HeroSection: React.FC<HeroSectionProps> = (props) => {
   }, [subtitle]);
 
   return (
-    <SectionContainer id={props.id} fullWidth>
+    <SectionContainer id={props.id} data-section="hero" fullWidth>
       <motion.div
         className="relative mx-auto flex max-w-[1400px] flex-col bg-tertiary md:-mt-[150px] md:grid md:grid-cols-6 md:grid-rows-4 md:rounded-md 3xl:max-w-[1800px]"
         initial={{ opacity: 0 }}

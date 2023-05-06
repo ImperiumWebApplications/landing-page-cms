@@ -1,7 +1,7 @@
-import { Country, CountryDetails } from '../config/countries.config';
+import { CountryDetails } from '../config/countries.config';
 
-export const getCountryDetails = (countries?: Country[] | undefined) => {
+export const getCountryDetails = (countries?: string[] | null) => {
   return (countries ?? [])
-    .map((country) => CountryDetails[country])
+    .map((country) => CountryDetails[country as keyof typeof CountryDetails])
     .filter((v) => v !== undefined);
 };

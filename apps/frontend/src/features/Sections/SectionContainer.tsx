@@ -1,24 +1,21 @@
+import type { ComponentProps } from 'react';
+
 import cx from 'classnames';
 
-type SectionContainerProps = {
-  id: string;
-  className?: string;
+type SectionContainerProps = ComponentProps<'div'> & {
   contentWrapperClassName?: string;
   fullWidth?: boolean;
   children?: React.ReactNode;
-  style?: React.CSSProperties;
 };
 
 export const SectionContainer: React.FC<SectionContainerProps> = ({
-  id,
-  className,
   contentWrapperClassName,
   fullWidth,
-  style,
   children,
+  ...rest
 }) => {
   return (
-    <div id={id} className={className} style={style}>
+    <div {...rest}>
       {fullWidth ? (
         children
       ) : (

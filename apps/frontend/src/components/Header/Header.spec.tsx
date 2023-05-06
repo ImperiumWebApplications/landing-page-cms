@@ -1,14 +1,11 @@
 import { fireEvent } from '@testing-library/react';
 import { useRouter } from 'next/router';
 import React from 'react';
-import {
-  navigationItems,
-  questionnaireRoute,
-} from '../../config/navigation.config';
+import { questionnaireRoute } from '../../config/navigation.config';
 
 import { renderWithLayout } from '../../../jest.setup';
 import { useRouterMock } from '../../../mocks/lib/next/router';
-import { content } from '../../../mocks/lib/strapi/data';
+import { content, staticContent } from '../../../mocks/lib/strapi/data';
 import { setupIntersectionObserverMock } from '../../../mocks/window/intersectionObserver';
 import { Header } from './Header';
 import { act } from 'react-dom/test-utils';
@@ -26,7 +23,10 @@ describe('Header', () => {
 
   test('should show logo', () => {
     const { getByLabelText, getByTestId } = renderWithLayout(
-      <Header content={content.data[0].attributes} />,
+      <Header
+        content={content.data[0].attributes}
+        staticContent={staticContent.data.attributes}
+      />,
     );
 
     const logo = getByTestId('logo-svg');
@@ -47,7 +47,10 @@ describe('Header', () => {
     });
 
     const { getByTestId, getByLabelText } = renderWithLayout(
-      <Header content={content.data[0].attributes} />,
+      <Header
+        content={content.data[0].attributes}
+        staticContent={staticContent.data.attributes}
+      />,
     );
 
     const logoSvg = getByTestId('logo-svg');
@@ -58,14 +61,20 @@ describe('Header', () => {
 
   test('should contain mobile navigation button', () => {
     const { getByLabelText } = renderWithLayout(
-      <Header content={content.data[0].attributes} />,
+      <Header
+        content={content.data[0].attributes}
+        staticContent={staticContent.data.attributes}
+      />,
     );
     expect(getByLabelText('Toggle Navigation')).toBeInTheDocument();
   });
 
   test('should open mobile navigation on click', () => {
     const { getByRole, getByLabelText } = renderWithLayout(
-      <Header content={content.data[0].attributes} />,
+      <Header
+        content={content.data[0].attributes}
+        staticContent={staticContent.data.attributes}
+      />,
     );
 
     const toggle = getByLabelText('Toggle Navigation');
@@ -79,13 +88,11 @@ describe('Header', () => {
   });
 
   test('should contain navigation items', () => {
-    (useRouter as jest.Mock).mockReturnValue({
-      ...useRouterMock,
-      pathname: '/datenschutz',
-    });
-
     const { getByText, getByLabelText } = renderWithLayout(
-      <Header content={content.data[0].attributes} />,
+      <Header
+        content={content.data[0].attributes}
+        staticContent={staticContent.data.attributes}
+      />,
     );
 
     const toggle = getByLabelText('Toggle Navigation');
@@ -94,10 +101,17 @@ describe('Header', () => {
       fireEvent.click(toggle);
     });
 
-    navigationItems.forEach((item) => {
-      expect(getByText(item.label)).toHaveAttribute('href', item.href);
-      if (item.href === '/datenschutz')
-        expect(getByText(item.label)).toHaveClass('text-primary');
-    });
+    expect(getByText('Startseite')).toHaveAttribute('href', '/');
+    expect(getByText('Ablauf')).toHaveAttribute('href', '/#ablauf');
+    expect(getByText('Prinzip')).toHaveAttribute('href', '/#prinzip');
+    expect(getByText('Unsere Mission')).toHaveAttribute('href', '/#mission');
+    expect(getByText('Kundenstimmen')).toHaveAttribute(
+      'href',
+      '/#kundenstimmen',
+    );
+    expect(getByText('Häufig gestellte Fragen')).toHaveAttribute(
+      'href',
+      '/#faq',
+    );
   });
 });

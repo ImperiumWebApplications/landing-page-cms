@@ -13,7 +13,6 @@ import { CallToActionSectionContent } from '../SectionMapper';
 import { useSectionContext } from '../SectionContext';
 
 type CallToActionSectionProps = {
-  id: string;
   content: CallToActionSectionContent;
 };
 
@@ -23,10 +22,7 @@ export const CallToActionSection: React.FC<CallToActionSectionProps> = (
   const { state } = useSectionContext();
 
   return (
-    <SectionContainer
-      id={props.id}
-      className="my-[70px] overflow-x-hidden md:my-32"
-    >
+    <SectionContainer className="my-[70px] overflow-x-hidden md:my-32">
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import { NextSeo } from 'next-seo';
 
-import type { LandingPage } from '../../lib/strapi';
+import type { LandingPage, StaticContent } from '../../lib/strapi';
 import {
   sendEventToAnalytics,
   TagManager,
@@ -24,10 +24,15 @@ const CookieConsent = dynamic<CookieConsentProps>(
 
 type LayoutProps = {
   content: LandingPage;
+  staticContent: StaticContent;
   children?: React.ReactNode;
 };
 
-export const Layout: React.FC<LayoutProps> = ({ children, content }) => {
+export const Layout: React.FC<LayoutProps> = ({
+  children,
+  content,
+  staticContent,
+}) => {
   const [allowCookies, setAllowCookies] = useCookieConsentValue();
 
   useEffect(() => {
@@ -47,10 +52,14 @@ export const Layout: React.FC<LayoutProps> = ({ children, content }) => {
       <NextSeo {...extractSeoProps(content)} />
       <Head content={content} />
       <TagManager id={content.google_tag_manager_id} host={content.domain} />
-      <Header content={content} />
+      <Header content={content} staticContent={staticContent} />
       <main>{children}</main>
-      <Footer content={content} />
-      <CookieConsent consent={allowCookies} setConsent={setAllowCookies} />
+      <Footer content={content} staticContent={staticContent} />
+      <CookieConsent
+        consent={allowCookies}
+        setConsent={setAllowCookies}
+        staticContent={staticContent.cookie_consent_dialog}
+      />
     </>
   );
 };

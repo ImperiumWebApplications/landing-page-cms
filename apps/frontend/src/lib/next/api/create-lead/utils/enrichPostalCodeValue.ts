@@ -1,5 +1,4 @@
 import type { QuestionnaireState } from '../../../../../features/Questionnaire';
-import { getCountryByDomain } from '../../../../../utils/getCountryByDomain';
 import { getPostalCodeDetails } from '../../postal-codes';
 
 /**
@@ -8,19 +7,18 @@ import { getPostalCodeDetails } from '../../postal-codes';
  */
 
 export const enrichPostalCodeValue = ({
-  host,
+  countries,
   contactData,
 }: {
-  host: string;
+  countries: string[] | undefined;
   contactData: QuestionnaireState['contact'];
 }) => {
   if (contactData.city) return `${contactData.postalCode} ${contactData.city}`;
 
-  const country = getCountryByDomain(host);
-  if (!country) return `${contactData.postalCode}`;
+  if (!countries?.length) return `${contactData.postalCode}`;
 
   const code = contactData.postalCode ?? '';
-  const details = getPostalCodeDetails({ code, countries: [country] });
+  const details = getPostalCodeDetails({ code, countries });
   if (!details.length) return `${contactData.postalCode}`;
 
   return `${contactData.postalCode} ${details?.[0].place}`;

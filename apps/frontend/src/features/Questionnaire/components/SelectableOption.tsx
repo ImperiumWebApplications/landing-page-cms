@@ -76,12 +76,11 @@ export const SelectableOption: React.FC<SelectableOptionProps> = ({
         {!icon?.data ? <IconPlaceholder /> : null}
       </div>
       <div
+        dangerouslySetInnerHTML={{ __html: label }}
         className={`mt-2 flex items-center justify-center pt-2 text-center text-sm font-bold leading-tight group-hover:text-primary md:text-base ${
           selected ? 'text-primary' : 'text-gray'
         }`}
-      >
-        {label}
-      </div>
+      />
     </div>
   );
 };

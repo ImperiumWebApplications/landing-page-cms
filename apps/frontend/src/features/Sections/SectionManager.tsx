@@ -20,50 +20,42 @@ export const initSectionManager = (
   return {
     Hero: sectionMap?.hero ? (
       <HeroSection
-        id="hero"
         content={sectionMap.hero}
         staticContent={staticContent.hero_section}
       />
     ) : null,
     CallToAction:
       sectionMap?.callToAction && !isNewDesign ? (
-        <CallToActionSection
-          id="call-to-action"
-          content={sectionMap.callToAction}
-        />
+        <CallToActionSection content={sectionMap.callToAction} />
       ) : null,
     Images:
       sectionMap?.images && !isNewDesign ? (
-        <ImagesSection id="images" content={sectionMap.images} />
+        <ImagesSection content={sectionMap.images} />
       ) : null,
     Questions: sectionMap?.questions ? (
       <QuestionsSection
-        id="questions"
         content={sectionMap.questions}
         staticContent={staticContent.questions_section}
       />
     ) : null,
     Reviews: sectionMap?.reviews ? (
       <ReviewsSection
-        id="reviews"
         content={sectionMap.reviews}
         staticContent={staticContent.reviews_section}
       />
     ) : null,
     Services: sectionMap?.services ? (
       <ServicesSection
-        id="services"
         content={sectionMap.services}
         staticContent={staticContent.services_section}
       />
     ) : null,
     Statistics:
       sectionMap?.statistics && !isNewDesign ? (
-        <StatisticsSection id="statistics" content={sectionMap.statistics} />
+        <StatisticsSection content={sectionMap.statistics} />
       ) : null,
     Video: sectionMap?.video ? (
       <VideoSection
-        id="video"
         content={sectionMap.video}
         staticContent={staticContent.video_section}
       />

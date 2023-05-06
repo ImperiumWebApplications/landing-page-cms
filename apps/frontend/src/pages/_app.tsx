@@ -12,6 +12,8 @@ import 'swiper/css/pagination';
 import '../styles/global.css';
 
 import { isTestEnvironment } from '../utils/isTestEnvironment';
+import { LanguageContext } from '../context/Language';
+import { LandingPage, LandingPageLanguage } from '../lib/strapi';
 
 if (isTestEnvironment()) {
   (async () => {
@@ -43,7 +45,9 @@ const sen = localFont({
   ],
 });
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: AppProps<{ content?: LandingPage }>) {
+  const language: LandingPageLanguage = pageProps.content?.language ?? 'German';
+
   return (
     <>
       <style jsx global>{`
@@ -51,7 +55,9 @@ function MyApp({ Component, pageProps }: AppProps) {
           font-family: ${sen.style.fontFamily};
         }
       `}</style>
-      <Component {...pageProps} />
+      <LanguageContext.Provider value={{ language }}>
+        <Component {...pageProps} />
+      </LanguageContext.Provider>
     </>
   );
 }

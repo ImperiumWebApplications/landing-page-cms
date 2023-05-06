@@ -1,10 +1,13 @@
 import cx from 'classnames';
 
 import { useQuestionnaireContext } from '../context/Questionnaire';
+import { useLanguageContext } from '../../../context/Language';
 import { ChevronLeftIcon } from '../../../components/Icons';
+import { i18n } from '../../../config/i18n.config';
 
 export const BackButton: React.FC<{ className?: string }> = ({ className }) => {
   const { state, dispatch } = useQuestionnaireContext();
+  const { language } = useLanguageContext();
 
   const onClickHandler: React.MouseEventHandler = () => {
     if (state.index !== 0) {
@@ -21,7 +24,7 @@ export const BackButton: React.FC<{ className?: string }> = ({ className }) => {
         className,
       )}
       data-testid="questionnaire-back-button"
-      aria-label="Einen Schritt zurück"
+      aria-label={i18n[language].BACK}
       onClick={onClickHandler}
     >
       <ChevronLeftIcon className="-ml-[0.1rem] h-4 stroke-gray" />

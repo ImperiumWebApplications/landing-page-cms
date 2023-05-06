@@ -83,8 +83,7 @@
       ]
     },
     "service_type": {
-      "type": "string",
-      "private": true
+      "type": "string"
     },
     "google_allow_indexation": {
       "type": "boolean",
@@ -119,6 +118,16 @@
       "type": "component",
       "repeatable": false,
       "component": "questionnaire.advantages"
+    },
+    "countries": {
+      "type": "customField",
+      "options": ["Germany:DE", "Switzerland:CH", "Austria:AT"],
+      "customField": "plugin::multi-select.multi-select"
+    },
+    "language": {
+      "type": "enumeration",
+      "enum": ["German", "English"],
+      "default": "German"
     }
   }
 }
