@@ -55,7 +55,11 @@ export const Layout: React.FC<LayoutProps> = ({
       <Header content={content} staticContent={staticContent} />
       <main>{children}</main>
       <Footer content={content} staticContent={staticContent} />
-      <CookieConsent consent={allowCookies} setConsent={setAllowCookies} />
+      <CookieConsent
+        consent={allowCookies}
+        setConsent={setAllowCookies}
+        staticContent={staticContent.cookie_consent_dialog}
+      />
     </>
   );
 };

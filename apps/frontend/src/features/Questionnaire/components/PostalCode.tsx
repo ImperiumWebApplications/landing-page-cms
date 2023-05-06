@@ -145,7 +145,6 @@ export const PostalCode: React.FC<PostalCodeProps> = ({
     code,
     countries,
     resetCities,
-    PostalCodeField.validators,
   ]);
 
   return (

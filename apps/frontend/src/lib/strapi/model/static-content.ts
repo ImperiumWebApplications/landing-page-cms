@@ -23,6 +23,13 @@ export type StaticContent = {
       href?: TextField;
     }>;
   }>;
+  /** Cookie Consent Configuration */
+  cookie_consent_dialog?: Component<{
+    accept_label?: TextField;
+    decline_label?: TextField;
+    title?: TextField;
+    description?: TextField;
+  }>;
   /** Static Content for Questionnaire */
   questionnaire?: Component<{
     subheadline?: TextField;

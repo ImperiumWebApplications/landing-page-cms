@@ -108,6 +108,17 @@
         }
       },
       "component": "static-content.questionnaire"
+    },
+    "cookie_consent_dialog": {
+      "displayName": "Cookie Consent",
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "static-content.cookie-consent"
     }
   }
 }

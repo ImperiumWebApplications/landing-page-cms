@@ -21,6 +21,9 @@ export const getStaticContent = async (
             links: { fields: '*' },
           },
         },
+        cookie_consent_dialog: {
+          fields: '*',
+        },
         questionnaire: {
           field: '*',
           populate: {

@@ -794,6 +794,14 @@ export const staticContent: {
           },
         ],
       },
+      cookie_consent_dialog: {
+        id: 1,
+        accept_label: 'Cookies erlauben',
+        decline_label: 'Ablehnen',
+        title: 'Hinweis',
+        description:
+          'Diese Webseite nutzt Cookies und Tracking-Technologien. Ein Teil ist zur Nutzung erforderlich. Andere Technologien dienen dem Ausspielen personalisierter Werbung oder der Auswertung des Nutzerverhaltens. Mit einem Klick auf **Cookies erlauben** genehmigen Sie uns die Datenverarbeitung und Weitergabe an Dritte gemäß der [Datenschutzerklärung](/datenschutz).',
+      },
       questionnaire: {
         id: 1,
         subheadline: '100% Kostenlos',
