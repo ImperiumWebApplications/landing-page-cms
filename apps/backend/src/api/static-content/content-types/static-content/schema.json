@@ -97,6 +97,17 @@
         }
       },
       "component": "static-content.footer-configuration"
+    },
+    "questionnaire": {
+      "displayName": "Questionnaire",
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "static-content.questionnaire"
     }
   }
 }

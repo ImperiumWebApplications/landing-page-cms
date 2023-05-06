@@ -3,6 +3,8 @@ import Image from 'next/image';
 
 import { ReviewsSectionContent } from '../../SectionMapper';
 import { useMediaQuery } from '../../../../hooks/useMediaQuery';
+import { useLanguageContext } from '../../../../context/Language';
+import { i18n } from '../../../../config/i18n.config';
 
 export type ReviewProps = {
   content: NonNullable<ReviewsSectionContent['rating']>[0];
@@ -15,6 +17,7 @@ export const Review: React.FC<ReviewProps> = ({
   expanded,
   onExpand,
 }) => {
+  const { language } = useLanguageContext();
   const isMinTabletWidth = useMediaQuery(`(min-width: 480px)`);
 
   return (
@@ -37,7 +40,9 @@ export const Review: React.FC<ReviewProps> = ({
             : `${content.description?.substring(0, 300)}...`}
           {!isMinTabletWidth && content.description.length > 300 && (
             <span className="block font-semibold opacity-75" onClick={onExpand}>
-              {expanded ? ' Weniger anzeigen' : ' Mehr anzeigen'}
+              {expanded
+                ? ` ${i18n[language].SHOW_LESS}`
+                : ` ${i18n[language].SHOW_MORE}`}
             </span>
           )}
         </p>

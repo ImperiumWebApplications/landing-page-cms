@@ -2,6 +2,8 @@ import Link from 'next/link';
 import { resetCookieConsentValue } from 'react-cookie-consent';
 
 import type { LandingPage, StaticContent } from '../../lib/strapi';
+import { i18n } from '../../config/i18n.config';
+import { useLanguageContext } from '../../context/Language';
 
 import { Logo } from '../Logo';
 import { COOKIE_CONSENT_NAME } from '../CookieConsent';
@@ -12,13 +14,12 @@ type FooterProps = {
 };
 
 export const Footer: React.FC<FooterProps> = ({ content, staticContent }) => {
+  const { language } = useLanguageContext();
+
   const onResetCookies = () => {
     window.scrollTo(0, 0);
     resetCookieConsentValue(COOKIE_CONSENT_NAME);
   };
-
-  const emailSubject =
-    content.language === 'English' ? 'New request' : 'Neue Anfrage';
 
   return (
     <footer className="flex h-auto w-full bg-primary text-tertiary">
@@ -64,7 +65,7 @@ export const Footer: React.FC<FooterProps> = ({ content, staticContent }) => {
                 <div className="mt-3 block text-sm md:mt-0 md:inline">
                   <a
                     className="font-normal"
-                    href={`mailto:${content.contact_email}?subject=${emailSubject}`}
+                    href={`mailto:${content.contact_email}?subject=${i18n[language].NEW_REQUEST}`}
                   >
                     {content.contact_email}
                   </a>

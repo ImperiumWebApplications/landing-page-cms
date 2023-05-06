@@ -3,8 +3,14 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 
-import type { LandingPage, StaticContent } from '../../lib/strapi';
+import type {
+  LandingPage,
+  LandingPageLanguage,
+  StaticContent,
+} from '../../lib/strapi';
+import { useLanguageContext } from '../../context/Language';
 import { isFunnelRoute } from '../../utils/isFunnelRoute';
+import { i18n } from '../../config/i18n.config';
 
 import { Logo } from '../Logo';
 import { Navigation } from './components/Navigation';
@@ -15,10 +21,12 @@ type HeaderProps = {
 };
 
 export const Header: React.FC<HeaderProps> = ({ content, staticContent }) => {
+  const { language } = useLanguageContext();
+
   const router = useRouter();
   const isFunnel = isFunnelRoute(router);
 
-  const navigation = getNavigation(staticContent, content.language);
+  const navigation = getNavigation(staticContent, language);
 
   return (
     <header
@@ -53,12 +61,12 @@ export const Header: React.FC<HeaderProps> = ({ content, staticContent }) => {
 
 const getNavigation = (
   content: StaticContent,
-  language: LandingPage['language'],
+  language: LandingPageLanguage,
 ) => {
   const navigation = {
     home: {
       href: '/',
-      label: language === 'English' ? 'Home' : 'Startseite',
+      label: i18n[language].HOME,
     },
     video: content.video_section?.navigation_item?.anchor_id
       ? {

@@ -20,6 +20,7 @@ const QuestionnairePage: QuestionnairePage = ({
       {questionnaire.questions?.length ? (
         <QuestionnaireProvider>
           <Questionnaire
+            staticContent={staticContent.questionnaire}
             headline={content.sections?.find(isHeroSection)?.title}
             questions={questionnaire.questions}
             countries={content.countries}

@@ -1,0 +1,60 @@
+{
+  "collectionName": "components_static_content_questionnaires",
+  "info": {
+    "displayName": "Questionnaire",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "subheadline": {
+      "type": "string"
+    },
+    "postal_code_step_title": {
+      "type": "string"
+    },
+    "postal_code_explanation": {
+      "type": "string"
+    },
+    "contact_details_step_title": {
+      "type": "string"
+    },
+    "contact_details_last_step_hint": {
+      "type": "string"
+    },
+    "contact_details_button_label": {
+      "type": "string"
+    },
+    "contact_details_button_caption": {
+      "type": "string"
+    },
+    "confirmation_step_title": {
+      "type": "string"
+    },
+    "confirmation_paragraph_top": {
+      "type": "richtext"
+    },
+    "confirmation_paragraph_bottom": {
+      "type": "richtext"
+    },
+    "confirmation_call_to_action_title": {
+      "type": "string"
+    },
+    "confirmation_home_button_label": {
+      "type": "string"
+    },
+    "confirmation_call_to_action_prefix": {
+      "type": "string"
+    },
+    "contact_details_badges": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "postal_code_button_label": {
+      "type": "string"
+    }
+  }
+}

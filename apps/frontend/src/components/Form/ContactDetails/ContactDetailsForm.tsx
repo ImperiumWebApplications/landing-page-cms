@@ -2,6 +2,9 @@ import { useCallback, useEffect, useState } from 'react';
 import cx from 'classnames';
 import * as Sentry from '@sentry/nextjs';
 
+import type { LandingPageLanguage } from '../../../lib/strapi';
+import { i18n } from '../../../config/i18n.config';
+
 import { ContactFieldConfig } from './ContactDetailsForm.config';
 import { isValidContactDetailsData } from './ContactDetailsForm.validator';
 
@@ -9,12 +12,12 @@ import { Button } from '../../Button';
 import { Field } from '../Field';
 
 export type ContactDetailsFormValues = {
-  [ContactFieldConfig.Salutation.name]?: string | undefined;
-  [ContactFieldConfig.FirstName.name]?: string | undefined;
-  [ContactFieldConfig.LastName.name]?: string | undefined;
-  [ContactFieldConfig.Email.name]?: string | undefined;
-  [ContactFieldConfig.Phone.name]?: string | undefined;
-  [ContactFieldConfig.TermsAccepted.name]?: boolean | undefined;
+  [ContactFieldConfig.Salutation.id]?: string | undefined;
+  [ContactFieldConfig.FirstName.id]?: string | undefined;
+  [ContactFieldConfig.LastName.id]?: string | undefined;
+  [ContactFieldConfig.Email.id]?: string | undefined;
+  [ContactFieldConfig.Phone.id]?: string | undefined;
+  [ContactFieldConfig.TermsAccepted.id]?: boolean | undefined;
 };
 
 export type ContactDetailsFormProps = {
@@ -22,6 +25,9 @@ export type ContactDetailsFormProps = {
   setValues: (values: ContactDetailsFormValues) => void;
   onSubmit?: (cb?: () => void) => Promise<void>;
   className?: string;
+  buttonText?: string | null;
+  buttonCaption?: string | null;
+  language: LandingPageLanguage;
 };
 
 export const ContactDetailsForm: React.FC<ContactDetailsFormProps> = ({
@@ -29,10 +35,21 @@ export const ContactDetailsForm: React.FC<ContactDetailsFormProps> = ({
   onSubmit,
   setValues,
   className,
+  buttonCaption,
+  buttonText,
+  language,
 }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmissionFailed, setIsSubmissionFailed] = useState(false);
   const [isInvalidInput, setIsInvalidInput] = useState(false);
+
+  const SalutationField = ContactFieldConfig.Salutation.getConfig(language);
+  const FirstNameField = ContactFieldConfig.FirstName.getConfig(language);
+  const LastNameField = ContactFieldConfig.LastName.getConfig(language);
+  const EmailField = ContactFieldConfig.Email.getConfig(language);
+  const PhoneField = ContactFieldConfig.Phone.getConfig(language);
+  const TermsAcceptedField =
+    ContactFieldConfig.TermsAccepted.getConfig(language);
 
   const handleSubmit = useCallback(async () => {
     if (!isValidContactDetailsData(values)) {
@@ -70,8 +87,8 @@ export const ContactDetailsForm: React.FC<ContactDetailsFormProps> = ({
         <Field
           type="radio"
           className="md:col-span-2"
-          id={ContactFieldConfig.Salutation.name}
-          options={ContactFieldConfig.Salutation.label}
+          id={ContactFieldConfig.Salutation.id}
+          options={SalutationField.label}
           value={values?.salutation}
           error={isInvalidInput && !values?.salutation}
           onChange={(v) => {
@@ -80,9 +97,9 @@ export const ContactDetailsForm: React.FC<ContactDetailsFormProps> = ({
         />
         <Field
           type="text"
-          id={ContactFieldConfig.FirstName.name}
-          label={ContactFieldConfig.FirstName.label}
-          validators={ContactFieldConfig.FirstName.validators}
+          id={ContactFieldConfig.FirstName.id}
+          label={FirstNameField.label}
+          validators={FirstNameField.validators}
           error={isInvalidInput && !values?.firstName}
           value={values?.firstName}
           onChange={(e) => {
@@ -91,9 +108,9 @@ export const ContactDetailsForm: React.FC<ContactDetailsFormProps> = ({
         />
         <Field
           type="text"
-          id={ContactFieldConfig.LastName.name}
-          label={ContactFieldConfig.LastName.label}
-          validators={ContactFieldConfig.LastName.validators}
+          id={ContactFieldConfig.LastName.id}
+          label={LastNameField.label}
+          validators={LastNameField.validators}
           error={isInvalidInput && !values?.lastName}
           value={values?.lastName}
           onChange={(e) => {
@@ -102,9 +119,9 @@ export const ContactDetailsForm: React.FC<ContactDetailsFormProps> = ({
         />
         <Field
           type="text"
-          id={ContactFieldConfig.Phone.name}
-          label={ContactFieldConfig.Phone.label}
-          validators={ContactFieldConfig.Phone.validators}
+          id={ContactFieldConfig.Phone.id}
+          label={PhoneField.label}
+          validators={PhoneField.validators}
           error={isInvalidInput && !values?.phone}
           value={values?.phone}
           onChange={(e) => {
@@ -113,9 +130,9 @@ export const ContactDetailsForm: React.FC<ContactDetailsFormProps> = ({
         />
         <Field
           type="email"
-          id={ContactFieldConfig.Email.name}
-          label={ContactFieldConfig.Email.label}
-          validators={ContactFieldConfig.Email.validators}
+          id={ContactFieldConfig.Email.id}
+          label={EmailField.label}
+          validators={EmailField.validators}
           error={isInvalidInput && !values?.email}
           value={values?.email}
           onChange={(e) => {
@@ -125,9 +142,9 @@ export const ContactDetailsForm: React.FC<ContactDetailsFormProps> = ({
         <Field
           type="checkbox"
           className="md:col-span-2 md:!max-w-full"
-          id={ContactFieldConfig.TermsAccepted.name}
+          id={ContactFieldConfig.TermsAccepted.id}
           value={values?.acceptedTerms}
-          label={ContactFieldConfig.TermsAccepted.label}
+          label={TermsAcceptedField.label}
           error={isInvalidInput && !values?.acceptedTerms}
           onChange={() => {
             setValues({ ...values, acceptedTerms: !values?.acceptedTerms });
@@ -137,12 +154,12 @@ export const ContactDetailsForm: React.FC<ContactDetailsFormProps> = ({
       <div className="relative my-4 flex w-full justify-center md:my-6">
         {isSubmissionFailed || isInvalidInput ? (
           <span className="absolute -top-2 left-0 block w-full px-4 text-center text-sm tracking-tight text-[indianred]">
-            {getErrorMessage({ isSubmissionFailed, isInvalidInput })}
+            {getErrorMessage(language, { isSubmissionFailed, isInvalidInput })}
           </span>
         ) : undefined}
         <Button
           variant="primary"
-          label="Jetzt Anfrage abschicken"
+          label={buttonText ?? i18n[language].FORM_SUBMIT_CTA}
           data-testid="contact-details-form-submit"
           className="my-4 px-6 text-base sm:px-10 md:px-20"
           loading={isSubmitting}
@@ -150,22 +167,22 @@ export const ContactDetailsForm: React.FC<ContactDetailsFormProps> = ({
           onClick={handleSubmit}
         />
         <span className="absolute -bottom-3 left-0 w-full text-center text-xs sm:text-[0.8rem]">
-          Ihre Anfrage ist kostenlos und unverbindlich.
+          {buttonCaption}
         </span>
       </div>
     </form>
   );
 };
 
-const getErrorMessage = ({
-  isSubmissionFailed,
-  isInvalidInput,
-}: Record<string, boolean>) => {
+const getErrorMessage = (
+  language: LandingPageLanguage,
+  { isSubmissionFailed, isInvalidInput }: Record<string, boolean>,
+) => {
   if (isInvalidInput) {
-    return 'Bitte füllen Sie alle Felder korrekt aus.';
+    return i18n[language].FORM_INVALID_FIELDS;
   }
   if (isSubmissionFailed) {
-    return 'Leider ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.';
+    return i18n[language].FORM_SUBMIT_ERROR;
   }
   return '';
 };

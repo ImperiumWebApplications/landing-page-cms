@@ -6,6 +6,7 @@ import { QuestionnaireProvider } from '../context/Questionnaire';
 import { setBrowserHistoryState } from '../../../utils/setBrowserHistoryState';
 import { NextAPI } from '../../../lib/next/api/client';
 import { ContactDetails as StatelessContactDetails } from '../components/ContactDetails';
+import { staticContent } from '../../../../mocks/lib/strapi/data';
 
 jest.mock('../../../lib/analytics/isTrackingAllowed', () => ({
   isTrackingAllowed: jest.fn(),
@@ -43,7 +44,9 @@ const ContactDetails = () => (
       },
     }}
   >
-    <StatelessContactDetails />
+    <StatelessContactDetails
+      staticContent={staticContent.data.attributes.questionnaire}
+    />
   </QuestionnaireProvider>
 );
 

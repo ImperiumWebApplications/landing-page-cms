@@ -5,6 +5,7 @@ import type { VideoSection } from '../../../../lib/strapi';
 
 type StatisticsProps = {
   items?: NonNullable<VideoSection>['statistics'];
+  locale?: string;
 };
 
 export const Statistics: React.FC<StatisticsProps> = (props) => {
@@ -25,7 +26,7 @@ export const Statistics: React.FC<StatisticsProps> = (props) => {
               )}
             >
               <div className="text-5xl font-bold text-primary lg:text-7xl">
-                {formatNumber(item.number)}
+                {formatNumber(item.number, props.locale ?? 'de')}
                 {item.number_suffix}
               </div>
               <span className="text-sm text-secondary md:text-base">
@@ -39,6 +40,6 @@ export const Statistics: React.FC<StatisticsProps> = (props) => {
   );
 };
 
-const formatNumber = (number: number) => {
-  return new Intl.NumberFormat('de-DE').format(number);
+const formatNumber = (number: number, locale: string) => {
+  return new Intl.NumberFormat(locale).format(number);
 };

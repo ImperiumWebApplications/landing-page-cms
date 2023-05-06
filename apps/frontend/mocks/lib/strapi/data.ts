@@ -794,6 +794,86 @@ export const staticContent: {
           },
         ],
       },
+      questionnaire: {
+        id: 1,
+        subheadline: '100% Kostenlos',
+        postal_code_step_title: 'Nennen Sie uns jetzt bitte Ihre Postleitzahl:',
+        postal_code_explanation:
+          'Für die Suche nach dem idealen Anbieter in Ihrer Region',
+        contact_details_step_title: 'Für wen sind die Angebote bestimmt?',
+        contact_details_last_step_hint: 'Letzter Schritt',
+        contact_details_button_label: 'Jetzt Anfrage abschicken',
+        contact_details_button_caption:
+          'Ihre Anfrage ist kostenlos und unverbindlich.',
+        confirmation_step_title: 'Ihre Anfrage wurde erfolgreich übermittelt.',
+        confirmation_paragraph_top:
+          'Zeitnah erhalten Sie von uns einen Anruf, damit wir Ihre Angaben gemeinsam validieren können. Kurz darauf werden Sie mindestens ein Angebot, von einem unserer Premium Partner erhalten. So ist eine professionelle Unterstützung, für Sie persönlich garantiert.',
+        confirmation_paragraph_bottom:
+          'Es werden Ihnen dabei keine anderen Kosten entstehen, als die durch die Nutzung Ihres Internetzugangs.',
+        confirmation_call_to_action_title:
+          'Verifizierungsvorgang beschleunigen',
+        confirmation_home_button_label: 'Zurück zur Startseite',
+        confirmation_call_to_action_prefix: 'Kostenfrei anrufen:',
+        postal_code_button_label: 'Weiter',
+        contact_details_badges: {
+          data: [
+            {
+              id: 199,
+              attributes: {
+                name: 'kagu-gepruefte-webseite.png',
+                alternativeText: null,
+                caption: null,
+                width: 200,
+                height: 120,
+                formats: null,
+                hash: 'kagu_gepruefte_webseite_eaaf888a84',
+                ext: '.png',
+                mime: 'image/png',
+                size: 3.36,
+                url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/kagu_gepruefte_webseite_eaaf888a84.png',
+                previewUrl: null,
+                provider: 'aws-s3',
+                provider_metadata: null,
+                createdAt: '2023-05-05T12:33:31.497Z',
+                updatedAt: '2023-05-05T12:33:31.497Z',
+              },
+            },
+            {
+              id: 200,
+              attributes: {
+                name: 'tech-webseiten-check.png',
+                alternativeText: null,
+                caption: null,
+                width: 195,
+                height: 191,
+                formats: {
+                  thumbnail: {
+                    ext: '.png',
+                    url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/thumbnail_tech_webseiten_check_3b6ae92abc.png',
+                    hash: 'thumbnail_tech_webseiten_check_3b6ae92abc',
+                    mime: 'image/png',
+                    name: 'thumbnail_tech-webseiten-check.png',
+                    path: null,
+                    size: 15.09,
+                    width: 159,
+                    height: 156,
+                  },
+                },
+                hash: 'tech_webseiten_check_3b6ae92abc',
+                ext: '.png',
+                mime: 'image/png',
+                size: 3.17,
+                url: 'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/tech_webseiten_check_3b6ae92abc.png',
+                previewUrl: null,
+                provider: 'aws-s3',
+                provider_metadata: null,
+                createdAt: '2023-05-05T12:33:31.539Z',
+                updatedAt: '2023-05-05T12:33:31.539Z',
+              },
+            },
+          ],
+        },
+      },
       hero_section: {
         id: 1,
         hero_advantage: [

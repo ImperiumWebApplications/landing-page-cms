@@ -66,6 +66,7 @@ export const SelectionPanel: React.FC<SelectionPanelProps> = ({ steps }) => {
         return (
           <ContactDetailsForm
             className="my-8"
+            language="German"
             values={state.contact}
             onSubmit={async (onSuccess) => {
               const { location, dates } = state;

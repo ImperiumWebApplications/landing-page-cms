@@ -37,9 +37,7 @@ export const queryQuestionnairePageContent = async (ctx: NextPageContext) => {
 
     const [questionnaire, staticContent] = await Promise.all([
       Strapi.getQuestionnaire(id),
-      Strapi.getStaticContent({
-        locale: content.attributes.language,
-      }),
+      Strapi.getStaticContent(content.attributes.language),
     ]);
 
     if (!staticContent.attributes) throw new Error('No static content found');
@@ -74,9 +72,8 @@ export const queryContentPageContent = async (ctx: NextPageContext) => {
     const content = await Strapi.getLandingPage(domain);
     if (!content.attributes) throw new Error('No data for domain: ' + content);
 
-    const staticContent = await Strapi.getStaticContent({
-      locale: content.attributes.language,
-    });
+    const language = content.attributes.language;
+    const staticContent = await Strapi.getStaticContent(language);
     if (!staticContent.attributes) throw new Error('No static content found');
 
     return {

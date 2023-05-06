@@ -2,6 +2,8 @@ import ReactMarkdown from 'react-markdown';
 import { motion } from 'framer-motion';
 
 import type { StaticContent } from '../../../lib/strapi/model';
+import { getLanguageLocale } from '../../../lib/strapi/utils/getLanguageLocale';
+import { useLanguageContext } from '../../../context/Language';
 import { questionnaireRoute } from '../../../config/navigation.config';
 import { ArrowRight } from '../../../components/Icons';
 import { Button } from '../../../components/Button';
@@ -18,6 +20,8 @@ type VideoSectionProps = {
 };
 
 export const VideoSection: React.FC<VideoSectionProps> = (props) => {
+  const { language } = useLanguageContext();
+
   const video = props.staticContent?.video?.data?.attributes;
   const thumbnail = props.staticContent?.video_thumbnail?.data?.attributes;
 
@@ -80,7 +84,10 @@ export const VideoSection: React.FC<VideoSectionProps> = (props) => {
           initial={{ opacity: 0, translateY: 20 }}
           whileInView={{ opacity: 1, translateY: 0 }}
         >
-          <Statistics items={props.content.statistics} />
+          <Statistics
+            items={props.content.statistics}
+            locale={getLanguageLocale(language)}
+          />
         </motion.div>
       </div>
     </SectionContainer>

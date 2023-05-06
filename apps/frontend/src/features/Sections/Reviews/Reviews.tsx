@@ -10,9 +10,12 @@ import dynamic from 'next/dynamic';
 import cx from 'classnames';
 
 import type { StaticContent } from '../../../lib/strapi';
+import { i18n } from '../../../config/i18n.config';
+import { useLanguageContext } from '../../../context/Language';
+import { useMediaQuery } from '../../../hooks/useMediaQuery';
 import { ChevronLeftIcon, ChevronRightIcon } from '../../../components/Icons';
 import { CallToActionBanner } from '../../../components/Banner';
-import { useMediaQuery } from '../../../hooks/useMediaQuery';
+
 import { SectionContainer } from '../SectionContainer';
 import { ReviewsSectionContent } from '../SectionMapper';
 import { useSectionContext } from '../SectionContext';
@@ -42,6 +45,7 @@ type ReviewsSectionProps = {
 export const ReviewsSection: React.FC<ReviewsSectionProps> = (props) => {
   const isTabletBreakpoint = useMediaQuery(`(min-width: 768px)`);
   const { state } = useSectionContext();
+  const { language } = useLanguageContext();
 
   const [expanded, setExpanded] = useState(false);
   const onExpand = useCallback(() => setExpanded(!expanded), [expanded]);
@@ -88,14 +92,14 @@ export const ReviewsSection: React.FC<ReviewsSectionProps> = (props) => {
         </Swiper>
         <NavigationButton
           className="-left-4 xl:-left-10"
-          aria-label="Zurück"
+          aria-label={i18n[language].BACK}
           onClick={() => getSwiperInstance()?.slidePrev()}
         >
           <ChevronLeftIcon aria-hidden="true" className="w-2 stroke-[white]" />
         </NavigationButton>
         <NavigationButton
           className="-right-4 xl:-right-10"
-          aria-label="Weiter"
+          aria-label={i18n[language].NEXT}
           onClick={() => getSwiperInstance()?.slideNext()}
         >
           <ChevronRightIcon aria-hidden="true" className="w-2 stroke-[white]" />

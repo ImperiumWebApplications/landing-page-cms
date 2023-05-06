@@ -1,59 +1,83 @@
+import type { LandingPageLanguage } from '../../../lib/strapi';
+import { i18n } from '../../../config/i18n.config';
+
 export const ContactFieldConfig = {
   Salutation: {
-    name: 'salutation',
-    label: ['Frau', 'Herr'],
+    id: 'salutation',
+    getConfig: (l: LandingPageLanguage) => ({
+      label: i18n[l].FORM_CONTACT.Salutation.LABEL,
+    }),
   },
   FirstName: {
-    name: 'firstName',
-    label: 'Vorname',
-    validators: [
-      { regex: /(.|\s)*\S(.|\s)*/, message: 'Bitte geben Sie einen Wert ein.' },
-    ],
+    id: 'firstName',
+    getConfig: (l: LandingPageLanguage) => ({
+      label: i18n[l].FORM_CONTACT.FirstName.LABEL,
+      validators: [
+        {
+          regex: /(.|\s)*\S(.|\s)*/,
+          message: i18n[l].FORM_CONTACT.FirstName.messages.MISSING_VALUE,
+        },
+      ],
+    }),
   },
   LastName: {
-    name: 'lastName',
-    label: 'Nachname',
-    validators: [
-      { regex: /(.|\s)*\S(.|\s)*/, message: 'Bitte geben Sie einen Wert ein.' },
-    ],
+    id: 'lastName',
+    getConfig: (l: LandingPageLanguage) => ({
+      label: i18n[l].FORM_CONTACT.LastName.LABEL,
+      validators: [
+        {
+          regex: /(.|\s)*\S(.|\s)*/,
+          message: i18n[l].FORM_CONTACT.LastName.messages.MISSING_VALUE,
+        },
+      ],
+    }),
   },
   Email: {
-    name: 'email',
-    label: 'E-Mail Adresse',
-    validators: [
-      {
-        regex: /^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i,
-        message: 'Bitte geben Sie eine gültige E-Mail Adresse ein.',
-      },
-    ],
+    id: 'email',
+    getConfig: (l: LandingPageLanguage) => ({
+      label: i18n[l].FORM_CONTACT.Email.LABEL,
+      validators: [
+        {
+          regex: /^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i,
+          message: i18n[l].FORM_CONTACT.Email.messages.INVALID_VALUE,
+        },
+      ],
+    }),
   },
   Phone: {
-    name: 'phone',
-    label: 'Telefonnummer',
-    validators: [
-      {
-        regex: /^[0-9+]{1,}[0-9-]{3,15}$/,
-        message: 'Bitte geben Sie eine gültige Telefonnummer ein.',
-      },
-    ],
+    id: 'phone',
+    getConfig: (l: LandingPageLanguage) => ({
+      label: i18n[l].FORM_CONTACT.Phone.LABEL,
+      validators: [
+        {
+          regex: /^[0-9+]{1,}[0-9-]{3,15}$/,
+          message: i18n[l].FORM_CONTACT.Phone.messages.INVALID_VALUE,
+        },
+      ],
+    }),
   },
   PostalCode: {
-    name: 'postalCode',
-    label: 'Postleitzahl',
-    validators: [
-      {
-        regex: /^[0-9]*$/,
-        message: 'Bitte geben Sie eine gültige Postleitzahl ein.',
-      },
-    ],
+    id: 'postalCode',
+    getConfig: (l: LandingPageLanguage) => ({
+      label: i18n[l].FORM_CONTACT.PostalCode.LABEL,
+      validators: [
+        {
+          regex: /^[0-9]*$/,
+          message: i18n[l].FORM_CONTACT.PostalCode.messages.INVALID_VALUE,
+        },
+      ],
+    }),
   },
   City: {
-    name: 'city',
-    label: 'Stadt',
+    id: 'city',
+    getConfig: (l: LandingPageLanguage) => ({
+      label: i18n[l].FORM_CONTACT.City.LABEL,
+    }),
   },
   TermsAccepted: {
-    name: 'acceptedTerms',
-    label:
-      'Ja, ich stimme der Datenschutzerklärung zu. (Widerruf jederzeit möglich)',
+    id: 'acceptedTerms',
+    getConfig: (l: LandingPageLanguage) => ({
+      label: i18n[l].FORM_CONTACT.AcceptedTerms.LABEL,
+    }),
   },
 } as const;

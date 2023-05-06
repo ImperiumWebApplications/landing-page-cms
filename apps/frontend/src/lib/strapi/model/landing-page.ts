@@ -28,6 +28,8 @@ export const LandingPageSections = {
   VIDEO: 'sections.video',
 } as const;
 
+export type LandingPageLanguage = 'German' | 'English';
+
 export type LandingPage = {
   google_tag_manager_id?: TextField;
   google_allow_indexation?: BooleanField;
@@ -35,7 +37,8 @@ export type LandingPage = {
   domain?: TextField;
   brand_name?: TextField;
   countries?: MultiSelectField<'AT' | 'DE' | 'CH'>;
-  language?: EnumerationField<'German' | 'English'>;
+  /** Don't access directly. Use `useLanguageContext`. */
+  language?: EnumerationField<LandingPageLanguage>;
   contact_email?: TextField;
   contact_phone?: TextField;
   client_address?: TextField;

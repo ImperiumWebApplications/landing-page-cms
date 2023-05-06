@@ -1,10 +1,15 @@
 import { fireEvent } from '@testing-library/react';
 import { renderWithLayout } from '../../../../jest.setup';
+import { staticContent } from '../../../../mocks/lib/strapi/data';
 import { QuestionnaireProvider } from '../context/Questionnaire';
 import { Questionnaire, QuestionnaireProps } from '../Questionnaire';
 
 jest.mock('next/router', () => ({
   useRouter: () => ({}),
+}));
+
+jest.mock('react-markdown', () => ({
+  default: () => <div />,
 }));
 
 const defaultProps: QuestionnaireProps = {
@@ -26,6 +31,7 @@ const defaultProps: QuestionnaireProps = {
       ],
     },
   ],
+  staticContent: staticContent.data.attributes.questionnaire,
   phone: '0123456789',
   countries: undefined,
   customSelectHandler: undefined,
@@ -62,7 +68,7 @@ describe('Questionnaire', () => {
     );
     fireEvent.click(getAllByRole('button')[0]);
     expect(window.history.state).toEqual({ options: { index: 1 } });
-    fireEvent.click(getByLabelText('Einen Schritt zurück'));
+    fireEvent.click(getByLabelText('Zurück'));
     expect(window.history.state).toEqual({ options: { index: 0 } });
   });
 

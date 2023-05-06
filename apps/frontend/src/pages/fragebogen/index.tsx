@@ -38,6 +38,7 @@ const EntryQuestionnairePage: ContentPage = ({ content, staticContent }) => {
           <Questionnaire
             headline={content.sections?.find(isHeroSection)?.title}
             questions={[question]}
+            staticContent={staticContent.questionnaire}
             countries={content.countries}
             customSelectHandler={selectHandler}
             advantages={

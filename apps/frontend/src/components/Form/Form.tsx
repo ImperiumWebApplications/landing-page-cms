@@ -1,13 +1,19 @@
-import { FormEventHandler, useState } from 'react';
+import { FormEventHandler, ReactNode, useState } from 'react';
+
+import { i18n } from '../../config/i18n.config';
+import { useLanguageContext } from '../../context/Language';
 
 import { SpinnerIcon } from '../Icons';
 
 type FormProps = {
   onSubmit: () => Promise<void>;
   children: React.ReactNode | React.ReactNode[];
+  buttonText: ReactNode;
 };
 
 export const Form = (props: FormProps) => {
+  const { language } = useLanguageContext();
+
   const [isFetchError, setIsFetchError] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -34,15 +40,11 @@ export const Form = (props: FormProps) => {
           {isSubmitting ? (
             <SpinnerIcon className="h-10 w-10" />
           ) : (
-            <>
-              <span>Jetzt Angebot erhalten</span>Kostenlos & Unverbindlich
-            </>
+            <>{props.buttonText}</>
           )}
         </button>
         {isFetchError ? (
-          <span className="error">
-            Fehler beim Abschicken. Bitte versuchen Sie es erneut.
-          </span>
+          <span className="error">{i18n[language].FORM_SUBMIT_ERROR}</span>
         ) : undefined}
       </div>
     </form>

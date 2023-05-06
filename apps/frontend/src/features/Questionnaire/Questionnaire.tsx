@@ -6,6 +6,7 @@ import type { SingleChoiceEventHandler } from './components/SingleChoice';
 import type {
   LandingPage,
   Questionnaire as QuestionnaireType,
+  StaticContent,
 } from '../../lib/strapi';
 
 import { Question } from './components/Question';
@@ -24,8 +25,9 @@ export type QuestionnaireHistoryState = {
 };
 
 export type QuestionnaireProps = {
-  headline?: string | null;
+  staticContent: StaticContent['questionnaire'];
   questions: NonNullable<QuestionnaireType['questions']>;
+  headline?: string | null;
   countries?: LandingPage['countries'];
   phone?: LandingPage['contact_phone'];
   advantages?: LandingPage['questionnaires_advantages'];
@@ -37,6 +39,7 @@ export const Questionnaire: React.FC<QuestionnaireProps> = ({
   countries,
   questions,
   phone,
+  staticContent,
   advantages,
   customSelectHandler: selectHandler,
 }) => {
@@ -71,7 +74,9 @@ export const Questionnaire: React.FC<QuestionnaireProps> = ({
       <div>
         <div className="content-wrapper py-4 text-center md:pt-14 md:pb-12">
           <h1 className="text-lg text-gray md:text-3xl">{headline}</h1>
-          <span className="mt-2 block text-sm md:mt-4">100% Kostenlos</span>
+          <span className="mt-2 block text-sm md:mt-4">
+            {staticContent?.subheadline}
+          </span>
         </div>
         <div className="max-w relative mx-auto grid h-auto min-h-[420px] max-w-[964px] grid-cols-1 grid-rows-[auto_1fr] bg-[white] py-5 md:mb-12 md:rounded-[10px] md:pt-12 md:pb-10 md:shadow-sm">
           <BackButton
@@ -85,9 +90,15 @@ export const Questionnaire: React.FC<QuestionnaireProps> = ({
             {isQuestionStep && (
               <Question data={question} customSelectHandler={selectHandler} />
             )}
-            {isPostalCodeStep && <PostalCode countries={countries} />}
-            {isContactFormStep && <ContactDetails />}
-            {isFormSuccessStep && <Confirmation phone={phone} />}
+            {isPostalCodeStep && (
+              <PostalCode countries={countries} staticContent={staticContent} />
+            )}
+            {isContactFormStep && (
+              <ContactDetails staticContent={staticContent} />
+            )}
+            {isFormSuccessStep && (
+              <Confirmation phone={phone} staticContent={staticContent} />
+            )}
           </div>
           {!isEntryQuestion && !isContactFormStep && !isFormSuccessStep && (
             <ProgressBar progress={Math.floor(progress * 100)} />

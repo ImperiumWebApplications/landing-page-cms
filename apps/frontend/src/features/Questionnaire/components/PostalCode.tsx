@@ -1,8 +1,11 @@
 import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
 
+import type { StaticContent } from '../../../lib/strapi/model';
 import { PostalCodeDetails } from '../../../config/countries.config';
+import { i18n } from '../../../config/i18n.config';
 
 import { useQuestionnaireContext } from '../context/Questionnaire';
+import { useLanguageContext } from '../../../context/Language';
 import { getCountryDetails } from '../../../utils/getCountryDetails';
 import { getPostalCodeLength } from '../../../utils/getPostalCodeLength';
 import { normalizeHostname } from '../../../utils/normalizeHostname';
@@ -20,9 +23,19 @@ import { StepTitle } from './StepTitle';
  * 3. We have several countries -> Select City (no)  Input Type (Regular Text)
  */
 
-export const PostalCode: React.FC<{
+type PostalCodeProps = {
   countries?: string[] | null;
-}> = ({ countries }) => {
+  staticContent?: StaticContent['questionnaire'];
+};
+
+export const PostalCode: React.FC<PostalCodeProps> = ({
+  countries,
+  staticContent,
+}) => {
+  const { language } = useLanguageContext();
+  const PostalCodeField = ContactFieldConfig.PostalCode.getConfig(language);
+  const CityField = ContactFieldConfig.City.getConfig(language);
+
   // Extract global state from context
   const { state, dispatch } = useQuestionnaireContext();
   const code = state.contact.postalCode ?? '';
@@ -73,11 +86,15 @@ export const PostalCode: React.FC<{
     [dispatch, state.contact],
   );
 
-  const isRegularTextFieldInputValid = useCallback((code?: string) => {
-    if (!code || code.trim().length < 4) return false;
-    const { validators } = ContactFieldConfig.PostalCode;
-    return validators.some((validator) => validator.regex.test(code ?? ''));
-  }, []);
+  const isRegularTextFieldInputValid = useCallback(
+    (code?: string) => {
+      if (!code || code.trim().length < 4) return false;
+      return PostalCodeField.validators.some((validator) =>
+        validator.regex.test(code ?? ''),
+      );
+    },
+    [PostalCodeField.validators],
+  );
 
   useEffect(() => {
     // Avoid unnecessary requests if the code has not changed
@@ -113,7 +130,7 @@ export const PostalCode: React.FC<{
         setIsLoading(false);
         resetCities();
         setFailedCode(code);
-        setError(ContactFieldConfig.PostalCode.validators[0].message);
+        setError(PostalCodeField.validators[0].message);
       }
     };
 
@@ -128,18 +145,19 @@ export const PostalCode: React.FC<{
     code,
     countries,
     resetCities,
+    PostalCodeField.validators,
   ]);
 
   return (
     <div className="mx-auto px-0 md:px-8 lg:max-w-xl lg:px-0">
-      <StepTitle>Nennen Sie uns jetzt bitte Ihre Postleitzahl:</StepTitle>
+      <StepTitle>{staticContent?.postal_code_step_title}</StepTitle>
       <div className="mx-auto flex max-w-sm flex-col items-start justify-center lg:max-w-none lg:flex-row lg:items-center lg:gap-x-4">
         {isSingleCountryContext ? (
           <>
             <Field
               type="code"
-              id={ContactFieldConfig.PostalCode.name}
-              label={ContactFieldConfig.PostalCode.label}
+              id={ContactFieldConfig.PostalCode.id}
+              label={PostalCodeField.label}
               value={state.contact.postalCode}
               onChange={updatePostalCode}
               length={postalCodeLength}
@@ -150,10 +168,10 @@ export const PostalCode: React.FC<{
           </>
         ) : (
           <Field
-            id={ContactFieldConfig.PostalCode.name}
+            id={ContactFieldConfig.PostalCode.id}
             type="text"
-            validators={ContactFieldConfig.PostalCode.validators}
-            label={ContactFieldConfig.PostalCode.label}
+            validators={PostalCodeField.validators}
+            label={PostalCodeField.label}
             value={state.contact.postalCode}
             onChange={updatePostalCode}
             className="mb-2 w-[300px]"
@@ -166,9 +184,9 @@ export const PostalCode: React.FC<{
           <Field
             type="select"
             className="mt-6 w-full flex-grow lg:mt-0 lg:max-w-xs"
-            id={ContactFieldConfig.City.name}
+            id={ContactFieldConfig.City.id}
             value={state.contact.city}
-            label={ContactFieldConfig.City.label}
+            label={CityField.label}
             options={cities.map((city) => city.place)}
             onChange={updateCity}
             buttonProps={{
@@ -184,15 +202,19 @@ export const PostalCode: React.FC<{
             {error}
           </span>
         )}
-        <div className="mx-0 mt-4 mb-8 flex items-center text-sm sm:mb-8">
-          <InfoCircleIcon className="hidden h-4 w-4 fill-gray font-bold md:block" />
-          <span className="inline-block md:ml-2">
-            Für die Suche nach dem idealen Anbieter in Ihrer Region
-          </span>
-        </div>
+        {staticContent?.postal_code_explanation ? (
+          <div className="mx-0 mt-4 mb-8 flex items-center text-sm sm:mb-8">
+            <InfoCircleIcon className="hidden h-4 w-4 fill-gray font-bold md:block" />
+            <span className="inline-block md:ml-2">
+              {staticContent?.postal_code_explanation}
+            </span>
+          </div>
+        ) : null}
         <div className="text-center">
           <Button
-            label="Weiter"
+            label={
+              staticContent?.postal_code_button_label ?? i18n[language].NEXT
+            }
             data-testid="questionnaire-postal-code-button"
             disabled={
               (!!countries && !isCodeCompleted) ||

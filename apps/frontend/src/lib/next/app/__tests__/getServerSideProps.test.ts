@@ -54,7 +54,7 @@ describe('queryContentPageContent', () => {
     const ctx = configureCtx({ host: 'test' });
     await queryContentPageContent(ctx);
     expect(Strapi.getStaticContent).toBeCalledTimes(1);
-    expect(Strapi.getStaticContent).toBeCalledWith({ locale: 'German' });
+    expect(Strapi.getStaticContent).toBeCalledWith('German');
   });
 
   it('should return redirect if no host is specified', async () => {

@@ -1,23 +1,30 @@
 import { strapi } from '../instance';
-import { CONTENT_TYPES, SingleType, StaticContent } from '../model';
+import {
+  CONTENT_TYPES,
+  LandingPageLanguage,
+  SingleType,
+  StaticContent,
+} from '../model';
+import { getLanguageLocale } from '../utils/getLanguageLocale';
 
-type StaticContentLocale = 'German' | 'English';
-type GetStaticContentProps = {
-  locale?: StaticContentLocale | null;
-};
-
-export const getStaticContent = async ({
-  locale,
-}: GetStaticContentProps = {}) => {
+export const getStaticContent = async (
+  language?: LandingPageLanguage | null,
+) => {
   const res = await strapi.find<SingleType<StaticContent>>(
     CONTENT_TYPES.STATIC_CONTENT,
     {
-      locale: getStrapiLocale(locale),
+      locale: getLanguageLocale(language),
       populate: {
         footer: {
           fields: '*',
           populate: {
             links: { fields: '*' },
+          },
+        },
+        questionnaire: {
+          field: '*',
+          populate: {
+            contact_details_badges: { fields: '*' },
           },
         },
         hero_section: {
@@ -63,17 +70,6 @@ export const getStaticContent = async ({
   );
 
   if (!res.data.attributes) throw new Error('No static content found');
-  console.log(JSON.stringify(res.data.attributes, null, 2));
-  return res.data;
-};
 
-const getStrapiLocale = (locale?: StaticContentLocale | null) => {
-  switch (locale) {
-    case 'German':
-      return 'de';
-    case 'English':
-      return 'en';
-    default:
-      return 'de';
-  }
+  return res.data;
 };
