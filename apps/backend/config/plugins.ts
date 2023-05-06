@@ -23,7 +23,4 @@ export default ({ env }) => ({
       jwtSecret: env('JWT_SECRET'),
     },
   },
-  sentry: {
-    dsn: env('SENTRY_DSN'),
-  },
 });
