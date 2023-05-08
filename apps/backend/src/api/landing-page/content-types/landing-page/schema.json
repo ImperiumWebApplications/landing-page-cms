@@ -124,7 +124,8 @@
     "countries": {
       "type": "customField",
       "options": ["Germany:DE", "Switzerland:CH", "Austria:AT"],
-      "customField": "plugin::multi-select-field.multi-select-field"
+      "customField": "plugin::multi-select-field.multi-select-field",
+      "default": ["DE"]
     },
     "language": {
       "type": "enumeration",
