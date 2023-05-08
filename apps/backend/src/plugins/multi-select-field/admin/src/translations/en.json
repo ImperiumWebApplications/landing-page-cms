@@ -1,0 +1,6 @@
+{
+  "multi-select-field.label": "Multi Select",
+  "multi-select-field.description": "Select multiple options from a list",
+  "multi-select-field.enum.label": "Options (one per line)",
+  "multi-select-field.enum.description": "Enter one option per line. You can also add a value and a label separated by a colon (e.g. \"label:value\").\nIf no value is provided, the label will be used as the value."
+}

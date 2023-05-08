@@ -23,4 +23,8 @@ export default ({ env }) => ({
       jwtSecret: env('JWT_SECRET'),
     },
   },
+  'multi-select-field': {
+    enabled: true,
+    resolve: './src/plugins/multi-select-field',
+  },
 });
