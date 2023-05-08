@@ -13,10 +13,12 @@
   "pluginOptions": {},
   "attributes": {
     "seo_title": {
-      "type": "string"
+      "type": "string",
+      "maxLength": 55
     },
     "seo_description": {
-      "type": "string"
+      "type": "string",
+      "maxLength": 155
     },
     "domain": {
       "type": "string"
