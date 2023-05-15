@@ -131,6 +131,11 @@
       "type": "enumeration",
       "enum": ["German", "English"],
       "default": "German"
+    },
+    "deleted": {
+      "type": "boolean",
+      "default": false,
+      "private": true
     }
   }
 }

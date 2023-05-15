@@ -27,4 +27,13 @@ export default ({ env }) => ({
     enabled: true,
     resolve: './src/plugins/multi-select-field',
   },
+  'soft-delete': {
+    enabled: true,
+    resolve: './src/plugins/soft-delete',
+    config: {
+      // Model must include a "deleted" boolean field in the model's schema
+      // "deleted" field must be set as private and default=false
+      models: ['landing-page', 'questionnaire', 'lead'],
+    },
+  },
 });

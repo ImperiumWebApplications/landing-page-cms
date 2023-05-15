@@ -42,6 +42,11 @@
       "relation": "manyToMany",
       "target": "api::landing-page.landing-page",
       "mappedBy": "questionnaires_relations"
+    },
+    "deleted": {
+      "type": "boolean",
+      "default": false,
+      "private": true
     }
   }
 }

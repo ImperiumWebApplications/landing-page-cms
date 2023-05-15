@@ -49,6 +49,11 @@
     },
     "city": {
       "type": "string"
+    },
+    "deleted": {
+      "type": "boolean",
+      "default": false,
+      "private": true
     }
   }
 }
