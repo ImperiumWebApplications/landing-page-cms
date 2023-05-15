@@ -28,7 +28,7 @@ export default ({ env }) => ({
     resolve: './src/plugins/multi-select-field',
   },
   'soft-delete': {
-    enabled: true,
+    enabled: false,
     resolve: './src/plugins/soft-delete',
     config: {
       // Model must include a "deleted" boolean field in the model's schema
