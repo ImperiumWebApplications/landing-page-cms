@@ -37,7 +37,7 @@ const TableView: React.FC<TableViewProps> = (props) => {
               <Typography variant="sigma">Type</Typography>
             </Th>
             <Th>
-              <Typography variant="sigma">Brand</Typography>
+              <Typography variant="sigma">Name</Typography>
             </Th>
             <Th>
               <Typography variant="sigma">Domain</Typography>
@@ -59,7 +59,7 @@ const TableView: React.FC<TableViewProps> = (props) => {
               </Td>
               <Td>
                 <Typography textColor="neutral800">
-                  {entry.brand_name}
+                  {entry.brand_name || entry.name}
                 </Typography>
               </Td>
               <Td>

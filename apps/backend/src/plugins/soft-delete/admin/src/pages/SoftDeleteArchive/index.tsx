@@ -91,7 +91,7 @@ const SoftDeleteArchive = () => {
                 icon: <Undo />,
                 onClick: (entry) => {
                   setSelectedEntry({
-                    name: entry.brand_name,
+                    name: entry.brand_name || entry.name,
                     model: entry.__type,
                     id: entry.id,
                   });

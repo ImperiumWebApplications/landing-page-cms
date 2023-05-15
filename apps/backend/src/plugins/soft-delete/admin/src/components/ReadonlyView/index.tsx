@@ -78,7 +78,8 @@ export const getReadonlyViewURL = (model: string, id: string) => {
 
 const getEntryDataFromDataManager = (dataManager: any) => {
   const id = dataManager.initialData.id;
-  const name = dataManager.initialData.brand_name;
+  const name =
+    dataManager.initialData.brand_name || dataManager.initialData.name;
   const model = dataManager.layout.apiID;
   if (!id || !name || !model) return null;
 
