@@ -1,6 +1,5 @@
 import React, { useCallback, useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
-import { createGlobalStyle } from 'styled-components';
 
 import { useCMEditViewDataManager } from '@strapi/helper-plugin';
 import { Status, Typography, Button } from '@strapi/design-system';
@@ -32,8 +31,15 @@ const ReadonlyView = () => {
     [restoreEntry, history, location.pathname],
   );
 
-  const isDeleted = isDeletedTrueSearch(location.search);
-  if (!isDeleted) return null;
+  const isDeletedEntry = !!dataManager.initialData.deleted;
+  const isDeletedSearch = isDeletedTrueSearch(location.search);
+
+  if (!isDeletedSearch && isDeletedEntry) {
+    history.push({ search: `${DELETED_SEARCH_PARAM}=true` });
+    return null;
+  }
+
+  if (!isDeletedSearch) return null;
 
   return (
     <>
