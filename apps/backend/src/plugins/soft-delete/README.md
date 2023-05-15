@@ -1,3 +1,3 @@
 # Strapi plugin soft-delete
 
-A quick description of soft-delete.
+Plugin to make deleted collection entries restorable

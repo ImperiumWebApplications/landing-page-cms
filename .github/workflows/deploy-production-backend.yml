@@ -49,6 +49,14 @@ jobs:
       - name: Install deps
         run: yarn install --frozen-lockfile
 
+      - name: Create multi-select-field plugin build
+        working-directory: ./apps/backend/src/plugins/multi-select-field
+        run: NODE_ENV=production yarn build
+
+      - name: Create soft-delete plugin build
+        working-directory: ./apps/backend/src/plugins/soft-delete
+        run: NODE_ENV=production yarn build
+
       - name: Create build
         working-directory: ./apps/backend
         run: NODE_ENV=production yarn build
