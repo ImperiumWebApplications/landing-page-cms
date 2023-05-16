@@ -8,7 +8,9 @@ import RestoreDialog, { EntryToRestore } from '../RestoreDialog';
 import { useRestoreEntry } from '../../hooks/useRestoreEntry';
 import {
   DELETED_SEARCH_PARAM,
+  RESTORED_SEARCH_PARAM,
   isDeletedTrueSearch,
+  isRestoredTrueSearch,
 } from '../../../../utils/isDeleted';
 
 import { ReadonlyViewInjectedCSS } from './injectedCSS';
@@ -26,15 +28,16 @@ const ReadonlyView = () => {
     async (model?: string, id?: string) => {
       await restoreEntry(model, id);
       setSelectedEntry(null);
-      history.push(location.pathname);
+      history.push({ search: `${RESTORED_SEARCH_PARAM}=true` });
     },
-    [restoreEntry, history, location.pathname],
+    [restoreEntry, history],
   );
 
   const isDeletedEntry = !!dataManager.initialData.deleted;
   const isDeletedSearch = isDeletedTrueSearch(location.search);
+  const isRestoredSearch = isRestoredTrueSearch(location.search);
 
-  if (!isDeletedSearch && isDeletedEntry) {
+  if (!isRestoredSearch && !isDeletedSearch && isDeletedEntry) {
     history.push({ search: `${DELETED_SEARCH_PARAM}=true` });
     return null;
   }

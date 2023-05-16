@@ -14,3 +14,11 @@ export const isDeletedTrueSearch = (search: string) => {
 
   return deleted === 'true';
 };
+
+export const RESTORED_SEARCH_PARAM = 'restored';
+export const isRestoredTrueSearch = (search: string) => {
+  const params = new URLSearchParams(search);
+  const restored = params.get(RESTORED_SEARCH_PARAM);
+
+  return restored === 'true';
+};

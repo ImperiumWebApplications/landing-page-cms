@@ -7,4 +7,12 @@ export default [
       policies: [],
     },
   },
+  {
+    method: 'POST',
+    path: '/softDelete',
+    handler: 'softDelete.index',
+    config: {
+      policies: [],
+    },
+  },
 ];

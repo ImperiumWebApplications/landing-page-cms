@@ -16,21 +16,5 @@ export const applySoftDeleteSubscribers = ({ strapi }: { strapi: any }) => {
         $or: [{ deleted: false }, { deleted: null }],
       };
     },
-
-    async beforeDelete(event) {
-      await strapi.db.query(event.model.uid).update({
-        where: { ...event.params.where },
-        data: { deleted: true },
-      });
-      event.params.where = { id: null };
-    },
-
-    async beforeDeleteMany(event) {
-      await strapi.db.query(event.model.uid).updateMany({
-        where: { ...event.params.where },
-        data: { deleted: true },
-      });
-      event.params.where = { id: null };
-    },
   });
 };

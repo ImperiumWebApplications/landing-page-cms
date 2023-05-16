@@ -32,6 +32,7 @@ export default ({ env }) => [
   'strapi::logger',
   'strapi::query',
   'strapi::body',
+  'plugin::soft-delete.rewrites',
   'strapi::session',
   'strapi::favicon',
   'strapi::public',
