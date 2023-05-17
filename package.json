@@ -7,7 +7,8 @@
     "url": "https://konstantin.digital"
   },
   "workspaces": [
-    "apps/*"
+    "apps/*",
+    "apps/backend/src/plugins/*"
   ],
   "scripts": {
     "build": "turbo run build",
