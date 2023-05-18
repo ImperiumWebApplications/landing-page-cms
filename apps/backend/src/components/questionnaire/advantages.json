@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_questionnaire_advantages",
+  "info": {
+    "displayName": "Advantages",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "personalized_advice": {
+      "type": "string",
+      "default": "<b>Persönliche Unterstützung</b><br>rund um das Thema XY"
+    },
+    "years_of_experience": {
+      "type": "string",
+      "default": "<b>Über 10 Jahre Erfahrung</b><br>im XXgeschäft"
+    },
+    "custom_service": {
+      "type": "string",
+      "default": "<b>100 % Individuell</b><br>Wir erfüllen Ihre Wünsche"
+    }
+  }
+}

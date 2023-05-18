@@ -1,0 +1,42 @@
+{
+  "collectionName": "components_static_content_processes",
+  "info": {
+    "displayName": "Process"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "step_one_description": {
+      "type": "string"
+    },
+    "step_one_icon": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "step_two_description": {
+      "type": "string"
+    },
+    "step_two_icon": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "step_three_description": {
+      "type": "string"
+    },
+    "step_three_icon": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

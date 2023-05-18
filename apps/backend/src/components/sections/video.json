@@ -1,0 +1,36 @@
+{
+  "collectionName": "components_sections_videos",
+  "info": {
+    "displayName": "Video",
+    "icon": "video",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "video_title": {
+      "type": "string"
+    },
+    "video_description": {
+      "type": "richtext"
+    },
+    "statistics": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.number"
+    },
+    "video": {
+      "allowedTypes": [
+        "videos"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "video_thumbnail": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

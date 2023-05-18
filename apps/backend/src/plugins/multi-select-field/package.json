@@ -1,0 +1,55 @@
+{
+  "name": "multi-select-field",
+  "version": "0.0.0",
+  "description": "A strapi custom field for a multi select input.",
+  "strapi": {
+    "name": "multi-select-field",
+    "description": "A strapi custom field for a multi select input.",
+    "kind": "plugin",
+    "displayName": "Multi Select"
+  },
+  "dependencies": {
+    "@strapi/design-system": "^1.7.3",
+    "@strapi/helper-plugin": "^4.10.2",
+    "@strapi/icons": "^1.7.3"
+  },
+  "devDependencies": {
+    "@strapi/typescript-utils": "^4.6.0",
+    "@types/react": "^17.0.53",
+    "@types/react-dom": "^17.0.18",
+    "@types/react-router-dom": "^5.3.3",
+    "@types/styled-components": "^5.1.26",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^5.3.4",
+    "styled-components": "^5.3.6",
+    "typescript": "5.0.4"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^5.3.4",
+    "styled-components": "^5.3.6"
+  },
+  "author": {
+    "name": "Konstantin Münster",
+    "email": "mail@konstantin.digital",
+    "url": "https://konstantin.digital"
+  },
+  "maintainers": [
+    {
+      "name": "Konstantin Münster",
+      "email": "mail@konstantin.digital",
+      "url": "https://konstantin.digital"
+    }
+  ],
+  "engines": {
+    "node": ">=18",
+    "npm": ">=6"
+  },
+  "scripts": {
+    "develop": "tsc -w",
+    "build": "tsc"
+  },
+  "license": "MIT"
+}

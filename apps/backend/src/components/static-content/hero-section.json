@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_static_content_hero_sections",
+  "info": {
+    "displayName": "Hero Section"
+  },
+  "options": {},
+  "attributes": {
+    "hero_advantage": {
+      "displayName": "Hero Advantage",
+      "type": "component",
+      "repeatable": true,
+      "component": "static-content.hero-advantage"
+    }
+  }
+}

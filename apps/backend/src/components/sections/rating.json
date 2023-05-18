@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_sections_ratings",
+  "info": {
+    "displayName": "Rating",
+    "icon": "user-alt"
+  },
+  "options": {},
+  "attributes": {
+    "avatar": {
+      "allowedTypes": ["images"],
+      "type": "media",
+      "multiple": false
+    },
+    "name": {
+      "type": "string"
+    },
+    "biography": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}

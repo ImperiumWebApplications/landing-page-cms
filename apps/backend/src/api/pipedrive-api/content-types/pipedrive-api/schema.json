@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pipedrive_apis",
+  "info": {
+    "singularName": "pipedrive-api",
+    "pluralName": "pipedrive-apis",
+    "displayName": "Pipedrive Apis",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "api_token": {
+      "type": "string",
+      "unique": false,
+      "required": true
+    },
+    "landing_page": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::landing-page.landing-page"
+    }
+  }
+}

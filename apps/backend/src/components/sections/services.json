@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_sections_services",
+  "info": {
+    "displayName": "Services",
+    "icon": "border-all",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "service_tab": {
+      "displayName": "Service Tab",
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.service-tab"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "benefits": {
+      "displayName": "benefit",
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.benefit"
+    },
+    "service_image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    }
+  }
+}

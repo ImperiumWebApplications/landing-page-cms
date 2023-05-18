@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_sections_images",
+  "info": {
+    "displayName": "Images (INAKTIV)",
+    "icon": "images",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": ["images"]
+    }
+  }
+}

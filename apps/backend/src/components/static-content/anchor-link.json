@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_static_content_anchor_links",
+  "info": {
+    "displayName": "Anchor Link",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "anchor_id": {
+      "type": "string",
+      "regex": "^[a-z0-9]*$"
+    },
+    "label": {
+      "type": "string"
+    }
+  }
+}

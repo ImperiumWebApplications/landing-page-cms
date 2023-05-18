@@ -1,0 +1,52 @@
+{
+  "kind": "collectionType",
+  "collectionName": "questionnaires",
+  "info": {
+    "singularName": "questionnaire",
+    "pluralName": "questionnaires",
+    "displayName": "Questionnaires",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "questions": {
+      "displayName": "Question",
+      "type": "component",
+      "repeatable": true,
+      "component": "questionnaire.question"
+    },
+    "description": {
+      "type": "text"
+    },
+    "priority": {
+      "type": "integer",
+      "max": 10,
+      "min": 1,
+      "default": 5,
+      "required": false
+    },
+    "landing_pages_relations": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::landing-page.landing-page",
+      "mappedBy": "questionnaires_relations"
+    },
+    "deleted": {
+      "type": "boolean",
+      "default": false,
+      "private": true
+    }
+  }
+}

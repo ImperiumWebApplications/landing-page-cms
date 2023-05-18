@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_sections_reviews",
+  "info": {
+    "displayName": "Reviews",
+    "icon": "star"
+  },
+  "options": {},
+  "attributes": {
+    "rating": {
+      "displayName": "Rating",
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.rating"
+    }
+  }
+}

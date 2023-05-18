@@ -1,0 +1,45 @@
+{
+  "name": "backend",
+  "version": "0.1.0",
+  "description": "The backend application for the landing page content management system.",
+  "author": {
+    "name": "Konstantin Münster",
+    "email": "mail@konstantin.digital",
+    "url": "https://konstantin.digital"
+  },
+  "scripts": {
+    "dev": "strapi develop",
+    "start": "strapi start",
+    "build": "strapi build",
+    "strapi": "strapi",
+    "prettier": "prettier --ignore-path .gitignore --write \"**/*.+(js|json|ts|tsx|md|mdx)\"",
+    "format": "yarn prettier --write",
+    "check-format": "yarn prettier --check",
+    "lint": "eslint .",
+    "check-types": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.5",
+    "@babel/eslint-parser": "^7.19.1",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "typescript": "^4.9.3"
+  },
+  "dependencies": {
+    "@strapi/plugin-color-picker": "^4.10.5",
+    "@strapi/plugin-i18n": "^4.10.5",
+    "@strapi/plugin-users-permissions": "^4.10.5",
+    "@strapi/provider-upload-aws-s3": "^4.10.5",
+    "@strapi/strapi": "^4.10.5",
+    "pg": "^8.10.0"
+  },
+  "strapi": {
+    "uuid": "051793ca-1c32-4adf-ad67-39de2fef64f7"
+  },
+  "engines": {
+    "node": ">=18",
+    "npm": ">=6.0.0"
+  },
+  "license": "MIT"
+}

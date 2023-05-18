@@ -1,0 +1,29 @@
+{
+  "name": "root",
+  "private": true,
+  "author": {
+    "name": "Konstantin Münster",
+    "email": "mail@konstantin.digital",
+    "url": "https://konstantin.digital"
+  },
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev --parallel",
+    "lint": "turbo run lint",
+    "check-types": "turbo run check-types",
+    "check-format": "turbo run check-format"
+  },
+  "devDependencies": {
+    "prettier": "^2.8.2",
+    "turbo": "^1.6.3"
+  },
+  "dependencies": {},
+  "packageManager": "yarn@1.22.19",
+  "resolutions": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}

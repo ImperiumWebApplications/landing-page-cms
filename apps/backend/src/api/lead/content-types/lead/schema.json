@@ -1,0 +1,59 @@
+{
+  "kind": "collectionType",
+  "collectionName": "leads",
+  "info": {
+    "singularName": "lead",
+    "pluralName": "leads",
+    "displayName": "Leads",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "salutation": {
+      "type": "string"
+    },
+    "first_name": {
+      "type": "string"
+    },
+    "last_name": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "landing_page": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::landing-page.landing-page"
+    },
+    "appointment_requests": {
+      "displayName": "Requests",
+      "type": "component",
+      "repeatable": true,
+      "component": "appointment.requests"
+    },
+    "questionnaire_results": {
+      "displayName": "Results",
+      "type": "component",
+      "repeatable": true,
+      "component": "questionnaire.results"
+    },
+    "postal_code": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "deleted": {
+      "type": "boolean",
+      "default": false,
+      "private": true
+    }
+  }
+}

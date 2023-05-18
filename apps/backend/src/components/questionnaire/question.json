@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_questionnaire_questions",
+  "info": {
+    "displayName": "Question",
+    "icon": "question",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "question": {
+      "type": "string"
+    },
+    "answers": {
+      "displayName": "Answer",
+      "type": "component",
+      "repeatable": true,
+      "component": "questionnaire.answer"
+    }
+  }
+}

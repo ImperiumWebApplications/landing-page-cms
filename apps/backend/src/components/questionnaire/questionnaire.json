@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_questionnaire_questionnaires",
+  "info": {
+    "displayName": "Questionnaire",
+    "icon": "th-large",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "entry_question": {
+      "type": "string"
+    },
+    "advantage": {
+      "displayName": "advantage",
+      "type": "component",
+      "repeatable": true,
+      "component": "questionnaire.advantage"
+    },
+    "questionnaires": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::questionnaire.questionnaire"
+    },
+    "headline": {
+      "type": "string"
+    },
+    "advantages": {
+      "displayName": "advantages",
+      "type": "component",
+      "repeatable": false,
+      "component": "questionnaire.advantages"
+    }
+  }
+}

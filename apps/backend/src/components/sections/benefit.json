@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_sections_benefit",
+  "info": {
+    "displayName": "benefit",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text",
+      "maxLength": 250
+    }
+  }
+}

@@ -1,0 +1,141 @@
+{
+  "kind": "collectionType",
+  "collectionName": "landing_pages",
+  "info": {
+    "singularName": "landing-page",
+    "pluralName": "landing-pages",
+    "displayName": "Landing Pages",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "seo_title": {
+      "type": "string",
+      "maxLength": 55
+    },
+    "seo_description": {
+      "type": "string",
+      "maxLength": 155
+    },
+    "domain": {
+      "type": "string"
+    },
+    "brand_name": {
+      "type": "string"
+    },
+    "color_primary": {
+      "type": "customField",
+      "customField": "plugin::color-picker.color"
+    },
+    "color_secondary": {
+      "type": "customField",
+      "customField": "plugin::color-picker.color"
+    },
+    "color_tertiary": {
+      "type": "customField",
+      "customField": "plugin::color-picker.color"
+    },
+    "color_text": {
+      "type": "customField",
+      "customField": "plugin::color-picker.color"
+    },
+    "contact_email": {
+      "type": "email"
+    },
+    "contact_phone": {
+      "type": "string"
+    },
+    "favicon": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "questionnaire": {
+      "type": "component",
+      "repeatable": false,
+      "component": "questionnaire.questionnaire"
+    },
+    "client_address": {
+      "type": "text"
+    },
+    "client_vat": {
+      "type": "string"
+    },
+    "sections": {
+      "type": "dynamiczone",
+      "components": [
+        "sections.call-to-action",
+        "sections.faq",
+        "sections.hero",
+        "sections.images",
+        "sections.reviews",
+        "sections.services",
+        "sections.statistics",
+        "sections.video"
+      ]
+    },
+    "service_type": {
+      "type": "string"
+    },
+    "google_allow_indexation": {
+      "type": "boolean",
+      "default": true
+    },
+    "google_tag_manager_id": {
+      "type": "string",
+      "regex": "^(GTM-[A-Z0-9]{7})$",
+      "required": false
+    },
+    "funnel_target": {
+      "type": "enumeration",
+      "enum": ["Questionnaire", "Appointment"],
+      "default": "Questionnaire"
+    },
+    "appointment": {
+      "displayName": "Appointment",
+      "type": "component",
+      "repeatable": false,
+      "component": "appointment.appointment"
+    },
+    "questionnaires_relations": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::questionnaire.questionnaire",
+      "inversedBy": "landing_pages_relations"
+    },
+    "questionnaires_entry_question": {
+      "type": "string"
+    },
+    "questionnaires_advantages": {
+      "type": "component",
+      "repeatable": false,
+      "component": "questionnaire.advantages"
+    },
+    "countries": {
+      "type": "customField",
+      "options": ["Germany:DE", "Switzerland:CH", "Austria:AT"],
+      "customField": "plugin::multi-select-field.multi-select-field",
+      "default": ["DE"]
+    },
+    "language": {
+      "type": "enumeration",
+      "enum": ["German", "English"],
+      "default": "German"
+    },
+    "deleted": {
+      "type": "boolean",
+      "default": false,
+      "private": true
+    }
+  }
+}

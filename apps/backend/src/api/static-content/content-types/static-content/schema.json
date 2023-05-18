@@ -1,0 +1,124 @@
+{
+  "kind": "singleType",
+  "collectionName": "static_contents",
+  "info": {
+    "singularName": "static-content",
+    "pluralName": "static-contents",
+    "displayName": "Static Content",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "imprint": {
+      "type": "richtext",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "privacy": {
+      "type": "richtext",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "video_section": {
+      "displayName": "Video Section",
+      "type": "component",
+      "repeatable": false,
+      "component": "static-content.video-section",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "services_section": {
+      "displayName": "Services Section",
+      "type": "component",
+      "repeatable": false,
+      "component": "static-content.services-section",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "hero_section": {
+      "displayName": "Hero Section",
+      "type": "component",
+      "repeatable": false,
+      "component": "static-content.hero-section",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "reviews_section": {
+      "displayName": "Reviews Section",
+      "type": "component",
+      "repeatable": false,
+      "component": "static-content.reviews-section",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "questions_section": {
+      "displayName": "Questions Section",
+      "type": "component",
+      "repeatable": false,
+      "component": "static-content.questions-section",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "footer": {
+      "displayName": "Footer Configuration",
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "static-content.footer-configuration"
+    },
+    "questionnaire": {
+      "displayName": "Questionnaire",
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "static-content.questionnaire"
+    },
+    "cookie_consent_dialog": {
+      "displayName": "Cookie Consent",
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "static-content.cookie-consent"
+    }
+  }
+}

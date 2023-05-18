@@ -1,0 +1,45 @@
+{
+  "collectionName": "components_static_content_services_sections",
+  "info": {
+    "displayName": "Services Section",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "call_to_action_banner_title": {
+      "type": "string"
+    },
+    "process_title": {
+      "type": "string"
+    },
+    "process_step": {
+      "displayName": "Process Step",
+      "type": "component",
+      "repeatable": true,
+      "component": "static-content.process-step"
+    },
+    "process_advantage_title": {
+      "type": "string"
+    },
+    "process_advantage": {
+      "displayName": "Process Advantage",
+      "type": "component",
+      "repeatable": true,
+      "component": "static-content.process-advantage",
+      "max": 3
+    },
+    "process_navigation_item": {
+      "type": "component",
+      "repeatable": false,
+      "component": "static-content.anchor-link"
+    },
+    "navigation_item": {
+      "type": "component",
+      "repeatable": false,
+      "component": "static-content.anchor-link"
+    },
+    "call_to_action_button_label": {
+      "type": "string"
+    }
+  }
+}
