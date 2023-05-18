@@ -13,7 +13,7 @@ const Review_OLD = dynamic<ReviewProps>(
   {
     ssr: false,
   },
-);
+) as any;
 
 type ReviewsSectionProps = {
   id: string;

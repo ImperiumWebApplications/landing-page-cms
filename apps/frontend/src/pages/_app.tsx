@@ -47,6 +47,8 @@ const sen = localFont({
 
 function MyApp({ Component, pageProps }: AppProps<{ content?: LandingPage }>) {
   const language: LandingPageLanguage = pageProps.content?.language ?? 'German';
+  const AnyComponent = Component as any;
+
 
   return (
     <>
@@ -56,7 +58,7 @@ function MyApp({ Component, pageProps }: AppProps<{ content?: LandingPage }>) {
         }
       `}</style>
       <LanguageContext.Provider value={{ language }}>
-        <Component {...pageProps} />
+        <AnyComponent {...pageProps} />
       </LanguageContext.Provider>
     </>
   );

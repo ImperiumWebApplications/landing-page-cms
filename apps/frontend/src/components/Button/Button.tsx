@@ -1,4 +1,4 @@
-import { cloneElement, useMemo } from 'react';
+import React, { useMemo } from 'react';
 
 import Link from 'next/link';
 import cx from 'classnames';
@@ -54,14 +54,14 @@ export const Button = (props: ButtonProps) => {
         <div className="inline-block">
           <span className="inline-block">{props.label}</span>
         </div>
-        {props.Icon ? (
+        {props.Icon && (
           <span className="ml-4">
-            {cloneElement(props.Icon, {
-              ...props.Icon.props,
+            {React.cloneElement(props.Icon, {
               className: cx(props.Icon.props?.className, 'inline-block'),
             })}
           </span>
-        ) : undefined}
+        )}
+
       </>
     );
   }, [props.label, props.Icon]);
