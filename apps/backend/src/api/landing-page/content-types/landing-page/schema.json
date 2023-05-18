@@ -52,13 +52,17 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
     },
     "logo": {
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
     },
     "questionnaire": {
       "type": "component",
@@ -98,7 +102,10 @@
     },
     "funnel_target": {
       "type": "enumeration",
-      "enum": ["Questionnaire", "Appointment"],
+      "enum": [
+        "Questionnaire",
+        "Appointment"
+      ],
       "default": "Questionnaire"
     },
     "appointment": {
@@ -123,19 +130,32 @@
     },
     "countries": {
       "type": "customField",
-      "options": ["Germany:DE", "Switzerland:CH", "Austria:AT"],
+      "options": [
+        "Germany:DE",
+        "Switzerland:CH",
+        "Austria:AT"
+      ],
       "customField": "plugin::multi-select-field.multi-select-field",
-      "default": ["DE"]
+      "default": [
+        "DE"
+      ]
     },
     "language": {
       "type": "enumeration",
-      "enum": ["German", "English"],
+      "enum": [
+        "German",
+        "English"
+      ],
       "default": "German"
     },
     "deleted": {
       "type": "boolean",
       "default": false,
       "private": true
+    },
+    "TestValidation": {
+      "type": "customField",
+      "customField": "plugin::input-real-time-validation.input-real-time-validation"
     }
   }
 }
