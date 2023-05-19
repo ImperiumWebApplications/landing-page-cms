@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import {
@@ -12,17 +12,35 @@ import { Eye, Refresh } from '@strapi/icons';
 import RestoreDialog, { EntryToRestore } from '../../components/RestoreDialog';
 import { getReadonlyViewURL } from '../../components/ReadonlyView';
 import { Undo } from '../../components/Icons';
+
 import { useDeletedEntries } from '../../hooks/useDeletedEntries';
 import { useRestoreEntry } from '../../hooks/useRestoreEntry';
+import { usePagination } from '../../hooks/usePagination';
+import { useModelParam } from '../../hooks/useModelParam';
 
 import TableView from './components/TableView';
+import { ModelSelect } from './components/ModelSelect';
+import { Pagination } from './components/Pagination';
 
 const SoftDeleteArchive = () => {
   const [selectedEntry, setSelectedEntry] = useState<EntryToRestore>(null);
 
   const history = useHistory();
   const restoreEntry = useRestoreEntry();
-  const { entries, loading, error, refetch } = useDeletedEntries();
+  const { page, pageSize } = usePagination();
+  const { model, setModel } = useModelParam();
+
+  const { entries, models, loading, error, refetch, total, pageCount } =
+    useDeletedEntries();
+
+  const memoizedPagination = useMemo(() => {
+    return {
+      page: page ?? 1,
+      pageSize: pageSize ?? 10,
+      total: total ?? 0,
+      pageCount: pageCount ?? 0,
+    };
+  }, [page, pageSize, total, pageCount]);
 
   const handleRestore = useCallback(
     async (model?: string, id?: string) => {
@@ -33,24 +51,21 @@ const SoftDeleteArchive = () => {
     [restoreEntry, refetch],
   );
 
-  const getHeaderSubtitle = useCallback(() => {
+  const getEntryCount = useCallback(() => {
     if (loading) return 'Loading...';
     if (error) return 'Error loading entries';
-    if (entries.length === 0) return 'No entries';
-    if (entries.length === 1) return '1 entry';
-    return `${entries.length} entries`;
-  }, [loading, error, entries]);
+    if (total === 0) return 'No entries';
+    if (total === 1) return '1 entry';
+    return `${total} entries`;
+  }, [loading, error, total]);
 
   return (
     <>
       <div>
         <Box background="neutral100">
-          <BaseHeaderLayout
-            title="Trash"
-            subtitle={getHeaderSubtitle()}
-            as="h1"
-          />
+          <BaseHeaderLayout title="Trash" as="h1" />
         </Box>
+        <ModelSelect models={models} value={model} onChange={setModel} />
         {loading ||
           (entries.length === 0 && (
             <Box padding={8} background="neutral100">
@@ -74,31 +89,41 @@ const SoftDeleteArchive = () => {
           </Box>
         )}
         {!loading && !error && entries.length > 0 && (
-          <TableView
-            entries={entries}
-            style={{ marginTop: '-20px' }}
-            actions={[
-              {
-                label: 'View',
-                icon: <Eye />,
-                onClick: (entry) => {
-                  const url = getReadonlyViewURL(entry.__type, entry.id);
-                  history.push(url);
+          <>
+            <TableView
+              entries={entries}
+              style={{
+                marginTop: '-30px',
+                paddingLeft: '56px',
+                paddingRight: '56px',
+              }}
+              actions={[
+                {
+                  label: 'View',
+                  icon: <Eye />,
+                  onClick: (entry) => {
+                    const url = getReadonlyViewURL(entry.__type, entry.id);
+                    history.push(url);
+                  },
                 },
-              },
-              {
-                label: 'Restore',
-                icon: <Undo />,
-                onClick: (entry) => {
-                  setSelectedEntry({
-                    name: entry.brand_name || entry.name,
-                    model: entry.__type,
-                    id: entry.id,
-                  });
+                {
+                  label: 'Restore',
+                  icon: <Undo />,
+                  onClick: (entry) => {
+                    setSelectedEntry({
+                      name: entry.brand_name || entry.name,
+                      model: entry.__type,
+                      id: entry.id,
+                    });
+                  },
                 },
-              },
-            ]}
-          />
+              ]}
+            />
+            <Pagination
+              pagination={memoizedPagination}
+              count={getEntryCount()}
+            />
+          </>
         )}
       </div>
       <RestoreDialog
