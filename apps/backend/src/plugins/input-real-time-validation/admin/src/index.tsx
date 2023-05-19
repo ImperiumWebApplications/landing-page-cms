@@ -1,5 +1,4 @@
 import { prefixPluginTranslations } from '@strapi/helper-plugin';
-
 import pluginPkg from '../../package.json';
 import pluginId from './pluginId';
 
@@ -21,6 +20,27 @@ export default {
       intlDescription: {
         id: `${pluginId}.plugin.name`,
         defaultMessage: name,
+      },
+      options: {
+        base: [
+          {
+            sectionTitle: {
+              id: `${pluginId}.maxLength.section`,
+              defaultMessage: 'Max Length',
+            },
+            items: [
+              {
+                intlLabel: {
+                  id: `${pluginId}.maxLength.label`,
+                  defaultMessage: 'Max Length',
+                },
+                name: 'options.maxLength',
+                type: 'number',
+                value: 150, // default value  
+              },
+            ],
+          },
+        ],
       },
     });
   },

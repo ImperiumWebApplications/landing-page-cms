@@ -153,11 +153,16 @@
       "default": false,
       "private": true
     },
-    "TestValidation": {
+    "custom": {
       "type": "customField",
+      "options": {
+        "maxLength": 10
+      },
       "customField": "plugin::input-real-time-validation.input-real-time-validation"
+    },
+    "HelloWorld": {
+      "type": "customField",
+      "customField": "plugin::multi-select-field.multi-select-field"
     }
   }
 }
-
-

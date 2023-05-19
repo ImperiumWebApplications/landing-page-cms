@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { TextInput } from '@strapi/design-system';
+import React, { useState, useEffect } from 'react';
+import { TextInput, ProgressBar, Box } from '@strapi/design-system';
 
-type MyPluginInputValidationProps = {
+type RealTiemeValidationInputPluginProps = {
     value: string;
     onChange: (event: any) => void;
     intlLabel: {
@@ -10,35 +10,52 @@ type MyPluginInputValidationProps = {
     };
     name: string;
 
+    attribute: {
+        options: {
+            maxLength: number;
+        }
+    }
+    error: string;
 }
 
-const MyPluginInputValidation: React.FC<MyPluginInputValidationProps> = ({ onChange, value, name }) => {
+const RealTiemeValidationInputPlugin: React.FC<RealTiemeValidationInputPluginProps> = ({ onChange, value, name, attribute }) => {
     const [error, setError] = useState("");
 
     const handleOnChange = (e: any) => {
         const inputValue = e.target.value;
-        if (inputValue.length > 150) {
-            setError("Input value exceeds 150 characters!");
+        if (inputValue.length > attribute.options.maxLength) {
+            setError(`Input value exceeds ${attribute.options.maxLength} characters!`);
         } else {
             setError("");
-            onChange({ target: { name: 'yourInputFieldName', value: inputValue } });
+            onChange({ target: { name: name, value: inputValue } });
         }
     };
 
+    useEffect(() => {
+        if (error.length > 0) {
+            onChange({ target: { name: name, value: value } });
+        }
+    }, [error]);
+
+    const progress = (value.length / attribute.options.maxLength) * 100;
 
     return (
-
-        <>
+        <div>
             <TextInput
                 type="text"
                 label={name}
                 value={value}
                 onChange={handleOnChange}
+                error={error.length > 0 && error}
             />
-            {error && <p style={{ color: 'red' }}>{error}</p>}
-        </>
-
+            <Box background={progress >= 100 && error.length > 1 ? 'danger700' : 'primary700'} padding={2}>
+                <ProgressBar
+                    variant="linear"
+                    value={progress}
+                />
+            </Box>
+        </div>
     );
 };
 
-export default MyPluginInputValidation;
+export default RealTiemeValidationInputPlugin;
