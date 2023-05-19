@@ -26,7 +26,7 @@ export const Statistics: React.FC<StatisticsProps> = (props) => {
               )}
             >
               <div className="text-5xl font-bold text-primary lg:text-7xl">
-                {formatNumber(item.number, props.locale ?? 'de')}
+                {item.number}
                 {item.number_suffix}
               </div>
               <span className="text-sm text-secondary md:text-base">
@@ -38,8 +38,4 @@ export const Statistics: React.FC<StatisticsProps> = (props) => {
       })}
     </div>
   );
-};
-
-const formatNumber = (number: number, locale: string) => {
-  return new Intl.NumberFormat(locale).format(number);
 };

@@ -191,7 +191,7 @@ export type VideoSection = Component<{
   video_description?: TextField;
   statistics?: RepeatableComponent<{
     label?: TextField;
-    number?: NumberField;
+    number?: TextField;
     number_suffix?: TextField;
   }>;
 }>;
