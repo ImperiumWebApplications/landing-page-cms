@@ -12,14 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "seo_title": {
-      "type": "string",
-      "maxLength": 55
-    },
-    "seo_description": {
-      "type": "string",
-      "maxLength": 155
-    },
     "domain": {
       "type": "string"
     },
@@ -153,11 +145,19 @@
       "default": false,
       "private": true
     },
-    "TestValidation": {
+    "seo_title": {
       "type": "customField",
+      "options": {
+        "maxLength": 55
+      },
       "customField": "plugin::input-real-time-validation.input-real-time-validation"
+    },
+    "seo_description": {
+      "type": "customField",
+      "customField": "plugin::input-real-time-validation.input-real-time-validation",
+      "options": {
+        "maxLength": 155
+      }
     }
   }
 }
-
-
