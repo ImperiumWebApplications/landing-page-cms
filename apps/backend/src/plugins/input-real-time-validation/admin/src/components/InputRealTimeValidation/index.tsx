@@ -51,7 +51,7 @@ const RealTiemeValidationInputPlugin: React.FC<RealTiemeValidationInputPluginPro
             <ProgressBar
                 variant="linear"
                 value={progress}
-                style={{ width: "100%" }}
+                style={{ width: "100%", padding: "10px 0 0 0" }}
             />
         </>
     );
