@@ -26,7 +26,7 @@ export default {
           {
             sectionTitle: {
               id: `${pluginId}.maxLength.section`,
-              defaultMessage: 'Max Length',
+              defaultMessage: 'Input properties',
             },
             items: [
               {
