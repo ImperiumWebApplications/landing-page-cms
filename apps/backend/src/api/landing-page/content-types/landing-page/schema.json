@@ -85,7 +85,8 @@
       ]
     },
     "service_type": {
-      "type": "string"
+      "type": "string",
+      "private": true
     },
     "google_allow_indexation": {
       "type": "boolean",
