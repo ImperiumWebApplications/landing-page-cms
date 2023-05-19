@@ -37,10 +37,10 @@ const RealTiemeValidationInputPlugin: React.FC<RealTiemeValidationInputPluginPro
         }
     }, [error]);
 
-    const progress = (value.length / attribute.options.maxLength) * 100;
+    const progress = (value?.length / attribute.options.maxLength) * 100;
 
     return (
-        <div>
+        <>
             <TextInput
                 type="text"
                 label={name}
@@ -48,13 +48,12 @@ const RealTiemeValidationInputPlugin: React.FC<RealTiemeValidationInputPluginPro
                 onChange={handleOnChange}
                 error={error.length > 0 && error}
             />
-            <Box background={progress >= 100 && error.length > 1 ? 'danger700' : 'primary700'} padding={2}>
-                <ProgressBar
-                    variant="linear"
-                    value={progress}
-                />
-            </Box>
-        </div>
+            <ProgressBar
+                variant="linear"
+                value={progress}
+                style={{ width: "100%" }}
+            />
+        </>
     );
 };
 
