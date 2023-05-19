@@ -18,7 +18,7 @@ type RealTimeValidationInputPluginProps = {
     error: string;
 }
 
-const RealTiemeValidationInputPlugin: React.FC<RealTiemeValidationInputPluginProps> = ({ onChange, value, name, attribute }) => {
+const RealTiemeValidationInputPlugin: React.FC<RealTimeValidationInputPluginProps> = ({ onChange, value, name, attribute }) => {
     const [error, setError] = useState("");
 
     const handleOnChange = (e: any) => {
