@@ -148,7 +148,7 @@
     "seo_title": {
       "type": "customField",
       "options": {
-        "maxLength": 10
+        "maxLength": 55
       },
       "customField": "plugin::input-real-time-validation.input-real-time-validation"
     },
@@ -156,7 +156,7 @@
       "type": "customField",
       "customField": "plugin::input-real-time-validation.input-real-time-validation",
       "options": {
-        "maxLength": 10
+        "maxLength": 155
       }
     }
   }
