@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { TextInput, ProgressBar, Box } from '@strapi/design-system';
 
-type RealTiemeValidationInputPluginProps = {
+type RealTimeValidationInputPluginProps = {
     value: string;
     onChange: (event: any) => void;
     intlLabel: {
