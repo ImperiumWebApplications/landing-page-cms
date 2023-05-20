@@ -19,16 +19,12 @@
       "component": "sections.number"
     },
     "video": {
-      "allowedTypes": [
-        "videos"
-      ],
+      "allowedTypes": ["videos"],
       "type": "media",
       "multiple": false
     },
     "video_thumbnail": {
-      "allowedTypes": [
-        "images"
-      ],
+      "allowedTypes": ["images"],
       "type": "media",
       "multiple": false
     }

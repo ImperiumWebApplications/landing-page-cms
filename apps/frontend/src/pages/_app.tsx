@@ -49,7 +49,6 @@ function MyApp({ Component, pageProps }: AppProps<{ content?: LandingPage }>) {
   const language: LandingPageLanguage = pageProps.content?.language ?? 'German';
   const AnyComponent = Component as any;
 
-
   return (
     <>
       <style jsx global>{`

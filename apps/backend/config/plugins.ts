@@ -38,6 +38,6 @@ export default ({ env }) => ({
   },
   'input-real-time-validation': {
     enabled: true,
-    resolve: './src/plugins/input-real-time-validation'
+    resolve: './src/plugins/input-real-time-validation',
   },
 });

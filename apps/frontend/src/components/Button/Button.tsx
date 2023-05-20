@@ -61,7 +61,6 @@ export const Button = (props: ButtonProps) => {
             })}
           </span>
         )}
-
       </>
     );
   }, [props.label, props.Icon]);

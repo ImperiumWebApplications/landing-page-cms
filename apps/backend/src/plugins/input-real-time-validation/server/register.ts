@@ -5,9 +5,10 @@ export default ({ strapi }) => {
     name: 'input-real-time-validation',
     plugin: 'input-real-time-validation',
     type: 'string',
-    inputSize: { // optional  
+    inputSize: {
+      // optional
       default: 4,
       isResizable: true,
     },
   });
-};  
+};
