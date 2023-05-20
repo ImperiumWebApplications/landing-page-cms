@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import ReactMarkdown from 'react-markdown';
 
 import type { StaticContent } from '../../../lib/strapi';
+import {
+  TagManagerEvents,
+  isTrackingAllowed,
+  sendEventToAnalytics,
+} from '../../../lib/analytics';
 import { i18n } from '../../../config/i18n.config';
 import { useLanguageContext } from '../../../context/Language';
 
@@ -20,6 +25,12 @@ export const Confirmation: React.FC<ConfirmationProps> = ({
   staticContent,
 }) => {
   const { language } = useLanguageContext();
+
+  useEffect(() => {
+    if (isTrackingAllowed(window.location.host)) {
+      sendEventToAnalytics(TagManagerEvents.QuestionnaireSubmitted);
+    }
+  }, []);
 
   return (
     <div
