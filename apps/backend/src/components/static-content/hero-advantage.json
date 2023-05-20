@@ -9,9 +9,7 @@
       "type": "string"
     },
     "icon": {
-      "allowedTypes": [
-        "images"
-      ],
+      "allowedTypes": ["images"],
       "type": "media",
       "multiple": false
     }

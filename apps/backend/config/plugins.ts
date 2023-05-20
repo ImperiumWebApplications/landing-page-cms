@@ -36,4 +36,8 @@ export default ({ env }) => ({
       models: ['landing-page', 'questionnaire', 'lead'],
     },
   },
+  'input-real-time-validation': {
+    enabled: true,
+    resolve: './src/plugins/input-real-time-validation',
+  },
 });

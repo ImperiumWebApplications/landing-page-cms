@@ -3,7 +3,9 @@ import dynamic from 'next/dynamic';
 import { PlayIcon } from '../../../../components/Icons';
 import { useMediaQuery } from '../../../../hooks/useMediaQuery';
 
-const ReactPlayer = dynamic(() => import('react-player'), { ssr: false });
+const ReactPlayer = dynamic(() => import('react-player'), {
+  ssr: false,
+}) as any;
 
 type VideoPlayerProps = {
   url: string;

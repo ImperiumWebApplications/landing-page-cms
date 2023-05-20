@@ -13,7 +13,7 @@ const ReactSVG = dynamic(
   // @ts-ignore
   () => import('react-svg').then((mod) => mod.ReactSVG),
   { ssr: false, loading: () => <LoadingIcon /> },
-);
+) as any;
 
 // Used for icons, images, and loading skeleton in tiles
 const iconClassName =
@@ -71,7 +71,7 @@ export const QuestionnaireTiles: React.FC<QuestionnaireTilesProps> = (
                     src={attributes.icon.data.attributes.url}
                     className={iconClassName}
                     loading={() => <LoadingIcon />}
-                    beforeInjection={(svg) => {
+                    beforeInjection={(svg: any) => {
                       svg.removeAttribute('width');
                       svg.removeAttribute('height');
                       svg.removeAttribute('x');

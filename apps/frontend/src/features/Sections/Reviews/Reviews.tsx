@@ -26,7 +26,7 @@ const SwiperModules = [Navigation, Pagination, A11y];
 
 const Swiper = dynamic(() => import('swiper/react').then((mod) => mod.Swiper), {
   ssr: false,
-});
+}) as any;
 
 const SWIPER_ID = 'review-slider';
 
@@ -35,7 +35,7 @@ const Review = dynamic(
   {
     ssr: false,
   },
-);
+) as any;
 
 type ReviewsSectionProps = {
   content: ReviewsSectionContent;

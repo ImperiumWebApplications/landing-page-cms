@@ -43,7 +43,6 @@ export type LandingPage = {
   contact_phone?: TextField;
   client_address?: TextField;
   client_vat?: TextField;
-  service_type?: TextField;
 
   seo_title?: TextField;
   seo_description?: TextField;
@@ -192,7 +191,7 @@ export type VideoSection = Component<{
   video_description?: TextField;
   statistics?: RepeatableComponent<{
     label?: TextField;
-    number?: NumberField;
+    number?: TextField;
     number_suffix?: TextField;
   }>;
 }>;

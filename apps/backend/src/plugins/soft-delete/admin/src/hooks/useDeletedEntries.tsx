@@ -2,10 +2,19 @@ import { useCallback, useEffect, useState } from 'react';
 
 import { useFetchClient } from '@strapi/helper-plugin';
 
+import { useModelParam } from './useModelParam';
+import { usePagination } from './usePagination';
+
 export const useDeletedEntries = () => {
+  const { page, pageSize, setPagination } = usePagination();
+  const { model: modelParam, setModel } = useModelParam();
+
+  const [models, setModels] = useState<string[]>();
+  const [total, setTotal] = useState<number>();
+  const [pageCount, setPageCount] = useState<number>();
+  const [entries, setEntries] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  const [entries, setEntries] = useState<any[]>([]);
 
   const client = useFetchClient();
 
@@ -14,28 +23,23 @@ export const useDeletedEntries = () => {
       const models = await getModels(client);
       if (!models) throw new Error('No models found');
 
-      const results = await Promise.all(
-        models.map(async (model) => {
-          const entries = await getDeletedEntries(client, { model });
-          return { model, entries };
-        }),
-      );
-
-      const combinedResults = results.flatMap(({ model, entries }) => {
-        if (entries.length === 0) return [];
-        return entries.map((entry: any) => ({
-          ...entry,
-          __type: model,
-        }));
+      const model = modelParam ?? models[0];
+      const { results, pagination } = await getDeletedEntries(client, {
+        model,
+        page,
+        pageSize,
       });
 
-      setEntries(combinedResults);
+      setEntries(results.map((entry: any) => ({ ...entry, __type: model })));
+      setTotal(pagination.total);
+      setPageCount(pagination.pageCount);
+      setModels(models);
       setLoading(false);
     } catch (err) {
       setError(true);
       setLoading(false);
     }
-  }, [client]);
+  }, [client, modelParam, page, pageSize]);
 
   const refetch = useCallback(async () => {
     setLoading(true);
@@ -45,9 +49,17 @@ export const useDeletedEntries = () => {
 
   useEffect(() => {
     fetchDeletedEntries();
-  }, []);
+  }, [modelParam, page, pageSize]);
 
-  return { loading, error, refetch, entries };
+  useEffect(() => {
+    if (!modelParam && !!models?.length) setModel(models[0]);
+  }, [models]);
+
+  useEffect(() => {
+    setPagination?.({ page: 1, pageSize: 10 });
+  }, [modelParam]);
+
+  return { loading, error, refetch, entries, models, total, pageCount };
 };
 
 /**
@@ -61,11 +73,18 @@ const getModels = async (fetcher: any): Promise<string[] | undefined> => {
 
 const getDeletedEntries = async (
   fetcher: any,
-  { model }: { model: string },
+  {
+    model,
+    page,
+    pageSize,
+  }: { model: string; page?: number; pageSize?: number },
 ) => {
+  const pageParam = page ? `&page=${page}` : '';
+  const pageSizeParam = pageSize ? `&pageSize=${pageSize}` : '';
+
   const { data } = await fetcher.get(
-    `/content-manager/collection-types/api::${model}.${model}?filters[deleted][$eq]=true`,
+    `/content-manager/collection-types/api::${model}.${model}?filters[deleted][$eq]=true&${pageParam}${pageSizeParam}`,
   );
 
-  return data?.results;
+  return data;
 };
