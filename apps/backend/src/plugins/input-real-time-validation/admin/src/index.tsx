@@ -36,7 +36,7 @@ export default {
                 },
                 name: 'options.maxLength',
                 type: 'number',
-                value: 150, // default value  
+                value: 150, // default value
               },
             ],
           },
@@ -45,7 +45,7 @@ export default {
     });
   },
 
-  bootstrap(app: any) { },
+  bootstrap(app: any) {},
 
   async registerTrads(app: any) {
     const { locales } = app;
@@ -65,7 +65,7 @@ export default {
               locale,
             };
           });
-      })
+      }),
     );
 
     return Promise.resolve(importedTrads);
