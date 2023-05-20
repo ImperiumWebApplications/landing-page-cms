@@ -57,6 +57,10 @@ jobs:
         working-directory: ./apps/backend/src/plugins/soft-delete
         run: NODE_ENV=production yarn build
 
+      - name: Create input-real-time-validation plugin build
+        working-directory: ./apps/backend/src/plugins/input-real-time-validation
+        run: NODE_ENV=production yarn build
+
       - name: Create build
         working-directory: ./apps/backend
         run: NODE_ENV=production yarn build
