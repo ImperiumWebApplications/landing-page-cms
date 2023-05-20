@@ -33,8 +33,8 @@ const RealTimeValidationInputPlugin: React.FC<
       );
     } else {
       setError('');
-      onChange({ target: { name: name, value: inputValue } });
     }
+    onChange({ target: { name: name, value: inputValue } });
   };
 
   useEffect(() => {
