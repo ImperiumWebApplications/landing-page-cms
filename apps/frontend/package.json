@@ -25,7 +25,7 @@
     "test:e2e:dev": "start-server-and-test dev:test http://0.0.0.0:3000 cy:open"
   },
   "dependencies": {
-    "@headlessui/react": "^1.7.7",
+    "@headlessui/react": "^1.7.14",
     "@sentry/nextjs": "^7.28.1",
     "axios": "^1.2.2",
     "classnames": "^2.3.2",
