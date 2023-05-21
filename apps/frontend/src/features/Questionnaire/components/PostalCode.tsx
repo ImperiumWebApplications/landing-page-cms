@@ -152,19 +152,17 @@ export const PostalCode: React.FC<PostalCodeProps> = ({
       <StepTitle>{staticContent?.postal_code_step_title}</StepTitle>
       <div className="mx-auto flex max-w-sm flex-col items-start justify-center lg:max-w-none lg:flex-row lg:items-center lg:gap-x-4">
         {isSingleCountryContext ? (
-          <>
-            <Field
-              type="code"
-              id={ContactFieldConfig.PostalCode.id}
-              label={PostalCodeField.label}
-              value={state.contact.postalCode}
-              onChange={updatePostalCode}
-              length={postalCodeLength}
-              inputProps={{
-                className: error ? 'border-[red]' : '',
-              }}
-            />
-          </>
+          <Field
+            type="code"
+            id={ContactFieldConfig.PostalCode.id}
+            label={PostalCodeField.label}
+            value={state.contact.postalCode}
+            onChange={updatePostalCode}
+            length={postalCodeLength}
+            inputProps={{
+              className: error ? 'border-[red]' : '',
+            }}
+          />
         ) : (
           <Field
             id={ContactFieldConfig.PostalCode.id}
