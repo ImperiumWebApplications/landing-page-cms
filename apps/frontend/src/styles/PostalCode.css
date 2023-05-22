@@ -1,7 +1,0 @@
-@media only screen and (max-width: 768px) {
-    .mx-auto.px-0.md\:px-8.lg\:max-w-xl.lg\:px-0 {
-      display: flex;
-      flex-direction: column;
-    }
-  }
-  

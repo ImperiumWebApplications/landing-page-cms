@@ -10,7 +10,6 @@ import 'swiper/css/a11y';
 import 'swiper/css/pagination';
 
 import '../styles/global.css';
-import '../styles/PostalCode.css';
 
 import { isTestEnvironment } from '../utils/isTestEnvironment';
 import { LanguageContext } from '../context/Language';
