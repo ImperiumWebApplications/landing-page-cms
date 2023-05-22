@@ -27,21 +27,18 @@ const RealTimeValidationInputPlugin: React.FC<
 
   const handleOnChange = (e: any) => {
     const inputValue = e.target.value;
-    if (inputValue.length > attribute.options.maxLength) {
+    onChange({ target: { name: name, value: inputValue } });
+  };
+
+  useEffect(() => {
+    if (value?.length > attribute.options.maxLength) {
       setError(
         `Input value exceeds ${attribute.options.maxLength} characters!`,
       );
     } else {
       setError('');
     }
-    onChange({ target: { name: name, value: inputValue } });
-  };
-
-  useEffect(() => {
-    if (error.length > 0) {
-      onChange({ target: { name: name, value: value } });
-    }
-  }, [error]);
+  }, [value]);
 
   const progress = (value?.length / attribute.options.maxLength) * 100;
 
