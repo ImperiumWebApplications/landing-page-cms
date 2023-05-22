@@ -148,9 +148,9 @@ export const PostalCode: React.FC<PostalCodeProps> = ({
   ]);
 
   return (
-<div className="mx-auto px-0 md:px-8 lg:max-w-xl lg:px-0 flex flex-col md:block">
+<div className="mx-auto px-0 md:px-8 lg:max-w-xl lg:px-0 ">
       <StepTitle>{staticContent?.postal_code_step_title}</StepTitle>
-      <div className="mx-auto flex max-w-sm flex-col items-start justify-center lg:max-w-none lg:flex-row lg:items-center lg:gap-x-4">
+      <div className="mx-auto flex max-w-sm flex-col justify-center lg:max-w-none lg:flex-row lg:items-center lg:gap-x-4 items-center">
         {isSingleCountryContext ? (
           <Field
             type="code"
