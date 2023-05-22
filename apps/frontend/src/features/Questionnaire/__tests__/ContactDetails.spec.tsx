@@ -7,6 +7,10 @@ import { setBrowserHistoryState } from '../../../utils/setBrowserHistoryState';
 import { NextAPI } from '../../../lib/next/api/client';
 import { ContactDetails as StatelessContactDetails } from '../components/ContactDetails';
 import { staticContent } from '../../../../mocks/lib/strapi/data';
+import {
+  isTrackingAllowed,
+  sendEventToAnalytics,
+} from '../../../lib/analytics';
 
 jest.mock('../../../lib/analytics/isTrackingAllowed', () => ({
   isTrackingAllowed: jest.fn(),
@@ -59,22 +63,22 @@ describe('ContactDetails', () => {
     } as Response);
   });
 
-  // test('should invoke tracking event on submit', async () => {
-  //   (isTrackingAllowed as jest.Mock).mockReturnValueOnce(true);
+  test('should invoke tracking event on submit', async () => {
+    (isTrackingAllowed as jest.Mock).mockReturnValueOnce(true);
 
-  //   const { getByRole } = renderWithLayout(<ContactDetails />);
+    const { getByRole } = renderWithLayout(<ContactDetails />);
 
-  //   await waitFor(() => {
-  //     fireEvent.click(getByRole('button'));
-  //   });
+    await waitFor(() => {
+      fireEvent.click(getByRole('button'));
+    });
 
-  //   await waitFor(() => {
-  //     expect(sendEventToAnalytics).toHaveBeenCalledTimes(1);
-  //     expect(sendEventToAnalytics).toHaveBeenCalledWith(
-  //       'questionnaire_submitted',
-  //     );
-  //   });
-  // });
+    await waitFor(() => {
+      expect(sendEventToAnalytics).toHaveBeenCalledTimes(1);
+      expect(sendEventToAnalytics).toHaveBeenCalledWith(
+        'questionnaire_submitted',
+      );
+    });
+  });
 
   test('should go to next step on submit and sync browser history', async () => {
     const { getByRole } = renderWithLayout(<ContactDetails />);
