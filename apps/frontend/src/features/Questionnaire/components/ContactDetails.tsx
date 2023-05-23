@@ -4,6 +4,11 @@ import { motion } from 'framer-motion';
 
 import type { StaticContent } from '../../../lib/strapi';
 import { NextAPI } from '../../../lib/next/api/client';
+import {
+  isTrackingAllowed,
+  sendEventToAnalytics,
+  TagManagerEvents,
+} from '../../../lib/analytics';
 
 import { useQuestionnaireContext } from '../context/Questionnaire';
 import { useLanguageContext } from '../../../context/Language';
@@ -32,6 +37,9 @@ export const ContactDetails: React.FC<ContactDetailsProps> = ({
     });
 
     if (!res.ok) throw new Error(res.statusText);
+
+    if (isTrackingAllowed(window.location.host))
+      sendEventToAnalytics(TagManagerEvents.QuestionnaireSubmitted);
 
     onSuccess?.();
     dispatch({ type: 'setIndex', payload: { index: state.index + 1 } });

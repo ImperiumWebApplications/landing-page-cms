@@ -139,6 +139,8 @@ describe('Funnel > Questionnaire', () => {
       cy.get('[data-testid="questionnaire-confirmation-phone"]')
         .should('have.text', '+49123456789')
         .should('have.attr', 'href', 'tel:+49123456789');
+
+      cy.location('search').should('eq', '?bestaetigung=1');
     });
   });
 });

@@ -8,6 +8,7 @@ type I18NFields = {
   NEXT: string;
   NOT_FOUND: string;
   NOT_FOUND_ACTION: string;
+  readonly FORM_CONFIRMATION_TRACKING_PARAM: string;
   FORM_INVALID_FIELDS: string;
   FORM_SUBMIT_CTA: string;
   FORM_SUBMIT_ERROR: string;
@@ -73,6 +74,7 @@ export const i18n: I18NConfig = {
     NEXT: 'Weiter',
     NOT_FOUND: 'Inhalt nicht gefunden',
     NOT_FOUND_ACTION: 'Einen Schritt zurück',
+    FORM_CONFIRMATION_TRACKING_PARAM: 'bestaetigung', // Don't change, used for tracking in GTM
     FORM_CONTACT: {
       Salutation: {
         LABEL: ['Frau', 'Herr'],
@@ -132,6 +134,7 @@ export const i18n: I18NConfig = {
     NEXT: 'Next',
     NOT_FOUND: 'Content not found',
     NOT_FOUND_ACTION: 'Go back',
+    FORM_CONFIRMATION_TRACKING_PARAM: 'confirmation', // Don't change, used for tracking in GTM
     FORM_CONTACT: {
       Salutation: {
         LABEL: ['Mrs.', 'Mr.'],
