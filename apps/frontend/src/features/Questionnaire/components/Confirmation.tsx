@@ -1,15 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import ReactMarkdown from 'react-markdown';
 
 import type { StaticContent } from '../../../lib/strapi';
-import {
-  TagManagerEvents,
-  isTrackingAllowed,
-  sendEventToAnalytics,
-} from '../../../lib/analytics';
 import { i18n } from '../../../config/i18n.config';
 import { useLanguageContext } from '../../../context/Language';
+import { useQueryParam } from '../../../hooks/useQueryParam';
 
 import { CheckCircleIcon } from '../../../components/Icons';
 import { Button } from '../../../components/Button';
@@ -26,11 +22,7 @@ export const Confirmation: React.FC<ConfirmationProps> = ({
 }) => {
   const { language } = useLanguageContext();
 
-  useEffect(() => {
-    if (isTrackingAllowed(window.location.host)) {
-      sendEventToAnalytics(TagManagerEvents.QuestionnaireSubmitted);
-    }
-  }, []);
+  useQueryParam(i18n[language].FORM_CONFIRMATION_TRACKING_PARAM, '1');
 
   return (
     <div
