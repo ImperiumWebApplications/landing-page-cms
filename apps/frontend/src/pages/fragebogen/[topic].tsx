@@ -7,6 +7,7 @@ import {
 import {
   QuestionnairePlaceholder,
   QuestionnaireProvider,
+  QuestionnaireState,
 } from '../../features/Questionnaire';
 import { isHeroSection } from '../../features/Sections/SectionMapper';
 
@@ -15,10 +16,14 @@ const QuestionnairePage: QuestionnairePage = ({
   staticContent,
   questionnaire,
 }) => {
+  const settings: QuestionnaireState['settings'] = {
+    enablePostalCode: content.enable_postal_code ?? true,
+  };
+
   return (
     <Layout content={content} staticContent={staticContent}>
       {questionnaire.questions?.length ? (
-        <QuestionnaireProvider>
+        <QuestionnaireProvider initialState={{ settings }}>
           <Questionnaire
             staticContent={staticContent.questionnaire}
             headline={content.sections?.find(isHeroSection)?.title}
