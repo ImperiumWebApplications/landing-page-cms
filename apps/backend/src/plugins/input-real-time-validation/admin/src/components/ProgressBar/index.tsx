@@ -42,17 +42,19 @@ export const ProgressBar = ({
   progressBackgroundColor = 'neutral0',
   ...props
 }: ProgressBarProps) => {
+  const cappedValue = value < max ? value : max;
+
   return (
     <ProgressbarBase
       hasRadius
       aria-label={children}
       aria-valuemax={max}
       aria-valuemin={min}
-      aria-valuenow={value}
+      aria-valuenow={cappedValue}
       height={size === 'S' ? 1 : 2}
       position="relative"
       role="progressbar"
-      value={value}
+      value={cappedValue}
       width={size === 'S' ? '78px' : '102px'}
       background={backgroundColor}
       progressBackgroundColor={progressBackgroundColor}
