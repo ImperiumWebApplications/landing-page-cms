@@ -12,7 +12,7 @@ const ReactSVG = dynamic(
   // @ts-ignore
   () => import('react-svg').then((mod) => mod.ReactSVG),
   { ssr: false },
-) as any;
+);
 
 type SelectableOptionProps = {
   label: string;
@@ -62,7 +62,7 @@ export const SelectableOption: React.FC<SelectableOptionProps> = ({
           <ReactSVG
             wrapper="svg"
             className={iconClassName}
-            beforeInjection={(svg: any) => {
+            beforeInjection={(svg) => {
               svg.removeAttribute('height');
               svg.removeAttribute('width');
               svg.removeAttribute('x');

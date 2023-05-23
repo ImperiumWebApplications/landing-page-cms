@@ -130,7 +130,7 @@ export const QuestionnaireProvider: React.FC<QuestionnaireProviderProps> = ({
   return (
     <QuestionnaireStateContext.Provider value={state}>
       <QuestionnaireDispatchContext.Provider value={dispatch}>
-        {children as any}
+        {children}
       </QuestionnaireDispatchContext.Provider>
     </QuestionnaireStateContext.Provider>
   );
