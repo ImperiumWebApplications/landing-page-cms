@@ -57,7 +57,7 @@ export const VideoSection: React.FC<VideoSectionProps> = (props) => {
                 ) : undefined}
               </div>
               {props.staticContent?.call_to_action_button_label ? (
-                <div className="flex-shrink-0 mx-auto md:mx-0">
+                <div className="mx-auto flex-shrink-0 md:mx-0">
                   <Button
                     data-testid="video-button"
                     variant="secondary"
