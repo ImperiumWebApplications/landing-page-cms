@@ -232,4 +232,3 @@ export const PostalCode: React.FC<PostalCodeProps> = ({
     </div>
   );
 };
-
