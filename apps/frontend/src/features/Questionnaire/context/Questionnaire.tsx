@@ -41,13 +41,25 @@ export type QuestionnaireAnswer = {
   answer: { id: number; value: string };
 };
 
+export type QuestionnaireSettings = {
+  enablePostalCode?: boolean;
+};
+
 export type QuestionnaireState = {
   index: number;
+  settings: QuestionnaireSettings;
   questionnaire: QuestionnaireAnswer[];
   contact: ContactDetailsFormValues & {
     city?: string | undefined;
     postalCode?: string | undefined;
   };
+};
+
+const defaultState: QuestionnaireState = {
+  index: 0,
+  settings: {},
+  questionnaire: [],
+  contact: {},
 };
 
 /**
@@ -89,22 +101,16 @@ export const QuestionnaireDispatchContext =
   createContext<QuestionnaireDispatch | null>(null);
 
 type QuestionnaireProviderProps = {
-  initialState?: QuestionnaireState;
+  initialState?: Partial<QuestionnaireState>;
   children?: React.ReactNode;
 };
 
 export const QuestionnaireProvider: React.FC<QuestionnaireProviderProps> = ({
   children,
-  initialState,
+  initialState = defaultState,
 }) => {
-  const [state, dispatch] = useReducer(
-    questionnaireReducer,
-    initialState ?? {
-      index: 0,
-      contact: {},
-      questionnaire: [],
-    },
-  );
+  const mergedState = mergeQuestionnaireState(defaultState, initialState);
+  const [state, dispatch] = useReducer(questionnaireReducer, mergedState);
 
   const browserBackHandler = useCallback((event: PopStateEvent) => {
     const index = event.state?.options.index;
@@ -124,7 +130,7 @@ export const QuestionnaireProvider: React.FC<QuestionnaireProviderProps> = ({
   return (
     <QuestionnaireStateContext.Provider value={state}>
       <QuestionnaireDispatchContext.Provider value={dispatch}>
-        {children as any}
+        {children}
       </QuestionnaireDispatchContext.Provider>
     </QuestionnaireStateContext.Provider>
   );
@@ -145,4 +151,23 @@ export const useQuestionnaireContext = () => {
   }
 
   return { state, dispatch };
+};
+
+const mergeQuestionnaireState = (
+  state1: QuestionnaireState,
+  state2: Partial<QuestionnaireState>,
+): QuestionnaireState => {
+  return {
+    ...state1,
+    ...state2,
+    settings: {
+      ...state1?.settings,
+      ...state2?.settings,
+    },
+    contact: {
+      ...state1?.contact,
+      ...state2?.contact,
+    },
+    questionnaire: [...state1?.questionnaire, ...(state2?.questionnaire ?? [])],
+  };
 };

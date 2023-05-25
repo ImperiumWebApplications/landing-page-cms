@@ -143,6 +143,10 @@
       "options": {
         "maxLength": 155
       }
+    },
+    "enable_postal_code": {
+      "type": "boolean",
+      "default": true
     }
   }
 }

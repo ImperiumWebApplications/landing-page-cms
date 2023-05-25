@@ -93,12 +93,31 @@ describe('Questionnaire', () => {
 
   test('should switch to postal code step at end of questions array', () => {
     const { getAllByRole, queryByLabelText } = renderWithLayout(
-      <QuestionnaireWithContext />,
+      <QuestionnaireProvider
+        initialState={{ settings: { enablePostalCode: true } }}
+      >
+        <Questionnaire {...defaultProps} />
+      </QuestionnaireProvider>,
     );
 
     expect(queryByLabelText(/postleitzahl/i)).not.toBeInTheDocument();
     fireEvent.click(getAllByRole('button')[0]);
     fireEvent.click(getAllByRole('button')[0]);
     expect(queryByLabelText(/postleitzahl/i)).toBeInTheDocument();
+  });
+
+  test('should not switch to postal code step at end of questions array', () => {
+    const { getAllByRole, queryByLabelText } = renderWithLayout(
+      <QuestionnaireProvider
+        initialState={{ settings: { enablePostalCode: false } }}
+      >
+        <Questionnaire {...defaultProps} />
+      </QuestionnaireProvider>,
+    );
+
+    expect(queryByLabelText(/postleitzahl/i)).not.toBeInTheDocument();
+    fireEvent.click(getAllByRole('button')[0]);
+    fireEvent.click(getAllByRole('button')[0]);
+    expect(queryByLabelText(/postleitzahl/i)).not.toBeInTheDocument();
   });
 });

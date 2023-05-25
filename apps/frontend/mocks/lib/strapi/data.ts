@@ -15,6 +15,7 @@ export const content: { data: { id: number; attributes: LandingPage }[] } = {
         domain: 'localhost:3000',
         countries: ['DE'],
         language: 'German',
+        enable_postal_code: true,
         brand_name: 'Leadquelle',
         color_primary: '#673A99',
         color_secondary: '#FF6658',
