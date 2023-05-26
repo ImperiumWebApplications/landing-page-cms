@@ -20,7 +20,7 @@ import { useCookieConsentValue } from '../CookieConsent';
 const CookieConsent = dynamic<CookieConsentProps>(
   () => import('../CookieConsent').then((mod) => mod.CookieConsent),
   { ssr: false },
-) as any;
+);
 
 type LayoutProps = {
   content: LandingPage;

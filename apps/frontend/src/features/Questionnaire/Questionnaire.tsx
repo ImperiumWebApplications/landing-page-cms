@@ -16,7 +16,10 @@ import { BackButton } from './components/BackButton';
 import { ContactDetails } from './components/ContactDetails';
 import { ProgressBar } from './components/ProgressBar';
 import { Advantages } from './components/Advantages';
-import { useQuestionnaireContext } from './context/Questionnaire';
+import {
+  QuestionnaireState,
+  useQuestionnaireContext,
+} from './context/Questionnaire';
 import { questionnaireRoute } from '../../config/navigation.config';
 import { useIsScrolled } from '../../hooks/useIsScrolled';
 
@@ -49,17 +52,26 @@ export const Questionnaire: React.FC<QuestionnaireProps> = ({
 
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
 
-  const zeroBasedQuestionsCount = questions.length - 1;
-  const isQuestionStep = state.index <= zeroBasedQuestionsCount;
-  const isPostalCodeStep = state.index === zeroBasedQuestionsCount + 1;
-  const isContactFormStep = state.index === zeroBasedQuestionsCount + 2;
-  const isFormSuccessStep = state.index === zeroBasedQuestionsCount + 3;
-
+  const steps = generateStepMap(state, questions.length);
   const question = questions[state.index];
 
-  const isEntryQuestion = router.pathname === `/${questionnaireRoute}`;
-  const base = !isEntryQuestion ? 1 : 0;
-  const progress = (state.index + base) / (zeroBasedQuestionsCount + 3 + base);
+  const progress = useMemo(() => {
+    const isEntryQuestion = router.pathname === `/${questionnaireRoute}`;
+
+    // Hide progress on certain steps
+    if (isEntryQuestion || steps.isContactFormStep || steps.isFormSuccessStep) {
+      return undefined;
+    }
+
+    const base = !isEntryQuestion ? 1 : 0;
+    return (state.index + base) / (steps.total + base);
+  }, [
+    router.pathname,
+    state.index,
+    steps.isContactFormStep,
+    steps.isFormSuccessStep,
+    steps.total,
+  ]);
 
   const advantageItems = useMemo(() => {
     const items = Object.values(advantages || {});
@@ -81,31 +93,50 @@ export const Questionnaire: React.FC<QuestionnaireProps> = ({
         <div className="max-w relative mx-auto grid h-auto min-h-[420px] max-w-[964px] grid-cols-1 grid-rows-[auto_1fr] bg-[white] py-5 md:mb-12 md:rounded-[10px] md:pt-12 md:pb-10 md:shadow-sm">
           <BackButton
             className={
-              isFormSuccessStep || (isScrolled && isMobile)
+              steps.isFormSuccessStep || (isScrolled && isMobile)
                 ? 'invisible absolute opacity-0'
                 : 'fixed left-4 top-[25px] z-10 opacity-100 transition-all md:absolute md:left-8 md:top-8'
             }
           />
           <div className="px-4">
-            {isQuestionStep && (
+            {steps.isQuestionStep && (
               <Question data={question} customSelectHandler={selectHandler} />
             )}
-            {isPostalCodeStep && (
+            {steps.isPostalCodeStep && (
               <PostalCode countries={countries} staticContent={staticContent} />
             )}
-            {isContactFormStep && (
+            {steps.isContactFormStep && (
               <ContactDetails staticContent={staticContent} />
             )}
-            {isFormSuccessStep && (
+            {steps.isFormSuccessStep && (
               <Confirmation phone={phone} staticContent={staticContent} />
             )}
           </div>
-          {!isEntryQuestion && !isContactFormStep && !isFormSuccessStep && (
-            <ProgressBar progress={Math.floor(progress * 100)} />
-          )}
+          {!!progress && <ProgressBar progress={Math.floor(progress * 100)} />}
         </div>
       </div>
       <Advantages items={advantageItems} />
     </div>
   );
+};
+
+const generateStepMap = (state: QuestionnaireState, questionCount: number) => {
+  const zeroBasedQuestionsCount = questionCount - 1;
+
+  if (state.settings.enablePostalCode) {
+    return {
+      isQuestionStep: state.index <= zeroBasedQuestionsCount,
+      isPostalCodeStep: state.index === zeroBasedQuestionsCount + 1,
+      isContactFormStep: state.index === zeroBasedQuestionsCount + 2,
+      isFormSuccessStep: state.index === zeroBasedQuestionsCount + 3,
+      total: zeroBasedQuestionsCount + 3,
+    };
+  } else {
+    return {
+      isQuestionStep: state.index <= zeroBasedQuestionsCount,
+      isContactFormStep: state.index === zeroBasedQuestionsCount + 1,
+      isFormSuccessStep: state.index === zeroBasedQuestionsCount + 2,
+      total: zeroBasedQuestionsCount + 2,
+    };
+  }
 };
