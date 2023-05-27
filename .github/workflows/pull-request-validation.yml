@@ -5,7 +5,7 @@ on:
     branches: [dev]
 
 jobs:
-  build:
+  check-format:
     runs-on: ubuntu-latest
 
     strategy:
