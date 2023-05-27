@@ -40,6 +40,15 @@ export default {
               },
             ],
           },
+          {
+            intlLabel: {
+              id: `${pluginId}.displayName.label`,
+              defaultMessage: 'Display Name',
+            },
+            name: 'options.displayName',
+            type: 'string',
+            value: 'Default Display Name',
+          },
         ],
       },
     });
