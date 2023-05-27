@@ -10,10 +10,7 @@ const moduleExports = {
   outputFileTracing: true,
   images: {
     domains: process.env.IMAGE_PROVIDER_URL
-      ? [
-          process.env.IMAGE_PROVIDER_URL,
-          'landing-pages-images-prod.s3.eu-central-1.amazonaws.com',
-        ]
+      ? [process.env.IMAGE_PROVIDER_URL]
       : [],
   },
   i18n: {
