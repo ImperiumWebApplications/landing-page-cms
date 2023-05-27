@@ -24,6 +24,7 @@
   "dependencies": {},
   "packageManager": "yarn@1.22.19",
   "resolutions": {
+    "@types/react": "^18.2.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }

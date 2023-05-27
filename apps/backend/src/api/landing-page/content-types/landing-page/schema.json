@@ -145,6 +145,10 @@
         "maxLength": 155,
         "displayName": "SEO Description"
       }
+    },
+    "enable_postal_code": {
+      "type": "boolean",
+      "default": true
     }
   }
 }
