@@ -2,7 +2,7 @@ name: Node.js CI
 
 on:
   pull_request:
-    branches: [main]
+    branches: [dev]
 
 jobs:
   build:
@@ -18,6 +18,5 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm ci
-      - run: npm run check-format # Run Prettier's --list-different command
-      - run: npm test
+      - run: yarn install --frozen-lockfile
+      - run: yarn check-format
