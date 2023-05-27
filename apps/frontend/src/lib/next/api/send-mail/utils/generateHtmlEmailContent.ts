@@ -15,6 +15,7 @@ import { formatAppointmentsDate } from './formatAppointmentsDate';
 export const generateHtmlEmailContent = ({
   recipient,
   landingPage,
+  logoUrl,
   template,
   content,
 }: {
@@ -26,6 +27,7 @@ export const generateHtmlEmailContent = ({
     postalCode?: string;
     city?: string;
   };
+  logoUrl: string;
   landingPage: LandingPage;
   template: keyof typeof EmailTemplate;
   content: EmailTemplatePayload[keyof typeof EmailTemplate];
@@ -41,7 +43,7 @@ export const generateHtmlEmailContent = ({
   const hbsTemplate = compile(templateString);
 
   const context: EmailTemplateContext[EmailTemplate] = {
-    logoUrl: landingPage?.logo?.data?.attributes?.url,
+    logoUrl: logoUrl,
     firstName: recipient?.firstName ?? '',
     lastName: recipient?.lastName ?? '',
     colorPrimary: landingPage?.color_primary ?? '#000000',

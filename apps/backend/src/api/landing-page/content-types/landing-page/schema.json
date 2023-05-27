@@ -133,7 +133,8 @@
     "seo_title": {
       "type": "customField",
       "options": {
-        "maxLength": 55
+        "maxLength": 55,
+        "displayName": "SEO Title"
       },
       "customField": "plugin::input-real-time-validation.input-real-time-validation"
     },
@@ -141,7 +142,8 @@
       "type": "customField",
       "customField": "plugin::input-real-time-validation.input-real-time-validation",
       "options": {
-        "maxLength": 155
+        "maxLength": 155,
+        "displayName": "SEO Description"
       }
     },
     "enable_postal_code": {
