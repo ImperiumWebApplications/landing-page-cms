@@ -12,7 +12,7 @@
   <mj-body background-color="#FAFAFA">
     {{#if logoUrl}}
     <mj-hero padding="40px 10px" background-color="#FAFAFA">
-      <mj-image align="left" width="220px" src="cid:logo@cid" />
+      <mj-image align="left" width="180px" src="cid:logo@cid" />
     </mj-hero>
     {{/if}}
     <mj-section padding="10px">

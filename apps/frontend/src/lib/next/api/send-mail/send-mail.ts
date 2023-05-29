@@ -34,7 +34,7 @@ export const sendMail = async (data: SendMailProps) => {
   }
 
   let logoUrl = landingPage.logo?.data?.attributes.url;
-  let logoExt = landingPage.logo?.data?.attributes.ext;
+  const logoExt = landingPage.logo?.data?.attributes.ext;
   let attachments;
   if (logoExt === '.svg') {
     const imageBuffer = await fetch(logoUrl).then((res) => res.buffer());
