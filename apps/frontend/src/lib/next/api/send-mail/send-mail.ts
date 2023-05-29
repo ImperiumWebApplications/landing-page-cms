@@ -48,7 +48,6 @@ export const sendMail = async (data: SendMailProps) => {
       },
     ];
   }
-  
 
   const html = generateHtmlEmailContent({
     recipient,
