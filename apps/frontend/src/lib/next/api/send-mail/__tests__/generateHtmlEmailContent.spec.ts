@@ -68,8 +68,7 @@ describe('generateHtmlEmailContent', () => {
       firstName: 'FirstName',
       lastName: 'LastName',
       email: 'test@test.com',
-      logoUrl:
-        'https://landing-pages-images-local.s3.eu-central-1.amazonaws.com/leadquelle_logo_7a57e30208.svg',
+      logoUrl: undefined,
       phone: '1234567890',
       postalCode: '22303',
       questionnaire: [
