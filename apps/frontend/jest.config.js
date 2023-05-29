@@ -27,6 +27,7 @@ const customJestConfig = {
       tsconfig: 'tsconfig.jest.json',
     },
   },
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.tsx'],
 };
 
 module.exports = createJestConfig(customJestConfig);
