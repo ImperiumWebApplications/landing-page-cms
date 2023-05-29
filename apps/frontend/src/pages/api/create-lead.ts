@@ -13,7 +13,6 @@ export const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const data = validateRequestBody(req);
 
     await Promise.all([
-      // await createLeadInPipedrive(data),
       await createLeadInCMS(data),
       await sendMail({
         domain: data.domain,

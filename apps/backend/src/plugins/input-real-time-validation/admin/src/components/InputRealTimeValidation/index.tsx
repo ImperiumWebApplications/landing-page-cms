@@ -11,7 +11,6 @@ type RealTimeValidationInputPluginProps = {
     defaultMessage: string;
   };
   name: string;
-
   attribute: {
     options: {
       maxLength: number;
@@ -22,7 +21,7 @@ type RealTimeValidationInputPluginProps = {
 
 const RealTimeValidationInputPlugin: React.FC<
   RealTimeValidationInputPluginProps
-> = ({ onChange, value, name, attribute }) => {
+> = ({ onChange, value, name, attribute, intlLabel }) => {
   const [error, setError] = useState('');
 
   const handleOnChange = (e: any) => {
@@ -46,7 +45,7 @@ const RealTimeValidationInputPlugin: React.FC<
     <>
       <TextInput
         type="text"
-        label={name}
+        label={intlLabel.defaultMessage}
         value={value}
         onChange={handleOnChange}
         error={error.length > 0 && error}
