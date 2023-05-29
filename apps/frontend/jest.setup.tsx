@@ -1,6 +1,7 @@
 import { render, RenderOptions } from '@testing-library/react';
 import { ReactElement } from 'react';
 import '@testing-library/jest-dom';
+import 'cross-fetch/polyfill';
 
 const LayoutRender: React.FC<{ children?: React.ReactElement }> = ({
   children,

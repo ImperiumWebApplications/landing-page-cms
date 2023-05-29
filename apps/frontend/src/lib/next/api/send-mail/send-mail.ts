@@ -8,7 +8,6 @@ import {
 import { Strapi } from '../../../strapi';
 import { generateHtmlEmailContent } from './utils/generateHtmlEmailContent';
 import sharp from 'sharp';
-import fetch from 'node-fetch';
 
 export type SendMailProps = {
   domain: string;
@@ -34,11 +33,12 @@ export const sendMail = async (data: SendMailProps) => {
   }
 
   let logoUrl = landingPage.logo?.data?.attributes.url;
-  let logoExt = landingPage.logo?.data?.attributes.ext;
+  const logoExt = landingPage.logo?.data?.attributes.ext;
   let attachments;
   if (logoExt === '.svg') {
-    const imageBuffer = await fetch(logoUrl).then((res) => res.buffer());
-    const pngBuffer = await sharp(imageBuffer).png().toBuffer();
+    const imageBuffer = await fetch(logoUrl).then((res) => res.arrayBuffer());
+    const buffer = Buffer.from(imageBuffer);
+    const pngBuffer = await sharp(buffer).png().toBuffer();
     logoUrl = `data:image/png;base64,${pngBuffer.toString('base64')}`;
     attachments = [
       {
