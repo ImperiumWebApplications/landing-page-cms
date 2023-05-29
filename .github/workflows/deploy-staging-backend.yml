@@ -49,25 +49,8 @@ jobs:
       - name: Install deps
         run: yarn install --frozen-lockfile
 
-      - name: Create multi-select-field plugin build
-        working-directory: ./apps/backend/src/plugins/multi-select-field
-        run: NODE_ENV=production yarn build
-
-      - name: Create soft-delete plugin build
-        working-directory: ./apps/backend/src/plugins/soft-delete
-        run: NODE_ENV=production yarn build
-
-      - name: Create input-real-time-validation plugin build
-        working-directory: ./apps/backend/src/plugins/input-real-time-validation
-        run: NODE_ENV=production yarn build
-
-      - name: Create unique-domains plugin build
-        working-directory: ./apps/backend/src/plugins/unique-domains
-        run: NODE_ENV=production yarn build
-
       - name: Create build
-        working-directory: ./apps/backend
-        run: NODE_ENV=production yarn build
+        run: NODE_ENV=production yarn build --filter=./apps/backend --filter='./apps/backend/*/**'
 
       - name: Generate dist
         working-directory: ./apps/backend
