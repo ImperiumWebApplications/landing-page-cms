@@ -7,7 +7,7 @@ import { ContentPage, queryContentPageContent } from '../lib/next/app';
 import { populateMarkdownTemplate } from '../utils/populateMarkdownTemplate';
 import { Layout } from '../components/Layout';
 
-const Article: any = dynamic<ArticleProps>(
+const Article = dynamic<ArticleProps>(
   () => import('../components/Article').then((mod) => mod.Article),
   { ssr: false },
 );

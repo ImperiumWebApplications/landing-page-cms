@@ -50,7 +50,7 @@
         <mj-text
           font-size="16px"
           font-weight="400"
-          line-height="16px"
+          line-height="24px"
           padding-bottom="0"
         >
           Ihre Rufnummer: <b>{{phone}}</b>
@@ -59,7 +59,7 @@
         <mj-text
           font-size="16px"
           font-weight="400"
-          line-height="16px"
+          line-height="24px"
           padding-bottom="0"
         >
           Ihre E-Mail Adresse: <b>{{email}}</b>
@@ -68,8 +68,8 @@
         <mj-text
           font-size="16px"
           font-weight="400"
-          line-height="16px"
-          padding-bottom="0"
+          line-height="24px"
+          padding-bottom="{{#if postalCode}}0{{else}}10px{{/if}}"
         >
           Ihr Name: <b>{{firstName}} {{lastName}}</b>
         </mj-text>
@@ -84,25 +84,20 @@
         </mj-text>
         {{/if}}
 
-        <mj-text
-          font-size="16px"
-          font-weight="400"
-          line-height="24px"
-          padding-bottom="20px"
-        >
+        <mj-text font-size="16px" font-weight="400" line-height="24px">
           Nachfolgend finden Sie die Zusammenfassung Ihrer Anfrage:
         </mj-text>
       </mj-column>
     </mj-section>
-    <mj-section padding="0 0 0 30px">
-      {{#if questionnaire}} {{#each questionnaire}}
-      <mj-column padding="8px 0" width="100%" border-left="4px solid #F2F2F2">
+    {{#if questionnaire}} {{#each questionnaire}}
+    <mj-section padding="10px 40px">
+      <mj-column width="100%" border-left="4px solid #F2F2F2">
         <mj-text
           padding-bottom="0"
           padding-left="20px"
           font-size="16px"
           font-weight="700"
-          line-height="22px"
+          line-height="24px"
         >
           {{this.question}}
         </mj-text>
@@ -111,12 +106,14 @@
           padding-left="20px"
           font-size="14px"
           font-weight="400"
-          line-height="16px"
+          line-height="24px"
         >
           {{this.answer}}
         </mj-text>
       </mj-column>
-      {{/each}} {{/if}} {{#if appointments}} {{#each appointments}}
+    </mj-section>
+    {{/each}} {{/if}} {{#if appointments}} {{#each appointments}}
+    <mj-section padding="10px 40px">
       <mj-column padding="8px 0" width="100%" border-left="4px solid #F2F2F2">
         <mj-text
           padding-bottom="0"
@@ -137,16 +134,11 @@
           Ort: {{this.location}}
         </mj-text>
       </mj-column>
-      {{/each}} {{/if}}
     </mj-section>
-    <mj-section padding="10px">
+    {{/each}} {{/if}}
+    <mj-section padding="20px 10px 10px 10px">
       <mj-column>
-        <mj-text
-          font-size="16px"
-          font-weight="400"
-          line-height="24px"
-          padding-top="20px"
-        >
+        <mj-text font-size="16px" font-weight="400" line-height="24px">
           In unserem Telefonat werden wir Ihre Angaben gemeinsam validieren. Wir
           freuen uns auf den Austausch.
         </mj-text>

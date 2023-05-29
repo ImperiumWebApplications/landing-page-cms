@@ -89,7 +89,7 @@ export const PostalCode: React.FC<PostalCodeProps> = ({
   const isRegularTextFieldInputValid = useCallback(
     (code?: string) => {
       if (!code || code.trim().length < 4) return false;
-      return PostalCodeField.validators.some((validator) =>
+      return PostalCodeField.validators.every((validator) =>
         validator.regex.test(code ?? ''),
       );
     },
@@ -214,8 +214,8 @@ export const PostalCode: React.FC<PostalCodeProps> = ({
             }
             data-testid="questionnaire-postal-code-button"
             disabled={
-              (!!countries && !isCodeCompleted) ||
-              (!!!countries &&
+              (countries?.length && !isCodeCompleted) ||
+              (!countries?.length &&
                 !isRegularTextFieldInputValid(state.contact.postalCode)) ||
               isLoading ||
               !!error
