@@ -30,3 +30,11 @@ jobs:
       - name: Run tests
         working-directory: apps/frontend
         run: yarn test
+
+      - name: Build the application
+        working-directory: apps/frontend
+        run: yarn build
+
+      - name: Run Cypress tests
+        working-directory: apps/frontend
+        run: yarn test:e2e:run
