@@ -11,11 +11,12 @@ export const QualityBadges: React.FC<QualityBadgesProps> = ({ badges }) => {
 
   return (
     <div className="mt-6 flex flex-row items-center justify-center gap-x-12 p-2">
-      {badges.data.map(({ attributes }) => {
+      {badges.data.map(({ attributes }, key) => {
         if (!attributes?.url) return null;
         return (
           <Image
             src={attributes.url}
+            key={key}
             width={100}
             height={100}
             alt={attributes.alternativeText ?? 'badge'}
