@@ -27,4 +27,3 @@ export const QualityBadges: React.FC<QualityBadgesProps> = ({ badges }) => {
     </div>
   );
 };
-
