@@ -14,12 +14,6 @@ export const QualityBadges: React.FC<QualityBadgesProps> = ({ badges }) => {
       {badges.data.map(({ attributes }, key) => {
         if (!attributes?.url) return null;
         return (
-          <a
-            key={key}
-            href={attributes.url}
-            target={'_blank'}
-            rel="noreferrer noopener"
-          >
             <Image
               src={attributes.url}
               width={100}
@@ -27,7 +21,6 @@ export const QualityBadges: React.FC<QualityBadgesProps> = ({ badges }) => {
               alt={attributes.alternativeText ?? 'badge'}
               className="object-contain"
             />
-          </a>
         );
       })}
     </div>
