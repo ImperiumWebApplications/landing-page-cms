@@ -103,16 +103,23 @@ export const PostalCode: React.FC<PostalCodeProps> = ({
         payload: { values: { ...state.contact, postalCode: value } },
       });
 
-      if (!!postalCodeLength && postalCodeLength === value.length) {
+      if (isSingleCountryContext && postalCodeLength === value.length) {
         await fetchCities(value);
       }
 
-      if (!!postalCodeLength && postalCodeLength > value.length) {
+      if (isSingleCountryContext && postalCodeLength > value.length) {
         updateCity(undefined);
         setCities([]);
       }
     },
-    [dispatch, fetchCities, updateCity, postalCodeLength, state.contact],
+    [
+      dispatch,
+      fetchCities,
+      isSingleCountryContext,
+      updateCity,
+      postalCodeLength,
+      state.contact,
+    ],
   );
 
   const isRegularTextFieldInputValid = useCallback(
@@ -124,6 +131,19 @@ export const PostalCode: React.FC<PostalCodeProps> = ({
     },
     [PostalCodeField.validators],
   );
+
+  const isNextStepDisabled = useCallback(() => {
+    if (isLoading || !!error) return true;
+    if (isSingleCountryContext && !state.contact.city) return true;
+    return !isRegularTextFieldInputValid(state.contact.postalCode);
+  }, [
+    error,
+    isLoading,
+    isRegularTextFieldInputValid,
+    isSingleCountryContext,
+    state.contact.city,
+    state.contact.postalCode,
+  ]);
 
   return (
     <div className="mx-auto px-0 md:px-8 lg:max-w-xl lg:px-0 ">
@@ -191,13 +211,7 @@ export const PostalCode: React.FC<PostalCodeProps> = ({
               staticContent?.postal_code_button_label ?? i18n[language].NEXT
             }
             data-testid="questionnaire-postal-code-button"
-            disabled={
-              (countries?.length && !state.contact.city) ||
-              (!countries?.length &&
-                !isRegularTextFieldInputValid(state.contact.postalCode)) ||
-              isLoading ||
-              !!error
-            }
+            disabled={isNextStepDisabled()}
             onClick={() => {
               dispatch({
                 type: 'setIndex',
