@@ -25,5 +25,9 @@ export const useStyleOverrides = () => {
     `.trim();
 
     document.head.appendChild(style);
+
+    return () => {
+      style.remove();
+    };
   }, []);
 };
