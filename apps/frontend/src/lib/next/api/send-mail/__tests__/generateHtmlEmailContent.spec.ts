@@ -48,7 +48,8 @@ describe('generateHtmlEmailContent', () => {
   });
 
   it('should use correct template file path', () => {
-    generateHtmlEmailContent({ ...defaultData });
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    generateHtmlEmailContent({ ...defaultData } as any);
     expect(mockedFs.existsSync).toHaveBeenCalledWith(
       expect.stringContaining(resolve(process.cwd(), 'email', 'templates')),
     );
@@ -56,12 +57,14 @@ describe('generateHtmlEmailContent', () => {
 
   it('should throw error if file not exists', () => {
     mockedFs.existsSync.mockReturnValue(false);
-    const result = () => generateHtmlEmailContent({ ...defaultData });
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const result = () => generateHtmlEmailContent({ ...defaultData } as any);
     expect(result).toThrow('Missing template for sending mail.');
   });
 
   it('should call handlebars template function with correct context', () => {
-    generateHtmlEmailContent({ ...defaultData });
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    generateHtmlEmailContent({ ...defaultData } as any);
     expect(hbsTemplateMock).toHaveBeenCalledWith({
       colorPrimary: '#673A99',
       colorText: '#505050',
@@ -82,13 +85,15 @@ describe('generateHtmlEmailContent', () => {
 
   it('should throw error if compiled template does not exist', () => {
     hbsTemplateMock.mockReturnValue(undefined);
-    const result = () => generateHtmlEmailContent({ ...defaultData });
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const result = () => generateHtmlEmailContent({ ...defaultData } as any);
     expect(result).toThrow('Error while generating mail template.');
   });
 
   it('should throw error if mjml compiling threw errors', () => {
     mjmlMock.mockReturnValue({ html: undefined, errors: ['error'] });
-    const result = () => generateHtmlEmailContent({ ...defaultData });
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const result = () => generateHtmlEmailContent({ ...defaultData } as any);
     expect(result).toThrow('Error while generating mail template.');
   });
 });
