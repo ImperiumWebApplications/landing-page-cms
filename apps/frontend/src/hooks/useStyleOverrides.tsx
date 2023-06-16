@@ -12,9 +12,6 @@ export const useStyleOverrides = () => {
       div[aria-label="question"] > h2 {
         color: var(--color-secondary) !important;
       }
-      div[role="button"].icon svg {
-        fill: var(--color-secondary) !important;
-      }
       footer {
         background-color: var(--color-secondary) !important;
       }
