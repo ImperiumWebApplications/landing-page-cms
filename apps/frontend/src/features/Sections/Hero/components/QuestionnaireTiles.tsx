@@ -71,6 +71,7 @@ export const QuestionnaireTiles: React.FC<QuestionnaireTilesProps> = (
                     src={attributes.icon.data.attributes.url}
                     className={iconClassName}
                     loading={() => <LoadingIcon />}
+                    fallback={() => <PlaceholderIcon />}
                     beforeInjection={(svg) => {
                       svg.removeAttribute('width');
                       svg.removeAttribute('height');
@@ -79,6 +80,7 @@ export const QuestionnaireTiles: React.FC<QuestionnaireTilesProps> = (
                     }}
                   />
                 ) : null}
+                {!attributes.icon?.data?.attributes && <PlaceholderIcon />}
               </div>
               <span className="flex flex-grow items-center text-center text-sm font-semibold leading-tight text-primary md:justify-center md:text-base 3xl:text-lg">
                 {attributes.name}
@@ -94,5 +96,14 @@ export const QuestionnaireTiles: React.FC<QuestionnaireTilesProps> = (
 const LoadingIcon = () => (
   <div
     className={cx(iconClassName, 'animate-pulse rounded-full bg-tertiary p-4')}
+  />
+);
+
+const PlaceholderIcon = () => (
+  <div
+    className={cx(
+      iconClassName,
+      'w-16 rounded-full bg-secondary p-4 opacity-5 md:w-24 xl:w-32 3xl:w-40',
+    )}
   />
 );
