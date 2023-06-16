@@ -16,6 +16,7 @@ import { Head } from '../Head/Head';
 
 import { extractSeoProps } from '../../config/seo.config';
 import { useCookieConsentValue } from '../CookieConsent';
+import { useStyleOverrides } from '../../hooks/useStyleOverrides';
 
 const CookieConsent = dynamic<CookieConsentProps>(
   () => import('../CookieConsent').then((mod) => mod.CookieConsent),
@@ -46,6 +47,8 @@ export const Layout: React.FC<LayoutProps> = ({
     if (isCookieModalOpen) document.body.style.overflowY = 'hidden';
     else document.body.style.overflowY = 'auto';
   });
+
+  useStyleOverrides();
 
   return (
     <>
