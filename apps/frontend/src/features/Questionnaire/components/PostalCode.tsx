@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
+import React, { ChangeEvent, useCallback, useState } from 'react';
 
 import type { StaticContent } from '../../../lib/strapi/model';
 import { PostalCodeDetails } from '../../../config/countries.config';
@@ -38,11 +38,9 @@ export const PostalCode: React.FC<PostalCodeProps> = ({
 
   // Extract global state from context
   const { state, dispatch } = useQuestionnaireContext();
-  const code = state.contact.postalCode ?? '';
 
   // Create local state to store information about list of matched cities
   const [error, setError] = useState<string | undefined>(undefined);
-  const [failedCode, setFailedCode] = useState<string | undefined>(undefined);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [cities, setCities] = useState<PostalCodeDetails[]>([]);
 
@@ -50,15 +48,8 @@ export const PostalCode: React.FC<PostalCodeProps> = ({
   const countryDetails = getCountryDetails(countries);
   const postalCodeLength = getPostalCodeLength(countryDetails);
 
-  const isCodeCompleted = !!postalCodeLength && postalCodeLength <= code.length;
   const isSingleCountryContext = !!postalCodeLength && countries?.length === 1;
   // const isMultiCountryContext = !!countries && countries.length > 1;
-
-  const isTypingCode = !isCodeCompleted && !cities.length;
-  const isRemovingCode = !isCodeCompleted && cities.length;
-  const showCitySelect = isSingleCountryContext;
-  const isSameSelectedCode = cities?.[0] && cities[0].code === code;
-  const isSameFailedCode = failedCode === code;
 
   const updateCity = useCallback(
     (value: string | undefined) => {
@@ -70,20 +61,58 @@ export const PostalCode: React.FC<PostalCodeProps> = ({
     [dispatch, state.contact],
   );
 
-  const resetCities = useCallback(() => {
-    updateCity(undefined);
-    setCities([]);
-  }, [updateCity]);
+  const fetchCities = useCallback(
+    async (code: string) => {
+      try {
+        const domain = normalizeHostname(window.location.host);
+        if (!domain) return;
+
+        setIsLoading(true);
+
+        const res = await NextAPI.getPostalCodeDetails({
+          domain,
+          code,
+          countries,
+        });
+
+        const { success, data } = (await res.json()) ?? {};
+
+        if (!success)
+          throw new Error('Error while fetching postal code details.');
+
+        const cities = data as PostalCodeDetails[];
+        if (!cities.length)
+          throw new Error('No cities found for postal code' + code);
+
+        setCities(cities);
+        setError(undefined);
+        setIsLoading(false);
+      } catch (err) {
+        setIsLoading(false);
+        setError(PostalCodeField.validators[0].message);
+      }
+    },
+    [PostalCodeField.validators, countries],
+  );
 
   const updatePostalCode = useCallback(
-    (update: ChangeEvent<HTMLInputElement> | string) => {
+    async (update: ChangeEvent<HTMLInputElement> | string) => {
       const value = typeof update === 'string' ? update : update.target.value;
       dispatch({
         type: 'setDetails',
         payload: { values: { ...state.contact, postalCode: value } },
       });
+
+      if (!!postalCodeLength && postalCodeLength === value.length) {
+        await fetchCities(value);
+      }
+
+      if (!!postalCodeLength && postalCodeLength > value.length) {
+        updateCity(undefined);
+        setCities([]);
+      }
     },
-    [dispatch, state.contact],
+    [dispatch, fetchCities, updateCity, postalCodeLength, state.contact],
   );
 
   const isRegularTextFieldInputValid = useCallback(
@@ -95,57 +124,6 @@ export const PostalCode: React.FC<PostalCodeProps> = ({
     },
     [PostalCodeField.validators],
   );
-
-  useEffect(() => {
-    // Avoid unnecessary requests if the code has not changed
-    if (isSameSelectedCode || isSameFailedCode) return;
-    if (!showCitySelect || isTypingCode) return;
-    if (isRemovingCode) return resetCities();
-
-    const domain = normalizeHostname(window.location.host);
-    if (!domain) return;
-
-    const fetchAndUpdateCities = async () => {
-      try {
-        setIsLoading(true);
-        const res = await (
-          await NextAPI.getPostalCodeDetails({
-            domain,
-            code,
-            countries,
-          })
-        ).json();
-
-        if (!res.success)
-          throw new Error('Error while fetching postal code details.');
-
-        const cities = res.data as PostalCodeDetails[];
-        if (!cities.length)
-          throw new Error('No cities found for postal code' + code);
-
-        setCities(cities);
-        setError(undefined);
-        setIsLoading(false);
-      } catch (err) {
-        setIsLoading(false);
-        resetCities();
-        setFailedCode(code);
-        setError(PostalCodeField.validators[0].message);
-      }
-    };
-
-    fetchAndUpdateCities();
-  }, [
-    isRemovingCode,
-    isTypingCode,
-    isCodeCompleted,
-    isSameFailedCode,
-    isSameSelectedCode,
-    showCitySelect,
-    code,
-    countries,
-    resetCities,
-  ]);
 
   return (
     <div className="mx-auto px-0 md:px-8 lg:max-w-xl lg:px-0 ">
@@ -187,7 +165,7 @@ export const PostalCode: React.FC<PostalCodeProps> = ({
             options={cities.map((city) => city.place)}
             onChange={updateCity}
             buttonProps={{
-              disabled: !isCodeCompleted || !!error,
+              disabled: cities.length <= 1 || !!error,
               loading: isLoading,
             }}
           />
@@ -214,7 +192,7 @@ export const PostalCode: React.FC<PostalCodeProps> = ({
             }
             data-testid="questionnaire-postal-code-button"
             disabled={
-              (countries?.length && !isCodeCompleted) ||
+              (countries?.length && !state.contact.city) ||
               (!countries?.length &&
                 !isRegularTextFieldInputValid(state.contact.postalCode)) ||
               isLoading ||

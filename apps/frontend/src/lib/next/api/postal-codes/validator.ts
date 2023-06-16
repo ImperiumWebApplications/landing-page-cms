@@ -8,7 +8,7 @@ export interface PostalCodesRequest extends NextApiRequest {
   body: {
     domain: string;
     code?: string | number;
-    countries?: string[];
+    countries?: string[] | null;
   };
 }
 

@@ -26,6 +26,10 @@ const defaultPostalCodeDetails = [
     zipcode: '22303',
     place: 'Hamburg',
   },
+  {
+    zipcode: '22309',
+    place: 'Hamburg Barmbek',
+  },
 ];
 
 const PostalCodeWithContext = (props: { countries?: Country[] }) => (
@@ -93,7 +97,7 @@ describe('PostalCode', () => {
     });
 
     await waitFor(() => {
-      expect(NextAPI.getPostalCodeDetails).toHaveBeenCalledTimes(3);
+      expect(NextAPI.getPostalCodeDetails).toHaveBeenCalledTimes(1);
       expect(NextAPI.getPostalCodeDetails).toHaveBeenCalledWith({
         domain: 'localhost',
         code: '22303',
@@ -124,7 +128,7 @@ describe('PostalCode', () => {
     });
 
     await waitFor(() => {
-      expect(NextAPI.getPostalCodeDetails).toHaveBeenCalledTimes(3);
+      expect(NextAPI.getPostalCodeDetails).toHaveBeenCalledTimes(1);
       expect(queryByTestId(SELECT_FIELD_BUTTON_TEST_ID)).toHaveTextContent(
         defaultPostalCodeDetails[0].place,
       );
@@ -135,7 +139,7 @@ describe('PostalCode', () => {
     });
 
     await waitFor(() => {
-      expect(NextAPI.getPostalCodeDetails).toHaveBeenCalledTimes(3);
+      expect(NextAPI.getPostalCodeDetails).toHaveBeenCalledTimes(1);
       expect(queryByTestId(SELECT_FIELD_BUTTON_TEST_ID)).toHaveTextContent('');
     });
   });

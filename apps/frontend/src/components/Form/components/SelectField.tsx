@@ -24,7 +24,11 @@ export const SelectField = (props: SelectFieldProps) => {
   const { options, value, onChange } = props;
 
   useEffect(() => {
-    if (options.length && !value) onChange(options?.[0]);
+    if (
+      (options.length && !value) ||
+      (options.length && value && !options.includes(value))
+    )
+      onChange(options?.[0]);
   }, [options, value, onChange]);
 
   return (
