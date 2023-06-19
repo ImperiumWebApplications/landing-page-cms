@@ -5,6 +5,7 @@ import Image from 'next/image';
 import dynamic from 'next/dynamic';
 
 import type { Media } from '../../../lib/strapi';
+import { useIconStyleOverrides } from '../../../hooks/useStyleOverrides';
 import { isSvg } from '../../../utils/isSvg';
 import { CheckCircleIcon } from '../../../components/Icons';
 
@@ -30,10 +31,12 @@ export const SelectableOption: React.FC<SelectableOptionProps> = ({
   const isSvgIcon = isSvg(icon?.data?.attributes?.ext);
   const iconClassName = 'h-[78px] max-w-[100%] md:h-[96px]';
 
+  useIconStyleOverrides();
+
   return (
     <div
       role="button"
-      className={`icon group relative grid h-auto w-[calc(50%-5px)] max-w-xs cursor-pointer select-none grid-cols-1 grid-rows-[78px_1fr] place-content-center rounded-lg border-[1px] p-4 transition-all hover:border-primary hover:shadow-sm hover:ring-2 hover:ring-primary hover:ring-offset-2 md:grid-rows-[96px_1fr] lg:w-[180px] lg:p-6 ${
+      className={`icon icon-color-override group relative grid h-auto w-[calc(50%-5px)] max-w-xs cursor-pointer select-none grid-cols-1 grid-rows-[78px_1fr] place-content-center rounded-lg border-[1px] p-4 transition-all hover:border-primary hover:shadow-sm hover:ring-2 hover:ring-primary hover:ring-offset-2 md:grid-rows-[96px_1fr] lg:w-[180px] lg:p-6 ${
         selected ? 'border-primary' : 'border-secondary'
       }`}
       onClick={onSelectHandler}

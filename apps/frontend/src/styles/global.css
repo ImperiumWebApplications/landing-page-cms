@@ -96,44 +96,44 @@
   }
 
   /** SelectableOption, QuestionnaireTile **/
-  .icon svg,
-  .icon svg path,
-  .icon svg polygon,
-  .icon svg circle,
-  .icon svg line,
-  .icon svg polyline,
-  .icon svg rect,
-  .icon svg ellipse {
+  .icon-color-override svg,
+  .icon-color-override svg path,
+  .icon-color-override svg polygon,
+  .icon-color-override svg circle,
+  .icon-color-override svg line,
+  .icon-color-override svg polyline,
+  .icon-color-override svg rect,
+  .icon-color-override svg ellipse {
     fill: var(--color-primary) !important;
   }
-  .icon[data-selected='true'] svg,
-  .icon[data-selected='true'] svg path,
-  .icon[data-selected='true'] svg polygon,
-  .icon[data-selected='true'] svg circle,
-  .icon[data-selected='true'] svg line,
-  .icon[data-selected='true'] svg polyline,
-  .icon[data-selected='true'] svg rect,
-  .icon[data-selected='true'] svg ellipse {
+  .icon-color-override[data-selected='true'] svg,
+  .icon-color-override[data-selected='true'] svg path,
+  .icon-color-override[data-selected='true'] svg polygon,
+  .icon-color-override[data-selected='true'] svg circle,
+  .icon-color-override[data-selected='true'] svg line,
+  .icon-color-override[data-selected='true'] svg polyline,
+  .icon-color-override[data-selected='true'] svg rect,
+  .icon-color-override[data-selected='true'] svg ellipse {
     fill: var(--color-primary) !important;
   }
-  .icon:active svg,
-  .icon:active svg path,
-  .icon:active svg polygon,
-  .icon:active svg circle,
-  .icon:active svg line,
-  .icon:active svg polyline,
-  .icon:active svg rect,
-  .icon:active svg ellipse {
+  .icon-color-override:active svg,
+  .icon-color-override:active svg path,
+  .icon-color-override:active svg polygon,
+  .icon-color-override:active svg circle,
+  .icon-color-override:active svg line,
+  .icon-color-override:active svg polyline,
+  .icon-color-override:active svg rect,
+  .icon-color-override:active svg ellipse {
     fill: var(--color-primary) !important;
   }
-  .group:hover .icon svg,
-  .group:hover .icon svg path,
-  .group:hover .icon svg polygon,
-  .group:hover .icon svg circle,
-  .group:hover .icon svg line,
-  .group:hover .icon svg polyline,
-  .group:hover .icon svg rect,
-  .group:hover .icon svg ellipse {
+  .group:hover .icon-color-override svg,
+  .group:hover .icon-color-override svg path,
+  .group:hover .icon-color-override svg polygon,
+  .group:hover .icon-color-override svg circle,
+  .group:hover .icon-color-override svg line,
+  .group:hover .icon-color-override svg polyline,
+  .group:hover .icon-color-override svg rect,
+  .group:hover .icon-color-override svg ellipse {
     fill: var(--color-primary) !important;
   }
   /** https://stackoverflow.com/questions/30102792/css-media-query-to-target-only-ios-devices */

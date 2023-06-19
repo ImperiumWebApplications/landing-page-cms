@@ -6,6 +6,7 @@ import cx from 'classnames';
 import type { HeroSectionContent } from '../../SectionMapper';
 
 import { questionnaireRoute } from '../../../../config/navigation.config';
+import { useIconStyleOverrides } from '../../../../hooks/useStyleOverrides';
 import { isSvg } from '../../../../utils/isSvg';
 import { slugifyRoute } from '../../../../utils/slugifyRoute';
 
@@ -29,6 +30,8 @@ export const QuestionnaireTiles: React.FC<QuestionnaireTilesProps> = (
 ) => {
   if (!props.answers?.length) return null;
 
+  useIconStyleOverrides();
+
   return (
     <div className="pt-4 sm:pt-6 md:pt-0">
       <h4 className="text-center text-lg font-bold text-primary sm:text-xl md:text-left md:text-2xl">
@@ -51,9 +54,10 @@ export const QuestionnaireTiles: React.FC<QuestionnaireTilesProps> = (
               key={id}
               role="button"
               href={route}
+              aria-label="questionnaire-option"
               className="group flex w-[calc(50%-8px)] max-w-[260px] select-none flex-col items-center gap-4 rounded-md border border-solid border-secondary bg-[white] p-3 shadow-sm transition-all hover:border-primary hover:ring-2 hover:ring-primary hover:ring-offset-2 focus-visible:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 md:w-auto md:flex-1 md:rounded-lg md:p-6 md:shadow-lg 3xl:max-w-[280px]"
             >
-              <div className="icon flex items-center justify-center">
+              <div className="icon icon-color-override flex items-center justify-center">
                 {attributes.icon?.data?.attributes && !isSvgIcon ? (
                   <Image
                     data-testid="hero-tile-image"
