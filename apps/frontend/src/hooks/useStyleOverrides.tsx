@@ -1,6 +1,6 @@
 import { useLayoutEffect } from 'react';
 
-const STYLE_OVERRIDE_DOMAIN_REGEX = /(localhost)/;
+const STYLE_OVERRIDE_DOMAIN_REGEX = /(maklerplan)/;
 
 export const shouldOverrideStyles = () =>
   typeof window !== 'undefined' &&
