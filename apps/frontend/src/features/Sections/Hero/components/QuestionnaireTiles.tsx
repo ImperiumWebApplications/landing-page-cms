@@ -28,9 +28,9 @@ export type QuestionnaireTilesProps = {
 export const QuestionnaireTiles: React.FC<QuestionnaireTilesProps> = (
   props,
 ) => {
-  if (!props.answers?.length) return null;
-
   useIconStyleOverrides();
+
+  if (!props.answers?.length) return null;
 
   return (
     <div className="pt-4 sm:pt-6 md:pt-0">
