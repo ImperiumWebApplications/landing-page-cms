@@ -27,7 +27,7 @@ Build & Test:
     - cd ./apps/frontend && yarn test
     - yarn test:e2e:run
     - apt-get update
-    - pt-get install -y xvfb
+    - apt-get install -y xvfb
     - zip -r deploy.zip * .[^.]* -x "**node_modules**" -x "*.ebextensions*"
     - mv deploy.zip ./apps/frontend
   artifacts:
