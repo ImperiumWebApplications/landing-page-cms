@@ -1,0 +1,71 @@
+variables:
+  BUILD_ARTIFACT: "staging-frontend-build"
+
+stages:
+  - prettier
+  - build_and_test
+  - deploy
+
+Check Format:
+  stage: prettier
+  script:
+    - yarn install --frozen-lockfile
+    - yarn check-format
+  only:
+    refs:
+      - dev
+    changes:
+      - "apps/frontend/**"
+  image: node:18
+  timeout: 15 minutes
+
+Build & Test:
+  stage: build_and_test
+  script:
+    - yarn install --frozen-lockfile
+    - yarn build
+    - yarn test
+    - yarn test:e2e:run
+    - zip -r deploy.zip * .[^.]* -x "**node_modules**" -x "*.ebextensions*"
+    - mv deploy.zip ./apps/frontend
+  artifacts:
+    paths:
+      - ./apps/frontend/deploy.zip
+    expire_in: 1 day
+  only:
+    refs:
+      - dev
+    changes:
+      - "apps/frontend/**"
+  image: node:18
+  timeout: 15 minutes
+  variables:
+    SENTRY_AUTH_TOKEN: $SENTRY_AUTH_TOKEN
+    NEXT_PUBLIC_SENTRY_DSN: $SENTRY_DSN
+    NEXT_PUBLIC_API_ROUTE: "RCooqUQMNl77xg89tP848X6rETMeCapGNIUyzuz6oZzhOd7SHfPcUi6kYeIcZ52f"
+
+Deploy to AWS:
+  stage: deploy
+  script:
+    - apt-get update -y
+    - apt-get install -y python3-pip zip # install pip and zip
+    - pip3 install awsebcli --upgrade --user # install aws eb cli
+    - export PATH=$PATH:~/.local/bin # add aws eb cli to PATH
+    - cd apps/frontend
+    - zip -r deploy.zip ./* # create a zip file
+    - eb init landing-page-cms-frontend --region eu-central-1 -p "Docker" --access-key-id $AWS_ACCESS_KEY_ID --secret-access-key $AWS_SECRET_ACCESS_KEY
+    - eb use landing-page-cms-frontend-staging-v18
+    - eb deploy --version $CI_COMMIT_SHA
+  only:
+    refs:
+      - dev
+    changes:
+      - "apps/frontend/**"
+  image: amazon/aws-cli:latest
+  timeout: 15 minutes
+  dependencies:
+    - Build & Test
+  variables:
+    AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+    AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+
