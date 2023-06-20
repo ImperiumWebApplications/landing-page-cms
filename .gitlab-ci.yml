@@ -26,8 +26,8 @@ Build & Test:
     - echo $NEXT_PUBLIC_SENTRY_DSN
     - yarn install --frozen-lockfile
     - yarn build
-    - yarn test
-    - yarn test:e2e:run
+    - cd ./apps/frontend && yarn test
+    - cd ./apps/frontend && yarn test:e2e:run
     - zip -r deploy.zip * .[^.]* -x "**node_modules**" -x "*.ebextensions*"
     - mv deploy.zip ./apps/frontend
   artifacts:
