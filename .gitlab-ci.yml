@@ -6,7 +6,6 @@ stages:
   - build_and_test
   - deploy
 
-
 Check Format:
   stage: prettier
   script:
