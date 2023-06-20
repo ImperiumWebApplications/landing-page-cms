@@ -22,6 +22,8 @@ Check Format:
 Build & Test:
   stage: build_and_test
   script:
+    - echo $SENTRY_AUTH_TOKEN
+    - echo $NEXT_PUBLIC_SENTRY_DSN
     - yarn install --frozen-lockfile
     - yarn build
     - yarn test
