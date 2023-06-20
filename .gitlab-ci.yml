@@ -25,7 +25,7 @@ Build & Test:
     - yarn install --frozen-lockfile
     - yarn build
     - cd ./apps/frontend && yarn test
-    - cd ./apps/frontend && yarn test:e2e:run
+    - yarn test:e2e:run
     - zip -r deploy.zip * .[^.]* -x "**node_modules**" -x "*.ebextensions*"
     - mv deploy.zip ./apps/frontend
   artifacts:
@@ -68,4 +68,3 @@ Deploy to AWS:
   variables:
     AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
     AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
-
