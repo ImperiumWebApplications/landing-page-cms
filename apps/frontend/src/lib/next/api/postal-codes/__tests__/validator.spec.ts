@@ -3,6 +3,10 @@ import { validateRequestBody } from '../validator';
 
 jest.mock('@sentry/nextjs');
 
+console.log(
+  'Value of process.env.NEXT_PUBLIC_API_ROUTE  is',
+  process.env.NEXT_PUBLIC_API_ROUTE,
+);
 const DEFAULT_REQ = {
   method: 'POST',
   query: { API_ROUTE: process.env.NEXT_PUBLIC_API_ROUTE },
