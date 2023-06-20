@@ -7,7 +7,7 @@ jest.mock('@sentry/nextjs');
 
 const DEFAULT_QUESTIONNAIRE_REQ = {
   method: 'POST',
-  query: { API_ROUTE: 'test_public_api_route' },
+  query: { API_ROUTE: process.env.NEXT_PUBLIC_API_ROUTE },
   body: {
     domain: 'test.com',
     contact: contactDataMock,
@@ -38,10 +38,11 @@ const DEFAULT_APPOINTMENT_REQ = {
 
 describe('lib/next/api/create-lead/validator', () => {
   it('should throw error for unsupported HTTP method', () => {
-    const clonedReq = JSON.parse(JSON.stringify(DEFAULT_APPOINTMENT_REQ));
-    clonedReq.method = 'GET';
     expect(() => {
-      validateRequestBody(clonedReq as NextApiRequest);
+      validateRequestBody({
+        ...DEFAULT_QUESTIONNAIRE_REQ,
+        method: 'GET',
+      } as NextApiRequest);
     }).toThrow('Unsupported HTTP method.');
   });
 

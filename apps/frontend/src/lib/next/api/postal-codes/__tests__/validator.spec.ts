@@ -3,10 +3,6 @@ import { validateRequestBody } from '../validator';
 
 jest.mock('@sentry/nextjs');
 
-console.log(
-  'Value of process.env.NEXT_PUBLIC_API_ROUTE  is',
-  process.env.NEXT_PUBLIC_API_ROUTE,
-);
 const DEFAULT_REQ = {
   method: 'POST',
   query: { API_ROUTE: process.env.NEXT_PUBLIC_API_ROUTE },
@@ -18,11 +14,11 @@ const DEFAULT_REQ = {
 
 describe('lib/next/api/postal-codes/validator', () => {
   it('should throw error for unsupported HTTP method', () => {
-    const clonedReq = JSON.parse(JSON.stringify(DEFAULT_REQ));
-    clonedReq.method = 'GET';
-
     expect(() => {
-      validateRequestBody(clonedReq as NextApiRequest);
+      validateRequestBody({
+        ...DEFAULT_REQ,
+        method: 'GET',
+      } as NextApiRequest);
     }).toThrow('Unsupported HTTP method.');
   });
 
