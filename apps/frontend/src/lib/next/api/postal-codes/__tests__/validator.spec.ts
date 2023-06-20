@@ -5,7 +5,7 @@ jest.mock('@sentry/nextjs');
 
 const DEFAULT_REQ = {
   method: 'POST',
-  query: { API_ROUTE: 'test_public_api_route' },
+  query: { API_ROUTE: process.env.NEXT_PUBLIC_API_ROUTE },
   body: {
     code: '22303',
     countries: ['DE'],
@@ -14,20 +14,20 @@ const DEFAULT_REQ = {
 
 describe('lib/next/api/postal-codes/validator', () => {
   it('should throw error for unsupported HTTP method', () => {
+    const clonedReq = JSON.parse(JSON.stringify(DEFAULT_REQ));
+    clonedReq.method = 'GET';
+
     expect(() => {
-      validateRequestBody({
-        ...DEFAULT_REQ,
-        method: 'GET',
-      } as NextApiRequest);
+      validateRequestBody(clonedReq as NextApiRequest);
     }).toThrow('Unsupported HTTP method.');
   });
 
   it('should throw error for missing query param', () => {
+    const clonedReq = JSON.parse(JSON.stringify(DEFAULT_REQ));
+    clonedReq.query = {};
+
     expect(() => {
-      validateRequestBody({
-        ...DEFAULT_REQ,
-        query: {},
-      } as NextApiRequest);
+      validateRequestBody(clonedReq as NextApiRequest);
     }).toThrow('Missing or invalid public API route query param.');
   });
 
