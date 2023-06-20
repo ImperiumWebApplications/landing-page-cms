@@ -26,6 +26,8 @@ Build & Test:
     - yarn build
     - cd ./apps/frontend && yarn test
     - yarn test:e2e:run
+    - apt-get update
+    - pt-get install -y xvfb
     - zip -r deploy.zip * .[^.]* -x "**node_modules**" -x "*.ebextensions*"
     - mv deploy.zip ./apps/frontend
   artifacts:
@@ -47,7 +49,7 @@ Build & Test:
 Deploy to AWS:
   stage: deploy
   script:
-    - apt-get update -y
+    - apt-get update
     - apt-get install -y python3-pip zip # install pip and zip
     - pip3 install awsebcli --upgrade --user # install aws eb cli
     - export PATH=$PATH:~/.local/bin # add aws eb cli to PATH
