@@ -25,9 +25,9 @@ Build & Test:
     - yarn install --frozen-lockfile
     - yarn build
     - cd ./apps/frontend && yarn test
-    - yarn test:e2e:run
     - apt-get update
     - apt-get install -y xvfb
+    - yarn test:e2e:run
     - zip -r deploy.zip * .[^.]* -x "**node_modules**" -x "*.ebextensions*"
     - mv deploy.zip ./apps/frontend
   artifacts:
