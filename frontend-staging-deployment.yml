@@ -4,7 +4,7 @@ Frontend-Staging Check Format:
     - yarn install --frozen-lockfile
     - yarn check-format
   rules:
-    - if: $CI_COMMIT_REF_NAME == "dev"
+     - if: '$CI_COMMIT_REF_NAME == "dev" && $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME != "dev"'
       changes:
         - apps/frontend/**/*
   image: node:18
@@ -31,7 +31,7 @@ Frontend-Staging Build & Test:
       - ./apps/frontend/frontend-deploy.zip
     expire_in: 1 day
   rules:
-    - if: $CI_COMMIT_REF_NAME == "dev"
+     - if: '$CI_COMMIT_REF_NAME == "dev" && $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME != "dev"'
       changes:
         - apps/frontend/**/*
   image: node:18
@@ -57,7 +57,7 @@ Frontend-Staging Deploy to AWS:
     - aws elasticbeanstalk create-application-version --application-name landing-page-cms-frontend --version-label $CI_COMMIT_SHA --source-bundle S3Bucket="artifacts-3652575149612",S3Key="frontend-deploy.zip"
     - aws elasticbeanstalk update-environment --environment-name landing-page-cms-frontend-staging-v18 --version-label $CI_COMMIT_SHA
   rules:
-    - if: $CI_COMMIT_REF_NAME == "dev"
+     - if: '$CI_COMMIT_REF_NAME == "dev" && $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME != "dev"'
       changes:
         - apps/frontend/**/*
   image: python:3.9
