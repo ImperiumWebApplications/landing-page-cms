@@ -55,14 +55,17 @@ Deploy to AWS:
   stage: deploy
   script:
     - apt-get update
-    - apt-get install -y python3-pip zip # install pip and zip
-    - pip3 install awsebcli --upgrade --user # install aws eb cli
-    - export PATH=$PATH:~/.local/bin # add aws eb cli to PATH
-    - cd apps/frontend
-    - zip -r deploy.zip ./* # create a zip file
-    - eb init landing-page-cms-frontend --region eu-central-1 -p "Docker" --access-key-id $AWS_ACCESS_KEY_ID --secret-access-key $AWS_SECRET_ACCESS_KEY
-    - eb use landing-page-cms-frontend-staging-v18
-    - eb deploy --version $CI_COMMIT_SHA
+    - apt-get install -y python3-pip # install pip
+    - pip3 install awscli --upgrade --user # install aws cli
+    - export PATH=$PATH:~/.local/bin # add aws cli to PATH
+    - aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
+    - aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+    - aws configure set default.region eu-central-1
+    - aws configure set metadata_service_timeout 1200
+    - aws configure set metadata_service_num_attempts 5
+    - aws s3 cp ./apps/frontend/deploy.zip s3://artifacts-365257514961/deploy.zip # Replace 'my-bucket-name' with your actual bucket name
+    - aws elasticbeanstalk create-application-version --application-name landing-page-cms-frontend --version-label $CI_COMMIT_SHA --source-bundle S3Bucket="my-bucket-name",S3Key="deploy.zip"
+    - aws elasticbeanstalk update-environment --environment-name landing-page-cms-frontend-staging-v18 --version-label $CI_COMMIT_SHA
   only:
     refs:
       - dev
@@ -75,3 +78,4 @@ Deploy to AWS:
   variables:
     AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
     AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+
