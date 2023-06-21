@@ -7,6 +7,9 @@ Frontend-Production Check Format:
     - if: $CI_COMMIT_BRANCH == "main"
       changes:
         - apps/frontend/**/*
+    - if: '$CI_COMMIT_MESSAGE =~ /See merge request/'
+      changes:
+        - apps/frontend/**/*
   image: node:18
   timeout: 15 minutes
 
@@ -34,6 +37,9 @@ Frontend-Production Build & Test:
     - if: $CI_COMMIT_BRANCH == "main"
       changes:
         - apps/frontend/**/*
+    - if: '$CI_COMMIT_MESSAGE =~ /See merge request/'
+      changes:
+        - apps/frontend/**/*
   image: node:18
   timeout: 15 minutes
   variables:
@@ -58,6 +64,9 @@ Frontend-Production Deploy to AWS:
     - aws elasticbeanstalk update-environment --environment-name landing-page-cms-frontend-prod-v18 --version-label $CI_COMMIT_SHA
   rules:
     - if: $CI_COMMIT_BRANCH == "main"
+      changes:
+        - apps/frontend/**/*
+    - if: '$CI_COMMIT_MESSAGE =~ /See merge request/'
       changes:
         - apps/frontend/**/*
   image: python:3.9
