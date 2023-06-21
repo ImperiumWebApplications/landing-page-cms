@@ -1,13 +1,5 @@
-variables:
-  BUILD_ARTIFACT: "staging-frontend-build"
-
-stages:
-  - prettier
-  - build_and_test
-  - deploy
-
 Frontend-Check Format:
-  stage: prettier
+  stage: prettier-frontend
   script:
     - yarn install --frozen-lockfile
     - yarn check-format
@@ -19,7 +11,7 @@ Frontend-Check Format:
   timeout: 15 minutes
 
 Frontend-Build & Test:
-  stage: build_and_test
+  stage: build-frontend
   script:
     - yarn install --frozen-lockfile
     - yarn build
@@ -50,7 +42,7 @@ Frontend-Build & Test:
     NEXT_PUBLIC_API_ROUTE: "RCooqUQMNl77xg89tP848X6rETMeCapGNIUyzuz6oZzhOd7SHfPcUi6kYeIcZ52f"
 
 Frontend-Deploy to AWS:
-  stage: deploy
+  stage: deploy-frontend
   script:
     - apt-get update
     - apt-get install -y python3-pip # install pip

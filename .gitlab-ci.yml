@@ -1,3 +1,14 @@
+variables:
+  BUILD_ARTIFACT: "staging-backend-build"
+
+stages:
+  - prettier-frontend
+  - build-frontend
+  - deploy-frontend
+  - prettier-backend
+  - build-backend
+  - deploy-backend
+
 include:
   - '/frontend-staging-deployment.yml'
   - '/backend-staging-deployment.yml'

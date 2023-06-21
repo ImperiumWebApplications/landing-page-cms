@@ -1,13 +1,5 @@
-variables:
-  BUILD_ARTIFACT: "staging-backend-build"
-
-stages:
-  - prettier
-  - build
-  - deploy
-
 Backend-Check Format:
-  stage: prettier
+  stage: prettier-backend
   script:
     - yarn install --frozen-lockfile
     - cd ./apps/backend && yarn check-format
@@ -19,7 +11,7 @@ Backend-Check Format:
   timeout: 15 minutes
 
 Backend-Build:
-  stage: build
+  stage: build-backend
   script:
     - yarn install --frozen-lockfile
     - NODE_ENV=production yarn build --filter=./apps/backend --filter='./apps/backend/*/**'
@@ -38,7 +30,7 @@ Backend-Build:
   timeout: 15 minutes
 
 Backend-Deploy to AWS:
-  stage: deploy
+  stage: deploy-backend
   script:
     - apt-get update
     - apt-get install -y python3-pip # install pip
