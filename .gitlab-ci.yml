@@ -12,3 +12,5 @@ stages:
 include:
   - '/frontend-staging-deployment.yml'
   - '/backend-staging-deployment.yml'
+  - '/frontend-production-deployment.yml'
+  - '/backend-production-deployment.yml'
