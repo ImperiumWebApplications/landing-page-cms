@@ -6,7 +6,7 @@ stages:
   - build
   - deploy
 
-Check Format:
+Backend-Check Format:
   stage: prettier
   script:
     - yarn install --frozen-lockfile
@@ -18,7 +18,7 @@ Check Format:
   image: node:18
   timeout: 15 minutes
 
-Build:
+Backend-Build:
   stage: build
   script:
     - yarn install --frozen-lockfile
@@ -37,7 +37,7 @@ Build:
   image: node:18
   timeout: 15 minutes
 
-Deploy to AWS:
+Backend-Deploy to AWS:
   stage: deploy
   script:
     - apt-get update

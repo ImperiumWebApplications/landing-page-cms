@@ -6,7 +6,7 @@ stages:
   - build_and_test
   - deploy
 
-Check Format:
+Frontend-Check Format:
   stage: prettier
   script:
     - yarn install --frozen-lockfile
@@ -18,7 +18,7 @@ Check Format:
   image: node:18
   timeout: 15 minutes
 
-Build & Test:
+Frontend-Build & Test:
   stage: build_and_test
   script:
     - yarn install --frozen-lockfile
@@ -49,7 +49,7 @@ Build & Test:
     NEXT_PUBLIC_SENTRY_DSN: $SENTRY_DSN
     NEXT_PUBLIC_API_ROUTE: "RCooqUQMNl77xg89tP848X6rETMeCapGNIUyzuz6oZzhOd7SHfPcUi6kYeIcZ52f"
 
-Deploy to AWS:
+Frontend-Deploy to AWS:
   stage: deploy
   script:
     - apt-get update
