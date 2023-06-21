@@ -4,9 +4,12 @@ Frontend-Staging Check Format:
     - yarn install --frozen-lockfile
     - yarn check-format
   rules:
-    - if: $CI_COMMIT_BRANCH == "dev"
+    - if: '$CI_COMMIT_BRANCH == "dev' 
       changes:
-        - apps/frontend/**/*
+        - apps/backend/**/*
+    - if: '$CI_MERGE_REQUEST_EVENT_TYPE == "merge" && $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "dev"'
+      changes:
+        - apps/backend/**/*
   image: node:18
   timeout: 15 minutes
 
@@ -31,9 +34,12 @@ Frontend-Staging Build & Test:
       - ./apps/frontend/frontend-deploy.zip
     expire_in: 1 day
   rules:
-    - if: $CI_COMMIT_BRANCH == "dev"
+    - if: '$CI_COMMIT_BRANCH == "dev' 
       changes:
-        - apps/frontend/**/*
+        - apps/backend/**/*
+    - if: '$CI_MERGE_REQUEST_EVENT_TYPE == "merge" && $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "dev"'
+      changes:
+        - apps/backend/**/*
   image: node:18
   timeout: 15 minutes
   variables:
@@ -57,9 +63,12 @@ Frontend-Staging Deploy to AWS:
     - aws elasticbeanstalk create-application-version --application-name landing-page-cms-frontend --version-label $CI_COMMIT_SHA --source-bundle S3Bucket="artifacts-3652575149612",S3Key="frontend-deploy.zip"
     - aws elasticbeanstalk update-environment --environment-name landing-page-cms-frontend-staging-v18 --version-label $CI_COMMIT_SHA
   rules:
-    - if: $CI_COMMIT_BRANCH == "dev"
+    - if: '$CI_COMMIT_BRANCH == "dev' 
       changes:
-        - apps/frontend/**/*
+        - apps/backend/**/*
+    - if: '$CI_MERGE_REQUEST_EVENT_TYPE == "merge" && $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "dev"'
+      changes:
+        - apps/backend/**/*
   image: python:3.9
   timeout: 15 minutes
   dependencies:
