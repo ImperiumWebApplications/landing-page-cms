@@ -1,2 +1,3 @@
 include:
   - '/frontend-staging-deployment.yml'
+  - '/backend-staging-deployment.yml'
