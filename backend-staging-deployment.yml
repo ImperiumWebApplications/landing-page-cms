@@ -51,7 +51,7 @@ Backend-Staging Deploy to AWS:
   image: python:3.9
   timeout: 15 minutes
   dependencies:
-    - Backend-Build
+    - Backend-Staging Build
   variables:
     AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
     AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY

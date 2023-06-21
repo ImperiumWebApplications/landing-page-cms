@@ -63,7 +63,7 @@ Frontend-Staging Deploy to AWS:
   image: python:3.9
   timeout: 15 minutes
   dependencies:
-    - Frontend-Build & Test
+    - Frontend-Staging Build & Test
   variables:
     AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
     AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
