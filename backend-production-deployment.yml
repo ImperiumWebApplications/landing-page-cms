@@ -7,7 +7,7 @@ Backend-Production Check Format:
     - if: $CI_COMMIT_BRANCH == "main"
       changes:
         - apps/backend/**/*
-    - if: '$CI_COMMIT_MESSAGE =~ /See merge request/'
+    - if: '$CI_COMMIT_MESSAGE =~ /See merge request/ && $CI_COMMIT_REF_NAME == "dev"'
       changes:
         - apps/backend/**/*
   image: node:18
@@ -29,7 +29,7 @@ Backend-Production Build:
     - if: $CI_COMMIT_BRANCH == "main"
       changes:
         - apps/backend/**/*
-    - if: '$CI_COMMIT_MESSAGE =~ /See merge request/'
+    - if: '$CI_COMMIT_MESSAGE =~ /See merge request/ && $CI_COMMIT_REF_NAME == "dev"'
       changes:
         - apps/backend/**/*
   image: node:18
@@ -54,7 +54,7 @@ Backend-Production Deploy to AWS:
     - if: $CI_COMMIT_BRANCH == "main"
       changes:
         - apps/backend/**/*
-    - if: '$CI_COMMIT_MESSAGE =~ /See merge request/'
+    - if: '$CI_COMMIT_MESSAGE =~ /See merge request/ && $CI_COMMIT_REF_NAME == "dev"'
       changes:
         - apps/backend/**/*
   image: python:3.9

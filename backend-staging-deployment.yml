@@ -7,6 +7,9 @@ Backend-Staging Check Format:
     - if: $CI_COMMIT_BRANCH == "dev"
       changes:
         - apps/backend/**/*
+    - if: '$CI_COMMIT_MESSAGE =~ /See merge request/'
+      changes:
+        - apps/backend/**/*
   image: node:18
   timeout: 15 minutes
 
@@ -24,6 +27,9 @@ Backend-Staging Build:
     expire_in: 1 day
   rules:
     - if: $CI_COMMIT_BRANCH == "dev"
+      changes:
+        - apps/backend/**/*
+    - if: '$CI_COMMIT_MESSAGE =~ /See merge request/'
       changes:
         - apps/backend/**/*
   image: node:18
@@ -46,6 +52,9 @@ Backend-Staging Deploy to AWS:
     - aws elasticbeanstalk update-environment --environment-name landing-page-cms-backend-staging-v18 --version-label $CI_COMMIT_SHA
   rules:
     - if: $CI_COMMIT_BRANCH == "dev"
+      changes:
+        - apps/backend/**/*
+    - if: '$CI_COMMIT_MESSAGE =~ /See merge request/'
       changes:
         - apps/backend/**/*
   image: python:3.9

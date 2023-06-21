@@ -7,6 +7,9 @@ Frontend-Staging Check Format:
     - if: $CI_COMMIT_BRANCH == "dev"
       changes:
         - apps/frontend/**/*
+    - if: '$CI_COMMIT_MESSAGE =~ /See merge request/'
+      changes:
+        - apps/frontend/**/*
   image: node:18
   timeout: 15 minutes
 
@@ -34,6 +37,9 @@ Frontend-Staging Build & Test:
     - if: $CI_COMMIT_BRANCH == "dev"
       changes:
         - apps/frontend/**/*
+    - if: '$CI_COMMIT_MESSAGE =~ /See merge request/'
+      changes:
+        - apps/frontend/**/*
   image: node:18
   timeout: 15 minutes
   variables:
@@ -58,6 +64,9 @@ Frontend-Staging Deploy to AWS:
     - aws elasticbeanstalk update-environment --environment-name landing-page-cms-frontend-staging-v18 --version-label $CI_COMMIT_SHA
   rules:
     - if: $CI_COMMIT_BRANCH == "dev"
+      changes:
+        - apps/frontend/**/*
+    - if: '$CI_COMMIT_MESSAGE =~ /See merge request/'
       changes:
         - apps/frontend/**/*
   image: python:3.9
