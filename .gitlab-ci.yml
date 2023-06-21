@@ -64,7 +64,7 @@ Deploy to AWS:
     - aws configure set metadata_service_timeout 1200
     - aws configure set metadata_service_num_attempts 5
     - aws s3 cp ./apps/frontend/deploy.zip s3://artifacts-365257514961/deploy.zip # Replace 'my-bucket-name' with your actual bucket name
-    - aws elasticbeanstalk create-application-version --application-name landing-page-cms-frontend --version-label $CI_COMMIT_SHA --source-bundle S3Bucket="my-bucket-name",S3Key="deploy.zip"
+    - aws elasticbeanstalk create-application-version --application-name landing-page-cms-frontend --version-label $CI_COMMIT_SHA --source-bundle S3Bucket="artifacts-365257514961",S3Key="deploy.zip"
     - aws elasticbeanstalk update-environment --environment-name landing-page-cms-frontend-staging-v18 --version-label $CI_COMMIT_SHA
   only:
     refs:
