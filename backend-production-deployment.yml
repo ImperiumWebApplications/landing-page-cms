@@ -4,10 +4,7 @@ Backend-Production Check Format:
     - yarn install --frozen-lockfile
     - cd ./apps/backend && yarn check-format
   rules:
-    - if: $CI_COMMIT_BRANCH == "main"
-      changes:
-        - apps/backend/**/*
-    - if: '$CI_COMMIT_MESSAGE =~ /See merge request/ && $CI_COMMIT_REF_NAME == "dev"'
+    - if: $CI_COMMIT_REF_NAME == "main"
       changes:
         - apps/backend/**/*
   image: node:18
@@ -26,10 +23,7 @@ Backend-Production Build:
       - ./apps/backend/backend-deploy.zip
     expire_in: 1 day
   rules:
-    - if: $CI_COMMIT_BRANCH == "main"
-      changes:
-        - apps/backend/**/*
-    - if: '$CI_COMMIT_MESSAGE =~ /See merge request/ && $CI_COMMIT_REF_NAME == "dev"'
+    - if: $CI_COMMIT_REF_NAME == "main"
       changes:
         - apps/backend/**/*
   image: node:18
@@ -51,10 +45,7 @@ Backend-Production Deploy to AWS:
     - aws elasticbeanstalk create-application-version --application-name landing-page-cms-backend --version-label $CI_COMMIT_SHA --source-bundle S3Bucket="artifacts-3652575149612",S3Key="backend-deploy.zip"
     - aws elasticbeanstalk update-environment --environment-name landing-page-cms-backend-prod-v18 --version-label $CI_COMMIT_SHA
   rules:
-    - if: $CI_COMMIT_BRANCH == "main"
-      changes:
-        - apps/backend/**/*
-    - if: '$CI_COMMIT_MESSAGE =~ /See merge request/ && $CI_COMMIT_REF_NAME == "dev"'
+    - if: $CI_COMMIT_REF_NAME == "main"
       changes:
         - apps/backend/**/*
   image: python:3.9
