@@ -11,11 +11,10 @@ Check Format:
   script:
     - yarn install --frozen-lockfile
     - yarn check-format
-  only:
-    refs:
-      - dev
-    changes:
-      - "apps/frontend/**"
+  rules:
+    - if: $CI_COMMIT_BRANCH == "dev"
+      changes:
+        - apps/frontend/**/*
   image: node:18
   timeout: 15 minutes
 
