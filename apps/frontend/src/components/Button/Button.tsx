@@ -15,6 +15,7 @@ type CommonButtonProps = {
   ['data-testid']?: string;
 };
 
+
 type LinkButtonProps = CommonButtonProps & {
   to?: string;
 };
