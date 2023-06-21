@@ -1,0 +1,57 @@
+Backend-Production Check Format:
+  stage: prettier-backend
+  script:
+    - yarn install --frozen-lockfile
+    - cd ./apps/backend && yarn check-format
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+      changes:
+        - apps/backend/**/*
+  image: node:18
+  timeout: 15 minutes
+
+Backend-Production Build:
+  stage: build-backend
+  script:
+    - yarn install --frozen-lockfile
+    - NODE_ENV=production yarn build --filter=./apps/backend --filter='./apps/backend/*/**'
+    - apt-get update
+    - apt-get install -y zip
+    - cd ./apps/backend && zip -r backend-deploy.zip * .[^.]* -x "**node_modules**" -x "*.ebextensions*"
+  artifacts:
+    paths:
+      - ./apps/backend/backend-deploy.zip
+    expire_in: 1 day
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+      changes:
+        - apps/backend/**/*
+  image: node:18
+  timeout: 15 minutes
+
+Backend-Production Deploy to AWS:
+  stage: deploy-backend
+  script:
+    - apt-get update
+    - apt-get install -y python3-pip # install pip
+    - pip3 install awscli --upgrade --user # install aws cli
+    - export PATH=$PATH:~/.local/bin # add aws cli to PATH
+    - aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
+    - aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+    - aws configure set default.region eu-central-1
+    - aws configure set metadata_service_timeout 1200
+    - aws configure set metadata_service_num_attempts 5
+    - aws s3 cp ./apps/backend/backend-deploy.zip s3://artifacts-3652575149612/backend-deploy.zip # Replace 'my-bucket-name' with your actual bucket name
+    - aws elasticbeanstalk create-application-version --application-name landing-page-cms-backend --version-label $CI_COMMIT_SHA --source-bundle S3Bucket="artifacts-3652575149612",S3Key="backend-deploy.zip"
+    - aws elasticbeanstalk update-environment --environment-name landing-page-cms-backend-prod-v18 --version-label $CI_COMMIT_SHA
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+      changes:
+        - apps/backend/**/*
+  image: python:3.9
+  timeout: 15 minutes
+  dependencies:
+    - Backend-Production Build
+  variables:
+    AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+    AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
