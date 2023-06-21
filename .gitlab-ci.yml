@@ -26,10 +26,16 @@ Build & Test:
     - yarn build
     - cd ./apps/frontend && yarn test
     - apt-get update
+    - apt-get install -y wget gnupg
+    - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+    - echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | tee /etc/apt/sources.list.d/google-chrome.list
+    - apt-get update
+    - apt-get install -y google-chrome-stable
     - apt-get install -y libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb
     - yarn test:e2e:run
     - zip -r deploy.zip * .[^.]* -x "**node_modules**" -x "*.ebextensions*"
     - mv deploy.zip ./apps/frontend
+
   artifacts:
     paths:
       - ./apps/frontend/deploy.zip
