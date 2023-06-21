@@ -62,5 +62,3 @@ const RealTimeValidationInputPlugin: React.FC<
 };
 
 export default RealTimeValidationInputPlugin;
-
-
