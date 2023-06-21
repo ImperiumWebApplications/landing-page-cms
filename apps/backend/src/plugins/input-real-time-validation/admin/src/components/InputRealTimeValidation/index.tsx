@@ -22,6 +22,7 @@ type RealTimeValidationInputPluginProps = {
 const RealTimeValidationInputPlugin: React.FC<
   RealTimeValidationInputPluginProps
 > = ({ onChange, value, name, attribute, intlLabel }) => {
+  console.log("Test console log in backend")
   const [error, setError] = useState('');
 
   const handleOnChange = (e: any) => {
