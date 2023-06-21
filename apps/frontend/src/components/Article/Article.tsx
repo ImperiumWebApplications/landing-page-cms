@@ -7,3 +7,4 @@ export const Article: React.FC<ArticleProps> = ({ children }) => {
     <div className="wrap-words whitespace-pre-wrap pt-12 pb-20">{children}</div>
   );
 };
+
