@@ -62,6 +62,7 @@ export const queryQuestionnairePageContent = async (ctx: NextPageContext) => {
 export type ContentPage = NextPage<{
   content: LandingPage;
   staticContent: StaticContent;
+  agbContent: string,
 }>;
 
 export const queryContentPageContent = async (ctx: NextPageContext) => {
