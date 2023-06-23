@@ -1,0 +1,16 @@
+check-and-test:
+  stage: check-and-test
+  script:
+    - npm install -g yarn
+    - yarn install
+    - yarn check-format
+    - cd ./apps/frontend && yarn test
+    - yarn build
+    - yarn test:e2e:run
+  rules:
+    - if: '$CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "dev"'
+  image: node:18
+  variables:
+    SENTRY_AUTH_TOKEN: $SENTRY_AUTH_TOKEN
+    NEXT_PUBLIC_SENTRY_DSN: $SENTRY_DSN
+    NEXT_PUBLIC_API_ROUTE: "RCooqUQMNl77xg89tP848X6rETMeCapGNIUyzuz6oZzhOd7SHfPcUi6kYeIcZ52f"
