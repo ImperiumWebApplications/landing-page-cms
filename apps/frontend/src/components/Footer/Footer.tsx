@@ -14,7 +14,6 @@ type FooterProps = {
 };
 
 export const Footer: React.FC<FooterProps> = ({ content, staticContent }) => {
-  console.log('Incoming content from footer is', content);
   const { language } = useLanguageContext();
 
   const onResetCookies = () => {

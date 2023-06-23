@@ -18,7 +18,7 @@ const AGBPage: ContentPage = ({ content, staticContent }) => {
   return (
     <Layout content={content} staticContent={staticContent}>
       <NextSeo noindex={true} />
-      <div id="privacy" className="content-wrapper-xl">
+      <div id="agb" className="content-wrapper-xl">
         <Article>
           <ReactMarkdown>{pageContent ?? ''}</ReactMarkdown>
         </Article>
