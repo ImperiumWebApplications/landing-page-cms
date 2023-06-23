@@ -63,8 +63,8 @@
     "client_vat": {
       "type": "string"
     },
-    "agb":{
-      "type":"richtext"
+    "agb": {
+      "type": "richtext"
     },
     "sections": {
       "type": "dynamiczone",
