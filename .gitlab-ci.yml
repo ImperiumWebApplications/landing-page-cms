@@ -1,7 +1,8 @@
 variables:
-  BUILD_ARTIFACT: "staging-backend-build"
+  BUILD_ARTIFACT: "build-artifact"
 
 stages:
+  - check-and-test
   - prettier-frontend
   - build-frontend
   - deploy-frontend
@@ -10,6 +11,7 @@ stages:
   - deploy-backend
 
 include:
+  - '/check-and-test.yml'
   - '/frontend-staging-deployment.yml'
   - '/backend-staging-deployment.yml'
   - '/frontend-production-deployment.yml'

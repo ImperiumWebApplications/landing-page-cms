@@ -46,6 +46,15 @@ export const Footer: React.FC<FooterProps> = ({ content, staticContent }) => {
                 </Link>
               );
             })}
+
+            {content.agb && (
+              <Link
+                href={'/agb'}
+                className="my-[2px] block font-normal text-secondary hover:text-[white]"
+              >
+                AGB
+              </Link>
+            )}
             <button
               type="button"
               className="my-[2px] cursor-pointer text-left font-normal text-secondary hover:text-[white]"
@@ -56,9 +65,17 @@ export const Footer: React.FC<FooterProps> = ({ content, staticContent }) => {
           </nav>
           <div className="h-[1px] w-full bg-secondary" />
           <div className="text-center">
-            {content.client_address ? (
-              <div className="inline text-sm">{content.client_address}</div>
-            ) : null}
+            {content.client_address
+              ? content.client_address.split('|').map((item, index) => (
+                  <div key={index} className="block text-sm md:inline">
+                    {item.trim()}
+                    {index !==
+                      content.client_address!.split('|').length - 1 && (
+                      <span className="hidden px-4 md:inline">|</span>
+                    )}
+                  </div>
+                ))
+              : null}
             {content.contact_email ? (
               <>
                 <div className="hidden px-4 md:inline">|</div>
