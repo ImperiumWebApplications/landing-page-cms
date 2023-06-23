@@ -7,7 +7,7 @@ jest.mock('@sentry/nextjs');
 
 const DEFAULT_QUESTIONNAIRE_REQ = {
   method: 'POST',
-  query: { API_ROUTE: 'test_public_api_route' },
+  query: { API_ROUTE: process.env.NEXT_PUBLIC_API_ROUTE },
   body: {
     domain: 'test.com',
     contact: contactDataMock,
@@ -22,7 +22,7 @@ const DEFAULT_QUESTIONNAIRE_REQ = {
 
 const DEFAULT_APPOINTMENT_REQ = {
   method: 'POST',
-  query: { API_ROUTE: 'test_public_api_route' },
+  query: { API_ROUTE: process.env.NEXT_PUBLIC_API_ROUTE },
   body: {
     domain: 'test.com',
     contact: contactDataMock,
@@ -47,11 +47,10 @@ describe('lib/next/api/create-lead/validator', () => {
   });
 
   it('should throw error for missing query param', () => {
+    const clonedReq = JSON.parse(JSON.stringify(DEFAULT_APPOINTMENT_REQ));
+    clonedReq.query = {};
     expect(() => {
-      validateRequestBody({
-        ...DEFAULT_QUESTIONNAIRE_REQ,
-        query: {},
-      } as NextApiRequest);
+      validateRequestBody(clonedReq as NextApiRequest);
     }).toThrow('Missing or invalid public API route query param.');
   });
 

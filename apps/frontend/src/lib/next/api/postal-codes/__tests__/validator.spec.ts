@@ -5,7 +5,7 @@ jest.mock('@sentry/nextjs');
 
 const DEFAULT_REQ = {
   method: 'POST',
-  query: { API_ROUTE: 'test_public_api_route' },
+  query: { API_ROUTE: process.env.NEXT_PUBLIC_API_ROUTE },
   body: {
     code: '22303',
     countries: ['DE'],
@@ -23,11 +23,11 @@ describe('lib/next/api/postal-codes/validator', () => {
   });
 
   it('should throw error for missing query param', () => {
+    const clonedReq = JSON.parse(JSON.stringify(DEFAULT_REQ));
+    clonedReq.query = {};
+
     expect(() => {
-      validateRequestBody({
-        ...DEFAULT_REQ,
-        query: {},
-      } as NextApiRequest);
+      validateRequestBody(clonedReq as NextApiRequest);
     }).toThrow('Missing or invalid public API route query param.');
   });
 

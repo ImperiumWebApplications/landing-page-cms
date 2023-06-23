@@ -1,0 +1,70 @@
+Frontend-Staging Check Format:
+  stage: prettier-frontend
+  script:
+    - yarn install --frozen-lockfile
+    - yarn check-format
+  rules:
+    - if: '$CI_COMMIT_REF_NAME == "dev" && $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME != "dev"'
+      changes:
+        - apps/frontend/**/*
+  image: node:18
+  timeout: 15 minutes
+
+Frontend-Staging Build & Test:
+  stage: build-frontend
+  script:
+    - yarn install --frozen-lockfile
+    - yarn build
+    - cd ./apps/frontend && yarn test
+    - apt-get update
+    - apt-get install -y wget gnupg zip
+    - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+    - echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | tee /etc/apt/sources.list.d/google-chrome.list
+    - apt-get update
+    - apt-get install -y google-chrome-stable
+    - apt-get install -y libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb
+    - yarn test:e2e:run
+    - zip -r frontend-deploy.zip * .[^.]* -x "**node_modules**" -x "*.ebextensions*"
+
+  artifacts:
+    paths:
+      - ./apps/frontend/frontend-deploy.zip
+    expire_in: 1 day
+  rules:
+    - if: '$CI_COMMIT_REF_NAME == "dev" && $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME != "dev"'
+      changes:
+        - apps/frontend/**/*
+  image: node:18
+  timeout: 15 minutes
+  variables:
+    SENTRY_AUTH_TOKEN: $SENTRY_AUTH_TOKEN
+    NEXT_PUBLIC_SENTRY_DSN: $SENTRY_DSN
+    NEXT_PUBLIC_API_ROUTE: "RCooqUQMNl77xg89tP848X6rETMeCapGNIUyzuz6oZzhOd7SHfPcUi6kYeIcZ52f"
+
+Frontend-Staging Deploy to AWS:
+  stage: deploy-frontend
+  script:
+    - apt-get update
+    - apt-get install -y python3-pip # install pip
+    - pip3 install awscli --upgrade --user # install aws cli
+    - export PATH=$PATH:~/.local/bin # add aws cli to PATH
+    - aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
+    - aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+    - aws configure set default.region eu-central-1
+    - aws configure set metadata_service_timeout 1200
+    - aws configure set metadata_service_num_attempts 5
+    - aws s3 cp ./apps/frontend/frontend-deploy.zip s3://artifacts-3652575149612/frontend-deploy.zip # Replace 'my-bucket-name' with your actual bucket name
+    - aws elasticbeanstalk create-application-version --application-name landing-page-cms-frontend --version-label $CI_COMMIT_SHA --source-bundle S3Bucket="artifacts-3652575149612",S3Key="frontend-deploy.zip"
+    - aws elasticbeanstalk update-environment --environment-name landing-page-cms-frontend-staging-v18 --version-label $CI_COMMIT_SHA
+  rules:
+    - if: '$CI_COMMIT_REF_NAME == "dev" && $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME != "dev"'
+      changes:
+        - apps/frontend/**/*
+  image: python:3.9
+  timeout: 15 minutes
+  dependencies:
+    - Frontend-Staging Build & Test
+  variables:
+    AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+    AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+
