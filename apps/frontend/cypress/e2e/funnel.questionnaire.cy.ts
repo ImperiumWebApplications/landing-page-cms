@@ -106,7 +106,6 @@ describe('Funnel > Questionnaire', () => {
       .click();
 
     cy.wait('@createLead').then((ctx) => {
-      console.log(ctx.request.body);
       expect(ctx.request.body).to.deep.equal({
         domain: 'localhost:3000',
         contact: {
