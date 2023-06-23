@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { resetCookieConsentValue } from 'react-cookie-consent';
 
@@ -15,28 +14,8 @@ type FooterProps = {
 };
 
 export const Footer: React.FC<FooterProps> = ({ content, staticContent }) => {
+  console.log('Incoming content from footer is', content);
   const { language } = useLanguageContext();
-  const [AGBContent, setAGBContent] = useState(null);
-
-  useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}/landing-pages`, {
-      headers: {
-        Authorization: `Bearer ${process.env.NEXT_PUBLIC_BACKEND_API_TOKEN}`,
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        // Get the current domain
-        const currentDomain = window.location.host;
-        // Iterate over the landing pages
-        data.data.forEach((landingPage: any) => {
-          // If the domain matches the current domain
-          if (landingPage.attributes.domain === currentDomain) {
-            setAGBContent(landingPage.attributes.agb)
-          }
-        });
-      });
-  },[])
 
   const onResetCookies = () => {
     window.scrollTo(0, 0);
@@ -69,14 +48,13 @@ export const Footer: React.FC<FooterProps> = ({ content, staticContent }) => {
               );
             })}
 
-            {AGBContent && (
-                            <Link
-                              key={"sadasd"}
-                              href={"/agb"}
-                              className="my-[2px] block font-normal text-secondary hover:text-[white]"
-                            >
-                              AGB
-                            </Link>
+            {content.agb && (
+              <Link
+                href={'/agb'}
+                className="my-[2px] block font-normal text-secondary hover:text-[white]"
+              >
+                AGB
+              </Link>
             )}
             <button
               type="button"
@@ -88,9 +66,17 @@ export const Footer: React.FC<FooterProps> = ({ content, staticContent }) => {
           </nav>
           <div className="h-[1px] w-full bg-secondary" />
           <div className="text-center">
-            {content.client_address ? (
-              <div className="inline text-sm">{content.client_address}</div>
-            ) : null}
+            {content.client_address
+              ? content.client_address.split('|').map((item, index) => (
+                  <div key={index} className="block text-sm md:inline">
+                    {item.trim()}
+                    {index !==
+                      content.client_address!.split('|').length - 1 && (
+                      <span className="hidden px-4 md:inline">|</span>
+                    )}
+                  </div>
+                ))
+              : null}
             {content.contact_email ? (
               <>
                 <div className="hidden px-4 md:inline">|</div>

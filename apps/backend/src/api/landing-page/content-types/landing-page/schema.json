@@ -64,7 +64,7 @@
       "type": "string"
     },
     "agb":{
-      "type":"text"
+      "type":"richtext"
     },
     "sections": {
       "type": "dynamiczone",

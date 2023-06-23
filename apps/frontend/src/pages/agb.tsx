@@ -12,13 +12,13 @@ const Article = dynamic<ArticleProps>(
   { ssr: false },
 );
 
-const AgbPage: ContentPage = ({ content, staticContent, agbContent }) => {
-  const pageContent = populateMarkdownTemplate(agbContent, content);
+const AGBPage: ContentPage = ({ content, staticContent }) => {
+  const pageContent = populateMarkdownTemplate(content.agb, content);
 
   return (
     <Layout content={content} staticContent={staticContent}>
       <NextSeo noindex={true} />
-      <div id="agb" className="content-wrapper-xl">
+      <div id="privacy" className="content-wrapper-xl">
         <Article>
           <ReactMarkdown>{pageContent ?? ''}</ReactMarkdown>
         </Article>
@@ -27,33 +27,6 @@ const AgbPage: ContentPage = ({ content, staticContent, agbContent }) => {
   );
 };
 
-export const getServerSideProps = async (context: any) => {
-  const currentDomain = context.req.headers.host;
-  
-  const fetchAgbContent = async () => {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}/landing-pages`, {
-      headers: {
-        Authorization: `Bearer ${process.env.NEXT_PUBLIC_BACKEND_API_TOKEN}`, // Replace with your token
-      },
-    });
-    const data = await response.json();
-    const landingPage = data.data.find((page: any) => page.attributes.domain === currentDomain);
-    return landingPage ? landingPage.attributes.agb : null;
-  };
+export const getServerSideProps = queryContentPageContent;
 
-  const [contentPageProps, agbContent] = await Promise.all([
-    queryContentPageContent(context),
-    fetchAgbContent(),
-  ]);
-
-  if ('props' in contentPageProps) {
-    return {
-      props: {
-        ...contentPageProps.props,
-        agbContent,
-      },
-    };
-  }
-};
-
-export default AgbPage;
+export default AGBPage;

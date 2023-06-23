@@ -31,6 +31,7 @@ export const LandingPageSections = {
 export type LandingPageLanguage = 'German' | 'English';
 
 export type LandingPage = {
+  agb: any;
   google_tag_manager_id?: TextField;
   google_allow_indexation?: BooleanField;
 
