@@ -1,7 +1,6 @@
 check-and-test:
   stage: check-and-test
   script:
-    - npm install -g yarn
     - yarn install
     - yarn check-format
     - cd ./apps/frontend && yarn test
