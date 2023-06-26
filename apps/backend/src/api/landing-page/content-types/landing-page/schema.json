@@ -119,7 +119,7 @@
     },
     "countries": {
       "type": "customField",
-      "options": ["Germany:DE", "Switzerland:CH", "Austria:AT"],
+      "options": ["Germany:DE", "Switzerland:CH", "Austria:AT", "USA:US"],
       "customField": "plugin::multi-select-field.multi-select-field",
       "default": ["DE"]
     },
