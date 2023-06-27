@@ -1,9 +1,8 @@
-/** Country Configuration */
-
 export enum Country {
   Austria = 'AT',
   Germany = 'DE',
   Switzerland = 'CH',
+  UnitedStates = 'US',
 }
 
 export const CountryDetails = {
@@ -18,6 +17,10 @@ export const CountryDetails = {
   [Country.Switzerland]: {
     postalCodeLength: 4,
     isValidPostalCode: /(^\d{4}$)/,
+  },
+  [Country.UnitedStates]: {
+    postalCodeLength: 5,
+    isValidPostalCode: /(^\d{5}$)/,
   },
 } as const;
 
