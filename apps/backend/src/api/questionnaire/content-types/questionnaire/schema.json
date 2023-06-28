@@ -15,6 +15,12 @@
     "name": {
       "type": "string"
     },
+    "language": {
+      "type": "enumeration",
+      "enum": ["German", "English"],
+      "default": "German",
+      "private": true
+    },
     "icon": {
       "type": "media",
       "multiple": false,
