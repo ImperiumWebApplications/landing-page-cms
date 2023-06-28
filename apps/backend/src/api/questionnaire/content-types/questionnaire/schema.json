@@ -18,7 +18,8 @@
     "language": {
       "type": "enumeration",
       "enum": ["German", "English"],
-      "default": "German"
+      "default": "German",
+      "private": true
     },
     "icon": {
       "type": "media",
