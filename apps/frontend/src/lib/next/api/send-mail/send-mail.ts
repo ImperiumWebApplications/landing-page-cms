@@ -64,7 +64,7 @@ export const sendMail = async (data: SendMailProps) => {
     content: payload,
   });
 
-  let transporter = createTransport({
+  const transporter = createTransport({
     SES: new aws.SES({
       apiVersion: '2010-12-01',
     }),
