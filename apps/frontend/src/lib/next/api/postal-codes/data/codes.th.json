@@ -1,0 +1,3714 @@
+[
+  {
+    "code": "10200",
+    "place": "Phra Nakhon"
+  },
+  {
+    "code": "10300",
+    "place": "Dusit"
+  },
+  {
+    "code": "10530",
+    "place": "Nong Chok"
+  },
+  {
+    "code": "10500",
+    "place": "Bang Rak"
+  },
+  {
+    "code": "10220",
+    "place": "Bang Khen"
+  },
+  {
+    "code": "10240",
+    "place": "Bang Kapi"
+  },
+  {
+    "code": "10330",
+    "place": "Pathum Wan"
+  },
+  {
+    "code": "10100",
+    "place": "Pom Prap Sattruphai"
+  },
+  {
+    "code": "10260",
+    "place": "Phra Khanong"
+  },
+  {
+    "code": "10510",
+    "place": "Min Buri"
+  },
+  {
+    "code": "10520",
+    "place": "Lat Krabang"
+  },
+  {
+    "code": "10120",
+    "place": "Yannawa"
+  },
+  {
+    "code": "10100",
+    "place": "Samphanthawong"
+  },
+  {
+    "code": "10400",
+    "place": "Phaya Thai"
+  },
+  {
+    "code": "10600",
+    "place": "Thon Buri"
+  },
+  {
+    "code": "10600",
+    "place": "Bangkok Yai"
+  },
+  {
+    "code": "10310",
+    "place": "Huai Khwang"
+  },
+  {
+    "code": "10600",
+    "place": "Khlong San"
+  },
+  {
+    "code": "10170",
+    "place": "Taling Chan"
+  },
+  {
+    "code": "10700",
+    "place": "Bangkok Noi"
+  },
+  {
+    "code": "10150",
+    "place": "Bang Khun Thian"
+  },
+  {
+    "code": "10160",
+    "place": "Phasi Charoen"
+  },
+  {
+    "code": "10160",
+    "place": "Nong Khaem"
+  },
+  {
+    "code": "10140",
+    "place": "Rat Burana"
+  },
+  {
+    "code": "10700",
+    "place": "Bang Phlat"
+  },
+  {
+    "code": "10400",
+    "place": "Din Daeng"
+  },
+  {
+    "code": "10240",
+    "place": "Bung Kum"
+  },
+  {
+    "code": "10120",
+    "place": "Sa Thon"
+  },
+  {
+    "code": "10800",
+    "place": "Bang Su"
+  },
+  {
+    "code": "10900",
+    "place": "Chatuchak"
+  },
+  {
+    "code": "10120",
+    "place": "Bang Kho Laem"
+  },
+  {
+    "code": "10250",
+    "place": "Prawet"
+  },
+  {
+    "code": "10110",
+    "place": "Khlong Toei"
+  },
+  {
+    "code": "10250",
+    "place": "Suan Luang"
+  },
+  {
+    "code": "10150",
+    "place": "Chom Thong"
+  },
+  {
+    "code": "10210",
+    "place": "Don Mueang"
+  },
+  {
+    "code": "10400",
+    "place": "Rat Thewi"
+  },
+  {
+    "code": "10230",
+    "place": "Lat Phrao"
+  },
+  {
+    "code": "10110",
+    "place": "Watthana"
+  },
+  {
+    "code": "10160",
+    "place": "Bang Khae"
+  },
+  {
+    "code": "10210",
+    "place": "Lak Si"
+  },
+  {
+    "code": "10220",
+    "place": "Sai Mai"
+  },
+  {
+    "code": "10230",
+    "place": "Khanna Yao"
+  },
+  {
+    "code": "10240",
+    "place": "Saphan Sung"
+  },
+  {
+    "code": "10310",
+    "place": "Wang Thong Lang"
+  },
+  {
+    "code": "10510",
+    "place": "Khlong Sam Wa"
+  },
+  {
+    "code": "10260",
+    "place": "Bang Na"
+  },
+  {
+    "code": "10170",
+    "place": "Thawi Watthana"
+  },
+  {
+    "code": "10140",
+    "place": "Thung Khu"
+  },
+  {
+    "code": "10150",
+    "place": "Bang Bon"
+  },
+  {
+    "code": "10270",
+    "place": "Mueang Samut Prakan"
+  },
+  {
+    "code": "10560",
+    "place": "Bang Bo"
+  },
+  {
+    "code": "10540",
+    "place": "Bang Phli"
+  },
+  {
+    "code": "10130",
+    "place": "Phra Pradaeng"
+  },
+  {
+    "code": "10290",
+    "place": "Phra Samut Chedi"
+  },
+  {
+    "code": "10540",
+    "place": "Bang Sao Thong"
+  },
+  {
+    "code": "11000",
+    "place": "Mueang Nonthaburi"
+  },
+  {
+    "code": "11130",
+    "place": "Bang Kruai"
+  },
+  {
+    "code": "11140",
+    "place": "Bang Yai"
+  },
+  {
+    "code": "11110",
+    "place": "Bang Bua Thong"
+  },
+  {
+    "code": "11150",
+    "place": "Sai Noi"
+  },
+  {
+    "code": "11120",
+    "place": "Pak Kret"
+  },
+  {
+    "code": "12000",
+    "place": "Mueang Pathum Thani"
+  },
+  {
+    "code": "12120",
+    "place": "Khlong Luang"
+  },
+  {
+    "code": "12130",
+    "place": "Thanyaburi"
+  },
+  {
+    "code": "12170",
+    "place": "Nong Suea"
+  },
+  {
+    "code": "12140",
+    "place": "Lat Lum Kaeo"
+  },
+  {
+    "code": "12130",
+    "place": "Lam Luk Ka"
+  },
+  {
+    "code": "12160",
+    "place": "Sam Khok"
+  },
+  {
+    "code": "13000",
+    "place": "Phra Nakhon Si Ayutthaya"
+  },
+  {
+    "code": "13130",
+    "place": "Tha Ruea"
+  },
+  {
+    "code": "13260",
+    "place": "Nakhon Luang"
+  },
+  {
+    "code": "13190",
+    "place": "Bang Sai"
+  },
+  {
+    "code": "13250",
+    "place": "Bang Ban"
+  },
+  {
+    "code": "13160",
+    "place": "Bang Pa-In"
+  },
+  {
+    "code": "13220",
+    "place": "Bang Pahan"
+  },
+  {
+    "code": "13120",
+    "place": "Phak Hai"
+  },
+  {
+    "code": "13140",
+    "place": "Phachi"
+  },
+  {
+    "code": "13230",
+    "place": "Lat Bua Luang"
+  },
+  {
+    "code": "13170",
+    "place": "Wang Noi"
+  },
+  {
+    "code": "13110",
+    "place": "Sena"
+  },
+  {
+    "code": "13270",
+    "place": "Bang Sai"
+  },
+  {
+    "code": "13210",
+    "place": "Uthai"
+  },
+  {
+    "code": "13150",
+    "place": "Maha Rat"
+  },
+  {
+    "code": "13240",
+    "place": "Ban Phraek"
+  },
+  {
+    "code": "14000",
+    "place": "Mueang Ang Thong"
+  },
+  {
+    "code": "14140",
+    "place": "Chaiyo"
+  },
+  {
+    "code": "14130",
+    "place": "Pa Mok"
+  },
+  {
+    "code": "14120",
+    "place": "Pho Thong"
+  },
+  {
+    "code": "14150",
+    "place": "Sawaeng Ha"
+  },
+  {
+    "code": "14110",
+    "place": "Wiset Chai Chan"
+  },
+  {
+    "code": "14160",
+    "place": "Samko"
+  },
+  {
+    "code": "15000",
+    "place": "Mueang Lop Buri"
+  },
+  {
+    "code": "15140",
+    "place": "Phatthana Nikhom"
+  },
+  {
+    "code": "15120",
+    "place": "Khok Samrong"
+  },
+  {
+    "code": "15130",
+    "place": "Chai Badan"
+  },
+  {
+    "code": "15150",
+    "place": "Tha Wung"
+  },
+  {
+    "code": "15110",
+    "place": "Ban Mi"
+  },
+  {
+    "code": "15230",
+    "place": "Tha Luang"
+  },
+  {
+    "code": "15240",
+    "place": "Sa Bot"
+  },
+  {
+    "code": "15250",
+    "place": "Khok Charoen"
+  },
+  {
+    "code": "15190",
+    "place": "Lam Sonthi"
+  },
+  {
+    "code": "15170",
+    "place": "Nong Muang"
+  },
+  {
+    "code": "16000",
+    "place": "Mueang Sing Buri"
+  },
+  {
+    "code": "16130",
+    "place": "Bang Rachan"
+  },
+  {
+    "code": "16150",
+    "place": "Khai Bang Rachan"
+  },
+  {
+    "code": "16120",
+    "place": "Phrom Buri"
+  },
+  {
+    "code": "16140",
+    "place": "Tha Chang"
+  },
+  {
+    "code": "16110",
+    "place": "In Buri"
+  },
+  {
+    "code": "17000",
+    "place": "Mueang Chai Nat"
+  },
+  {
+    "code": "17110",
+    "place": "Manorom"
+  },
+  {
+    "code": "17120",
+    "place": "Wat Sing"
+  },
+  {
+    "code": "17150",
+    "place": "Sapphaya"
+  },
+  {
+    "code": "17140",
+    "place": "Sankhaburi"
+  },
+  {
+    "code": "17130",
+    "place": "Hankha"
+  },
+  {
+    "code": "17120",
+    "place": "Nong Mamong"
+  },
+  {
+    "code": "17130",
+    "place": "Noen Kham"
+  },
+  {
+    "code": "18000",
+    "place": "Mueang Saraburi"
+  },
+  {
+    "code": "18110",
+    "place": "Kaeng Khoi"
+  },
+  {
+    "code": "18140",
+    "place": "Nong Khae"
+  },
+  {
+    "code": "18150",
+    "place": "Wihan Daeng"
+  },
+  {
+    "code": "18170",
+    "place": "Nong Saeng"
+  },
+  {
+    "code": "18130",
+    "place": "Ban Mo"
+  },
+  {
+    "code": "18210",
+    "place": "Don Phut"
+  },
+  {
+    "code": "18190",
+    "place": "Nong Don"
+  },
+  {
+    "code": "18120",
+    "place": "Phra Phutthabat"
+  },
+  {
+    "code": "18160",
+    "place": "Sao Hai"
+  },
+  {
+    "code": "18180",
+    "place": "Muak Lek"
+  },
+  {
+    "code": "18220",
+    "place": "Wang Muang"
+  },
+  {
+    "code": "18000",
+    "place": "Chaloem Phra Kiet"
+  },
+  {
+    "code": "20000",
+    "place": "Mueang Chon Buri"
+  },
+  {
+    "code": "20170",
+    "place": "Ban Bueng"
+  },
+  {
+    "code": "20190",
+    "place": "Nong Yai"
+  },
+  {
+    "code": "20150",
+    "place": "Bang Lamung"
+  },
+  {
+    "code": "20160",
+    "place": "Phan Thong"
+  },
+  {
+    "code": "20140",
+    "place": "Phanat Nikhom"
+  },
+  {
+    "code": "20110",
+    "place": "Si Racha"
+  },
+  {
+    "code": "20120",
+    "place": "Ko Sichang"
+  },
+  {
+    "code": "20180",
+    "place": "Sattahip"
+  },
+  {
+    "code": "20270",
+    "place": "Bo Thong"
+  },
+  {
+    "code": "20240",
+    "place": "Ko Chan"
+  },
+  {
+    "code": "21000",
+    "place": "Mueang Rayong"
+  },
+  {
+    "code": "21130",
+    "place": "Ban Chang"
+  },
+  {
+    "code": "21110",
+    "place": "Klaeng"
+  },
+  {
+    "code": "21210",
+    "place": "Wang Chan"
+  },
+  {
+    "code": "21120",
+    "place": "Ban Khai"
+  },
+  {
+    "code": "21140",
+    "place": "Pluak Daeng"
+  },
+  {
+    "code": "21110",
+    "place": "Khao Chamao"
+  },
+  {
+    "code": "21180",
+    "place": "Nikhom Phatthana"
+  },
+  {
+    "code": "22000",
+    "place": "Mueang Chanthaburi"
+  },
+  {
+    "code": "22110",
+    "place": "Khlung"
+  },
+  {
+    "code": "22120",
+    "place": "Tha Mai"
+  },
+  {
+    "code": "22140",
+    "place": "Pong Nam Ron"
+  },
+  {
+    "code": "22150",
+    "place": "Makham"
+  },
+  {
+    "code": "22130",
+    "place": "Laem Sing"
+  },
+  {
+    "code": "22180",
+    "place": "Soi Dao"
+  },
+  {
+    "code": "22160",
+    "place": "Kaeng Hang Maeo"
+  },
+  {
+    "code": "22160",
+    "place": "Na Yai Am"
+  },
+  {
+    "code": "22210",
+    "place": "Khao Khitchakut"
+  },
+  {
+    "code": "23000",
+    "place": "Mueang Trat"
+  },
+  {
+    "code": "23110",
+    "place": "Khlong Yai"
+  },
+  {
+    "code": "23130",
+    "place": "Khao Saming"
+  },
+  {
+    "code": "23140",
+    "place": "Bo Rai"
+  },
+  {
+    "code": "23120",
+    "place": "Laem Ngop"
+  },
+  {
+    "code": "23000",
+    "place": "Ko Kut"
+  },
+  {
+    "code": "23170",
+    "place": "Ko Chang"
+  },
+  {
+    "code": "24000",
+    "place": "Mueang Chachoengsao"
+  },
+  {
+    "code": "24110",
+    "place": "Bang Khla"
+  },
+  {
+    "code": "24150",
+    "place": "Bang Nam Priao"
+  },
+  {
+    "code": "24130",
+    "place": "Bang Pakong"
+  },
+  {
+    "code": "24140",
+    "place": "Ban Pho"
+  },
+  {
+    "code": "24120",
+    "place": "Phanom Sarakham"
+  },
+  {
+    "code": "24120",
+    "place": "Ratchasan"
+  },
+  {
+    "code": "24160",
+    "place": "Sanam Chai Khet"
+  },
+  {
+    "code": "24190",
+    "place": "Pleang Yao"
+  },
+  {
+    "code": "24160",
+    "place": "Tha Takiap"
+  },
+  {
+    "code": "24000",
+    "place": "Khlong Khuean"
+  },
+  {
+    "code": "25000",
+    "place": "Mueang Prachin Buri"
+  },
+  {
+    "code": "25110",
+    "place": "Kabin Buri"
+  },
+  {
+    "code": "25220",
+    "place": "Na Di"
+  },
+  {
+    "code": "25150",
+    "place": "Ban Sang"
+  },
+  {
+    "code": "25130",
+    "place": "Prachantakham"
+  },
+  {
+    "code": "25140",
+    "place": "Si Maha Phot"
+  },
+  {
+    "code": "25190",
+    "place": "Si Mahosot"
+  },
+  {
+    "code": "26000",
+    "place": "Mueang Nakhon Nayok"
+  },
+  {
+    "code": "26130",
+    "place": "Pak Phli"
+  },
+  {
+    "code": "26110",
+    "place": "Ban Na"
+  },
+  {
+    "code": "26120",
+    "place": "Ongkharak"
+  },
+  {
+    "code": "27000",
+    "place": "Mueang Sa Kaeo"
+  },
+  {
+    "code": "27260",
+    "place": "Khlong Hat"
+  },
+  {
+    "code": "27180",
+    "place": "Ta Phraya"
+  },
+  {
+    "code": "27210",
+    "place": "Wang Nam Yen"
+  },
+  {
+    "code": "27160",
+    "place": "Watthana Nakhon"
+  },
+  {
+    "code": "27120",
+    "place": "Aranyaprathet"
+  },
+  {
+    "code": "27000",
+    "place": "Khao Chakan"
+  },
+  {
+    "code": "27120",
+    "place": "Khok Sung"
+  },
+  {
+    "code": "27250",
+    "place": "Wang Sombun"
+  },
+  {
+    "code": "30000",
+    "place": "Mueang Nakhon Ratchasima"
+  },
+  {
+    "code": "30250",
+    "place": "Khon Buri"
+  },
+  {
+    "code": "30330",
+    "place": "Soeng Sang"
+  },
+  {
+    "code": "30260",
+    "place": "Khong"
+  },
+  {
+    "code": "30350",
+    "place": "Ban Lueam"
+  },
+  {
+    "code": "30230",
+    "place": "Chakkarat"
+  },
+  {
+    "code": "30190",
+    "place": "Chok Chai"
+  },
+  {
+    "code": "30210",
+    "place": "Dan Khun Thot"
+  },
+  {
+    "code": "30220",
+    "place": "Non Thai"
+  },
+  {
+    "code": "30160",
+    "place": "Non Sung"
+  },
+  {
+    "code": "30290",
+    "place": "Kham Sakaesaeng"
+  },
+  {
+    "code": "30120",
+    "place": "Bua Yai"
+  },
+  {
+    "code": "30180",
+    "place": "Prathai"
+  },
+  {
+    "code": "30150",
+    "place": "Pak Thong Chai"
+  },
+  {
+    "code": "30110",
+    "place": "Phimai"
+  },
+  {
+    "code": "30240",
+    "place": "Huai Thalaeng"
+  },
+  {
+    "code": "30270",
+    "place": "Chum Phuang"
+  },
+  {
+    "code": "30170",
+    "place": "Sung Noen"
+  },
+  {
+    "code": "30280",
+    "place": "Kham Thale So"
+  },
+  {
+    "code": "30140",
+    "place": "Si Khio"
+  },
+  {
+    "code": "30130",
+    "place": "Pak Chong"
+  },
+  {
+    "code": "30410",
+    "place": "Nong Bunmak"
+  },
+  {
+    "code": "30440",
+    "place": "Kaeng Sanam Nang"
+  },
+  {
+    "code": "30360",
+    "place": "Non Daeng"
+  },
+  {
+    "code": "30370",
+    "place": "Wang Nam Khiao"
+  },
+  {
+    "code": "30210",
+    "place": "Thepharak"
+  },
+  {
+    "code": "30270",
+    "place": "Mueang Yang"
+  },
+  {
+    "code": "30220",
+    "place": "Phra Thong Kham"
+  },
+  {
+    "code": "30270",
+    "place": "Lamtaman Chai"
+  },
+  {
+    "code": "30120",
+    "place": "Bua Lai"
+  },
+  {
+    "code": "30430",
+    "place": "Sida"
+  },
+  {
+    "code": "30230",
+    "place": "Chaloem Phra Kiet"
+  },
+  {
+    "code": "31000",
+    "place": "Mueang Buri Ram"
+  },
+  {
+    "code": "31190",
+    "place": "Khu Mueang"
+  },
+  {
+    "code": "31160",
+    "place": "Krasang"
+  },
+  {
+    "code": "31110",
+    "place": "Nang Rong"
+  },
+  {
+    "code": "31210",
+    "place": "Nong Ki"
+  },
+  {
+    "code": "31170",
+    "place": "Lahan Sai"
+  },
+  {
+    "code": "31140",
+    "place": "Prakhon Chai"
+  },
+  {
+    "code": "31180",
+    "place": "Ban Kruat"
+  },
+  {
+    "code": "31120",
+    "place": "Phutthaisong"
+  },
+  {
+    "code": "31130",
+    "place": "Lam Plai Mat"
+  },
+  {
+    "code": "31150",
+    "place": "Satuek"
+  },
+  {
+    "code": "31220",
+    "place": "Pakham"
+  },
+  {
+    "code": "31230",
+    "place": "Na Pho"
+  },
+  {
+    "code": "31240",
+    "place": "Nong Hong"
+  },
+  {
+    "code": "31250",
+    "place": "Phlapphla Chai"
+  },
+  {
+    "code": "31000",
+    "place": "Huai Rat"
+  },
+  {
+    "code": "31110",
+    "place": "Non Din Daeng"
+  },
+  {
+    "code": "31110",
+    "place": "Chamni"
+  },
+  {
+    "code": "31120",
+    "place": "Ban Mai Chaiyaphot"
+  },
+  {
+    "code": "31260",
+    "place": "Non Din Daeng"
+  },
+  {
+    "code": "31000",
+    "place": "Ban Dan"
+  },
+  {
+    "code": "31150",
+    "place": "Khaen Dong"
+  },
+  {
+    "code": "31110",
+    "place": "Chaloem Phra Kiet"
+  },
+  {
+    "code": "32000",
+    "place": "Mueang Surin"
+  },
+  {
+    "code": "32190",
+    "place": "Chumphon Buri"
+  },
+  {
+    "code": "32120",
+    "place": "Tha Tum"
+  },
+  {
+    "code": "32180",
+    "place": "Chom Phra"
+  },
+  {
+    "code": "32140",
+    "place": "Prasat"
+  },
+  {
+    "code": "32210",
+    "place": "Kap Choeng"
+  },
+  {
+    "code": "32130",
+    "place": "Rattanaburi"
+  },
+  {
+    "code": "32160",
+    "place": "Sanom"
+  },
+  {
+    "code": "32110",
+    "place": "Sikhoraphum"
+  },
+  {
+    "code": "32150",
+    "place": "Sangkha"
+  },
+  {
+    "code": "32220",
+    "place": "Lamduan"
+  },
+  {
+    "code": "32170",
+    "place": "Samrong Thap"
+  },
+  {
+    "code": "32230",
+    "place": "Buachet"
+  },
+  {
+    "code": "32140",
+    "place": "Phanom Dong Rak"
+  },
+  {
+    "code": "32150",
+    "place": "Si Narong"
+  },
+  {
+    "code": "32000",
+    "place": "Khwao Sinarin"
+  },
+  {
+    "code": "32130",
+    "place": "Non Narai"
+  },
+  {
+    "code": "33000",
+    "place": "Mueang Si Sa Ket"
+  },
+  {
+    "code": "33190",
+    "place": "Yang Chum Noi"
+  },
+  {
+    "code": "33130",
+    "place": "Kanthararom"
+  },
+  {
+    "code": "33110",
+    "place": "Kantharalak"
+  },
+  {
+    "code": "33140",
+    "place": "Khukhan"
+  },
+  {
+    "code": "33180",
+    "place": "Phrai Bueng"
+  },
+  {
+    "code": "33170",
+    "place": "Prang Ku"
+  },
+  {
+    "code": "33150",
+    "place": "Khun Han"
+  },
+  {
+    "code": "33160",
+    "place": "Rasi Salai"
+  },
+  {
+    "code": "33120",
+    "place": "Uthumphon Phisai"
+  },
+  {
+    "code": "33220",
+    "place": "Bueng Bun"
+  },
+  {
+    "code": "33210",
+    "place": "Huai Thap Than"
+  },
+  {
+    "code": "33250",
+    "place": "Non Khun"
+  },
+  {
+    "code": "33240",
+    "place": "Si Rattana"
+  },
+  {
+    "code": "33130",
+    "place": "Nam Kliang"
+  },
+  {
+    "code": "33270",
+    "place": "Wang Hin"
+  },
+  {
+    "code": "33140",
+    "place": "Phu Sing"
+  },
+  {
+    "code": "33120",
+    "place": "Mueang Chan"
+  },
+  {
+    "code": "33110",
+    "place": "Benchalak"
+  },
+  {
+    "code": "33230",
+    "place": "Phayu"
+  },
+  {
+    "code": "33120",
+    "place": "Pho Si Suwan"
+  },
+  {
+    "code": "33160",
+    "place": "Sila Lat"
+  },
+  {
+    "code": "34000",
+    "place": "Mueang Ubon Ratchathani"
+  },
+  {
+    "code": "34250",
+    "place": "Si Mueang Mai"
+  },
+  {
+    "code": "34220",
+    "place": "Khong Chiam"
+  },
+  {
+    "code": "34150",
+    "place": "Khueang Nai"
+  },
+  {
+    "code": "34170",
+    "place": "Khemarat"
+  },
+  {
+    "code": "34160",
+    "place": "Det Udom"
+  },
+  {
+    "code": "34280",
+    "place": "Na Chaluai"
+  },
+  {
+    "code": "34260",
+    "place": "Nam Yuen"
+  },
+  {
+    "code": "34230",
+    "place": "Boontharik"
+  },
+  {
+    "code": "34130",
+    "place": "Trakan Phuet Phon"
+  },
+  {
+    "code": "34270",
+    "place": "Kut Khaopun"
+  },
+  {
+    "code": "34140",
+    "place": "Muang Sam Sip"
+  },
+  {
+    "code": "34190",
+    "place": "Warin Chamrap"
+  },
+  {
+    "code": "34110",
+    "place": "Phibun Mangsahan"
+  },
+  {
+    "code": "34330",
+    "place": "Tan Sum"
+  },
+  {
+    "code": "34340",
+    "place": "Pho Sai"
+  },
+  {
+    "code": "34360",
+    "place": "Samrong"
+  },
+  {
+    "code": "34000",
+    "place": "Don Mot Daeng"
+  },
+  {
+    "code": "34350",
+    "place": "Sirindhorn"
+  },
+  {
+    "code": "34160",
+    "place": "Thung Si Udom"
+  },
+  {
+    "code": "34160",
+    "place": "Na Yia"
+  },
+  {
+    "code": "34170",
+    "place": "Na Tan"
+  },
+  {
+    "code": "34000",
+    "place": "Lao Suea Kok"
+  },
+  {
+    "code": "34190",
+    "place": "Sawang Wirawong"
+  },
+  {
+    "code": "34260",
+    "place": "Nam Khun"
+  },
+  {
+    "code": "35000",
+    "place": "Mueang Yasothon"
+  },
+  {
+    "code": "35170",
+    "place": "Sai Mun"
+  },
+  {
+    "code": "35140",
+    "place": "Kut Chum"
+  },
+  {
+    "code": "35110",
+    "place": "Kham Khuean Kaeo"
+  },
+  {
+    "code": "35150",
+    "place": "Pa Tio"
+  },
+  {
+    "code": "35130",
+    "place": "Maha Chana Chai"
+  },
+  {
+    "code": "35160",
+    "place": "Kho Wang"
+  },
+  {
+    "code": "35120",
+    "place": "Loeng Nok Tha"
+  },
+  {
+    "code": "35120",
+    "place": "Thai Charoen"
+  },
+  {
+    "code": "36000",
+    "place": "Mueang Chaiyaphum"
+  },
+  {
+    "code": "36170",
+    "place": "Ban Khwao"
+  },
+  {
+    "code": "36140",
+    "place": "Khon Sawan"
+  },
+  {
+    "code": "36120",
+    "place": "Kaset Sombun"
+  },
+  {
+    "code": "36210",
+    "place": "Nong Bua Daeng"
+  },
+  {
+    "code": "36130",
+    "place": "Chatturat"
+  },
+  {
+    "code": "36160",
+    "place": "Bamnet Narong"
+  },
+  {
+    "code": "36250",
+    "place": "Nong Bua Rawe"
+  },
+  {
+    "code": "36230",
+    "place": "Thep Sathit"
+  },
+  {
+    "code": "36110",
+    "place": "Phu Khiao"
+  },
+  {
+    "code": "36190",
+    "place": "Ban Thaen"
+  },
+  {
+    "code": "36150",
+    "place": "Kaeng Khro"
+  },
+  {
+    "code": "36180",
+    "place": "Khon San"
+  },
+  {
+    "code": "36260",
+    "place": "Phakdi Chumphon"
+  },
+  {
+    "code": "36130",
+    "place": "Noen Sa-Nga"
+  },
+  {
+    "code": "36130",
+    "place": "Sap Yai"
+  },
+  {
+    "code": "37000",
+    "place": "Mueang Amnat Charoen"
+  },
+  {
+    "code": "37210",
+    "place": "Chanuman"
+  },
+  {
+    "code": "37110",
+    "place": "Pathum Ratchawongsa"
+  },
+  {
+    "code": "37180",
+    "place": "Phana"
+  },
+  {
+    "code": "37290",
+    "place": "Senangkhanikhom"
+  },
+  {
+    "code": "37240",
+    "place": "Hua Taphan"
+  },
+  {
+    "code": "37000",
+    "place": "Lue Amnat"
+  },
+  {
+    "code": "38000",
+    "place": "Bueng Kan"
+  },
+  {
+    "code": "38150",
+    "place": "Phon Charoen"
+  },
+  {
+    "code": "38170",
+    "place": "So Phisai"
+  },
+  {
+    "code": "38150",
+    "place": "Seka"
+  },
+  {
+    "code": "38190",
+    "place": "Pak Khat"
+  },
+  {
+    "code": "38220",
+    "place": "Bueng Khong Long"
+  },
+  {
+    "code": "38190",
+    "place": "Si Wilai"
+  },
+  {
+    "code": "38000",
+    "place": "Bung Khla"
+  },
+  {
+    "code": "39000",
+    "place": "Mueang Nong Bua Lam Phu"
+  },
+  {
+    "code": "39170",
+    "place": "Na Klang"
+  },
+  {
+    "code": "39140",
+    "place": "Non Sang"
+  },
+  {
+    "code": "39180",
+    "place": "Si Bun Rueang"
+  },
+  {
+    "code": "39270",
+    "place": "Suwannakhuha"
+  },
+  {
+    "code": "39170",
+    "place": "Na Wang"
+  },
+  {
+    "code": "40000",
+    "place": "Mueang Khon Kaen"
+  },
+  {
+    "code": "40270",
+    "place": "Ban Fang"
+  },
+  {
+    "code": "40320",
+    "place": "Phra Yuen"
+  },
+  {
+    "code": "40210",
+    "place": "Nong Ruea"
+  },
+  {
+    "code": "40130",
+    "place": "Chum Phae"
+  },
+  {
+    "code": "40220",
+    "place": "Si Chomphu"
+  },
+  {
+    "code": "40140",
+    "place": "Nam Phong"
+  },
+  {
+    "code": "40250",
+    "place": "Ubolratana"
+  },
+  {
+    "code": "40170",
+    "place": "Kranuan"
+  },
+  {
+    "code": "40110",
+    "place": "Ban Phai"
+  },
+  {
+    "code": "40340",
+    "place": "Pueai Noi"
+  },
+  {
+    "code": "40120",
+    "place": "Phon"
+  },
+  {
+    "code": "40330",
+    "place": "Waeng Yai"
+  },
+  {
+    "code": "40230",
+    "place": "Waeng Noi"
+  },
+  {
+    "code": "40190",
+    "place": "Nong Song Hong"
+  },
+  {
+    "code": "40150",
+    "place": "Phu Wiang"
+  },
+  {
+    "code": "40160",
+    "place": "Mancha Khiri"
+  },
+  {
+    "code": "40180",
+    "place": "Chonnabot"
+  },
+  {
+    "code": "40280",
+    "place": "Khao Suan Kwang"
+  },
+  {
+    "code": "40350",
+    "place": "Phu Phaman"
+  },
+  {
+    "code": "40170",
+    "place": "Sam Sung"
+  },
+  {
+    "code": "40160",
+    "place": "Khok Pho Chai"
+  },
+  {
+    "code": "40150",
+    "place": "Nong Na Kham"
+  },
+  {
+    "code": "40110",
+    "place": "Ban Haet"
+  },
+  {
+    "code": "40110",
+    "place": "Non Sila"
+  },
+  {
+    "code": "40140",
+    "place": "Wiang Kao"
+  },
+  {
+    "code": "41000",
+    "place": "Mueang Udon Thani"
+  },
+  {
+    "code": "41250",
+    "place": "Kut Chap"
+  },
+  {
+    "code": "41360",
+    "place": "Nong Wua So"
+  },
+  {
+    "code": "41110",
+    "place": "Kumphawapi"
+  },
+  {
+    "code": "41240",
+    "place": "Non Sa-At"
+  },
+  {
+    "code": "41130",
+    "place": "Nong Saeng"
+  },
+  {
+    "code": "41310",
+    "place": "Thung Fon"
+  },
+  {
+    "code": "41290",
+    "place": "Chai Wan"
+  },
+  {
+    "code": "41230",
+    "place": "Si That"
+  },
+  {
+    "code": "41280",
+    "place": "Wang Sam Mo"
+  },
+  {
+    "code": "41190",
+    "place": "Ban Dung"
+  },
+  {
+    "code": "41160",
+    "place": "Ban Phue"
+  },
+  {
+    "code": "41210",
+    "place": "Nam Som"
+  },
+  {
+    "code": "41150",
+    "place": "Phen"
+  },
+  {
+    "code": "41260",
+    "place": "Sang Khom"
+  },
+  {
+    "code": "41340",
+    "place": "Nong Saeng"
+  },
+  {
+    "code": "41380",
+    "place": "Na Yung"
+  },
+  {
+    "code": "41130",
+    "place": "Phibun Rak"
+  },
+  {
+    "code": "41130",
+    "place": "Ku Kaeo"
+  },
+  {
+    "code": "41110",
+    "place": "Prachaksinlapakhom"
+  },
+  {
+    "code": "42000",
+    "place": "Mueang Loei"
+  },
+  {
+    "code": "42210",
+    "place": "Na Duang"
+  },
+  {
+    "code": "42110",
+    "place": "Chiang Khan"
+  },
+  {
+    "code": "42150",
+    "place": "Pak Chom"
+  },
+  {
+    "code": "42120",
+    "place": "Dan Sai"
+  },
+  {
+    "code": "42170",
+    "place": "Na Haeo"
+  },
+  {
+    "code": "42160",
+    "place": "Phu Ruea"
+  },
+  {
+    "code": "42140",
+    "place": "Tha Li"
+  },
+  {
+    "code": "42130",
+    "place": "Wang Saphung"
+  },
+  {
+    "code": "42180",
+    "place": "Phu Kradueng"
+  },
+  {
+    "code": "42230",
+    "place": "Phu Luang"
+  },
+  {
+    "code": "42240",
+    "place": "Pha Khao"
+  },
+  {
+    "code": "42220",
+    "place": "Erawan"
+  },
+  {
+    "code": "42190",
+    "place": "Nong Hin"
+  },
+  {
+    "code": "43000",
+    "place": "Mueang Nong Khai"
+  },
+  {
+    "code": "43110",
+    "place": "Tha Bo"
+  },
+  {
+    "code": "43120",
+    "place": "Phon Phisai"
+  },
+  {
+    "code": "43130",
+    "place": "Si Chiang Mai"
+  },
+  {
+    "code": "43160",
+    "place": "Sangkhom"
+  },
+  {
+    "code": "43100",
+    "place": "Sakhrai"
+  },
+  {
+    "code": "43120",
+    "place": "Fao Rai"
+  },
+  {
+    "code": "43120",
+    "place": "Rattanawapi"
+  },
+  {
+    "code": "43130",
+    "place": "Pho Tak"
+  },
+  {
+    "code": "44000",
+    "place": "Mueang Maha Sarakham"
+  },
+  {
+    "code": "44190",
+    "place": "Kae Dam"
+  },
+  {
+    "code": "44140",
+    "place": "Kosum Phisai"
+  },
+  {
+    "code": "44150",
+    "place": "Kantharawichai"
+  },
+  {
+    "code": "44160",
+    "place": "Chiang Yuen"
+  },
+  {
+    "code": "44130",
+    "place": "Borabue"
+  },
+  {
+    "code": "44170",
+    "place": "Na Chueak"
+  },
+  {
+    "code": "44110",
+    "place": "Phayakkhaphum Phisai"
+  },
+  {
+    "code": "44120",
+    "place": "Wapi Pathum"
+  },
+  {
+    "code": "44180",
+    "place": "Na Dun"
+  },
+  {
+    "code": "44210",
+    "place": "Yang Sisurat"
+  },
+  {
+    "code": "44130",
+    "place": "Kut Rang"
+  },
+  {
+    "code": "44160",
+    "place": "Chuen Chom"
+  },
+  {
+    "code": "45000",
+    "place": "Mueang Roi Et"
+  },
+  {
+    "code": "45150",
+    "place": "Kaset Wisai"
+  },
+  {
+    "code": "45190",
+    "place": "Pathum Rat"
+  },
+  {
+    "code": "45180",
+    "place": "Chaturaphak Phiman"
+  },
+  {
+    "code": "45170",
+    "place": "Thawat Buri"
+  },
+  {
+    "code": "45140",
+    "place": "Phanom Phrai"
+  },
+  {
+    "code": "45110",
+    "place": "Phon Thong"
+  },
+  {
+    "code": "45230",
+    "place": "Pho Chai"
+  },
+  {
+    "code": "45210",
+    "place": "Nong Phok"
+  },
+  {
+    "code": "45120",
+    "place": "Selaphum"
+  },
+  {
+    "code": "45130",
+    "place": "Suwannaphum"
+  },
+  {
+    "code": "45220",
+    "place": "Mueang Suang"
+  },
+  {
+    "code": "45240",
+    "place": "Phon Sai"
+  },
+  {
+    "code": "45160",
+    "place": "At Samat"
+  },
+  {
+    "code": "45250",
+    "place": "Moei Wadi"
+  },
+  {
+    "code": "45000",
+    "place": "Si Somdet"
+  },
+  {
+    "code": "45000",
+    "place": "Changhan"
+  },
+  {
+    "code": "45000",
+    "place": "Chiang Khwan"
+  },
+  {
+    "code": "45140",
+    "place": "Nong Hi"
+  },
+  {
+    "code": "45170",
+    "place": "Thung Khao Luang"
+  },
+  {
+    "code": "46000",
+    "place": "Mueang Kalasin"
+  },
+  {
+    "code": "46230",
+    "place": "Na Mon"
+  },
+  {
+    "code": "46130",
+    "place": "Kamalasai"
+  },
+  {
+    "code": "46210",
+    "place": "Rong Kham"
+  },
+  {
+    "code": "46110",
+    "place": "Kuchinarai"
+  },
+  {
+    "code": "46160",
+    "place": "Khao Wong"
+  },
+  {
+    "code": "46120",
+    "place": "Yang Talat"
+  },
+  {
+    "code": "46170",
+    "place": "Huai Mek"
+  },
+  {
+    "code": "46140",
+    "place": "Sahatsakhan"
+  },
+  {
+    "code": "46180",
+    "place": "Kham Muang"
+  },
+  {
+    "code": "46190",
+    "place": "Tha Khantho"
+  },
+  {
+    "code": "46220",
+    "place": "Nong Kung Si"
+  },
+  {
+    "code": "46150",
+    "place": "Somdet"
+  },
+  {
+    "code": "46240",
+    "place": "Huai Phueng"
+  },
+  {
+    "code": "46180",
+    "place": "Sam Chai"
+  },
+  {
+    "code": "46160",
+    "place": "Na Khu"
+  },
+  {
+    "code": "46000",
+    "place": "Don Chan"
+  },
+  {
+    "code": "46130",
+    "place": "Khong Chai"
+  },
+  {
+    "code": "47000",
+    "place": "Mueang Sakon Nakhon"
+  },
+  {
+    "code": "47210",
+    "place": "Kusuman"
+  },
+  {
+    "code": "47180",
+    "place": "Kut Bak"
+  },
+  {
+    "code": "47130",
+    "place": "Phanna Nikhom"
+  },
+  {
+    "code": "47160",
+    "place": "Phanh Khon"
+  },
+  {
+    "code": "47150",
+    "place": "Waritchaphum"
+  },
+  {
+    "code": "47270",
+    "place": "Nikhom Nam Un"
+  },
+  {
+    "code": "47120",
+    "place": "Wanon Niwat"
+  },
+  {
+    "code": "47250",
+    "place": "Kham Ta Kla"
+  },
+  {
+    "code": "47140",
+    "place": "Ban Muang"
+  },
+  {
+    "code": "47170",
+    "place": "Akat Amnuai"
+  },
+  {
+    "code": "47110",
+    "place": "Sawang Daen Din"
+  },
+  {
+    "code": "47190",
+    "place": "Song Dao"
+  },
+  {
+    "code": "47260",
+    "place": "Tao Ngoi"
+  },
+  {
+    "code": "47280",
+    "place": "Khok Si Suphan"
+  },
+  {
+    "code": "47290",
+    "place": "Charoen Sin"
+  },
+  {
+    "code": "47230",
+    "place": "Phon Na Kaeo"
+  },
+  {
+    "code": "47180",
+    "place": "Phu Phan"
+  },
+  {
+    "code": "48000",
+    "place": "Mueang Nakhon Phanom"
+  },
+  {
+    "code": "48160",
+    "place": "Pla Pak"
+  },
+  {
+    "code": "48120",
+    "place": "Tha Uthen"
+  },
+  {
+    "code": "48140",
+    "place": "Ban Phaeng"
+  },
+  {
+    "code": "48110",
+    "place": "That Phanom"
+  },
+  {
+    "code": "48170",
+    "place": "Renu Nakhon"
+  },
+  {
+    "code": "48130",
+    "place": "Na Kae"
+  },
+  {
+    "code": "48150",
+    "place": "Si Songkhram"
+  },
+  {
+    "code": "48180",
+    "place": "Na Wa"
+  },
+  {
+    "code": "48190",
+    "place": "Phon Sawan"
+  },
+  {
+    "code": "48140",
+    "place": "Na Thom"
+  },
+  {
+    "code": "48130",
+    "place": "Wang Yang"
+  },
+  {
+    "code": "49000",
+    "place": "Mueang Mukdahan"
+  },
+  {
+    "code": "49130",
+    "place": "Nikhom Kham Soi"
+  },
+  {
+    "code": "49120",
+    "place": "Don Tan"
+  },
+  {
+    "code": "49140",
+    "place": "Don Tan"
+  },
+  {
+    "code": "49110",
+    "place": "Khamcha-I"
+  },
+  {
+    "code": "49150",
+    "place": "Wan Yai"
+  },
+  {
+    "code": "49160",
+    "place": "Nong Sung"
+  },
+  {
+    "code": "50200",
+    "place": "Mueang Chiang Mai"
+  },
+  {
+    "code": "50160",
+    "place": "Chom Thong"
+  },
+  {
+    "code": "50270",
+    "place": "Mae Chaem"
+  },
+  {
+    "code": "50170",
+    "place": "Chiang Dao"
+  },
+  {
+    "code": "50220",
+    "place": "Doi Saket"
+  },
+  {
+    "code": "50150",
+    "place": "Mae Taeng"
+  },
+  {
+    "code": "50180",
+    "place": "Mae Rim"
+  },
+  {
+    "code": "50250",
+    "place": "Samoeng"
+  },
+  {
+    "code": "50110",
+    "place": "Fang"
+  },
+  {
+    "code": "50280",
+    "place": "Mae Ai"
+  },
+  {
+    "code": "50190",
+    "place": "Phrao"
+  },
+  {
+    "code": "50120",
+    "place": "San Pa Tong"
+  },
+  {
+    "code": "50130",
+    "place": "San Kamphaeng"
+  },
+  {
+    "code": "50210",
+    "place": "San Sai"
+  },
+  {
+    "code": "50230",
+    "place": "Hang Dong"
+  },
+  {
+    "code": "50240",
+    "place": "Hot"
+  },
+  {
+    "code": "50260",
+    "place": "Doi Tao"
+  },
+  {
+    "code": "50310",
+    "place": "Omkoi"
+  },
+  {
+    "code": "50140",
+    "place": "Saraphi"
+  },
+  {
+    "code": "50350",
+    "place": "Wiang Haeng"
+  },
+  {
+    "code": "50320",
+    "place": "Chai Prakan"
+  },
+  {
+    "code": "50360",
+    "place": "Mae Wang"
+  },
+  {
+    "code": "50130",
+    "place": "Mae On"
+  },
+  {
+    "code": "50160",
+    "place": "Doi Lo"
+  },
+  {
+    "code": "58130",
+    "place": "Kanlayaniwatthana"
+  },
+  {
+    "code": "51000",
+    "place": "Mueang Lamphun"
+  },
+  {
+    "code": "51140",
+    "place": "Mae Tha"
+  },
+  {
+    "code": "51130",
+    "place": "Ban Hong"
+  },
+  {
+    "code": "51110",
+    "place": "Li"
+  },
+  {
+    "code": "51160",
+    "place": "Thung Hua Chang"
+  },
+  {
+    "code": "51120",
+    "place": "Pa Sang"
+  },
+  {
+    "code": "51180",
+    "place": "Ban Thi"
+  },
+  {
+    "code": "51120",
+    "place": "Wiang Nong Long"
+  },
+  {
+    "code": "52000",
+    "place": "Mueang Lampang"
+  },
+  {
+    "code": "52220",
+    "place": "Mae Mo"
+  },
+  {
+    "code": "52130",
+    "place": "Ko Kha"
+  },
+  {
+    "code": "52210",
+    "place": "Soem Ngam"
+  },
+  {
+    "code": "52110",
+    "place": "Ngao"
+  },
+  {
+    "code": "52120",
+    "place": "Chae Hom"
+  },
+  {
+    "code": "52140",
+    "place": "Wang Nuea"
+  },
+  {
+    "code": "52160",
+    "place": "Thoen"
+  },
+  {
+    "code": "52180",
+    "place": "Mae Phrik"
+  },
+  {
+    "code": "52150",
+    "place": "Mae Tha"
+  },
+  {
+    "code": "52170",
+    "place": "Sop Prap"
+  },
+  {
+    "code": "52190",
+    "place": "Hang Chat"
+  },
+  {
+    "code": "52240",
+    "place": "Mueang Pan"
+  },
+  {
+    "code": "53000",
+    "place": "Mueang Uttaradit"
+  },
+  {
+    "code": "53140",
+    "place": "Tron"
+  },
+  {
+    "code": "53150",
+    "place": "Tha Pla"
+  },
+  {
+    "code": "53110",
+    "place": "Nam Pat"
+  },
+  {
+    "code": "53160",
+    "place": "Fak Tha"
+  },
+  {
+    "code": "53180",
+    "place": "Ban Khok"
+  },
+  {
+    "code": "53120",
+    "place": "Phichai"
+  },
+  {
+    "code": "53130",
+    "place": "Laplae"
+  },
+  {
+    "code": "53230",
+    "place": "Thong Saen Khan"
+  },
+  {
+    "code": "54000",
+    "place": "Mueang Phrae"
+  },
+  {
+    "code": "54140",
+    "place": "Mueang Phrae"
+  },
+  {
+    "code": "54150",
+    "place": "Long"
+  },
+  {
+    "code": "54130",
+    "place": "Sung Men"
+  },
+  {
+    "code": "54110",
+    "place": "Den Chai"
+  },
+  {
+    "code": "54120",
+    "place": "Song"
+  },
+  {
+    "code": "54160",
+    "place": "Wang Chin"
+  },
+  {
+    "code": "54170",
+    "place": "Nong Muang Khai"
+  },
+  {
+    "code": "55000",
+    "place": "Mueang Nan"
+  },
+  {
+    "code": "55170",
+    "place": "Mae Charim"
+  },
+  {
+    "code": "55190",
+    "place": "Ban Luang"
+  },
+  {
+    "code": "55150",
+    "place": "Na Noi"
+  },
+  {
+    "code": "55120",
+    "place": "Pua"
+  },
+  {
+    "code": "55140",
+    "place": "Tha Wang Pha"
+  },
+  {
+    "code": "55110",
+    "place": "Wiang Sa"
+  },
+  {
+    "code": "55130",
+    "place": "Thung Chang"
+  },
+  {
+    "code": "55160",
+    "place": "Chiang Klang"
+  },
+  {
+    "code": "55180",
+    "place": "Na Muen"
+  },
+  {
+    "code": "55210",
+    "place": "Santi Suk"
+  },
+  {
+    "code": "55220",
+    "place": "Bo Kluea"
+  },
+  {
+    "code": "55160",
+    "place": "Song Khwae"
+  },
+  {
+    "code": "55000",
+    "place": "Phu Phiang"
+  },
+  {
+    "code": "55130",
+    "place": "Chaloem Phra Kiet"
+  },
+  {
+    "code": "56000",
+    "place": "Mueang Phayao"
+  },
+  {
+    "code": "56150",
+    "place": "Chun"
+  },
+  {
+    "code": "56110",
+    "place": "Chiang Kham"
+  },
+  {
+    "code": "56160",
+    "place": "Chiang Muan"
+  },
+  {
+    "code": "56120",
+    "place": "Dok Khamtai"
+  },
+  {
+    "code": "56140",
+    "place": "Pong"
+  },
+  {
+    "code": "56130",
+    "place": "Mae Chai"
+  },
+  {
+    "code": "56110",
+    "place": "Phu Sang"
+  },
+  {
+    "code": "56000",
+    "place": "Phu Kamyao"
+  },
+  {
+    "code": "57000",
+    "place": "Mueang Chiang Rai"
+  },
+  {
+    "code": "57210",
+    "place": "Wiang Chai"
+  },
+  {
+    "code": "57140",
+    "place": "Chiang Khong"
+  },
+  {
+    "code": "57160",
+    "place": "Thoeng"
+  },
+  {
+    "code": "57120",
+    "place": "Phan"
+  },
+  {
+    "code": "57190",
+    "place": "Pa Daet"
+  },
+  {
+    "code": "57110",
+    "place": "Mae Chan"
+  },
+  {
+    "code": "57150",
+    "place": "Chiang Saen"
+  },
+  {
+    "code": "57130",
+    "place": "Mae Sai"
+  },
+  {
+    "code": "57180",
+    "place": "Mae Suai"
+  },
+  {
+    "code": "57170",
+    "place": "Wiang Pa Pao"
+  },
+  {
+    "code": "57290",
+    "place": "Phaya Mengrai"
+  },
+  {
+    "code": "57310",
+    "place": "Wiang Kaen"
+  },
+  {
+    "code": "57340",
+    "place": "Khun Tan"
+  },
+  {
+    "code": "57240",
+    "place": "Mae Fa Luang"
+  },
+  {
+    "code": "57250",
+    "place": "Mae Lao"
+  },
+  {
+    "code": "57210",
+    "place": "Wiang Chiang Rung"
+  },
+  {
+    "code": "57110",
+    "place": "Doi Luang"
+  },
+  {
+    "code": "58000",
+    "place": "Mueang Mae Hong Son"
+  },
+  {
+    "code": "58140",
+    "place": "Khun Yuam"
+  },
+  {
+    "code": "58130",
+    "place": "Pai"
+  },
+  {
+    "code": "58110",
+    "place": "Mae Sariang"
+  },
+  {
+    "code": "58120",
+    "place": "Mae La Noi"
+  },
+  {
+    "code": "58110",
+    "place": "Sop Moei"
+  },
+  {
+    "code": "58150",
+    "place": "Pang Mapha"
+  },
+  {
+    "code": "60000",
+    "place": "Mueang Nakhon Sawan"
+  },
+  {
+    "code": "60170",
+    "place": "Krok Phra"
+  },
+  {
+    "code": "60120",
+    "place": "Chum Saeng"
+  },
+  {
+    "code": "60110",
+    "place": "Nong Bua"
+  },
+  {
+    "code": "60180",
+    "place": "Banphot Phisai"
+  },
+  {
+    "code": "60230",
+    "place": "Kao Liao"
+  },
+  {
+    "code": "60140",
+    "place": "Takhli"
+  },
+  {
+    "code": "60160",
+    "place": "Tha Tako"
+  },
+  {
+    "code": "60220",
+    "place": "Phaisali"
+  },
+  {
+    "code": "60130",
+    "place": "Phayuha Hkiri"
+  },
+  {
+    "code": "60150",
+    "place": "Lat Yao"
+  },
+  {
+    "code": "60190",
+    "place": "Tak Fa"
+  },
+  {
+    "code": "60150",
+    "place": "Mae Wong"
+  },
+  {
+    "code": "60150",
+    "place": "Mae Pern"
+  },
+  {
+    "code": "60150",
+    "place": "Chum Ta Bong"
+  },
+  {
+    "code": "61000",
+    "place": "Mueang Uthai Thani"
+  },
+  {
+    "code": "61120",
+    "place": "Thap Than"
+  },
+  {
+    "code": "61150",
+    "place": "Sawang Arom"
+  },
+  {
+    "code": "61110",
+    "place": "Nong Chang"
+  },
+  {
+    "code": "61130",
+    "place": "Nong Khayang"
+  },
+  {
+    "code": "61140",
+    "place": "Ban Rai"
+  },
+  {
+    "code": "61160",
+    "place": "Lan Sak"
+  },
+  {
+    "code": "61170",
+    "place": "Huai Khot"
+  },
+  {
+    "code": "62000",
+    "place": "Mueang Kamphaeng Phet"
+  },
+  {
+    "code": "62150",
+    "place": "Sai Ngam"
+  },
+  {
+    "code": "62180",
+    "place": "Khlong Lan"
+  },
+  {
+    "code": "62130",
+    "place": "Khanu Woralaksaburi"
+  },
+  {
+    "code": "62120",
+    "place": "Khlong Khlung"
+  },
+  {
+    "code": "62110",
+    "place": "Phran Kratai"
+  },
+  {
+    "code": "62170",
+    "place": "Lan Krabue"
+  },
+  {
+    "code": "62190",
+    "place": "Sai Thong Watthana"
+  },
+  {
+    "code": "62120",
+    "place": "Pang Sila Thong"
+  },
+  {
+    "code": "62210",
+    "place": "Bueng Samakkhi"
+  },
+  {
+    "code": "62000",
+    "place": "Kosamphi Nakhon"
+  },
+  {
+    "code": "63000",
+    "place": "Mueang Tak"
+  },
+  {
+    "code": "63120",
+    "place": "Ban Tak"
+  },
+  {
+    "code": "63130",
+    "place": "Sam Ngao"
+  },
+  {
+    "code": "63140",
+    "place": "Mae Ramat"
+  },
+  {
+    "code": "63150",
+    "place": "Tha Song Yang"
+  },
+  {
+    "code": "63110",
+    "place": "Mae Sot"
+  },
+  {
+    "code": "63160",
+    "place": "Phop Phra"
+  },
+  {
+    "code": "63170",
+    "place": "Um Phang"
+  },
+  {
+    "code": "63000",
+    "place": "Wang Chao"
+  },
+  {
+    "code": "64000",
+    "place": "Mueang Sukhothai"
+  },
+  {
+    "code": "64140",
+    "place": "Ban Dan Lan Hoi"
+  },
+  {
+    "code": "64160",
+    "place": "Khiri Mat"
+  },
+  {
+    "code": "64170",
+    "place": "Kong Krailat"
+  },
+  {
+    "code": "64130",
+    "place": "Si Satchanalai"
+  },
+  {
+    "code": "64120",
+    "place": "Si Samrong"
+  },
+  {
+    "code": "64110",
+    "place": "Sawankhalok"
+  },
+  {
+    "code": "64180",
+    "place": "Si Nakhon"
+  },
+  {
+    "code": "64230",
+    "place": "Thung Saliam"
+  },
+  {
+    "code": "65000",
+    "place": "Mueang Phitsanulok"
+  },
+  {
+    "code": "65120",
+    "place": "Nakhon Thai"
+  },
+  {
+    "code": "65170",
+    "place": "Chat Trakan"
+  },
+  {
+    "code": "65140",
+    "place": "Bang Rakam"
+  },
+  {
+    "code": "65110",
+    "place": "Bang Krathum"
+  },
+  {
+    "code": "65150",
+    "place": "Phrom Phiram"
+  },
+  {
+    "code": "65160",
+    "place": "Wat Bot"
+  },
+  {
+    "code": "65130",
+    "place": "Wang Thong"
+  },
+  {
+    "code": "65190",
+    "place": "Noen Maprang"
+  },
+  {
+    "code": "66000",
+    "place": "Mueang Phichit"
+  },
+  {
+    "code": "66180",
+    "place": "Wang Sai Phun"
+  },
+  {
+    "code": "66190",
+    "place": "Pho Prathap Chang"
+  },
+  {
+    "code": "66110",
+    "place": "Taphan Hin"
+  },
+  {
+    "code": "66120",
+    "place": "Bang Mun Nak"
+  },
+  {
+    "code": "66130",
+    "place": "Pho Thale"
+  },
+  {
+    "code": "66140",
+    "place": "Sam Ngam"
+  },
+  {
+    "code": "66150",
+    "place": "Tap Khlo"
+  },
+  {
+    "code": "66160",
+    "place": "Sak Lek"
+  },
+  {
+    "code": "66130",
+    "place": "Bueng Na Rang"
+  },
+  {
+    "code": "66210",
+    "place": "Dong Charoen"
+  },
+  {
+    "code": "66140",
+    "place": "Wachirabarami"
+  },
+  {
+    "code": "67000",
+    "place": "Mueang Phetchabun"
+  },
+  {
+    "code": "67150",
+    "place": "Chon Daen"
+  },
+  {
+    "code": "67110",
+    "place": "Lom Sak"
+  },
+  {
+    "code": "67120",
+    "place": "Lom Kao"
+  },
+  {
+    "code": "67130",
+    "place": "Wichian Buri"
+  },
+  {
+    "code": "67170",
+    "place": "Si Thep"
+  },
+  {
+    "code": "67140",
+    "place": "Nong Phai"
+  },
+  {
+    "code": "67160",
+    "place": "Bueng Sam Phan"
+  },
+  {
+    "code": "67260",
+    "place": "Nam Nao"
+  },
+  {
+    "code": "67240",
+    "place": "Wang Pong"
+  },
+  {
+    "code": "67270",
+    "place": "Khao Kho"
+  },
+  {
+    "code": "70000",
+    "place": "Mueang Ratchaburi"
+  },
+  {
+    "code": "70150",
+    "place": "Chom Bueng"
+  },
+  {
+    "code": "70180",
+    "place": "Suan Phueng"
+  },
+  {
+    "code": "70130",
+    "place": "Damnoen Saduak"
+  },
+  {
+    "code": "70110",
+    "place": "Ban Pong"
+  },
+  {
+    "code": "70160",
+    "place": "Bang Phae"
+  },
+  {
+    "code": "70120",
+    "place": "Photharam"
+  },
+  {
+    "code": "70140",
+    "place": "Pak Tho"
+  },
+  {
+    "code": "70170",
+    "place": "Wat Phleng"
+  },
+  {
+    "code": "70180",
+    "place": "Ban Kha"
+  },
+  {
+    "code": "71000",
+    "place": "Mueang Kanchanaburi"
+  },
+  {
+    "code": "71150",
+    "place": "Sai Yok"
+  },
+  {
+    "code": "71160",
+    "place": "Bo Phloi"
+  },
+  {
+    "code": "71250",
+    "place": "Si Sawat"
+  },
+  {
+    "code": "71120",
+    "place": "Tha Maka"
+  },
+  {
+    "code": "71110",
+    "place": "Tha Muang"
+  },
+  {
+    "code": "71180",
+    "place": "Thong Pha Phum"
+  },
+  {
+    "code": "71240",
+    "place": "Sangkhla Buri"
+  },
+  {
+    "code": "71140",
+    "place": "Phanom Thuan"
+  },
+  {
+    "code": "71210",
+    "place": "Lao Khwan"
+  },
+  {
+    "code": "71260",
+    "place": "Dan Makham Tia"
+  },
+  {
+    "code": "71220",
+    "place": "Nong Prue"
+  },
+  {
+    "code": "71170",
+    "place": "Huai Krachao"
+  },
+  {
+    "code": "72000",
+    "place": "Mueang Saphan Buri"
+  },
+  {
+    "code": "72120",
+    "place": "Doem Bang Nang Buat"
+  },
+  {
+    "code": "72180",
+    "place": "Dan Chang"
+  },
+  {
+    "code": "72150",
+    "place": "Bang Pla Ma"
+  },
+  {
+    "code": "72140",
+    "place": "Si Prachan"
+  },
+  {
+    "code": "72170",
+    "place": "Don Chedi"
+  },
+  {
+    "code": "72110",
+    "place": "Song Phi Nong"
+  },
+  {
+    "code": "72130",
+    "place": "Sam Chuk"
+  },
+  {
+    "code": "72160",
+    "place": "U Thong"
+  },
+  {
+    "code": "72240",
+    "place": "Nong Ya Sai"
+  },
+  {
+    "code": "73000",
+    "place": "Mueang Nakhon Pathom"
+  },
+  {
+    "code": "73140",
+    "place": "Kamphaeng Saen"
+  },
+  {
+    "code": "73120",
+    "place": "Nakhon Chai Si"
+  },
+  {
+    "code": "73150",
+    "place": "Don Tum"
+  },
+  {
+    "code": "73130",
+    "place": "Bang Len"
+  },
+  {
+    "code": "73110",
+    "place": "Sam Phran"
+  },
+  {
+    "code": "73170",
+    "place": "Phutthamonthon"
+  },
+  {
+    "code": "74000",
+    "place": "Mueang Samut Sakhon"
+  },
+  {
+    "code": "74110",
+    "place": "Krathum Baen"
+  },
+  {
+    "code": "74120",
+    "place": "Ban Phaeo"
+  },
+  {
+    "code": "75000",
+    "place": "Mueang Samut Songkhram"
+  },
+  {
+    "code": "75120",
+    "place": "Bang Khonthi"
+  },
+  {
+    "code": "75110",
+    "place": "Amphawa"
+  },
+  {
+    "code": "76000",
+    "place": "Mueang Phetchaburi"
+  },
+  {
+    "code": "76140",
+    "place": "Khao Yoi"
+  },
+  {
+    "code": "76160",
+    "place": "Nong Ya Plong"
+  },
+  {
+    "code": "76120",
+    "place": "Cha-Am"
+  },
+  {
+    "code": "76130",
+    "place": "Tha Yang"
+  },
+  {
+    "code": "76150",
+    "place": "Ban Lat"
+  },
+  {
+    "code": "76110",
+    "place": "Ban Laem"
+  },
+  {
+    "code": "76170",
+    "place": "Kaeng Krachan"
+  },
+  {
+    "code": "77000",
+    "place": "Mueang Prachuap Khiri Khan"
+  },
+  {
+    "code": "77150",
+    "place": "Kui Buri"
+  },
+  {
+    "code": "77130",
+    "place": "Thap Sakae"
+  },
+  {
+    "code": "77140",
+    "place": "Bang Saphan"
+  },
+  {
+    "code": "77170",
+    "place": "Bang Saphan Noi"
+  },
+  {
+    "code": "77120",
+    "place": "Pran Buri"
+  },
+  {
+    "code": "77110",
+    "place": "Hua Hin"
+  },
+  {
+    "code": "77120",
+    "place": "Sam Roi Yot"
+  },
+  {
+    "code": "80000",
+    "place": "Mueang Nakhon Si Thammarat"
+  },
+  {
+    "code": "80320",
+    "place": "Phrom Khiri"
+  },
+  {
+    "code": "80230",
+    "place": "Lan Saka"
+  },
+  {
+    "code": "80150",
+    "place": "Chawang"
+  },
+  {
+    "code": "80270",
+    "place": "Phipun"
+  },
+  {
+    "code": "80190",
+    "place": "Chian Yai"
+  },
+  {
+    "code": "80180",
+    "place": "Cha-Uat"
+  },
+  {
+    "code": "80160",
+    "place": "Tha Sala"
+  },
+  {
+    "code": "80110",
+    "place": "Thung Song"
+  },
+  {
+    "code": "80220",
+    "place": "Na Bon"
+  },
+  {
+    "code": "80240",
+    "place": "Thung Yai"
+  },
+  {
+    "code": "80140",
+    "place": "Pak Phanang"
+  },
+  {
+    "code": "80130",
+    "place": "Ron Phibun"
+  },
+  {
+    "code": "80120",
+    "place": "Sichon"
+  },
+  {
+    "code": "80210",
+    "place": "Khanom"
+  },
+  {
+    "code": "80170",
+    "place": "Hua Sai"
+  },
+  {
+    "code": "80360",
+    "place": "Bang Khan"
+  },
+  {
+    "code": "80260",
+    "place": "Tham Phannara"
+  },
+  {
+    "code": "80180",
+    "place": "Chulabhorn"
+  },
+  {
+    "code": "80000",
+    "place": "Phra Phrom"
+  },
+  {
+    "code": "80160",
+    "place": "Nopphitam"
+  },
+  {
+    "code": "80250",
+    "place": "Chang Klang"
+  },
+  {
+    "code": "80190",
+    "place": "Chaloem Phra Kiet"
+  },
+  {
+    "code": "81000",
+    "place": "Mueang Krabi"
+  },
+  {
+    "code": "81140",
+    "place": "Khao Phanom"
+  },
+  {
+    "code": "81150",
+    "place": "Ko Lanta"
+  },
+  {
+    "code": "81120",
+    "place": "Khlong Thom"
+  },
+  {
+    "code": "81110",
+    "place": "Ao Luek"
+  },
+  {
+    "code": "81160",
+    "place": "Plai Phraya"
+  },
+  {
+    "code": "81120",
+    "place": "Lam Thap"
+  },
+  {
+    "code": "81130",
+    "place": "Nuea Khlong"
+  },
+  {
+    "code": "82000",
+    "place": "Mueang Phang-Nga"
+  },
+  {
+    "code": "82160",
+    "place": "Ko Yao"
+  },
+  {
+    "code": "82170",
+    "place": "Kapong"
+  },
+  {
+    "code": "82130",
+    "place": "Takua Thung"
+  },
+  {
+    "code": "82110",
+    "place": "Takua Pa"
+  },
+  {
+    "code": "82150",
+    "place": "Khura Buri"
+  },
+  {
+    "code": "82180",
+    "place": "Thap Put"
+  },
+  {
+    "code": "82120",
+    "place": "Thai Mueang"
+  },
+  {
+    "code": "83000",
+    "place": "Mueang Phuket"
+  },
+  {
+    "code": "83120",
+    "place": "Kathu"
+  },
+  {
+    "code": "83110",
+    "place": "Thalang"
+  },
+  {
+    "code": "84000",
+    "place": "Mueang Surat Thani"
+  },
+  {
+    "code": "84290",
+    "place": "Kanchanadit"
+  },
+  {
+    "code": "84220",
+    "place": "Don Sak"
+  },
+  {
+    "code": "84140",
+    "place": "Ko Samui"
+  },
+  {
+    "code": "84280",
+    "place": "Ko Pha-Ngan"
+  },
+  {
+    "code": "84110",
+    "place": "Chaiya"
+  },
+  {
+    "code": "84170",
+    "place": "Tha Chana"
+  },
+  {
+    "code": "84180",
+    "place": "Khiri Rat Nikhom"
+  },
+  {
+    "code": "84230",
+    "place": "Ban Ta Khun"
+  },
+  {
+    "code": "84250",
+    "place": "Phanom"
+  },
+  {
+    "code": "84150",
+    "place": "Tha Chang"
+  },
+  {
+    "code": "84120",
+    "place": "Ban Na San"
+  },
+  {
+    "code": "84240",
+    "place": "Ban Na Doem"
+  },
+  {
+    "code": "84260",
+    "place": "Khian Sa"
+  },
+  {
+    "code": "84190",
+    "place": "Wiang Sa"
+  },
+  {
+    "code": "84210",
+    "place": "Phrasaeng"
+  },
+  {
+    "code": "84130",
+    "place": "Phunphin"
+  },
+  {
+    "code": "84350",
+    "place": "Chai Buri"
+  },
+  {
+    "code": "84180",
+    "place": "Chai Buri"
+  },
+  {
+    "code": "85000",
+    "place": "Mueang Ranong"
+  },
+  {
+    "code": "85130",
+    "place": "La-Un"
+  },
+  {
+    "code": "85120",
+    "place": "Papoe"
+  },
+  {
+    "code": "85110",
+    "place": "Kra Buri"
+  },
+  {
+    "code": "85120",
+    "place": "Suk Samran"
+  },
+  {
+    "code": "86000",
+    "place": "Mueang Chumphon"
+  },
+  {
+    "code": "86140",
+    "place": "Tha Sae"
+  },
+  {
+    "code": "86160",
+    "place": "Pathio"
+  },
+  {
+    "code": "86110",
+    "place": "Lang Suan"
+  },
+  {
+    "code": "86170",
+    "place": "Lamae"
+  },
+  {
+    "code": "86180",
+    "place": "Phato"
+  },
+  {
+    "code": "86130",
+    "place": "Sawi"
+  },
+  {
+    "code": "86220",
+    "place": "Thung Tako"
+  },
+  {
+    "code": "90000",
+    "place": "Muaeng Songkhla"
+  },
+  {
+    "code": "90190",
+    "place": "Sathing Phra"
+  },
+  {
+    "code": "90130",
+    "place": "Chana"
+  },
+  {
+    "code": "90160",
+    "place": "Na Thawi"
+  },
+  {
+    "code": "90150",
+    "place": "Thepha"
+  },
+  {
+    "code": "90210",
+    "place": "Saba Yoi"
+  },
+  {
+    "code": "90140",
+    "place": "Ranot"
+  },
+  {
+    "code": "90270",
+    "place": "Krasae Sin"
+  },
+  {
+    "code": "90180",
+    "place": "Rattaphum"
+  },
+  {
+    "code": "90120",
+    "place": "Sadao"
+  },
+  {
+    "code": "90110",
+    "place": "Hat Yai"
+  },
+  {
+    "code": "90310",
+    "place": "Na Mom"
+  },
+  {
+    "code": "90220",
+    "place": "Khuan Niang"
+  },
+  {
+    "code": "90110",
+    "place": "Bang Klam"
+  },
+  {
+    "code": "90280",
+    "place": "Singhanakhon"
+  },
+  {
+    "code": "90230",
+    "place": "Khlong Hoi Khong"
+  },
+  {
+    "code": "91000",
+    "place": "Mueang Satun"
+  },
+  {
+    "code": "91160",
+    "place": "Khuan Don"
+  },
+  {
+    "code": "91130",
+    "place": "Khuan Kalong"
+  },
+  {
+    "code": "91150",
+    "place": "Tha Phae"
+  },
+  {
+    "code": "91110",
+    "place": "La-Ngu"
+  },
+  {
+    "code": "91120",
+    "place": "Thung Wa"
+  },
+  {
+    "code": "91130",
+    "place": "Manang"
+  },
+  {
+    "code": "92000",
+    "place": "Mueang Trang"
+  },
+  {
+    "code": "92110",
+    "place": "Kantang"
+  },
+  {
+    "code": "92140",
+    "place": "Yan Ta Khao"
+  },
+  {
+    "code": "92120",
+    "place": "Palian"
+  },
+  {
+    "code": "92150",
+    "place": "Sikao"
+  },
+  {
+    "code": "92130",
+    "place": "Huai Yot"
+  },
+  {
+    "code": "92220",
+    "place": "Wang Wiset"
+  },
+  {
+    "code": "92170",
+    "place": "Na Yong"
+  },
+  {
+    "code": "92160",
+    "place": "Ratsada"
+  },
+  {
+    "code": "92120",
+    "place": "Hat Samran"
+  },
+  {
+    "code": "93000",
+    "place": "Mueang Phatthalung"
+  },
+  {
+    "code": "93180",
+    "place": "Kong Ra"
+  },
+  {
+    "code": "93130",
+    "place": "Khao Chaison"
+  },
+  {
+    "code": "93160",
+    "place": "Tamot"
+  },
+  {
+    "code": "93110",
+    "place": "Khuan Khanun"
+  },
+  {
+    "code": "93120",
+    "place": "Pak Phayun"
+  },
+  {
+    "code": "93190",
+    "place": "Si Banphot"
+  },
+  {
+    "code": "93170",
+    "place": "Pa Bon"
+  },
+  {
+    "code": "93140",
+    "place": "Bang Kaeo"
+  },
+  {
+    "code": "93110",
+    "place": "Pa Phayom"
+  },
+  {
+    "code": "93000",
+    "place": "Srinagarindra"
+  },
+  {
+    "code": "94000",
+    "place": "Mueang Pattani"
+  },
+  {
+    "code": "94120",
+    "place": "Khok Pho"
+  },
+  {
+    "code": "94170",
+    "place": "Nong Chik"
+  },
+  {
+    "code": "94130",
+    "place": "Panare"
+  },
+  {
+    "code": "94140",
+    "place": "Mayo"
+  },
+  {
+    "code": "94140",
+    "place": "Thung Yang Daeng"
+  },
+  {
+    "code": "94110",
+    "place": "Sai Buri"
+  },
+  {
+    "code": "94220",
+    "place": "Mai Kaen"
+  },
+  {
+    "code": "94150",
+    "place": "Yaring"
+  },
+  {
+    "code": "94160",
+    "place": "Yarang"
+  },
+  {
+    "code": "94230",
+    "place": "Kapho"
+  },
+  {
+    "code": "94180",
+    "place": "Mae Lan"
+  },
+  {
+    "code": "95000",
+    "place": "Mueang Yala"
+  },
+  {
+    "code": "95110",
+    "place": "Betong"
+  },
+  {
+    "code": "95130",
+    "place": "Bannang Sata"
+  },
+  {
+    "code": "95150",
+    "place": "Than To"
+  },
+  {
+    "code": "95120",
+    "place": "Yaha"
+  },
+  {
+    "code": "95140",
+    "place": "Raman"
+  },
+  {
+    "code": "95120",
+    "place": "Kabang"
+  },
+  {
+    "code": "95000",
+    "place": "Krong Pinang"
+  },
+  {
+    "code": "96000",
+    "place": "Mueang Narathiwat"
+  },
+  {
+    "code": "96110",
+    "place": "Tak Bai"
+  },
+  {
+    "code": "96170",
+    "place": "Tak Bai"
+  },
+  {
+    "code": "96180",
+    "place": "Yi-Ngo"
+  },
+  {
+    "code": "96130",
+    "place": "Ra-Ngae"
+  },
+  {
+    "code": "96150",
+    "place": "Rueso"
+  },
+  {
+    "code": "96210",
+    "place": "Si Sakhon"
+  },
+  {
+    "code": "96160",
+    "place": "Waeng"
+  },
+  {
+    "code": "96190",
+    "place": "Sukhirin"
+  },
+  {
+    "code": "96120",
+    "place": "Su-Ngai Kolok"
+  },
+  {
+    "code": "96140",
+    "place": "Su-Ngai Padi"
+  },
+  {
+    "code": "96220",
+    "place": "Chanae"
+  },
+  {
+    "code": "96130",
+    "place": "Cho-Airong"
+  }
+]
