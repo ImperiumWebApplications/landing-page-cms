@@ -6,7 +6,7 @@ export default {
     translations: {
       de: {
         Domain: 'Domain',
-        'Service type (internal)': 'Dienstart (intern)',
+        'Service type (internal)': 'Branche (intern)',
         Language: 'Sprache',
         Brand: 'Marke',
         'Google Tag Manager ID': 'Google Tag Manager ID',
@@ -22,7 +22,7 @@ export default {
         'Secondary color': 'Sekundärfarbe',
         'Tertiary color': 'Tertiärfarbe',
         'Text color': 'Textfarbe',
-        'Entry question for questionnaire': 'Eingabefrage für Fragebogen',
+        'Entry question for questionnaire': 'Einstiegsfrage für Fragebogen',
         Questionnaires: 'Fragebögen',
         'Questionnaire advantages': 'Fragebogen Vorteile',
         'Questionnaire (inactive - please use fields above)':
