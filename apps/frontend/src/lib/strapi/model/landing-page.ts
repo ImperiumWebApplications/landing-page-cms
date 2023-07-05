@@ -37,7 +37,7 @@ export type LandingPage = {
 
   domain?: TextField;
   brand_name?: TextField;
-  countries?: MultiSelectField<'AT' | 'DE' | 'CH'>;
+  countries?: MultiSelectField<'AT' | 'DE' | 'CH' | 'US' | 'TH'>;
   enable_postal_code?: BooleanField;
   /** Don't access directly. Use `useLanguageContext`. */
   language?: EnumerationField<LandingPageLanguage>;
