@@ -27,6 +27,7 @@
   "dependencies": {
     "@headlessui/react": "^1.7.7",
     "@sentry/nextjs": "^7.28.1",
+    "aws-sdk": "^2.1410.0",
     "axios": "^1.2.2",
     "classnames": "^2.3.2",
     "core-js": "^3.27.1",
