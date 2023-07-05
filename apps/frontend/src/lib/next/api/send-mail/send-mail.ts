@@ -1,4 +1,5 @@
 import { createTransport } from 'nodemailer';
+import aws from 'aws-sdk';
 import {
   EmailSubject,
   EmailTemplate,
@@ -8,6 +9,12 @@ import {
 import { Strapi } from '../../../strapi';
 import { generateHtmlEmailContent } from './utils/generateHtmlEmailContent';
 import sharp from 'sharp';
+
+aws.config.update({
+  region: 'eu-central-1',
+  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+});
 
 export type SendMailProps = {
   domain: string;
@@ -56,13 +63,11 @@ export const sendMail = async (data: SendMailProps) => {
     template,
     content: payload,
   });
+
   const transporter = createTransport({
-    host: 'smtp.office365.com',
-    port: 587,
-    auth: {
-      user: process.env.MAIL_USER,
-      pass: process.env.MAIL_PASSWORD,
-    },
+    SES: new aws.SES({
+      apiVersion: '2010-12-01',
+    }),
   });
 
   // To prospect
