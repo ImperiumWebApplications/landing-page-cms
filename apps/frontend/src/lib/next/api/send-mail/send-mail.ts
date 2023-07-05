@@ -9,11 +9,7 @@ import {
 import { Strapi } from '../../../strapi';
 import { generateHtmlEmailContent } from './utils/generateHtmlEmailContent';
 import sharp from 'sharp';
-console.log(
-  'Variables are',
-  process.env.AWS_ACCESS_KEY_ID,
-  process.env.AWS_SECRET_ACCESS_KEY,
-);
+
 aws.config.update({
   region: 'eu-central-1',
   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
