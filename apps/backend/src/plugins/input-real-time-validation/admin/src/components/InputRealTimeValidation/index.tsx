@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { TextInput } from '@strapi/design-system';
+import { useIntl } from 'react-intl';
 
 import { ProgressBar } from '../ProgressBar';
 
@@ -22,6 +23,8 @@ type RealTimeValidationInputPluginProps = {
 const RealTimeValidationInputPlugin: React.FC<
   RealTimeValidationInputPluginProps
 > = ({ onChange, value, name, attribute, intlLabel }) => {
+  const { formatMessage } = useIntl();
+
   const [error, setError] = useState('');
 
   const handleOnChange = (e: any) => {
@@ -45,7 +48,10 @@ const RealTimeValidationInputPlugin: React.FC<
     <>
       <TextInput
         type="text"
-        label={intlLabel.defaultMessage}
+        label={formatMessage({
+          id: intlLabel.id,
+          defaultMessage: intlLabel.defaultMessage,
+        })}
         value={value}
         onChange={handleOnChange}
         error={error.length > 0 && error}
