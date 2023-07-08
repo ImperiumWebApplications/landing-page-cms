@@ -29,7 +29,7 @@ const MenuList = (props: any) => {
 
   return (
     <List
-      width={"100%"}
+      width={'100%'}
       height={height * 8}
       itemCount={children.length}
       itemSize={height}
@@ -93,7 +93,7 @@ export const StateSelector: React.FC<StateSelectorProps> = ({
         isLoading={loading}
         onChange={(selectedOption) => updateCity(selectedOption?.value ?? '')}
       />
-      <div className="text-center py-5">
+      <div className="py-5 text-center">
         <Button
           label={staticContent?.postal_code_button_label ?? i18n[language].NEXT}
           data-testid="questionnaire-state-selector-button"
