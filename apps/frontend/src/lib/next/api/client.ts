@@ -4,6 +4,10 @@ import type { CreateLeadRequest } from './create-lead';
 import type { PostalCodesRequest } from './postal-codes';
 import type { SendMailRequest } from './send-mail';
 
+interface GetCityNamesRequest {
+  country: string;
+}
+
 export const NextAPI = {
   createLead: (data: CreateLeadRequest['body']) => {
     if (!data.domain) return Promise.reject();
@@ -39,6 +43,20 @@ export const NextAPI = {
       body: JSON.stringify(data),
     });
   },
+
+  getCityNames(data: GetCityNamesRequest): Promise<Response> {
+    if (!data.country)
+      return Promise.reject(new Error('Country is not provided'));
+
+    const API_ROUTE = `/api/states/${data.country}`;
+    const API = `${window.location.protocol}//${window.location.host}${API_ROUTE}`;
+
+    return fetch(API, {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+    });
+  },
+
   sendMail: (data: SendMailRequest['body']) => {
     if (!data.domain) return Promise.reject();
 

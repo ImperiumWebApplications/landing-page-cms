@@ -22,6 +22,7 @@ import {
 } from './context/Questionnaire';
 import { questionnaireRoute } from '../../config/navigation.config';
 import { useIsScrolled } from '../../hooks/useIsScrolled';
+import { StateSelector } from './components/StateSelector';
 
 export type QuestionnaireHistoryState = {
   step?: number;
@@ -102,8 +103,14 @@ export const Questionnaire: React.FC<QuestionnaireProps> = ({
             {steps.isQuestionStep && (
               <Question data={question} customSelectHandler={selectHandler} />
             )}
-            {steps.isPostalCodeStep && (
+            {steps.isPostalCodeStep && !staticContent?.states_autocomplete && (
               <PostalCode countries={countries} staticContent={staticContent} />
+            )}
+            {steps.isPostalCodeStep && staticContent?.states_autocomplete && (
+              <StateSelector
+                countries={countries}
+                staticContent={staticContent}
+              />
             )}
             {steps.isContactFormStep && (
               <ContactDetails staticContent={staticContent} />
