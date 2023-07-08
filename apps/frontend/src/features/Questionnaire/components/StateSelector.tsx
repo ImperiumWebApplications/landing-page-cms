@@ -29,6 +29,7 @@ const MenuList = (props: any) => {
 
   return (
     <List
+      width={"100%"}
       height={height * 8}
       itemCount={children.length}
       itemSize={height}
@@ -82,7 +83,7 @@ export const StateSelector: React.FC<StateSelectorProps> = ({
   return (
     <div>
       <Select
-        className="m-auto w-2/4 py-5"
+        className="m-auto w-2/4"
         id="select-container"
         components={{ MenuList }}
         options={states.map((state) => ({
@@ -92,7 +93,7 @@ export const StateSelector: React.FC<StateSelectorProps> = ({
         isLoading={loading}
         onChange={(selectedOption) => updateCity(selectedOption?.value ?? '')}
       />
-      <div className="text-center">
+      <div className="text-center py-5">
         <Button
           label={staticContent?.postal_code_button_label ?? i18n[language].NEXT}
           data-testid="questionnaire-state-selector-button"
