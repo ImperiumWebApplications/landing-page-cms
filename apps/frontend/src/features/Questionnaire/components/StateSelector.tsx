@@ -34,7 +34,7 @@ const MenuList = (props: any) => {
       itemSize={height}
       initialScrollOffset={initialOffset}
     >
-      {({ index, style }: any) => <div>{children[index]}</div>}
+      {({ index }: any) => <div>{children[index]}</div>}
     </List>
   );
 };
