@@ -7,6 +7,7 @@ import { Button } from '../../../components/Button';
 import type { StaticContent } from '../../../lib/strapi/model';
 import { i18n } from '../../../config/i18n.config';
 import { useLanguageContext } from '../../../context/Language';
+import { StepTitle } from './StepTitle';
 
 const COUNTRY_CODES: Record<string, string> = {
   US: 'USA',
@@ -27,9 +28,10 @@ export const StateSelector: React.FC<StateSelectorProps> = ({
   staticContent,
 }) => {
   const { language } = useLanguageContext();
-  const storedState = JSON.parse(localStorage.getItem('selectedState') || '');
+  const storedState = localStorage.getItem('selectedState');
+  const parsedState = storedState ? JSON.parse(storedState) : '';
   const [selectedState, setSelectedState] = useState<string | undefined>(
-    storedState,
+    parsedState,
   );
   const [states, setStates] = useState<string[]>([]);
   const { state, dispatch } = useQuestionnaireContext();
@@ -53,10 +55,6 @@ export const StateSelector: React.FC<StateSelectorProps> = ({
   }, [countries]);
   const updateCity = (selectedItem: string | null | undefined) => {
     if (selectedItem) {
-      console.log(
-        'Calling updateCity from stateselector and value is',
-        selectedItem,
-      );
       dispatch({
         type: 'setDetails',
         payload: {
@@ -68,89 +66,95 @@ export const StateSelector: React.FC<StateSelectorProps> = ({
     }
   };
   return (
-    <Downshift
-      onChange={updateCity}
-      itemToString={(item) => (item ? item.toUpperCase() : '')}
-      initialInputValue={selectedState}
-      initialSelectedItem={selectedState}
-    >
-      {({
-        getInputProps,
-        getItemProps,
-        getMenuProps,
-        isOpen,
-        inputValue,
-        highlightedIndex,
-        selectedItem,
-      }) => {
-        const filteredStates = inputValue
-          ? states.filter((item) =>
-              item.toLowerCase().includes(inputValue.toLowerCase()),
-            )
-          : states;
+    <div className="mx-auto px-0 md:px-8 lg:max-w-xl lg:px-0 ">
+      <StepTitle>{staticContent?.postal_code_step_title}</StepTitle>
+      <Downshift
+        onChange={updateCity}
+        itemToString={(item) => (item ? item.toUpperCase() : '')}
+        initialInputValue={selectedState}
+        initialSelectedItem={selectedState}
+      >
+        {({
+          getInputProps,
+          getItemProps,
+          getMenuProps,
+          isOpen,
+          inputValue,
+          highlightedIndex,
+          selectedItem,
+        }) => {
+          const filteredStates = inputValue
+            ? states.filter((item) =>
+                item.toLowerCase().includes(inputValue.toLowerCase()),
+              )
+            : states;
 
-        return (
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-            }}
-          >
-            <input
-              {...getInputProps()}
-              placeholder={i18n[language].QUESTIONNAIRE_SELECT}
+          return (
+            <div
               style={{
-                height: '35px',
-                width: '50%',
-                padding: '5px',
-                border: '1px solid black',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '10px',
               }}
-            />
-            {isOpen && (
-              <div style={{ width: '50%', height: 280 }}>
-                <List
-                  height={height * 8}
-                  itemCount={filteredStates.length}
-                  itemSize={height}
-                  {...getMenuProps()}
-                >
-                  {({ index, style }) => {
-                    const state = filteredStates[index];
-                    return (
-                      <div
-                        {...getItemProps({ index, item: state, style })}
-                        style={{
-                          backgroundColor:
-                            highlightedIndex === index ? 'lightgray' : 'white',
-                          fontWeight:
-                            selectedItem === state ? 'bold' : 'normal',
-                          ...style,
-                        }}
-                      >
-                        {state.toUpperCase()}
-                      </div>
-                    );
-                  }}
-                </List>
-              </div>
-            )}
-            <Button
-              label={
-                staticContent?.postal_code_button_label ?? i18n[language].NEXT
-              }
-              data-testid="questionnaire-state-selector-button"
-              disabled={selectedState!.length === 0}
-              onClick={() => {
-                dispatch({
-                  type: 'setIndex',
-                  payload: { index: state.index + 1 },
-                });
-              }}
-            />
-          </div>
-        );
-      }}
-    </Downshift>
+            >
+              <input
+                {...getInputProps()}
+                placeholder={i18n[language].QUESTIONNAIRE_SELECT}
+                style={{
+                  height: '35px',
+                  width: '50%',
+                  padding: '5px',
+                  border: '1px solid black',
+                }}
+              />
+              {isOpen && (
+                <div style={{ width: '50%', height: 280 }}>
+                  <List
+                    height={height * 8}
+                    itemCount={filteredStates.length}
+                    itemSize={height}
+                    {...getMenuProps()}
+                  >
+                    {({ index, style }) => {
+                      const state = filteredStates[index];
+                      return (
+                        <div
+                          {...getItemProps({ index, item: state, style })}
+                          style={{
+                            backgroundColor:
+                              highlightedIndex === index
+                                ? 'lightgray'
+                                : 'white',
+                            fontWeight:
+                              selectedItem === state ? 'bold' : 'normal',
+                            ...style,
+                          }}
+                        >
+                          {state.toUpperCase()}
+                        </div>
+                      );
+                    }}
+                  </List>
+                </div>
+              )}
+              <Button
+                label={
+                  staticContent?.postal_code_button_label ?? i18n[language].NEXT
+                }
+                data-testid="questionnaire-state-selector-button"
+                disabled={selectedState!.length === 0}
+                onClick={() => {
+                  dispatch({
+                    type: 'setIndex',
+                    payload: { index: state.index + 1 },
+                  });
+                }}
+              />
+            </div>
+          );
+        }}
+      </Downshift>
+    </div>
   );
 };
