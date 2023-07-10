@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import Select from 'react-select';
 import { FixedSizeList as List } from 'react-window';
+import Downshift from 'downshift';
+import { useQuestionnaireContext } from '../context/Questionnaire';
 import { NextAPI } from '../../../lib/next/api/client';
 import { Button } from '../../../components/Button';
 import type { StaticContent } from '../../../lib/strapi/model';
 import { i18n } from '../../../config/i18n.config';
 import { useLanguageContext } from '../../../context/Language';
-import { useQuestionnaireContext } from '../context/Questionnaire';
-
 
 const COUNTRY_CODES: Record<string, string> = {
   US: 'USA',
@@ -22,24 +21,6 @@ interface StateSelectorProps {
 }
 
 const height = 35;
-
-const MenuList = (props: any) => {
-  const { options, children, getValue } = props;
-  const [value] = getValue();
-  const initialOffset = options.indexOf(value) * height;
-
-  return (
-    <List
-      width={'100%'}
-      height={height * 8}
-      itemCount={children.length}
-      itemSize={height}
-      initialScrollOffset={initialOffset}
-    >
-      {({ index }: any) => <div>{children[index]}</div>}
-    </List>
-  );
-};
 
 export const StateSelector: React.FC<StateSelectorProps> = ({
   countries,
@@ -71,43 +52,103 @@ export const StateSelector: React.FC<StateSelectorProps> = ({
     }
   }, [countries]);
 
-  const updateCity = (value: string | undefined) => {
-    console.log('Calling updateCity from stateselector and value is', value);
-    dispatch({
-      type: 'setDetails',
-      payload: {
-        values: { ...state.contact, postalCode: ' ', city: value },
-      },
-    });
-    setSelectedState(value);
+  const updateCity = (selectedItem: string | null | undefined) => {
+    if (selectedItem) {
+      console.log(
+        'Calling updateCity from stateselector and value is',
+        selectedItem,
+      );
+      dispatch({
+        type: 'setDetails',
+        payload: {
+          values: { ...state.contact, postalCode: ' ', city: selectedItem },
+        },
+      });
+      setSelectedState(selectedItem);
+    }
   };
+
   return (
-    <div>
-      <Select
-        className="m-auto w-2/4"
-        id="select-container"
-        placeholder={i18n[language].QUESTIONNAIRE_SELECT}
-        components={{ MenuList }}
-        options={states.map((state) => ({
-          value: state,
-          label: state.toUpperCase(),
-        }))}
-        isLoading={loading}
-        onChange={(selectedOption) => updateCity(selectedOption?.value ?? '')}
-      />
-      <div className="py-5 text-center">
-        <Button
-          label={staticContent?.postal_code_button_label ?? i18n[language].NEXT}
-          data-testid="questionnaire-state-selector-button"
-          disabled={selectedState!.length === 0}
-          onClick={() => {
-            dispatch({
-              type: 'setIndex',
-              payload: { index: state.index + 1 },
-            });
-          }}
-        />
-      </div>
-    </div>
+    <Downshift
+      onChange={updateCity}
+      itemToString={(item) => (item ? item.toUpperCase() : '')}
+    >
+      {({
+        getInputProps,
+        getItemProps,
+        getMenuProps,
+        isOpen,
+        inputValue,
+        highlightedIndex,
+        selectedItem,
+      }) => {
+        const filteredStates = inputValue
+          ? states.filter((item) =>
+              item.toLowerCase().includes(inputValue.toLowerCase()),
+            )
+          : states;
+
+        return (
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
+            <input
+              {...getInputProps()}
+              style={{
+                height: '35px',
+                width: '50%',
+                padding: '5px',
+                border: '1px solid black',
+              }}
+            />
+            {isOpen && (
+              <div style={{ width: '50%', height: 280 }}>
+                <List
+                  height={height * 8}
+                  itemCount={filteredStates.length}
+                  itemSize={height}
+                  {...getMenuProps()}
+                >
+                  {({ index, style }) => {
+                    const state = filteredStates[index];
+                    return (
+                      <div
+                        {...getItemProps({ index, item: state, style })}
+                        style={{
+                          backgroundColor:
+                            highlightedIndex === index ? 'lightgray' : 'white',
+                          fontWeight:
+                            selectedItem === state ? 'bold' : 'normal',
+                          ...style,
+                        }}
+                      >
+                        {state.toUpperCase()}
+                      </div>
+                    );
+                  }}
+                </List>
+              </div>
+            )}
+            <Button
+              label={
+                staticContent?.postal_code_button_label ?? i18n[language].NEXT
+              }
+              data-testid="questionnaire-state-selector-button"
+              disabled={selectedState!.length === 0}
+              onClick={() => {
+                dispatch({
+                  type: 'setIndex',
+                  payload: { index: state.index + 1 },
+                });
+              }}
+            />
+          </div>
+        );
+      }}
+    </Downshift>
   );
 };
