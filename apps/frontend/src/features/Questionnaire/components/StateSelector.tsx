@@ -27,7 +27,10 @@ export const StateSelector: React.FC<StateSelectorProps> = ({
   staticContent,
 }) => {
   const { language } = useLanguageContext();
-  const [selectedState, setSelectedState] = useState<string | undefined>('');
+  const storedState = JSON.parse(localStorage.getItem('selectedState') || '');
+  const [selectedState, setSelectedState] = useState<string | undefined>(
+    storedState,
+  );
   const [states, setStates] = useState<string[]>([]);
   const { state, dispatch } = useQuestionnaireContext();
 
@@ -48,7 +51,6 @@ export const StateSelector: React.FC<StateSelectorProps> = ({
       fetchData();
     }
   }, [countries]);
-
   const updateCity = (selectedItem: string | null | undefined) => {
     if (selectedItem) {
       console.log(
@@ -62,13 +64,15 @@ export const StateSelector: React.FC<StateSelectorProps> = ({
         },
       });
       setSelectedState(selectedItem);
+      localStorage.setItem('selectedState', JSON.stringify(selectedItem));
     }
   };
-
   return (
     <Downshift
       onChange={updateCity}
       itemToString={(item) => (item ? item.toUpperCase() : '')}
+      initialInputValue={selectedState}
+      initialSelectedItem={selectedState}
     >
       {({
         getInputProps,
