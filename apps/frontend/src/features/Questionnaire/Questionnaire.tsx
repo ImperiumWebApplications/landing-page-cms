@@ -36,6 +36,7 @@ export type QuestionnaireProps = {
   phone?: LandingPage['contact_phone'];
   advantages?: LandingPage['questionnaires_advantages'];
   customSelectHandler?: SingleChoiceEventHandler;
+  autocomplete_states?: LandingPage['states_autocomplete'];
 };
 
 export const Questionnaire: React.FC<QuestionnaireProps> = ({
@@ -46,6 +47,7 @@ export const Questionnaire: React.FC<QuestionnaireProps> = ({
   staticContent,
   advantages,
   customSelectHandler: selectHandler,
+  autocomplete_states,
 }) => {
   const router = useRouter();
   const isScrolled = useIsScrolled();
@@ -103,10 +105,10 @@ export const Questionnaire: React.FC<QuestionnaireProps> = ({
             {steps.isQuestionStep && (
               <Question data={question} customSelectHandler={selectHandler} />
             )}
-            {steps.isPostalCodeStep && !staticContent?.states_autocomplete && (
+            {steps.isPostalCodeStep && !autocomplete_states && (
               <PostalCode countries={countries} staticContent={staticContent} />
             )}
-            {steps.isPostalCodeStep && staticContent?.states_autocomplete && (
+            {steps.isPostalCodeStep && autocomplete_states && (
               <StateSelector
                 countries={countries}
                 staticContent={staticContent}

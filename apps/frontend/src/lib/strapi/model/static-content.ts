@@ -36,7 +36,6 @@ export type StaticContent = {
     postal_code_step_title?: TextField;
     postal_code_explanation?: TextField;
     postal_code_button_label?: TextField;
-    states_autocomplete?: boolean;
     contact_details_step_title?: TextField;
     contact_details_last_step_hint?: TextField;
     contact_details_button_label?: TextField;

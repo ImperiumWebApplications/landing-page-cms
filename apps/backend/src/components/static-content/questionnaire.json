@@ -53,9 +53,6 @@
     },
     "postal_code_button_label": {
       "type": "string"
-    },
-    "states_autocomplete": {
-      "type": "boolean"
     }
   }
 }

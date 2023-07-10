@@ -25,6 +25,7 @@ const QuestionnairePage: QuestionnairePage = ({
       {questionnaire.questions?.length ? (
         <QuestionnaireProvider initialState={{ settings }}>
           <Questionnaire
+            autocomplete_states={content.states_autocomplete}
             staticContent={staticContent.questionnaire}
             headline={content.sections?.find(isHeroSection)?.title}
             questions={questionnaire.questions}
