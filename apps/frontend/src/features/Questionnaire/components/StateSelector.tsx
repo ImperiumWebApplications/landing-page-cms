@@ -37,7 +37,7 @@ export const StateSelector: React.FC<StateSelectorProps> = ({
       setLoading(true);
       try {
         const countryName = COUNTRY_CODES[countries![0]];
-        const res = await NextAPI.getCityNames({ country: countryName });
+        const res = await NextAPI.getStatesNames({ country: countryName });
         const data = await res.json();
         setStates(data);
       } catch (error) {

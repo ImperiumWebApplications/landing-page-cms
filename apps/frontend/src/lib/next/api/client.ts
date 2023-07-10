@@ -4,7 +4,7 @@ import type { CreateLeadRequest } from './create-lead';
 import type { PostalCodesRequest } from './postal-codes';
 import type { SendMailRequest } from './send-mail';
 
-interface GetCityNamesRequest {
+interface GetStatesNamesRequest {
   country: string;
 }
 
@@ -44,7 +44,7 @@ export const NextAPI = {
     });
   },
 
-  getCityNames(data: GetCityNamesRequest): Promise<Response> {
+  getStatesNames(data: GetStatesNamesRequest): Promise<Response> {
     if (!data.country)
       return Promise.reject(new Error('Country is not provided'));
 
