@@ -8,6 +8,7 @@ import { i18n } from '../../../config/i18n.config';
 import { useLanguageContext } from '../../../context/Language';
 import { useQuestionnaireContext } from '../context/Questionnaire';
 
+
 const COUNTRY_CODES: Record<string, string> = {
   US: 'USA',
   CH: 'Switzerland',
@@ -85,6 +86,7 @@ export const StateSelector: React.FC<StateSelectorProps> = ({
       <Select
         className="m-auto w-2/4"
         id="select-container"
+        placeholder={i18n[language].QUESTIONNAIRE_SELECT}
         components={{ MenuList }}
         options={states.map((state) => ({
           value: state,
