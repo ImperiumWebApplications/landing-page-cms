@@ -73,7 +73,7 @@ export const i18n: I18NConfig = {
     HOME: 'Startseite',
     NEW_REQUEST: 'Neue Anfrage',
     NEXT: 'Weiter',
-    QUESTIONNAIRE_SELECT: 'Zustand auswählen',
+    QUESTIONNAIRE_SELECT: 'Bundesland auswählen',
     NOT_FOUND: 'Inhalt nicht gefunden',
     NOT_FOUND_ACTION: 'Einen Schritt zurück',
     FORM_CONFIRMATION_TRACKING_PARAM: 'bestaetigung', // Don't change, used for tracking in GTM
