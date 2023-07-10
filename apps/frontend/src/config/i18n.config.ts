@@ -73,7 +73,7 @@ export const i18n: I18NConfig = {
     HOME: 'Startseite',
     NEW_REQUEST: 'Neue Anfrage',
     NEXT: 'Weiter',
-    QUESTIONNAIRE_SELECT: 'Wählen Sie',
+    QUESTIONNAIRE_SELECT: 'Zustand auswählen',
     NOT_FOUND: 'Inhalt nicht gefunden',
     NOT_FOUND_ACTION: 'Einen Schritt zurück',
     FORM_CONFIRMATION_TRACKING_PARAM: 'bestaetigung', // Don't change, used for tracking in GTM
@@ -134,7 +134,7 @@ export const i18n: I18NConfig = {
     HOME: 'Home',
     NEW_REQUEST: 'New request',
     NEXT: 'Next',
-    QUESTIONNAIRE_SELECT: 'Select',
+    QUESTIONNAIRE_SELECT: 'Select state',
     NOT_FOUND: 'Content not found',
     NOT_FOUND_ACTION: 'Go back',
     FORM_CONFIRMATION_TRACKING_PARAM: 'confirmation', // Don't change, used for tracking in GTM

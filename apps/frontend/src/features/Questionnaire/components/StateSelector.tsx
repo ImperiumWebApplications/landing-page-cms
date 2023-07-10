@@ -98,6 +98,7 @@ export const StateSelector: React.FC<StateSelectorProps> = ({
           >
             <input
               {...getInputProps()}
+              placeholder={i18n[language].QUESTIONNAIRE_SELECT}
               style={{
                 height: '35px',
                 width: '50%',
