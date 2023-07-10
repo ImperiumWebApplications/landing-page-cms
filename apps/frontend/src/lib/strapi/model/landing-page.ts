@@ -34,7 +34,7 @@ export type LandingPage = {
   agb: TextField;
   google_tag_manager_id?: TextField;
   google_allow_indexation?: BooleanField;
-  states_autocomplete?: Boolean;
+  states_autocomplete?: BooleanField;
 
   domain?: TextField;
   brand_name?: TextField;

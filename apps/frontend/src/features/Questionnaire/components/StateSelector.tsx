@@ -29,12 +29,10 @@ export const StateSelector: React.FC<StateSelectorProps> = ({
   const { language } = useLanguageContext();
   const [selectedState, setSelectedState] = useState<string | undefined>('');
   const [states, setStates] = useState<string[]>([]);
-  const [loading, setLoading] = useState(false);
   const { state, dispatch } = useQuestionnaireContext();
 
   useEffect(() => {
     const fetchData = async () => {
-      setLoading(true);
       try {
         const countryName = COUNTRY_CODES[countries![0]];
         const res = await NextAPI.getStatesNames({ country: countryName });
@@ -43,7 +41,6 @@ export const StateSelector: React.FC<StateSelectorProps> = ({
       } catch (error) {
         console.error('Error while fetching state names:', error);
       } finally {
-        setLoading(false);
       }
     };
 
