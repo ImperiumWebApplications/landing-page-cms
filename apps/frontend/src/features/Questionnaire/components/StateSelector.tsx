@@ -101,12 +101,7 @@ export const StateSelector: React.FC<StateSelectorProps> = ({
               <input
                 {...getInputProps()}
                 placeholder={i18n[language].QUESTIONNAIRE_SELECT}
-                style={{
-                  height: '35px',
-                  width: '50%',
-                  padding: '5px',
-                  border: '1px solid black',
-                }}
+                className="h-[52px] w-full rounded-md border-2 border-[black]/10 bg-[white] py-2 pr-12 pl-4 text-left align-middle brightness-95"
               />
               {isOpen && (
                 <div style={{ width: '50%', height: 280 }}>

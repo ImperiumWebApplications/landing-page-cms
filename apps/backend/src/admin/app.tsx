@@ -26,7 +26,7 @@ export default {
         'Questionnaire advantages': 'Fragebogen Vorteile',
         'Advantage no. 1': 'Vorteil Nr. 1',
         'Advantage no. 2': 'Vorteil Nr. 2',
-        'Advantage no. 3': 'Vorteil nein. 3',
+        'Advantage no. 3': 'Vorteil Nr. 3',
         'Trust Badges': 'Vertrauensabzeichen',
         'Questionnaire (inactive - please use fields above)':
           'Fragebogen (inaktiv - bitte Felder oben verwenden)',
