@@ -33,20 +33,6 @@ export const Footer: React.FC<FooterProps> = ({ content, staticContent }) => {
             />
           </div>
           <nav className="flex flex-row flex-wrap items-center justify-center gap-x-4 md:gap-x-12">
-            {staticContent.footer?.links?.map((navItem, i) => {
-              if (!navItem.href || !navItem.label) return null;
-
-              return (
-                <Link
-                  key={i}
-                  href={navItem.href}
-                  className="my-[2px] block font-normal text-secondary hover:text-[white]"
-                >
-                  {navItem.label}
-                </Link>
-              );
-            })}
-
             {content.agb && (
               <Link
                 href={'/agb'}
@@ -55,6 +41,7 @@ export const Footer: React.FC<FooterProps> = ({ content, staticContent }) => {
                 AGB
               </Link>
             )}
+
             <button
               type="button"
               className="my-[2px] cursor-pointer text-left font-normal text-secondary hover:text-[white]"
@@ -62,6 +49,26 @@ export const Footer: React.FC<FooterProps> = ({ content, staticContent }) => {
             >
               {staticContent.footer?.revoke_consent_label ?? 'Reset cookies'}
             </button>
+
+            {staticContent.footer?.links
+              ?.slice()
+              .sort((a, b) => {
+                if (a.label ?? null === 'Datenschutz') return -1;
+                return (a.label ?? '').localeCompare(b.label ?? '');
+              })
+              .map((navItem, i) => {
+                if (!navItem.href || !navItem.label) return null;
+
+                return (
+                  <Link
+                    key={i}
+                    href={navItem.href}
+                    className="my-[2px] block font-normal text-secondary hover:text-[white]"
+                  >
+                    {navItem.label}
+                  </Link>
+                );
+              })}
           </nav>
           <div className="h-[1px] w-full bg-secondary" />
           <div className="text-center">
