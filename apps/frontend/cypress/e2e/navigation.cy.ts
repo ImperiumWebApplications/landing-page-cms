@@ -18,7 +18,7 @@ describe('Navigation', () => {
 
   it('should navigate via footer', () => {
     cy.get('footer nav > a')
-      .last()
+      .eq(1)
       .click()
       .assertUrl('/datenschutz')
       .get('#privacy')
