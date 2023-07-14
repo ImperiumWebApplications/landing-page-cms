@@ -33,6 +33,21 @@ export const Footer: React.FC<FooterProps> = ({ content, staticContent }) => {
             />
           </div>
           <nav className="flex flex-row flex-wrap items-center justify-center gap-x-4 md:gap-x-12">
+            {staticContent.footer?.links?.find(
+              (item) => item.label === 'Home',
+            ) && (
+              <Link
+                href={
+                  staticContent.footer.links.find(
+                    (item) => item.label === 'Home',
+                  )?.href || ''
+                }
+                className="my-[2px] block font-normal text-secondary hover:text-[white]"
+              >
+                Home
+              </Link>
+            )}
+
             {content.agb && (
               <Link
                 href={'/agb'}
@@ -51,11 +66,7 @@ export const Footer: React.FC<FooterProps> = ({ content, staticContent }) => {
             </button>
 
             {staticContent.footer?.links
-              ?.slice()
-              .sort((a, b) => {
-                if (a.label ?? null === 'Datenschutz') return -1;
-                return (a.label ?? '').localeCompare(b.label ?? '');
-              })
+              ?.filter((item) => item.label !== 'Home')
               .map((navItem, i) => {
                 if (!navItem.href || !navItem.label) return null;
 
@@ -70,6 +81,7 @@ export const Footer: React.FC<FooterProps> = ({ content, staticContent }) => {
                 );
               })}
           </nav>
+
           <div className="h-[1px] w-full bg-secondary" />
           <div className="text-center">
             {content.client_address
