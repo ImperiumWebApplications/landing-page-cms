@@ -33,19 +33,20 @@ export const Footer: React.FC<FooterProps> = ({ content, staticContent }) => {
             />
           </div>
           <nav className="flex flex-row flex-wrap items-center justify-center gap-x-4 md:gap-x-12">
-            {staticContent.footer?.links?.map((navItem, i) => {
-              if (!navItem.href || !navItem.label) return null;
-
-              return (
-                <Link
-                  key={i}
-                  href={navItem.href}
-                  className="my-[2px] block font-normal text-secondary hover:text-[white]"
-                >
-                  {navItem.label}
-                </Link>
-              );
-            })}
+            {staticContent.footer?.links?.find(
+              (item) => item.label === i18n[language].HOME,
+            ) && (
+              <Link
+                href={
+                  staticContent.footer.links.find(
+                    (item) => item.label === i18n[language].HOME,
+                  )?.href || ''
+                }
+                className="my-[2px] block font-normal text-secondary hover:text-[white]"
+              >
+                {i18n[language].HOME}
+              </Link>
+            )}
 
             {content.agb && (
               <Link
@@ -55,6 +56,7 @@ export const Footer: React.FC<FooterProps> = ({ content, staticContent }) => {
                 AGB
               </Link>
             )}
+
             <button
               type="button"
               className="my-[2px] cursor-pointer text-left font-normal text-secondary hover:text-[white]"
@@ -62,7 +64,24 @@ export const Footer: React.FC<FooterProps> = ({ content, staticContent }) => {
             >
               {staticContent.footer?.revoke_consent_label ?? 'Reset cookies'}
             </button>
+
+            {staticContent.footer?.links
+              ?.filter((item) => item.label !== i18n[language].HOME)
+              .map((navItem, i) => {
+                if (!navItem.href || !navItem.label) return null;
+
+                return (
+                  <Link
+                    key={i}
+                    href={navItem.href}
+                    className="my-[2px] block font-normal text-secondary hover:text-[white]"
+                  >
+                    {navItem.label}
+                  </Link>
+                );
+              })}
           </nav>
+
           <div className="h-[1px] w-full bg-secondary" />
           <div className="text-center">
             {content.client_address
