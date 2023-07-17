@@ -34,17 +34,17 @@ export const Footer: React.FC<FooterProps> = ({ content, staticContent }) => {
           </div>
           <nav className="flex flex-row flex-wrap items-center justify-center gap-x-4 md:gap-x-12">
             {staticContent.footer?.links?.find(
-              (item) => item.label === 'Home',
+              (item) => item.label === i18n[language].HOME,
             ) && (
               <Link
                 href={
                   staticContent.footer.links.find(
-                    (item) => item.label === 'Home',
+                    (item) => item.label === i18n[language].HOME,
                   )?.href || ''
                 }
                 className="my-[2px] block font-normal text-secondary hover:text-[white]"
               >
-                Home
+                {i18n[language].HOME}
               </Link>
             )}
 
@@ -66,7 +66,7 @@ export const Footer: React.FC<FooterProps> = ({ content, staticContent }) => {
             </button>
 
             {staticContent.footer?.links
-              ?.filter((item) => item.label !== 'Home')
+              ?.filter((item) => item.label !== i18n[language].HOME)
               .map((navItem, i) => {
                 if (!navItem.href || !navItem.label) return null;
 
