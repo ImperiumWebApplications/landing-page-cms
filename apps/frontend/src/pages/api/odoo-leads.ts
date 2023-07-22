@@ -8,9 +8,7 @@ export default async function handler(
     const data = req.body;
 
     const url = `${process.env.ODOO_INSTANCE_URL}/api/leads`;
-
-    console.log('Sending data', data);
-
+    
     const response = await fetch(url, {
       method: 'POST',
       headers: {
