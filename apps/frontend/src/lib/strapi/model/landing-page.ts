@@ -35,6 +35,7 @@ export type LandingPage = {
   google_tag_manager_id?: TextField;
   google_allow_indexation?: BooleanField;
   states_autocomplete?: BooleanField;
+  company_id?: TextField;
 
   domain?: TextField;
   brand_name?: TextField;

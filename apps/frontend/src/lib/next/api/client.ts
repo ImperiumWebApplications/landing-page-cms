@@ -1,4 +1,5 @@
 import { isDevEnvironment } from '../../../utils/isDevEnvironment';
+import { TextField } from '../../strapi';
 
 import type { CreateLeadRequest } from './create-lead';
 import type { PostalCodesRequest } from './postal-codes';
@@ -24,6 +25,24 @@ export const NextAPI = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
+    });
+  },
+  createLeadInOdoo: (data: CreateLeadRequest['body'], companyId: TextField) => {
+    const domain = data.domain;
+    if (!domain) {
+      return Promise.reject(new Error('Domain is not provided'));
+    }
+
+    const API_ROUTE = `/api/odoo-leads`;
+
+    const API = isDevEnvironment(domain)
+      ? `http://${domain}${API_ROUTE}`
+      : `https://${domain}${API_ROUTE}`;
+
+    return fetch(API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ...data, company_id: companyId }),
     });
   },
   getPostalCodeDetails: (data: PostalCodesRequest['body']) => {
