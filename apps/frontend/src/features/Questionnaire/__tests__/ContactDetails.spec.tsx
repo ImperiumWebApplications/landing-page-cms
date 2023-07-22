@@ -3,14 +3,14 @@ import { fireEvent, renderWithLayout } from '../../../../jest.setup';
 // import { isTrackingAllowed } from '../../../lib/analytics/isTrackingAllowed';
 import { waitFor } from '@testing-library/react';
 import { QuestionnaireProvider } from '../context/Questionnaire';
-import { setBrowserHistoryState } from '../../../utils/setBrowserHistoryState';
+// import { setBrowserHistoryState } from '../../../utils/setBrowserHistoryState';
 import { NextAPI } from '../../../lib/next/api/client';
 import { ContactDetails as StatelessContactDetails } from '../components/ContactDetails';
 import { staticContent } from '../../../../mocks/lib/strapi/data';
-import {
-  isTrackingAllowed,
-  sendEventToAnalytics,
-} from '../../../lib/analytics';
+// import {
+//   isTrackingAllowed,
+//   sendEventToAnalytics,
+// } from '../../../lib/analytics';
 
 jest.mock('../../../lib/analytics/isTrackingAllowed', () => ({
   isTrackingAllowed: jest.fn(),
