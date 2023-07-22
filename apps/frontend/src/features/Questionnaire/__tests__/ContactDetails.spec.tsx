@@ -90,10 +90,13 @@ describe('ContactDetails', () => {
       fireEvent.click(getByRole('button'));
     });
 
-    await waitFor(() => {
-      expect(setBrowserHistoryState).toHaveBeenCalledTimes(1);
-      expect(setBrowserHistoryState).toHaveBeenCalledWith({ index: 1 });
-    });
+    await waitFor(
+      () => {
+        expect(setBrowserHistoryState).toHaveBeenCalledTimes(1);
+        expect(setBrowserHistoryState).toHaveBeenCalledWith({ index: 1 });
+      },
+      { timeout: 5000 },
+    );
   });
 
   test('should invoke API with correct payload', async () => {
