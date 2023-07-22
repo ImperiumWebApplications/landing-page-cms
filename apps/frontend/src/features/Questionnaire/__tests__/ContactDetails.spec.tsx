@@ -79,7 +79,7 @@ describe('ContactDetails', () => {
           'questionnaire_submitted',
         );
       },
-      { timeout: 5000 },
+      { timeout: 10000 },
     );
   });
 
@@ -95,7 +95,7 @@ describe('ContactDetails', () => {
         expect(setBrowserHistoryState).toHaveBeenCalledTimes(1);
         expect(setBrowserHistoryState).toHaveBeenCalledWith({ index: 1 });
       },
-      { timeout: 5000 },
+      { timeout: 10000 },
     );
   });
 

@@ -54,8 +54,10 @@ export const ContactDetails: React.FC<ContactDetailsProps> = ({
     if (!res.ok) throw new Error(res.statusText);
     if (!leadRes.ok) throw new Error('Error creating lead in Odoo');
 
-    if (isTrackingAllowed(window.location.host))
+    if (isTrackingAllowed(window.location.host)){
+      console.log("Calling the method now")
       sendEventToAnalytics(TagManagerEvents.QuestionnaireSubmitted);
+    }
 
     onSuccess?.();
     dispatch({ type: 'setIndex', payload: { index: state.index + 1 } });
