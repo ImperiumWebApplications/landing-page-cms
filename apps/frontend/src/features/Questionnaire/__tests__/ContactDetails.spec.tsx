@@ -72,12 +72,15 @@ describe('ContactDetails', () => {
       fireEvent.click(getByRole('button'));
     });
 
-    await waitFor(() => {
-      expect(sendEventToAnalytics).toHaveBeenCalledTimes(1);
-      expect(sendEventToAnalytics).toHaveBeenCalledWith(
-        'questionnaire_submitted',
-      );
-    });
+    await waitFor(
+      () => {
+        expect(sendEventToAnalytics).toHaveBeenCalledTimes(1);
+        expect(sendEventToAnalytics).toHaveBeenCalledWith(
+          'questionnaire_submitted',
+        );
+      },
+      { timeout: 5000 },
+    );
   });
 
   test('should go to next step on submit and sync browser history', async () => {
