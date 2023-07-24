@@ -10,7 +10,6 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const { country } = req.query;
 
   try {
-    console.log('Inside the API');
     const filePath = path.join(
       process.cwd(),
       './src/lib/next/api/states/data',

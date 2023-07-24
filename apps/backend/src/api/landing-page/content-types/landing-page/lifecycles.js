@@ -11,6 +11,14 @@ module.exports = {
       throw strapi.errors.badRequest('Domain field is missing');
     }
 
+    if (!data.company_id) {
+      const staticContent = await strapi.entityService.findOne(
+        'api::static-content.static-content',
+        1,
+      );
+      data.company_id = staticContent.company_id;
+    }
+
     try {
       const response = await fetch(process.env.DOMAIN_AVAILABILITY_LAMBDA, {
         method: 'POST',

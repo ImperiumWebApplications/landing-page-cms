@@ -159,6 +159,9 @@
     },
     "states_autocomplete": {
       "type": "boolean"
+    },
+    "company_id": {
+      "type": "string"
     }
   }
 }

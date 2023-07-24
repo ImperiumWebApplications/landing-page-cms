@@ -36,6 +36,7 @@ const EntryQuestionnairePage: ContentPage = ({ content, staticContent }) => {
       {questionnaires?.data.length ? (
         <QuestionnaireProvider>
           <Questionnaire
+            company_id={content.company_id}
             headline={content.sections?.find(isHeroSection)?.title}
             questions={[question]}
             staticContent={staticContent.questionnaire}
