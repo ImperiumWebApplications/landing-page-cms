@@ -103,7 +103,6 @@ export const HeroSection: React.FC<HeroSectionProps> = (props) => {
           </motion.div>
         </div>
       </motion.div>
-      <HeroAdvantages advantages={advantages} />
     </SectionContainer>
   );
 };
