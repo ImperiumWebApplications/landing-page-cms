@@ -1,7 +1,5 @@
 import { createContext, ReactNode, useContext } from 'react';
 
-import type { LandingPage } from '../../lib/strapi';
-
 export type SectionState = {
   isNewDesign?: boolean;
 };
