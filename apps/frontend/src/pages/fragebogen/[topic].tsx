@@ -32,10 +32,7 @@ const QuestionnairePage: QuestionnairePage = ({
             questions={questionnaire.questions}
             countries={content.countries}
             phone={content.contact_phone}
-            advantages={
-              content.questionnaires_advantages ??
-              content.questionnaire?.advantages
-            }
+            advantages={content.questionnaires_advantages}
           />
         </QuestionnaireProvider>
       ) : (
