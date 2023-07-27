@@ -3,7 +3,6 @@ import { createContext, ReactNode, useContext } from 'react';
 import type { LandingPage } from '../../lib/strapi';
 
 export type SectionState = {
-  funnelTarget: LandingPage['funnel_target'];
   isNewDesign?: boolean;
 };
 
@@ -21,7 +20,6 @@ export const SectionContextProvider = ({
   return (
     <SectionStateContext.Provider
       value={{
-        funnelTarget: initialState.funnelTarget,
         isNewDesign: initialState.isNewDesign,
       }}
     >
