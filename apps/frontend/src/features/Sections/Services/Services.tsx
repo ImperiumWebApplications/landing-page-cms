@@ -9,7 +9,7 @@ import { ServiceProcess } from './components/ServiceProcess';
 
 import { SectionContainer } from '../SectionContainer';
 import { ServicesSectionContent } from '../SectionMapper';
-import { Services_OLD } from './Services_OLD';
+// import { Services_OLD } from './Services_OLD';
 import { useSectionContext } from '../SectionContext';
 
 type ServicesSectionProps = {
@@ -35,7 +35,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = (props) => {
     ) : null;
   }, [props.content.service_image?.data?.attributes]);
 
-  if (!state.isNewDesign) return <Services_OLD id="services" {...props} />;
+  // if (!state.isNewDesign) return <Services_OLD id="services" {...props} />;
 
   return (
     <SectionContainer
