@@ -24,20 +24,29 @@ export const StatisticsSection: React.FC<StatisticsSectionProps> = ({
       ) : undefined}
       <div className="absolute h-full w-full backdrop-blur-md" />
       <div className="content-wrapper grid grid-cols-[repeat(auto-fit,1fr)] gap-x-8 gap-y-4 pt-4 pb-8 sm:grid-cols-[repeat(auto-fit,minmax(12rem,1fr))] sm:gap-y-8">
-        {content.number?.map(({ label, number, number_suffix }, i) => {
-          if (!number || !label) return;
-          return (
-            <div
-              key={i}
-              data-testid="statistics-number"
-              className="relative p-4 text-5xl font-semibold text-[white] after:absolute after:bottom-2 after:left-4 after:h-1 after:w-8 after:bg-[white] after:content-[''] lg:text-6xl"
-            >
-              <span className="mb-4 block text-base">{label}</span>
-              {toLocaleString(number)}
-              {number_suffix}
-            </div>
-          );
-        })}
+        {content.number?.map(
+          (
+            {
+              label,
+              number,
+              number_suffix,
+            }: { label: string; number: number; number_suffix: string },
+            i: number,
+          ) => {
+            if (!number || !label) return;
+            return (
+              <div
+                key={i}
+                data-testid="statistics-number"
+                className="relative p-4 text-5xl font-semibold text-[white] after:absolute after:bottom-2 after:left-4 after:h-1 after:w-8 after:bg-[white] after:content-[''] lg:text-6xl"
+              >
+                <span className="mb-4 block text-base">{label}</span>
+                {toLocaleString(number)}
+                {number_suffix}
+              </div>
+            );
+          },
+        )}
       </div>
     </SectionContainer>
   );
