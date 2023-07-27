@@ -1,5 +1,4 @@
 import { LandingPage, StaticContent } from '../../lib/strapi';
-import { CallToActionSection } from './CallToAction';
 
 import { HeroSection } from './Hero';
 import { ImagesSection } from './Images';
@@ -24,14 +23,6 @@ export const initSectionManager = (
         staticContent={staticContent.hero_section}
       />
     ) : null,
-    CallToAction:
-      sectionMap?.callToAction && !isNewDesign ? (
-        <CallToActionSection content={sectionMap.callToAction} />
-      ) : null,
-    Images:
-      sectionMap?.images && !isNewDesign ? (
-        <ImagesSection content={sectionMap.images} />
-      ) : null,
     Questions: sectionMap?.questions ? (
       <QuestionsSection
         content={sectionMap.questions}
@@ -50,10 +41,7 @@ export const initSectionManager = (
         staticContent={staticContent.services_section}
       />
     ) : null,
-    Statistics:
-      sectionMap?.statistics && !isNewDesign ? (
-        <StatisticsSection content={sectionMap.statistics} />
-      ) : null,
+
     Video: sectionMap?.video ? (
       <VideoSection
         content={sectionMap.video}

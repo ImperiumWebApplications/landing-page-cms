@@ -1,15 +1,12 @@
 import {
-  CallToActionSection,
   DynamicZoneItem,
   HeroSection,
-  ImagesSection,
   LandingPage,
   LandingPageSections,
   QuestionsSection,
   ReviewsSection,
   Section,
   ServicesSection,
-  StatisticsSection,
   VideoSection,
 } from '../../lib/strapi';
 
@@ -17,8 +14,6 @@ export const buildSectionMap = (
   content: LandingPage,
 ): {
   hero?: HeroSectionContent;
-  callToAction?: CallToActionSectionContent;
-  images?: ImagesSectionContent;
   questions?: QuestionsSectionContent;
   reviews?: ReviewsSectionContent;
   services?: ServicesSectionContent;
@@ -31,12 +26,6 @@ export const buildSectionMap = (
         ...prev,
         ...(isHeroSection(section)
           ? { hero: toHeroSectionContent(content, section) }
-          : {}),
-        ...(isCallToActionSection(section)
-          ? { callToAction: toCallToActionSectionContent(content, section) }
-          : {}),
-        ...(isImagesSection(section)
-          ? { images: toImagesSectionContent(content, section) }
           : {}),
         ...(isQuestionsSection(section)
           ? { questions: toQuestionsSectionContent(content, section) }
@@ -59,50 +48,6 @@ export const buildSectionMap = (
 };
 
 /**
- * Call To Action Section
- */
-
-const isCallToActionSection = (
-  section: DynamicZoneItem<Section>,
-): section is DynamicZoneItem<CallToActionSection> =>
-  section.__component === LandingPageSections.CALL_TO_ACTION;
-
-const toCallToActionSectionContent = (
-  content: LandingPage,
-  section: CallToActionSection,
-) => {
-  return {
-    ...section,
-    phone: content.contact_phone ?? null,
-  };
-};
-
-export type CallToActionSectionContent = ReturnType<
-  typeof toCallToActionSectionContent
->;
-
-/**
- * Images Section
- */
-
-const isImagesSection = (
-  section: DynamicZoneItem<Section>,
-): section is DynamicZoneItem<ImagesSection> =>
-  section.__component === LandingPageSections.IMAGES;
-
-const toImagesSectionContent = (
-  content: LandingPage,
-  section: ImagesSection,
-) => {
-  return {
-    ...section,
-    phone: content.contact_phone ?? null,
-  };
-};
-
-export type ImagesSectionContent = ReturnType<typeof toImagesSectionContent>;
-
-/**
  * Hero Section
  */
 
@@ -114,14 +59,8 @@ export const isHeroSection = (
 const toHeroSectionContent = (content: LandingPage, section: HeroSection) => {
   return {
     ...section,
-    questionnaires_question:
-      content.questionnaires_entry_question ??
-      content.questionnaire?.entry_question ??
-      null,
-    questionnaires_relations:
-      content.questionnaires_relations?.data ??
-      content.questionnaire?.questionnaires?.data ??
-      null,
+    questionnaires_question: content.questionnaires_entry_question ?? null,
+    questionnaires_relations: content.questionnaires_relations?.data ?? null,
   };
 };
 
@@ -189,15 +128,10 @@ export type ServicesSectionContent = ReturnType<
  * Statistics Section
  */
 
-const isStatisticsSection = (
-  section: DynamicZoneItem<Section>,
-): section is DynamicZoneItem<StatisticsSection> =>
+const isStatisticsSection = (section: DynamicZoneItem<Section>) =>
   section.__component === LandingPageSections.STATISTICS;
 
-const toStatisticsSectionContent = (
-  _: LandingPage,
-  section: StatisticsSection,
-) => {
+const toStatisticsSectionContent = (_: LandingPage, section: any) => {
   return {
     ...section,
   };
