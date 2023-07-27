@@ -11,12 +11,9 @@ const IndexPage: ContentPage = ({ content, staticContent }) => {
   const isNewDesign =
     !!content.sections?.find(isServicesSection)?.benefits?.length;
 
-  const SectionManager = initSectionManager(content, staticContent, {
-    isNewDesign,
-  });
+  const SectionManager = initSectionManager(content, staticContent);
 
   const initialSectionState: SectionState = {
-    funnelTarget: content.funnel_target,
     isNewDesign,
   };
 
@@ -25,10 +22,8 @@ const IndexPage: ContentPage = ({ content, staticContent }) => {
       <SectionContextProvider initialState={initialSectionState}>
         {SectionManager.Hero}
         {SectionManager.Video}
-        {SectionManager.CallToAction}
         {SectionManager.Services}
         {SectionManager.Reviews}
-        {SectionManager.Images}
         {SectionManager.Questions}
       </SectionContextProvider>
     </Layout>
