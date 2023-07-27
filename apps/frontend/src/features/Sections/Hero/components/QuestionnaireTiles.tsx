@@ -9,6 +9,7 @@ import { questionnaireRoute } from '../../../../config/navigation.config';
 import { useIconStyleOverrides } from '../../../../hooks/useStyleOverrides';
 import { isSvg } from '../../../../utils/isSvg';
 import { slugifyRoute } from '../../../../utils/slugifyRoute';
+import { Questionnaire } from '../../../../lib/strapi';
 
 const ReactSVG = dynamic(
   // @ts-ignore
@@ -42,7 +43,7 @@ export const QuestionnaireTiles: React.FC<QuestionnaireTilesProps> = (
         className="flex flex-wrap justify-start gap-2 pt-4 sm:mt-6 sm:gap-4 md:flex-nowrap lg:gap-8"
       >
         {props.answers.map(
-          ({ attributes, id }: { attributes: any; id: any }) => {
+          ({ attributes, id }: { attributes?: Questionnaire; id: number }) => {
             if (!attributes?.name) return null;
 
             const slug = slugifyRoute(attributes.name);
