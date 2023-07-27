@@ -111,6 +111,6 @@ type ServicesSectionProps = {
 //     </SectionContainer>
 //   );
 // };
-export const Services_OLD: React.FC<ServicesSectionProps> = (props) => {
+export const Services_OLD: React.FC<ServicesSectionProps> = () => {
   return <></>;
 };
