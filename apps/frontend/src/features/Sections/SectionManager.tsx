@@ -1,18 +1,15 @@
 import { LandingPage, StaticContent } from '../../lib/strapi';
 
 import { HeroSection } from './Hero';
-import { ImagesSection } from './Images';
 import { QuestionsSection } from './Questions';
 import { ReviewsSection } from './Reviews';
 import { buildSectionMap } from './SectionMapper';
 import { ServicesSection } from './Services';
-import { StatisticsSection } from './Statistics';
 import { VideoSection } from './Video';
 
 export const initSectionManager = (
   content: LandingPage,
   staticContent: StaticContent,
-  { isNewDesign }: { isNewDesign?: boolean },
 ) => {
   const sectionMap = buildSectionMap(content);
 
