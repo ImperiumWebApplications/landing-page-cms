@@ -18,8 +18,6 @@ type ServicesSectionProps = {
 };
 
 export const ServicesSection: React.FC<ServicesSectionProps> = (props) => {
-  const { state } = useSectionContext();
-
   const ServiceImage = useMemo(() => {
     const { url, alternativeText, name } =
       props.content.service_image?.data?.attributes || {};
