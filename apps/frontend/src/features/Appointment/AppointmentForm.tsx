@@ -3,7 +3,6 @@ import { AppointmentProvider } from './context/Appointment';
 import { ProgressPanel } from './components/ProgressPanel';
 import { SelectionPanel } from './components/SelectionPanel';
 import { LocationOption } from './hooks/useLocationOptions';
-import { DateOptions } from './hooks/useDateOptions';
 
 export type AppointmentFormStep = {
   label: string;
@@ -13,11 +12,6 @@ export type AppointmentFormStep = {
 export type LocationFormStep = AppointmentFormStep & {
   type: 'location';
   options: LocationOption[];
-};
-
-export type DateFormStep = AppointmentFormStep & {
-  type: 'dates';
-  options: DateOptions;
 };
 
 export type DetailsFormStep = AppointmentFormStep & {
@@ -30,7 +24,6 @@ export type ConfirmationFormStep = AppointmentFormStep & {
 
 export type AppointmentStep =
   | LocationFormStep
-  | DateFormStep
   | DetailsFormStep
   | ConfirmationFormStep;
 
