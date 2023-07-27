@@ -23,7 +23,7 @@ export const ImagesSection: React.FC<ImagesSectionProps> = (props) => {
     <SectionContainer className="my-12">
       <div className="hidden sm:relative sm:grid sm:grid-flow-row sm:grid-cols-2 sm:gap-2 md:grid-cols-3">
         {props.content.images?.data?.length &&
-          props.content.images.data.map((image, i, arr) => {
+          props.content.images.data.map((image: any, i: any, arr: any) => {
             const isFirstImage = i === 0;
             const isLastImage = i === arr.length - 1;
             return image.attributes ? (
