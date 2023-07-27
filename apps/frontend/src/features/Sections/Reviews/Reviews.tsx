@@ -14,7 +14,6 @@ import { i18n } from '../../../config/i18n.config';
 import { useLanguageContext } from '../../../context/Language';
 import { useMediaQuery } from '../../../hooks/useMediaQuery';
 import { ChevronLeftIcon, ChevronRightIcon } from '../../../components/Icons';
-import { CallToActionBanner } from '../../../components/Banner';
 
 import { SectionContainer } from '../SectionContainer';
 import { ReviewsSectionContent } from '../SectionMapper';
@@ -105,14 +104,6 @@ export const ReviewsSection: React.FC<ReviewsSectionProps> = (props) => {
           <ChevronRightIcon aria-hidden="true" className="w-2 stroke-[white]" />
         </NavigationButton>
       </div>
-      {props.staticContent?.call_to_action_banner_title ? (
-        <CallToActionBanner
-          data-testid="reviews-cta"
-          buttonLabel={props.staticContent?.call_to_action_button_label}
-          description={props.staticContent?.call_to_action_banner_title}
-          className="mt-6 mb-14 md:my-14"
-        />
-      ) : null}
     </SectionContainer>
   );
 };
