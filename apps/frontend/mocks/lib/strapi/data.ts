@@ -264,7 +264,6 @@ export const content: { data: { id: number; attributes: LandingPage }[] } = {
                   'Wir bieten eine breite Palette von Marketingdienst- Leistungen an, um Ihre Marke ins Rampenlicht zu stellen und Ihre Bekanntheit zu steigern. Unsere Experten helfen, eine effektive Marketingstrategie zu entwickeln, die auf Ihre Zielgruppe und Ziele abgestimmt ist.',
               },
             ],
-            service_tab: [],
           },
           {
             id: 4,
