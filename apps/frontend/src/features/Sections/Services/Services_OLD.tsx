@@ -6,13 +6,13 @@
 // import { Swiper, SwiperSlide } from 'swiper/react';
 
 // import { SectionContainer } from '../SectionContainer';
-// import { ServicesSectionContent } from '../SectionMapper';
+import { ServicesSectionContent } from '../SectionMapper';
 // import { ProgressBar } from './components/ProgressBar';
 
-// type ServicesSectionProps = {
-//   id: string;
-//   content: ServicesSectionContent;
-// };
+type ServicesSectionProps = {
+  id: string;
+  content: ServicesSectionContent;
+};
 
 // export const Services_OLD: React.FC<ServicesSectionProps> = (props) => {
 //   const [activeTab, setActiveTab] = useState(0);
@@ -111,3 +111,6 @@
 //     </SectionContainer>
 //   );
 // };
+export const Services_OLD: React.FC<ServicesSectionProps> = (props) => {
+  return <></>;
+};
