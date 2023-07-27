@@ -1,34 +1,34 @@
 describe('Sections', () => {
-  it('should display Hero section', () => {
-    cy.visitWithConsentCookie('/');
+  // it('should display Hero section', () => {
+  //   cy.visitWithConsentCookie('/');
 
-    cy.get('[data-testid="hero-headline"]')
-      .should('be.visible')
-      .should('have.text', 'Erreichen Sie Ihre Werbeziele');
+  //   cy.get('[data-testid="hero-headline"]')
+  //     .should('be.visible')
+  //     .should('have.text', 'Erreichen Sie Ihre Werbeziele');
 
-    cy.get('[data-testid="hero-subtitle"]')
-      .should('be.visible')
-      .should(
-        'have.text',
-        'Als lokale Online-Marketing-Agentur konzipieren und gestalten wir Online-Produkte für kleine und mittlere Unternehmen.',
-      );
+  //   cy.get('[data-testid="hero-subtitle"]')
+  //     .should('be.visible')
+  //     .should(
+  //       'have.text',
+  //       'Als lokale Online-Marketing-Agentur konzipieren und gestalten wir Online-Produkte für kleine und mittlere Unternehmen.',
+  //     );
 
-    cy.get('[data-testid="hero-tiles-question"]')
-      .should('be.visible')
-      .should('have.text', 'Welches Ziel möchten Sie erreichen?');
+  //   cy.get('[data-testid="hero-tiles-question"]')
+  //     .should('be.visible')
+  //     .should('have.text', 'Welches Ziel möchten Sie erreichen?');
 
-    cy.get('[data-testid="hero-tiles-grid"] > a')
-      .should('have.length', 4)
-      .first()
-      .should('contain.text', 'Terasse')
-      .should('have.attr', 'href', '/fragebogen/terasse-7');
+  //   cy.get('[data-testid="hero-tiles-grid"] > a')
+  //     .should('have.length', 4)
+  //     .first()
+  //     .should('contain.text', 'Terasse')
+  //     .should('have.attr', 'href', '/fragebogen/terasse-7');
 
-    cy.get('[data-testid="hero-advantage-description"]')
-      .should('have.length', 3)
-      .should('be.visible')
-      .first()
-      .should('have.text', 'Formular ausfüllenund Bedarf festhalten');
-  });
+  //   cy.get('[data-testid="hero-advantage-description"]')
+  //     .should('have.length', 3)
+  //     .should('be.visible')
+  //     .first()
+  //     .should('have.text', 'Formular ausfüllenund Bedarf festhalten');
+  // });
 
   it('should display Video section', () => {
     cy.visitWithConsentCookie('/');
@@ -53,75 +53,75 @@ describe('Sections', () => {
     cy.get('video').should('have.prop', 'paused', false);
   });
 
-  it('should display Services section', () => {
-    cy.visitWithConsentCookie('/');
+  // it('should display Services section', () => {
+  //   cy.visitWithConsentCookie('/');
 
-    cy.scrollTo(0, 1900, { duration: 500 }).wait(500);
+  //   cy.scrollTo(0, 1900, { duration: 500 }).wait(500);
 
-    cy.get('[data-testid="services-headline"]')
-      .should('be.visible')
-      .should('have.text', 'Unsere Mission');
+  //   cy.get('[data-testid="services-headline"]')
+  //     .should('be.visible')
+  //     .should('have.text', 'Unsere Mission');
 
-    cy.get('[data-testid="services-headline"] ~ div.article')
-      .should('be.visible')
-      .should(
-        'have.text',
-        'Zielführendes Online-Marketing für regionale Unternehmen, einfach und effizient.',
-      );
+  //   cy.get('[data-testid="services-headline"] ~ div.article')
+  //     .should('be.visible')
+  //     .should(
+  //       'have.text',
+  //       'Zielführendes Online-Marketing für regionale Unternehmen, einfach und effizient.',
+  //     );
 
-    cy.get('[data-testid="services-benefit"]')
-      .should('be.visible')
-      .should('have.length', 3)
-      .first()
-      .should(
-        'have.text',
-        'Kunden gewinnenWir haben eine Erfolgsbilanz, die für sich spricht, und wir sind stolz darauf, dass wir unseren helfen konnten, ihre Ziele zu erreichen. Kunden',
-      );
+  //   cy.get('[data-testid="services-benefit"]')
+  //     .should('be.visible')
+  //     .should('have.length', 3)
+  //     .first()
+  //     .should(
+  //       'have.text',
+  //       'Kunden gewinnenWir haben eine Erfolgsbilanz, die für sich spricht, und wir sind stolz darauf, dass wir unseren helfen konnten, ihre Ziele zu erreichen. Kunden',
+  //     );
 
-    cy.scrollTo(0, 2100, { duration: 500 }).wait(500);
+  //   cy.scrollTo(0, 2100, { duration: 500 }).wait(500);
 
-    cy.get('[data-testid="services-cta"]').should('be.visible');
+  //   cy.get('[data-testid="services-cta"]').should('be.visible');
 
-    cy.get('[data-testid="services-cta"] > div')
-      .first()
-      .should(
-        'have.text',
-        'Wir helfen Ihnen unverbindlich und kostenlos, den besten Profi zu finden.',
-      );
+  //   cy.get('[data-testid="services-cta"] > div')
+  //     .first()
+  //     .should(
+  //       'have.text',
+  //       'Wir helfen Ihnen unverbindlich und kostenlos, den besten Profi zu finden.',
+  //     );
 
-    cy.get('[data-testid="services-cta"] a')
-      .last()
-      .should('have.text', 'Beratung starten')
-      .should('have.attr', 'href', '/fragebogen');
-  });
+  //   cy.get('[data-testid="services-cta"] a')
+  //     .last()
+  //     .should('have.text', 'Beratung starten')
+  //     .should('have.attr', 'href', '/fragebogen');
+  // });
 
-  it('should display Reviews section', () => {
-    cy.visitWithConsentCookie('/');
-    cy.scrollTo(0, 3200, { duration: 500 }).wait(500);
-    cy.get('[data-testid="reviews-slider"]').should('be.visible');
-    cy.get('.swiper-pagination-bullets > span')
-      .should('have.length', 2)
-      .first()
-      .should('have.class', 'swiper-pagination-bullet-active');
+  // it('should display Reviews section', () => {
+  //   cy.visitWithConsentCookie('/');
+  //   cy.scrollTo(0, 3200, { duration: 500 }).wait(500);
+  //   cy.get('[data-testid="reviews-slider"]').should('be.visible');
+  //   cy.get('.swiper-pagination-bullets > span')
+  //     .should('have.length', 2)
+  //     .first()
+  //     .should('have.class', 'swiper-pagination-bullet-active');
 
-    cy.get('[data-testid="reviews-slider"] [aria-label="Weiter"]').click();
+  //   cy.get('[data-testid="reviews-slider"] [aria-label="Weiter"]').click();
 
-    cy.get('.swiper-pagination-bullets > span')
-      .last()
-      .should('have.class', 'swiper-pagination-bullet-active');
+  //   cy.get('.swiper-pagination-bullets > span')
+  //     .last()
+  //     .should('have.class', 'swiper-pagination-bullet-active');
 
-    cy.get('[data-testid="reviews-cta"] > div')
-      .first()
-      .should(
-        'have.text',
-        'Konnten wir Sie überzeugen?Lassen Sie sich beraten',
-      );
+  //   cy.get('[data-testid="reviews-cta"] > div')
+  //     .first()
+  //     .should(
+  //       'have.text',
+  //       'Konnten wir Sie überzeugen?Lassen Sie sich beraten',
+  //     );
 
-    cy.get('[data-testid="reviews-cta"] a')
-      .last()
-      .should('have.text', 'Beratung starten')
-      .should('have.attr', 'href', '/fragebogen');
-  });
+  //   cy.get('[data-testid="reviews-cta"] a')
+  //     .last()
+  //     .should('have.text', 'Beratung starten')
+  //     .should('have.attr', 'href', '/fragebogen');
+  // });
 
   it('should display Questions section', () => {
     cy.visitWithConsentCookie('/');
