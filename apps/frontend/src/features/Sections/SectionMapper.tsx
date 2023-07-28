@@ -17,7 +17,6 @@ export const buildSectionMap = (
   questions?: QuestionsSectionContent;
   reviews?: ReviewsSectionContent;
   services?: ServicesSectionContent;
-  statistics?: StatisticsSectionContent;
   video?: VideoSectionContent;
 } | null => {
   return (
@@ -35,9 +34,6 @@ export const buildSectionMap = (
           : {}),
         ...(isServicesSection(section)
           ? { services: toServicesSectionContent(content, section) }
-          : {}),
-        ...(isStatisticsSection(section)
-          ? { statistics: toStatisticsSectionContent(content, section) }
           : {}),
         ...(isVideoSection(section)
           ? { video: toVideoSectionContent(content, section) }
@@ -122,23 +118,6 @@ const toServicesSectionContent = (_: LandingPage, section: ServicesSection) => {
 
 export type ServicesSectionContent = ReturnType<
   typeof toServicesSectionContent
->;
-
-/**
- * Statistics Section
- */
-
-const isStatisticsSection = (section: DynamicZoneItem<Section>) =>
-  section.__component === LandingPageSections.STATISTICS;
-
-const toStatisticsSectionContent = (_: LandingPage, section: any) => {
-  return {
-    ...section,
-  };
-};
-
-export type StatisticsSectionContent = ReturnType<
-  typeof toStatisticsSectionContent
 >;
 
 /**
