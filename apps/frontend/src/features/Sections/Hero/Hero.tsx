@@ -7,6 +7,7 @@ import type { StaticContent } from '../../../lib/strapi';
 import type { HeroSectionContent } from '../SectionMapper';
 
 import { QuestionnaireTiles } from './components/QuestionnaireTiles';
+import { HeroAdvantages } from './components/HeroAdvantages';
 import { SectionContainer } from '../SectionContainer';
 
 type HeroSectionProps = {
@@ -16,6 +17,7 @@ type HeroSectionProps = {
 };
 
 export const HeroSection: React.FC<HeroSectionProps> = (props) => {
+  const { hero_advantage: advantages } = props.staticContent ?? {};
   const { title, subtitle, questionnaires_question, questionnaires_relations } =
     props.content;
 
@@ -101,6 +103,7 @@ export const HeroSection: React.FC<HeroSectionProps> = (props) => {
           </motion.div>
         </div>
       </motion.div>
+      <HeroAdvantages advantages={advantages} />
     </SectionContainer>
   );
 };
