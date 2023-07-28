@@ -9,7 +9,6 @@ import { ServiceProcess } from './components/ServiceProcess';
 
 import { SectionContainer } from '../SectionContainer';
 import { ServicesSectionContent } from '../SectionMapper';
-// import { Services_OLD } from './Services_OLD';
 
 type ServicesSectionProps = {
   content: ServicesSectionContent;
