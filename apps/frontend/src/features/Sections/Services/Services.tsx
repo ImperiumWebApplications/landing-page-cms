@@ -32,8 +32,6 @@ export const ServicesSection: React.FC<ServicesSectionProps> = (props) => {
     ) : null;
   }, [props.content.service_image?.data?.attributes]);
 
-  // if (!state.isNewDesign) return <Services_OLD id="services" {...props} />;
-
   return (
     <SectionContainer
       className="my-8 md:my-[70px]"
