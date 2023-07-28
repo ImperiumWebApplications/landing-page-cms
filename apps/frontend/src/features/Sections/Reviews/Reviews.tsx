@@ -17,9 +17,6 @@ import { ChevronLeftIcon, ChevronRightIcon } from '../../../components/Icons';
 
 import { SectionContainer } from '../SectionContainer';
 import { ReviewsSectionContent } from '../SectionMapper';
-import { useSectionContext } from '../SectionContext';
-
-import { Reviews_OLD } from './Reviews_OLD';
 
 const SwiperModules = [Navigation, Pagination, A11y];
 
@@ -43,7 +40,6 @@ type ReviewsSectionProps = {
 
 export const ReviewsSection: React.FC<ReviewsSectionProps> = (props) => {
   const isTabletBreakpoint = useMediaQuery(`(min-width: 768px)`);
-  const { state } = useSectionContext();
   const { language } = useLanguageContext();
 
   const [expanded, setExpanded] = useState(false);
@@ -55,8 +51,6 @@ export const ReviewsSection: React.FC<ReviewsSectionProps> = (props) => {
     if (!swiperElement) return null;
     return (swiperElement as HTMLElement & { swiper: SwiperType }).swiper;
   }, []);
-
-  if (!state.isNewDesign) return <Reviews_OLD id="reviews" {...props} />;
 
   if (!props.content.rating?.length) return null;
 

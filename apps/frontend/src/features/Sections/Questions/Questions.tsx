@@ -11,18 +11,12 @@ import { SectionContainer } from '../SectionContainer';
 import { QuestionsSectionContent } from '../SectionMapper';
 import { useSectionContext } from '../SectionContext';
 
-import { Questions_OLD } from './Questions_OLD';
-
 type QuestionsSectionProps = {
   content: QuestionsSectionContent;
   staticContent: StaticContent['questions_section'];
 };
 
 export const QuestionsSection: React.FC<QuestionsSectionProps> = (props) => {
-  const { state } = useSectionContext();
-
-  if (!state.isNewDesign) return <Questions_OLD id="questions" {...props} />;
-
   const questions = props.content.faq_item;
 
   if (!questions?.length) return null;
