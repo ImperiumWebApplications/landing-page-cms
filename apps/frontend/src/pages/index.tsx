@@ -4,7 +4,6 @@ import {
   SectionContextProvider,
 } from '../features/Sections';
 import { Layout } from '../components/Layout/Layout';
-import { isServicesSection } from '../features/Sections/SectionMapper';
 
 const IndexPage: ContentPage = ({ content, staticContent }) => {
   const SectionManager = initSectionManager(content, staticContent);

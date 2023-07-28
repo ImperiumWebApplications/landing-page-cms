@@ -9,7 +9,6 @@ import { MinusIcon, PlusIcon } from '../../../components/Icons';
 
 import { SectionContainer } from '../SectionContainer';
 import { QuestionsSectionContent } from '../SectionMapper';
-import { useSectionContext } from '../SectionContext';
 
 type QuestionsSectionProps = {
   content: QuestionsSectionContent;
