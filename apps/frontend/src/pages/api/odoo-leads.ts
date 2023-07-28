@@ -19,7 +19,7 @@ export default async function handler(
         first_name: data.contact.firstName,
         last_name: data.contact.lastName,
         phone_number: data.contact.phone,
-        email_address: data.contact.email,
+        email: data.contact.email,
       }),
     });
     if (!response.ok) {
