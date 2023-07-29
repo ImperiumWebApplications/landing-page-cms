@@ -5,6 +5,7 @@ import ReactMarkdown from 'react-markdown';
 
 import type { StaticContent } from '../../../lib/strapi';
 import { CheckCircleIcon } from '../../../components/Icons';
+import { CallToActionBanner } from '../../../components/Banner';
 import { ServiceProcess } from './components/ServiceProcess';
 
 import { SectionContainer } from '../SectionContainer';
@@ -81,6 +82,14 @@ export const ServicesSection: React.FC<ServicesSectionProps> = (props) => {
             </div>
           </div>
         </div>
+        {props.staticContent?.call_to_action_banner_title ? (
+          <CallToActionBanner
+            data-testid="services-cta"
+            buttonLabel={props.staticContent?.call_to_action_button_label}
+            description={props.staticContent?.call_to_action_banner_title}
+            className="my-12 md:my-20"
+          />
+        ) : null}
       </div>
       <ServiceProcess
         className="-mt-32 pt-36 pb-10 md:-mt-[10.5rem] md:pb-20 md:pt-36"
