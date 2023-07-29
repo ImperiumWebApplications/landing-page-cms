@@ -16,7 +16,6 @@ import { useMediaQuery } from '../../../hooks/useMediaQuery';
 import { ChevronLeftIcon, ChevronRightIcon } from '../../../components/Icons';
 import { CallToActionBanner } from '../../../components/Banner';
 
-
 import { SectionContainer } from '../SectionContainer';
 import { ReviewsSectionContent } from '../SectionMapper';
 
