@@ -1,15 +1,12 @@
 import {
-  CallToActionSection,
   DynamicZoneItem,
   HeroSection,
-  ImagesSection,
   LandingPage,
   LandingPageSections,
   QuestionsSection,
   ReviewsSection,
   Section,
   ServicesSection,
-  StatisticsSection,
   VideoSection,
 } from '../../lib/strapi';
 
@@ -17,12 +14,9 @@ export const buildSectionMap = (
   content: LandingPage,
 ): {
   hero?: HeroSectionContent;
-  callToAction?: CallToActionSectionContent;
-  images?: ImagesSectionContent;
   questions?: QuestionsSectionContent;
   reviews?: ReviewsSectionContent;
   services?: ServicesSectionContent;
-  statistics?: StatisticsSectionContent;
   video?: VideoSectionContent;
 } | null => {
   return (
@@ -31,12 +25,6 @@ export const buildSectionMap = (
         ...prev,
         ...(isHeroSection(section)
           ? { hero: toHeroSectionContent(content, section) }
-          : {}),
-        ...(isCallToActionSection(section)
-          ? { callToAction: toCallToActionSectionContent(content, section) }
-          : {}),
-        ...(isImagesSection(section)
-          ? { images: toImagesSectionContent(content, section) }
           : {}),
         ...(isQuestionsSection(section)
           ? { questions: toQuestionsSectionContent(content, section) }
@@ -47,9 +35,6 @@ export const buildSectionMap = (
         ...(isServicesSection(section)
           ? { services: toServicesSectionContent(content, section) }
           : {}),
-        ...(isStatisticsSection(section)
-          ? { statistics: toStatisticsSectionContent(content, section) }
-          : {}),
         ...(isVideoSection(section)
           ? { video: toVideoSectionContent(content, section) }
           : {}),
@@ -57,50 +42,6 @@ export const buildSectionMap = (
     }, {}) ?? null
   );
 };
-
-/**
- * Call To Action Section
- */
-
-const isCallToActionSection = (
-  section: DynamicZoneItem<Section>,
-): section is DynamicZoneItem<CallToActionSection> =>
-  section.__component === LandingPageSections.CALL_TO_ACTION;
-
-const toCallToActionSectionContent = (
-  content: LandingPage,
-  section: CallToActionSection,
-) => {
-  return {
-    ...section,
-    phone: content.contact_phone ?? null,
-  };
-};
-
-export type CallToActionSectionContent = ReturnType<
-  typeof toCallToActionSectionContent
->;
-
-/**
- * Images Section
- */
-
-const isImagesSection = (
-  section: DynamicZoneItem<Section>,
-): section is DynamicZoneItem<ImagesSection> =>
-  section.__component === LandingPageSections.IMAGES;
-
-const toImagesSectionContent = (
-  content: LandingPage,
-  section: ImagesSection,
-) => {
-  return {
-    ...section,
-    phone: content.contact_phone ?? null,
-  };
-};
-
-export type ImagesSectionContent = ReturnType<typeof toImagesSectionContent>;
 
 /**
  * Hero Section
@@ -114,14 +55,8 @@ export const isHeroSection = (
 const toHeroSectionContent = (content: LandingPage, section: HeroSection) => {
   return {
     ...section,
-    questionnaires_question:
-      content.questionnaires_entry_question ??
-      content.questionnaire?.entry_question ??
-      null,
-    questionnaires_relations:
-      content.questionnaires_relations?.data ??
-      content.questionnaire?.questionnaires?.data ??
-      null,
+    questionnaires_question: content.questionnaires_entry_question ?? null,
+    questionnaires_relations: content.questionnaires_relations?.data ?? null,
   };
 };
 
@@ -183,28 +118,6 @@ const toServicesSectionContent = (_: LandingPage, section: ServicesSection) => {
 
 export type ServicesSectionContent = ReturnType<
   typeof toServicesSectionContent
->;
-
-/**
- * Statistics Section
- */
-
-const isStatisticsSection = (
-  section: DynamicZoneItem<Section>,
-): section is DynamicZoneItem<StatisticsSection> =>
-  section.__component === LandingPageSections.STATISTICS;
-
-const toStatisticsSectionContent = (
-  _: LandingPage,
-  section: StatisticsSection,
-) => {
-  return {
-    ...section,
-  };
-};
-
-export type StatisticsSectionContent = ReturnType<
-  typeof toStatisticsSectionContent
 >;
 
 /**

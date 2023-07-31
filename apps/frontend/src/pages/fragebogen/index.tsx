@@ -42,10 +42,7 @@ const EntryQuestionnairePage: ContentPage = ({ content, staticContent }) => {
             staticContent={staticContent.questionnaire}
             countries={content.countries}
             customSelectHandler={selectHandler}
-            advantages={
-              content.questionnaires_advantages ??
-              content.questionnaire?.advantages
-            }
+            advantages={content.questionnaires_advantages}
           />
         </QuestionnaireProvider>
       ) : (
@@ -83,15 +80,11 @@ export const extractQuestionnaires = (landingPage: LandingPage) => {
     questionnaires_relations,
     questionnaires_entry_question,
     questionnaires_advantages,
-    questionnaire: deprecatedQuestionnaire,
   } = landingPage;
 
   return {
-    questionnaires:
-      questionnaires_relations ?? deprecatedQuestionnaire?.questionnaires,
-    entryQuestion:
-      questionnaires_entry_question ?? deprecatedQuestionnaire?.entry_question,
-    advantages:
-      questionnaires_advantages ?? deprecatedQuestionnaire?.advantages,
+    questionnaires: questionnaires_relations,
+    entryQuestion: questionnaires_entry_question,
+    advantages: questionnaires_advantages,
   };
 };

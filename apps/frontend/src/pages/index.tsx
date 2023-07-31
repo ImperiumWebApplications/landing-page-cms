@@ -2,33 +2,19 @@ import { ContentPage, queryContentPageContent } from '../lib/next/app';
 import {
   initSectionManager,
   SectionContextProvider,
-  SectionState,
 } from '../features/Sections';
 import { Layout } from '../components/Layout/Layout';
-import { isServicesSection } from '../features/Sections/SectionMapper';
 
 const IndexPage: ContentPage = ({ content, staticContent }) => {
-  const isNewDesign =
-    !!content.sections?.find(isServicesSection)?.benefits?.length;
-
-  const SectionManager = initSectionManager(content, staticContent, {
-    isNewDesign,
-  });
-
-  const initialSectionState: SectionState = {
-    funnelTarget: content.funnel_target,
-    isNewDesign,
-  };
+  const SectionManager = initSectionManager(content, staticContent);
 
   return (
     <Layout content={content} staticContent={staticContent}>
-      <SectionContextProvider initialState={initialSectionState}>
+      <SectionContextProvider>
         {SectionManager.Hero}
         {SectionManager.Video}
-        {SectionManager.CallToAction}
         {SectionManager.Services}
         {SectionManager.Reviews}
-        {SectionManager.Images}
         {SectionManager.Questions}
       </SectionContextProvider>
     </Layout>

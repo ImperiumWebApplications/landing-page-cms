@@ -52,11 +52,6 @@
       "required": false,
       "allowedTypes": ["images"]
     },
-    "questionnaire": {
-      "type": "component",
-      "repeatable": false,
-      "component": "questionnaire.questionnaire"
-    },
     "client_address": {
       "type": "text"
     },
@@ -69,13 +64,10 @@
     "sections": {
       "type": "dynamiczone",
       "components": [
-        "sections.call-to-action",
         "sections.faq",
         "sections.hero",
-        "sections.images",
         "sections.reviews",
         "sections.services",
-        "sections.statistics",
         "sections.video"
       ]
     },
@@ -91,17 +83,6 @@
       "type": "string",
       "regex": "^(GTM-[A-Z0-9]{7})$",
       "required": false
-    },
-    "funnel_target": {
-      "type": "enumeration",
-      "enum": ["Questionnaire", "Appointment"],
-      "default": "Questionnaire"
-    },
-    "appointment": {
-      "displayName": "Appointment",
-      "type": "component",
-      "repeatable": false,
-      "component": "appointment.appointment"
     },
     "questionnaires_relations": {
       "type": "relation",

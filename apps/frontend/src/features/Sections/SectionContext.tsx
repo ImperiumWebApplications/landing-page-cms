@@ -1,30 +1,16 @@
 import { createContext, ReactNode, useContext } from 'react';
 
-import type { LandingPage } from '../../lib/strapi';
-
-export type SectionState = {
-  funnelTarget: LandingPage['funnel_target'];
-  isNewDesign?: boolean;
-};
-
-const SectionStateContext = createContext<SectionState | null>(null);
+const SectionStateContext = createContext<any>(null);
 
 type SectionContextProviderProps = {
   children?: ReactNode;
-  initialState: SectionState;
 };
 
 export const SectionContextProvider = ({
   children,
-  initialState,
 }: SectionContextProviderProps) => {
   return (
-    <SectionStateContext.Provider
-      value={{
-        funnelTarget: initialState.funnelTarget,
-        isNewDesign: initialState.isNewDesign,
-      }}
-    >
+    <SectionStateContext.Provider value={null}>
       {children}
     </SectionStateContext.Provider>
   );
