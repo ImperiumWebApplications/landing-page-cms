@@ -29,6 +29,7 @@ export const NextAPI = {
   },
   createLeadInOdoo: (data: CreateLeadRequest['body'], companyId: TextField) => {
     const domain = data.domain;
+    const questionnaireResults = data.questionnaireResults;
     if (!domain) {
       return Promise.reject(new Error('Domain is not provided'));
     }
@@ -42,7 +43,11 @@ export const NextAPI = {
     return fetch(API, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ ...data, company_id: companyId }),
+      body: JSON.stringify({
+        ...data,
+        company_id: companyId,
+        questionnaireResults,
+      }),
     });
   },
   getPostalCodeDetails: (data: PostalCodesRequest['body']) => {
