@@ -12,10 +12,7 @@ interface StateSelectorProps {
   staticContent?: StaticContent['questionnaire'];
 }
 
-const height = 35;
-
 export const StateSelector: React.FC<StateSelectorProps> = ({
-  countries,
   staticContent,
 }) => {
   const { language } = useLanguageContext();

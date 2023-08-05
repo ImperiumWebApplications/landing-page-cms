@@ -5,10 +5,6 @@ import type { CreateLeadRequest } from './create-lead';
 import type { PostalCodesRequest } from './postal-codes';
 import type { SendMailRequest } from './send-mail';
 
-interface GetStatesNamesRequest {
-  country: string;
-}
-
 export const NextAPI = {
   createLead: (data: CreateLeadRequest['body']) => {
     if (!data.domain) return Promise.reject();
