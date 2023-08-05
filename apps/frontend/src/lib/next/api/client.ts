@@ -68,11 +68,11 @@ export const NextAPI = {
     });
   },
 
-  getStatesNames(data: GetStatesNamesRequest): Promise<Response> {
-    if (!data.country)
-      return Promise.reject(new Error('Country is not provided'));
+  getRegionSuggestions(data: { region: string }): Promise<Response> {
+    if (!data.region)
+      return Promise.reject(new Error('Region is not provided'));
 
-    const API_ROUTE = `/api/states/${data.country}`;
+    const API_ROUTE = `/api/regions/${data.region}`;
     const API = `${window.location.protocol}//${window.location.host}${API_ROUTE}`;
 
     return fetch(API, {
