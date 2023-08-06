@@ -54,9 +54,15 @@ export const StateSelector: React.FC<StateSelectorProps> = ({
       }
     };
 
-    if (inputValue) {
-      fetchData();
-    }
+    const debounceFetchData = setTimeout(() => {
+      if (inputValue) {
+        fetchData();
+      }
+    }, 300);
+
+    return () => {
+      clearTimeout(debounceFetchData);
+    };
   }, [inputValue]);
 
   const handleChange = (selectedOption: any) => {
