@@ -95,7 +95,7 @@ export const StateSelector: React.FC<StateSelectorProps> = ({
         <Button
           label={staticContent?.postal_code_button_label ?? i18n[language].NEXT}
           data-testid="questionnaire-state-selector-button"
-          disabled={selectedState!.length === 0}
+          disabled={!selectedState || selectedState.length === 0}
           onClick={() => {
             dispatch({
               type: 'setIndex',
