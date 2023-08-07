@@ -5,10 +5,6 @@ import type { CreateLeadRequest } from './create-lead';
 import type { PostalCodesRequest } from './postal-codes';
 import type { SendMailRequest } from './send-mail';
 
-interface GetStatesNamesRequest {
-  country: string;
-}
-
 export const NextAPI = {
   createLead: (data: CreateLeadRequest['body']) => {
     if (!data.domain) return Promise.reject();
@@ -68,11 +64,11 @@ export const NextAPI = {
     });
   },
 
-  getStatesNames(data: GetStatesNamesRequest): Promise<Response> {
-    if (!data.country)
-      return Promise.reject(new Error('Country is not provided'));
+  getRegionSuggestions(data: { region: string }): Promise<Response> {
+    if (!data.region)
+      return Promise.reject(new Error('Region is not provided'));
 
-    const API_ROUTE = `/api/states/${data.country}`;
+    const API_ROUTE = `/api/regions/${data.region}`;
     const API = `${window.location.protocol}//${window.location.host}${API_ROUTE}`;
 
     return fetch(API, {
