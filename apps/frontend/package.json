@@ -49,6 +49,7 @@
     "react-dom": "^18.2.0",
     "react-markdown": "^8.0.4",
     "react-player": "^2.11.0",
+    "react-select": "^5.7.4",
     "react-svg": "^15.1.17",
     "regenerator-runtime": "^0.13.11",
     "sharp": "^0.32.1",
