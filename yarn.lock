@@ -3052,7 +3052,7 @@
     lodash "4.17.21"
     sift "16.0.1"
 
-"@strapi/plugin-color-picker@^4.11.1":
+"@strapi/plugin-color-picker@4.11.1":
   version "4.11.1"
   resolved "https://registry.yarnpkg.com/@strapi/plugin-color-picker/-/plugin-color-picker-4.11.1.tgz#e18e214c9958a5e0739701683e98ff35cc3fdee0"
   integrity sha512-q/OQJfp7u17qPSaUy/BemQWoGn+uqTaXF8Dn/ojy9+e5m3/gQg/l5I6jk9/FDyIW35/R0IdaYkdgMulvajIvMQ==
@@ -3111,7 +3111,7 @@
     react-intl "6.4.1"
     yup "^0.32.9"
 
-"@strapi/plugin-i18n@^4.11.1":
+"@strapi/plugin-i18n@4.11.1":
   version "4.11.1"
   resolved "https://registry.yarnpkg.com/@strapi/plugin-i18n/-/plugin-i18n-4.11.1.tgz#3498e59c5e1659845a5ddc0de4724581522be60e"
   integrity sha512-Mv7hs7UXRZg8DhPPvKN658XMaoJjIbBymfzAkknX4putc882D/HfUxNmB27Mx1lV6eApc4LIUzJOnR5Jdeq32g==
@@ -3163,7 +3163,7 @@
     sharp "0.32.0"
     yup "^0.32.9"
 
-"@strapi/plugin-users-permissions@^4.11.1":
+"@strapi/plugin-users-permissions@4.11.1":
   version "4.11.1"
   resolved "https://registry.yarnpkg.com/@strapi/plugin-users-permissions/-/plugin-users-permissions-4.11.1.tgz#43d812457b18f6d2ba633abad92c0edb9900a12a"
   integrity sha512-+dpymBA19GvaMWY6QToxGC80RtSkP0SHHbTQ1zxnvkTCmQHfCu4GxOJfbPzQYFOV5X+5rEJ52WkWEYX3FBQDuw==
@@ -3202,7 +3202,7 @@
     "@strapi/utils" "4.11.1"
     sendmail "^1.6.1"
 
-"@strapi/provider-upload-aws-s3@^4.11.1":
+"@strapi/provider-upload-aws-s3@4.11.1":
   version "4.11.1"
   resolved "https://registry.yarnpkg.com/@strapi/provider-upload-aws-s3/-/provider-upload-aws-s3-4.11.1.tgz#506c812d09c9a33b029ddc3af7248352477db5ca"
   integrity sha512-n8iytGKOz1J5YGlaAfXZPd1SHOWsgo479VSM4jB/RFGqLEAwEb6awsQhKigPX0wBJsvhJLVTanpqtdD7zZxM4w==
@@ -3218,7 +3218,7 @@
     "@strapi/utils" "4.11.1"
     fs-extra "10.0.0"
 
-"@strapi/strapi@4.11.1", "@strapi/strapi@^4.11.1":
+"@strapi/strapi@4.11.1":
   version "4.11.1"
   resolved "https://registry.yarnpkg.com/@strapi/strapi/-/strapi-4.11.1.tgz#f29a6a8dca404def2bae20b63dd3f869e244a25b"
   integrity sha512-pOFMgJV+5s71hJ3YJD0ffiSvCnIaxAgvR1PBzuugPOEm6X7JHcRoRNpPIQses37Tcw5HVNtzFh5iyivsnTGfpg==
