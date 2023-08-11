@@ -1,6 +1,5 @@
 const fetch = require('node-fetch');
 const { ForbiddenError } = require('@strapi/utils').errors;
-
 module.exports = {
   async beforeCreate(event) {
     const { data } = event.params;
