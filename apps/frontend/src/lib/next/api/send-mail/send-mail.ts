@@ -48,6 +48,7 @@ export const sendMail = async (data: SendMailProps) => {
   let filename;
 
   if (logoExt === '.svg') {
+    // Converting svg to png
     convertedBuffer = await sharp(buffer).png().toBuffer();
     filename = 'logo.png';
   } else {
