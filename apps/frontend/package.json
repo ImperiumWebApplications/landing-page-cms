@@ -54,7 +54,7 @@
     "regenerator-runtime": "^0.13.11",
     "sharp": "^0.32.1",
     "slugify": "^1.6.5",
-    "strapi-sdk-js": "^2.2.0",
+    "strapi-sdk-js": "2.2.0",
     "swiper": "^8.4.5"
   },
   "devDependencies": {
