@@ -41,7 +41,6 @@ export const sendMail = async (data: SendMailProps) => {
 
   let logoUrl = landingPage.logo?.data?.attributes.url;
   const logoExt = landingPage.logo?.data?.attributes.ext;
-  let attachments;
   const imageBuffer = await fetch(logoUrl).then((res) => res.arrayBuffer());
   const buffer = Buffer.from(imageBuffer);
   let convertedBuffer;
@@ -66,7 +65,7 @@ export const sendMail = async (data: SendMailProps) => {
   }
 
   logoUrl = `data:${imageType};base64,${convertedBuffer.toString('base64')}`;
-  attachments = [
+  const attachments = [
     {
       filename: `logo${logoExt}`,
       content: convertedBuffer,
