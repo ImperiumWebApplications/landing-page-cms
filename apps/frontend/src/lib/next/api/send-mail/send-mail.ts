@@ -43,31 +43,24 @@ export const sendMail = async (data: SendMailProps) => {
   const logoExt = landingPage.logo?.data?.attributes.ext;
   const imageBuffer = await fetch(logoUrl).then((res) => res.arrayBuffer());
   const buffer = Buffer.from(imageBuffer);
-  let convertedBuffer;
-  let imageType = 'image/png';
 
-  switch (logoExt) {
-    case '.svg':
-      convertedBuffer = await sharp(buffer).png().toBuffer();
-      break;
-    case '.jpg':
-    case '.jpeg':
-      convertedBuffer = await sharp(buffer).jpeg().toBuffer();
-      imageType = 'image/jpeg';
-      break;
-    case '.gif':
-      convertedBuffer = await sharp(buffer).gif().toBuffer();
-      imageType = 'image/gif';
-      break;
-    default:
-      convertedBuffer = buffer;
-      break;
+  let convertedBuffer;
+  let filename;
+
+  if (logoExt === '.svg') {
+    convertedBuffer = await sharp(buffer).png().toBuffer();
+    filename = 'logo.png';
+  } else {
+    convertedBuffer = buffer;
+    filename = `logo${logoExt}`;
   }
 
-  logoUrl = `data:${imageType};base64,${convertedBuffer.toString('base64')}`;
+  logoUrl = `data:image/${filename
+    .split('.')
+    .pop()};base64,${convertedBuffer.toString('base64')}`;
   const attachments = [
     {
-      filename: `logo${logoExt}`,
+      filename: filename,
       content: convertedBuffer,
       cid: 'logo@cid',
     },
