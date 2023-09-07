@@ -18,12 +18,10 @@ import { QualityBadges } from './QualityBadges';
 
 type ContactDetailsProps = {
   staticContent: StaticContent['questionnaire'];
-  company_id: LandingPage['company_id'];
 };
 
 export const ContactDetails: React.FC<ContactDetailsProps> = ({
   staticContent,
-  company_id,
 }) => {
   const { language } = useLanguageContext();
   const { state, dispatch } = useQuestionnaireContext();
