@@ -119,7 +119,6 @@ export const Questionnaire: React.FC<QuestionnaireProps> = ({
             {steps.isContactFormStep && (
               <ContactDetails
                 staticContent={staticContent}
-                company_id={company_id}
               />
             )}
             {steps.isFormSuccessStep && (
