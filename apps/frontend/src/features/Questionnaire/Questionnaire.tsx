@@ -117,9 +117,7 @@ export const Questionnaire: React.FC<QuestionnaireProps> = ({
               />
             )}
             {steps.isContactFormStep && (
-              <ContactDetails
-                staticContent={staticContent}
-              />
+              <ContactDetails staticContent={staticContent} />
             )}
             {steps.isFormSuccessStep && (
               <Confirmation phone={phone} staticContent={staticContent} />
