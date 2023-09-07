@@ -37,7 +37,6 @@ export type QuestionnaireProps = {
   advantages?: LandingPage['questionnaires_advantages'];
   customSelectHandler?: SingleChoiceEventHandler;
   autocomplete_states?: LandingPage['states_autocomplete'];
-  company_id: LandingPage['company_id'];
 };
 
 export const Questionnaire: React.FC<QuestionnaireProps> = ({
@@ -46,7 +45,6 @@ export const Questionnaire: React.FC<QuestionnaireProps> = ({
   questions,
   phone,
   staticContent,
-  company_id,
   advantages,
   customSelectHandler: selectHandler,
   autocomplete_states,
@@ -117,10 +115,7 @@ export const Questionnaire: React.FC<QuestionnaireProps> = ({
               />
             )}
             {steps.isContactFormStep && (
-              <ContactDetails
-                staticContent={staticContent}
-                company_id={company_id}
-              />
+              <ContactDetails staticContent={staticContent} />
             )}
             {steps.isFormSuccessStep && (
               <Confirmation phone={phone} staticContent={staticContent} />

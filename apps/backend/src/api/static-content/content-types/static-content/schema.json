@@ -119,9 +119,6 @@
         }
       },
       "component": "static-content.cookie-consent"
-    },
-    "company_id": {
-      "type": "string"
     }
   }
 }

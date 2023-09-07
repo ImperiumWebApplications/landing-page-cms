@@ -2,7 +2,7 @@ import React from 'react';
 
 import { motion } from 'framer-motion';
 
-import type { LandingPage, StaticContent } from '../../../lib/strapi';
+import type { StaticContent } from '../../../lib/strapi';
 import { NextAPI } from '../../../lib/next/api/client';
 import {
   isTrackingAllowed,
@@ -18,12 +18,10 @@ import { QualityBadges } from './QualityBadges';
 
 type ContactDetailsProps = {
   staticContent: StaticContent['questionnaire'];
-  company_id: LandingPage['company_id'];
 };
 
 export const ContactDetails: React.FC<ContactDetailsProps> = ({
   staticContent,
-  company_id,
 }) => {
   const { language } = useLanguageContext();
   const { state, dispatch } = useQuestionnaireContext();
@@ -37,23 +35,8 @@ export const ContactDetails: React.FC<ContactDetailsProps> = ({
         answer: answer.value,
       })),
     });
-    const leadRes = await NextAPI.createLeadInOdoo(
-      {
-        domain: window.location.host,
-        contact: state.contact,
-        questionnaireResults: state.questionnaire.map(
-          ({ question, answer }) => ({
-            question: question.value,
-            answer: answer.value,
-          }),
-        ),
-      },
-      company_id,
-    );
 
     if (!res.ok) throw new Error(res.statusText);
-    if (!leadRes.ok) throw new Error('Error creating lead in Odoo');
-
     if (isTrackingAllowed(window.location.host))
       sendEventToAnalytics(TagManagerEvents.QuestionnaireSubmitted);
 
