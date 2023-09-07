@@ -37,23 +37,8 @@ export const ContactDetails: React.FC<ContactDetailsProps> = ({
         answer: answer.value,
       })),
     });
-    const leadRes = await NextAPI.createLeadInOdoo(
-      {
-        domain: window.location.host,
-        contact: state.contact,
-        questionnaireResults: state.questionnaire.map(
-          ({ question, answer }) => ({
-            question: question.value,
-            answer: answer.value,
-          }),
-        ),
-      },
-      company_id,
-    );
 
     if (!res.ok) throw new Error(res.statusText);
-    if (!leadRes.ok) throw new Error('Error creating lead in Odoo');
-
     if (isTrackingAllowed(window.location.host))
       sendEventToAnalytics(TagManagerEvents.QuestionnaireSubmitted);
 
