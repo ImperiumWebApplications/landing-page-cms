@@ -2,7 +2,7 @@ import React from 'react';
 
 import { motion } from 'framer-motion';
 
-import type { LandingPage, StaticContent } from '../../../lib/strapi';
+import type { StaticContent } from '../../../lib/strapi';
 import { NextAPI } from '../../../lib/next/api/client';
 import {
   isTrackingAllowed,
