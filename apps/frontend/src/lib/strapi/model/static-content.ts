@@ -90,7 +90,6 @@ export type StaticContent = {
     navigation_item?: AnchorLinkComponent;
     title?: TextField;
   }>;
-  company_id?: TextField;
 };
 
 type AnchorLinkComponent = Component<{
