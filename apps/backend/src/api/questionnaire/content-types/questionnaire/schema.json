@@ -17,7 +17,10 @@
     },
     "language": {
       "type": "enumeration",
-      "enum": ["German", "English"],
+      "enum": [
+        "German",
+        "English"
+      ],
       "default": "German",
       "private": true
     },
@@ -25,7 +28,9 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
     },
     "questions": {
       "displayName": "Question",
