@@ -140,6 +140,10 @@
     },
     "states_autocomplete": {
       "type": "boolean"
+    },
+    "selectfont": {
+      "type": "customField",
+      "customField": "plugin::font-selector.font-selector"
     }
   }
 }
