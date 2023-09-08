@@ -44,17 +44,13 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": [
-        "images"
-      ]
+      "allowedTypes": ["images"]
     },
     "logo": {
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": [
-        "images"
-      ]
+      "allowedTypes": ["images"]
     },
     "client_address": {
       "type": "text"
@@ -112,16 +108,11 @@
         "Thailand:TH"
       ],
       "customField": "plugin::multi-select-field.multi-select-field",
-      "default": [
-        "DE"
-      ]
+      "default": ["DE"]
     },
     "language": {
       "type": "enumeration",
-      "enum": [
-        "German",
-        "English"
-      ],
+      "enum": ["German", "English"],
       "default": "German"
     },
     "deleted": {
