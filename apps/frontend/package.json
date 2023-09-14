@@ -19,7 +19,7 @@
     "format": "yarn prettier --write",
     "check-format": "yarn prettier --list-different",
     "test": "jest",
-    "cy:run": "npx cypress run --browser chrome",
+    "cy:run": "npx cypress run",
     "cy:open": "cypress open",
     "test:e2e:run": "start-server-and-test start:test http://0.0.0.0:3000 cy:run",
     "test:e2e:dev": "start-server-and-test dev:test http://0.0.0.0:3000 cy:open"
