@@ -19,7 +19,7 @@
     "format": "yarn prettier --write",
     "check-format": "yarn prettier --list-different",
     "test": "jest",
-    "cy:run": "npx cypress run",
+    "cy:run": "npx cypress run --browser chrome",
     "cy:open": "cypress open",
     "test:e2e:run": "start-server-and-test start:test http://0.0.0.0:3000 cy:run",
     "test:e2e:dev": "start-server-and-test dev:test http://0.0.0.0:3000 cy:open"
@@ -71,7 +71,7 @@
     "@typescript-eslint/parser": "^5.47.1",
     "autoprefixer": "^10.4.13",
     "cross-fetch": "^3.1.6",
-    "cypress": "^12.11.0",
+    "cypress": "12.2.0",
     "eslint": "^8.31.0",
     "eslint-config-next": "^13.1.1",
     "eslint-config-prettier": "^8.5.0",
