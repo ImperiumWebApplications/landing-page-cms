@@ -40,11 +40,13 @@ export const NextAPI = {
     });
   },
 
-  getRegionSuggestions(data: { region: string }): Promise<Response> {
+  getRegionSuggestions(data: {
+    region: string;
+    countries: string[] | null | undefined;
+  }): Promise<Response> {
     if (!data.region)
       return Promise.reject(new Error('Region is not provided'));
-
-    const API_ROUTE = `/api/regions/${data.region}`;
+    const API_ROUTE = `/api/regions/${data.region}?countries=${data.countries}`;
     const API = `${window.location.protocol}//${window.location.host}${API_ROUTE}`;
 
     return fetch(API, {

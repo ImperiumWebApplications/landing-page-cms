@@ -4,11 +4,11 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  const { region } = req.query;
+  const { region, countries } = req.query;
 
   try {
     const esRes = await fetch(
-      `${process.env.ELASTICSEARCH_SERVER_HOST}/search?region=${region}`,
+      `${process.env.ELASTICSEARCH_SERVER_HOST}/search?region=${region}&countries=${countries}`,
     );
     const data = await esRes.json();
     res.status(200).json(data);

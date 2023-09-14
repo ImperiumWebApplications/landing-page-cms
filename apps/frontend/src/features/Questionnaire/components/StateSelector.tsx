@@ -13,6 +13,7 @@ interface StateSelectorProps {
 }
 
 export const StateSelector: React.FC<StateSelectorProps> = ({
+  countries,
   staticContent,
 }) => {
   const { language } = useLanguageContext();
@@ -42,6 +43,7 @@ export const StateSelector: React.FC<StateSelectorProps> = ({
     const fetchData = async () => {
       try {
         const res = await NextAPI.getRegionSuggestions({
+          countries: countries,
           region: inputValue,
         });
         const data = await res.json();
