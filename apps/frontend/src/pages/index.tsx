@@ -7,25 +7,17 @@ import { Layout } from '../components/Layout/Layout';
 
 const IndexPage: ContentPage = ({ content, staticContent }) => {
   const SectionManager = initSectionManager(content, staticContent);
-  const font = content.selectfont;
 
   return (
-    <>
-      <style jsx global>{`
-        body {
-          font-family: ${font};
-        }
-      `}</style>
-      <Layout content={content} staticContent={staticContent}>
-        <SectionContextProvider>
-          {SectionManager.Hero}
-          {SectionManager.Video}
-          {SectionManager.Services}
-          {SectionManager.Reviews}
-          {SectionManager.Questions}
-        </SectionContextProvider>
-      </Layout>
-    </>
+    <Layout content={content} staticContent={staticContent}>
+      <SectionContextProvider>
+        {SectionManager.Hero}
+        {SectionManager.Video}
+        {SectionManager.Services}
+        {SectionManager.Reviews}
+        {SectionManager.Questions}
+      </SectionContextProvider>
+    </Layout>
   );
 };
 
