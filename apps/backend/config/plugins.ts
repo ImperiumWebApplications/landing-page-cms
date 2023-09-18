@@ -40,6 +40,10 @@ export default ({ env }) => ({
     enabled: true,
     resolve: './src/plugins/input-real-time-validation',
   },
+  'font-selector': {
+    enabled: true,
+    resolve: './src/plugins/font-selector',
+  },
   'unique-domains': {
     enabled: true,
     resolve: './src/plugins/unique-domains',
