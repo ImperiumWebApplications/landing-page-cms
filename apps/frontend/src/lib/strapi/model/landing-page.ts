@@ -33,6 +33,7 @@ export type LandingPage = {
   google_tag_manager_id?: TextField;
   google_allow_indexation?: BooleanField;
   states_autocomplete?: BooleanField;
+  selectfont: TextField;
 
   domain?: TextField;
   brand_name?: TextField;
