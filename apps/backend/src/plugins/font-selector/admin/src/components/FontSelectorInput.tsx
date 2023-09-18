@@ -33,6 +33,7 @@ const FontSelectorInput = ({
       value={selectedFont}
       onChange={handleChange}
     >
+      <SingleSelectOption value="Default">Default</SingleSelectOption>
       <SingleSelectOption value="Arial">Arial</SingleSelectOption>
       <SingleSelectOption value="Times New Roman">
         Times New Roman

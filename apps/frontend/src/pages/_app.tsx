@@ -47,12 +47,20 @@ const sen = localFont({
 
 function MyApp({ Component, pageProps }: AppProps<{ content?: LandingPage }>) {
   const language: LandingPageLanguage = pageProps.content?.language ?? 'German';
+  let font;
+  if (pageProps.content) {
+    font = pageProps.content.selectfont;
+  }
+
+  console.log(`Font from _app.tsx is ${font}`);
 
   return (
     <>
       <style jsx global>{`
         html {
-          font-family: ${sen.style.fontFamily};
+          font-family: ${font && font !== 'Default'
+            ? font
+            : sen.style.fontFamily};
         }
       `}</style>
       <LanguageContext.Provider value={{ language }}>
