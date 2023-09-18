@@ -12,7 +12,7 @@ const moduleExports = {
     domains: process.env.IMAGE_PROVIDER_URL
       ? [
           process.env.IMAGE_PROVIDER_URL,
-          'landing-pages-images-dev.s3.eu-central-1.amazonaws.com',
+          process.env.DEVELOPMENT_IMAGE_PROVIDER_URL,
         ]
       : [],
   },

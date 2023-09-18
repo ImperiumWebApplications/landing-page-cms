@@ -7,7 +7,6 @@ import { Layout } from '../components/Layout/Layout';
 
 const IndexPage: ContentPage = ({ content, staticContent }) => {
   const SectionManager = initSectionManager(content, staticContent);
-  const font = content.selectfont;
 
   return (
     <Layout content={content} staticContent={staticContent}>
