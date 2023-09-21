@@ -17,8 +17,8 @@ type I18NFields = {
   VAT_ID_GENERIC: string;
   VAT_ID_SWITZERLAND: string;
   VAT_ID_GERMANY: string;
-  QUESTIONNAIRE_SELECT: string;
-  STATE_AUTOCOMPLETE_SELECT: string;
+  STATE_AUTOCOMPLETE_INPUT_PLACEHOLDER: string;
+  STATE_AUTOCOMPLETE_TITLE: string;
 };
 
 type I18NFormFields = {
@@ -74,8 +74,9 @@ export const i18n: I18NConfig = {
     HOME: 'Startseite',
     NEW_REQUEST: 'Neue Anfrage',
     NEXT: 'Weiter',
-    QUESTIONNAIRE_SELECT: 'Stadt auswählen',
-    STATE_AUTOCOMPLETE_SELECT: 'Stadt wählen',
+    STATE_AUTOCOMPLETE_TITLE: 'Stadt wählen',
+    STATE_AUTOCOMPLETE_INPUT_PLACEHOLDER:
+      'Wunderbar! Bitte teilen Sie Ihre Stadt:',
     NOT_FOUND: 'Inhalt nicht gefunden',
     NOT_FOUND_ACTION: 'Einen Schritt zurück',
     FORM_CONFIRMATION_TRACKING_PARAM: 'bestaetigung', // Don't change, used for tracking in GTM
@@ -136,8 +137,8 @@ export const i18n: I18NConfig = {
     HOME: 'Home',
     NEW_REQUEST: 'New request',
     NEXT: 'Next',
-    QUESTIONNAIRE_SELECT: 'Select state',
-    STATE_AUTOCOMPLETE_SELECT: 'Select city',
+    STATE_AUTOCOMPLETE_TITLE: 'Select city',
+    STATE_AUTOCOMPLETE_INPUT_PLACEHOLDER: 'Wonderful! Please share your city:',
     NOT_FOUND: 'Content not found',
     NOT_FOUND_ACTION: 'Go back',
     FORM_CONFIRMATION_TRACKING_PARAM: 'confirmation', // Don't change, used for tracking in GTM
