@@ -78,7 +78,7 @@ export const StateSelector: React.FC<StateSelectorProps> = ({
 
   return (
     <div className="mx-auto px-0 md:px-8 lg:max-w-xl lg:px-0 ">
-      <StepTitle>{staticContent?.postal_code_step_title}</StepTitle>
+      <StepTitle>Wunderbar! Bitte teilen Sie Ihre Stadt:</StepTitle>
       <div
         style={{
           display: 'flex',

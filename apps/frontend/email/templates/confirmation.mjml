@@ -3,7 +3,7 @@
     <mj-title>Vielen Dank für Ihre Anfrage auf unserer Webseite!</mj-title>
     <mj-font
       name="Sen"
-      href="https://fonts.googleapis.com/css2?family=Sen&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Sen"
     />
     <mj-attributes>
       <mj-all font-family="Sen" color="{{colorText}}" />
