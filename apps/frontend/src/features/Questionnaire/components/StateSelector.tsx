@@ -48,7 +48,12 @@ export const StateSelector: React.FC<StateSelectorProps> = ({
         });
         const data = await res.json();
         const options = data.suggest.regions_suggestor[0].options.map(
-          (option: any) => option.text,
+          (option: any) => {
+            return {
+              value: option.text,
+              label: option.text,
+            };
+          },
         );
         setStates(options);
       } catch (error) {
@@ -71,11 +76,6 @@ export const StateSelector: React.FC<StateSelectorProps> = ({
     updateCity(selectedOption.value);
   };
 
-  const options = states.map((state) => ({
-    value: state,
-    label: state.toUpperCase(),
-  }));
-
   return (
     <div className="mx-auto px-0 md:px-8 lg:max-w-xl lg:px-0 ">
       <StepTitle>{i18n[language].STATE_AUTOCOMPLETE_TITLE}</StepTitle>
@@ -88,7 +88,7 @@ export const StateSelector: React.FC<StateSelectorProps> = ({
         }}
       >
         <Select
-          options={options}
+          options={states}
           onChange={handleChange}
           onInputChange={setInputValue}
           placeholder={i18n[language].STATE_AUTOCOMPLETE_INPUT_PLACEHOLDER}
