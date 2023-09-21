@@ -91,7 +91,7 @@ export const StateSelector: React.FC<StateSelectorProps> = ({
           options={options}
           onChange={handleChange}
           onInputChange={setInputValue}
-          placeholder={i18n[language].QUESTIONNAIRE_SELECT}
+          placeholder={i18n[language].STATE_AUTOCOMPLETE_SELECT}
           className=" w-full rounded-md  brightness-95"
         />
         <Button
