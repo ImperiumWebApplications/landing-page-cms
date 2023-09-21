@@ -2,11 +2,11 @@
   <mj-head>
     <mj-title>Vielen Dank für Ihre Anfrage auf unserer Webseite!</mj-title>
     <mj-font
-      name="Overpass"
-      href="https://fonts.googleapis.com/css?family=Overpass:400,700"
+      name="Sen"
+      href="https://fonts.googleapis.com/css2?family=Sen&display=swap"
     />
     <mj-attributes>
-      <mj-all font-family="Overpass" color="{{colorText}}" />
+      <mj-all font-family="Sen" color="{{colorText}}" />
     </mj-attributes>
   </mj-head>
   <mj-body background-color="#FAFAFA">
