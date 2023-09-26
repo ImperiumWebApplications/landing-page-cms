@@ -144,6 +144,10 @@
     "selectfont": {
       "type": "customField",
       "customField": "plugin::font-selector.font-selector"
+    },
+    "ConstructionMode": {
+      "type": "customField",
+      "customField": "plugin::construction-mode.construction-mode"
     }
   }
 }

@@ -52,8 +52,6 @@ function MyApp({ Component, pageProps }: AppProps<{ content?: LandingPage }>) {
     font = pageProps.content.selectfont;
   }
 
-  console.log(`Font from _app.tsx is ${font}`);
-
   return (
     <>
       <style jsx global>{`
