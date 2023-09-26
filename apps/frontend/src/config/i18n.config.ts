@@ -74,7 +74,8 @@ export const i18n: I18NConfig = {
     HOME: 'Startseite',
     NEW_REQUEST: 'Neue Anfrage',
     NEXT: 'Weiter',
-    STATE_AUTOCOMPLETE_TITLE: 'Bitte geben Sie uns unten Ihre Stadt/Bundesland an:',
+    STATE_AUTOCOMPLETE_TITLE:
+      'Bitte geben Sie uns unten Ihre Stadt/Bundesland an:',
     STATE_AUTOCOMPLETE_INPUT_PLACEHOLDER: 'Stadt/Bundesland hier eingeben',
     NOT_FOUND: 'Inhalt nicht gefunden',
     NOT_FOUND_ACTION: 'Einen Schritt zurück',
