@@ -74,8 +74,8 @@ export const i18n: I18NConfig = {
     HOME: 'Startseite',
     NEW_REQUEST: 'Neue Anfrage',
     NEXT: 'Weiter',
-    STATE_AUTOCOMPLETE_TITLE: 'Bitte teilen Sie uns unten Ihre Stadt mit:',
-    STATE_AUTOCOMPLETE_INPUT_PLACEHOLDER: 'Geben Sie hier die Stadt ein',
+    STATE_AUTOCOMPLETE_TITLE: 'Bitte geben Sie uns unten Ihre Stadt/Bundesland an:',
+    STATE_AUTOCOMPLETE_INPUT_PLACEHOLDER: 'Stadt/Bundesland hier eingeben',
     NOT_FOUND: 'Inhalt nicht gefunden',
     NOT_FOUND_ACTION: 'Einen Schritt zurück',
     FORM_CONFIRMATION_TRACKING_PARAM: 'bestaetigung', // Don't change, used for tracking in GTM
@@ -136,8 +136,8 @@ export const i18n: I18NConfig = {
     HOME: 'Home',
     NEW_REQUEST: 'New request',
     NEXT: 'Next',
-    STATE_AUTOCOMPLETE_TITLE: 'Please tell us your city below:',
-    STATE_AUTOCOMPLETE_INPUT_PLACEHOLDER: 'Enter city here',
+    STATE_AUTOCOMPLETE_TITLE: 'Please tell us your city/state below:',
+    STATE_AUTOCOMPLETE_INPUT_PLACEHOLDER: 'Enter city/state here',
     NOT_FOUND: 'Content not found',
     NOT_FOUND_ACTION: 'Go back',
     FORM_CONFIRMATION_TRACKING_PARAM: 'confirmation', // Don't change, used for tracking in GTM
