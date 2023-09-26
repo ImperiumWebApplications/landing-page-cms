@@ -52,6 +52,15 @@ function MyApp({ Component, pageProps }: AppProps<{ content?: LandingPage }>) {
     font = pageProps.content.selectfont;
   }
 
+  if (pageProps.content?.ConstructionMode) {
+    return (
+      <img
+        src="https://cdn.pixabay.com/photo/2017/10/26/17/51/under-construction-2891888_1280.jpg"
+        style={{ width: '100%', height: '100%' }}
+      />
+    );
+  }
+
   return (
     <>
       <style jsx global>{`
