@@ -48,4 +48,8 @@ export default ({ env }) => ({
     enabled: true,
     resolve: './src/plugins/unique-domains',
   },
+  'construction-mode': {
+    enabled: true,
+    resolve: './src/plugins/construction-mode',
+  },
 });
