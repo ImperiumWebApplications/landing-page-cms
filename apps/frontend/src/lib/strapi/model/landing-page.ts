@@ -34,6 +34,7 @@ export type LandingPage = {
   google_allow_indexation?: BooleanField;
   states_autocomplete?: BooleanField;
   selectfont: TextField;
+  ConstructionMode: BooleanField;
 
   domain?: TextField;
   brand_name?: TextField;
