@@ -11,7 +11,8 @@ export default {
       pluginId: pluginId,
       type: 'boolean',
       components: {
-        Input: async () => import('./components/ConstructionModeSwitchComponent'),
+        Input: async () =>
+          import('./components/ConstructionModeSwitchComponent'),
       },
       intlLabel: {
         id: `${pluginId}.plugin.name`,
