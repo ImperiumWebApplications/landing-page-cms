@@ -76,6 +76,13 @@ export const StateSelector: React.FC<StateSelectorProps> = ({
     updateCity(selectedOption.value);
   };
 
+  const menuStyles = {
+    menu: (base: any) => ({
+      ...base,
+      visibility: inputValue.length > 0 ? 'visible' : 'hidden',
+    }),
+  };
+
   return (
     <div className="mx-auto px-0 md:px-8 lg:max-w-xl lg:px-0 ">
       <StepTitle>{i18n[language].STATE_AUTOCOMPLETE_TITLE}</StepTitle>
@@ -88,11 +95,13 @@ export const StateSelector: React.FC<StateSelectorProps> = ({
         }}
       >
         <Select
+          autoFocus
           options={states}
           onChange={handleChange}
-          onInputChange={setInputValue}
+          onInputChange={(value) => setInputValue(value)}
           placeholder={i18n[language].STATE_AUTOCOMPLETE_INPUT_PLACEHOLDER}
-          className=" w-full rounded-md  brightness-95"
+          className=" w-full rounded-md brightness-95"
+          styles={menuStyles}
         />
         <Button
           label={staticContent?.postal_code_button_label ?? i18n[language].NEXT}
