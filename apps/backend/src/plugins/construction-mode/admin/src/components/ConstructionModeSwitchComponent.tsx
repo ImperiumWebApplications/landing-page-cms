@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Switch } from '@strapi/design-system';
+import { Switch, FieldLabel } from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 
 const ConstructionSwitchComponent = ({
@@ -28,10 +28,8 @@ const ConstructionSwitchComponent = ({
   };
   return (
     <>
-      <label htmlFor="switch" className="sc-dkPtRN sc-bkkeKt GUInE cNnlrr">
-        {label}
-      </label>
-      <Switch selected={activated} onChange={handleChange} visibleLabels />
+      <FieldLabel>{label}</FieldLabel>
+      <Switch selected={activated} onChange={handleChange} />
     </>
   );
 };
