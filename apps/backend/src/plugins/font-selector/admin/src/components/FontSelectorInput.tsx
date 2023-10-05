@@ -36,6 +36,7 @@ const FontSelectorInput = ({
       <SingleSelectOption value="Default">Default</SingleSelectOption>
       <SingleSelectOption value="Montserrat">Montserrat</SingleSelectOption>
       <SingleSelectOption value="Poppins">Poppins</SingleSelectOption>
+      <SingleSelectOption value="Open Sans">Open Sans</SingleSelectOption>
       <SingleSelectOption value="Roboto">Roboto</SingleSelectOption>
       <SingleSelectOption value="Arial">Arial</SingleSelectOption>
       <SingleSelectOption value="Times New Roman">
