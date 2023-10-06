@@ -24,6 +24,7 @@ export const LandingPageSections = {
   IMAGES: 'sections.images',
   QUESTIONS: 'sections.faq',
   VIDEO: 'sections.video',
+  ABOUT_US: 'sections.aboutus'
 } as const;
 
 export type LandingPageLanguage = 'German' | 'English';
@@ -74,7 +75,8 @@ export type Section =
   | ServicesSection
   | ReviewsSection
   | QuestionsSection
-  | VideoSection;
+  | VideoSection
+  | AboutUsSection;
 
 export type HeroSection = Component<{
   title?: TextField;
@@ -111,6 +113,13 @@ export type VideoSection = Component<{
     number?: TextField;
     number_suffix?: TextField;
   }>;
+}>;
+
+export type AboutUsSection = Component<{
+  aboutus_image?: Media;
+  title?: TextField;
+  description?: TextField;
+  enabled?: BooleanField;
 }>;
 
 export type QuestionsSection = Component<{

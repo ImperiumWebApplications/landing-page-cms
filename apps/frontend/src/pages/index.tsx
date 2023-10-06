@@ -13,6 +13,7 @@ const IndexPage: ContentPage = ({ content, staticContent }) => {
       <SectionContextProvider>
         {SectionManager.Hero}
         {SectionManager.Video}
+        {SectionManager.AboutUs}
         {SectionManager.Services}
         {SectionManager.Reviews}
         {SectionManager.Questions}

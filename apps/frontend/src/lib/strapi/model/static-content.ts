@@ -62,6 +62,14 @@ export type StaticContent = {
     video_thumbnail?: Media;
     call_to_action_button_label?: TextField;
   }>;
+  /** Static Content for About Us Section */
+  about_us_section?: Component<{
+    navigation_item?: AnchorLinkComponent;
+    image?: Media;
+    title?: TextField;
+    description?: TextField;
+    call_to_action_button_label?: TextField;
+  }>;
   /** Static Content for Services Section */
   services_section?: Component<{
     call_to_action_banner_title?: TextField;
