@@ -24,7 +24,7 @@ export const LandingPageSections = {
   IMAGES: 'sections.images',
   QUESTIONS: 'sections.faq',
   VIDEO: 'sections.video',
-  ABOUT_US: 'sections.aboutus'
+  ABOUT_US: 'sections.aboutus',
 } as const;
 
 export type LandingPageLanguage = 'German' | 'English';
