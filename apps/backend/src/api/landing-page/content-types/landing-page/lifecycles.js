@@ -1,33 +1,33 @@
-const fetch = require('node-fetch');
-const { ForbiddenError } = require('@strapi/utils').errors;
-module.exports = {
-  async beforeCreate(event) {
-    const { data } = event.params;
+// const fetch = require('node-fetch');
+// const { ForbiddenError } = require('@strapi/utils').errors;
+// module.exports = {
+//   async beforeCreate(event) {
+//     const { data } = event.params;
 
-    const domain = data.domain;
+//     const domain = data.domain;
 
-    if (!domain) {
-      throw strapi.errors.badRequest('Domain field is missing');
-    }
+//     if (!domain) {
+//       throw strapi.errors.badRequest('Domain field is missing');
+//     }
 
-    try {
-      const response = await fetch(process.env.DOMAIN_AVAILABILITY_LAMBDA, {
-        method: 'POST',
-        body: JSON.stringify({ domainName: domain }),
-        headers: { 'Content-Type': 'application/json' },
-      });
+//     try {
+//       const response = await fetch(process.env.DOMAIN_AVAILABILITY_LAMBDA, {
+//         method: 'POST',
+//         body: JSON.stringify({ domainName: domain }),
+//         headers: { 'Content-Type': 'application/json' },
+//       });
 
-      const jsonResponse = await response.json();
+//       const jsonResponse = await response.json();
 
-      if (jsonResponse.isAlreadyAvailable) {
-        return;
-      } else if (!jsonResponse.isAlreadyAvailable && jsonResponse.isAvailable) {
-        return;
-      } else {
-        throw new ForbiddenError('Domain is not available');
-      }
-    } catch (error) {
-      throw new ForbiddenError('Error with the API call: ' + error.message);
-    }
-  },
-};
+//       if (jsonResponse.isAlreadyAvailable) {
+//         return;
+//       } else if (!jsonResponse.isAlreadyAvailable && jsonResponse.isAvailable) {
+//         return;
+//       } else {
+//         throw new ForbiddenError('Domain is not available');
+//       }
+//     } catch (error) {
+//       throw new ForbiddenError('Error with the API call: ' + error.message);
+//     }
+//   },
+// };
