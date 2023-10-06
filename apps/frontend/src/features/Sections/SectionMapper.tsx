@@ -1,4 +1,5 @@
 import {
+  AboutUsSection,
   DynamicZoneItem,
   HeroSection,
   LandingPage,
@@ -18,6 +19,7 @@ export const buildSectionMap = (
   reviews?: ReviewsSectionContent;
   services?: ServicesSectionContent;
   video?: VideoSectionContent;
+  aboutus?: AboutUsSectionContent;
 } | null => {
   return (
     content.sections?.reduce((prev, section) => {
@@ -37,6 +39,9 @@ export const buildSectionMap = (
           : {}),
         ...(isVideoSection(section)
           ? { video: toVideoSectionContent(content, section) }
+          : {}),
+        ...(isAboutUsSection(section)
+          ? { aboutus: toAboutUsSectionContent(content, section) }
           : {}),
       };
     }, {}) ?? null
@@ -136,3 +141,20 @@ const toVideoSectionContent = (_: LandingPage, section: VideoSection) => {
 };
 
 export type VideoSectionContent = ReturnType<typeof toVideoSectionContent>;
+
+/**
+ * About Us Section
+ */
+
+const isAboutUsSection = (
+  section: DynamicZoneItem<Section>,
+): section is DynamicZoneItem<AboutUsSection> =>
+  section.__component === LandingPageSections.ABOUT_US;
+
+const toAboutUsSectionContent = (_: LandingPage, section: AboutUsSection) => {
+  return {
+    ...section,
+  };
+};
+
+export type AboutUsSectionContent = ReturnType<typeof toAboutUsSectionContent>;

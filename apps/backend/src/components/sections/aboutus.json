@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_sections_aboutus",
+  "info": {
+    "displayName": "About Us Section",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "aboutus_image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "enabled": {
+      "type": "boolean"
+    }
+  }
+}

@@ -68,7 +68,8 @@
         "sections.hero",
         "sections.reviews",
         "sections.services",
-        "sections.video"
+        "sections.video",
+        "sections.aboutus"
       ]
     },
     "service_type": {

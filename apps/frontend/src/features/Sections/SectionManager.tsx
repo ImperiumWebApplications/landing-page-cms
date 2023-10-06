@@ -6,6 +6,7 @@ import { ReviewsSection } from './Reviews';
 import { buildSectionMap } from './SectionMapper';
 import { ServicesSection } from './Services';
 import { VideoSection } from './Video';
+import { AboutUsSection } from './Aboutus';
 
 export const initSectionManager = (
   content: LandingPage,
@@ -43,6 +44,13 @@ export const initSectionManager = (
       <VideoSection
         content={sectionMap.video}
         staticContent={staticContent.video_section}
+      />
+    ) : null,
+
+    AboutUs: sectionMap?.aboutus ? (
+      <AboutUsSection
+        content={sectionMap.aboutus}
+        staticContent={staticContent.about_us_section}
       />
     ) : null,
   };
