@@ -28,7 +28,7 @@ const ConstructionSwitchComponent = ({
   };
   return (
     <>
-      <FieldLabel>{label}</FieldLabel>
+      <FieldLabel style={{ padding: '0 0 0.5rem 0' }}>{label}</FieldLabel>
       <Switch selected={activated} onChange={handleChange} />
     </>
   );
